@@ -9,6 +9,6 @@
     "render:all": "node scripts/render.mjs --all"
   },
   "devDependencies": {
-    "playwright": "^1.48.0"
+    "playwright": "^1.48.2"
   }
 }

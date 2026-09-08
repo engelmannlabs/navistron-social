@@ -16,6 +16,7 @@ const only = onlyIdx >= 0 ? args[onlyIdx + 1] : null;
 
 const postsDir = join(root, 'posts');
 const slugs = readdirSync(postsDir).filter(d => statSync(join(postsDir, d)).isDirectory() && existsSync(join(postsDir, d, 'post.html')));
+console.log(`posts encontrados (${slugs.length}): ${slugs.join(', ')}`);
 
 const sha = s => createHash('sha256').update(s).digest('hex');
 const deps = ['templates/base.css', 'templates/base.js'].map(p => existsSync(join(root, p)) ? readFileSync(join(root, p), 'utf8') : '');
@@ -35,7 +36,7 @@ for (const slug of slugs) {
   const width = m ? +m[1] : 1080, height = m ? +m[2] : 1440;
   const page = await browser.newPage({ viewport: { width, height }, deviceScaleFactor: 1 });
   await page.goto(pathToFileURL(join(dir, 'post.html')).href, { waitUntil: 'networkidle' });
-  await page.evaluate(() => document.fonts.ready);
+  await page.evaluate(() => document.fonts.ready.then(() => true));
   await page.waitForTimeout(400);
   const fonts = await page.evaluate(() => [...document.fonts].map(f => ({ family: f.family, status: f.status })));
   const bad = fonts.filter(f => f.status !== 'loaded');
