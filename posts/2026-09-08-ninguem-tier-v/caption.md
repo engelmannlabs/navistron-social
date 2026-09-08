@@ -3,8 +3,9 @@ data: 2026-09-08
 pilar: desafio
 gancho: "Ninguém chegou ao Tier V" (teto atual: Tier IV, VASCO)
 formato: 1080x1440 imagem única
-horario_publicacao: imediato (terça, ~17:30 BRT) — fora da janela padrão, serve de baseline
-buffer_post_id: (preencher após publicar)
+horario_publicacao: 2026-09-08 18:42 BRT (terça, publicado na hora — fora da janela padrão, serve de baseline)
+buffer_post_id: 6aa081457082feb000ddbd35
+instagram_url: https://www.instagram.com/p/DdCrXTvH9uk/
 fonte_dados: navistron.io/stats em 08/09/2026 — 432 partidas, 37 pilotos, recorde 25.971 (VASCO, 06/07), melhor tier IV, 14h07 em jogo
 ---
 
