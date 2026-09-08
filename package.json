@@ -1,0 +1,14 @@
+{
+  "name": "navistron-social",
+  "private": true,
+  "type": "module",
+  "description": "Artes dos posts do Instagram @navistron — renderizadas a partir de HTML pelo GitHub Actions",
+  "scripts": {
+    "fonts": "bash scripts/setup-fonts.sh",
+    "render": "node scripts/render.mjs",
+    "render:all": "node scripts/render.mjs --all"
+  },
+  "devDependencies": {
+    "playwright": "^1.48.0"
+  }
+}

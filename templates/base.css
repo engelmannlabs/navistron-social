@@ -1,0 +1,119 @@
+/* Navistron Social — design system "Telemetria Silenciosa"
+   Canvas padrão: 1080x1440 (3:4). Tudo em px absolutos. */
+
+@font-face { font-family: "BigShoulders"; src: url("../assets/fonts/BigShoulders.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
+@font-face { font-family: "GeistMono";    src: url("../assets/fonts/GeistMono.woff2")    format("woff2"); font-weight: 100 900; font-display: block; }
+@font-face { font-family: "Tektur";       src: url("../assets/fonts/Tektur.woff2")       format("woff2"); font-weight: 400 900; font-display: block; }
+
+:root {
+  /* cores dos tiers do jogo (I → VII) */
+  --t1: #22D3EE; --t2: #4ADE80; --t3: #FACC15; --t4: #FB923C;
+  --t5: #F472B6; --t6: #A78BFA; --t7: #FFFFFF;
+  /* neutros */
+  --ink: #EEF3FF; --muted: #8FA3C7; --dim: #4B5B7A; --bg: #05070F;
+  --font-display: "BigShoulders", "Big Shoulders", "Arial Narrow", sans-serif;
+  --font-mono: "GeistMono", "Geist Mono", "JetBrains Mono", monospace;
+  --font-ui: "Tektur", "Orbitron", sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1440px; overflow: hidden; background: var(--bg); }
+body {
+  position: relative; color: var(--ink); font-family: var(--font-mono);
+  background: radial-gradient(ellipse 720px 900px at 50% 44%, #0E1530 0%, #080C1C 55%, #05070F 100%);
+}
+#stars { position: absolute; inset: 0; }
+.grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(143,163,199,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(143,163,199,0.055) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 560px 760px at 50% 50%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 560px 760px at 50% 50%, #000 30%, transparent 100%);
+}
+
+/* barra superior: rótulo de telemetria à esquerda, @navistron à direita */
+.topbar {
+  position: absolute; top: 72px; left: 72px; right: 72px;
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 18px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase;
+}
+.topbar .dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--t2); box-shadow: 0 0 10px var(--t2); margin-right: 14px; vertical-align: 1px; }
+
+/* cabeçalho: kicker (mono ciano) + título gigante (display) */
+.head { position: absolute; top: 196px; left: 0; right: 0; text-align: center; }
+.kicker { font-size: 23px; letter-spacing: 0.3em; color: var(--t1); text-transform: uppercase; margin-bottom: 30px; }
+.kicker span { color: var(--dim); margin: 0 12px; }
+.title {
+  font-family: var(--font-display); font-weight: 700;
+  font-size: 200px; line-height: 0.84; letter-spacing: 0.012em; color: var(--ink);
+  text-shadow: 0 0 40px rgba(34,211,238,0.18);
+}
+.title .accent { color: var(--t5); text-shadow: 0 0 34px rgba(244,114,182,0.45); }
+.title .accent.c1 { color: var(--t1); text-shadow: 0 0 34px rgba(34,211,238,0.45); }
+.title .accent.c3 { color: var(--t3); text-shadow: 0 0 34px rgba(250,204,21,0.45); }
+.title .accent.c4 { color: var(--t4); text-shadow: 0 0 34px rgba(251,146,60,0.45); }
+
+/* rodapé: linha de stats + botão CTA */
+.foot { position: absolute; left: 72px; right: 72px; bottom: 76px; display: flex; flex-direction: column; align-items: center; gap: 34px; }
+.stats { display: flex; gap: 40px; font-size: 18px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; }
+.stats b { color: var(--ink); font-weight: 700; }
+.cta {
+  font-family: var(--font-ui); font-weight: 500; font-size: 23px; letter-spacing: 0.2em; text-transform: uppercase;
+  color: #05070F; background: var(--t1); padding: 20px 40px; border-radius: 8px;
+  box-shadow: 0 0 34px rgba(34,211,238,0.45);
+}
+
+/* ---- componente: escada de tiers ---- */
+.ladder {
+  position: absolute; left: 50%; transform: translateX(-50%);
+  top: 866px; width: 936px; height: 300px;
+  display: flex; align-items: flex-end; justify-content: space-between;
+}
+.col { position: relative; width: 112px; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; }
+.bar { width: 100%; border-radius: 10px; position: relative; }
+.bar.lit { background: var(--c); box-shadow: 0 0 28px color-mix(in srgb, var(--c) 55%, transparent), inset 0 -18px 30px rgba(0,0,0,0.22); }
+.bar.lit::after { content: ""; position: absolute; left: 12px; right: 12px; top: 11px; height: 3px; border-radius: 2px; background: rgba(255,255,255,0.55); }
+.bar.off {
+  border: 2px dashed color-mix(in srgb, var(--c) 55%, transparent);
+  background: repeating-linear-gradient(-45deg, color-mix(in srgb, var(--c) 9%, transparent) 0 6px, transparent 6px 16px);
+}
+.tag { position: absolute; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; }
+.tag.zero { color: color-mix(in srgb, var(--c) 78%, white); }
+.tag.zero b { font-weight: 700; color: color-mix(in srgb, var(--c) 92%, white); }
+.label { margin-top: 14px; font-family: var(--font-ui); font-weight: 500; font-size: 17px; letter-spacing: 0.14em; color: var(--muted); }
+.label.on { color: var(--ink); }
+.marker {
+  position: absolute; left: 50%; transform: translateX(-50%); white-space: nowrap; text-align: center;
+  font-size: 13px; line-height: 1.45; letter-spacing: 0.2em; text-transform: uppercase; color: var(--t4);
+}
+.marker b { font-weight: 700; font-size: 15px; }
+.marker::after { content: ""; position: absolute; left: 50%; top: 46px; width: 2px; height: 16px; background: var(--t4); transform: translateX(-50%); opacity: 0.9; }
+
+/* ---- componente: ranking (lista de pilotos) ---- */
+.rank { position: absolute; left: 72px; right: 72px; top: 560px; display: flex; flex-direction: column; gap: 18px; }
+.row {
+  display: grid; grid-template-columns: 96px 1fr auto; align-items: center; gap: 24px;
+  padding: 22px 30px; border-radius: 14px;
+  background: rgba(143,163,199,0.06); border: 1px solid rgba(143,163,199,0.14);
+}
+.row.top { background: rgba(250,204,21,0.08); border-color: rgba(250,204,21,0.45); box-shadow: 0 0 34px rgba(250,204,21,0.14); }
+.row .pos { font-family: var(--font-display); font-weight: 700; font-size: 64px; line-height: 1; color: var(--muted); }
+.row.top .pos { color: var(--t3); }
+.row .name { font-family: var(--font-ui); font-weight: 500; font-size: 34px; letter-spacing: 0.06em; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.row .meta { font-size: 15px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; margin-top: 8px; }
+.row .score { font-family: var(--font-display); font-weight: 700; font-size: 66px; line-height: 1; color: var(--ink); text-align: right; }
+.row .score small { display: block; font-family: var(--font-mono); font-weight: 400; font-size: 14px; letter-spacing: 0.2em; color: var(--muted); margin-top: 6px; }
+
+/* ---- componente: painel de destaque (número grande) ---- */
+.hero-number { font-family: var(--font-display); font-weight: 700; font-size: 340px; line-height: 0.9; letter-spacing: 0.01em; color: var(--ink); text-align: center; }
+.hero-number .unit { display: block; font-family: var(--font-mono); font-size: 26px; letter-spacing: 0.32em; color: var(--t1); text-transform: uppercase; margin-top: 18px; }
+.panel {
+  position: absolute; left: 72px; right: 72px; border-radius: 18px; padding: 40px 44px;
+  background: rgba(143,163,199,0.06); border: 1px solid rgba(143,163,199,0.16);
+}
+.panel .line { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 0; border-bottom: 1px solid rgba(143,163,199,0.14); font-size: 22px; letter-spacing: 0.08em; }
+.panel .line:last-child { border-bottom: 0; }
+.panel .line b { font-family: var(--font-display); font-size: 44px; font-weight: 700; letter-spacing: 0.02em; }
+.panel .line .k { color: var(--muted); text-transform: uppercase; font-size: 17px; letter-spacing: 0.2em; }
