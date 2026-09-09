@@ -6,12 +6,14 @@ Este arquivo é a memória da operação. Cada rodada diária lê, executa e **a
 
 ## 1. O que sabemos do público (base: Buffer, 25 posts, fev–set/2026)
 
-- Alcance típico de um post: 100–300 contas. Outliers: 1.100–1.500 quando o Instagram distribui um Reel.
+- Alcance típico de uma imagem: 100–300 contas. Outliers: 1.100–1.500 quando o Instagram distribui um Reel.
+  **O primeiro post automatizado (08/09, imagem) teve 1 visualização nas primeiras horas** — imagem parada
+  quase não é distribuída para quem não segue. Reels são a aposta para alcance; imagem/carrossel para
+  conversa com quem já segue.
 - **O único post que engajou de verdade** (25/06, 7,6% eng., 70 likes, 16 comentários, 11 saves) foi
   pessoal + desafio: "me ajudem a compartilhar este projeto pessoal… duvido alguém bater 25k".
   Os demais ("Jogue grátis, link na bio") ficaram em 0–2 likes com alcance parecido.
-- Reels tiveram views, mas tempo médio de 2–8 s → gancho fraco nos primeiros 2 s. Só temos imagens
-  estáticas por enquanto; compensar com título forte na arte.
+- Reels antigos (gameplay) tiveram views, mas tempo médio de 2–8 s → o gancho tem de estar no 1º segundo.
 - O desafio de 25k foi batido 11 dias depois (VASCO, 25.971 em 06/07). Desafios com número funcionam.
 - Público fala português; nomes dos pilotos ativos: VASCO, AMM2026 (e variações), GUI, BAHIA2026, 哎呦呦.
 
@@ -19,44 +21,60 @@ Este arquivo é a memória da operação. Cada rodada diária lê, executa e **a
 
 | Pilar | Gancho | Fonte |
 |---|---|---|
-| **Desafio** | "Ninguém chegou ao Tier V", "duvido passar de X pts", "quem chega a Y?" | /stats (best tier, recorde) |
+| **Desafio** | "Ninguém chegou ao Tier V", "só 1 piloto passou de 20 mil", "quem chega a Y?" | /stats (best tier, recorde, partidas por score) |
 | **Ranking da semana** (segundas) | top 5 dos últimos 7 dias, nome em destaque | /stats?periodo=7d |
 | **Hall da fama / shout-out** | piloto que bateu recorde, subiu de tier, entrou no top 3 | /stats, /ranking |
 | **Mecânica explicada** | fórmula de pontos, HP dos meteoros por tier, 5 boosts = 1 tier, mísseis a 320 px/s | blog do site |
 | **Marco** | 500 partidas, 50 pilotos, 20h jogadas, primeira partida no Tier V | /stats (totais) |
-| **Bastidor do dev** | primeira pessoa, honesto, curto ("eu que programei não passo do Tier III") | conversa com o Guilherme |
+| **Bastidor do dev** | primeira pessoa, honesto, curto | conversa com o Guilherme |
 
-## 3. Regras de publicação
+## 3. Formatos e mix semanal
 
-- **1 post no feed por dia.** Um segundo só se houver evento (recorde quebrado, Tier V alcançado, marco).
+| Formato | Arquivo | Quando usar | Regras da arte |
+|---|---|---|---|
+| **Reel** (9:16, 1080×1920, 8–15 s, 30 fps) | `post.html` com `<meta name="post-type" content="reel">` + `audio.json` opcional | **Padrão para alcance.** Desafio, recorde, contagem regressiva do ranking, mecânica animada, marco | Gancho legível no **frame 0** (texto grande já visível); 1 ideia por cena, 3–5 cenas; número grande animado (contador) sempre que houver número; CTA nos últimos 2 s; texto entre y=300 e y=1500 (zonas seguras); trilha chiptune própria (`scripts/audio.mjs`, `hit` no clímax); capa (`reel-cover`) no instante do gancho completo |
+| **Carrossel** (3:4, 3–6 slides) | `post.html` (slide 1) + `slide-2.html`… | Ranking semanal (1 piloto por slide), mecânica passo a passo, "5 fatos da telemetria" | Slide 1 = gancho + "arrasta →"; cada slide 1 ideia; último slide = CTA + @navistron; mesma paleta em todos |
+| **Imagem única** (3:4) | `post.html` | Marco, shout-out rápido, bastidor | Título ≤ 12 palavras, número grande, cores dos tiers |
+
+Mix semanal alvo (ajustar com os dados): **3–4 reels, 1–2 carrosséis, 1–2 imagens**. Segunda-feira: ranking
+(carrossel ou reel de contagem regressiva 5→1). Enquanto os reels tiverem alcance ≥ 3× o das imagens, eles ficam
+como formato padrão.
+
+## 4. Regras de publicação
+
+- **1 publicação por dia.** Uma segunda só se houver evento (recorde quebrado, Tier V alcançado, marco).
   Nunca mais de 2/dia. Instagram permite 25/dia pela API, o público não.
 - Janela padrão **18:30–21:00 (America/Sao_Paulo)**. Rotacionar o horário para testar: 18:30 / 19:30 / 20:30.
   Segunda-feira: ranking semanal às 19:30.
-- Formato **1080×1440 (3:4)** — o Instagram exibe 3:4 inteiro no feed e na grade.
-- Arte: título ≤ 12 palavras, 1 ideia só, número grande, cores dos tiers, fundo espaço. Nada de emoji na arte.
 - Legenda: primeira pessoa (é o Guilherme falando), 3–6 linhas curtas, **um pedido explícito**
   (comente, marque alguém, mande print), fecha com "grátis, sem login, link na bio 🚀". 5–8 hashtags
-  no fim: `#navistron #jogodenave #arcade #indiegame #jogogratis #gamedev #jogosbrasileiros`.
+  no fim: `#navistron #jogodenave #arcade #indiegame #jogogratis #gamedev #jogosbrasileiros` (+ `#reels` em reels).
 - **Todo número vem da telemetria e traz a data.** Se um dado não puder ser confirmado em /stats,
   não entra. Nunca inventar piloto, score ou marco. Não fazer promessa que o Guilherme não fez.
+  Antes de afirmar "só X pilotos…", conferir também as partidas anônimas em `?visao=partidas&ordem=score`.
 - Citar pilotos pelo nick como aparece no ranking (é público). Sem deboche com nick de ninguém.
 - Não repetir o mesmo gancho em menos de 10 dias. Checar `log/experiments.md` antes de escolher.
-- Sempre `metadata.instagram.type = "post"`, `shouldShareToFeed = true`, `schedulingType = "automatic"`.
-- Se a arte não renderizou (post.png ausente no repo) ou o Buffer devolveu erro: **não publicar**, registrar no log e avisar.
+- Buffer: `schedulingType = "automatic"`; imagem/carrossel → `metadata.instagram.type = "post"`;
+  reel → `assets: [{ video: { url, metadata: { thumbnailOffset: <ms da capa>, title } } }]` e
+  `metadata.instagram.type = "reel"`; sempre `shouldShareToFeed = true`.
+- Se a arte não renderizou (arquivo ausente no repo) ou o Buffer devolveu erro: **não publicar**, registrar no log e avisar.
 
-## 4. Pipeline técnico (resumo — detalhes no README)
+## 5. Pipeline técnico (resumo — detalhes no README)
 
 1. Ler métricas dos últimos posts no Buffer (`list_posts` com `includeMetrics`), telemetria em
-   `navistron.io/stats` (geral, `?periodo=7d`, `?visao=partidas&ordem=data`) e o blog quando o pilar for mecânica.
-2. Escolher pilar + gancho, escrever legenda, montar `posts/AAAA-MM-DD-slug/post.html` a partir de `templates/base.css`
-   (componentes prontos: `.ladder`, `.rank`, `.hero-number`, `.panel`) e renderizar localmente para conferir.
-3. Publicar `post.html` + `caption.md` no repo (GitHub). O Actions renderiza `post.png` em ~2 min.
-4. Confirmar que `post.png` existe; URL pública: `https://raw.githubusercontent.com/engelmannlabs/navistron-social/main/posts/<slug>/post.png`.
+   `navistron.io/stats` (geral, `?periodo=7d`, `?visao=partidas&ordem=data`, `?visao=partidas&ordem=score`) e o blog quando o pilar for mecânica.
+2. Escolher formato + pilar + gancho, escrever legenda, montar `posts/AAAA-MM-DD-slug/` (imagem: `templates/base.css`;
+   reel: `templates/reel.css` + `window.__seek(t)` — usar o reel anterior como esqueleto) e conferir com `scripts/qa.py`.
+3. Publicar os HTML + `caption.md` no repo. O Actions renderiza `post.png`/`slide-N.png` (~1–2 min) ou `reel.mp4` + `reel-cover.png` (~3–5 min).
+4. Confirmar que o arquivo existe; URL pública: `https://raw.githubusercontent.com/engelmannlabs/navistron-social/main/posts/<slug>/<arquivo>`.
 5. Criar o post no Buffer (canal Instagram `navistron`) agendado para a janela do dia.
-6. Registrar em `log/experiments.md` (data, slug, pilar, gancho, horário, id do post no Buffer).
-7. Para posts com ≥ 48 h, preencher métricas no log e atualizar "Aprendizados".
+6. Registrar em `log/experiments.md` (data, slug, formato, pilar, gancho, horário, id do post no Buffer).
+7. Para posts com ≥ 48 h, preencher métricas no log (reels: views, alcance, tempo médio assistido) e atualizar "Aprendizados".
 
-## 5. Aprendizados (atualizar a cada rodada — o mais recente primeiro)
+## 6. Aprendizados (atualizar a cada rodada — o mais recente primeiro)
 
+- 2026-09-09 · Imagem de 08/09 com 1 view em ~3 h. Reels entram como formato padrão; primeiro reel publicado
+  em 09/09 (contador do recorde). Hipóteses: (a) reel ≥ 3× o alcance da imagem; (b) contador/número animado
+  segura retenção; (c) pedido de print nos comentários gera prova social.
 - 2026-09-08 · Ponto de partida. Hipóteses a testar: (a) desafio com número > divulgação genérica;
   (b) citar piloto pelo nick gera comentário/compartilhamento; (c) 19:30 > 18:30 em alcance.
