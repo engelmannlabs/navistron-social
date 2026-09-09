@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="12.5">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="2.0">
+<link rel="stylesheet" href="../../templates/reel.css">
+<!-- dados: navistron.io/stats em 09/09/2026 — 37 pilotos; recorde 25.971 (VASCO, 06/07/2026); 2º lugar geral 18.869 (AMM2026); só o VASCO passou de 20 mil -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Telemetria pública · @navistron</div>
+
+  <div id="title" class="layer" style="top: 560px">
+    <div class="h1"><span class="w" id="w1">SÓ 1 PILOTO</span><br><span class="w" id="w2">EM 37</span><br><span class="w accent" id="w3">PASSOU DE<br>20 MIL PTS.</span></div>
+  </div>
+
+  <div id="rec" class="layer" style="top: 640px">
+    <div class="kicker" id="reclabel">recorde atual</div>
+    <div class="counter" id="num" style="margin-top: 40px">0</div>
+    <div class="sub" id="who" style="margin-top: 36px; opacity: 0"><b>VASCO</b> · 06.07.2026</div>
+    <div id="second" style="margin-top: 70px; opacity: 0"><span class="marker">2º lugar · <b>AMM2026</b> · 18.869</span></div>
+  </div>
+
+  <div id="ask" class="layer" style="top: 620px">
+    <div class="h1">QUANTO<br><span class="pink">VOCÊ</span><br>FAZ?</div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">grátis · sem login · no navegador</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 12.5;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);        // progresso 0..1 de um trecho
+  const fmt = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  // ---------- PRNG determinístico ----------
+  let s = 909;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- meteoros (determinísticos em função de t) ----------
+  const N = 72, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 260 + rnd() * 220, r: 22 + rnd() * 46, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * 2100, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function drawMeteor(m, x, y, rot, glow) {
+    fx.save(); fx.translate(x, y); fx.rotate(rot);
+    fx.beginPath();
+    const n = m.shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = m.r * m.shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+    fx.fillStyle = m.big ? 'rgba(20,26,46,0.92)' : 'rgba(14,19,36,0.9)';
+    fx.fill();
+    fx.lineWidth = m.big ? 3 : 2;
+    fx.strokeStyle = glow ? 'rgba(250,204,21,0.9)' : (m.big ? 'rgba(190,208,240,0.75)' : 'rgba(150,170,205,0.6)');
+    if (glow) { fx.shadowColor = 'rgba(250,204,21,0.8)'; fx.shadowBlur = 24; }
+    fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    // propulsor
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, 'rgba(34,211,238,0.9)'); g.addColorStop(1, 'rgba(34,211,238,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    // casco
+    fx.shadowColor = 'rgba(34,211,238,0.7)'; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = '#22D3EE'; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 150 * Math.sin(t * 0.9) + 60 * Math.sin(t * 2.3);
+  const shipY = 1400;
+
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    // intensidade cresce: contagem e velocidade
+    const p = seg(t, 0, 11);
+    const active = Math.floor(10 + 62 * p * p);
+    const speed = 1 + 1.6 * p;
+    for (let i = 0; i < active; i++) {
+      const m = meteors[i];
+      const dist = (t * m.v * speed + m.phase);
+      const cycle = Math.floor(dist / 2100);
+      const y = (dist % 2100) - 120;
+      const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+      const glow = (t > 6.1 && t < 6.8 && i % 5 === 0);
+      drawMeteor(m, x, y, m.rot + t * m.w, glow);
+    }
+    // tiros: um a cada 0,12 s, velocidade 1500 px/s
+    fx.save();
+    for (let k = 0; ; k++) {
+      const tb = k * 0.12; if (tb > t) break;
+      const yb = shipY - 50 - (t - tb) * 1500; if (yb < -30) continue;
+      const xb = shipX(tb);
+      fx.fillStyle = 'rgba(34,211,238,0.95)'; fx.shadowColor = 'rgba(34,211,238,0.9)'; fx.shadowBlur = 14;
+      fx.fillRect(xb - 3, yb, 6, 26);
+    }
+    fx.restore();
+    drawShip(shipX(t), shipY, t);
+    // vinheta escura em cima do fx para o texto respirar
+    const vg = fx.createRadialGradient(540, 900, 200, 540, 900, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.55)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+  const RECORD = 25971, SECOND = 18869;
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+    // 1) título em 3 tempos (0–2.3), some em 2.3–2.7
+    const outT = 1 - seg(t, 2.3, 0.4);
+    layer($('title'), outT, -30 * (1 - outT));
+    const w1 = ease.out3(seg(t, -0.15, 0.3)), w2 = ease.out3(seg(t, 0.5, 0.4)), w3 = ease.out3(seg(t, 1.05, 0.55));
+    $('w1').style.opacity = w1; $('w1').style.display = 'inline-block'; $('w1').style.transform = `translateY(${40 * (1 - w1)}px)`;
+    $('w2').style.opacity = w2; $('w2').style.display = 'inline-block'; $('w2').style.transform = `translateY(${40 * (1 - w2)}px)`;
+    $('w3').style.opacity = w3; $('w3').style.display = 'inline-block'; $('w3').style.transform = `translateY(${40 * (1 - w3)}px)`;
+
+    // 2) recorde: entra 2.6, conta até 9.0, trava, sai 9.7–10.0
+    const inR = ease.out3(seg(t, 2.5, 0.45)), outR = 1 - seg(t, 8.2, 0.3);
+    layer($('rec'), inR * outR, 30 * (1 - inR));
+    const cp = 1 - Math.pow(1 - seg(t, 2.7, 3.4), 2.2);
+    const val = RECORD * cp;
+    const locked = t >= 6.1;
+    $('num').textContent = fmt(locked ? RECORD : val);
+    $('num').className = 'counter' + (locked ? ' lock' : '');
+    const pulse = locked ? 1 + 0.07 * Math.exp(-(t - 6.1) * 4) : 1;
+    $('num').style.transform = `scale(${pulse})`;
+    const whoIn = ease.out3(seg(t, 6.15, 0.4));
+    $('who').style.opacity = whoIn; $('who').style.transform = `translateY(${20 * (1 - whoIn)}px)`;
+    const tSecond = 2.7 + 3.4 * (1 - Math.pow(1 - SECOND / RECORD, 1 / 2.2));
+    const secIn = ease.out3(seg(t, tSecond, 0.45));
+    $('second').style.opacity = secIn; $('second').style.transform = `translateY(${24 * (1 - secIn)}px)`;
+
+    // 3) pergunta 9.9–11.6
+    const inA = ease.out3(seg(t, 8.4, 0.45)), outA = 1 - seg(t, 10.0, 0.3);
+    layer($('ask'), inA * outA, 0, 0.92 + 0.08 * inA);
+
+    // 4) CTA 11.6–13.5
+    const inC = ease.out3(seg(t, 10.25, 0.5));
+    layer($('cta'), inC, 30 * (1 - inC));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+/* Navistron Social — base para Reels (9:16, 1080x1920, 30 fps).
+   A animação é dirigida por window.__seek(t) (segundos) no HTML do reel — nada de CSS animation,
+   para que cada frame seja determinístico. Zonas seguras do Instagram: evitar os 420px de baixo
+   (legenda/ícones) e os 140px da direita; manter texto entre y=300 e y=1500. */
+
+@font-face { font-family: "BigShoulders"; src: url("../assets/fonts/BigShoulders.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
+@font-face { font-family: "GeistMono";    src: url("../assets/fonts/GeistMono.woff2")    format("woff2"); font-weight: 100 900; font-display: block; }
+@font-face { font-family: "Tektur";       src: url("../assets/fonts/Tektur.woff2")       format("woff2"); font-weight: 400 900; font-display: block; }
+
+:root {
+  --t1: #22D3EE; --t2: #4ADE80; --t3: #FACC15; --t4: #FB923C;
+  --t5: #F472B6; --t6: #A78BFA; --t7: #FFFFFF;
+  --ink: #EEF3FF; --muted: #8FA3C7; --dim: #4B5B7A; --bg: #05070F;
+  --font-display: "BigShoulders", "Big Shoulders", "Arial Narrow", sans-serif;
+  --font-mono: "GeistMono", "Geist Mono", "JetBrains Mono", monospace;
+  --font-ui: "Tektur", "Orbitron", sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: var(--bg); }
+body {
+  position: relative; color: var(--ink); font-family: var(--font-mono);
+  background: radial-gradient(ellipse 760px 1100px at 50% 46%, #0E1530 0%, #080C1C 55%, #05070F 100%);
+}
+canvas { position: absolute; inset: 0; }
+
+/* camadas de texto: tudo absoluto, centralizado, controlado por opacity/transform via JS */
+.layer { position: absolute; left: 90px; right: 90px; text-align: center; opacity: 0; will-change: opacity, transform; }
+.brand { position: absolute; top: 300px; left: 0; right: 0; text-align: center; font-size: 22px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; }
+.brand .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--t2); box-shadow: 0 0 12px var(--t2); margin-right: 16px; vertical-align: 2px; }
+
+.h1 { font-family: var(--font-display); font-weight: 700; font-size: 210px; line-height: 0.86; letter-spacing: 0.01em; color: var(--ink); text-shadow: 0 0 40px rgba(34,211,238,0.18); }
+.h1 .accent { color: var(--t3); text-shadow: 0 0 40px rgba(250,204,21,0.45); }
+.h1 .pink { color: var(--t5); text-shadow: 0 0 40px rgba(244,114,182,0.45); }
+.h1 .cyan { color: var(--t1); text-shadow: 0 0 40px rgba(34,211,238,0.45); }
+.kicker { font-size: 28px; letter-spacing: 0.32em; color: var(--t1); text-transform: uppercase; }
+.counter { font-family: var(--font-mono); font-weight: 800; font-size: 250px; line-height: 1; letter-spacing: -0.02em; color: var(--ink); font-variant-numeric: tabular-nums; text-shadow: 0 0 50px rgba(34,211,238,0.25); }
+.counter.lock { color: var(--t3); text-shadow: 0 0 60px rgba(250,204,21,0.55); }
+.sub { font-family: var(--font-ui); font-weight: 500; font-size: 34px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; }
+.sub b { color: var(--ink); }
+.marker { display: inline-block; padding: 20px 38px; border-radius: 12px; border: 2px solid rgba(143,163,199,0.4); background: rgba(143,163,199,0.1); font-size: 30px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+.marker b { color: var(--ink); }
+.cta-big { font-family: var(--font-display); font-weight: 700; font-size: 170px; line-height: 0.9; color: var(--t1); text-shadow: 0 0 50px rgba(34,211,238,0.5); }
+.cta-sub { margin-top: 34px; font-size: 30px; letter-spacing: 0.24em; color: var(--ink); text-transform: uppercase; }
+.cta-handle { margin-top: 26px; font-size: 24px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; }
