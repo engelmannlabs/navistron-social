@@ -28,6 +28,8 @@ console.log(`posts encontrados (${slugs.length}): ${slugs.join(', ')}`);
 const sha = s => createHash('sha256').update(s).digest('hex');
 const depFiles = ['templates/base.css', 'templates/base.js', 'templates/reel.css', 'scripts/audio.mjs'];
 const deps = depFiles.map(p => existsSync(join(root, p)) ? readFileSync(join(root, p), 'utf8') : '').join('\n');
+// ffmpeg: do sistema, ou o binário estático instalado pelo setup-fonts.sh (npm ffmpeg-static)
+const FFMPEG = process.env.FFMPEG_PATH || (existsSync(join(root, 'node_modules/ffmpeg-static/ffmpeg')) ? join(root, 'node_modules/ffmpeg-static/ffmpeg') : 'ffmpeg');
 const meta = (html, name, def) => { const m = html.match(new RegExp(`name="${name}"\\s+content="([^"]+)"`)); return m ? m[1] : def; };
 
 const browser = await chromium.launch();
@@ -96,7 +98,7 @@ for (const slug of slugs) {
         await page.screenshot({ path: join(dir, 'reel-cover.png'), fullPage: false });
         const wav = join(fdir, 'audio.wav');
         execFileSync('node', [join(root, 'scripts/audio.mjs'), wav, String(dur), audioOpts], { stdio: 'inherit' });
-        execFileSync('ffmpeg', ['-y', '-loglevel', 'error', '-framerate', String(fps), '-i', join(fdir, 'f%05d.jpg'), '-i', wav,
+        execFileSync(FFMPEG, ['-y', '-loglevel', 'error', '-framerate', String(fps), '-i', join(fdir, 'f%05d.jpg'), '-i', wav,
           '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p', '-r', String(fps),
           '-c:a', 'aac', '-b:a', '96k', '-shortest', '-movflags', '+faststart', outPath], { stdio: 'inherit' });
         rmSync(fdir, { recursive: true, force: true });
