@@ -1,11 +1,16 @@
 {
-  "hash": "53c8fd5937b8328ca74b9320297fdb670037dd2cbdaf4a307f63eb8044b471c9",
-  "width": 1080,
-  "height": 1440,
-  "renderedAt": "2026-09-08T21:39:43.411Z",
-  "fonts": [
-    "BigShoulders",
-    "GeistMono",
-    "Tektur"
-  ]
+  "files": {
+    "post.html": {
+      "hash": "e6ec883ac26b36332701c0d48399d411cb62c45abbcfa37b3d65de14f12e475a",
+      "out": "post.png",
+      "width": 1080,
+      "height": 1440,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ]
+    }
+  },
+  "renderedAt": "2026-09-09T11:10:08.120Z"
 }
