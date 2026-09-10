@@ -4,7 +4,7 @@ formato: reel 1080x1920, 13,5 s, 30 fps, trilha chiptune original (scripts/audio
 pilar: mecânica explicada (pontuação por tier)
 gancho: "O mesmo meteoro vale 15 pts ou 210 pts — depende do seu tier" → escada I→VII com o valor do meteoro grande → "5 boosts = +1 tier" → "até que tier você chega?"
 horario_publicacao: 2026-09-10 19:30 BRT (quinta, agendado — teste do horário 19:30)
-buffer_post_id: (preencher)
+buffer_post_id: 6aa2c62269b0d5361d836753
 fonte_dados: regras do jogo (blog navistron.io / configuração da rotina) — dificuldade por tier 1.0/1.8/3.0/4.8/7.0/10.0/14.0; meteoro grande = round(30×dif×0,5) = 15/27/45/72/105/150/210; pequeno = round(10×dif×0,5) = 5/9/15/24/35/50/70; 5 boosts = +1 tier; 1 ponto por segundo vivo. Sem números de telemetria neste post (navistron.io/stats inacessível na rodada de 10/09).
 ---
 
