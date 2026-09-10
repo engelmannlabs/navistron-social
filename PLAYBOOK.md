@@ -24,7 +24,7 @@ Este arquivo é a memória da operação. Cada rodada diária lê, executa e **a
 | **Desafio** | "Ninguém chegou ao Tier V", "só 1 piloto passou de 20 mil", "quem chega a Y?" | /stats (best tier, recorde, partidas por score) |
 | **Ranking da semana** (segundas) | top 5 dos últimos 7 dias, nome em destaque | /stats?periodo=7d |
 | **Hall da fama / shout-out** | piloto que bateu recorde, subiu de tier, entrou no top 3 | /stats, /ranking |
-| **Mecânica explicada** | fórmula de pontos, HP dos meteoros por tier, 5 boosts = 1 tier, mísseis a 320 px/s | blog do site |
+| **Mecânica explicada** | fórmula de pontos, HP dos meteoros por tier, 5 boosts = 1 tier, mísseis a 320 px/s | blog do site + regras fixas (fallback quando /stats não abre) |
 | **Marco** | 500 partidas, 50 pilotos, 20h jogadas, primeira partida no Tier V | /stats (totais) |
 | **Bastidor do dev** | primeira pessoa, honesto, curto | conversa com o Guilherme |
 
@@ -52,6 +52,8 @@ como formato padrão.
 - **Todo número vem da telemetria e traz a data.** Se um dado não puder ser confirmado em /stats,
   não entra. Nunca inventar piloto, score ou marco. Não fazer promessa que o Guilherme não fez.
   Antes de afirmar "só X pilotos…", conferir também as partidas anônimas em `?visao=partidas&ordem=score`.
+- **Se /stats estiver inacessível na rodada**, o único pilar permitido é "Mecânica explicada", usando apenas as
+  regras fixas do jogo (tiers, dificuldade, fórmula de pontos, 5 boosts) — zero números de telemetria.
 - Citar pilotos pelo nick como aparece no ranking (é público). Sem deboche com nick de ninguém.
 - Não repetir o mesmo gancho em menos de 10 dias. Checar `log/experiments.md` antes de escolher.
 - Buffer: `schedulingType = "automatic"`; imagem/carrossel → `metadata.instagram.type = "post"`;
@@ -73,6 +75,12 @@ como formato padrão.
 
 ## 6. Aprendizados (atualizar a cada rodada — o mais recente primeiro)
 
+- 2026-09-10 · Leitura das 2 primeiras publicações automatizadas: imagem 08/09 (18:42) = 2 de alcance / 3 views em ~39 h;
+  reel 09/09 (08:14) = 10 de alcance / 10 views em ~25 h. O reel alcançou 5× a imagem, mas os dois ficaram muito abaixo
+  do histórico (100–300 por imagem, 1.000+ por reel). Suspeitas: horário fora da janela (08:14 e 18:42 "na hora") e
+  conta parada por 2 meses. Teste de hoje: reel às 19:30, dentro da janela. Telemetria inacessível pelo 2º dia
+  (WebFetch sem permissão para navistron.io) → publicado só com regras fixas do jogo (pilar mecânica). **Fallback
+  oficial quando /stats não abre: pilar "Mecânica explicada", sem nenhum número de telemetria.**
 - 2026-09-09 · Imagem de 08/09 com 1 view em ~3 h. Reels entram como formato padrão; primeiro reel publicado
   em 09/09 (contador do recorde). Hipóteses: (a) reel ≥ 3× o alcance da imagem; (b) contador/número animado
   segura retenção; (c) pedido de print nos comentários gera prova social.
