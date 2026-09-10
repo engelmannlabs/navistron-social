@@ -73,8 +73,58 @@ como formato padrão.
 6. Registrar em `log/experiments.md` (data, slug, formato, pilar, gancho, horário, id do post no Buffer).
 7. Para posts com ≥ 48 h, preencher métricas no log (reels: views, alcance, tempo médio assistido) e atualizar "Aprendizados".
 
-## 6. Aprendizados (atualizar a cada rodada — o mais recente primeiro)
+## 6. Blog diário em navistron.io (1 artigo por dia, SEO)
 
+**Onde fica**: repo privado `engelmannlabs/navistron` (Next.js 15, Vercel). Os 23 artigos originais estão em
+`src/lib/blogArticles.js` (não editar — 340 KB). Os diários ficam em `src/lib/blog/daily/AAAA-MM-DD-slug.js`
+(um objeto por arquivo, `export default`) e são registrados em `src/lib/blog/daily/index.js` (import + entrada no
+array, mais recente primeiro). `src/lib/blog/index.js` junta tudo, ordena por data e alimenta `/blog`,
+`/blog/[slug]` e o `sitemap.xml` (dinâmico: `lastmod` = data do artigo). `robots.txt` aponta o sitemap.
+Merge em `main` = deploy automático na Vercel (~2 min).
+
+**Formato do objeto** (igual aos originais): `slug`, `title`, `description`, `keywords`, `category`, `date`
+(`AAAA-MM-DD`), `heroImage` + `heroImageAlt` (uma das imagens em `public/images/screenshots/` ou `pages/`),
+`content` (HTML dentro de template literal — **nunca** usar crase ou `${` no texto). Tags cobertas pelo CSS:
+`p, h2, h3, ul, ol, li, table/tr/th/td, code, strong, em, a`. FAQ no fim: `<h2>FAQ</h2>` seguido de pares
+`<h3>pergunta</h3><p>resposta</p>` sem tags dentro (vira `FAQPage` no JSON-LD automaticamente).
+
+**Checklist SEO de cada artigo**
+- 1 palavra-chave principal + 2–3 secundárias; a principal aparece no título (≤ 65 caracteres), na `description`
+  (140–160), no primeiro parágrafo, em ≥ 1 H2 e no slug (curto, sem data, sem stopwords).
+- 1.300–1.900 palavras; intro que responde a pergunta em 3 linhas; H2 a cada 200–300 palavras; 1 tabela ou lista.
+- 6–12 links internos: `/play`, `/ranking`, `/stats` (com filtros), 2–4 artigos existentes (conferir slugs em
+  `daily/index.js` e em `blogArticles.js`), 1 link para o Instagram. Nunca link externo para concorrente sem motivo.
+- Dados da telemetria **com data** ("em 10/09/2026, 457 partidas…"). Fórmulas do jogo conforme os artigos originais.
+- Sem canibalização: antes de escolher o tema, ler os títulos/keywords dos artigos existentes; se o tema já existe,
+  escolher ângulo diferente (pergunta, comparação, dado novo) e linkar o original.
+- Categorias: `Guias e Estratégia`, `Telemetria e Ranking`, `Jogos`, `Tutoriais`, `Tecnologia`, `Mecânicas do Jogo`.
+
+**Clusters e rotação semanal** (ajustar pelo Search Console quando houver dados)
+
+| Dia | Cluster | Exemplos de pauta |
+|---|---|---|
+| Seg | Telemetria e Ranking | "Ranking da semana", "quem mais jogou em setembro", análise de horários de pico |
+| Ter | Guias e Estratégia | como passar do tier X, como usar mísseis, erros que matam no Tier II |
+| Qua | Jogos (aquisição) | "jogo de nave online grátis para celular", "jogos rápidos de 2 minutos", "jogos tipo Asteroids" |
+| Qui | Mecânicas / Tecnologia | uma fórmula por artigo, bastidores do código |
+| Sex | Guias ou Telemetria | dúvidas dos comentários do Instagram, desafio da semana |
+| Sáb | Jogos / curiosidades | história do gênero, comparativos, listas |
+| Dom | Tutoriais (dev) | Next.js, canvas, MongoDB, Playwright — com o Navistron como exemplo |
+
+**Pipeline**: escrever o artigo localmente → validar com `scripts/validate-blog.mjs` (repo navistron; slug único,
+campos, tamanho, FAQ, links internos, sem crase/`${`) → `create_branch` (`blog/AAAA-MM-DD-slug`) → `push_files`
+(artigo + `daily/index.js` atualizado) → `create_pull_request` → `merge_pull_request` (squash) → esperar ~3 min →
+WebFetch em `https://navistron.io/blog/<slug>?v=<data>` e no `sitemap.xml`. Registrar em `log/blog.md`
+(data, slug, cluster, keyword, URL). O post do Instagram do dia pode citar o artigo ("link na bio").
+
+**Indexação**: `sitemap.xml` e `robots.txt` já existem. Falta confirmar a propriedade no Google Search Console
+(`verification` em `src/app/layout.js` está vazio — se o Guilherme passar o token, adicionar) e enviar o sitemap lá.
+
+## 7. Aprendizados (atualizar a cada rodada — o mais recente primeiro)
+
+- 2026-09-10 · Blog diário começa: primeiro artigo `como-passar-do-tier-3-navistron` (Guias e Estratégia),
+  no ar em ~3 min após o merge, já no sitemap com lastmod do dia. Estrutura `daily/` criada para não reescrever
+  o arquivo de 340 KB.
 - 2026-09-10 · Leitura das 2 primeiras publicações automatizadas: imagem 08/09 (18:42) = 2 de alcance / 3 views em ~39 h;
   reel 09/09 (08:14) = 10 de alcance / 10 views em ~25 h. O reel alcançou 5× a imagem, mas os dois ficaram muito abaixo
   do histórico (100–300 por imagem, 1.000+ por reel). Suspeitas: horário fora da janela (08:14 e 18:42 "na hora") e
