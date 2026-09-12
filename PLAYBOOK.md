@@ -65,7 +65,7 @@ como formato padrão.
   `metadata.instagram.type = "reel"`; sempre `shouldShareToFeed = true`.
 - Se a arte não renderizou (arquivo ausente no repo) ou o Buffer devolveu erro: **não publicar**, registrar no log e avisar.
 
-## 5. Pipeline técnico (resumo — detalhes no README)
+## 5. Pipeline técnico (resumo — detalhes no README e em ROTINA.md)
 
 1. Ler métricas dos últimos posts no Buffer (`list_posts` com `includeMetrics`), telemetria em
    `navistron.io/stats` (geral, `?periodo=7d`, `?visao=partidas&ordem=data`, `?visao=partidas&ordem=score`) e o blog quando o pilar for mecânica.
@@ -126,6 +126,16 @@ WebFetch em `https://navistron.io/blog/<slug>?v=<data>` e no `sitemap.xml`. Regi
 
 ## 7. Aprendizados (atualizar a cada rodada — o mais recente primeiro)
 
+- 2026-09-12 · **Operação: a rotina passou a rodar dentro da conversa persistente do Guilherme** (ver `ROTINA.md` e
+  README). A tarefa agendada de sessão nova travou em pedido de permissão 3 rodadas seguidas (10, 11 e 12/09) porque a
+  sessão nova não herda as permissões "Sempre" dos conectores. Primeira rodada no modo novo (12/09, 14:05 BRT): zero
+  pedidos de permissão, WebFetch/GitHub/Buffer na primeira tentativa, reel renderizado em ~4 min, blog no ar. Regra
+  operacional nova: o passo 0 de cada rodada agenda a rodada seguinte. Conteúdo: os 4 posts automatizados seguem com
+  alcance de um dígito (imagem 08/09 = 2; reels 09 e 10/09 = 10 cada, sem diferença entre 08:14 e 19:30; carrossel
+  11/09 às 22:00 = 1 view em 16 h). Hoje o teste é o pilar **marco** com pedido concreto ("me manda o print se a sua
+  for a 500ª" + "bota o nick no game over"), reel às 18:30. Se até 15/09 nenhum post passar de 30 de alcance, propor
+  ao Guilherme: (a) compartilhar o reel do dia nos stories e curtir/comentar os posts para reativar a distribuição;
+  (b) um post "bastidor do dev" gravado por ele, o único formato que já funcionou nesta conta.
 - 2026-09-11 · **Métricas finais dos 3 primeiros posts automatizados são todas de um dígito**: imagem 08/09 = 2 alcance;
   reel 09/09 = 10 alcance (parou em 10 já no 1º dia); reel 10/09 às 19:30 (dentro da janela) = 8 alcance em 10 h.
   Ou seja, **o horário não explica** — o reel na janela rendeu o mesmo que o reel às 08:14. A conta está sendo tratada
