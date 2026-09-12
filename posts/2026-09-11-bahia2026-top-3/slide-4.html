@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .title { font-size: 150px; }
+  .panel { top: 620px; padding: 30px 44px; }
+  .panel .line { padding: 22px 0; }
+  .panel .line b { font-size: 60px; }
+  .panel .line b.name { font-family: var(--font-ui); font-weight: 500; font-size: 40px; letter-spacing: 0.06em; color: var(--t2); }
+  .src { position: absolute; left: 0; right: 0; bottom: 84px; text-align: center; font-size: 17px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+</style>
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20260914"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Telemetria pública · 11.09.2026</div>
+    <div>@navistron</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">Últimos 7 dias <span>/</span> 05 a 11 de setembro</div>
+    <div class="title">A SEMANA<br><span class="accent c1">EM NÚMEROS.</span></div>
+  </div>
+
+  <div class="panel">
+    <div class="line"><span class="k">Partidas</span><b>64</b></div>
+    <div class="line"><span class="k">Pilotos registrados</span><b>4</b></div>
+    <div class="line"><span class="k">Tempo em jogo</span><b>2h44</b></div>
+    <div class="line"><span class="k">Melhor score</span><b>19.567</b></div>
+    <div class="line"><span class="k">Piloto novo no ranking</span><b class="name">EDMORPHE</b></div>
+  </div>
+
+  <div class="src">Fonte: navistron.io/stats?periodo=7d · 11/09/2026</div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

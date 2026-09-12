@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .title { font-size: 150px; }
+  .hero { position: absolute; left: 0; right: 0; top: 640px; text-align: center; }
+  .hero .hero-number { font-size: 360px; color: var(--t4); text-shadow: 0 0 44px rgba(251,146,60,0.35); }
+  .hero .hero-number .unit { color: var(--muted); }
+  .panel { top: 1056px; padding: 26px 44px; }
+  .panel .line b { font-size: 46px; }
+  .panel .line .k { font-family: var(--font-ui); color: var(--ink); font-size: 26px; letter-spacing: 0.08em; text-transform: none; }
+  .panel .line .d { color: var(--muted); font-size: 15px; letter-spacing: 0.2em; margin-left: 18px; }
+</style>
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20260913"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Telemetria pública · 11.09.2026</div>
+    <div>@navistron</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">2º lugar <span>×</span> 3º lugar</div>
+    <div class="title">A BRIGA PELA<br><span class="accent c4">PRATA.</span></div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-number">345<span class="unit">pontos de diferença</span></div>
+  </div>
+
+  <div class="panel">
+    <div class="line"><span><span class="k">AMM2026</span><span class="d">10/09</span></span><b>19.567</b></div>
+    <div class="line"><span><span class="k">BAHIA2026</span><span class="d">11/09</span></span><b>19.222</b></div>
+  </div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

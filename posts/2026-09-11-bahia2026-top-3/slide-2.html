@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .title { font-size: 150px; }
+  .rank { top: 640px; gap: 22px; }
+  .row { padding: 28px 34px; }
+  .row.new { background: rgba(250,204,21,0.06); border-color: rgba(250,204,21,0.55); box-shadow: 0 0 34px rgba(250,204,21,0.16); }
+  .row.new .pos { color: var(--t3); }
+  .row.top { background: rgba(143,163,199,0.06); border-color: rgba(143,163,199,0.14); box-shadow: none; }
+  .row.top .pos { color: var(--muted); }
+  .badge { display: inline-block; margin-left: 14px; padding: 5px 10px; border-radius: 6px; background: var(--t3); color: #05070F; font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.2em; vertical-align: 6px; }
+  .src { position: absolute; left: 0; right: 0; bottom: 84px; text-align: center; font-size: 17px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+</style>
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20260912"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Telemetria pública · 11.09.2026</div>
+    <div>@navistron</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">Ranking geral <span>/</span> melhor partida de cada piloto</div>
+    <div class="title">O PÓDIO<br><span class="accent c1">HOJE.</span></div>
+  </div>
+
+  <div class="rank">
+    <div class="row top">
+      <div class="pos">1</div>
+      <div><div class="name">VASCO</div><div class="meta">06/07/2026 · melhor tier IV</div></div>
+      <div class="score">25.971<small>pontos</small></div>
+    </div>
+    <div class="row">
+      <div class="pos">2</div>
+      <div><div class="name">AMM2026</div><div class="meta">10/09/2026 · melhor tier III</div></div>
+      <div class="score">19.567<small>pontos</small></div>
+    </div>
+    <div class="row new">
+      <div class="pos">3</div>
+      <div><div class="name">BAHIA2026<span class="badge">NOVO</span></div><div class="meta">11/09/2026 · melhor tier III</div></div>
+      <div class="score">19.222<small>pontos</small></div>
+    </div>
+  </div>
+
+  <div class="src">Fonte: navistron.io/stats · 490 partidas · 38 pilotos</div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<!-- dados: navistron.io/stats em 11/09/2026 (490 partidas, 38 pilotos; top 3: VASCO 25.971, AMM2026 19.567, BAHIA2026 19.222) -->
+<style>
+  .hero { position: absolute; left: 0; right: 0; top: 812px; text-align: center; }
+  .hero .hero-number { font-size: 300px; color: var(--t3); text-shadow: 0 0 44px rgba(250,204,21,0.35); }
+  .hero .hero-number .unit { color: var(--muted); }
+  .swipe { font-family: var(--font-ui); font-size: 22px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--t1); }
+</style>
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20260911"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Telemetria pública · 11.09.2026</div>
+    <div>@navistron</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">Hall da fama <span>/</span> 490 partidas <span>/</span> 38 pilotos</div>
+    <div class="title">BAHIA2026<br>ENTROU NO<br><span class="accent c3">TOP 3.</span></div>
+  </div>
+
+  <div class="hero">
+    <div class="hero-number">19.222<span class="unit">pontos · hoje, 11/09</span></div>
+  </div>
+
+  <div class="foot">
+    <div class="stats">
+      <div>3º lugar <b>geral</b></div>
+      <div>Melhor tier <b>III</b></div>
+      <div>Partida de <b>2m50</b></div>
+    </div>
+    <div class="swipe">Arrasta para ver o pódio →</div>
+  </div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>
