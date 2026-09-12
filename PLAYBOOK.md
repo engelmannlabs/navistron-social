@@ -15,7 +15,7 @@ Este arquivo é a memória da operação. Cada rodada diária lê, executa e **a
   Os demais ("Jogue grátis, link na bio") ficaram em 0–2 likes com alcance parecido.
 - Reels antigos (gameplay) tiveram views, mas tempo médio de 2–8 s → o gancho tem de estar no 1º segundo.
 - O desafio de 25k foi batido 11 dias depois (VASCO, 25.971 em 06/07). Desafios com número funcionam.
-- Público fala português; nomes dos pilotos ativos: VASCO, AMM2026 (e variações), GUI, BAHIA2026, 哎呦呦.
+- Público fala português; nomes dos pilotos ativos: VASCO, AMM2026 (e variações), GUI, BAHIA2026, 哎呦呦, EDMORPHE (novo em 11/09).
 
 ## 2. Pilares de conteúdo (rotacionar; nunca dois iguais em dias seguidos)
 
@@ -45,13 +45,17 @@ como formato padrão.
 - **1 publicação por dia.** Uma segunda só se houver evento (recorde quebrado, Tier V alcançado, marco).
   Nunca mais de 2/dia. Instagram permite 25/dia pela API, o público não.
 - Janela padrão **18:30–21:00 (America/Sao_Paulo)**. Rotacionar o horário para testar: 18:30 / 19:30 / 20:30.
-  Segunda-feira: ranking semanal às 19:30.
+  Segunda-feira: ranking semanal às 19:30. Se a rodada rodar atrasada e a janela já tiver passado, publicar
+  ainda no dia (até ~22:30) e anotar como "fora da janela" — melhor que perder o dia.
 - Legenda: primeira pessoa (é o Guilherme falando), 3–6 linhas curtas, **um pedido explícito**
   (comente, marque alguém, mande print), fecha com "grátis, sem login, link na bio 🚀". 5–8 hashtags
   no fim: `#navistron #jogodenave #arcade #indiegame #jogogratis #gamedev #jogosbrasileiros` (+ `#reels` em reels).
 - **Todo número vem da telemetria e traz a data.** Se um dado não puder ser confirmado em /stats,
   não entra. Nunca inventar piloto, score ou marco. Não fazer promessa que o Guilherme não fez.
   Antes de afirmar "só X pilotos…", conferir também as partidas anônimas em `?visao=partidas&ordem=score`.
+- **Cache do /stats:** as URLs de /stats podem devolver snapshots de horas diferentes (ex.: `/stats` com 490 partidas
+  e `?visao=partidas&ordem=data` ainda com 475). Antes de citar um número, acrescentar um parâmetro qualquer
+  (`&v=hhmm`) para forçar leitura nova e conferir que os totais batem entre as visões.
 - **Se /stats estiver inacessível na rodada**, o único pilar permitido é "Mecânica explicada", usando apenas as
   regras fixas do jogo (tiers, dificuldade, fórmula de pontos, 5 boosts) — zero números de telemetria.
 - Citar pilotos pelo nick como aparece no ranking (é público). Sem deboche com nick de ninguém.
@@ -122,6 +126,17 @@ WebFetch em `https://navistron.io/blog/<slug>?v=<data>` e no `sitemap.xml`. Regi
 
 ## 7. Aprendizados (atualizar a cada rodada — o mais recente primeiro)
 
+- 2026-09-11 · **Métricas finais dos 3 primeiros posts automatizados são todas de um dígito**: imagem 08/09 = 2 alcance;
+  reel 09/09 = 10 alcance (parou em 10 já no 1º dia); reel 10/09 às 19:30 (dentro da janela) = 8 alcance em 10 h.
+  Ou seja, **o horário não explica** — o reel na janela rendeu o mesmo que o reel às 08:14. A conta está sendo tratada
+  como inativa pelo Instagram (2 meses parada + posts sem interação). Próximos testes, nesta ordem: (1) nick de piloto
+  no gancho (carrossel 11/09, hipótese b); (2) pedir ao Guilherme que interaja/compartilhe nos stories o post do dia —
+  o único post que funcionou (25/06) foi pessoal e teve 16 comentários; (3) manter reels, mas medir também saves e
+  compartilhamentos, não só alcance. Se nada passar de 30 de alcance até 15/09, propor ao Guilherme um post "bastidor
+  do dev" gravado por ele.
+- 2026-09-11 · A rodada das 11:00 travou logo no início e só foi retomada às 21:20 (fora da janela). Publicado às 22:00
+  mesmo assim (regra nova na seção 4). Blog: 2º artigo diário no ar em 3 min, sem incidente. As páginas de /stats
+  servem snapshots com cache diferente por URL — regra do `&v=hhmm` adicionada à seção 4.
 - 2026-09-10 · Blog diário começa: primeiro artigo `como-passar-do-tier-3-navistron` (Guias e Estratégia),
   no ar em ~3 min após o merge, já no sitemap com lastmod do dia. Estrutura `daily/` criada para não reescrever
   o arquivo de 340 KB.
