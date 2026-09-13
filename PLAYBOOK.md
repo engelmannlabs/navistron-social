@@ -126,6 +126,14 @@ WebFetch em `https://navistron.io/blog/<slug>?v=<data>` e no `sitemap.xml`. Regi
 
 ## 7. Aprendizados (atualizar a cada rodada — o mais recente primeiro)
 
+- 2026-09-13 · **Primeira rodada disparada sozinha no modo novo** (lembrete vinculado à conversa): passo 0 agendou 14/09,
+  zero pedidos de permissão, reel renderizado em ~5 min, blog no ar em ~3 min. Métricas: o reel de marco de 12/09 ("partida
+  nº 500 pode ser a sua", 18:30) teve **12 de alcance em 16 h**, o melhor início da série (reels anteriores pararam em 10);
+  o reel de mecânica de 10/09 fechou em 11 de alcance com **o 1º like** da série; o carrossel de 11/09 às 22:00 ficou em
+  1 de alcance (pior formato/horário até agora). Leitura: reel com número grande + pedido concreto > carrossel; 22:00 é
+  tarde demais. Hoje testa o gancho "reivindique a partida" (melhor partida anônima, 18.196) às 20:30, último horário da
+  rotação ainda não testado. Segunda-feira 14/09: ranking da semana (carrossel ou reel de contagem 5→1), às 19:30. Se até
+  15/09 nenhum post passar de 30 de alcance, vale a proposta ao Guilherme (stories + bastidor gravado por ele).
 - 2026-09-12 · **Operação: a rotina passou a rodar dentro da conversa persistente do Guilherme** (ver `ROTINA.md` e
   README). A tarefa agendada de sessão nova travou em pedido de permissão 3 rodadas seguidas (10, 11 e 12/09) porque a
   sessão nova não herda as permissões "Sempre" dos conectores. Primeira rodada no modo novo (12/09, 14:05 BRT): zero
