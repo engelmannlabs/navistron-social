@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="14.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="2.0">
+<link rel="stylesheet" href="../../templates/reel.css">
+<!-- dados: navistron.io/stats?periodo=7d em 14/09/2026 ~11:02 BRT (07–13/09): 59 partidas (5 registradas / 54 anônimas), 4 pilotos, 2h29, média 11.692; ranking: AMM2026 19.567 (10/09), BAHIA2026 19.222 (11/09), GUI 11.195 (10/09), EDMORPHE 6.618 (11/09); melhor anônima da semana 18.196 (11/09) -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Telemetria pública · @navistron</div>
+
+  <div id="title" class="layer" style="top: 600px">
+    <div class="h1"><span class="w" id="w1">RANKING</span><br><span class="w accent" id="w2">DA SEMANA.</span></div>
+    <div class="kicker" id="w3" style="margin-top: 44px; opacity: 0">07 a 13 de setembro</div>
+  </div>
+
+  <div id="rank" class="layer" style="top: 560px">
+    <div class="kicker" id="rpos">4º lugar</div>
+    <div class="h1" id="rnick" style="font-size: 170px; margin-top: 28px">EDMORPHE</div>
+    <div class="counter" id="rscore" style="font-size: 200px; margin-top: 18px">6.618</div>
+    <div class="sub" id="rdate" style="margin-top: 26px">11/09 · 2 min 26 s</div>
+  </div>
+
+  <div id="ask" class="layer" style="top: 560px">
+    <div class="h1">54 DAS 59<br>PARTIDAS<br><span class="pink">SEM<br>NOME.</span></div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">bota o nick · entra no ranking</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 14.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);        // progresso 0..1 de um trecho
+  const fmt = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  // ---------- PRNG determinístico ----------
+  let s = 914;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- meteoros (determinísticos em função de t) ----------
+  const N = 72, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 260 + rnd() * 220, r: 22 + rnd() * 46, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * 2100, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function drawMeteor(m, x, y, rot, glow) {
+    fx.save(); fx.translate(x, y); fx.rotate(rot);
+    fx.beginPath();
+    const n = m.shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = m.r * m.shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+    fx.fillStyle = m.big ? 'rgba(20,26,46,0.92)' : 'rgba(14,19,36,0.9)';
+    fx.fill();
+    fx.lineWidth = m.big ? 3 : 2;
+    fx.strokeStyle = glow ? 'rgba(250,204,21,0.9)' : (m.big ? 'rgba(190,208,240,0.75)' : 'rgba(150,170,205,0.6)');
+    if (glow) { fx.shadowColor = 'rgba(250,204,21,0.8)'; fx.shadowBlur = 24; }
+    fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, 'rgba(34,211,238,0.9)'); g.addColorStop(1, 'rgba(34,211,238,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = 'rgba(34,211,238,0.7)'; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = '#22D3EE'; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 150 * Math.sin(t * 0.9 + 0.6) + 60 * Math.sin(t * 2.3);
+  const shipY = 1400;
+
+  const HIT = 8.1; // instante em que o 1º lugar aparece
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    const p = seg(t, 0, 12.5);
+    const active = Math.floor(10 + 62 * p * p);
+    const speed = 1 + 1.6 * p;
+    for (let i = 0; i < active; i++) {
+      const m = meteors[i];
+      const dist = (t * m.v * speed + m.phase);
+      const cycle = Math.floor(dist / 2100);
+      const y = (dist % 2100) - 120;
+      const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+      const glow = (t > HIT && t < HIT + 0.7 && i % 5 === 0);
+      drawMeteor(m, x, y, m.rot + t * m.w, glow);
+    }
+    fx.save();
+    for (let k = 0; ; k++) {
+      const tb = k * 0.12; if (tb > t) break;
+      const yb = shipY - 50 - (t - tb) * 1500; if (yb < -30) continue;
+      const xb = shipX(tb);
+      fx.fillStyle = 'rgba(34,211,238,0.95)'; fx.shadowColor = 'rgba(34,211,238,0.9)'; fx.shadowBlur = 14;
+      fx.fillRect(xb - 3, yb, 6, 26);
+    }
+    fx.restore();
+    drawShip(shipX(t), shipY, t);
+    const vg = fx.createRadialGradient(540, 900, 200, 540, 900, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.55)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+  const RANK = [
+    { pos: '4º lugar', nick: 'EDMORPHE',  score: '6.618',  date: '11/09 · 2 min 26 s', a: 2.7,  d: 1.8 },
+    { pos: '3º lugar', nick: 'GUI',       score: '11.195', date: '10/09',              a: 4.5,  d: 1.8 },
+    { pos: '2º lugar', nick: 'BAHIA2026', score: '19.222', date: '11/09 · 2 min 50 s', a: 6.3,  d: 1.8 },
+    { pos: '1º lugar', nick: 'AMM2026',   score: '19.567', date: '10/09 · 2 min 58 s', a: 8.1,  d: 2.1 },
+  ];
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+    // 1) gancho (0–2.2), some em 2.2–2.6
+    const outT = 1 - seg(t, 2.2, 0.4);
+    layer($('title'), outT, -30 * (1 - outT));
+    const ws = [['w1', -0.15, 0.3], ['w2', 0.45, 0.45], ['w3', 1.1, 0.4]];
+    for (const [id, a, d] of ws) {
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = v; $(id).style.display = id === 'w3' ? 'block' : 'inline-block'; $(id).style.transform = `translateY(${40 * (1 - v)}px)`;
+    }
+
+    // 2) contagem regressiva 4º → 1º (2.7–10.2)
+    let cur = null;
+    for (const r of RANK) if (t >= r.a - 0.05) cur = r;
+    if (cur) {
+      $('rpos').textContent = cur.pos; $('rnick').textContent = cur.nick; $('rscore').textContent = cur.score; $('rdate').textContent = cur.date;
+      const first = cur === RANK[3];
+      const inR = ease.out3(seg(t, cur.a, 0.35));
+      const outR = first ? 1 - seg(t, 9.9, 0.3) : 1 - seg(t, cur.a + cur.d - 0.3, 0.25);
+      layer($('rank'), inR * outR, 30 * (1 - inR));
+      $('rscore').className = 'counter' + (first ? ' lock' : '');
+      $('rnick').className = 'h1' + (first ? ' accent' : '');
+      const pulse = first ? 1 + 0.07 * Math.exp(-(t - cur.a) * 4) : 1;
+      $('rscore').style.transform = `scale(${pulse})`;
+    } else {
+      layer($('rank'), 0);
+    }
+
+    // 3) "54 das 59 partidas sem nome" (10.2–11.9)
+    const inA = ease.out3(seg(t, 10.2, 0.45)), outA = 1 - seg(t, 11.65, 0.3);
+    layer($('ask'), inA * outA, 0, 0.92 + 0.08 * inA);
+
+    // 4) CTA 11.9–14.0
+    const inC = ease.out3(seg(t, 11.9, 0.5));
+    layer($('cta'), inC, 30 * (1 - inC));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
