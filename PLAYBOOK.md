@@ -16,13 +16,17 @@ Este arquivo é a memória da operação. Cada rodada diária lê, executa e **a
 - Reels antigos (gameplay) tiveram views, mas tempo médio de 2–8 s → o gancho tem de estar no 1º segundo.
 - O desafio de 25k foi batido 11 dias depois (VASCO, 25.971 em 06/07). Desafios com número funcionam.
 - Público fala português; nomes dos pilotos ativos: VASCO, AMM2026 (e variações), GUI, BAHIA2026, 哎呦呦, EDMORPHE (novo em 11/09).
+- **Quando o público joga (semana 37, 07–13/09):** 92% das partidas entre 10h e 17h em dias úteis, 68% entre 14h e 17h;
+  1 partida depois das 17h na semana inteira; fim de semana quase zero (1 partida no sábado, 0 no domingo). Quem joga,
+  joga em série (5–16 partidas seguidas, uma a cada ~3 min). Isso é o jogo, não necessariamente o Instagram — mas é a
+  melhor pista de horário que temos (hipótese d, seção 4).
 
 ## 2. Pilares de conteúdo (rotacionar; nunca dois iguais em dias seguidos)
 
 | Pilar | Gancho | Fonte |
 |---|---|---|
 | **Desafio** | "Ninguém chegou ao Tier V", "só 1 piloto passou de 20 mil", "quem chega a Y?" | /stats (best tier, recorde, partidas por score) |
-| **Ranking da semana** (segundas) | top 5 dos últimos 7 dias, nome em destaque | /stats?periodo=7d |
+| **Ranking da semana** (segundas) | top 5 dos últimos 7 dias, nome em destaque; contagem regressiva em reel | /stats?periodo=7d (+ `&visao=partidas&ordem=data`, 50 por página, `&pagina=2`, para partidas por dia/hora) |
 | **Hall da fama / shout-out** | piloto que bateu recorde, subiu de tier, entrou no top 3 | /stats, /ranking |
 | **Mecânica explicada** | fórmula de pontos, HP dos meteoros por tier, 5 boosts = 1 tier, mísseis a 320 px/s | blog do site + regras fixas (fallback quando /stats não abre) |
 | **Marco** | 500 partidas, 50 pilotos, 20h jogadas, primeira partida no Tier V | /stats (totais) |
@@ -47,6 +51,9 @@ como formato padrão.
 - Janela padrão **18:30–21:00 (America/Sao_Paulo)**. Rotacionar o horário para testar: 18:30 / 19:30 / 20:30.
   Segunda-feira: ranking semanal às 19:30. Se a rodada rodar atrasada e a janela já tiver passado, publicar
   ainda no dia (até ~22:30) e anotar como "fora da janela" — melhor que perder o dia.
+- **Teste diurno (hipótese d, a partir de 16/09):** 1 post por semana em dia útil às **13:00**, primeiro na quarta 16/09,
+  porque a telemetria mostra o público jogando entre 10h e 17h. Comparar o alcance em 24 h com o melhor post noturno
+  (25 em 40 h, reel de 12/09); se ganhar, a janela padrão passa a ter um slot diurno fixo.
 - Legenda: primeira pessoa (é o Guilherme falando), 3–6 linhas curtas, **um pedido explícito**
   (comente, marque alguém, mande print), fecha com "grátis, sem login, link na bio 🚀". 5–8 hashtags
   no fim: `#navistron #jogodenave #arcade #indiegame #jogogratis #gamedev #jogosbrasileiros` (+ `#reels` em reels).
@@ -126,6 +133,14 @@ WebFetch em `https://navistron.io/blog/<slug>?v=<data>` e no `sitemap.xml`. Regi
 
 ## 7. Aprendizados (atualizar a cada rodada — o mais recente primeiro)
 
+- 2026-09-14 · **Primeiro sinal de distribuição:** o reel de marco de 12/09 ("partida nº 500 pode ser a sua", 18:30) chegou a
+  **25 de alcance / 31 views em 40 h** (dobrou de 13/09 para 14/09) — 2,5× qualquer post automatizado anterior, ainda sem
+  interação. O reel de 13/09 ("melhor partida sem nome", 20:30) começou mais devagar (5 em 14,5 h). O carrossel de 11/09
+  fechou com 1 de alcance: carrossel + 22:00 é a combinação a evitar. Semana 37 no Instagram: 6 posts (1 imagem, 4 reels,
+  1 carrossel); melhor formato = reel com contador + pedido concreto. Telemetria da semana 37 fechada (59 partidas, 4 pilotos
+  registrados, 54 anônimas) e transformada no 1º artigo da série "Ranking da semana" + reel de contagem regressiva 4→1 às
+  19:30. Descoberta: o público joga de segunda a sexta entre 10h e 17h — daí o teste diurno de quarta 16/09 às 13:00
+  (seção 4). Ainda nenhuma jogada atribuível aos posts (0 partidas no domingo 13/09).
 - 2026-09-13 · **Primeira rodada disparada sozinha no modo novo** (lembrete vinculado à conversa): passo 0 agendou 14/09,
   zero pedidos de permissão, reel renderizado em ~5 min, blog no ar em ~3 min. Métricas: o reel de marco de 12/09 ("partida
   nº 500 pode ser a sua", 18:30) teve **12 de alcance em 16 h**, o melhor início da série (reels anteriores pararam em 10);
