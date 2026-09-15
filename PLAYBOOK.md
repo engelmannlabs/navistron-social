@@ -15,7 +15,7 @@ Este arquivo é a memória da operação. Cada rodada diária lê, executa e **a
   Os demais ("Jogue grátis, link na bio") ficaram em 0–2 likes com alcance parecido.
 - Reels antigos (gameplay) tiveram views, mas tempo médio de 2–8 s → o gancho tem de estar no 1º segundo.
 - O desafio de 25k foi batido 11 dias depois (VASCO, 25.971 em 06/07). Desafios com número funcionam.
-- Público fala português; nomes dos pilotos ativos: VASCO, AMM2026 (e variações), GUI, BAHIA2026, 哎呦呦, EDMORPHE (novo em 11/09).
+- Público fala português; nomes dos pilotos ativos: VASCO, AMM2026 (e variações), GUI, BAHIA2026, 哎呦呦, EDMORPHE (novo em 11/09), ASA (novo em 14/09, já 6º geral).
 - **Quando o público joga (semana 37, 07–13/09):** 92% das partidas entre 10h e 17h em dias úteis, 68% entre 14h e 17h;
   1 partida depois das 17h na semana inteira; fim de semana quase zero (1 partida no sábado, 0 no domingo). Quem joga,
   joga em série (5–16 partidas seguidas, uma a cada ~3 min). Isso é o jogo, não necessariamente o Instagram — mas é a
@@ -97,7 +97,8 @@ Merge em `main` = deploy automático na Vercel (~2 min).
 (`AAAA-MM-DD`), `heroImage` + `heroImageAlt` (uma das imagens em `public/images/screenshots/` ou `pages/`),
 `content` (HTML dentro de template literal — **nunca** usar crase ou `${` no texto). Tags cobertas pelo CSS:
 `p, h2, h3, ul, ol, li, table/tr/th/td, code, strong, em, a`. FAQ no fim: `<h2>FAQ</h2>` seguido de pares
-`<h3>pergunta</h3><p>resposta</p>` sem tags dentro (vira `FAQPage` no JSON-LD automaticamente).
+`<h3>pergunta</h3><p>resposta</p>` sem tags dentro (vira `FAQPage` no JSON-LD automaticamente). Tabelas podem ter
+quantas colunas precisarem: desde 14/09 a página envolve cada `<table>` em `.table-scroll` (rolagem horizontal no celular).
 
 **Checklist SEO de cada artigo**
 - 1 palavra-chave principal + 2–3 secundárias; a principal aparece no título (≤ 65 caracteres), na `description`
@@ -133,6 +134,12 @@ WebFetch em `https://navistron.io/blog/<slug>?v=<data>` e no `sitemap.xml`. Regi
 
 ## 7. Aprendizados (atualizar a cada rodada — o mais recente primeiro)
 
+- 2026-09-15 · **A conta voltou a ser distribuída.** Reel de 13/09 (20:30): 5 → 29 de alcance entre o 1º e o 2º dia; reel de
+  14/09 (19:30): 18 de alcance e 1 like em 15 h, melhor abertura da série; reel de 12/09 fechou em 25. Padrão: o alcance dos
+  reels chega no 2º dia, então **só comparar posts com ≥ 40 h**. Ainda zero comentários e saves — o próximo gargalo é
+  interação, não alcance. Evento do dia: piloto novo ASA entrou no top 10 geral (6º, 16.913) na primeira tarde, com Tier III
+  na 1ª partida → shout-out com nick no gancho, em reel (18:30). Faltam 3 partidas para a 500ª: se sair até 16/09, cabe um
+  2º post de marco. Amanhã (quarta 16/09): teste diurno às 13:00 (hipótese d), formato reel para isolar o horário.
 - 2026-09-14 · **Primeiro sinal de distribuição:** o reel de marco de 12/09 ("partida nº 500 pode ser a sua", 18:30) chegou a
   **25 de alcance / 31 views em 40 h** (dobrou de 13/09 para 14/09) — 2,5× qualquer post automatizado anterior, ainda sem
   interação. O reel de 13/09 ("melhor partida sem nome", 20:30) começou mais devagar (5 em 14,5 h). O carrossel de 11/09
