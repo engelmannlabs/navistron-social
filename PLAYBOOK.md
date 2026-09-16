@@ -134,6 +134,15 @@ WebFetch em `https://navistron.io/blog/<slug>?v=<data>` e no `sitemap.xml`. Regi
 
 ## 7. Aprendizados (atualizar a cada rodada — o mais recente primeiro)
 
+- 2026-09-16 · **Teste diurno no ar (hipótese d):** reel "O Navistron é jogado no expediente" agendado para as 13:00 de quarta —
+  mesmo formato dos reels noturnos (contador + pedido de print) para isolar o horário; gancho tirado da própria telemetria de
+  horário (68% das partidas entre 14h e 17h, zero no fim de semana, partida média de 2m02s). Régua de comparação: reels
+  noturnos fecharam em 25 (12/09) e 30 (13/09); 14/09 estava em 22 com 29 h. Avaliar em 17/09 (24 h) e 18/09 (48 h); se o
+  diurno ≥ 30, o slot de 13:00 vira fixo em dias úteis. Alerta: **15/09 teve zero partidas no jogo** mesmo com o reel do ASA
+  no ar, e o reel de 15/09 abriu com 1 de alcance em 5,8 h (as métricas do Instagram só atualizam de madrugada — não
+  concluir nada antes de 40 h). Blog: 1º artigo de aquisição em formato lista (jogos rápidos para o intervalo), citado na
+  legenda; a série de listas "Jogos" já tem 4 artigos — o próximo de quarta deve atacar uma keyword diferente (ex.: "jogo
+  de nave para celular sem baixar").
 - 2026-09-15 · **A conta voltou a ser distribuída.** Reel de 13/09 (20:30): 5 → 29 de alcance entre o 1º e o 2º dia; reel de
   14/09 (19:30): 18 de alcance e 1 like em 15 h, melhor abertura da série; reel de 12/09 fechou em 25. Padrão: o alcance dos
   reels chega no 2º dia, então **só comparar posts com ≥ 40 h**. Ainda zero comentários e saves — o próximo gargalo é
