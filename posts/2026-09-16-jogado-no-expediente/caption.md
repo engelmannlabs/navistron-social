@@ -4,7 +4,7 @@ formato: reel 14,0 s 1080x1920 (post.html + audio.json)
 pilar: desafio + telemetria (quando o público joga) — teste diurno (hipótese d)
 gancho: "O Navistron é jogado no expediente." → contador até 68% ("das partidas entre 14h e 17h", "zero no fim de semana") → "2:02 · duração média de uma partida · cabe no intervalo" → "A média é 5.725. Você faz mais?" → CTA "joga uma agora · me manda o print"
 horario_publicacao: 2026-09-16 13:00 BRT (quarta, agendado — primeiro post diurno da série)
-buffer_post_id: (preencher após agendar)
+buffer_post_id: 6aaaa2f23ae7a9ef3b079e9c
 fonte_dados: navistron.io/stats em 16/09/2026 ~11:01 BRT (497 partidas, 71 registradas / 426 anônimas, 39 pilotos, 16h52, duração média 2m02s, média 5.725, recorde 25.971); semana 37 (07–13/09): 59 partidas na lista ?visao=partidas&ordem=data lida em 14/09 — 40 de 59 (68%) entre 14h e 17h, 92% entre 10h e 17h, todas em dias úteis exceto 1 no sábado, 0 no domingo.
 ---
 
