@@ -28,7 +28,7 @@ Este arquivo é a memória da operação. Cada rodada diária lê, executa e **a
 | **Desafio** | "Ninguém chegou ao Tier V", "só 1 piloto passou de 20 mil", "quem chega a Y?" | /stats (best tier, recorde, partidas por score) |
 | **Ranking da semana** (segundas) | top 5 dos últimos 7 dias, nome em destaque; contagem regressiva em reel | /stats?periodo=7d (+ `&visao=partidas&ordem=data`, 50 por página, `&pagina=2`, para partidas por dia/hora) |
 | **Hall da fama / shout-out** | piloto que bateu recorde, subiu de tier, entrou no top 3 | /stats, /ranking |
-| **Mecânica explicada** | fórmula de pontos, HP dos meteoros por tier, 5 boosts = 1 tier, mísseis a 320 px/s | blog do site + regras fixas (fallback quando /stats não abre) |
+| **Mecânica explicada** | fórmula de pontos, HP dos meteoros por tier, 5 boosts = 1 tier, mísseis teleguiados da nave (159 pts no Tier II, até 5 por salva) | código do jogo (`src/app/play/page.js`) + blog do site (fallback quando /stats não abre) |
 | **Marco** | 500 partidas, 50 pilotos, 20h jogadas, primeira partida no Tier V | /stats (totais) |
 | **Bastidor do dev** | primeira pessoa, honesto, curto | conversa com o Guilherme |
 
@@ -60,6 +60,10 @@ como formato padrão.
 - **Todo número vem da telemetria e traz a data.** Se um dado não puder ser confirmado em /stats,
   não entra. Nunca inventar piloto, score ou marco. Não fazer promessa que o Guilherme não fez.
   Antes de afirmar "só X pilotos…", conferir também as partidas anônimas em `?visao=partidas&ordem=score`.
+- **Toda mecânica citada é conferida no código do jogo** (`src/app/play/page.js` no repo `navistron`, via `search_code` +
+  `get_file_contents`; constantes: `TIER_DEFS`, `TIER_DIFF`, `getDiff`, `getMissileDef`, `spawnMeteor`, `spawnThings`, `collectBoost`).
+  Os artigos antigos do blog são referência, não fonte: em 15/09 um artigo descreveu os mísseis teleguiados como inimigos e
+  eles são da própria nave (corrigido em 17/09).
 - **Cache do /stats:** as URLs de /stats podem devolver snapshots de horas diferentes (ex.: `/stats` com 490 partidas
   e `?visao=partidas&ordem=data` ainda com 475). Antes de citar um número, acrescentar um parâmetro qualquer
   (`&v=hhmm`) para forçar leitura nova e conferir que os totais batem entre as visões.
@@ -134,6 +138,17 @@ WebFetch em `https://navistron.io/blog/<slug>?v=<data>` e no `sitemap.xml`. Regi
 
 ## 7. Aprendizados (atualizar a cada rodada — o mais recente primeiro)
 
+- 2026-09-17 · **Dois posts seguidos sem distribuição**: 15/09 (shout-out ASA, 18:30) ficou em 1 de alcance em 29 h e 16/09
+  (teste diurno, 13:00) em 1 em 10 h, logo depois do melhor reel da série (13/09, 30). Nem horário nem pilar explicam: 18:30,
+  13:00, shout-out e desafio deram o mesmo 1. Balanço honesto de 9 posts automatizados: alcance entre 1 e 30 (mediana ~11),
+  1 like em 2 posts, zero comentários/saves/compartilhamentos e zero partidas atribuíveis — o jogo está há 3 dias sem
+  nenhuma partida (497 desde 14/09 14:28). O que a rotina consegue sozinha (formato, horário, gancho, blog) está feito e
+  medido; o que falta é sinal humano na conta. **Proposta ao Guilherme (no relatório de hoje):** (a) compartilhar o reel do
+  dia nos stories e curtir/comentar os posts; (b) gravar um "bastidor do dev" na própria voz — o único formato que já
+  funcionou aqui (25/06: 1.309 de alcance, 16 comentários); (c) seguir e comentar em perfis de jogos indie brasileiros. A
+  rotina continua diária enquanto isso. Regra nova (seção 4): mecânica só com o código do jogo aberto — os mísseis
+  teleguiados são da nave, não inimigos; o artigo de 15/09 foi corrigido (PR #8) e virou o post + artigo de hoje. Reel de
+  mecânica às 20:30 (2º teste do horário do melhor reel); avaliação do teste diurno fica para 18/09 (48 h).
 - 2026-09-16 · **Teste diurno no ar (hipótese d):** reel "O Navistron é jogado no expediente" agendado para as 13:00 de quarta —
   mesmo formato dos reels noturnos (contador + pedido de print) para isolar o horário; gancho tirado da própria telemetria de
   horário (68% das partidas entre 14h e 17h, zero no fim de semana, partida média de 2m02s). Régua de comparação: reels
