@@ -66,8 +66,12 @@ PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira nã
 - Regras do jogo úteis: 7 tiers (I ciano, II verde, III amarelo, IV laranja, V rosa, VI roxo, VII branco);
   5 boosts = +1 tier; dificuldade por tier 1.0/1.8/3.0/4.8/7.0/10.0/14.0; dificuldade = base × (1 + score × 0,0007);
   1 ponto por segundo vivo; meteoro pequeno = round(10×dif×0,5), grande = round(30×dif×0,5); HP do meteoro grande =
-  round(3×dif); intervalo de spawn = max(0,2; 1,2/√dif) s; velocidade = min(1 + (dif−1)×0,2; 3,8)×; mísseis
-  teleguiados a partir de dif > 2,0 (até 5).
+  round(3×dif) (pequeno = round(dif)); intervalo de spawn = max(0,2; 1,2/√dif) s; velocidade = min(1 + (dif−1)×0,2; 3,8)×;
+  **mísseis teleguiados são da própria nave** (não existem inimigos além dos meteoros): saem sozinhos contra o meteoro mais
+  próximo, quantidade = min(5, floor(dif) − 1) por salva (Tier II: 1 míssil com 159 pts, 5 com 3.334), intervalo de 2,0 s
+  caindo 0,25 s por míssil extra (1,0 s com 5), 320 px/s, vida 2 s, dano = dano do tier (1/2/4/7/12/20/35).
+  **Antes de citar qualquer mecânica**, conferir no código do jogo (`src/app/play/page.js` do repo `navistron`, via
+  `search_code` + `get_file_contents`); os artigos antigos do blog são referência, não fonte.
 
 ## Parte 1 — Instagram
 
@@ -179,6 +183,7 @@ estiver sem autorização, dizer claramente; é a única coisa que o Guilherme p
   configuração do jogo.
 - Nada de dado inventado, nick zoado ou promessa em nome do Guilherme. Sem emoji na arte; emoji na legenda com
   moderação. No blog, tom editorial, sem emoji.
-- Não alterar nem apagar posts antigos do Buffer nem artigos antigos do blog. Não criar repositórios. Não mexer
-  em tarefas agendadas além do Passo 0.
+- Não alterar nem apagar posts antigos do Buffer nem artigos antigos do blog (exceção: corrigir um erro factual em
+  artigo da própria rotina, com nota de correção datada no texto e registro em `log/blog.md`). Não criar
+  repositórios. Não mexer em tarefas agendadas além do Passo 0.
 - Se algo falhar, preferir não publicar a publicar errado; explicar no relatório.
