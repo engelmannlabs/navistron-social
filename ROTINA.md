@@ -9,11 +9,18 @@ não é preciso mexer na tarefa agendada.
 
 - Cada rodada é um lembrete de uso único (`send_later`) vinculado à conversa do Guilherme — por isso ela roda
   com as permissões já concedidas nessa conversa e **nunca para para pedir autorização**.
-- **Passo 0 de toda rodada é agendar a rodada seguinte** (amanhã às 14:00Z = 11:00 de Brasília) com
-  `send_later` (`at`, `initiation: "human_schedule"`, `name: "Navistron · rotina diária (Instagram + blog)"`,
-  `message` = o texto da seção "Texto do disparo", idêntico). Antes, conferir com `list_triggers` se já existe um
-  lembrete pendente com esse nome para amanhã; se existir, não duplicar. Fazer isso ANTES do trabalho do dia
-  garante a continuidade mesmo que a rodada de hoje falhe no meio.
+- **Horário do disparo: 04:00Z = 01:00 de Brasília, todos os dias** (mudado em 20/09/2026 a pedido do Guilherme;
+  antes era 11:00). A rodada roda de madrugada: **"hoje" é o dia que está começando** (data local de Brasília no
+  momento do disparo). Consequências práticas: o post do dia é agendado para as **13:00 desse mesmo dia** (~12 h de
+  margem para render, validação e reagendamento se algo falhar); a telemetria lida já cobre o **dia anterior
+  inteiro**, inclusive a faixa de 16h–18h em que o jogo acontece; e as métricas do Instagram, que viram de
+  madrugada, são as do fechamento do dia anterior.
+- **Passo 0 de toda rodada é agendar a rodada seguinte** (04:00:00Z do dia seguinte = 01:00 de Brasília, ~24 h
+  depois) com `send_later` (`at`, `initiation: "human_schedule"`,
+  `name: "Navistron · rotina diária (Instagram + blog)"`, `message` = o texto da seção "Texto do disparo",
+  idêntico). Antes, conferir com `list_triggers` se já existe um lembrete pendente com esse nome para as próximas
+  24 h; se existir, não duplicar. Fazer isso ANTES do trabalho do dia garante a continuidade mesmo que a rodada de
+  hoje falhe no meio.
 - Se o Guilherme tiver escrito instruções novas na conversa desde a última rodada, elas têm prioridade sobre
   este arquivo e o PLAYBOOK — aplicar e registrar na seção "Aprendizados" do `PLAYBOOK.md`.
 - Ninguém está lendo em tempo real: não fazer perguntas, não usar AskUserQuestion, não esperar confirmação.
@@ -23,8 +30,8 @@ não é preciso mexer na tarefa agendada.
 
 ```
 [ROTINA DIÁRIA NAVISTRON — disparo automático] Execute agora a rodada diária do Instagram @navistron + blog navistron.io. Ninguém está lendo em tempo real: não faça perguntas, não use AskUserQuestion, não espere confirmação — decida, execute e relate no final (SendUserMessage, curto, em português).
-PASSO 0 (obrigatório, antes de qualquer outra coisa): leia `ROTINA.md` do repositório engelmannlabs/navistron-social (conector Github, branch main). Depois garanta a próxima rodada: confira com list_triggers se já existe um lembrete pendente chamado "Navistron · rotina diária (Instagram + blog)" para amanhã; se não existir, chame send_later com at = amanhã às 14:00:00Z (11:00 de Brasília), initiation "human_schedule", name "Navistron · rotina diária (Instagram + blog)" e message = o texto da seção "Texto do disparo" de ROTINA.md (idêntico; se não conseguiu ler o arquivo, use este texto aqui, idêntico).
-PASSO 1: execute a rodada completa conforme ROTINA.md (Parte 1 Instagram + Parte 2 blog), lendo antes PLAYBOOK.md, log/experiments.md e log/blog.md.
+PASSO 0 (obrigatório, antes de qualquer outra coisa): leia `ROTINA.md` do repositório engelmannlabs/navistron-social (conector Github, branch main). Depois garanta a próxima rodada: confira com list_triggers se já existe um lembrete pendente chamado "Navistron · rotina diária (Instagram + blog)" para as próximas 24 h; se não existir, chame send_later com at = 04:00:00Z do dia seguinte a este disparo (01:00 de Brasília, ~24 h depois), initiation "human_schedule", name "Navistron · rotina diária (Instagram + blog)" e message = o texto da seção "Texto do disparo" de ROTINA.md (idêntico; se não conseguiu ler o arquivo, use este texto aqui, idêntico).
+PASSO 1: execute a rodada completa conforme ROTINA.md (Parte 1 Instagram + Parte 2 blog), lendo antes PLAYBOOK.md, log/experiments.md e log/blog.md. A rodada roda de madrugada: "hoje" é o dia que está começando (a data local de Brasília no momento do disparo), o post do dia é agendado para as 13:00 desse mesmo dia e a telemetria lida já cobre o dia anterior inteiro.
 PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira não publicar a publicar errado — e relate.
 ```
 
@@ -121,9 +128,10 @@ Escolher o formato pelo mix do PLAYBOOK e pelas métricas por formato do log.
    name,size) até aparecer o arquivo final (`post.png` > 50 KB; carrossel todos os `slide-N.png`; reel `reel.mp4`
    > 1 MB e `reel-cover.png`). Limite 12 tentativas. Sem arquivo, NÃO publicar; registrar e relatar.
 8. **Agendar no Buffer** com `create_post`: `channelId` acima, `schedulingType: "automatic"`,
-   `mode: "customScheduled"`, `dueAt` `AAAA-MM-DDThh:mm:00-03:00` na janela 18:30–21:00 de hoje (rotacionar
-   18:30/19:30/20:30; segunda 19:30; se a rodada estiver atrasada e a janela já passou, ainda hoje até ~22:30 e
-   anotar "fora da janela"), `text` = legenda. URL base:
+   `mode: "customScheduled"`, `dueAt` `AAAA-MM-DDThh:mm:00-03:00` às **13:00 de hoje** (horário padrão, seção 4 do
+   PLAYBOOK). Como a rodada roda à 01:00, há ~12 h de margem: se o render ou a validação atrasarem, ainda dá tempo
+   de agendar para as 13:00. Se por algum motivo já tiver passado das 13:00, publicar ainda hoje até ~22:30 e anotar
+   "fora do slot" no log. `text` = legenda. URL base:
    `https://raw.githubusercontent.com/engelmannlabs/navistron-social/main/posts/<slug>/`.
    - Imagem: `assets: [{ image: { url: ".../post.png", metadata: { altText: "<descrição>" } } }]`,
      `metadata: { instagram: { type: "post", shouldShareToFeed: true } }`.
@@ -166,7 +174,7 @@ Regras completas na seção 6 do PLAYBOOK (formato do objeto, checklist SEO, clu
    o artigo e o `daily/index.js` → `create_pull_request` (base `main`, corpo com título, keyword, palavras, links)
    → `merge_pull_request` (`merge_method: "squash"`). Depois de ~3 min, WebFetch em
    `https://navistron.io/blog/<slug>?v=<data>` (deve mostrar o H1) e em `https://navistron.io/sitemap.xml` (deve
-   listar a URL). Se o artigo não aparecer em 8 min, relatar (o deploy da Vercel pode ter falhado — não tentar
+   listar a URL). Se o artigo não aparecer em ~15 min, relatar (o deploy da Vercel pode ter falhado — não tentar
    "consertar" outros arquivos).
 7. **Registrar** em `log/blog.md` (data, slug, cluster, keyword, palavras, nº do PR, URL, resultado).
 
