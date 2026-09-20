@@ -15,12 +15,12 @@ Este arquivo é a memória da operação. Cada rodada diária lê, executa e **a
   Os demais ("Jogue grátis, link na bio") ficaram em 0–2 likes com alcance parecido.
 - Reels antigos (gameplay) tiveram views, mas tempo médio de 2–8 s → o gancho tem de estar no 1º segundo.
 - O desafio de 25k foi batido 11 dias depois (VASCO, 25.971 em 06/07). Desafios com número funcionam.
-- Público fala português; nomes dos pilotos ativos: VASCO, AMM2026 (e variações), GUI, BAHIA2026, 哎呦呦, EDMORPHE (novo em 11/09), ASA (novo em 14/09, já 6º geral), EDDMORPHE (novo em 18/09).
+- Público fala português; nomes dos pilotos ativos: VASCO, AMM2026 (e variações), GUI, BAHIA2026, 哎呦呦, EDMORPHE (novo em 11/09), ASA (novo em 14/09, já 6º geral).
 - **Quando o público joga (semana 37, 07–13/09):** 92% das partidas entre 10h e 17h em dias úteis, 68% entre 14h e 17h;
   1 partida depois das 17h na semana inteira; fim de semana quase zero (1 partida no sábado, 0 no domingo). Quem joga,
   joga em série (5–16 partidas seguidas, uma a cada ~3 min). Isso é o jogo, não necessariamente o Instagram — mas é a
   melhor pista de horário que temos (hipótese d, seção 4).
-- **E no Instagram o horário é o mesmo:** o post das 13:00 de 16/09 alcançou 135 contas; os posts de 18:30, 19:30 e
+- **E no Instagram o horário é o mesmo:** o post das 13:00 de 16/09 alcançou 133 contas; os posts de 18:30, 19:30 e
   20:30 da mesma semana ficaram entre 1 e 30. Horário explica mais do que pilar, gancho ou formato.
 
 ## 2. Pilares de conteúdo (rotacionar; nunca dois iguais em dias seguidos)
@@ -50,11 +50,14 @@ como formato padrão.
 
 - **1 publicação por dia.** Uma segunda só se houver evento (recorde quebrado, Tier V alcançado, marco).
   Nunca mais de 2/dia. Instagram permite 25/dia pela API, o público não.
-- **Horário padrão: 13:00, todos os dias (hipótese d confirmada em 18/09).** O reel diurno de 16/09 fechou em **135 de
-  alcance / 148 views**; os três posts noturnos em volta dele (15, 17 e 18/09) ficaram em 1. A janela noturna 18:30–21:00
-  passa a ser só o plano B de rodada atrasada (publicar até ~22:30 e anotar "fora do slot"). O primeiro sábado às 13:00 é
-  19/09 — se o fim de semana render menos de 30, voltar a janela noturna só para sábado e domingo. Reavaliar depois de
-  3 posts diurnos; se a mediana ficar abaixo de 30, voltar a alternar os horários.
+- Janela padrão **18:30–21:00 (America/Sao_Paulo)**. Rotacionar o horário para testar: 18:30 / 19:30 / 20:30.
+  Segunda-feira: ranking semanal às 19:30. Se a rodada rodar atrasada e a janela já tiver passado, publicar
+  ainda no dia (até ~22:30) e anotar como "fora da janela" — melhor que perder o dia.
+- **Horário padrão: 13:00, todos os dias.** O reel diurno de 16/09 fechou em **135 de alcance / 148 views**, o melhor da
+  série. Mas o horário ajuda, não decide sozinho: o post de 18/09 às 19:30 fez **45** enquanto os de 15 e 17/09 (18:30 e
+  20:30) fizeram 1 cada. Ou seja, 13:00 é a melhor aposta conhecida e a janela noturna não está morta — é o plano B de
+  rodada atrasada (publicar até ~22:30 e anotar "fora do slot"). Reavaliar quando 19, 20 e 21/09 fecharem: se a mediana
+  dos diurnos ficar abaixo de 30, voltar a alternar os horários.
 - Legenda: primeira pessoa (é o Guilherme falando), 3–6 linhas curtas, **um pedido explícito**
   (comente, marque alguém, mande print), fecha com "grátis, sem login, link na bio 🚀". 5–8 hashtags
   no fim: `#navistron #jogodenave #arcade #indiegame #jogogratis #gamedev #jogosbrasileiros` (+ `#reels` em reels).
@@ -85,7 +88,7 @@ como formato padrão.
    reel: `templates/reel.css` + `window.__seek(t)` — usar o reel anterior como esqueleto) e conferir com `scripts/qa.py`.
 3. Publicar os HTML + `caption.md` no repo. O Actions renderiza `post.png`/`slide-N.png` (~1–2 min) ou `reel.mp4` + `reel-cover.png` (~3–5 min).
 4. Confirmar que o arquivo existe; URL pública: `https://raw.githubusercontent.com/engelmannlabs/navistron-social/main/posts/<slug>/<arquivo>`.
-5. Criar o post no Buffer (canal Instagram `navistron`) agendado para as 13:00 do dia.
+5. Criar o post no Buffer (canal Instagram `navistron`) agendado para a janela do dia.
 6. Registrar em `log/experiments.md` (data, slug, formato, pilar, gancho, horário, id do post no Buffer).
 7. Para posts com ≥ 48 h, preencher métricas no log (reels: views, alcance, tempo médio assistido) e atualizar "Aprendizados".
 
@@ -96,7 +99,7 @@ como formato padrão.
 (um objeto por arquivo, `export default`) e são registrados em `src/lib/blog/daily/index.js` (import + entrada no
 array, mais recente primeiro). `src/lib/blog/index.js` junta tudo, ordena por data e alimenta `/blog`,
 `/blog/[slug]` e o `sitemap.xml` (dinâmico: `lastmod` = data do artigo). `robots.txt` aponta o sitemap.
-Merge em `main` = deploy automático na Vercel (~2 min, mas já levou 14 min em 18/09 — esperar até ~15 min antes de relatar falha).
+Merge em `main` = deploy automático na Vercel (~2 min; já levou 14 min em 18/09 — só tratar como falha depois de ~15 min).
 
 **Formato do objeto** (igual aos originais): `slug`, `title`, `description`, `keywords`, `category`, `date`
 (`AAAA-MM-DD`), `heroImage` + `heroImageAlt` (uma das imagens em `public/images/screenshots/` ou `pages/`),
@@ -111,7 +114,7 @@ quantas colunas precisarem: desde 14/09 a página envolve cada `<table>` em `.ta
 - 1.300–1.900 palavras; intro que responde a pergunta em 3 linhas; H2 a cada 200–300 palavras; 1 tabela ou lista.
 - 6–12 links internos: `/play`, `/ranking`, `/stats` (com filtros), 2–4 artigos existentes (conferir slugs em
   `daily/index.js` e em `blogArticles.js`), 1 link para o Instagram. Nunca link externo para concorrente sem motivo.
-- Dados da telemetria **com data** ("em 10/09/2026, 457 partidas…"). Fórmulas do jogo conforme o código.
+- Dados da telemetria **com data** ("em 10/09/2026, 457 partidas…"). Fórmulas do jogo conforme os artigos originais.
 - Sem canibalização: antes de escolher o tema, ler os títulos/keywords dos artigos existentes; se o tema já existe,
   escolher ângulo diferente (pergunta, comparação, dado novo) e linkar o original.
 - Categorias: `Guias e Estratégia`, `Telemetria e Ranking`, `Jogos`, `Tutoriais`, `Tecnologia`, `Mecânicas do Jogo`.
@@ -139,6 +142,15 @@ WebFetch em `https://navistron.io/blog/<slug>?v=<data>` e no `sitemap.xml`. Regi
 
 ## 7. Aprendizados (atualizar a cada rodada — o mais recente primeiro)
 
+- 2026-09-20 · **O horário ajuda, mas não decide sozinho.** O post de 18/09 às 19:30 chegou a **45 de alcance em 29 h** —
+  segundo melhor da série e o único noturno distribuído desde 14/09. Com 16/09 (13:00) em 135 e 15 e 17/09 (18:30 e 20:30)
+  em 1, a leitura honesta é que o Instagram distribui de forma irregular e o slot das 13:00 é a melhor aposta, não uma
+  garantia. O sábado às 13:00 estava em 1 com 7 h, cedo demais para ler. Telemetria parada: 508 partidas, nenhuma desde
+  18/09 17:41 — fim de semana zerado outra vez, o que confirma que o jogo só acontece em dia útil à tarde e sugere que
+  **o post de fim de semana serve para alcance, não para jogada**. Sem evento, o post do dia saiu do histórico: as três
+  melhores partidas de sempre são todas do VASCO e ninguém passa de 20 mil há 76 dias. Nota de produção: gancho de cinco
+  linhas exige baixar a fonte do título (168px) e subir a camada para top 420 — a 210px o texto passa de y=1500 e cai na
+  zona onde o Instagram põe a legenda.
 - 2026-09-19 · **A 500ª partida saiu — e foi anônima.** Aconteceu em 18/09 às 16h22 (846 pontos, Tier II) e ninguém
   reivindicou, apesar do pedido de print no post do dia anterior. O dia rendeu **9 partidas entre 16h22 e 17h41**, a tarde
   mais movimentada desde 14/09: BAHIA2026 voltou com 18.738 (3º geral) e entrou o 40º piloto, EDDMORPHE (8.695). De novo
@@ -148,7 +160,7 @@ WebFetch em `https://navistron.io/blog/<slug>?v=<data>` e no `sitemap.xml`. Regi
   ("me manda o print da 500ª", "reivindique a partida anônima") tiveram resposta zero: com 135 de alcance e 0 comentários,
   o gargalo agora é claramente **interação**, não distribuição. Próximo teste, depois do 3º post diurno: pedido de
   comentário na primeira linha da legenda, em vez da terceira. Organização: incidentes de 08 a 14/09 foram para
-  `log/incidentes-2026-09-08-a-14.md` e aprendizados de 08 a 13/09 para `APRENDIZADOS-2026-09-08-a-13.md`.
+  `log/incidentes-2026-09-08-a-14.md` para manter o log diário curto.
 - 2026-09-18 · **O horário era o gargalo.** O reel diurno de 16/09 (13:00) fechou em **133 de alcance e 145 views** — 4,4×
   o melhor noturno (30, em 13/09) e 133× o de 15/09, que morreu em 1. Mesma conta, mesmo formato, mesmo tipo de gancho e
   de pedido: a única variável era a hora. O alcance chegou quase todo entre 24 h e 48 h, então a régua de leitura continua
@@ -168,7 +180,6 @@ WebFetch em `https://navistron.io/blog/<slug>?v=<data>` e no `sitemap.xml`. Regi
   rotina continua diária enquanto isso. Regra nova (seção 4): mecânica só com o código do jogo aberto — os mísseis
   teleguiados são da nave, não inimigos; o artigo de 15/09 foi corrigido (PR #8) e virou o post + artigo de hoje. Reel de
   mecânica às 20:30 (2º teste do horário do melhor reel); avaliação do teste diurno fica para 18/09 (48 h).
-  **Nota de 18/09: a leitura acima estava errada — o post de 16/09 só tinha 10 h de vida; ele fechou em 133.**
 - 2026-09-16 · **Teste diurno no ar (hipótese d):** reel "O Navistron é jogado no expediente" agendado para as 13:00 de quarta —
   mesmo formato dos reels noturnos (contador + pedido de print) para isolar o horário; gancho tirado da própria telemetria de
   horário (68% das partidas entre 14h e 17h, zero no fim de semana, partida média de 2m02s). Régua de comparação: reels
