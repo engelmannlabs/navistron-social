@@ -15,13 +15,13 @@ Este arquivo é a memória da operação. Cada rodada diária lê, executa e **a
   Os demais ("Jogue grátis, link na bio") ficaram em 0–2 likes com alcance parecido.
 - Reels antigos (gameplay) tiveram views, mas tempo médio de 2–8 s → o gancho tem de estar no 1º segundo.
 - O desafio de 25k foi batido 11 dias depois (VASCO, 25.971 em 06/07). Desafios com número funcionam.
-- Público fala português; nomes dos pilotos ativos: VASCO, AMM2026 (e variações), GUI, BAHIA2026, 哎呦呦, EDMORPHE (novo em 11/09), ASA (novo em 14/09, já 6º geral).
-- **Quando o público joga (semana 37, 07–13/09):** 92% das partidas entre 10h e 17h em dias úteis, 68% entre 14h e 17h;
-  1 partida depois das 17h na semana inteira; fim de semana quase zero (1 partida no sábado, 0 no domingo). Quem joga,
-  joga em série (5–16 partidas seguidas, uma a cada ~3 min). Isso é o jogo, não necessariamente o Instagram — mas é a
-  melhor pista de horário que temos (hipótese d, seção 4).
-- **E no Instagram o horário é o mesmo:** o post das 13:00 de 16/09 alcançou 133 contas; os posts de 18:30, 19:30 e
-  20:30 da mesma semana ficaram entre 1 e 30. Horário explica mais do que pilar, gancho ou formato.
+- Público fala português; nomes dos pilotos ativos: VASCO, AMM2026 (e variações), GUI, BAHIA2026, 哎呦呦, EDMORPHE (novo em 11/09), ASA (novo em 14/09, já 6º geral), EDDMORPHE (40º piloto, 18/09).
+- **Quando o público joga:** semana 37 (07–13/09): 92% das partidas entre 10h e 17h em dias úteis, 68% entre 14h e 17h.
+  Semana 38 (14–20/09): as 17 partidas saíram em **3 tardes apenas**, todas entre 14h12 e 17h41, zero no fim de semana.
+  Quem joga, joga em série (5–16 partidas seguidas, uma a cada ~3 min). **Fim de semana é zero há três semanas seguidas**:
+  post de sábado/domingo serve para alcance, não para jogada.
+- **E no Instagram o horário é parecido:** os posts das 13:00 fizeram 135 (16/09), 28 (19/09, sábado) e 14 em 12 h (20/09);
+  os noturnos fizeram 1 (15/09), 1 (17/09) e 46 (18/09). O slot diurno tem a melhor mediana, mas não é garantia.
 
 ## 2. Pilares de conteúdo (rotacionar; nunca dois iguais em dias seguidos)
 
@@ -44,37 +44,42 @@ Este arquivo é a memória da operação. Cada rodada diária lê, executa e **a
 
 Mix semanal alvo (ajustar com os dados): **3–4 reels, 1–2 carrosséis, 1–2 imagens**. Segunda-feira: ranking
 (carrossel ou reel de contagem regressiva 5→1). Enquanto os reels tiverem alcance ≥ 3× o das imagens, eles ficam
-como formato padrão.
+como formato padrão. **Medida prática do gancho:** cada linha do título cabe em ~13 caracteres a 168px; 4 linhas a
+partir de `top: 420px` terminam por volta de y=1250, dentro da zona segura.
 
 ## 4. Regras de publicação
 
 - **1 publicação por dia.** Uma segunda só se houver evento (recorde quebrado, Tier V alcançado, marco).
   Nunca mais de 2/dia. Instagram permite 25/dia pela API, o público não.
-- Janela padrão **18:30–21:00 (America/Sao_Paulo)**. Rotacionar o horário para testar: 18:30 / 19:30 / 20:30.
-  Segunda-feira: ranking semanal às 19:30. Se a rodada rodar atrasada e a janela já tiver passado, publicar
-  ainda no dia (até ~22:30) e anotar como "fora da janela" — melhor que perder o dia.
-- **Horário padrão: 13:00, todos os dias.** O reel diurno de 16/09 fechou em **135 de alcance / 148 views**, o melhor da
-  série. Mas o horário ajuda, não decide sozinho: o post de 18/09 às 19:30 fez **45** enquanto os de 15 e 17/09 (18:30 e
-  20:30) fizeram 1 cada. Ou seja, 13:00 é a melhor aposta conhecida e a janela noturna não está morta — é o plano B de
-  rodada atrasada (publicar até ~22:30 e anotar "fora do slot"). Reavaliar quando 19, 20 e 21/09 fecharem: se a mediana
-  dos diurnos ficar abaixo de 30, voltar a alternar os horários.
+- **Horário padrão: 13:00, todos os dias, inclusive fim de semana.** Série até 21/09 — diurnos: 135 (16/09, qua),
+  28 (19/09, sáb), 14 em 12 h (20/09, dom); noturnos: 1 (15/09, 18:30), 1 (17/09, 20:30), 46 (18/09, 19:30).
+  A mediana dos diurnos está acima da dos noturnos e o slot funciona também no fim de semana, mas **o horário ajuda,
+  não decide sozinho**: o Instagram distribui de forma irregular. A janela noturna (18:30–22:30) é o plano B de rodada
+  atrasada — publicar ainda no dia e anotar "fora do slot". Desde 21/09 a rodada roda à 01:00, então há 12 h de margem:
+  perder o slot só acontece se a rodada travar.
+- **Só comparar posts com ≥ 40 h.** O alcance dos reels chega quase todo entre 24 h e 48 h, e as métricas do Instagram
+  só são recalculadas de madrugada. Nenhuma conclusão de alcance antes disso.
 - Legenda: primeira pessoa (é o Guilherme falando), 3–6 linhas curtas, **um pedido explícito**
   (comente, marque alguém, mande print), fecha com "grátis, sem login, link na bio 🚀". 5–8 hashtags
   no fim: `#navistron #jogodenave #arcade #indiegame #jogogratis #gamedev #jogosbrasileiros` (+ `#reels` em reels).
+  **Desde 21/09 o pedido vai na PRIMEIRA linha** (teste em andamento; ler o resultado em 23/09 — se não vier comentário
+  nenhum, o gargalo não é a posição do pedido).
 - **Todo número vem da telemetria e traz a data.** Se um dado não puder ser confirmado em /stats,
   não entra. Nunca inventar piloto, score ou marco. Não fazer promessa que o Guilherme não fez.
   Antes de afirmar "só X pilotos…", conferir também as partidas anônimas em `?visao=partidas&ordem=score`.
+  Quando der, **fechar a conta**: a soma das durações e dos scores das partidas listadas tem de bater com o tempo total
+  e a média que o /stats mostra — foi assim que a semana 38 foi validada antes de virar post e artigo.
 - **Toda mecânica citada é conferida no código do jogo** (`src/app/play/page.js` no repo `navistron`, via `search_code` +
   `get_file_contents`; constantes: `TIER_DEFS`, `TIER_DIFF`, `getDiff`, `getMissileDef`, `spawnMeteor`, `spawnThings`, `collectBoost`).
   Os artigos antigos do blog são referência, não fonte: em 15/09 um artigo descreveu os mísseis teleguiados como inimigos e
   eles são da própria nave (corrigido em 17/09).
-- **Cache do /stats:** as URLs de /stats podem devolver snapshots de horas diferentes (ex.: `/stats` com 490 partidas
-  e `?visao=partidas&ordem=data` ainda com 475). Antes de citar um número, acrescentar um parâmetro qualquer
-  (`&v=hhmm`) para forçar leitura nova e conferir que os totais batem entre as visões.
+- **Cache do /stats:** as URLs de /stats podem devolver snapshots de horas diferentes. Antes de citar um número,
+  acrescentar um parâmetro qualquer (`&v=hhmm`) para forçar leitura nova e conferir que os totais batem entre as visões.
 - **Se /stats estiver inacessível na rodada**, o único pilar permitido é "Mecânica explicada", usando apenas as
   regras fixas do jogo (tiers, dificuldade, fórmula de pontos, 5 boosts) — zero números de telemetria.
 - Citar pilotos pelo nick como aparece no ranking (é público). Sem deboche com nick de ninguém.
-- Não repetir o mesmo gancho em menos de 10 dias. Checar `log/experiments.md` antes de escolher.
+- Não repetir o mesmo gancho em menos de 10 dias. Checar `log/experiments.md` antes de escolher — vale também para a
+  palavra do gancho: "pódio" (20/09) e "sem nome" (19/09) saíram do cardápio por 10 dias.
 - Buffer: `schedulingType = "automatic"`; imagem/carrossel → `metadata.instagram.type = "post"`;
   reel → `assets: [{ video: { url, metadata: { thumbnailOffset: <ms da capa>, title } } }]` e
   `metadata.instagram.type = "reel"`; sempre `shouldShareToFeed = true`.
@@ -86,11 +91,19 @@ como formato padrão.
    `navistron.io/stats` (geral, `?periodo=7d`, `?visao=partidas&ordem=data`, `?visao=partidas&ordem=score`) e o blog quando o pilar for mecânica.
 2. Escolher formato + pilar + gancho, escrever legenda, montar `posts/AAAA-MM-DD-slug/` (imagem: `templates/base.css`;
    reel: `templates/reel.css` + `window.__seek(t)` — usar o reel anterior como esqueleto) e conferir com `scripts/qa.py`.
-3. Publicar os HTML + `caption.md` no repo. O Actions renderiza `post.png`/`slide-N.png` (~1–2 min) ou `reel.mp4` + `reel-cover.png` (~3–5 min).
+3. Publicar os HTML + `caption.md` no repo. O Actions renderiza `post.png`/`slide-N.png` (~1–2 min) ou `reel.mp4` + `reel-cover.png` (~3–7 min).
 4. Confirmar que o arquivo existe; URL pública: `https://raw.githubusercontent.com/engelmannlabs/navistron-social/main/posts/<slug>/<arquivo>`.
-5. Criar o post no Buffer (canal Instagram `navistron`) agendado para a janela do dia.
+5. Criar o post no Buffer (canal Instagram `navistron`) agendado para as 13:00 do dia.
 6. Registrar em `log/experiments.md` (data, slug, formato, pilar, gancho, horário, id do post no Buffer).
 7. Para posts com ≥ 48 h, preencher métricas no log (reels: views, alcance, tempo médio assistido) e atualizar "Aprendizados".
+
+**Horário da rodada:** desde 21/09/2026 o disparo diário é às **01:00 de Brasília** (04:00Z), a pedido do Guilherme.
+"Hoje" é o dia que começa; o post vai para as 13:00 do mesmo dia e a telemetria lida já cobre o dia anterior inteiro.
+
+**Tamanho dos logs:** `PLAYBOOK.md`, `log/experiments.md` e `log/blog.md` são reescritos inteiros a cada rodada, então
+o que envelhece vai para arquivos de arquivo (`log/experiments-ate-2026-09-13.md`, `log/incidentes-*`, `log/blog-ate-*`,
+`APRENDIZADOS-*`). Regra prática: manter na seção 7 os **4 aprendizados mais recentes** e na tabela do log os posts dos
+últimos ~8 dias; arquivar o resto quando o arquivo passar de ~10 KB.
 
 ## 6. Blog diário em navistron.io (1 artigo por dia, SEO)
 
@@ -123,7 +136,7 @@ quantas colunas precisarem: desde 14/09 a página envolve cada `<table>` em `.ta
 
 | Dia | Cluster | Exemplos de pauta |
 |---|---|---|
-| Seg | Telemetria e Ranking | "Ranking da semana", "quem mais jogou em setembro", análise de horários de pico |
+| Seg | Telemetria e Ranking | "Ranking da semana" (série `ranking-semana-<nº ISO>-<ano>`), quem mais jogou no mês, horários de pico |
 | Ter | Guias e Estratégia | como passar do tier X, como usar mísseis, erros que matam no Tier II |
 | Qua | Jogos (aquisição) | "jogo de nave online grátis para celular", "jogos rápidos de 2 minutos", "jogos tipo Asteroids" |
 | Qui | Mecânicas / Tecnologia | uma fórmula por artigo, bastidores do código |
@@ -140,68 +153,35 @@ WebFetch em `https://navistron.io/blog/<slug>?v=<data>` e no `sitemap.xml`. Regi
 **Indexação**: `sitemap.xml` e `robots.txt` já existem. Falta confirmar a propriedade no Google Search Console
 (`verification` em `src/app/layout.js` está vazio — se o Guilherme passar o token, adicionar) e enviar o sitemap lá.
 
-## 7. Aprendizados (atualizar a cada rodada — o mais recente primeiro)
+## 7. Aprendizados (atualizar a cada rodada — o mais recente primeiro; manter só os 4 últimos)
 
-- 2026-09-20 · **O horário ajuda, mas não decide sozinho.** O post de 18/09 às 19:30 chegou a **45 de alcance em 29 h** —
+- 2026-09-21 · **O slot diurno aguenta o fim de semana — e a interação virou o único teste que falta.** Fecharam duas
+  métricas: 18/09 (19:30) em **46** e 19/09 (sábado, 13:00) em **28**; 20/09 (domingo, 13:00) abriu em **14 com 12 h**, a
+  melhor abertura da série. Ou seja, o sábado diurno foi distribuído e o slot das 13:00 vale sete dias por semana, ainda
+  que sem garantia. Com 14 posts publicados e **zero comentários, saves, compartilhamentos e seguidores novos**, o gargalo
+  segue sendo interação, e hoje entrou o teste guardado no playbook: **pedido de comentário na primeira linha da legenda**
+  ("Qual foi o seu melhor score? Comenta aí"), em vez da terceira. Ler em 23/09; se continuar zero, a posição do pedido
+  não é o problema e sobra a proposta de 17/09 (sinal humano na conta). Telemetria: **508 partidas há três dias**, o maior
+  vazio da série. Semana 38 fechada: 17 partidas em 3 tardes, 34min08, média 7.481 — 71% menos partidas que a semana 37 e
+  30% acima da média histórica de pontos, ou seja, menos gente experimentando e mais gente que já sabe jogar. Operação:
+  disparo diário passou para a 01:00 (seção 5) e os logs antigos foram arquivados para baratear a reescrita diária.
+- 2026-09-20 · **O horário ajuda, mas não decide sozinho.** O post de 18/09 às 19:30 chegou a 45 de alcance em 29 h —
   segundo melhor da série e o único noturno distribuído desde 14/09. Com 16/09 (13:00) em 135 e 15 e 17/09 (18:30 e 20:30)
   em 1, a leitura honesta é que o Instagram distribui de forma irregular e o slot das 13:00 é a melhor aposta, não uma
-  garantia. O sábado às 13:00 estava em 1 com 7 h, cedo demais para ler. Telemetria parada: 508 partidas, nenhuma desde
-  18/09 17:41 — fim de semana zerado outra vez, o que confirma que o jogo só acontece em dia útil à tarde e sugere que
-  **o post de fim de semana serve para alcance, não para jogada**. Sem evento, o post do dia saiu do histórico: as três
-  melhores partidas de sempre são todas do VASCO e ninguém passa de 20 mil há 76 dias. Nota de produção: gancho de cinco
-  linhas exige baixar a fonte do título (168px) e subir a camada para top 420 — a 210px o texto passa de y=1500 e cai na
-  zona onde o Instagram põe a legenda.
+  garantia. Sem evento, o post do dia saiu do histórico: as três melhores partidas de sempre são do VASCO e ninguém passa
+  de 20 mil há 76 dias. Nota de produção: gancho de cinco linhas exige baixar a fonte do título (168px) e subir a camada
+  para top 420 — a 210px o texto passa de y=1500 e cai na zona onde o Instagram põe a legenda.
 - 2026-09-19 · **A 500ª partida saiu — e foi anônima.** Aconteceu em 18/09 às 16h22 (846 pontos, Tier II) e ninguém
-  reivindicou, apesar do pedido de print no post do dia anterior. O dia rendeu **9 partidas entre 16h22 e 17h41**, a tarde
+  reivindicou, apesar do pedido de print no post do dia anterior. O dia rendeu 9 partidas entre 16h22 e 17h41, a tarde
   mais movimentada desde 14/09: BAHIA2026 voltou com 18.738 (3º geral) e entrou o 40º piloto, EDDMORPHE (8.695). De novo
-  tudo entre 16h e 18h — o jogo tem um único horário. Métricas: o diurno de 16/09 subiu para **135 de alcance em 77 h** e
-  os três posts noturnos em volta dele (15, 17 e 18/09) ficaram em 1. Com isso o slot das 13:00 passa a valer **todos os
-  dias** (seção 4) e o post de hoje, sábado às 13:00, é o teste do fim de semana. Os dois pedidos que a conta já fez
-  ("me manda o print da 500ª", "reivindique a partida anônima") tiveram resposta zero: com 135 de alcance e 0 comentários,
-  o gargalo agora é claramente **interação**, não distribuição. Próximo teste, depois do 3º post diurno: pedido de
-  comentário na primeira linha da legenda, em vez da terceira. Organização: incidentes de 08 a 14/09 foram para
-  `log/incidentes-2026-09-08-a-14.md` para manter o log diário curto.
-- 2026-09-18 · **O horário era o gargalo.** O reel diurno de 16/09 (13:00) fechou em **133 de alcance e 145 views** — 4,4×
+  tudo entre 16h e 18h. Os dois pedidos que a conta já tinha feito ("me manda o print da 500ª", "reivindique a partida
+  anônima") tiveram resposta zero: com 135 de alcance e 0 comentários, o gargalo é **interação**, não distribuição.
+- 2026-09-18 · **O horário era o gargalo.** O reel diurno de 16/09 (13:00) fechou em 133 de alcance e 145 views — 4,4×
   o melhor noturno (30, em 13/09) e 133× o de 15/09, que morreu em 1. Mesma conta, mesmo formato, mesmo tipo de gancho e
   de pedido: a única variável era a hora. O alcance chegou quase todo entre 24 h e 48 h, então a régua de leitura continua
-  sendo ≥ 40 h. Decisão: **13:00 vira o horário padrão em dia útil** (seção 4). Segundo sinal, ainda fraco: as duas
-  primeiras partidas desde 14/09 saíram em 17/09 às 16:01 e 16:04 (16.998 e 8.750, anônimas) — a maior delas seria o 6º
-  lugar geral. Contra: a rodada de hoje ficou parada das 11:00 às 18:44, perdeu o slot das 13:00 e o post do marco 500 saiu
-  às 19:30; o artigo do blog levou 14 min para ficar no ar (contra ~3 min). Interação segue em zero em 10 posts: o próximo
-  teste, depois de 3 posts diurnos, é mover o pedido de comentário para a **primeira linha** da legenda.
-- 2026-09-17 · **Dois posts seguidos sem distribuição**: 15/09 (shout-out ASA, 18:30) ficou em 1 de alcance em 29 h e 16/09
-  (teste diurno, 13:00) em 1 em 10 h, logo depois do melhor reel da série (13/09, 30). Nem horário nem pilar explicam: 18:30,
-  13:00, shout-out e desafio deram o mesmo 1. Balanço honesto de 9 posts automatizados: alcance entre 1 e 30 (mediana ~11),
-  1 like em 2 posts, zero comentários/saves/compartilhamentos e zero partidas atribuíveis — o jogo está há 3 dias sem
-  nenhuma partida (497 desde 14/09 14:28). O que a rotina consegue sozinha (formato, horário, gancho, blog) está feito e
-  medido; o que falta é sinal humano na conta. **Proposta ao Guilherme (no relatório de hoje):** (a) compartilhar o reel do
-  dia nos stories e curtir/comentar os posts; (b) gravar um "bastidor do dev" na própria voz — o único formato que já
-  funcionou aqui (25/06: 1.309 de alcance, 16 comentários); (c) seguir e comentar em perfis de jogos indie brasileiros. A
-  rotina continua diária enquanto isso. Regra nova (seção 4): mecânica só com o código do jogo aberto — os mísseis
-  teleguiados são da nave, não inimigos; o artigo de 15/09 foi corrigido (PR #8) e virou o post + artigo de hoje. Reel de
-  mecânica às 20:30 (2º teste do horário do melhor reel); avaliação do teste diurno fica para 18/09 (48 h).
-- 2026-09-16 · **Teste diurno no ar (hipótese d):** reel "O Navistron é jogado no expediente" agendado para as 13:00 de quarta —
-  mesmo formato dos reels noturnos (contador + pedido de print) para isolar o horário; gancho tirado da própria telemetria de
-  horário (68% das partidas entre 14h e 17h, zero no fim de semana, partida média de 2m02s). Régua de comparação: reels
-  noturnos fecharam em 25 (12/09) e 30 (13/09); 14/09 estava em 22 com 29 h. Avaliar em 17/09 (24 h) e 18/09 (48 h); se o
-  diurno ≥ 30, o slot de 13:00 vira fixo em dias úteis. Alerta: **15/09 teve zero partidas no jogo** mesmo com o reel do ASA
-  no ar, e o reel de 15/09 abriu com 1 de alcance em 5,8 h (as métricas do Instagram só atualizam de madrugada — não
-  concluir nada antes de 40 h). Blog: 1º artigo de aquisição em formato lista (jogos rápidos para o intervalo), citado na
-  legenda; a série de listas "Jogos" já tem 4 artigos — o próximo de quarta deve atacar uma keyword diferente (ex.: "jogo
-  de nave para celular sem baixar").
-- 2026-09-15 · **A conta voltou a ser distribuída.** Reel de 13/09 (20:30): 5 → 29 de alcance entre o 1º e o 2º dia; reel de
-  14/09 (19:30): 18 de alcance e 1 like em 15 h, melhor abertura da série; reel de 12/09 fechou em 25. Padrão: o alcance dos
-  reels chega no 2º dia, então **só comparar posts com ≥ 40 h**. Ainda zero comentários e saves — o próximo gargalo é
-  interação, não alcance. Evento do dia: piloto novo ASA entrou no top 10 geral (6º, 16.913) na primeira tarde, com Tier III
-  na 1ª partida → shout-out com nick no gancho, em reel (18:30). Faltam 3 partidas para a 500ª: se sair até 16/09, cabe um
-  2º post de marco. Amanhã (quarta 16/09): teste diurno às 13:00 (hipótese d), formato reel para isolar o horário.
-- 2026-09-14 · **Primeiro sinal de distribuição:** o reel de marco de 12/09 ("partida nº 500 pode ser a sua", 18:30) chegou a
-  **25 de alcance / 31 views em 40 h** (dobrou de 13/09 para 14/09) — 2,5× qualquer post automatizado anterior, ainda sem
-  interação. O reel de 13/09 ("melhor partida sem nome", 20:30) começou mais devagar (5 em 14,5 h). O carrossel de 11/09
-  fechou com 1 de alcance: carrossel + 22:00 é a combinação a evitar. Semana 37 no Instagram: 6 posts (1 imagem, 4 reels,
-  1 carrossel); melhor formato = reel com contador + pedido concreto. Telemetria da semana 37 fechada (59 partidas, 4 pilotos
-  registrados, 54 anônimas) e transformada no 1º artigo da série "Ranking da semana" + reel de contagem regressiva 4→1 às
-  19:30. Descoberta: o público joga de segunda a sexta entre 10h e 17h — daí o teste diurno de quarta 16/09 às 13:00
-  (seção 4). Ainda nenhuma jogada atribuível aos posts (0 partidas no domingo 13/09).
+  sendo ≥ 40 h. Contra: a rodada ficou parada das 11:00 às 18:44, perdeu o slot das 13:00 e o post do marco 500 saiu às
+  19:30; o artigo do blog levou 14 min para ficar no ar (contra ~3 min) — foi o que motivou mudar o disparo para a
+  madrugada em 21/09.
 
-Aprendizados de 08 a 13/09 em [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
+Aprendizados anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
+[`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
