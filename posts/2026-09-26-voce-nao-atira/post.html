@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="14.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="2.0">
+<link rel="stylesheet" href="../../templates/reel.css">
+<!-- dados: codigo do jogo (src/app/play/page.js do repo navistron), conferido em 26/09/2026 ~01:05 BRT:
+     linha 1283 -> if(s.fireCooldown<=0){spawnBullets(s);s.fireCooldown=s.fireRate;} - o tiro e automatico
+     no loop, sem nenhum input. TIER_DEFS rate = 0.18/0.15/0.13/0.11/0.09/0.08/0.06 s entre salvas,
+     logo Tier II = 60/0,15 = 400 salvas por minuto. Cada boost soma um tiro a salva (angulos 12/9/6/5 graus).
+     getMissileDef: ate 5 misseis teleguiados por salva a partir de 3.334 pts no Tier II, alvo = meteoro mais proximo. -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Telemetria pública · @navistron</div>
+
+  <div id="title" class="layer" style="top: 420px">
+    <div class="h1" style="font-size: 168px"><span class="w" id="w1">AQUI VOCÊ</span><br><span class="w" id="w2">NÃO ATIRA.</span><br><span class="w accent" id="w3">SÓ<br>DESVIA.</span></div>
+  </div>
+
+  <div id="rec" class="layer" style="top: 600px">
+    <div class="kicker" id="reclabel">TIER II · CADÊNCIA DA NAVE</div>
+    <div class="counter" id="num" style="margin-top: 40px">0</div>
+    <div class="sub" id="who" style="margin-top: 36px; opacity: 0">salvas por minuto, <b>sem apertar nada</b></div>
+    <div id="second" style="margin-top: 70px; opacity: 0"><span class="marker">cada boost soma <b>mais um tiro</b></span></div>
+  </div>
+
+  <div id="dur" class="layer" style="top: 560px">
+    <div class="kicker">e ainda tem os mísseis</div>
+    <div class="counter lock" id="durnum" style="margin-top: 40px">5</div>
+    <div class="sub" id="durwho" style="margin-top: 36px; opacity: 0">teleguiados por salva · <b>automáticos</b></div>
+    <div id="durrest" style="margin-top: 66px; opacity: 0">
+      <span class="marker">a partir de <b>3.334</b> pontos</span>
+      <span class="marker" style="margin-left: 26px">miram no meteoro <b>mais próximo</b></span>
+    </div>
+  </div>
+
+  <div id="ask" class="layer" style="top: 560px">
+    <div class="h1">O JOGO É<br>SOBRE<br><span class="cyan">POSIÇÃO.</span></div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">bota o nick no game over</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 14.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+  const fmt = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  // ---------- PRNG determinístico ----------
+  let s = 2609;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- meteoros ----------
+  const N = 72, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 260 + rnd() * 220, r: 22 + rnd() * 46, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * 2100, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function drawMeteor(m, x, y, rot, glow) {
+    fx.save(); fx.translate(x, y); fx.rotate(rot);
+    fx.beginPath();
+    const n = m.shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = m.r * m.shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+    fx.fillStyle = m.big ? 'rgba(20,26,46,0.92)' : 'rgba(14,19,36,0.9)';
+    fx.fill();
+    fx.lineWidth = m.big ? 3 : 2;
+    fx.strokeStyle = glow ? 'rgba(250,204,21,0.9)' : (m.big ? 'rgba(190,208,240,0.75)' : 'rgba(150,170,205,0.6)');
+    if (glow) { fx.shadowColor = 'rgba(250,204,21,0.8)'; fx.shadowBlur = 24; }
+    fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, 'rgba(34,211,238,0.9)'); g.addColorStop(1, 'rgba(34,211,238,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = 'rgba(34,211,238,0.7)'; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = '#22D3EE'; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 150 * Math.sin(t * 0.9 + 3.6) + 60 * Math.sin(t * 2.3);
+  const shipY = 1400;
+
+  const HIT = 5.2;
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    const p = seg(t, 0, 12.5);
+    const active = Math.floor(10 + 62 * p * p);
+    const speed = 1 + 1.6 * p;
+    for (let i = 0; i < active; i++) {
+      const m = meteors[i];
+      const dist = (t * m.v * speed + m.phase);
+      const cycle = Math.floor(dist / 2100);
+      const y = (dist % 2100) - 120;
+      const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+      const glow = (t > HIT && t < HIT + 0.7 && i % 5 === 0);
+      drawMeteor(m, x, y, m.rot + t * m.w, glow);
+    }
+    fx.save();
+    for (let k = 0; ; k++) {
+      const tb = k * 0.12; if (tb > t) break;
+      const yb = shipY - 50 - (t - tb) * 1500; if (yb < -30) continue;
+      const xb = shipX(tb);
+      fx.fillStyle = 'rgba(34,211,238,0.95)'; fx.shadowColor = 'rgba(34,211,238,0.9)'; fx.shadowBlur = 14;
+      fx.fillRect(xb - 3, yb, 6, 26);
+    }
+    fx.restore();
+    drawShip(shipX(t), shipY, t);
+    const vg = fx.createRadialGradient(540, 900, 200, 540, 900, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.55)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+  const TOTAL = 400;
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+    // 1) gancho em 3 tempos (0–1.6), some em 2.3–2.7
+    const outT = 1 - seg(t, 2.3, 0.4);
+    layer($('title'), outT, -30 * (1 - outT));
+    const ws = [['w1', -0.15, 0.3], ['w2', 0.45, 0.35], ['w3', 0.95, 0.5]];
+    for (const [id, a, d] of ws) {
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = v; $(id).style.display = 'inline-block'; $(id).style.transform = `translateY(${40 * (1 - v)}px)`;
+    }
+
+    // 2) cadência: entra 2.6, conta até 5.2, trava, sai 7.5–7.8
+    const inR = ease.out3(seg(t, 2.6, 0.45)), outR = 1 - seg(t, 7.5, 0.3);
+    layer($('rec'), inR * outR, 30 * (1 - inR));
+    const cp = 1 - Math.pow(1 - seg(t, 2.7, HIT - 2.7), 2.2);
+    const locked = t >= HIT;
+    $('num').textContent = fmt(locked ? TOTAL : TOTAL * cp);
+    $('num').className = 'counter' + (locked ? ' lock' : '');
+    const pulse = locked ? 1 + 0.07 * Math.exp(-(t - HIT) * 4) : 1;
+    $('num').style.transform = `scale(${pulse})`;
+    const whoIn = ease.out3(seg(t, HIT + 0.05, 0.4));
+    $('who').style.opacity = whoIn; $('who').style.transform = `translateY(${20 * (1 - whoIn)}px)`;
+    const secIn = ease.out3(seg(t, HIT + 0.75, 0.45));
+    $('second').style.opacity = secIn; $('second').style.transform = `translateY(${24 * (1 - secIn)}px)`;
+
+    // 3) mísseis 7.85–10.05
+    const inD = ease.out3(seg(t, 7.85, 0.45)), outD = 1 - seg(t, 9.75, 0.3);
+    layer($('dur'), inD * outD, 30 * (1 - inD));
+    const dpulse = 1 + 0.10 * (1 - inD);
+    $('durnum').style.transform = `scale(${dpulse})`;
+    const dwIn = ease.out3(seg(t, 8.3, 0.4));
+    $('durwho').style.opacity = dwIn; $('durwho').style.transform = `translateY(${20 * (1 - dwIn)}px)`;
+    const drIn = ease.out3(seg(t, 8.8, 0.45));
+    $('durrest').style.opacity = drIn; $('durrest').style.transform = `translateY(${24 * (1 - drIn)}px)`;
+
+    // 4) fecho 10.1–12.0
+    const inA = ease.out3(seg(t, 10.1, 0.45)), outA = 1 - seg(t, 11.7, 0.3);
+    layer($('ask'), inA * outA, 0, 0.92 + 0.08 * inA);
+
+    // 5) CTA 12.05–14.0
+    const inC = ease.out3(seg(t, 12.05, 0.5));
+    layer($('cta'), inC, 30 * (1 - inC));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
