@@ -1,8 +1,17 @@
-# Arquivo — aprendizados de 14 a 17/09/2026
+# Arquivo — aprendizados de 14 a 17/09/2026 (mais 23/09)
 
 Movido da seção 7 do `PLAYBOOK.md` em 21/09/2026 para manter o playbook curto e barato de reescrever a cada rodada.
 Anteriores em [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+**Nota de 27/09/2026:** as entradas de **18 a 22/09 não foram preservadas** — elas viviam na seção 7 do playbook e se
+perderam quando o `APRENDIZADOS.md` foi criado, em 22/09, já só com os 4 mais recentes. O que aconteceu naqueles dias
+está nas linhas por post de [`log/experiments-2026-09-18-a-21.md`](log/experiments-2026-09-18-a-21.md) e nos incidentes
+de [`log/incidentes-2026-09-15-a-19.md`](log/incidentes-2026-09-15-a-19.md).
+
+- 2026-09-23 · **O jogo voltou depois do maior vazio da série.** A telemetria voltou a andar depois de **94h08 sem
+  nenhuma partida** (18/09 17:41 → 22/09 15:49) — 3 partidas à tarde, incluindo o nick novo **DENISE** (41º piloto).
+  Dado mais duro do dia: 21/09 fechou em **2 de alcance**, no mesmo slot das 13:00 que fez 135, 35 e 111 nos dias
+  vizinhos — **horário não garante distribuição**, só melhora a média.
 - 2026-09-17 · **Dois posts seguidos sem distribuição**: 15/09 (shout-out ASA, 18:30) ficou em 1 de alcance em 29 h e 16/09
   (teste diurno, 13:00) em 1 em 10 h, logo depois do melhor reel da série (13/09, 30). Nem horário nem pilar explicam: 18:30,
   13:00, shout-out e desafio deram o mesmo 1. Balanço honesto de 9 posts automatizados: alcance entre 1 e 30 (mediana ~11),
