@@ -1,4 +1,4 @@
-# Arquivo — aprendizados de 14 a 17/09/2026 (mais 23/09)
+# Arquivo — aprendizados de 14 a 17/09/2026 (mais 23 e 24/09)
 
 Movido da seção 7 do `PLAYBOOK.md` em 21/09/2026 para manter o playbook curto e barato de reescrever a cada rodada.
 Anteriores em [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
@@ -8,6 +8,11 @@ perderam quando o `APRENDIZADOS.md` foi criado, em 22/09, já só com os 4 mais 
 está nas linhas por post de [`log/experiments-2026-09-18-a-21.md`](log/experiments-2026-09-18-a-21.md) e nos incidentes
 de [`log/incidentes-2026-09-15-a-19.md`](log/incidentes-2026-09-15-a-19.md).
 
+- 2026-09-24 · **Conteúdo didático distribui tão bem quanto evento.** O post de 22/09 — mecânica pura, sem nenhuma
+  telemetria nova, montado só com fórmulas do código — fechou em **111 de alcance / 137 views**, o 2º melhor da série,
+  e teve a abertura mais rápida já vista. Evento do dia: o AMM2026 fez **19.785** em 23/09, recorde pessoal e a 215
+  pontos da barreira dos 20 mil, intocada há 79 dias. **Corrigido em 28/09:** o segundo post de mecânica pura (26/09)
+  fechou em **14**, então a generalização "mecânica distribui bem" não se sustenta — era um caso, não um padrão.
 - 2026-09-23 · **O jogo voltou depois do maior vazio da série.** A telemetria voltou a andar depois de **94h08 sem
   nenhuma partida** (18/09 17:41 → 22/09 15:49) — 3 partidas à tarde, incluindo o nick novo **DENISE** (41º piloto).
   Dado mais duro do dia: 21/09 fechou em **2 de alcance**, no mesmo slot das 13:00 que fez 135, 35 e 111 nos dias
