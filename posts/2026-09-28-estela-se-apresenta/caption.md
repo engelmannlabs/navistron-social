@@ -1,6 +1,6 @@
 ---
 data: 2026-09-28 (criado; data de publicação a definir)
-status: TESTE — NÃO PUBLICAR. Aguardando aprovação do Guilherme; não está no Buffer.
+status: SUBSTITUÍDO em 29/09 — versão de teste do plano gratuito (720p, marca d'água). A versão publicada é posts/2026-09-29-estela-se-apresenta. Não publicar esta.
 formato: vídeo com avatar (HeyGen, Avatar IV), 9:16, 28,4 s. Origem em 720p (limite do plano gratuito), enquadrada em 1080x1920 pelo Actions, com selo fixo "ESTELA · A IA DO NAVISTRON" e legenda da HeyGen queimada
 personagem: Estela — ver personagens/ESTELA.md
 pilar: apresentação da personagem (inédito)

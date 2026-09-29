@@ -10,7 +10,9 @@
 //        da própria pasta), post-size (1080x1920), reel-cover (s). O vídeo é enquadrado em 9:16 (cover),
 //        normalizado para 30 fps / H.264 / AAC, e o próprio post.html vira uma CAMADA TRANSPARENTE por cima
 //        (marca, selo de IA) — por isso o body do HTML deve ter fundo transparente. Opcional: video-subtitles
-//        (URL ou arquivo .srt) é salvo como legenda.srt na pasta do post. A fonte externa é baixada
+//        (URL ou arquivo .srt) é salvo como legenda.srt na pasta do post; com video-captions = "srt", cada frase
+//        do .srt é queimada no vídeo usando o elemento #cap do post.html como molde (tipografia da marca, na zona
+//        segura), com números destacados em <b>. A fonte externa é baixada
 //        uma única vez: com o reel.mp4 já gerado e o HTML igual, nunca re-baixa (nem com --all), porque
 //        URLs assinadas expiram.
 // Uso: node scripts/render.mjs [--all] [--only <slug>]
@@ -48,6 +50,22 @@ function probeDuration(file) {
     if (m) return +((+m[1]) * 3600 + (+m[2]) * 60 + (+m[3])).toFixed(2);
   }
   return null;
+}
+
+// .srt -> [{start, end, text}] (s). Buracos curtos entre frases são fechados para a legenda não piscar.
+function parseSrt(txt) {
+  const toS = s => { const m = s.match(/(\d+):(\d+):(\d+)[,.](\d+)/); return m ? (+m[1]) * 3600 + (+m[2]) * 60 + (+m[3]) + (+m[4]) / 1000 : NaN; };
+  const cues = [];
+  for (const block of txt.replace(/\r/g, '').split(/\n\s*\n/)) {
+    const lines = block.trim().split('\n');
+    const i = lines.findIndex(l => l.includes('-->'));
+    if (i < 0) continue;
+    const [a, b] = lines[i].split('-->').map(s => toS(s.trim()));
+    const text = lines.slice(i + 1).join(' ').trim();
+    if (text && !isNaN(a) && !isNaN(b) && b > a) cues.push({ start: a, end: b, text });
+  }
+  for (let k = 0; k < cues.length - 1; k++) if (cues[k + 1].start - cues[k].end < 0.35) cues[k].end = cues[k + 1].start;
+  return cues;
 }
 
 const browser = await chromium.launch();
@@ -126,13 +144,40 @@ for (const slug of slugs) {
         }
         const srcDur = probeDuration(srcPath);
         if (!srcDur) throw new Error('vídeo de origem ilegível (sem duração)');
-        // camada transparente = o próprio post.html sem fundo
+        // legenda própria (opcional): uma camada transparente por frase do .srt, desenhada no #cap do post.html
+        const capMode = meta(html, 'video-captions', 'off');
+        const cues = capMode === 'srt' && existsSync(join(dir, 'legenda.srt')) ? parseSrt(readFileSync(join(dir, 'legenda.srt'), 'utf8')) : [];
+        if (capMode === 'srt' && !cues.length) throw new Error('video-captions=srt, mas não há legenda.srt utilizável');
+        const hasCap = await page.evaluate(() => !!document.getElementById('cap'));
+        if (cues.length && !hasCap) throw new Error('video-captions=srt exige um elemento #cap no post.html');
+        await page.addStyleTag({ content: 'body.__caponly > *:not(#cap){visibility:hidden !important}' });
+        // camada base transparente = o próprio post.html sem fundo e sem legenda
         const overlayPath = join(fdir, 'overlay.png');
+        if (hasCap) await page.evaluate(() => { const c = document.getElementById('cap'); c.innerHTML = ''; c.classList.remove('on'); });
         await page.screenshot({ path: overlayPath, fullPage: false, omitBackground: true });
-        const graph = `[0:v]scale=${w}:${h}:force_original_aspect_ratio=increase,crop=${w}:${h},fps=30,setsar=1[bg];[bg][1:v]overlay=0:0:format=auto[v]`;
-        execFileSync(FFMPEG, ['-y', '-loglevel', 'error', '-i', srcPath, '-i', overlayPath, '-filter_complex', graph,
-          '-map', '[v]', '-map', '0:a?', '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p',
-          '-c:a', 'aac', '-b:a', '128k', '-ar', '44100', '-movflags', '+faststart', outPath], { stdio: 'inherit' });
+        const capPaths = [];
+        if (cues.length) {
+          await page.evaluate(() => document.body.classList.add('__caponly'));
+          for (let k = 0; k < cues.length; k++) {
+            await page.evaluate(text => {
+              const esc = s => s.replace(/[&<>]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[ch]));
+              const c = document.getElementById('cap');
+              c.innerHTML = '<span>' + esc(text).replace(/(\d[\d.,:%]*\d|\d)/g, '<b>$1</b>') + '</span>';
+              c.classList.add('on');
+            }, cues[k].text);
+            const cp = join(fdir, `cap${String(k).padStart(3, '0')}.png`);
+            await page.screenshot({ path: cp, fullPage: false, omitBackground: true });
+            capPaths.push(cp);
+          }
+        }
+        let graph = `[0:v]scale=${w}:${h}:force_original_aspect_ratio=increase,crop=${w}:${h},fps=30,setsar=1[bg];[bg][1:v]overlay=0:0:format=auto[v0]`;
+        cues.forEach((c, k) => {
+          graph += `;[v${k}][${k + 2}:v]overlay=0:0:format=auto:enable='between(t,${c.start.toFixed(3)},${c.end.toFixed(3)})'[v${k + 1}]`;
+        });
+        execFileSync(FFMPEG, ['-y', '-loglevel', 'error', '-i', srcPath, '-i', overlayPath, ...capPaths.flatMap(cp => ['-i', cp]),
+          '-filter_complex', graph, '-map', `[v${cues.length}]`, '-map', '0:a?', '-c:v', 'libx264', '-preset', 'medium',
+          '-crf', '20', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-ar', '44100', '-movflags', '+faststart', outPath],
+          { stdio: 'inherit' });
         execFileSync(FFMPEG, ['-y', '-loglevel', 'error', '-ss', String(coverT), '-i', outPath, '-frames:v', '1',
           join(dir, 'reel-cover.png')], { stdio: 'inherit' });
         rmSync(fdir, { recursive: true, force: true });
@@ -140,7 +185,7 @@ for (const slug of slugs) {
         const size = statSync(outPath).size;
         // a URL assinada não vai para o render.json: guarda só o endereço sem query string
         state.files[file] = { hash, out: outName, type: 'video', source: src.split('?')[0], width: w, height: h, fonts,
-          duration: dur, fps: 30, bytes: size, cover: 'reel-cover.png' };
+          duration: dur, fps: 30, bytes: size, cover: 'reel-cover.png', captions: cues.length };
         console.log(`[${slug}/${file}] ok vídeo externo ${w}x${h} ${dur}s -> ${outName} (${(size / 1e6).toFixed(1)} MB)`);
       } else if (!isReel) {
         await page.screenshot({ path: outPath, fullPage: false });
