@@ -4,14 +4,16 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
-- 2026-09-29 · **Primeiro retorno do Guilherme sobre a Estela: menos coisa na tela.** A estreia agradou, mas a
-  legenda queimada (82 px, caixa alta, logo abaixo do queixo) e o selo fixo no topo, rente à cabeça, pareceram grandes
-  e em cima do rosto. **Regra para todo vídeo com rosto: nada sobre o rosto, nada fixo além da legenda, e qualquer
-  outro elemento só se for temporário e pequeno.** Camada v2 em `templates/estela-video.html`: selo de IA de 20 px no
-  canto superior esquerdo só nos 3 primeiros segundos (some com fade) e legenda de 56 px, em caixa baixa, com a base em
-  y = 1490 — o queixo fica em ~1170 nos looks atuais. O aviso de IA continua garantido pelo selo, pela fala e pelo
-  rótulo do Instagram. Do lado do jogo: 3º dia seguido sem partida (26 a 28/09), e a segunda-feira com o pedido novo
-  ("joga e registra o nick") terminou com zero nick novo.
+- 2026-09-29 · **Primeiros retornos do Guilherme sobre a Estela: menos coisa na tela, mais casa.** A estreia agradou,
+  mas a legenda queimada (82 px, caixa alta, logo abaixo do queixo) e o selo fixo no topo pareceram grandes e em cima do
+  rosto. Na mesma tarde vieram as regras que valem daqui pra frente: **sem selo de IA na arte** (o rótulo de IA do
+  Instagram basta), **nos reels só a legenda pequena** (56 px, caixa baixa, base em y = 1490, molde
+  `templates/estela-video.html`), **stories em vídeo puro, 1 por dia**, **cenas sempre dentro da casa dela** — sala,
+  cozinha, quarto, escrivaninha — e, por último, **ela não diz mais que é IA** na fala nem na legenda: só o conteúdo
+  (o rótulo do Instagram é o aviso). Saíram quatro looks em casa (1 crédito cada; o quarto com pôster de personagem de
+  terceiros no fundo foi vetado e refeito sem pôsteres) e o 1º story, gravado na sala, foi ao ar às 15:36. Custo real
+  medido: ~1 crédito a cada 3 s de vídeo. Do lado do jogo: 4 dias sem partida (a última foi em 25/09, 11h42), e a
+  segunda-feira com o pedido novo ("joga e registra o nick") terminou com zero nick novo.
 - 2026-09-28 · **Pilar não prevê alcance — e o pedido de comentário morreu.** Os dois posts de mecânica pura da
   série fecharam em **111 (22/09)** e **14 (26/09)**: mesmo pilar, mesmo formato, mesmo slot das 13:00, 8× de
   diferença. Com a correção de ontem (o "1" de 25/09 era parcial e virou 56), a série do slot fica 2, 4, 10, 14,

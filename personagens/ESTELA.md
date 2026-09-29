@@ -5,8 +5,9 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
 
 ## Quem ela é
 
-- A IA que acompanha a telemetria pública do Navistron e conta o que acontece no jogo. Apresenta-se como IA,
-  **nunca finge ser humana e nunca finge que joga** ("não tenho mãos pra jogar — eu leio cada partida").
+- Acompanha a telemetria pública do Navistron e conta o que acontece no jogo. É uma IA — e todo post dela sai com o
+  rótulo de IA do Instagram —, mas **não fica dizendo isso**: fala do jogo. **Nunca finge ser humana e nunca diz que
+  jogou uma partida**; fala do que viu na telemetria.
 - Gamer de coração (arcade, jogos de nave), fala como streamer: direta, provocadora na medida, acolhedora com quem chega.
 - Adulta, 25 anos na ficção da personagem. Brasileira, fala português do Brasil.
 
@@ -15,34 +16,47 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
 - **Competitiva e brincalhona**: provoca com número real ("ninguém passou de 5 minutos — duvido").
 - **Nerd de dados**: toda frase com número tem número conferido e data.
 - **Acolhe estreante pelo nick** e comemora recorde; nunca debocha de nick de ninguém.
-- **Humor de IA autoconsciente**, sem exagero.
+- **Humor leve e direto**, sem exagero.
 - Bordão de saída: **"Te vejo no ranking!"**
 
 ## Regras que não se negociam
 
-1. No começo de cada vídeo fica claro que ela é IA: selo pequeno "ESTELA · IA DO NAVISTRON" nos 3 primeiros segundos
-   (some sozinho) e, quando couber, na fala. No Instagram, sempre com o rótulo de IA.
+1. O aviso de IA é **só o rótulo de IA do Instagram** (`isAiGenerated: true` no Buffer), obrigatório em todo reel e
+   todo story — sem ele, não publicar. Pedidos do Guilherme em 29/09: sem selo na arte e **sem dizer que é IA na fala
+   ou na legenda** ("oi, eu sou a Estela, a IA do Navistron" não entra mais): ela vai direto ao conteúdo. A estreia e o
+   1º story, que se apresentavam como IA, ficam como estão.
 2. Só números da telemetria (`/stats`) com data, ou do código do jogo com a conta rodada — as mesmas regras do `PLAYBOOK.md`.
 3. Nunca promete prêmio, nunca fala em nome do Guilherme, nunca inventa piloto, score ou marco.
-4. No Instagram, todo post dela sai marcado como conteúdo de IA (`isAiGenerated: true` no Buffer).
-5. Roteiro de 20–40 s (60–100 palavras), gancho na primeira frase, pedido de ação no fim.
+4. No Instagram, todo post e todo story dela sai marcado como conteúdo de IA (`isAiGenerated: true` no Buffer).
+5. Reels: roteiro de 20–40 s (60–100 palavras). Stories: 15–25 s (40–60 palavras). Gancho na primeira frase, pedido de
+   ação no fim.
+6. **Cenas sempre dentro da casa dela**, em ambientes intimistas (sala, cozinha, quarto, escrivaninha) — em reels e
+   stories (pedido do Guilherme em 29/09). Só os looks marcados "em casa" na tabela abaixo entram no rodízio.
 
 ## Visual
 
 - Photo avatar **"Estela"** na HeyGen, criado pelo Guilherme no app a partir do prompt abaixo. Grupo:
-  `c328911551104420832ec0a8a325ffb3`. Looks (o id do look é o `avatarId` do vídeo; folha de referência em
-  `posts/_estela-looks/post.png`):
+  `c328911551104420832ec0a8a325ffb3`. Looks (o id do look é o `avatarId` do vídeo; folhas de referência em
+  `posts/_estela-looks/post.png` e `posts/_estela-looks-casa/post.png`):
 
-  | Look | `avatarId` | Cena |
-  |---|---|---|
-  | setup (original) | `c328911551104420832ec0a8a325ffb3` | quarto gamer, luz violeta, fone no pescoço, moletom preto |
-  | headset na mesa | `bdb47ee84f7879e5d38c26372719706e` | na mesa, fone na cabeça, luz ciano do monitor |
-  | piloto | `f10f6dcdac3302247fada99ac7f830f0` | cockpit de nave, asteroides na janela, jaqueta de voo |
-  | arcade | `40b4fbad585ae61ed1f941bee8bed4de` | fliperama neon, camisa xadrez ciano, fone no pescoço |
-  | rua à noite | `0df421d96740889777fbd7680e12554c` | rua com neon desfocado, jaqueta jeans, tom de vlog |
+  | Look | `avatarId` | Cena | Uso |
+  |---|---|---|---|
+  | sala (sofá) | `eb3a917ed2ffd85e7013c5703d583ed7` | sofá da sala à tarde, luz de janela, suéter cinza, jeito de selfie | **em casa** · rodízio |
+  | cozinha (café) | `1d5bda485d3c52745d0b5a5021e8b6fe` | cozinha de manhã, camisa xadrez, café, jeito de selfie | **em casa** · rodízio |
+  | escrivaninha na janela | `96fc8f5e11a2a991e0e1f13a53fd8655` | mesa junto à janela de dia, moletom creme, jeito de selfie | **em casa** · rodízio |
+  | quarto (luzinhas) | `07392bce3332e22ece64f19480181c3a` | beira da cama à noite, luzinhas, moletom preto, controle ao lado | **em casa** · rodízio |
+  | setup (original) | `c328911551104420832ec0a8a325ffb3` | quarto gamer à noite, luz violeta, fone no pescoço, moletom preto | **em casa** · rodízio |
+  | headset na mesa | `bdb47ee84f7879e5d38c26372719706e` | escrivaninha do quarto, fone na cabeça, luz ciano do monitor | **em casa** · rodízio |
+  | quarto (fim de tarde) | `a274a823397af2ed11e0edf74a0928f2` | beira da cama, pôsteres | **vetado**: pôster com personagem de terceiros no fundo |
+  | piloto | `f10f6dcdac3302247fada99ac7f830f0` | cockpit de nave, asteroides na janela, jaqueta de voo | fora do rodízio (não é em casa) |
+  | arcade | `40b4fbad585ae61ed1f941bee8bed4de` | fliperama neon, camisa xadrez ciano, fone no pescoço | fora do rodízio (não é em casa) |
+  | rua à noite | `0df421d96740889777fbd7680e12554c` | rua com neon desfocado, jaqueta jeans, tom de vlog | fora do rodízio (não é em casa) |
 
   Novos looks: `create_prompt_avatar` com `avatarGroupId` e `avatarId` = look original como referência de rosto,
-  `aspectRatio: "9:16"`, prompt começando por "The same woman as in the reference image (Estela)…".
+  `aspectRatio: "9:16"`, prompt começando por "The same woman as in the reference image (Estela)…", cena **dentro da
+  casa dela** e sempre com "no posters, no characters, no logos, no readable text" no fundo (o quarto de 29/09 saiu
+  com um pôster de personagem de terceiros e foi vetado). Conferir o look numa folha renderizada pelo Actions antes de
+  usar. Custo medido: 1 crédito por look.
 - Prompt de criação (reusar para gerar novos looks consistentes):
 
   > Photorealistic vertical portrait photo of Estela, a 25-year-old Brazilian woman who is a passionate gamer.
@@ -53,17 +67,16 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   > night, softly blurred, cyan and violet RGB light strips and a monitor glowing with a dark space-shooter game full
   > of small asteroids. Soft cinematic key light, shallow depth of field, natural skin texture, no text, no watermark.
 
-- Na arte — **camada v2, desde 29/09, a pedido do Guilherme: nada sobre o rosto e nada fixo além da legenda.**
-  Molde: `templates/estela-video.html`.
-  - Selo de IA pequeno (GeistMono 20 px) no canto superior esquerdo, **só nos 3 primeiros segundos** (meta
-    `video-overlay-until` = 3; some com fade de 0,4 s).
-  - Legenda própria queimada frase a frase a partir do .srt: BigShoulders 56 px, caixa baixa, números em ciano, pílula
-    escura translúcida, **ancorada pela base em y = 1490** (uma linha em ~1420–1490, duas em ~1350–1490). Nos looks
-    atuais o rosto vai de ~370 (topo do cabelo) a ~1170 (queixo).
+- Na arte (pedidos do Guilherme em 29/09): **nada sobre o rosto, sem selo de IA, e nada além da legenda nos reels.**
+  - **Reels** — molde `templates/estela-video.html` (camada v3): só a legenda própria, queimada frase a frase a partir
+    do .srt: BigShoulders 56 px, caixa baixa, números em ciano, pílula escura translúcida, **ancorada pela base em
+    y = 1490** (uma linha em ~1420–1490, duas em ~1350–1490). Nos looks atuais o rosto vai de ~370 a ~1170 (queixo).
+  - **Stories** — molde `templates/estela-story.html`: **vídeo puro**, sem legenda, sem selo, nada por cima. A fala
+    começa direto no assunto do dia.
   - Qualquer outro elemento sobre o vídeo só se for **temporário e pequeno**.
-  - A estreia (29/09) saiu na camada v1 — selo fixo no topo, rente à cabeça, e legenda de 82 px em caixa alta logo
-    abaixo do queixo —, que o Guilherme achou grande demais e em cima do rosto. A comparação lado a lado está em
-    `posts/_estela-camada-v2/` (a mesma estreia renderizada na v2; laboratório, não publicado).
+  - Histórico da camada: a estreia (29/09) saiu na v1 — selo fixo no topo e legenda de 82 px em caixa alta —, que o
+    Guilherme achou grande demais e em cima do rosto; a v2 (legenda pequena + selo por 3 s, em
+    `posts/_estela-camada-v2/`) durou só a tarde de 29/09; a v3 tirou o selo.
 
 ## Voz
 
@@ -78,20 +91,25 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
    `resolution: "1080p"`, `caption: {file_format: "srt"}` (**sem** `style`: a legenda queimada é a nossa),
    `expressiveness` (`medium` é o padrão), `motionPrompt` e `brandGlossaryId`.
 2. `get_video` até `status: completed` → `video_url` e `subtitle_url` (URLs assinadas, expiram em ~7 dias).
-3. Pasta `posts/AAAA-MM-DD-slug/`: copiar `templates/estela-video.html` como `post.html` e trocar `video-src`
-   (= `video_url`) e `video-subtitles` (= `subtitle_url`); manter `video-captions` = `srt` e `video-overlay-until` = `3`.
-   Mais o `caption.md`. O push dispara o Actions, que baixa o vídeo, enquadra em 1080×1920, aplica o selo nos 3
-   primeiros segundos, queima a legenda e commita `reel.mp4`, `reel-cover.png` e `legenda.srt`.
+3. Pasta `posts/AAAA-MM-DD-slug/` (story: `posts/AAAA-MM-DD-story-slug/`): copiar o molde como `post.html` —
+   `templates/estela-video.html` para reel, `templates/estela-story.html` para story — e trocar `video-src`
+   (= `video_url`) e `video-subtitles` (= `subtitle_url`). Mais o `caption.md`. O push dispara o Actions, que baixa o
+   vídeo, enquadra em 1080×1920, queima a legenda (só no reel) e commita `reel.mp4`, `reel-cover.png` e `legenda.srt`.
 4. QA pela folha de contato do `reel.mp4` baixado do raw.githubusercontent.com (os arquivos da HeyGen não abrem daqui):
-   **nada sobre o rosto** (legenda abaixo do queixo, selo sumido depois dos 3 s), sincronia, artefatos (mãos, dentes, olhos).
-5. Buffer: reel como sempre, com `metadata.instagram.isAiGenerated: true` e capa depois dos 3 s (sem o selo): o molde
-   usa `reel-cover` = 4,0 s, então `thumbnailOffset` = 4000, salvo se a folha de contato mostrar um instante melhor.
+   **nada sobre o rosto**, cena em casa, sincronia, artefatos (mãos, dentes, olhos) e áudio presente.
+5. Buffer, sempre com `metadata.instagram.isAiGenerated: true`:
+   - reel: como qualquer reel (`type: "reel"`, `shouldShareToFeed: true`), capa no instante mais bonito da folha de
+     contato (`thumbnailOffset`, padrão 1000);
+   - story: `metadata.instagram = { type: "story", shouldShareToFeed: false, isAiGenerated: true }`, sem texto,
+     `assets` com o `reel.mp4`. Horário padrão **16:00**. O 1º story (29/09) saiu às 15:36 e foi publicado na hora.
 
 ## Custos e limites
 
 - **Plano Creator desde 29/09/2026**: 600 créditos por mês (renovam todo dia 29), 1080p, sem marca d'água.
-- Custo medido em 29/09: 4 looks novos + 1 vídeo de 28 s em 1080p = **13 créditos** (600 → 587). Referência de trabalho:
-  ~13 créditos por vídeo de ~30 s. Mesmo com 3 vídeos por semana e refações, sobra folga no mês.
+- Custo medido em 29/09: **1 crédito por look** e **~1 crédito a cada 3 s de vídeo** em 1080p (vídeo de 28,4 s = 9;
+  de 23,9 s = 8). Saldo: 600 → 587 → 575 → 574 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look).
+- Orçamento com a cadência nova (1 story por dia de ~20 s + 2–3 reels por semana de ~30 s): ~80 créditos por semana,
+  ~340 por mês — cabe nos 600 com folga para refações.
 - Guarda de segurança da rotina: **abaixo de 100 créditos, não gerar vídeo** — trocar por reel de dados até renovar.
 - Histórico: o teste de 28/09 foi no plano gratuito (720p, marca d'água, criação de avatar pela API bloqueada com 403).
 
@@ -99,7 +117,7 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
 
 Calendário, cadências e variáveis de produção em teste (look, gestos, motor, voz, duração): seção 3b do `PLAYBOOK.md`.
 Temas que combinam com ela: ranking da semana narrado · reação a evento (recorde, nick novo, marco) · desafio lançado
-por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vindas a estreantes · bastidor da IA.
+por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vindas a estreantes · bastidor dela.
 
 ## Histórico de vídeos
 
@@ -107,3 +125,4 @@ por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vind
 |---|---|---|---|---|
 | 29/09 | `2026-09-29-estela-se-apresenta` | setup | estreia (base: Avatar IV, expressiveness medium, Friendly) — camada v1 | `d07ad625f3a315a38be1d861dd2a34db` |
 | 29/09 | `_estela-camada-v2` (laboratório) | setup | mesma estreia na camada v2 (legenda menor, selo temporário) | `d07ad625f3a315a38be1d861dd2a34db` |
+| 29/09 | `2026-09-29-story-quatro-dias-de-silencio` | sala (sofá) | **1º story** (vídeo puro, 23,9 s, em casa) — Buffer `6abc050cf9bc1204bdf27037` | `4d6870a5cae2dcae9379e14fbf80cbce` |

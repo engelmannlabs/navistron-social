@@ -1,0 +1,8 @@
+# Arquivo — incidentes e rodadas de 25 a 27/09/2026
+
+Linhas movidas de `log/experiments.md` em 29/09/2026 para manter o log diário curto (o arquivo passou de 12 KB).
+Anteriores em [`incidentes-2026-09-15-a-19.md`](incidentes-2026-09-15-a-19.md) e [`incidentes-2026-09-08-a-14.md`](incidentes-2026-09-08-a-14.md).
+
+- 2026-09-25 01:01 BRT · **O dia mais cheio da telemetria**: 525 partidas (+10), todas em 24/09 entre 13h43 e 15h35, com **dois nicks novos** — ROBER (5 partidas seguidas, chegando ao Tier III) e YAGO. **A hipótese post → partidas caiu**: 23/09 fechou em 4 de alcance e 24/09 em 10, ou seja, os dois dias de MAIS jogo foram os de MENOS alcance. Tratar Instagram e jogo como problemas separados.
+- 2026-09-26 01:01 BRT · Rodada disparada sozinha, 6ª seguida. Telemetria: 528 partidas (+3), **44 pilotos** (nick novo XXXX). As três partidas de 25/09 saíram às **11h37–11h42**, antes do post das 13h02, e são o **primeiro registro de jogo antes do meio-dia em semanas**. Decisão do dia: **parar de usar alcance como métrica de qualidade do post**. (A leitura "bimodal" registrada aqui foi corrigida em 27/09.)
+- 2026-09-27 01:10 BRT · Rodada disparada sozinha, 7ª seguida. **Telemetria congelada**: 528 partidas e 44 pilotos — 26/09 fechou sem nenhuma partida. Sem evento, sem nick novo: saída foi **desafio num eixo inédito, duração** (partida mais longa 4:57; 23 de 528 passaram dos 4 minutos). **Descoberta operacional:** o Buffer só recalcula métrica uma vez por dia, então o post de ontem sempre chega à rodada com ~30 min de vida — foi isso que produziu o "1" de 25/09, que fechou em **56**, e a tese bimodal que caiu.
