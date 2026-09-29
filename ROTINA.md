@@ -87,9 +87,10 @@ PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira nã
   `personagens/ESTELA.md`. Custo medido: ~1 crédito a cada 3 s de vídeo em 1080p (≈ 8 por story de ~24 s, ≈ 10 por reel
   de ~30 s) e 1 por look novo. Conferir o saldo com `get_current_user` antes de gerar; **abaixo de 100 créditos, não
   gerar vídeo da Estela** (reel vira reel de dados; o story do dia é pulado e relatado).
-- **Pedidos do Guilherme para a Estela (29/09)**: sem selo de IA na arte (o rótulo de IA do Instagram basta), nada sobre
-  o rosto, só a legenda pequena nos reels, stories em vídeo puro, e **cenas sempre dentro da casa dela** (só os looks
-  "em casa" da ficha entram no rodízio, em reels e stories).
+- **Pedidos do Guilherme para a Estela (29/09)**: sem selo de IA na arte e **sem dizer que é IA na fala ou na legenda**
+  (o rótulo de IA do Instagram, `isAiGenerated`, é o aviso — obrigatório), nada sobre o rosto, só a legenda pequena nos
+  reels, stories em vídeo puro, e **cenas sempre dentro da casa dela** (só os looks "em casa" da ficha entram no rodízio,
+  em reels e stories).
 
 ## Parte 1 — Instagram
 
@@ -133,7 +134,7 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
    (é o Guilherme falando), 3–6 linhas curtas, um pedido explícito, fechando com "Grátis, sem login, link na bio 🚀"
    e 5–8 hashtags (+ #reels em reels). Se o artigo do blog do dia tiver relação com o post, citá-lo na legenda
    ("artigo completo no blog, link na bio"). Todo número com data. Nunca inventar piloto, score, marco ou promessa.
-   Nos reels da Estela, a legenda é dela, em primeira pessoa, assinando "— Estela, a IA do Navistron".
+   Nos reels da Estela, a legenda é dela, em primeira pessoa, assinando "— Estela" (sem dizer que é IA e sem `#ia`).
 5. **Montar a arte**: se a cópia de trabalho não existir, baixar via `get_file_contents` os arquivos
    `templates/base.css`, `templates/base.js`, `templates/reel.css`, `scripts/setup-fonts.sh`, `scripts/audio.mjs`,
    `scripts/qa.py` e o `post.html` de referência; recriar a estrutura de pastas localmente e rodar
@@ -159,10 +160,10 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
       piscar) e artefatos (mãos, dentes, olhos).
 5c. **Story da Estela — todo dia, além do post do feed** (pedido do Guilherme em 29/09):
    a. `get_current_user` → créditos. Abaixo de 100, pular o story e relatar.
-   b. Roteiro de 40–60 palavras (15–25 s), tom de story gravado em casa: **1ª frase "Oi, aqui é a Estela, a IA do
-      Navistron"** (é o aviso de IA falado, já que o story não tem texto), um fato conferido da telemetria com data (ou
-      uma mecânica conferida no código), pedido de ação ("joga e põe o nick no game over", "link na bio"). Não repetir o
-      assunto do reel do dia palavra por palavra — o story pode ser o bastidor, a provocação ou o lembrete do dia.
+   b. Roteiro de 40–60 palavras (15–25 s), tom de story gravado em casa, **direto ao conteúdo — sem dizer que é IA**
+      (pedido do Guilherme; o aviso é o rótulo do Instagram): gancho na 1ª frase, um fato conferido da telemetria com
+      data (ou uma mecânica conferida no código), pedido de ação ("joga e põe o nick no game over", "link na bio"). Não
+      repetir o assunto do reel do dia palavra por palavra — o story pode ser o bastidor, a provocação ou o lembrete do dia.
    c. Look "em casa" diferente do último vídeo dela; registrar no `caption.md`.
    d. `create_video_from_avatar` com os mesmos parâmetros do 5b.d (o `caption` em srt serve só de transcrição).
    e. Pasta `posts/AAAA-MM-DD-story-slug/` com o `post.html` copiado de `templates/estela-story.html` (trocar

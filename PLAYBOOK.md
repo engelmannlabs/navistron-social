@@ -46,7 +46,7 @@ inteiro de duas fórmulas do jogo.
 | **Carrossel** (3:4, 3–6 slides) | `post.html` (slide 1) + `slide-2.html`… | Ranking semanal (1 piloto por slide), mecânica passo a passo, "5 fatos da telemetria" | Slide 1 = gancho + "arrasta →"; cada slide 1 ideia; último slide = CTA + @navistron; mesma paleta em todos |
 | **Imagem única** (3:4) | `post.html` | Marco, shout-out rápido, bastidor | Título ≤ 12 palavras, número grande, cores dos tiers |
 | **Reel da Estela** (9:16, 20–40 s, avatar HeyGen) | `post.html` tipo `video` + `caption.md` (ver `personagens/ESTELA.md`) | Ranking narrado, reação a evento, desafio lançado por ela, mecânica explicada, boas-vindas a estreantes | **Só a legenda pequena embaixo, sem selo e nada sobre o rosto** (pedidos do Guilherme, 29/09), molde `templates/estela-video.html`; **cena dentro da casa dela** (looks "em casa" da ficha); gancho na 1ª frase; um look por vídeo, nunca o mesmo do vídeo anterior dela |
-| **Story da Estela** (9:16, 15–25 s, avatar HeyGen) | `post.html` do molde `templates/estela-story.html` + `caption.md`, em `posts/AAAA-MM-DD-story-slug/` | **Todo dia, às 16:00, fora da contagem do feed**: provocação do dia, lembrete, bastidor, fato fresco da telemetria | **Vídeo puro**: sem legenda, sem selo, nada por cima; cena em casa; 1ª frase "aqui é a Estela, a IA do Navistron"; rótulo de IA do Instagram ligado |
+| **Story da Estela** (9:16, 15–25 s, avatar HeyGen) | `post.html` do molde `templates/estela-story.html` + `caption.md`, em `posts/AAAA-MM-DD-story-slug/` | **Todo dia, às 16:00, fora da contagem do feed**: provocação do dia, lembrete, bastidor, fato fresco da telemetria | **Vídeo puro**: sem legenda, sem selo, nada por cima; cena em casa; fala direto do conteúdo, sem dizer que é IA; rótulo de IA do Instagram ligado |
 
 Mix semanal (desde 29/09/2026): **7 publicações por semana no feed como base — ~4 reels de dados, 2–3 reels da Estela e
 1 carrossel** —, com a distribuição exata definida pelo calendário de testes da seção 3b, **mais 1 story da Estela por dia**
@@ -78,7 +78,7 @@ Dentro de cada vídeo da Estela, **uma** variável de produção por vez, regist
 
 Temas da Estela (mesmas regras de rotação de pilar): ranking da semana narrado · reação a evento do dia (recorde,
 nick novo, marco) · desafio lançado por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vindas a
-estreantes pelo nick · bastidor da IA (o que ela percebeu lendo a telemetria).
+estreantes pelo nick · bastidor dela (o que ela percebeu lendo a telemetria).
 
 Stories da Estela: 1 por dia em todas as semanas, às 16:00 — horário escolhido por cair dentro da faixa em que o jogo
 acontece (14h–18h em dias úteis); anotar views e respostas quando o Buffer trouxer a métrica.
@@ -92,9 +92,9 @@ de outro formato, o evento manda; o calendário se ajusta e o log registra a tro
   ou se o calendário de testes (seção 3b) pedir. Nunca mais de 2/dia no feed. **Mais 1 story da Estela por dia**, à parte.
 - **Reels e stories da Estela**: sempre com `metadata.instagram.isAiGenerated = true` no Buffer — é o aviso de IA; sem
   selo na arte (pedido do Guilherme, 29/09). Nos reels, por cima do vídeo só a legenda pequena; nos stories, nada.
-  Cena sempre dentro da casa dela.
-  Legenda na voz dela, em primeira pessoa, assinando "— Estela, a IA do Navistron"; o pedido da primeira linha segue a
-  regra atual (ação no jogo). Ela nunca finge ser humana nem que joga, e só fala número conferido com data.
+  Cena sempre dentro da casa dela. **Ela não diz que é IA** — nem na fala, nem na legenda (pedido do Guilherme, 29/09):
+  só o conteúdo. Legenda na voz dela, em primeira pessoa, assinando "— Estela"; o pedido da primeira linha segue a
+  regra atual (ação no jogo). Ela nunca finge ser humana nem diz que jogou, e só fala número conferido com data.
 - **Horário padrão: 13:00, todos os dias, inclusive fim de semana.** Série até 22/09 — diurnos: 135 (16/09, qua),
   28 (19/09, sáb), 35 em 29 h (20/09, dom); noturnos: 1 (15/09, 18:30), 1 (17/09, 20:30), 46 (18/09, 19:30).
   Três diurnos seguidos foram distribuídos, mas **o horário ajuda, não decide sozinho**: o Instagram distribui de
@@ -104,8 +104,8 @@ de outro formato, o evento manda; o calendário se ajusta e o log registra a tro
   só são recalculadas de madrugada — um post lido com 5 h aparece como 1. Nenhuma conclusão de alcance antes disso.
 - Legenda: primeira pessoa (é o Guilherme falando; nos reels da Estela, é ela), 3–6 linhas curtas, **um pedido
   explícito**, fecha com "grátis, sem login, link na bio 🚀". 5–8 hashtags no fim:
-  `#navistron #jogodenave #arcade #indiegame #jogogratis #gamedev #jogosbrasileiros` (+ `#reels` em reels; nos reels da
-  Estela, `#ia` no lugar de `#gamedev`). **O pedido vai na PRIMEIRA linha.** Sete variações de pedido de comentário
+  `#navistron #jogodenave #arcade #indiegame #jogogratis #gamedev #jogosbrasileiros` (+ `#reels` em reels; os reels da
+  Estela usam as mesmas, sem `#ia`). **O pedido vai na PRIMEIRA linha.** Sete variações de pedido de comentário
   (score, palpite, sim/não, aposta, marcação, opinião, emoji) deram zero; **desde 28/09 o pedido é a ação no jogo**
   ("joga e põe o nick no game over"), medida por nick novo no ranking.
 - **Todo número vem da telemetria e traz a data.** Se um dado não puder ser confirmado em /stats, não entra.
