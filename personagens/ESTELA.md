@@ -20,7 +20,8 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
 
 ## Regras que não se negociam
 
-1. No primeiro contato de cada vídeo, fica claro que ela é IA — na fala ou no selo fixo "ESTELA · A IA DO NAVISTRON".
+1. No começo de cada vídeo fica claro que ela é IA: selo pequeno "ESTELA · IA DO NAVISTRON" nos 3 primeiros segundos
+   (some sozinho) e, quando couber, na fala. No Instagram, sempre com o rótulo de IA.
 2. Só números da telemetria (`/stats`) com data, ou do código do jogo com a conta rodada — as mesmas regras do `PLAYBOOK.md`.
 3. Nunca promete prêmio, nunca fala em nome do Guilherme, nunca inventa piloto, score ou marco.
 4. No Instagram, todo post dela sai marcado como conteúdo de IA (`isAiGenerated: true` no Buffer).
@@ -52,8 +53,17 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   > night, softly blurred, cyan and violet RGB light strips and a monitor glowing with a dark space-shooter game full
   > of small asteroids. Soft cinematic key light, shallow depth of field, natural skin texture, no text, no watermark.
 
-- Na arte: selo fixo no topo **"● ESTELA · A IA DO NAVISTRON"** e legenda própria (pílulas escuras, BigShoulders
-  caixa-alta, números em ciano), queimada frase a frase a partir do .srt — ambos definidos no `post.html` da pasta.
+- Na arte — **camada v2, desde 29/09, a pedido do Guilherme: nada sobre o rosto e nada fixo além da legenda.**
+  Molde: `templates/estela-video.html`.
+  - Selo de IA pequeno (GeistMono 20 px) no canto superior esquerdo, **só nos 3 primeiros segundos** (meta
+    `video-overlay-until` = 3; some com fade de 0,4 s).
+  - Legenda própria queimada frase a frase a partir do .srt: BigShoulders 56 px, caixa baixa, números em ciano, pílula
+    escura translúcida, **ancorada pela base em y = 1490** (uma linha em ~1420–1490, duas em ~1350–1490). Nos looks
+    atuais o rosto vai de ~370 (topo do cabelo) a ~1170 (queixo).
+  - Qualquer outro elemento sobre o vídeo só se for **temporário e pequeno**.
+  - A estreia (29/09) saiu na camada v1 — selo fixo no topo, rente à cabeça, e legenda de 82 px em caixa alta logo
+    abaixo do queixo —, que o Guilherme achou grande demais e em cima do rosto. A comparação lado a lado está em
+    `posts/_estela-camada-v2/` (a mesma estreia renderizada na v2; laboratório, não publicado).
 
 ## Voz
 
@@ -68,12 +78,14 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
    `resolution: "1080p"`, `caption: {file_format: "srt"}` (**sem** `style`: a legenda queimada é a nossa),
    `expressiveness` (`medium` é o padrão), `motionPrompt` e `brandGlossaryId`.
 2. `get_video` até `status: completed` → `video_url` e `subtitle_url` (URLs assinadas, expiram em ~7 dias).
-3. Pasta `posts/AAAA-MM-DD-slug/`: copiar o `post.html` do último vídeo dela e trocar `video-src` (= `video_url`),
-   `video-subtitles` (= `subtitle_url`) e o comentário; manter `video-captions` = `srt`. Mais o `caption.md`. O push
-   dispara o Actions, que baixa o vídeo, enquadra em 1080×1920, aplica o selo, queima a legenda e commita `reel.mp4`,
-   `reel-cover.png` e `legenda.srt`.
-4. QA pela folha de contato do `reel.mp4` baixado do raw.githubusercontent.com (os arquivos da HeyGen não abrem daqui).
-5. Buffer: reel como sempre, com `metadata.instagram.isAiGenerated: true`.
+3. Pasta `posts/AAAA-MM-DD-slug/`: copiar `templates/estela-video.html` como `post.html` e trocar `video-src`
+   (= `video_url`) e `video-subtitles` (= `subtitle_url`); manter `video-captions` = `srt` e `video-overlay-until` = `3`.
+   Mais o `caption.md`. O push dispara o Actions, que baixa o vídeo, enquadra em 1080×1920, aplica o selo nos 3
+   primeiros segundos, queima a legenda e commita `reel.mp4`, `reel-cover.png` e `legenda.srt`.
+4. QA pela folha de contato do `reel.mp4` baixado do raw.githubusercontent.com (os arquivos da HeyGen não abrem daqui):
+   **nada sobre o rosto** (legenda abaixo do queixo, selo sumido depois dos 3 s), sincronia, artefatos (mãos, dentes, olhos).
+5. Buffer: reel como sempre, com `metadata.instagram.isAiGenerated: true` e capa depois dos 3 s (sem o selo): o molde
+   usa `reel-cover` = 4,0 s, então `thumbnailOffset` = 4000, salvo se a folha de contato mostrar um instante melhor.
 
 ## Custos e limites
 
@@ -93,4 +105,5 @@ por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vind
 
 | Data | Pasta | Look | Variável testada | HeyGen video_id |
 |---|---|---|---|---|
-| 29/09 | `2026-09-29-estela-se-apresenta` | setup | estreia (base: Avatar IV, expressiveness medium, Friendly) | `d07ad625f3a315a38be1d861dd2a34db` |
+| 29/09 | `2026-09-29-estela-se-apresenta` | setup | estreia (base: Avatar IV, expressiveness medium, Friendly) — camada v1 | `d07ad625f3a315a38be1d861dd2a34db` |
+| 29/09 | `_estela-camada-v2` (laboratório) | setup | mesma estreia na camada v2 (legenda menor, selo temporário) | `d07ad625f3a315a38be1d861dd2a34db` |

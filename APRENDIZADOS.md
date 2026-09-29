@@ -4,6 +4,14 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-09-29 · **Primeiro retorno do Guilherme sobre a Estela: menos coisa na tela.** A estreia agradou, mas a
+  legenda queimada (82 px, caixa alta, logo abaixo do queixo) e o selo fixo no topo, rente à cabeça, pareceram grandes
+  e em cima do rosto. **Regra para todo vídeo com rosto: nada sobre o rosto, nada fixo além da legenda, e qualquer
+  outro elemento só se for temporário e pequeno.** Camada v2 em `templates/estela-video.html`: selo de IA de 20 px no
+  canto superior esquerdo só nos 3 primeiros segundos (some com fade) e legenda de 56 px, em caixa baixa, com a base em
+  y = 1490 — o queixo fica em ~1170 nos looks atuais. O aviso de IA continua garantido pelo selo, pela fala e pelo
+  rótulo do Instagram. Do lado do jogo: 3º dia seguido sem partida (26 a 28/09), e a segunda-feira com o pedido novo
+  ("joga e registra o nick") terminou com zero nick novo.
 - 2026-09-28 · **Pilar não prevê alcance — e o pedido de comentário morreu.** Os dois posts de mecânica pura da
   série fecharam em **111 (22/09)** e **14 (26/09)**: mesmo pilar, mesmo formato, mesmo slot das 13:00, 8× de
   diferença. Com a correção de ontem (o "1" de 25/09 era parcial e virou 56), a série do slot fica 2, 4, 10, 14,
@@ -29,11 +37,6 @@ apenas este arquivo, e não o playbook inteiro.
   sozinho** — 528 partidas, 44 pilotos, e as três partidas de 25/09 saíram às **11h37**, antes do post e fora do
   padrão "14h–18h". *(Entrada corrigida em 27/09: a leitura original dizia "bimodal, sem meio-termo", o que se
   apoiava no valor parcial de 25/09.)*
-- 2026-09-25 · **O melhor dia da telemetria — e a queda da hipótese do Instagram.** Em 24/09 o jogo teve **10 partidas
-  entre 13h43 e 15h35**, o dia mais cheio da série, com **dois nicks novos de uma vez**: ROBER (cinco partidas
-  seguidas, chegando ao Tier III) e YAGO. **Mas o post de 23/09 fechou em 4 de alcance e o de 24/09 em 10** — os dias
-  de MAIS jogo foram os de MENOS alcance. **Instagram e jogo são dois problemas separados.** Nota de produção: o
-  "Y" da GeistMono vira "V" quando reduzido, então **nick novo se confere em crop 1:1**.
 
-Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 e 24/09) e
+Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 25/09) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
