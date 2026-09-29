@@ -45,11 +45,12 @@ inteiro de duas fórmulas do jogo.
 | **Reel** (9:16, 1080×1920, 8–15 s, 30 fps) | `post.html` com `<meta name="post-type" content="reel">` + `audio.json` opcional | **Padrão para alcance.** Desafio, recorde, contagem regressiva do ranking, mecânica animada, marco | Gancho legível no **frame 0** (a 1ª linha sozinha já tem de dizer do que se trata); 1 ideia por cena, 3–5 cenas; número grande animado (contador) sempre que houver número; CTA nos últimos 2 s; texto entre y=300 e y=1500; trilha chiptune própria (`scripts/audio.mjs`, `hit` no clímax); capa (`reel-cover`) no instante do gancho completo |
 | **Carrossel** (3:4, 3–6 slides) | `post.html` (slide 1) + `slide-2.html`… | Ranking semanal (1 piloto por slide), mecânica passo a passo, "5 fatos da telemetria" | Slide 1 = gancho + "arrasta →"; cada slide 1 ideia; último slide = CTA + @navistron; mesma paleta em todos |
 | **Imagem única** (3:4) | `post.html` | Marco, shout-out rápido, bastidor | Título ≤ 12 palavras, número grande, cores dos tiers |
-| **Reel da Estela** (9:16, 20–40 s, avatar HeyGen) | `post.html` tipo `video` + `caption.md` (ver `personagens/ESTELA.md`) | Ranking narrado, reação a evento, desafio lançado por ela, mecânica explicada, boas-vindas a estreantes | **Nada sobre o rosto e nada fixo além da legenda** (pedido do Guilherme, 29/09): selo de IA pequeno só nos 3 primeiros segundos e legenda pequena embaixo, do molde `templates/estela-video.html`; elemento extra só se for temporário e pequeno; gancho na 1ª frase; um look por vídeo, nunca o mesmo do vídeo anterior dela |
+| **Reel da Estela** (9:16, 20–40 s, avatar HeyGen) | `post.html` tipo `video` + `caption.md` (ver `personagens/ESTELA.md`) | Ranking narrado, reação a evento, desafio lançado por ela, mecânica explicada, boas-vindas a estreantes | **Só a legenda pequena embaixo, sem selo e nada sobre o rosto** (pedidos do Guilherme, 29/09), molde `templates/estela-video.html`; **cena dentro da casa dela** (looks "em casa" da ficha); gancho na 1ª frase; um look por vídeo, nunca o mesmo do vídeo anterior dela |
+| **Story da Estela** (9:16, 15–25 s, avatar HeyGen) | `post.html` do molde `templates/estela-story.html` + `caption.md`, em `posts/AAAA-MM-DD-story-slug/` | **Todo dia, às 16:00, fora da contagem do feed**: provocação do dia, lembrete, bastidor, fato fresco da telemetria | **Vídeo puro**: sem legenda, sem selo, nada por cima; cena em casa; 1ª frase "aqui é a Estela, a IA do Navistron"; rótulo de IA do Instagram ligado |
 
-Mix semanal (desde 29/09/2026): **7 publicações por semana como base — ~4 reels de dados, 2–3 reels da Estela e 1
-carrossel** —, com a distribuição exata definida pelo calendário de testes da seção 3b. Segunda-feira continua sendo
-ranking (reel de dados, carrossel ou a Estela narrando).
+Mix semanal (desde 29/09/2026): **7 publicações por semana no feed como base — ~4 reels de dados, 2–3 reels da Estela e
+1 carrossel** —, com a distribuição exata definida pelo calendário de testes da seção 3b, **mais 1 story da Estela por dia**
+(às 16:00, fora da contagem do feed). Segunda-feira continua sendo ranking (reel de dados, carrossel ou a Estela narrando).
 **Medida prática do gancho:** cada linha do título cabe em ~13 caracteres a 168px; 4 linhas a partir de `top: 420px`
 terminam por volta de y=1250, dentro da zona segura. Reaproveitar o `post.html` do dia anterior como esqueleto e
 trocar textos, números, seed do PRNG e `TOTAL` é o caminho mais rápido e mais seguro.
@@ -67,7 +68,9 @@ e mantendo reels de dados e carrosséis. Uma pergunta por semana; a leitura é f
 | S43 · 19–25/10 | 1/dia | 3×, alternando 13:00 e 19:00 | 1× | 3× | Qual horário serve melhor a Estela? |
 
 Dentro de cada vídeo da Estela, **uma** variável de produção por vez, registrada no `caption.md` e no log:
-- **Look** (rodízio, nunca o mesmo em dois vídeos seguidos): setup, headset na mesa, piloto, arcade, rua à noite.
+- **Look** (rodízio só entre os looks **em casa**, nunca o mesmo em dois vídeos seguidos, reel ou story): sala (sofá),
+  cozinha (café), escrivaninha na janela, quarto (luzinhas), setup e headset na mesa. Piloto, arcade e rua à noite
+  saíram do rodízio em 29/09 (não são em casa).
 - **Gestos**: `expressiveness` low / medium / high; `motionPrompt` calmo × animado (mãos visíveis) × inclinada pra câmera.
 - **Motor**: `avatar_iv` (padrão) × `avatar_v`.
 - **Voz**: Sofia Brazil - Friendly (padrão) × Sofia Brazil - Excited nos desafios.
@@ -77,16 +80,19 @@ Temas da Estela (mesmas regras de rotação de pilar): ranking da semana narrado
 nick novo, marco) · desafio lançado por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vindas a
 estreantes pelo nick · bastidor da IA (o que ela percebeu lendo a telemetria).
 
+Stories da Estela: 1 por dia em todas as semanas, às 16:00 — horário escolhido por cair dentro da faixa em que o jogo
+acontece (14h–18h em dias úteis); anotar views e respostas quando o Buffer trouxer a métrica.
 Leitura ao fim das 4 semanas (26/10): alcance mediano por formato (só posts com ≥ 40 h), views, follows e as duas
 métricas que importam de verdade — **nicks novos e partidas por semana** na telemetria. Se um evento forte cair num dia
 de outro formato, o evento manda; o calendário se ajusta e o log registra a troca.
 
 ## 4. Regras de publicação
 
-- **1 publicação por dia como base.** Uma segunda só se houver evento (recorde quebrado, Tier V alcançado, marco) ou
-  se o calendário de testes (seção 3b) pedir. Nunca mais de 2/dia.
-- **Reels da Estela**: sempre com `metadata.instagram.isAiGenerated = true` no Buffer e selo de IA discreto nos 3
-  primeiros segundos da arte (sobreposição sobre vídeo com rosto é sempre temporária e mínima; só a legenda fica).
+- **1 publicação por dia no feed como base.** Uma segunda só se houver evento (recorde quebrado, Tier V alcançado, marco)
+  ou se o calendário de testes (seção 3b) pedir. Nunca mais de 2/dia no feed. **Mais 1 story da Estela por dia**, à parte.
+- **Reels e stories da Estela**: sempre com `metadata.instagram.isAiGenerated = true` no Buffer — é o aviso de IA; sem
+  selo na arte (pedido do Guilherme, 29/09). Nos reels, por cima do vídeo só a legenda pequena; nos stories, nada.
+  Cena sempre dentro da casa dela.
   Legenda na voz dela, em primeira pessoa, assinando "— Estela, a IA do Navistron"; o pedido da primeira linha segue a
   regra atual (ação no jogo). Ela nunca finge ser humana nem que joga, e só fala número conferido com data.
 - **Horário padrão: 13:00, todos os dias, inclusive fim de semana.** Série até 22/09 — diurnos: 135 (16/09, qua),

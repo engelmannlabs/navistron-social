@@ -84,8 +84,12 @@ PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira nã
   `search_code` + `get_file_contents`); os artigos antigos do blog são referência, não fonte.
 - **HeyGen** (conector `HeyGen`, plano **Creator** desde 29/09/2026: 600 créditos por mês, renovação todo dia 29): a
   **Estela**, apresentadora IA do perfil. Looks, voz, glossário, regras da personagem e o passo a passo do vídeo em
-  `personagens/ESTELA.md`. Custo medido: ~13 créditos por vídeo de ~30 s em 1080p. Conferir o saldo com
-  `get_current_user` antes de gerar; **abaixo de 100 créditos, não gerar vídeo da Estela** (trocar por reel de dados).
+  `personagens/ESTELA.md`. Custo medido: ~1 crédito a cada 3 s de vídeo em 1080p (≈ 8 por story de ~24 s, ≈ 10 por reel
+  de ~30 s) e 1 por look novo. Conferir o saldo com `get_current_user` antes de gerar; **abaixo de 100 créditos, não
+  gerar vídeo da Estela** (reel vira reel de dados; o story do dia é pulado e relatado).
+- **Pedidos do Guilherme para a Estela (29/09)**: sem selo de IA na arte (o rótulo de IA do Instagram basta), nada sobre
+  o rosto, só a legenda pequena nos reels, stories em vídeo puro, e **cenas sempre dentro da casa dela** (só os looks
+  "em casa" da ficha entram no rodízio, em reels e stories).
 
 ## Parte 1 — Instagram
 
@@ -101,11 +105,12 @@ PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira nã
   `post.png`, `slide-2.png`…
 - **Imagem única**: `post.html` 1080×1440 com `templates/base.css`.
 - **Reel da Estela** (vídeo com avatar): `post.html` com `<meta name="post-type" content="video">`, `video-src` (URL do
-  vídeo na HeyGen), `video-subtitles` (URL do .srt), `video-captions` = `srt` e `video-overlay-until` = `3`. O HTML é só
-  a camada e sai sempre do molde `templates/estela-video.html` (camada v2, pedido do Guilherme em 29/09): **nada sobre o
-  rosto e nada fixo além da legenda** — selo de IA pequeno no canto só nos 3 primeiros segundos e legenda pequena
-  embaixo, com a base em y = 1490. Elemento extra só se for temporário e pequeno. Copiar o molde e trocar as URLs. O
-  Actions baixa o vídeo, enquadra em 1080×1920, queima a legenda frase a frase e gera `reel.mp4` + `reel-cover.png`.
+  vídeo na HeyGen), `video-subtitles` (URL do .srt) e `video-captions` = `srt`. O HTML é só a camada e sai sempre do
+  molde `templates/estela-video.html` (camada v3): **só a legenda pequena embaixo** (base em y = 1490), sem selo, nada
+  sobre o rosto. Copiar o molde e trocar as URLs. O Actions baixa o vídeo, enquadra em 1080×1920, queima a legenda frase
+  a frase e gera `reel.mp4` + `reel-cover.png`.
+- **Story da Estela** (todo dia, à parte do feed — passo 5c): vídeo puro de 15–25 s, molde `templates/estela-story.html`
+  (sem legenda, sem selo, nada por cima), cena dentro de casa, publicado como story com rótulo de IA.
 Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pelas métricas por formato do log.
 
 ### Passo a passo
@@ -116,8 +121,8 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
    post com ≥ 48 h sem métricas no log, preencher alcance, views (reels), likes, comentários, saves e eng% em
    `log/experiments.md` e escrever 1 linha de leitura. Comparar formatos e horários; se um padrão ficou claro,
    registrar em `APRENDIZADOS.md`. Verificar posts em `error` no Buffer e relatar. **Se já existir
-   publicação de hoje** (sent hoje ou scheduled com dueAt hoje), só criar outra se houver evento relevante —
-   senão registrar métricas, relatar e ir para a Parte 2.
+   publicação de hoje no feed** (sent hoje ou scheduled com dueAt hoje), só criar outra se houver evento relevante —
+   senão registrar métricas, fazer o story do dia (passo 5c), relatar e ir para a Parte 2.
 3. **Ler a telemetria de hoje** nas URLs acima. Procurar eventos: recorde batido, tier inédito (V+), novo top 3 da
    semana, marcos redondos (500 partidas, 50 pilotos, 20 h), piloto novo com score alto. Antes de afirmar "só X
    pilotos…", conferir as partidas anônimas em `?visao=partidas&ordem=score`. Para o tier de uma partida, usar o
@@ -139,8 +144,9 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
    a. `get_current_user` → créditos. Abaixo de 100, fazer reel de dados e registrar o motivo.
    b. Roteiro de 60–100 palavras pelas regras de `personagens/ESTELA.md`: gancho na 1ª frase, números da telemetria com
       data, pedido de ação no fim, bordão "Te vejo no ranking!" quando couber.
-   c. Escolher o look pelo rodízio (nunca o mesmo do vídeo anterior dela) e **uma** variável de produção do plano de
-      testes (gestos, motor, voz ou duração — seção 3b do PLAYBOOK). Registrar os dois no `caption.md`.
+   c. Escolher o look pelo rodízio **só entre os looks "em casa"** da ficha (nunca o mesmo do vídeo anterior dela, reel
+      ou story) e **uma** variável de produção do plano de testes (gestos, motor, voz ou duração — seção 3b do
+      PLAYBOOK). Registrar os dois no `caption.md`.
    d. `create_video_from_avatar`: `avatarId` do look, `script`, `voiceId`, `aspectRatio: "9:16"`, `fit: "cover"`,
       `resolution: "1080p"`, `caption: {file_format: "srt"}` (sem `style`: a legenda é nossa), `expressiveness`,
       `motionPrompt`, `brandGlossaryId`, `title`. Depois `get_video` a cada ~45 s até `completed` (limite 10 min).
@@ -149,8 +155,23 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
       `video-subtitles` = `subtitle_url`) e o `caption.md` (frontmatter com look, variável testada, `heygen_video_id`,
       créditos antes/depois).
    f. Depois do render (passo 7), QA: baixar `reel.mp4` com curl do raw.githubusercontent.com, montar a folha de contato
-      e conferir: **nada sobre o rosto** (legenda abaixo do queixo; selo só até 3 s), sincronia, legenda (sem corte, sem
+      e conferir: **nada sobre o rosto** (legenda abaixo do queixo), cena em casa, sincronia, legenda (sem corte, sem
       piscar) e artefatos (mãos, dentes, olhos).
+5c. **Story da Estela — todo dia, além do post do feed** (pedido do Guilherme em 29/09):
+   a. `get_current_user` → créditos. Abaixo de 100, pular o story e relatar.
+   b. Roteiro de 40–60 palavras (15–25 s), tom de story gravado em casa: **1ª frase "Oi, aqui é a Estela, a IA do
+      Navistron"** (é o aviso de IA falado, já que o story não tem texto), um fato conferido da telemetria com data (ou
+      uma mecânica conferida no código), pedido de ação ("joga e põe o nick no game over", "link na bio"). Não repetir o
+      assunto do reel do dia palavra por palavra — o story pode ser o bastidor, a provocação ou o lembrete do dia.
+   c. Look "em casa" diferente do último vídeo dela; registrar no `caption.md`.
+   d. `create_video_from_avatar` com os mesmos parâmetros do 5b.d (o `caption` em srt serve só de transcrição).
+   e. Pasta `posts/AAAA-MM-DD-story-slug/` com o `post.html` copiado de `templates/estela-story.html` (trocar
+      `video-src` e `video-subtitles`) e o `caption.md` (frontmatter: data, formato story, look, `heygen_video_id`,
+      créditos, horário, `buffer_post_id`, fonte dos dados; depois o roteiro). Push, render (passo 7) e QA como no 5b.f.
+   f. Buffer: `create_post` com `assets: [{ video: { url: ".../reel.mp4", metadata: { thumbnailOffset: 1000, title } } }]`,
+      `metadata: { instagram: { type: "story", shouldShareToFeed: false, isAiGenerated: true } }`, sem `text`,
+      `mode: "customScheduled"` às **16:00 de hoje** (se já passou, publicar ainda hoje até ~22:00). Conferir `scheduled`
+      e anotar o id; depois de publicado, o `externalLink` do story.
 6. **Publicar no repositório** com `push_files` (branch `main`, um único commit): os HTML do post, `audio.json`
    (se reel) e `caption.md` (frontmatter: data, formato, pilar, gancho, horario_publicacao, buffer_post_id,
    fonte_dados; depois a legenda). Isso dispara o GitHub Actions (`render.yaml`, filtro `posts/**/post.html`):
@@ -169,12 +190,13 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
    - Carrossel: `assets` com uma entrada `image` por slide, na ordem.
    - Reel: `assets: [{ video: { url: ".../reel.mp4", metadata: { thumbnailOffset: <ms da capa>, title: "<título curto>" } } }]`,
      `metadata: { instagram: { type: "reel", shouldShareToFeed: true } }`.
-   - Reel da Estela: igual ao reel, com `metadata.instagram.isAiGenerated: true` (rótulo de conteúdo de IA) e capa depois
-     dos 3 s, sem o selo (`thumbnailOffset` = 4000, o `reel-cover` do molde, salvo instante melhor na folha de contato).
+   - Reel da Estela: igual ao reel, com `metadata.instagram.isAiGenerated: true` (rótulo de conteúdo de IA) e capa no
+     instante mais bonito da folha de contato (`thumbnailOffset`, padrão 1000).
+   - Story da Estela: ver passo 5c.f.
    - Horário: 13:00 é o padrão; o calendário de testes (PLAYBOOK 3b) pode pedir 19:00 para o 2º post do dia.
    Conferir status `scheduled` e dimensões do asset; anotar o id.
-9. **Registrar**: linha nova em `log/experiments.md` e `buffer_post_id` no `caption.md` (`create_or_update_file`
-   com `sha` atual).
+9. **Registrar**: linha nova em `log/experiments.md` (uma para o post do feed e outra para o story) e `buffer_post_id`
+   no `caption.md` (`create_or_update_file` com `sha` atual).
 
 ## Parte 2 — Artigo do dia no blog (navistron.io/blog)
 
@@ -214,15 +236,15 @@ Regras completas na seção 6 do PLAYBOOK (formato do objeto, checklist SEO, clu
 
 ## Relatório final (poucas linhas, via SendUserMessage)
 
-Instagram: o que foi agendado (formato, gancho, horário, id) e o que as métricas ensinaram. Blog: título, URL,
+Instagram: o que foi agendado no feed e no story (formato, gancho, look, horário, id) e o que as métricas ensinaram. Blog: título, URL,
 keyword, PR. Eventos da telemetria notados. Créditos HeyGen restantes quando houver vídeo da Estela. Próxima rodada
 agendada (data/hora). Problemas — se um conector estiver sem autorização, dizer claramente; é a única coisa que o
 Guilherme precisa resolver à mão.
 
 ## Limites que não se negociam
 
-- Instagram: máximo 2 publicações por dia, padrão 1; nunca publicar sem o arquivo final confirmado no
-  repositório. Blog: exatamente 1 artigo por dia; nunca editar `blogArticles.js`, páginas, componentes ou
+- Instagram: no feed, máximo 2 publicações por dia, padrão 1; mais 1 story da Estela por dia, fora dessa conta. Nunca
+  publicar sem o arquivo final confirmado no repositório. Blog: exatamente 1 artigo por dia; nunca editar `blogArticles.js`, páginas, componentes ou
   configuração do jogo.
 - Nada de dado inventado, nick zoado ou promessa em nome do Guilherme. Sem emoji na arte; emoji na legenda com
   moderação. No blog, tom editorial, sem emoji.
