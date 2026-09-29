@@ -5,6 +5,14 @@
 //        metas do reel: post-size (1080x1920), reel-duration (s), reel-fps (30), reel-cover (s)
 //        o HTML expõe window.__seek(t) para posicionar a animação no tempo t (determinístico)
 //        áudio: scripts/audio.mjs gera a trilha; opções em audio.json (opcional) na pasta do post
+//   post.html com <meta name="post-type" content="video"> -> reel.mp4 + reel-cover.png
+//        vídeo pronto vindo de fora (ex.: avatar gerado na HeyGen). metas: video-src (URL https ou arquivo
+//        da própria pasta), post-size (1080x1920), reel-cover (s). O vídeo é enquadrado em 9:16 (cover),
+//        normalizado para 30 fps / H.264 / AAC, e o próprio post.html vira uma CAMADA TRANSPARENTE por cima
+//        (marca, selo de IA) — por isso o body do HTML deve ter fundo transparente. Opcional: video-subtitles
+//        (URL ou arquivo .srt) é salvo como legenda.srt na pasta do post. A fonte externa é baixada
+//        uma única vez: com o reel.mp4 já gerado e o HTML igual, nunca re-baixa (nem com --all), porque
+//        URLs assinadas expiram.
 // Uso: node scripts/render.mjs [--all] [--only <slug>]
 //  - por padrão só renderiza o que não existe ou cujo HTML/base mudou (hashes em render.json)
 //  - falha (exit 1) se alguma @font-face não carregar — nunca publicar com fonte fallback.
@@ -31,6 +39,16 @@ const deps = depFiles.map(p => existsSync(join(root, p)) ? readFileSync(join(roo
 // ffmpeg: do sistema, ou o binário estático instalado pelo setup-fonts.sh (npm ffmpeg-static)
 const FFMPEG = process.env.FFMPEG_PATH || (existsSync(join(root, 'node_modules/ffmpeg-static/ffmpeg')) ? join(root, 'node_modules/ffmpeg-static/ffmpeg') : 'ffmpeg');
 const meta = (html, name, def) => { const m = html.match(new RegExp(`name="${name}"\\s+content="([^"]+)"`)); return m ? m[1] : def; };
+
+// duração de um arquivo de mídia (s), lida do cabeçalho que o ffmpeg imprime; null se não conseguir
+function probeDuration(file) {
+  try { execFileSync(FFMPEG, ['-hide_banner', '-i', file], { stdio: 'pipe' }); }
+  catch (e) {
+    const m = String(e.stderr || '').match(/Duration: (\d+):(\d+):([\d.]+)/);
+    if (m) return +((+m[1]) * 3600 + (+m[2]) * 60 + (+m[3])).toFixed(2);
+  }
+  return null;
+}
 
 const browser = await chromium.launch();
 let failures = 0, rendered = 0;
@@ -66,18 +84,65 @@ for (const slug of slugs) {
 
   for (const file of htmls) {
     const html = readFileSync(join(dir, file), 'utf8');
-    const isReel = file === 'post.html' && meta(html, 'post-type', 'image') === 'reel';
+    const type = file === 'post.html' ? meta(html, 'post-type', 'image') : 'image';
+    const isReel = type === 'reel';
+    const isVideo = type === 'video';
     const audioOpts = existsSync(join(dir, 'audio.json')) ? readFileSync(join(dir, 'audio.json'), 'utf8') : '{}';
-    const hash = sha(html + deps + (isReel ? audioOpts : ''));
-    const outName = isReel ? 'reel.mp4' : basename(file, '.html') + '.png';
+    // vídeo externo: o hash depende só do HTML (mudança de template não pode forçar re-download de URL expirada)
+    const hash = isVideo ? sha(html) : sha(html + deps + (isReel ? audioOpts : ''));
+    const outName = (isReel || isVideo) ? 'reel.mp4' : basename(file, '.html') + '.png';
     const outPath = join(dir, outName);
-    if (!all && existsSync(outPath) && state.files[file] && state.files[file].hash === hash) continue;
+    const upToDate = existsSync(outPath) && state.files[file] && state.files[file].hash === hash;
+    if (upToDate && (!all || isVideo)) continue;
 
-    const [w, h] = meta(html, 'post-size', isReel ? '1080x1920' : '1080x1440').split('x').map(Number);
+    const [w, h] = meta(html, 'post-size', (isReel || isVideo) ? '1080x1920' : '1080x1440').split('x').map(Number);
     try {
       const { page, fonts, overflow } = await openPage(join(dir, file), w, h);
       if (overflow.length) console.warn(`[${slug}/${file}] aviso: elementos fora do canvas:`, overflow.slice(0, 5));
-      if (!isReel) {
+      if (isVideo) {
+        const src = meta(html, 'video-src', '');
+        if (!src) throw new Error('post-type video sem <meta name="video-src">');
+        const coverT = parseFloat(meta(html, 'reel-cover', '1'));
+        const fdir = join(dir, '.frames'); rmSync(fdir, { recursive: true, force: true }); mkdirSync(fdir);
+        const srcPath = join(fdir, 'src.mp4');
+        if (/^https?:\/\//.test(src)) {
+          const res = await fetch(src);
+          if (!res.ok) throw new Error(`download do vídeo falhou: HTTP ${res.status}`);
+          writeFileSync(srcPath, Buffer.from(await res.arrayBuffer()));
+        } else {
+          const local = join(dir, src);
+          if (!existsSync(local)) throw new Error('video-src local não encontrado: ' + src);
+          writeFileSync(srcPath, readFileSync(local));
+        }
+        // legenda em texto (opcional): guardada ao lado do vídeo para reuso (tempos exatos de cada frase)
+        const subs = meta(html, 'video-subtitles', '');
+        if (subs) {
+          let srt = '';
+          if (/^https?:\/\//.test(subs)) {
+            const rs = await fetch(subs);
+            if (rs.ok) srt = await rs.text(); else console.warn(`[${slug}] legenda não baixada: HTTP ${rs.status}`);
+          } else if (existsSync(join(dir, subs))) srt = readFileSync(join(dir, subs), 'utf8');
+          if (srt) writeFileSync(join(dir, 'legenda.srt'), srt);
+        }
+        const srcDur = probeDuration(srcPath);
+        if (!srcDur) throw new Error('vídeo de origem ilegível (sem duração)');
+        // camada transparente = o próprio post.html sem fundo
+        const overlayPath = join(fdir, 'overlay.png');
+        await page.screenshot({ path: overlayPath, fullPage: false, omitBackground: true });
+        const graph = `[0:v]scale=${w}:${h}:force_original_aspect_ratio=increase,crop=${w}:${h},fps=30,setsar=1[bg];[bg][1:v]overlay=0:0:format=auto[v]`;
+        execFileSync(FFMPEG, ['-y', '-loglevel', 'error', '-i', srcPath, '-i', overlayPath, '-filter_complex', graph,
+          '-map', '[v]', '-map', '0:a?', '-c:v', 'libx264', '-preset', 'medium', '-crf', '20', '-pix_fmt', 'yuv420p',
+          '-c:a', 'aac', '-b:a', '128k', '-ar', '44100', '-movflags', '+faststart', outPath], { stdio: 'inherit' });
+        execFileSync(FFMPEG, ['-y', '-loglevel', 'error', '-ss', String(coverT), '-i', outPath, '-frames:v', '1',
+          join(dir, 'reel-cover.png')], { stdio: 'inherit' });
+        rmSync(fdir, { recursive: true, force: true });
+        const dur = probeDuration(outPath);
+        const size = statSync(outPath).size;
+        // a URL assinada não vai para o render.json: guarda só o endereço sem query string
+        state.files[file] = { hash, out: outName, type: 'video', source: src.split('?')[0], width: w, height: h, fonts,
+          duration: dur, fps: 30, bytes: size, cover: 'reel-cover.png' };
+        console.log(`[${slug}/${file}] ok vídeo externo ${w}x${h} ${dur}s -> ${outName} (${(size / 1e6).toFixed(1)} MB)`);
+      } else if (!isReel) {
         await page.screenshot({ path: outPath, fullPage: false });
         state.files[file] = { hash, out: outName, width: w, height: h, fonts };
         console.log(`[${slug}/${file}] ok ${w}x${h} -> ${outName} fontes=${fonts.join(',')}`);
