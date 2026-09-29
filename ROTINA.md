@@ -31,7 +31,7 @@ não é preciso mexer na tarefa agendada.
 ```
 [ROTINA DIÁRIA NAVISTRON — disparo automático] Execute agora a rodada diária do Instagram @navistron + blog navistron.io. Ninguém está lendo em tempo real: não faça perguntas, não use AskUserQuestion, não espere confirmação — decida, execute e relate no final (SendUserMessage, curto, em português).
 PASSO 0 (obrigatório, antes de qualquer outra coisa): leia `ROTINA.md` do repositório engelmannlabs/navistron-social (conector Github, branch main). Depois garanta a próxima rodada: confira com list_triggers se já existe um lembrete pendente chamado "Navistron · rotina diária (Instagram + blog)" para as próximas 24 h; se não existir, chame send_later com at = 04:00:00Z do dia seguinte a este disparo (01:00 de Brasília, ~24 h depois), initiation "human_schedule", name "Navistron · rotina diária (Instagram + blog)" e message = o texto da seção "Texto do disparo" de ROTINA.md (idêntico; se não conseguiu ler o arquivo, use este texto aqui, idêntico).
-PASSO 1: execute a rodada completa conforme ROTINA.md (Parte 1 Instagram + Parte 2 blog), lendo antes PLAYBOOK.md, log/experiments.md e log/blog.md. A rodada roda de madrugada: "hoje" é o dia que está começando (a data local de Brasília no momento do disparo), o post do dia é agendado para as 13:00 desse mesmo dia e a telemetria lida já cobre o dia anterior inteiro.
+PASSO 1: execute a rodada completa conforme ROTINA.md (Parte 1 Instagram + Parte 2 blog), lendo antes PLAYBOOK.md, APRENDIZADOS.md, personagens/ESTELA.md, log/experiments.md e log/blog.md. A rodada roda de madrugada: "hoje" é o dia que está começando (a data local de Brasília no momento do disparo), o post do dia é agendado para as 13:00 desse mesmo dia e a telemetria lida já cobre o dia anterior inteiro.
 PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira não publicar a publicar errado — e relate.
 ```
 
@@ -43,8 +43,11 @@ PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira nã
   recriar a partir do GitHub (conector) conforme os passos abaixo. Playwright/Chromium já vêm instalados
   (`PLAYWRIGHT_BROWSERS_PATH`; nunca rodar `playwright install`); se o pacote node faltar,
   `npm install --no-save playwright@1.48.2`; para `scripts/qa.py`, `pip install playwright pillow --break-system-packages`.
-- Usar só os conectores (`Github`, `Buffer`), WebFetch, npm/pip e ferramentas locais. Não usar curl/gh/git com
+- Usar só os conectores (`Github`, `Buffer`, `HeyGen`), WebFetch, npm/pip e ferramentas locais. Não usar curl/gh/git com
   tokens do ambiente, não criar repositórios, não alterar nem apagar tarefas agendadas (exceto o Passo 0).
+- Os arquivos da HeyGen (`files2.heygen.ai`) **não são acessíveis deste ambiente** — quem baixa o vídeo é o Actions.
+  Para conferir um reel já renderizado (inclusive os da Estela), baixar o arquivo público com `curl` de
+  `raw.githubusercontent.com` (sem token) e montar uma folha de contato com ffmpeg (12 quadros) para olhar com Read.
 - Resultados grandes de conectores (ex.: `list_posts`, `list_triggers`) podem ser salvos em um arquivo de
   tool-results: extrair o JSON com python em vez de ler o arquivo inteiro.
 - Esperas (render do Actions, deploy da Vercel): `sleep 60` por chamada, no máximo 12 vezes por espera.
@@ -79,6 +82,10 @@ PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira nã
   caindo 0,25 s por míssil extra (1,0 s com 5), 320 px/s, vida 2 s, dano = dano do tier (1/2/4/7/12/20/35).
   **Antes de citar qualquer mecânica**, conferir no código do jogo (`src/app/play/page.js` do repo `navistron`, via
   `search_code` + `get_file_contents`); os artigos antigos do blog são referência, não fonte.
+- **HeyGen** (conector `HeyGen`, plano **Creator** desde 29/09/2026: 600 créditos por mês, renovação todo dia 29): a
+  **Estela**, apresentadora IA do perfil. Looks, voz, glossário, regras da personagem e o passo a passo do vídeo em
+  `personagens/ESTELA.md`. Custo medido: ~13 créditos por vídeo de ~30 s em 1080p. Conferir o saldo com
+  `get_current_user` antes de gerar; **abaixo de 100 créditos, não gerar vídeo da Estela** (trocar por reel de dados).
 
 ## Parte 1 — Instagram
 
@@ -93,11 +100,17 @@ PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira nã
 - **Carrossel**: `post.html` (slide 1, 1080×1440) + `slide-2.html`, `slide-3.html`… (3–6 slides). O Actions gera
   `post.png`, `slide-2.png`…
 - **Imagem única**: `post.html` 1080×1440 com `templates/base.css`.
-Escolher o formato pelo mix do PLAYBOOK e pelas métricas por formato do log.
+- **Reel da Estela** (vídeo com avatar): `post.html` com `<meta name="post-type" content="video">`, `video-src` (URL do
+  vídeo na HeyGen), `video-subtitles` (URL do .srt) e `video-captions` = `srt`. O HTML é só a camada: selo
+  "ESTELA · A IA DO NAVISTRON" e o molde da legenda `#cap`. Copiar o `post.html` da Estela mais recente e trocar as URLs
+  e o comentário. O Actions baixa o vídeo, enquadra em 1080×1920, queima a legenda frase a frase e gera `reel.mp4` +
+  `reel-cover.png`, como qualquer reel.
+Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pelas métricas por formato do log.
 
 ### Passo a passo
 
-1. **Ler a memória**: `PLAYBOOK.md`, `log/experiments.md`, `log/blog.md` e o `caption.md` dos 3 últimos posts.
+1. **Ler a memória**: `PLAYBOOK.md`, `APRENDIZADOS.md`, `personagens/ESTELA.md`, `log/experiments.md`, `log/blog.md` e o
+   `caption.md` dos 3 últimos posts. Pastas de `posts/` que começam com `_` são material de apoio, não publicações.
 2. **Medir o que já foi publicado**: `list_posts` (canal navistron, `includeMetrics: true`, últimos 10). Para todo
    post com ≥ 48 h sem métricas no log, preencher alcance, views (reels), likes, comentários, saves e eng% em
    `log/experiments.md` e escrever 1 linha de leitura. Comparar formatos e horários; se um padrão ficou claro,
@@ -108,18 +121,33 @@ Escolher o formato pelo mix do PLAYBOOK e pelas métricas por formato do log.
    semana, marcos redondos (500 partidas, 50 pilotos, 20 h), piloto novo com score alto. Antes de afirmar "só X
    pilotos…", conferir as partidas anônimas em `?visao=partidas&ordem=score`. Para o tier de uma partida, usar o
    ranking/recorde geral como fonte (a lista de partidas mostra o tier final, não o melhor).
-4. **Escolher a publicação do dia** pelo PLAYBOOK: formato pelo mix semanal; pilar diferente dos 2 dias
+4. **Escolher a publicação do dia** pelo PLAYBOOK: formato pelo calendário da semana (seção 3b); pilar diferente dos 2 dias
    anteriores; segunda-feira é "Ranking da semana" (top 5 de `?periodo=7d`); evento relevante tem prioridade (pode
    justificar um 2º post — nunca mais que 2). Não repetir gancho dos últimos 10 dias. Legenda em primeira pessoa
    (é o Guilherme falando), 3–6 linhas curtas, um pedido explícito, fechando com "Grátis, sem login, link na bio 🚀"
    e 5–8 hashtags (+ #reels em reels). Se o artigo do blog do dia tiver relação com o post, citá-lo na legenda
    ("artigo completo no blog, link na bio"). Todo número com data. Nunca inventar piloto, score, marco ou promessa.
+   Nos reels da Estela, a legenda é dela, em primeira pessoa, assinando "— Estela, a IA do Navistron".
 5. **Montar a arte**: se a cópia de trabalho não existir, baixar via `get_file_contents` os arquivos
    `templates/base.css`, `templates/base.js`, `templates/reel.css`, `scripts/setup-fonts.sh`, `scripts/audio.mjs`,
    `scripts/qa.py` e o `post.html` de referência; recriar a estrutura de pastas localmente e rodar
    `bash scripts/setup-fonts.sh` (baixa as fontes do npm). Escrever os HTML. Conferir com
    `python3 scripts/qa.py posts/<slug>` (gera `preview-*.png` ou `preview-reel.png`), ABRIR os PNG com a ferramenta
    Read e avaliar como designer (gancho legível, nada cortado, números certos, zonas seguras). Ajustar até ficar limpo.
+5b. **Se o formato do dia for a Estela**, no lugar do passo 5:
+   a. `get_current_user` → créditos. Abaixo de 100, fazer reel de dados e registrar o motivo.
+   b. Roteiro de 60–100 palavras pelas regras de `personagens/ESTELA.md`: gancho na 1ª frase, números da telemetria com
+      data, pedido de ação no fim, bordão "Te vejo no ranking!" quando couber.
+   c. Escolher o look pelo rodízio (nunca o mesmo do vídeo anterior dela) e **uma** variável de produção do plano de
+      testes (gestos, motor, voz ou duração — seção 3b do PLAYBOOK). Registrar os dois no `caption.md`.
+   d. `create_video_from_avatar`: `avatarId` do look, `script`, `voiceId`, `aspectRatio: "9:16"`, `fit: "cover"`,
+      `resolution: "1080p"`, `caption: {file_format: "srt"}` (sem `style`: a legenda é nossa), `expressiveness`,
+      `motionPrompt`, `brandGlossaryId`, `title`. Depois `get_video` a cada ~45 s até `completed` (limite 10 min).
+      Falhou ou travou: fazer reel de dados e registrar.
+   e. Pasta `posts/AAAA-MM-DD-slug/` com o `post.html` do tipo vídeo (`video-src` = `video_url`, `video-subtitles` =
+      `subtitle_url`) e o `caption.md` (frontmatter com look, variável testada, `heygen_video_id`, créditos antes/depois).
+   f. Depois do render (passo 7), QA: baixar `reel.mp4` com curl do raw.githubusercontent.com, montar a folha de contato
+      e conferir rosto, sincronia, legenda (sem corte, sem piscar), selo e artefatos (mãos, dentes, olhos).
 6. **Publicar no repositório** com `push_files` (branch `main`, um único commit): os HTML do post, `audio.json`
    (se reel) e `caption.md` (frontmatter: data, formato, pilar, gancho, horario_publicacao, buffer_post_id,
    fonte_dados; depois a legenda). Isso dispara o GitHub Actions (`render.yaml`, filtro `posts/**/post.html`):
@@ -138,6 +166,8 @@ Escolher o formato pelo mix do PLAYBOOK e pelas métricas por formato do log.
    - Carrossel: `assets` com uma entrada `image` por slide, na ordem.
    - Reel: `assets: [{ video: { url: ".../reel.mp4", metadata: { thumbnailOffset: <ms da capa>, title: "<título curto>" } } }]`,
      `metadata: { instagram: { type: "reel", shouldShareToFeed: true } }`.
+   - Reel da Estela: igual ao reel, com `metadata.instagram.isAiGenerated: true` (rótulo de conteúdo de IA).
+   - Horário: 13:00 é o padrão; o calendário de testes (PLAYBOOK 3b) pode pedir 19:00 para o 2º post do dia.
    Conferir status `scheduled` e dimensões do asset; anotar o id.
 9. **Registrar**: linha nova em `log/experiments.md` e `buffer_post_id` no `caption.md` (`create_or_update_file`
    com `sha` atual).
@@ -181,8 +211,9 @@ Regras completas na seção 6 do PLAYBOOK (formato do objeto, checklist SEO, clu
 ## Relatório final (poucas linhas, via SendUserMessage)
 
 Instagram: o que foi agendado (formato, gancho, horário, id) e o que as métricas ensinaram. Blog: título, URL,
-keyword, PR. Eventos da telemetria notados. Próxima rodada agendada (data/hora). Problemas — se um conector
-estiver sem autorização, dizer claramente; é a única coisa que o Guilherme precisa resolver à mão.
+keyword, PR. Eventos da telemetria notados. Créditos HeyGen restantes quando houver vídeo da Estela. Próxima rodada
+agendada (data/hora). Problemas — se um conector estiver sem autorização, dizer claramente; é a única coisa que o
+Guilherme precisa resolver à mão.
 
 ## Limites que não se negociam
 

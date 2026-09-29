@@ -45,17 +45,49 @@ inteiro de duas fórmulas do jogo.
 | **Reel** (9:16, 1080×1920, 8–15 s, 30 fps) | `post.html` com `<meta name="post-type" content="reel">` + `audio.json` opcional | **Padrão para alcance.** Desafio, recorde, contagem regressiva do ranking, mecânica animada, marco | Gancho legível no **frame 0** (a 1ª linha sozinha já tem de dizer do que se trata); 1 ideia por cena, 3–5 cenas; número grande animado (contador) sempre que houver número; CTA nos últimos 2 s; texto entre y=300 e y=1500; trilha chiptune própria (`scripts/audio.mjs`, `hit` no clímax); capa (`reel-cover`) no instante do gancho completo |
 | **Carrossel** (3:4, 3–6 slides) | `post.html` (slide 1) + `slide-2.html`… | Ranking semanal (1 piloto por slide), mecânica passo a passo, "5 fatos da telemetria" | Slide 1 = gancho + "arrasta →"; cada slide 1 ideia; último slide = CTA + @navistron; mesma paleta em todos |
 | **Imagem única** (3:4) | `post.html` | Marco, shout-out rápido, bastidor | Título ≤ 12 palavras, número grande, cores dos tiers |
+| **Reel da Estela** (9:16, 20–40 s, avatar HeyGen) | `post.html` tipo `video` + `caption.md` (ver `personagens/ESTELA.md`) | Ranking narrado, reação a evento, desafio lançado por ela, mecânica explicada, boas-vindas a estreantes | Selo de IA fixo no topo; legenda própria queimada a partir do .srt (zona segura, números em ciano); gancho na 1ª frase; um look por vídeo, nunca o mesmo do vídeo anterior dela |
 
-Mix semanal alvo: **3–4 reels, 1–2 carrosséis, 1–2 imagens**. Segunda-feira: ranking (carrossel ou reel de contagem
-regressiva 5→1). Enquanto os reels tiverem alcance ≥ 3× o das imagens, eles ficam como formato padrão.
+Mix semanal (desde 29/09/2026): **7 publicações por semana como base — ~4 reels de dados, 2–3 reels da Estela e 1
+carrossel** —, com a distribuição exata definida pelo calendário de testes da seção 3b. Segunda-feira continua sendo
+ranking (reel de dados, carrossel ou a Estela narrando).
 **Medida prática do gancho:** cada linha do título cabe em ~13 caracteres a 168px; 4 linhas a partir de `top: 420px`
 terminam por volta de y=1250, dentro da zona segura. Reaproveitar o `post.html` do dia anterior como esqueleto e
 trocar textos, números, seed do PRNG e `TOTAL` é o caminho mais rápido e mais seguro.
 
+### 3b. Calendário e plano de testes (29/09 a 25/10/2026)
+
+Pedido do Guilherme em 29/09: testar cadências, quantidade de posts por semana e temas, com a Estela como formato novo
+e mantendo reels de dados e carrosséis. Uma pergunta por semana; a leitura é feita na rodada de segunda.
+
+| Semana | Publicações | Estela | Carrossel | Reels de dados | Pergunta da semana |
+|---|---|---|---|---|---|
+| S40 · 29/09–04/10 | 1/dia | ter 29 (estreia) e sex 02 | qui 01 | qua 30, sáb 03, dom 04 | A Estela distribui diferente do reel de dados no mesmo slot? |
+| S41 · 05–11/10 | 1/dia | seg 05 (ranking narrado), qua 07, sáb 10 | sex 09 | ter 06, qui 08, dom 11 | Três vídeos dela por semana somam ou cansam? |
+| S42 · 12–18/10 | 10 (2/dia em seg, qua, sex) | seg 12, qua 14, sex 16 às **19:00**, como 2º post | sáb 17 | 13:00 todo dia, exceto sáb | O 2º post do dia soma alcance ou divide? |
+| S43 · 19–25/10 | 1/dia | 3×, alternando 13:00 e 19:00 | 1× | 3× | Qual horário serve melhor a Estela? |
+
+Dentro de cada vídeo da Estela, **uma** variável de produção por vez, registrada no `caption.md` e no log:
+- **Look** (rodízio, nunca o mesmo em dois vídeos seguidos): setup, headset na mesa, piloto, arcade, rua à noite.
+- **Gestos**: `expressiveness` low / medium / high; `motionPrompt` calmo × animado (mãos visíveis) × inclinada pra câmera.
+- **Motor**: `avatar_iv` (padrão) × `avatar_v`.
+- **Voz**: Sofia Brazil - Friendly (padrão) × Sofia Brazil - Excited nos desafios.
+- **Duração**: ~20 s × ~35 s.
+
+Temas da Estela (mesmas regras de rotação de pilar): ranking da semana narrado · reação a evento do dia (recorde,
+nick novo, marco) · desafio lançado por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vindas a
+estreantes pelo nick · bastidor da IA (o que ela percebeu lendo a telemetria).
+
+Leitura ao fim das 4 semanas (26/10): alcance mediano por formato (só posts com ≥ 40 h), views, follows e as duas
+métricas que importam de verdade — **nicks novos e partidas por semana** na telemetria. Se um evento forte cair num dia
+de outro formato, o evento manda; o calendário se ajusta e o log registra a troca.
+
 ## 4. Regras de publicação
 
-- **1 publicação por dia.** Uma segunda só se houver evento (recorde quebrado, Tier V alcançado, marco).
-  Nunca mais de 2/dia.
+- **1 publicação por dia como base.** Uma segunda só se houver evento (recorde quebrado, Tier V alcançado, marco) ou
+  se o calendário de testes (seção 3b) pedir. Nunca mais de 2/dia.
+- **Reels da Estela**: sempre com `metadata.instagram.isAiGenerated = true` no Buffer e selo de IA fixo na arte.
+  Legenda na voz dela, em primeira pessoa, assinando "— Estela, a IA do Navistron"; o pedido da primeira linha segue a
+  regra atual (ação no jogo). Ela nunca finge ser humana nem que joga, e só fala número conferido com data.
 - **Horário padrão: 13:00, todos os dias, inclusive fim de semana.** Série até 22/09 — diurnos: 135 (16/09, qua),
   28 (19/09, sáb), 35 em 29 h (20/09, dom); noturnos: 1 (15/09, 18:30), 1 (17/09, 20:30), 46 (18/09, 19:30).
   Três diurnos seguidos foram distribuídos, mas **o horário ajuda, não decide sozinho**: o Instagram distribui de
@@ -63,11 +95,12 @@ trocar textos, números, seed do PRNG e `TOTAL` é o caminho mais rápido e mais
   "fora do slot". Desde 21/09 a rodada roda à 01:00, então há 12 h de margem: perder o slot só acontece se a rodada travar.
 - **Só comparar posts com ≥ 40 h.** O alcance dos reels chega quase todo entre 24 h e 48 h, e as métricas do Instagram
   só são recalculadas de madrugada — um post lido com 5 h aparece como 1. Nenhuma conclusão de alcance antes disso.
-- Legenda: primeira pessoa (é o Guilherme falando), 3–6 linhas curtas, **um pedido explícito**, fecha com
-  "grátis, sem login, link na bio 🚀". 5–8 hashtags no fim:
-  `#navistron #jogodenave #arcade #indiegame #jogogratis #gamedev #jogosbrasileiros` (+ `#reels` em reels).
-  **Desde 21/09 o pedido vai na PRIMEIRA linha** (teste em andamento). Pedido que dá trabalho ("me manda o print")
-  teve resposta zero em 14 posts; pedido de palpite ("quantos tiros você acha?") é a variação em teste desde 22/09.
+- Legenda: primeira pessoa (é o Guilherme falando; nos reels da Estela, é ela), 3–6 linhas curtas, **um pedido
+  explícito**, fecha com "grátis, sem login, link na bio 🚀". 5–8 hashtags no fim:
+  `#navistron #jogodenave #arcade #indiegame #jogogratis #gamedev #jogosbrasileiros` (+ `#reels` em reels; nos reels da
+  Estela, `#ia` no lugar de `#gamedev`). **O pedido vai na PRIMEIRA linha.** Sete variações de pedido de comentário
+  (score, palpite, sim/não, aposta, marcação, opinião, emoji) deram zero; **desde 28/09 o pedido é a ação no jogo**
+  ("joga e põe o nick no game over"), medida por nick novo no ranking.
 - **Todo número vem da telemetria e traz a data.** Se um dado não puder ser confirmado em /stats, não entra.
   Nunca inventar piloto, score ou marco. Não fazer promessa que o Guilherme não fez.
   Antes de afirmar "só X pilotos…", conferir também as partidas anônimas em `?visao=partidas&ordem=score`.
@@ -87,7 +120,7 @@ trocar textos, números, seed do PRNG e `TOTAL` é o caminho mais rápido e mais
   "sem nome" (19/09) saíram do cardápio por 10 dias. Checar `log/experiments.md` antes de escolher.
 - Buffer: `schedulingType = "automatic"`; imagem/carrossel → `metadata.instagram.type = "post"`;
   reel → `assets: [{ video: { url, metadata: { thumbnailOffset: <ms da capa>, title } } }]` e
-  `metadata.instagram.type = "reel"`; sempre `shouldShareToFeed = true`.
+  `metadata.instagram.type = "reel"`; sempre `shouldShareToFeed = true`; reel da Estela → também `isAiGenerated = true`.
 - Se a arte não renderizou ou o Buffer devolveu erro: **não publicar**, registrar no log e avisar.
 
 ## 5. Pipeline técnico (resumo — detalhes no README e em ROTINA.md)
