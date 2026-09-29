@@ -12,7 +12,9 @@
 //        (marca, selo de IA) — por isso o body do HTML deve ter fundo transparente. Opcional: video-subtitles
 //        (URL ou arquivo .srt) é salvo como legenda.srt na pasta do post; com video-captions = "srt", cada frase
 //        do .srt é queimada no vídeo usando o elemento #cap do post.html como molde (tipografia da marca, na zona
-//        segura), com números destacados em <b>. A fonte externa é baixada
+//        segura), com números destacados em <b>. Opcional: video-overlay-until (s) limita a camada base (tudo do
+//        post.html menos a legenda, ex.: o selo de IA) aos primeiros N segundos, com fade de saída; sem essa meta a
+//        camada fica o vídeo inteiro. A fonte externa é baixada
 //        uma única vez: com o reel.mp4 já gerado e o HTML igual, nunca re-baixa (nem com --all), porque
 //        URLs assinadas expiram.
 // Uso: node scripts/render.mjs [--all] [--only <slug>]
@@ -146,6 +148,8 @@ for (const slug of slugs) {
         if (!srcDur) throw new Error('vídeo de origem ilegível (sem duração)');
         // legenda própria (opcional): uma camada transparente por frase do .srt, desenhada no #cap do post.html
         const capMode = meta(html, 'video-captions', 'off');
+        // camada base temporária (opcional): some com fade depois de N segundos — sobreposição mínima sobre o vídeo
+        const overlayUntil = Math.max(0, parseFloat(meta(html, 'video-overlay-until', '0')) || 0);
         const cues = capMode === 'srt' && existsSync(join(dir, 'legenda.srt')) ? parseSrt(readFileSync(join(dir, 'legenda.srt'), 'utf8')) : [];
         if (capMode === 'srt' && !cues.length) throw new Error('video-captions=srt, mas não há legenda.srt utilizável');
         const hasCap = await page.evaluate(() => !!document.getElementById('cap'));
@@ -165,17 +169,32 @@ for (const slug of slugs) {
               c.innerHTML = '<span>' + esc(text).replace(/(\d[\d.,:%]*\d|\d)/g, '<b>$1</b>') + '</span>';
               c.classList.add('on');
             }, cues[k].text);
-            await page.evaluate(() => document.fonts.ready.then(() => true)); // fonte da legenda carregada antes do print
+            // fonte da legenda carregada antes do print: pede a face exata (peso/tamanho/família) com o texto da frase
+            await page.evaluate(async () => {
+              const sp = document.querySelector('#cap span');
+              if (sp) { const cs = getComputedStyle(sp); await document.fonts.load(`${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`, sp.textContent); }
+              await document.fonts.ready;
+            });
             const cp = join(fdir, `cap${String(k).padStart(3, '0')}.png`);
             await page.screenshot({ path: cp, fullPage: false, omitBackground: true });
             capPaths.push(cp);
           }
+          // nenhuma fonte pode ter falhado durante as legendas (nunca publicar com fonte fallback)
+          const capFonts = await page.evaluate(() => [...document.fonts].map(f => ({ family: f.family, status: f.status })));
+          const bad = capFonts.filter(f => f.status === 'error');
+          if (bad.length) throw new Error('fontes da legenda com erro: ' + bad.map(f => f.family).join(','));
+          for (const f of capFonts) if (f.status === 'loaded' && !fonts.includes(f.family)) fonts.push(f.family);
         }
-        let graph = `[0:v]scale=${w}:${h}:force_original_aspect_ratio=increase,crop=${w}:${h},fps=30,setsar=1[bg];[bg][1:v]overlay=0:0:format=auto[v0]`;
+        let graph = `[0:v]scale=${w}:${h}:force_original_aspect_ratio=increase,crop=${w}:${h},fps=30,setsar=1[bg];`;
+        if (overlayUntil > 0) {
+          const fd = Math.min(0.4, overlayUntil / 2);
+          graph += `[1:v]format=rgba,fade=t=out:st=${(overlayUntil - fd).toFixed(2)}:d=${fd.toFixed(2)}:alpha=1[ob];[bg][ob]overlay=0:0:format=auto:eof_action=pass[v0]`;
+        } else graph += `[bg][1:v]overlay=0:0:format=auto[v0]`;
         cues.forEach((c, k) => {
           graph += `;[v${k}][${k + 2}:v]overlay=0:0:format=auto:enable='between(t,${c.start.toFixed(3)},${c.end.toFixed(3)})'[v${k + 1}]`;
         });
-        execFileSync(FFMPEG, ['-y', '-loglevel', 'error', '-i', srcPath, '-i', overlayPath, ...capPaths.flatMap(cp => ['-i', cp]),
+        const baseIn = overlayUntil > 0 ? ['-loop', '1', '-framerate', '30', '-t', String(srcDur), '-i', overlayPath] : ['-i', overlayPath];
+        execFileSync(FFMPEG, ['-y', '-loglevel', 'error', '-i', srcPath, ...baseIn, ...capPaths.flatMap(cp => ['-i', cp]),
           '-filter_complex', graph, '-map', `[v${cues.length}]`, '-map', '0:a?', '-c:v', 'libx264', '-preset', 'medium',
           '-crf', '20', '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '128k', '-ar', '44100', '-movflags', '+faststart', outPath],
           { stdio: 'inherit' });
@@ -186,7 +205,7 @@ for (const slug of slugs) {
         const size = statSync(outPath).size;
         // a URL assinada não vai para o render.json: guarda só o endereço sem query string
         state.files[file] = { hash, out: outName, type: 'video', source: src.split('?')[0], width: w, height: h, fonts,
-          duration: dur, fps: 30, bytes: size, cover: 'reel-cover.png', captions: cues.length };
+          duration: dur, fps: 30, bytes: size, cover: 'reel-cover.png', captions: cues.length, overlayUntil: overlayUntil || null };
         console.log(`[${slug}/${file}] ok vídeo externo ${w}x${h} ${dur}s -> ${outName} (${(size / 1e6).toFixed(1)} MB)`);
       } else if (!isReel) {
         await page.screenshot({ path: outPath, fullPage: false });
