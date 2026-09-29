@@ -22,7 +22,7 @@ não é preciso mexer na tarefa agendada.
   24 h; se existir, não duplicar. Fazer isso ANTES do trabalho do dia garante a continuidade mesmo que a rodada de
   hoje falhe no meio.
 - Se o Guilherme tiver escrito instruções novas na conversa desde a última rodada, elas têm prioridade sobre
-  este arquivo e o PLAYBOOK — aplicar e registrar na seção "Aprendizados" do `PLAYBOOK.md`.
+  este arquivo e o PLAYBOOK — aplicar e registrar em `APRENDIZADOS.md` (e na regra do arquivo que ela mudar).
 - Ninguém está lendo em tempo real: não fazer perguntas, não usar AskUserQuestion, não esperar confirmação.
   Decidir, executar e relatar no final com SendUserMessage (curto, em português).
 
@@ -77,8 +77,8 @@ PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira nã
   5 boosts = +1 tier; dificuldade por tier 1.0/1.8/3.0/4.8/7.0/10.0/14.0; dificuldade = base × (1 + score × 0,0007);
   1 ponto por segundo vivo; meteoro pequeno = round(10×dif×0,5), grande = round(30×dif×0,5); HP do meteoro grande =
   round(3×dif) (pequeno = round(dif)); intervalo de spawn = max(0,2; 1,2/√dif) s; velocidade = min(1 + (dif−1)×0,2; 3,8)×;
-  **mísseis teleguiados são da própria nave** (não existem inimigos além dos meteoros): saem sozinhos contra o meteoro mais
-  próximo, quantidade = min(5, floor(dif) − 1) por salva (Tier II: 1 míssil com 159 pts, 5 com 3.334), intervalo de 2,0 s
+  **mísseis teleguiados são da própria nave** (não existem inimigos além dos meteoros): saem sozinhos contra os meteoros mais
+  próximos (um alvo por míssil), quantidade = min(5, floor(dif) − 1) por salva (Tier II: 1 míssil com 159 pts, 5 com 3.334), intervalo de 2,0 s
   caindo 0,25 s por míssil extra (1,0 s com 5), 320 px/s, vida 2 s, dano = dano do tier (1/2/4/7/12/20/35).
   **Antes de citar qualquer mecânica**, conferir no código do jogo (`src/app/play/page.js` do repo `navistron`, via
   `search_code` + `get_file_contents`); os artigos antigos do blog são referência, não fonte.
@@ -101,10 +101,11 @@ PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira nã
   `post.png`, `slide-2.png`…
 - **Imagem única**: `post.html` 1080×1440 com `templates/base.css`.
 - **Reel da Estela** (vídeo com avatar): `post.html` com `<meta name="post-type" content="video">`, `video-src` (URL do
-  vídeo na HeyGen), `video-subtitles` (URL do .srt) e `video-captions` = `srt`. O HTML é só a camada: selo
-  "ESTELA · A IA DO NAVISTRON" e o molde da legenda `#cap`. Copiar o `post.html` da Estela mais recente e trocar as URLs
-  e o comentário. O Actions baixa o vídeo, enquadra em 1080×1920, queima a legenda frase a frase e gera `reel.mp4` +
-  `reel-cover.png`, como qualquer reel.
+  vídeo na HeyGen), `video-subtitles` (URL do .srt), `video-captions` = `srt` e `video-overlay-until` = `3`. O HTML é só
+  a camada e sai sempre do molde `templates/estela-video.html` (camada v2, pedido do Guilherme em 29/09): **nada sobre o
+  rosto e nada fixo além da legenda** — selo de IA pequeno no canto só nos 3 primeiros segundos e legenda pequena
+  embaixo, com a base em y = 1490. Elemento extra só se for temporário e pequeno. Copiar o molde e trocar as URLs. O
+  Actions baixa o vídeo, enquadra em 1080×1920, queima a legenda frase a frase e gera `reel.mp4` + `reel-cover.png`.
 Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pelas métricas por formato do log.
 
 ### Passo a passo
@@ -114,7 +115,7 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
 2. **Medir o que já foi publicado**: `list_posts` (canal navistron, `includeMetrics: true`, últimos 10). Para todo
    post com ≥ 48 h sem métricas no log, preencher alcance, views (reels), likes, comentários, saves e eng% em
    `log/experiments.md` e escrever 1 linha de leitura. Comparar formatos e horários; se um padrão ficou claro,
-   atualizar "Aprendizados" no `PLAYBOOK.md`. Verificar posts em `error` no Buffer e relatar. **Se já existir
+   registrar em `APRENDIZADOS.md`. Verificar posts em `error` no Buffer e relatar. **Se já existir
    publicação de hoje** (sent hoje ou scheduled com dueAt hoje), só criar outra se houver evento relevante —
    senão registrar métricas, relatar e ir para a Parte 2.
 3. **Ler a telemetria de hoje** nas URLs acima. Procurar eventos: recorde batido, tier inédito (V+), novo top 3 da
@@ -144,10 +145,12 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
       `resolution: "1080p"`, `caption: {file_format: "srt"}` (sem `style`: a legenda é nossa), `expressiveness`,
       `motionPrompt`, `brandGlossaryId`, `title`. Depois `get_video` a cada ~45 s até `completed` (limite 10 min).
       Falhou ou travou: fazer reel de dados e registrar.
-   e. Pasta `posts/AAAA-MM-DD-slug/` com o `post.html` do tipo vídeo (`video-src` = `video_url`, `video-subtitles` =
-      `subtitle_url`) e o `caption.md` (frontmatter com look, variável testada, `heygen_video_id`, créditos antes/depois).
+   e. Pasta `posts/AAAA-MM-DD-slug/` com o `post.html` copiado de `templates/estela-video.html` (`video-src` = `video_url`,
+      `video-subtitles` = `subtitle_url`) e o `caption.md` (frontmatter com look, variável testada, `heygen_video_id`,
+      créditos antes/depois).
    f. Depois do render (passo 7), QA: baixar `reel.mp4` com curl do raw.githubusercontent.com, montar a folha de contato
-      e conferir rosto, sincronia, legenda (sem corte, sem piscar), selo e artefatos (mãos, dentes, olhos).
+      e conferir: **nada sobre o rosto** (legenda abaixo do queixo; selo só até 3 s), sincronia, legenda (sem corte, sem
+      piscar) e artefatos (mãos, dentes, olhos).
 6. **Publicar no repositório** com `push_files` (branch `main`, um único commit): os HTML do post, `audio.json`
    (se reel) e `caption.md` (frontmatter: data, formato, pilar, gancho, horario_publicacao, buffer_post_id,
    fonte_dados; depois a legenda). Isso dispara o GitHub Actions (`render.yaml`, filtro `posts/**/post.html`):
@@ -166,7 +169,8 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
    - Carrossel: `assets` com uma entrada `image` por slide, na ordem.
    - Reel: `assets: [{ video: { url: ".../reel.mp4", metadata: { thumbnailOffset: <ms da capa>, title: "<título curto>" } } }]`,
      `metadata: { instagram: { type: "reel", shouldShareToFeed: true } }`.
-   - Reel da Estela: igual ao reel, com `metadata.instagram.isAiGenerated: true` (rótulo de conteúdo de IA).
+   - Reel da Estela: igual ao reel, com `metadata.instagram.isAiGenerated: true` (rótulo de conteúdo de IA) e capa depois
+     dos 3 s, sem o selo (`thumbnailOffset` = 4000, o `reel-cover` do molde, salvo instante melhor na folha de contato).
    - Horário: 13:00 é o padrão; o calendário de testes (PLAYBOOK 3b) pode pedir 19:00 para o 2º post do dia.
    Conferir status `scheduled` e dimensões do asset; anotar o id.
 9. **Registrar**: linha nova em `log/experiments.md` e `buffer_post_id` no `caption.md` (`create_or_update_file`
