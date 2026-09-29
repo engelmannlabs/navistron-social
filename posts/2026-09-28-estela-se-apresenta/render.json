@@ -1,0 +1,20 @@
+{
+  "files": {
+    "post.html": {
+      "hash": "c928ed417ac2f53ce2173294b5acf5b350e94dc79eb651151234f5a425b36185",
+      "out": "reel.mp4",
+      "type": "video",
+      "source": "https://files2.heygen.ai/movio/video/fe9307a7fd1c24b299a29bff277d9012/48b0969bb95a465e9a9b02e563cae985/caption.mp4",
+      "width": 1080,
+      "height": 1920,
+      "fonts": [
+        "GeistMono"
+      ],
+      "duration": 28.46,
+      "fps": 30,
+      "bytes": 15798975,
+      "cover": "reel-cover.png"
+    }
+  },
+  "renderedAt": "2026-09-29T00:48:29.297Z"
+}
