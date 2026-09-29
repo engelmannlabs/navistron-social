@@ -165,6 +165,7 @@ for (const slug of slugs) {
               c.innerHTML = '<span>' + esc(text).replace(/(\d[\d.,:%]*\d|\d)/g, '<b>$1</b>') + '</span>';
               c.classList.add('on');
             }, cues[k].text);
+            await page.evaluate(() => document.fonts.ready.then(() => true)); // fonte da legenda carregada antes do print
             const cp = join(fdir, `cap${String(k).padStart(3, '0')}.png`);
             await page.screenshot({ path: cp, fullPage: false, omitBackground: true });
             capPaths.push(cp);
