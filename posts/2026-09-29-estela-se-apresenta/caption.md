@@ -11,7 +11,7 @@ creditos_heygen: 600 → 587 depois dos 4 looks novos + este vídeo (13 crédito
 roteiro: "Oi! Eu sou a Estela — e já vou avisando: eu sou uma inteligência artificial. Não tenho mãos pra jogar, mas acompanho cada partida do Navistron: cada recorde, cada nick novo, cada vez que alguém chega perto dos vinte mil pontos. A partir de agora é comigo: nos próximos vídeos eu te conto o que rolou no jogo, quem chegou e quem tá no topo. É grátis e sem login: navistron.io. Te vejo no ranking!"
 fonte_dados: "perto dos vinte mil" = AMM2026 com 19.785 em 23/09/2026 (navistron.io/stats), a 215 pontos da barreira que só o VASCO cruzou
 horario_publicacao: 2026-09-29 13:00 BRT (terça)
-buffer_post_id: PENDENTE
+buffer_post_id: 6abb10b8c5484f9414a6c702
 instagram: metadata.instagram.isAiGenerated = true
 teste_do_dia: 1º reel da Estela. Mede-se contra os reels de dados no mesmo slot; o pedido continua sendo a ação no jogo (nick novo no ranking)
 ---

@@ -28,8 +28,20 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
 
 ## Visual
 
-- Photo avatar **"Estela"** na HeyGen, criado pelo Guilherme no app a partir do prompt abaixo.
-  Grupo e look: `c328911551104420832ec0a8a325ffb3` (retrato 1792×2368).
+- Photo avatar **"Estela"** na HeyGen, criado pelo Guilherme no app a partir do prompt abaixo. Grupo:
+  `c328911551104420832ec0a8a325ffb3`. Looks (o id do look é o `avatarId` do vídeo; folha de referência em
+  `posts/_estela-looks/post.png`):
+
+  | Look | `avatarId` | Cena |
+  |---|---|---|
+  | setup (original) | `c328911551104420832ec0a8a325ffb3` | quarto gamer, luz violeta, fone no pescoço, moletom preto |
+  | headset na mesa | `bdb47ee84f7879e5d38c26372719706e` | na mesa, fone na cabeça, luz ciano do monitor |
+  | piloto | `f10f6dcdac3302247fada99ac7f830f0` | cockpit de nave, asteroides na janela, jaqueta de voo |
+  | arcade | `40b4fbad585ae61ed1f941bee8bed4de` | fliperama neon, camisa xadrez ciano, fone no pescoço |
+  | rua à noite | `0df421d96740889777fbd7680e12554c` | rua com neon desfocado, jaqueta jeans, tom de vlog |
+
+  Novos looks: `create_prompt_avatar` com `avatarGroupId` e `avatarId` = look original como referência de rosto,
+  `aspectRatio: "9:16"`, prompt começando por "The same woman as in the reference image (Estela)…".
 - Prompt de criação (reusar para gerar novos looks consistentes):
 
   > Photorealistic vertical portrait photo of Estela, a 25-year-old Brazilian woman who is a passionate gamer.
@@ -40,7 +52,8 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   > night, softly blurred, cyan and violet RGB light strips and a monitor glowing with a dark space-shooter game full
   > of small asteroids. Soft cinematic key light, shallow depth of field, natural skin texture, no text, no watermark.
 
-- Na arte: selo fixo no topo **"● ESTELA · A IA DO NAVISTRON"** (camada do `post.html`) e legenda da HeyGen queimada.
+- Na arte: selo fixo no topo **"● ESTELA · A IA DO NAVISTRON"** e legenda própria (pílulas escuras, BigShoulders
+  caixa-alta, números em ciano), queimada frase a frase a partir do .srt — ambos definidos no `post.html` da pasta.
 
 ## Voz
 
@@ -51,23 +64,33 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
 
 ## Como gerar um vídeo dela
 
-1. `create_video_from_avatar` com: `avatarId` acima, `script`, `voiceId`, `aspectRatio: "9:16"`, `fit: "cover"`,
-   `resolution` (`720p` no plano gratuito; `1080p` exige plano pago), `caption: {file_format: "srt", style: "default"}`,
-   `expressiveness: "medium"`, `motionPrompt` de apresentadora/streamer e `brandGlossaryId`.
-2. `get_video` até `status: completed` → `video_url` (URL assinada, que expira).
-3. Pasta `posts/AAAA-MM-DD-slug/` com `post.html` do tipo vídeo (`<meta name="post-type" content="video">` +
-   `<meta name="video-src" content="<video_url>">`) e `caption.md`. O push dispara o Actions, que baixa o vídeo, enquadra
-   em 1080×1920, aplica a camada do HTML e commita `reel.mp4` + `reel-cover.png` — igual aos outros reels.
-4. Buffer: reel como sempre, com `metadata.instagram.isAiGenerated: true`.
+1. `create_video_from_avatar` com: `avatarId` do look, `script`, `voiceId`, `aspectRatio: "9:16"`, `fit: "cover"`,
+   `resolution: "1080p"`, `caption: {file_format: "srt"}` (**sem** `style`: a legenda queimada é a nossa),
+   `expressiveness` (`medium` é o padrão), `motionPrompt` e `brandGlossaryId`.
+2. `get_video` até `status: completed` → `video_url` e `subtitle_url` (URLs assinadas, expiram em ~7 dias).
+3. Pasta `posts/AAAA-MM-DD-slug/`: copiar o `post.html` do último vídeo dela e trocar `video-src` (= `video_url`),
+   `video-subtitles` (= `subtitle_url`) e o comentário; manter `video-captions` = `srt`. Mais o `caption.md`. O push
+   dispara o Actions, que baixa o vídeo, enquadra em 1080×1920, aplica o selo, queima a legenda e commita `reel.mp4`,
+   `reel-cover.png` e `legenda.srt`.
+4. QA pela folha de contato do `reel.mp4` baixado do raw.githubusercontent.com (os arquivos da HeyGen não abrem daqui).
+5. Buffer: reel como sempre, com `metadata.instagram.isAiGenerated: true`.
 
-## Custos e limites (conferidos em 29/09/2026)
+## Custos e limites
 
-- Conta atual no **plano gratuito**: 3 vídeos por mês, até 1 min cada, **720p**, com marca d'água da HeyGen.
-  Criar avatar pela API é bloqueado (403) — por isso a Estela foi criada no app.
-- Para virar rotina: plano **Creator (US$ 29/mês)** — sem marca d'água, 1080p e ~30 min de vídeo por mês no Avatar IV.
+- **Plano Creator desde 29/09/2026**: 600 créditos por mês (renovam todo dia 29), 1080p, sem marca d'água.
+- Custo medido em 29/09: 4 looks novos + 1 vídeo de 28 s em 1080p = **13 créditos** (600 → 587). Referência de trabalho:
+  ~13 créditos por vídeo de ~30 s. Mesmo com 3 vídeos por semana e refações, sobra folga no mês.
+- Guarda de segurança da rotina: **abaixo de 100 créditos, não gerar vídeo** — trocar por reel de dados até renovar.
+- Histórico: o teste de 28/09 foi no plano gratuito (720p, marca d'água, criação de avatar pela API bloqueada com 403).
 
-## Formatos que fazem sentido para ela
+## Formatos e testes
 
-- **Segunda**: a Estela narra o ranking da semana (nicks citados pelo nome).
-- **Evento** (recorde, nick novo no topo, marco): reação dela em 20 s, no mesmo dia.
-- **Desafio da semana**: ela lança o desafio; o reel de dados da rotina mostra os números.
+Calendário, cadências e variáveis de produção em teste (look, gestos, motor, voz, duração): seção 3b do `PLAYBOOK.md`.
+Temas que combinam com ela: ranking da semana narrado · reação a evento (recorde, nick novo, marco) · desafio lançado
+por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vindas a estreantes · bastidor da IA.
+
+## Histórico de vídeos
+
+| Data | Pasta | Look | Variável testada | HeyGen video_id |
+|---|---|---|---|---|
+| 29/09 | `2026-09-29-estela-se-apresenta` | setup | estreia (base: Avatar IV, expressiveness medium, Friendly) | `d07ad625f3a315a38be1d861dd2a34db` |
