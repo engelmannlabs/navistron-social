@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="14.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="2.0">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>
+  .seqline { display: flex; align-items: baseline; justify-content: space-between; font-family: var(--font-mono);
+             font-size: 72px; line-height: 1.1; margin-top: 30px; padding: 0 70px; opacity: 0; }
+  .seqline .hr { font-weight: 500; font-size: 52px; letter-spacing: 0.06em; color: var(--muted); }
+  .seqline .sc { font-weight: 800; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .seqline.top .hr { color: var(--t3); }
+  .seqline.top .sc { color: var(--t3); text-shadow: 0 0 40px rgba(250,204,21,0.55); }
+</style>
+<!-- dados: navistron.io/stats lido em 30/09/2026 ~01:05 BRT (com ?v= para forçar leitura nova; totais iguais nas três visões):
+     534 partidas (88 registradas, 446 anônimas), 44 pilotos, 18h02 jogadas, maior score 29.901.
+     ?visao=partidas&ordem=score: 1º GUI 29.901 (29/09/26 16:18, 4:01, tier III) · 2º VASCO 25.971 (06/07/26 14:47, 3:55) —
+     o recorde anterior durou 85 dias (06/07 → 29/09). Diferença: +3.930 (+15,1%). Ninguém chegou aos 30.000 (faltaram 99).
+     ?visao=partidas&ordem=data, 29/09: GUI 16:07 12.852 · 16:11 16.141 · 16:14 19.255 · 16:18 29.901 · (16:49 anônimo 7) ·
+     16:52 GUI 2.061. As quatro primeiras do GUI sobem uma a uma. Ranking geral: GUI 1º (29.901, melhor tier III, 12 partidas).
+     Antes de 29/09 16:07, a última partida era de 25/09 11:42 (100 h 25 min sem jogo). -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Telemetria pública · @navistron</div>
+
+  <div id="title" class="layer" style="top: 420px">
+    <div class="h1" style="font-size: 168px"><span class="w" id="w1">O RECORDE</span><br><span class="w" id="w2">CAIU DEPOIS</span><br><span class="w accent" id="w3">DE 85 DIAS.</span></div>
+  </div>
+
+  <div id="rec" class="layer" style="top: 600px">
+    <div class="kicker" id="reclabel">O NOVO RECORDE DO JOGO</div>
+    <div class="counter" id="num" style="margin-top: 40px">0</div>
+    <div class="sub" id="who" style="margin-top: 36px; opacity: 0"><b>GUI</b> · 29/09 · 4min01</div>
+    <div id="second" style="margin-top: 70px; opacity: 0"><span class="marker">o antigo: <b>25.971</b> · VASCO · 06/07</span></div>
+  </div>
+
+  <div id="seq" class="layer" style="top: 560px">
+    <div class="kicker">o GUI em 29/09</div>
+    <div id="lines" style="margin-top: 50px">
+      <div class="seqline" id="r1"><span class="hr">16H07</span><span class="sc">12.852</span></div>
+      <div class="seqline" id="r2"><span class="hr">16H11</span><span class="sc">16.141</span></div>
+      <div class="seqline" id="r3"><span class="hr">16H14</span><span class="sc">19.255</span></div>
+      <div class="seqline top" id="r4"><span class="hr">16H18</span><span class="sc">29.901</span></div>
+    </div>
+    <div class="sub" id="seqsub" style="margin-top: 60px; opacity: 0">4 partidas seguidas<br>cada uma <b>melhor</b> que a anterior</div>
+  </div>
+
+  <div id="ask" class="layer" style="top: 560px">
+    <div class="h1" style="font-size: 168px">QUEM CHEGA<br><span class="cyan">AOS 30 MIL?</span></div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">grátis, sem login</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 14.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+  const fmt = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  // ---------- PRNG determinístico ----------
+  let s = 3009;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- meteoros ----------
+  const N = 72, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 260 + rnd() * 220, r: 22 + rnd() * 46, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * 2100, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function drawMeteor(m, x, y, rot, glow) {
+    fx.save(); fx.translate(x, y); fx.rotate(rot);
+    fx.beginPath();
+    const n = m.shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = m.r * m.shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+    fx.fillStyle = m.big ? 'rgba(20,26,46,0.92)' : 'rgba(14,19,36,0.9)';
+    fx.fill();
+    fx.lineWidth = m.big ? 3 : 2;
+    fx.strokeStyle = glow ? 'rgba(250,204,21,0.9)' : (m.big ? 'rgba(190,208,240,0.75)' : 'rgba(150,170,205,0.6)');
+    if (glow) { fx.shadowColor = 'rgba(250,204,21,0.8)'; fx.shadowBlur = 24; }
+    fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, 'rgba(34,211,238,0.9)'); g.addColorStop(1, 'rgba(34,211,238,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = 'rgba(34,211,238,0.7)'; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = '#22D3EE'; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 150 * Math.sin(t * 0.9 + 1.2) + 60 * Math.sin(t * 2.3);
+  const shipY = 1400;
+
+  const HIT = 5.2;
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    const p = seg(t, 0, 12.5);
+    const active = Math.floor(10 + 62 * p * p);
+    const speed = 1 + 1.6 * p;
+    for (let i = 0; i < active; i++) {
+      const m = meteors[i];
+      const dist = (t * m.v * speed + m.phase);
+      const cycle = Math.floor(dist / 2100);
+      const y = (dist % 2100) - 120;
+      const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+      const glow = (t > HIT && t < HIT + 0.7 && i % 5 === 0);
+      drawMeteor(m, x, y, m.rot + t * m.w, glow);
+    }
+    fx.save();
+    for (let k = 0; ; k++) {
+      const tb = k * 0.12; if (tb > t) break;
+      const yb = shipY - 50 - (t - tb) * 1500; if (yb < -30) continue;
+      const xb = shipX(tb);
+      fx.fillStyle = 'rgba(34,211,238,0.95)'; fx.shadowColor = 'rgba(34,211,238,0.9)'; fx.shadowBlur = 14;
+      fx.fillRect(xb - 3, yb, 6, 26);
+    }
+    fx.restore();
+    drawShip(shipX(t), shipY, t);
+    const vg = fx.createRadialGradient(540, 900, 200, 540, 900, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.55)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+  const TOTAL = 29901;
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+    // 1) gancho em 3 tempos (0–1.6), some em 2.3–2.7
+    const outT = 1 - seg(t, 2.3, 0.4);
+    layer($('title'), outT, -30 * (1 - outT));
+    const ws = [['w1', -0.15, 0.28], ['w2', 0.32, 0.32], ['w3', 0.72, 0.42]];
+    for (const [id, a, d] of ws) {
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = v; $(id).style.display = 'inline-block'; $(id).style.transform = `translateY(${40 * (1 - v)}px)`;
+    }
+
+    // 2) o novo recorde: entra 2.6, conta até 5.2, trava, sai 6.9–7.2
+    const inR = ease.out3(seg(t, 2.6, 0.45)), outR = 1 - seg(t, 6.9, 0.3);
+    layer($('rec'), inR * outR, 30 * (1 - inR));
+    const cp = 1 - Math.pow(1 - seg(t, 2.7, HIT - 2.7), 2.2);
+    const locked = t >= HIT;
+    $('num').textContent = fmt(locked ? TOTAL : TOTAL * cp);
+    $('num').className = 'counter' + (locked ? ' lock' : '');
+    const pulse = locked ? 1 + 0.07 * Math.exp(-(t - HIT) * 4) : 1;
+    $('num').style.transform = `scale(${pulse})`;
+    const whoIn = ease.out3(seg(t, HIT + 0.05, 0.4));
+    $('who').style.opacity = whoIn; $('who').style.transform = `translateY(${20 * (1 - whoIn)}px)`;
+    const secIn = ease.out3(seg(t, HIT + 0.75, 0.45));
+    $('second').style.opacity = secIn; $('second').style.transform = `translateY(${24 * (1 - secIn)}px)`;
+
+    // 3) a sequência de 29/09: 7.2–10.9 (uma linha a cada 0,4 s; a do recorde por último, com pulso)
+    const inD = ease.out3(seg(t, 7.2, 0.4)), outD = 1 - seg(t, 10.6, 0.3);
+    layer($('seq'), inD * outD, 30 * (1 - inD));
+    for (let i = 1; i <= 4; i++) {
+      const v = ease.out3(seg(t, 7.45 + (i - 1) * 0.4, 0.36));
+      const el = $('r' + i);
+      const pop = (i === 4) ? 1 + 0.08 * Math.exp(-Math.max(0, t - 8.8) * 5) * (t >= 8.65 ? 1 : 0) : 1;
+      el.style.opacity = v; el.style.transform = `translateX(${34 * (1 - v)}px) scale(${pop})`;
+    }
+    const subIn = ease.out3(seg(t, 9.1, 0.4));
+    $('seqsub').style.opacity = subIn; $('seqsub').style.transform = `translateY(${20 * (1 - subIn)}px)`;
+
+    // 4) pergunta 10.95–12.2
+    const inA = ease.out3(seg(t, 10.95, 0.4)), outA = 1 - seg(t, 12.0, 0.3);
+    layer($('ask'), inA * outA, 0, 0.92 + 0.08 * inA);
+
+    // 5) CTA 12.3–14.0
+    const inC = ease.out3(seg(t, 12.3, 0.5));
+    layer($('cta'), inC, 30 * (1 - inC));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
