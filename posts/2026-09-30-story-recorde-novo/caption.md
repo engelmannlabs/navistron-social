@@ -9,7 +9,7 @@ heygen_video_id: c36792024e282e92da15d4bb2169ee6f
 descartado: 68945e075eb7c6ea8e527d4c98f47be8 (mesmo roteiro com a frase das quatro partidas, 58 palavras → 27,6 s, acima dos 15–25 s do formato; refeito com 50 palavras → 19,1 s)
 creditos_heygen: 574 → 558 (os dois vídeos, 46,7 s no total)
 horario_publicacao: 2026-09-30 16:00 BRT (agendado)
-buffer_post_id: PENDENTE
+buffer_post_id: 6abc8e2bf3db08ac9273d2a8
 fonte_dados: navistron.io/stats?visao=partidas&ordem=data e &ordem=score lidos em 30/09 ~01:05 BRT — GUI 29.901 em 29/09 às 16:18 (1º do ranking geral; o anterior era 25.971), 1ª partida do GUI no dia às 16:07, 31 min depois do story de 29/09 (15:36); nenhuma partida chegou aos 30.000
 ---
 

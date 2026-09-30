@@ -1,4 +1,4 @@
-# Arquivo — aprendizados de 14 a 17/09/2026 (mais 23 a 25/09)
+# Arquivo — aprendizados de 14 a 17/09/2026 (mais 23 a 26/09)
 
 Movido da seção 7 do `PLAYBOOK.md` em 21/09/2026 para manter o playbook curto e barato de reescrever a cada rodada.
 Anteriores em [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
@@ -8,6 +8,13 @@ perderam quando o `APRENDIZADOS.md` foi criado, em 22/09, já só com os 4 mais 
 está nas linhas por post de [`log/experiments-2026-09-18-a-21.md`](log/experiments-2026-09-18-a-21.md) e nos incidentes
 de [`log/incidentes-2026-09-15-a-19.md`](log/incidentes-2026-09-15-a-19.md).
 
+- 2026-09-26 · **O alcance da conta varia demais para servir de nota do post.** Com o slot das 13:00 fixo há nove
+  posts, dois capturaram distribuição de verdade (135 e 111) e o resto ficou entre 2 e 56 — e **não há variável sob
+  controle que separe os grupos**. **Consequência prática: parar de tratar alcance como métrica de qualidade do
+  post.** A alavanca real continua sendo a proposta de 17/09: sinal humano na conta. Enquanto isso, **o jogo cresce
+  sozinho** — 528 partidas, 44 pilotos, e as três partidas de 25/09 saíram às **11h37**, antes do post e fora do
+  padrão "14h–18h". *(Entrada corrigida em 27/09: a leitura original dizia "bimodal, sem meio-termo", o que se
+  apoiava no valor parcial de 25/09.)*
 - 2026-09-25 · **O melhor dia da telemetria — e a queda da hipótese do Instagram.** Em 24/09 o jogo teve **10 partidas
   entre 13h43 e 15h35**, o dia mais cheio da série, com **dois nicks novos de uma vez**: ROBER (cinco partidas
   seguidas, chegando ao Tier III) e YAGO. **Mas o post de 23/09 fechou em 4 de alcance e o de 24/09 em 10** — os dias
