@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .panel { top: 650px; }
+  .panel .line b.hot { color: var(--t4); text-shadow: 0 0 24px rgba(251,146,60,0.45); }
+  .note { position: absolute; left: 110px; right: 110px; top: 1150px; text-align: center; font-family: var(--font-ui);
+          font-size: 27px; line-height: 1.45; color: var(--muted); }
+</style>
+<!-- Slide 4 de 5. Conta rodada em python com as fórmulas do jogo (01/10/2026):
+     dificuldade = 3,0 (Tier III) × (1 + 10000 × 0,0007) = 24; vida do meteoro grande = round(3 × 24) = 72;
+     dano do Tier III = 4 → 18 acertos; sequência de rachaduras por acerto: 1 1 2 2 2 3 3 4 4 4 5 5 6 6 6 7 7 → quebra
+     no 18º (a 7ª acende no 16º). Com vida pequena, um acerto pode acender mais de uma, e o meteoro pode quebrar
+     antes da 7ª (ex.: Tier I aos 800 pontos, vida 5: 2, 3, 5, 6 e quebra). -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261004"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Mecânica do jogo · 01.10.2026</div>
+    <div>4 / 5</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">na prática</div>
+    <div class="title" style="font-size: 150px">18 ACERTOS.<br><span class="accent c4">A 7ª ACENDE<br>NO 16º.</span></div>
+  </div>
+
+  <div class="panel">
+    <div class="line"><span class="k">Meteoro grande · Tier III · 10 mil pontos</span></div>
+    <div class="line"><span class="k">Vida</span><b>72</b></div>
+    <div class="line"><span class="k">Dano por acerto</span><b>4</b></div>
+    <div class="line"><span class="k">Acertos para quebrar</span><b>18</b></div>
+    <div class="line"><span class="k">7ª rachadura</span><b class="hot">16º acerto</b></div>
+  </div>
+
+  <div class="note">Com pouca vida, um acerto acende mais de uma — e o meteoro pode quebrar antes da 7ª.</div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

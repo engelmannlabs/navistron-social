@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  #m { position: absolute; left: 0; top: 660px; }
+  .swipe { font-family: var(--font-ui); font-weight: 500; font-size: 23px; letter-spacing: 0.2em; text-transform: uppercase;
+           color: var(--ink); border: 2px solid rgba(143,163,199,0.4); padding: 18px 38px; border-radius: 8px; }
+</style>
+<!-- Carrossel de 01/10/2026 (slide 1 de 5) — mecânica explicada: as rachaduras do meteoro.
+     Fonte: src/app/play/page.js do repo navistron (sem mudança desde 07/09), conferido em 01/10:
+     spawnMeteor() pré-gera 7 grupos de rachaduras por meteoro; drawMeteor() acende
+     min(7, ceil((1 - hp/maxHp) * 7)) grupos, só se maxHp > 1, recortados pelo contorno do meteoro. -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261001"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Mecânica do jogo · 01.10.2026</div>
+    <div>@navistron</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">sem barra de vida <span>/</span> 7 rachaduras</div>
+    <div class="title" style="font-size: 150px">O METEORO<br>AVISA QUANDO<br><span class="accent c4">VAI QUEBRAR.</span></div>
+  </div>
+
+  <canvas id="m" width="1080" height="580"></canvas>
+
+  <div class="foot">
+    <div class="stats"><div>conferido no código do jogo</div></div>
+    <div class="swipe">arrasta →</div>
+  </div>
+
+  <script src="../../templates/base.js"></script>
+  <script src="meteoro.js"></script>
+  <script>
+    const ctx = document.getElementById('m').getContext('2d');
+    drawNavMeteor(ctx, 540, 300, 190, 5, 41, 0.45, 1.4);
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  #m { position: absolute; left: 0; top: 560px; }
+  .lead { position: absolute; left: 110px; right: 110px; top: 1140px; text-align: center; font-family: var(--font-ui);
+          font-size: 32px; line-height: 1.45; color: var(--muted); }
+  .lead b { color: var(--ink); font-weight: 600; }
+</style>
+<!-- Slide 3 de 5. A 7ª rachadura acende quando a vida perdida passa de 6/7 (85,7%): sobrou menos de 1/7 da vida. -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261003"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Mecânica do jogo · 01.10.2026</div>
+    <div>3 / 5</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">a última rachadura</div>
+    <div class="title" style="font-size: 150px">7 ACESAS:<br><span class="accent c4">SOBROU MENOS<br>DE 1/7.</span></div>
+  </div>
+
+  <canvas id="m" width="1080" height="560"></canvas>
+
+  <div class="lead">Viu as sete? O meteoro está <b>por um fio</b> — é a hora de terminar o serviço.</div>
+
+  <script src="../../templates/base.js"></script>
+  <script src="meteoro.js"></script>
+  <script>
+    const ctx = document.getElementById('m').getContext('2d');
+    drawNavMeteor(ctx, 540, 290, 175, 7, 41, 0.62, 1.4);
+  </script>
+</body>
+</html>

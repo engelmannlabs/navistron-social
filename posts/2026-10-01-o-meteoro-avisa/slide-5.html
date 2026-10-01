@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  #m { position: absolute; left: 0; top: 600px; }
+  .sub { position: absolute; left: 0; right: 0; top: 1010px; text-align: center; font-family: var(--font-ui);
+         font-size: 30px; letter-spacing: 0.06em; color: var(--muted); }
+  .handle { font-size: 20px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; }
+</style>
+<!-- Slide 5 de 5: CTA. -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261005"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Mecânica do jogo · 01.10.2026</div>
+    <div>5 / 5</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">na próxima partida</div>
+    <div class="title" style="font-size: 150px">REPARA NAS<br><span class="accent c4">RACHADURAS.</span></div>
+  </div>
+
+  <canvas id="m" width="1080" height="380"></canvas>
+
+  <div class="sub">artigo completo no blog · link na bio</div>
+
+  <div class="foot">
+    <div class="cta">Jogar grátis · navistron.io</div>
+    <div class="handle">grátis · sem login · @navistron</div>
+  </div>
+
+  <script src="../../templates/base.js"></script>
+  <script src="meteoro.js"></script>
+  <script>
+    const ctx = document.getElementById('m').getContext('2d');
+    drawNavMeteor(ctx, 300, 190, 95, 2, 77, 0.3, 1.5);
+    drawNavMeteor(ctx, 540, 170, 120, 4, 41, 0.45, 1.5);
+    drawNavMeteor(ctx, 790, 200, 85, 6, 93, 0.6, 1.5);
+  </script>
+</body>
+</html>
