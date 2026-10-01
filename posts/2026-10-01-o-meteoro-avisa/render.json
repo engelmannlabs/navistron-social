@@ -1,0 +1,60 @@
+{
+  "files": {
+    "post.html": {
+      "hash": "66f91b0054f831ac1dabd0a5d2e00130cc33690d4e1c3a676be4dfc8e41f9cad",
+      "out": "post.png",
+      "width": 1080,
+      "height": 1440,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ]
+    },
+    "slide-2.html": {
+      "hash": "b5320abdc38afc79919affd60c9d58df00593364ea30296e60bf8bd54eb06575",
+      "out": "slide-2.png",
+      "width": 1080,
+      "height": 1440,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ]
+    },
+    "slide-3.html": {
+      "hash": "69fb1180e4c2ef44133a1bb08180de3e5b678b3bb4e9abde0880960966a4788d",
+      "out": "slide-3.png",
+      "width": 1080,
+      "height": 1440,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ]
+    },
+    "slide-4.html": {
+      "hash": "13351a60501ac252b5e0cbe3003093ae2ae1cf9e171919049a11d74acb9b98d3",
+      "out": "slide-4.png",
+      "width": 1080,
+      "height": 1440,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ]
+    },
+    "slide-5.html": {
+      "hash": "73942c952f7183b82625906a6f5ddba2f0295717ac6741cd89a360f1266823bb",
+      "out": "slide-5.png",
+      "width": 1080,
+      "height": 1440,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ]
+    }
+  },
+  "renderedAt": "2026-10-01T04:10:33.965Z"
+}
