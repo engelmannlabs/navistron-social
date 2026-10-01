@@ -51,6 +51,11 @@ PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira nã
 - Resultados grandes de conectores (ex.: `list_posts`, `list_triggers`) podem ser salvos em um arquivo de
   tool-results: extrair o JSON com python em vez de ler o arquivo inteiro.
 - Esperas (render do Actions, deploy da Vercel): `sleep 60` por chamada, no máximo 12 vezes por espera.
+- **Conector sem autorização** (ex.: o Buffer pedindo OAuth de novo, como em 01/10/2026): a rodada não consegue renovar
+  sozinha. Fazer o que não depende dele — arte do feed montada e renderizada no repo, **sem agendar** (`caption.md` com
+  "NÃO AGENDADO"), blog e logs —, **não gerar vídeo da Estela** (sem Buffer não há como publicar; o crédito fica para
+  depois) e abrir o relatório dizendo qual conector o Guilherme precisa reautorizar. Quando o conector voltar, a arte
+  pronta pode ocupar o próximo slot do mesmo formato no calendário, e as métricas atrasadas são lidas nessa rodada.
 
 ## Contexto fixo
 
