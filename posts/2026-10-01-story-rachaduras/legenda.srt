@@ -1,0 +1,51 @@
+1
+00:00:00,300 --> 00:00:01,320
+Repara numa coisa na
+
+2
+00:00:01,360 --> 00:00:02,860
+próxima partida: o
+
+3
+00:00:02,900 --> 00:00:04,010
+meteoro avisa quando vai
+
+4
+00:00:04,050 --> 00:00:04,650
+quebrar.
+
+5
+00:00:04,950 --> 00:00:06,230
+Ele tem sete rachaduras
+
+6
+00:00:06,270 --> 00:00:07,940
+escondidas, e cada uma
+
+7
+00:00:08,020 --> 00:00:09,000
+acende quando ele perde
+
+8
+00:00:09,130 --> 00:00:10,470
+mais um sétimo da vida.
+
+9
+00:00:10,710 --> 00:00:11,630
+Viu a sétima?
+
+10
+00:00:11,730 --> 00:00:12,700
+Termina ele!
+
+11
+00:00:12,990 --> 00:00:14,610
+Joga hoje, põe o seu
+
+12
+00:00:14,650 --> 00:00:16,150
+nick no game over e te
+
+13
+00:00:16,230 --> 00:00:17,440
+vejo no ranking!
