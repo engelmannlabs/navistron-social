@@ -111,8 +111,8 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
 
 - **Plano Creator desde 29/09/2026**: 600 créditos por mês (renovam todo dia 29), 1080p, sem marca d'água.
 - Custo medido em 29/09: **1 crédito por look** e **~1 crédito a cada 3 s de vídeo** em 1080p (vídeo de 28,4 s = 9;
-  de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16). Saldo: 600 → 587 → 575 → 574 → 558 (estreia + 4 looks; 4 looks em
-  casa + 1º story; 1 look; story de 30/09 + uma versão descartada).
+  de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16; em 01/10, 17,5 s = 6). Saldo: 600 → 587 → 575 → 574 → 558 → 552
+  (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma versão descartada; story de 01/10).
 - Orçamento com a cadência nova (1 story por dia de ~20 s + 2–3 reels por semana de ~30 s): ~80 créditos por semana,
   ~340 por mês — cabe nos 600 com folga para refações.
 - Guarda de segurança da rotina: **abaixo de 100 créditos, não gerar vídeo** — trocar por reel de dados até renovar.
@@ -132,3 +132,4 @@ por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vind
 | 29/09 | `_estela-camada-v2` (laboratório) | setup | mesma estreia na camada v2 (legenda menor, selo temporário) | `d07ad625f3a315a38be1d861dd2a34db` |
 | 29/09 | `2026-09-29-story-quatro-dias-de-silencio` | sala (sofá) | **1º story** (vídeo puro, 23,9 s, em casa) — Buffer `6abc050cf9bc1204bdf27037` | `4d6870a5cae2dcae9379e14fbf80cbce` |
 | 30/09 | `2026-09-30-story-recorde-novo` | escrivaninha na janela | voz **Excited** (story de 19,1 s, o 1º sem dizer que é IA) — Buffer `6abc8e2bf3db08ac9273d2a8`; versão de 27,6 s descartada (`68945e075eb7c6ea8e527d4c98f47be8`) | `c36792024e282e92da15d4bb2169ee6f` |
+| 01/10 | `2026-10-01-story-rachaduras` | cozinha (café) | **expressiveness high** com gestos (story de 17,5 s, "a Estela explica" as rachaduras), voz Friendly — Buffer `6abe9d5e0fdd0066b7ac64ca` | `12fa47b232ddde6c8fb3535f1384e7d0` |

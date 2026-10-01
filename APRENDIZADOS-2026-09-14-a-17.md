@@ -1,4 +1,4 @@
-# Arquivo — aprendizados de 14 a 17/09/2026 (mais 23 a 26/09)
+# Arquivo — aprendizados de 14 a 17/09/2026 (mais 23 a 27/09)
 
 Movido da seção 7 do `PLAYBOOK.md` em 21/09/2026 para manter o playbook curto e barato de reescrever a cada rodada.
 Anteriores em [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
@@ -8,6 +8,13 @@ perderam quando o `APRENDIZADOS.md` foi criado, em 22/09, já só com os 4 mais 
 está nas linhas por post de [`log/experiments-2026-09-18-a-21.md`](log/experiments-2026-09-18-a-21.md) e nos incidentes
 de [`log/incidentes-2026-09-15-a-19.md`](log/incidentes-2026-09-15-a-19.md).
 
+- 2026-09-27 · **A leitura "bimodal" era artefato de métrica parcial — e o mecanismo agora está entendido.**
+  O post de 25/09, registrado como **1** de alcance, fechou em **56 alcance / 65 views**. O motivo é mecânico:
+  o Buffer atualiza as métricas **uma vez por dia** (carimbo `metricsUpdatedAt` igual para todos os posts), então
+  **a rodada da 01:00 sempre lê o post do dia anterior com ~30 minutos de vida**, que é quase sempre 0 ou 1.
+  **Regra nova: preencher métrica só do post de anteontem, nunca do de ontem.** Do lado do conteúdo, eixo novo
+  estreado: **duração**. A partida mais longa de todas durou **4min57** (anônimo, 09/09) e nenhuma das 528 chegou
+  aos 5 minutos — só 23 passaram dos 4.
 - 2026-09-26 · **O alcance da conta varia demais para servir de nota do post.** Com o slot das 13:00 fixo há nove
   posts, dois capturaram distribuição de verdade (135 e 111) e o resto ficou entre 2 e 56 — e **não há variável sob
   controle que separe os grupos**. **Consequência prática: parar de tratar alcance como métrica de qualidade do

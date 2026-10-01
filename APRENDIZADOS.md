@@ -4,6 +4,15 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-01 · **A Estela estreou no dobro da mediana — e o post que mais alcançou na semana foi feito à mão pelo Guilherme.**
+  A estreia (29/09, reel de 28,5 s com avatar) fechou em **29 de alcance e 42 views** com ~44 h, 1 like e 1 compartilhamento:
+  o dobro da mediana dos 11 posts anteriores do slot das 13:00 (14) e o melhor post automático desde 25/09. No mesmo
+  período, um reel que o próprio Guilherme publicou pelo app às 19:48 de 30/09 fez **59 de alcance** em ~13 h, contra 4 do
+  reel de dados daquele dia com ~20 h. São amostras de um, mas as duas apontam na direção da proposta de 17/09 (sinal
+  humano na conta): hipótese para a leitura de segunda (05/10), não regra. Os stories da Estela ficaram em 12 (29/09, com a
+  novidade da estreia) e 7 (30/09) de alcance. Operação: o conector do Buffer caiu na rodada da 01:00 (pedia OAuth de novo);
+  a regra nova da ROTINA — arte pronta sem agendar e nenhum vídeo da Estela até ele voltar — evitou gasto à toa, e com a
+  reautorização o carrossel foi agendado para as 15:00 e o story para as 16:00.
 - 2026-09-30 · **A seca acabou com recorde, mas o pedido novo ainda não trouxe nick novo.** Depois de 100 h 25 min sem
   nenhuma partida (25/09 11h42 → 29/09 16h07, mais que as 94 h de 18 → 22/09), o **GUI** — piloto que já estava no
   ranking — jogou cinco partidas em 29/09 e fez **29.901**, o novo recorde geral: o 25.971 do VASCO durava **85 dias**
@@ -35,13 +44,6 @@ apenas este arquivo, e não o playbook inteiro.
   34min52 (quase idêntico à semana 38), **quatro estreantes** — 40 → 44 pilotos, 9% de toda a história em sete
   dias — e tempo médio caindo para 1min45 porque cinco das 20 partidas duraram menos de um minuto. 4º fim de
   semana seguido com zero jogo.
-- 2026-09-27 · **A leitura "bimodal" era artefato de métrica parcial — e o mecanismo agora está entendido.**
-  O post de 25/09, registrado como **1** de alcance, fechou em **56 alcance / 65 views**. O motivo é mecânico:
-  o Buffer atualiza as métricas **uma vez por dia** (carimbo `metricsUpdatedAt` igual para todos os posts), então
-  **a rodada da 01:00 sempre lê o post do dia anterior com ~30 minutos de vida**, que é quase sempre 0 ou 1.
-  **Regra nova: preencher métrica só do post de anteontem, nunca do de ontem.** Do lado do conteúdo, eixo novo
-  estreado: **duração**. A partida mais longa de todas durou **4min57** (anônimo, 09/09) e nenhuma das 528 chegou
-  aos 5 minutos — só 23 passaram dos 4.
 
-Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 26/09) e
+Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 27/09) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
