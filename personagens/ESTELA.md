@@ -85,7 +85,8 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   Testada pela 1ª vez no story de 30/09. **A duração depende do texto, não só da contagem de palavras**: 58 palavras
   com dois-pontos e uma enumeração cheia de vírgulas deram 27,6 s na Excited (a Friendly leu 62 palavras em 23,9 s em
   29/09), e 50 palavras em frases diretas deram 19,1 s na mesma Excited. Regra prática para story: frases diretas, até
-  ~50 palavras, e conferir `duration` no `get_video` — acima de 25 s, refazer mais curto antes do push.
+  ~50 palavras, e conferir `duration` no `get_video` — acima de 25 s, refazer mais curto antes do push. No reel de 02/10,
+  62 palavras em frases diretas deram 26,1 s na Excited.
 - Glossário de pronúncia **"Navistron"** — `b3629854ac234ec6b69f92b79dfa76f5`: `navistron.io` é falado "navistron ponto io"
   (a legenda continua mostrando `navistron.io`).
 
@@ -99,6 +100,11 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
    `templates/estela-video.html` para reel, `templates/estela-story.html` para story — e trocar `video-src`
    (= `video_url`) e `video-subtitles` (= `subtitle_url`). Mais o `caption.md`. O push dispara o Actions, que baixa o
    vídeo, enquadra em 1080×1920, queima a legenda (só no reel) e commita `reel.mp4`, `reel-cover.png` e `legenda.srt`.
+3b. **Legenda com números em algarismos (reels)**: o roteiro vai com os números por extenso (a voz lê melhor) e o .srt da
+   HeyGen sai igual, quebrado em frases de 3–4 palavras. Depois da 1ª renderização, baixar o `legenda.srt` da pasta,
+   juntar as frases curtas sem cortar palavra, trocar os números por algarismos (o render pinta de ciano), salvar como
+   `legenda-digitos.srt` na mesma pasta e apontar `video-subtitles` para esse arquivo — o push dispara a 2ª renderização
+   (~2 min). Conferir com python que o texto falado de cada grupo bate com as frases originais. Feito pela 1ª vez em 02/10.
 4. QA pela folha de contato do `reel.mp4` baixado do raw.githubusercontent.com (os arquivos da HeyGen não abrem daqui):
    **nada sobre o rosto**, cena em casa, sincronia, artefatos (mãos, dentes, olhos) e áudio presente.
 5. Buffer, sempre com `metadata.instagram.isAiGenerated: true`:
@@ -111,8 +117,12 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
 
 - **Plano Creator desde 29/09/2026**: 600 créditos por mês (renovam todo dia 29), 1080p, sem marca d'água.
 - Custo medido em 29/09: **1 crédito por look** e **~1 crédito a cada 3 s de vídeo** em 1080p (vídeo de 28,4 s = 9;
-  de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16; em 01/10, 17,5 s = 6). Saldo: 600 → 587 → 575 → 574 → 558 → 552
-  (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma versão descartada; story de 01/10).
+  de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16; em 01/10, 17,5 s = 6; em 02/10, 26,0 s + 26,1 s no Avatar IV e 20,1 s no
+  Avatar V = 33). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look;
+  story de 30/09 + uma versão descartada; story de 01/10; reel de 02/10 + uma versão descartada + story no Avatar V).
+- **O Avatar V parece custar mais que o dobro**: se os dois reels de 26 s no Avatar IV custaram 9 cada, como todos os
+  anteriores, o story de 20 s no Avatar V custou ~15 (~1 crédito a cada 1,3 s). Estimativa — confirmar conferindo o saldo
+  antes e depois de um vídeo só, antes de adotar o Avatar V como padrão.
 - Orçamento com a cadência nova (1 story por dia de ~20 s + 2–3 reels por semana de ~30 s): ~80 créditos por semana,
   ~340 por mês — cabe nos 600 com folga para refações.
 - Guarda de segurança da rotina: **abaixo de 100 créditos, não gerar vídeo** — trocar por reel de dados até renovar.
@@ -133,3 +143,5 @@ por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vind
 | 29/09 | `2026-09-29-story-quatro-dias-de-silencio` | sala (sofá) | **1º story** (vídeo puro, 23,9 s, em casa) — Buffer `6abc050cf9bc1204bdf27037` | `4d6870a5cae2dcae9379e14fbf80cbce` |
 | 30/09 | `2026-09-30-story-recorde-novo` | escrivaninha na janela | voz **Excited** (story de 19,1 s, o 1º sem dizer que é IA) — Buffer `6abc8e2bf3db08ac9273d2a8`; versão de 27,6 s descartada (`68945e075eb7c6ea8e527d4c98f47be8`) | `c36792024e282e92da15d4bb2169ee6f` |
 | 01/10 | `2026-10-01-story-rachaduras` | cozinha (café) | **expressiveness high** com gestos (story de 17,5 s, "a Estela explica" as rachaduras), voz Friendly — Buffer `6abe9d5e0fdd0066b7ac64ca` | `12fa47b232ddde6c8fb3535f1384e7d0` |
+| 02/10 | `2026-10-02-partida-sem-nick` | headset na mesa | voz **Excited** num reel (26,1 s, desafio das partidas sem nick), Avatar IV, expressiveness medium; 1º reel com a legenda em algarismos — Buffer `6abf324963de9e09a28c47ca`; versão descartada antes do push por uma frase ambígua (`782b793ab909335ec7363943333d8c40`) | `9a7c8ade598bae02502959ce1524557d` |
+| 02/10 | `2026-10-02-story-acordou-cedo` | quarto (luzinhas) | motor **Avatar V** (story de 20,1 s; sem expressiveness, que ele não aceita, e sem motionPrompt), voz Friendly — Buffer `6abf3251c07bdc2fc269c5f5` | `351860d24d1764404e879d860a271407` |

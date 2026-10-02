@@ -113,6 +113,10 @@ de outro formato, o evento manda; o calendário se ajusta e o log registra a tro
   Antes de afirmar "só X pilotos…", conferir também as partidas anônimas em `?visao=partidas&ordem=score`.
   Quando der, **fechar a conta**: a soma das durações e dos scores das partidas listadas tem de bater com o tempo
   total e a média que o /stats mostra — foi assim que a semana 38 foi validada antes de virar post e artigo.
+- **Posição em ranking sempre com a lista nomeada** (02/10/2026). São três listas: o `/ranking` (partidas salvas com nick,
+  uma linha por partida), o top 10 de pilotos em `/stats` (a melhor partida de cada nick) e a lista de partidas por pontos
+  em `/stats?visao=partidas&ordem=score` (todas, inclusive as anônimas). A mesma partida pode ser 5ª numa e 11ª noutra:
+  escrever "a 11ª melhor partida da história" ou "5º piloto do top 10", nunca só "5º do ranking".
 - **Toda mecânica citada é conferida no código do jogo** (`src/app/play/page.js` no repo `navistron`; constantes:
   `TIER_DEFS`, `TIER_DIFF`, `getDiff`, `getMissileDef`, `spawnMeteor`, `spawnThings`, `collectBoost`). Os artigos
   antigos do blog são referência, não fonte: em 15/09 um artigo descreveu os mísseis teleguiados como inimigos e
