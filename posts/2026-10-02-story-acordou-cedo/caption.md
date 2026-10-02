@@ -7,8 +7,8 @@ look: quarto (luzinhas) — 07392bce3332e22ece64f19480181c3a (em casa; 1ª vez n
 variavel_testada: motor Avatar V (engine avatar_v, 1ª vez), sem expressiveness (o avatar_v não aceita) e sem motionPrompt; voz Sofia Brazil - Friendly (0edbc867be6f48c5be8ff8b0fbca0802)
 heygen_video_id: 351860d24d1764404e879d860a271407
 creditos_heygen: 552 → 519 nos três vídeos do dia (o reel, a versão descartada do reel e este story)
-horario_publicacao: 2026-10-02 16:00 BRT
-buffer_post_id: (preencher)
+horario_publicacao: 2026-10-02 16:00 BRT — agendado no Buffer às 01:25
+buffer_post_id: 6abf3251c07bdc2fc269c5f5
 fonte_dados: navistron.io/stats?visao=partidas&ordem=data lido em 02/10/2026 às 01:05 BRT — em 01/10, 7 partidas anônimas entre 07:03 e 08:11 (103, 3.044, 23, 33, 8, 767 e 2.542 pontos); duas acima de 2.500 (3.044 às 07:07 e 2.542 às 08:11); nenhuma com nick
 ---
 
