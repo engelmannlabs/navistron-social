@@ -1,67 +1,35 @@
 1
-00:00:00,300 --> 00:00:01,360
-Tem uma partida no
+00:00:00,300 --> 00:00:03,330
+Tem uma partida no Navistron que ninguém assinou.
 
 2
-00:00:01,410 --> 00:00:02,560
-Navistron que ninguém
+00:00:03,630 --> 00:00:06,590
+18.196 pontos,
 
 3
-00:00:02,650 --> 00:00:03,330
-assinou.
+00:00:06,830 --> 00:00:08,790
+no dia 11 de setembro
 
 4
-00:00:03,630 --> 00:00:05,120
-Dezoito mil cento e
+00:00:08,820 --> 00:00:12,100
+— a 11ª melhor da história do jogo.
 
 5
-00:00:05,160 --> 00:00:06,590
-noventa e seis pontos,
+00:00:12,420 --> 00:00:14,760
+E não é só ela: das 50 melhores
 
 6
-00:00:06,830 --> 00:00:08,790
-no dia onze de setembro
+00:00:14,890 --> 00:00:17,340
+partidas, 30 são anônimas.
 
 7
-00:00:08,820 --> 00:00:10,320
-— a décima primeira
-
-8
-00:00:10,410 --> 00:00:11,480
-melhor da história do
-
-9
-00:00:11,520 --> 00:00:12,100
-jogo.
-
-10
-00:00:12,420 --> 00:00:13,820
-E não é só ela: das
-
-11
-00:00:13,870 --> 00:00:14,760
-cinquenta melhores
-
-12
-00:00:14,890 --> 00:00:16,510
-partidas, trinta são
-
-13
-00:00:16,550 --> 00:00:17,340
-anônimas.
-
-14
 00:00:17,580 --> 00:00:19,750
 Se uma delas é sua, joga
 
-15
-00:00:19,880 --> 00:00:22,100
-de novo hoje e, no game
+8
+00:00:19,880 --> 00:00:24,150
+de novo hoje e, no game over, põe o seu nick.
 
-16
-00:00:22,310 --> 00:00:24,150
-over, põe o seu nick.
-
-17
+9
 00:00:24,360 --> 00:00:26,030
 Te vejo no ranking!

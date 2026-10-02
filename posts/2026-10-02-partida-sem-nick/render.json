@@ -1,7 +1,7 @@
 {
   "files": {
     "post.html": {
-      "hash": "5bb25707792bae5c09622f23387c13d40f2108d136b1bfaa052010dd7519732d",
+      "hash": "8e796636d10fb5b148adf529d95e438865c0b452155d5dd2edff56b78071f91d",
       "out": "reel.mp4",
       "type": "video",
       "source": "https://files2.heygen.ai/aws_pacific/avatar_tmp/c9379eb0ffee407c956c12517ad5feba/9a7c8ade598bae02502959ce1524557d.mp4",
@@ -13,11 +13,11 @@
       ],
       "duration": 26.07,
       "fps": 30,
-      "bytes": 16423557,
+      "bytes": 16338479,
       "cover": "reel-cover.png",
-      "captions": 17,
+      "captions": 9,
       "overlayUntil": null
     }
   },
-  "renderedAt": "2026-10-02T04:18:45.751Z"
+  "renderedAt": "2026-10-02T04:24:11.324Z"
 }
