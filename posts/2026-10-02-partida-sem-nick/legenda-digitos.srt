@@ -1,0 +1,35 @@
+1
+00:00:00,300 --> 00:00:03,330
+Tem uma partida no Navistron que ninguém assinou.
+
+2
+00:00:03,630 --> 00:00:06,590
+18.196 pontos,
+
+3
+00:00:06,830 --> 00:00:08,790
+no dia 11 de setembro
+
+4
+00:00:08,820 --> 00:00:12,100
+— a 11ª melhor da história do jogo.
+
+5
+00:00:12,420 --> 00:00:14,760
+E não é só ela: das 50 melhores
+
+6
+00:00:14,890 --> 00:00:17,340
+partidas, 30 são anônimas.
+
+7
+00:00:17,580 --> 00:00:19,750
+Se uma delas é sua, joga
+
+8
+00:00:19,880 --> 00:00:24,150
+de novo hoje e, no game over, põe o seu nick.
+
+9
+00:00:24,360 --> 00:00:26,030
+Te vejo no ranking!
