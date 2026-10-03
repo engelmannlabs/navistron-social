@@ -7,8 +7,9 @@ look: setup (original) — c328911551104420832ec0a8a325ffb3 (em casa; o vídeo a
 variavel_testada: motor Avatar V de novo (2º vídeo), agora como o único vídeo do dia, para medir o custo isolado; sem expressiveness e sem motionPrompt; voz Sofia Brazil - Friendly (0edbc867be6f48c5be8ff8b0fbca0802)
 heygen_video_id: 64d8f0e4c724efd7dc67c7b3d80796e1
 creditos_heygen: 519 → 501 (18 créditos por 21,8 s no Avatar V, ~1 a cada 1,2 s; no Avatar IV seriam ~7)
-horario_publicacao: 2026-10-03 16:00 BRT — agendado no Buffer às 01:17
-buffer_post_id: 6ac081d116dec17c265229e2
+horario_publicacao: NÃO PUBLICADO — estava agendado para 16:00 (Buffer 6ac081d116dec17c265229e2, criado às 01:17 e apagado às 12:08)
+buffer_post_id: 6ac081d116dec17c265229e2 (apagado)
+substituido_por: posts/2026-10-03-story-boost-arco-iris-ludico — versão lúdica com 6 cortes e trilha baixa, pedida pelo Guilherme na manhã de 03/10 para testar (mesmo roteiro)
 fonte_dados: código do jogo (src/app/play/page.js, sem mudança desde 07/09/2026), conferido em 03/10/2026 — spawnBoost() marca isTierUp quando falta 1 boost para o próximo tier (5 − totalBoosts % 5 === 1); drawBoost() desenha esse boost com brilho de cor variando (arco-íris) e uma seta ⬆, e os outros em dourado/laranja com uma estrela ★; collectBoost() chama tierUp() a cada 5 boosts, e tierUp() explode todos os meteoros da tela (sem pontos) e volta o spread para 1
 ---
 

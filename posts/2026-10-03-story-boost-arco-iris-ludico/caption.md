@@ -1,6 +1,6 @@
 ---
 data: 2026-10-03
-formato: story da Estela, versão LÚDICA (teste pedido pelo Guilherme em 03/10, às 11:40): vídeo puro com 6 cortes e trilha chiptune baixa, no lugar do story original do dia
+formato: story da Estela, versão LÚDICA (teste pedido pelo Guilherme na manhã de 03/10): vídeo puro com 6 cortes e trilha chiptune baixa, no lugar do story original do dia
 pilar: "a Estela explica" — o boost arco-íris (mesmo roteiro e mesma mecânica do story original, posts/2026-10-03-story-boost-arco-iris)
 gancho: "Sabia que um dos boosts do Navistron brilha em arco-íris?"
 cenas: 1) setup (quarto gamer) → 2) headset na mesa → 3a) cutaway de 2 s: a Estela reage à luz de arco-íris no rosto (heygen-video-1, sem fala, voz por cima) → 3b) cozinha → 4) setup em close → 5) sala (sofá), acenando no fim — todas dentro da casa dela
@@ -11,8 +11,10 @@ trilha: chiptune gerada pelo próprio Video Agent, em volume baixo, com fade-out
 heygen_video_id: 1b029d53b9d345a884c8b2737f7f8a23
 creditos_heygen: 501 → 480 no teste todo (21): Video Agent 14 (19,5 s), cutaway do arco-íris 5 e um clipe de explosão de 768p (2) que ficou de fora — o fogo aparecia dentro do quarto
 duracao: 19,5 s
-horario_publicacao: 2026-10-03 16:00 BRT — substitui o story original (Buffer 6ac081d116dec17c265229e2, apagado a pedido do Guilherme)
-buffer_post_id: (preencher)
+horario_publicacao: 2026-10-03 16:00 BRT — agendado no Buffer às 12:07; substitui o story original (Buffer 6ac081d116dec17c265229e2, apagado às 12:08 a pedido do Guilherme)
+buffer_post_id: 6ac11a4afec59133947b3b92
+instagram: metadata.instagram = { type: "story", shouldShareToFeed: false, isAiGenerated: true }
+qa: 1080x1920, 30 fps, 19,5 s, -21,6 LUFS (o original tinha -21,0); 6 cenas na ordem pedida, sem legenda e sem texto (get_video_scenes: caption.enabled = false); roteiro conferido palavra por palavra nos 6 trechos de get_video_scenes; trilha ~18–25 dB abaixo da voz; um buraco de ~30 ms na trilha em 12,0 s, na troca de cena (a trilha está a ~-52 dB nesse ponto, quase imperceptível)
 fonte_dados: código do jogo (src/app/play/page.js, sem mudança desde 07/09/2026), conferido em 03/10/2026 — spawnBoost() marca isTierUp quando falta 1 boost para o próximo tier (5 − totalBoosts % 5 === 1); drawBoost() desenha esse boost com brilho de cor variando (arco-íris) e uma seta ⬆, e os outros em dourado/laranja com uma estrela ★; collectBoost() chama tierUp() a cada 5 boosts, e tierUp() explode todos os meteoros da tela (sem pontos) e volta o spread para 1
 ---
 

@@ -13,7 +13,9 @@ apenas este arquivo, e não o playbook inteiro.
   (Estela 02/10 × dados 03/10) fecha em 05 e 06/10. Fora da série, o reel que o Guilherme publicou à mão em 30/09 chegou a
   **80 de alcance / 96 views** (~36 h), o maior da conta desde 22/09. No jogo, 4 partidas anônimas em 02/10 (19:02–20:47)
   e **nenhum nick novo nos cinco dias completos de pedido** (28/09 a 02/10, 44 pilotos); o total chegou a 18h16 de jogo em
-  545 partidas, a 1h44 das 20 horas — o tema do reel do dia.
+  545 partidas, a 1h44 das 20 horas — o tema do reel do dia. **Mais tarde, o story virou teste de formato**: a pedido do
+  Guilherme, saiu uma versão lúdica com 6 cortes pela casa da Estela e trilha chiptune baixa, feita no Video Agent da
+  HeyGen (14 créditos por 19,5 s) com um cutaway do heygen-video-1; o Seedance 2.0 exige o plano Pro.
 - 2026-10-02 · **"Quinto lugar do ranking" depende de qual ranking — e a frase quase foi ao ar.** O Navistron tem três
   listas que parecem a mesma: o `/ranking` (partidas salvas com nick, uma linha por partida), o top 10 de pilotos em `/stats`
   (a melhor partida de cada nick) e a lista de partidas por pontos (inclui as anônimas). A melhor partida anônima, 18.196

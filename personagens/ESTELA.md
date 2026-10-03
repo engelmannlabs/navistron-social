@@ -112,20 +112,32 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
      contato (`thumbnailOffset`, padrão 1000);
    - story: `metadata.instagram = { type: "story", shouldShareToFeed: false, isAiGenerated: true }`, sem texto,
      `assets` com o `reel.mp4`. Horário padrão **16:00**. O 1º story (29/09) saiu às 15:36 e foi publicado na hora.
+6. **Story com vários cortes e trilha (teste de 03/10, ainda não é o padrão):** `create_video_agent` em `mode: "chat"`,
+   `orientation: "portrait"`, `avatarId` do look principal, `voiceId` e `brandGlossaryId` da ficha, e no prompt: o
+   roteiro exato ("palavra por palavra"), a ordem das cenas com o id de cada look em casa, cortes e aproximações, e as
+   regras duras (sem legenda nem texto, sem banco de imagens, sem tela mostrando conteúdo, trilha chiptune baixa).
+   Revisar o storyboard antes de aprovar o render; o agente calcula a duração com folga (estimou 28 s para uma fala que
+   dá ~22 s) e pede para acelerar a voz — 1,2x deu 19,5 s. Conferir o roteiro e `caption.enabled: false`
+   com `get_video_scenes`. O vídeo entra no repositório como qualquer story (`post.html` tipo `video`).
 
 ## Custos e limites
 
 - **Plano Creator desde 29/09/2026**: 600 créditos por mês (renovam todo dia 29), 1080p, sem marca d'água.
 - Custo medido em 29/09: **1 crédito por look** e **~1 crédito a cada 3 s de vídeo** em 1080p (vídeo de 28,4 s = 9;
   de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16; em 01/10, 17,5 s = 6; em 02/10, 26,0 s + 26,1 s no Avatar IV e 20,1 s no
-  Avatar V = 33; em 03/10, 21,8 s no Avatar V = 18). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 → 501 (estreia +
+  Avatar V = 33; em 03/10, 21,8 s no Avatar V = 18). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 → 501 → 480 (estreia +
   4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma versão descartada; story de 01/10; reel de 02/10 + uma
-  versão descartada + story no Avatar V; story de 03/10 no Avatar V).
+  versão descartada + story no Avatar V; story de 03/10 no Avatar V; teste do story lúdico de 03/10).
 - **O Avatar V custa ~2,5× o Avatar IV** — medido em 03/10 com um vídeo só no dia: 21,8 s = **18 créditos** (~1 a cada
   1,2 s), contra ~1 a cada 3 s no Avatar IV; confirma a estimativa de 02/10 (~15 pelo story de 20 s). Nos dois stories
   (02 e 03/10) ele passou no QA, sem artefato e com movimento natural, mas **não cabe como padrão diário**: um story de
   ~20 s sai por ~17 créditos (contra ~7), e só os stories somariam ~500 por mês, quase o plano inteiro. **Padrão:
   Avatar IV.** O Avatar V fica para um vídeo pontual, registrado como a variável testada.
+- **Teste do story lúdico (03/10):** o **Seedance 2.0** (Cinematic Shots, `create_video_from_cinematic_avatar`) exige o
+  **plano Pro** — respondeu 403, sem gasto. Pela tabela de créditos da central de ajuda da HeyGen (lida em 03/10), ele
+  custa 60 créditos por clipe em 720p e 150 em 1080p. O **heygen-video-1** (`image_to_video` a partir da foto do look)
+  funciona no Creator: 2 créditos por clipe de 5 s em 768p e 5 em 2k (1536x2030). O **Video Agent** no modo padrão custou
+  14 créditos por 19,5 s (~43 por minuto, perto dos 40 da tabela), com 5 cenas de Avatar IV, um cutaway e a trilha.
 - Orçamento com a cadência nova no Avatar IV (1 story por dia de ~20 s + 2–3 reels por semana de ~30 s): ~80 créditos
   por semana, ~340 por mês — cabe nos 600 com folga para refações. Em 03/10, com 501 créditos até a renovação (29/10), a
   previsão é de ~270 (25 stories e os 9 reels da Estela do calendário de S41 a S43).
@@ -149,4 +161,5 @@ por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vind
 | 01/10 | `2026-10-01-story-rachaduras` | cozinha (café) | **expressiveness high** com gestos (story de 17,5 s, "a Estela explica" as rachaduras), voz Friendly — Buffer `6abe9d5e0fdd0066b7ac64ca` | `12fa47b232ddde6c8fb3535f1384e7d0` |
 | 02/10 | `2026-10-02-partida-sem-nick` | headset na mesa | voz **Excited** num reel (26,1 s, desafio das partidas sem nick), Avatar IV, expressiveness medium; 1º reel com a legenda em algarismos — Buffer `6abf324963de9e09a28c47ca`; versão descartada antes do push por uma frase ambígua (`782b793ab909335ec7363943333d8c40`) | `9a7c8ade598bae02502959ce1524557d` |
 | 02/10 | `2026-10-02-story-acordou-cedo` | quarto (luzinhas) | motor **Avatar V** (story de 20,1 s; sem expressiveness, que ele não aceita, e sem motionPrompt), voz Friendly — Buffer `6abf3251c07bdc2fc269c5f5` | `351860d24d1764404e879d860a271407` |
-| 03/10 | `2026-10-03-story-boost-arco-iris` | setup | **Avatar V** de novo, como único vídeo do dia, para medir o custo isolado: 18 créditos por 21,8 s (story "a Estela explica" o boost arco-íris), voz Friendly — Buffer `6ac081d116dec17c265229e2` | `64d8f0e4c724efd7dc67c7b3d80796e1` |
+| 03/10 | `2026-10-03-story-boost-arco-iris` | setup | **Avatar V** de novo, como único vídeo do dia, para medir o custo isolado: 18 créditos por 21,8 s (story "a Estela explica" o boost arco-íris), voz Friendly — **não publicado**: o agendamento (`6ac081d116dec17c265229e2`) foi apagado e trocado pela versão lúdica | `64d8f0e4c724efd7dc67c7b3d80796e1` |
+| 03/10 | `2026-10-03-story-boost-arco-iris-ludico` | setup → headset na mesa → cutaway → cozinha → setup → sala | **story com 6 cortes e trilha baixa** (pedido do Guilherme): HeyGen Video Agent, Avatar IV, voz Friendly a 1,2x, 19,5 s; cutaway de 2 s do heygen-video-1 (`2afb8e6e9a454160b2156598bdd8536c`) — Buffer `6ac11a4afec59133947b3b92` | `1b029d53b9d345a884c8b2737f7f8a23` |
