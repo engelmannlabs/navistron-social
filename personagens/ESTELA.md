@@ -51,6 +51,8 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   | piloto | `f10f6dcdac3302247fada99ac7f830f0` | cockpit de nave, asteroides na janela, jaqueta de voo | fora do rodízio (não é em casa) |
   | arcade | `40b4fbad585ae61ed1f941bee8bed4de` | fliperama neon, camisa xadrez ciano, fone no pescoço | fora do rodízio (não é em casa) |
   | rua à noite | `0df421d96740889777fbd7680e12554c` | rua com neon desfocado, jaqueta jeans, tom de vlog | fora do rodízio (não é em casa) |
+  | espaço (arco-íris) | `ebdacbd58a6974eec8ff195540d04e2d` | flutuando no espaço, arco-íris atrás, moletom preto, fone no pescoço | fora do rodízio: só com pedido do Guilherme (story lúdico de 03/10) |
+  | sentada no arco-íris | `2c3c2a3b41203413eea45d8e62306547` | sentada num arco-íris no espaço, braços cruzados | fora do rodízio: só com pedido do Guilherme (story lúdico de 03/10) |
 
   Novos looks: `create_prompt_avatar` com `avatarGroupId` e `avatarId` = look original como referência de rosto,
   `aspectRatio: "9:16"`, prompt começando por "The same woman as in the reference image (Estela)…", cena **dentro da
@@ -88,7 +90,8 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   ~50 palavras, e conferir `duration` no `get_video` — acima de 25 s, refazer mais curto antes do push. No reel de 02/10,
   62 palavras em frases diretas deram 26,1 s na Excited; no story de 03/10, 57 palavras deram 21,8 s na Friendly.
 - Glossário de pronúncia **"Navistron"** — `b3629854ac234ec6b69f92b79dfa76f5`: `navistron.io` é falado "navistron ponto io"
-  (a legenda continua mostrando `navistron.io`).
+  (a legenda continua mostrando `navistron.io`) e, desde 03/10, `arco-íris` é falado "arcoíris" — sem o glossário, a voz
+  fazia ~200 ms de pausa entre "arco" e "íris" (o Guilherme notou no story de 03/10).
 
 ## Como gerar um vídeo dela
 
@@ -119,15 +122,19 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
    Revisar o storyboard antes de aprovar o render; o agente calcula a duração com folga (estimou 28 s para uma fala que
    dá ~22 s) e pede para acelerar a voz — 1,2x deu 19,5 s. Conferir o roteiro e `caption.enabled: false`
    com `get_video_scenes`. O vídeo entra no repositório como qualquer story (`post.html` tipo `video`).
+   Para mais movimento (pedido de 03/10): cutaways de 5 s do heygen-video-1 (`reference_to_video` com a foto do look como
+   referência, 9:16, 2k, ~9 créditos cada), conferidos num laboratório (`posts/_lab-...`) antes de entrar no Video Agent
+   como arquivos. **Evitar aceno de tchau no `motionPrompt`**: em 03/10 ele gerou um retângulo bege ao lado do ombro —
+   olhar a última cena quadro a quadro.
 
 ## Custos e limites
 
 - **Plano Creator desde 29/09/2026**: 600 créditos por mês (renovam todo dia 29), 1080p, sem marca d'água.
 - Custo medido em 29/09: **1 crédito por look** e **~1 crédito a cada 3 s de vídeo** em 1080p (vídeo de 28,4 s = 9;
   de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16; em 01/10, 17,5 s = 6; em 02/10, 26,0 s + 26,1 s no Avatar IV e 20,1 s no
-  Avatar V = 33; em 03/10, 21,8 s no Avatar V = 18). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 → 501 → 480 (estreia +
+  Avatar V = 33; em 03/10, 21,8 s no Avatar V = 18). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 → 501 → 480 → 415 (estreia +
   4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma versão descartada; story de 01/10; reel de 02/10 + uma
-  versão descartada + story no Avatar V; story de 03/10 no Avatar V; teste do story lúdico de 03/10).
+  versão descartada + story no Avatar V; story de 03/10 no Avatar V; 1ª versão lúdica de 03/10; versão no espaço).
 - **O Avatar V custa ~2,5× o Avatar IV** — medido em 03/10 com um vídeo só no dia: 21,8 s = **18 créditos** (~1 a cada
   1,2 s), contra ~1 a cada 3 s no Avatar IV; confirma a estimativa de 02/10 (~15 pelo story de 20 s). Nos dois stories
   (02 e 03/10) ele passou no QA, sem artefato e com movimento natural, mas **não cabe como padrão diário**: um story de
@@ -137,7 +144,9 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   **plano Pro** — respondeu 403, sem gasto. Pela tabela de créditos da central de ajuda da HeyGen (lida em 03/10), ele
   custa 60 créditos por clipe em 720p e 150 em 1080p. O **heygen-video-1** (`image_to_video` a partir da foto do look)
   funciona no Creator: 2 créditos por clipe de 5 s em 768p e 5 em 2k (1536x2030). O **Video Agent** no modo padrão custou
-  14 créditos por 19,5 s (~43 por minuto, perto dos 40 da tabela), com 5 cenas de Avatar IV, um cutaway e a trilha.
+  14 créditos por 19,5 s (~43 por minuto, perto dos 40 da tabela), com 5 cenas de Avatar IV, um cutaway e a trilha. Na
+  versão no espaço: 2 looks novos e 4 clipes de 2k em 9:16 custaram 38 (~9 por clipe de 5 s), o Video Agent 14 e a cena
+  final refeita mais 13 — 65 no total. No dia, o story custou 104 créditos (519 → 415), contra ~7 de um story padrão.
 - Orçamento com a cadência nova no Avatar IV (1 story por dia de ~20 s + 2–3 reels por semana de ~30 s): ~80 créditos
   por semana, ~340 por mês — cabe nos 600 com folga para refações. Em 03/10, com 501 créditos até a renovação (29/10), a
   previsão é de ~270 (25 stories e os 9 reels da Estela do calendário de S41 a S43).
@@ -162,4 +171,5 @@ por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vind
 | 02/10 | `2026-10-02-partida-sem-nick` | headset na mesa | voz **Excited** num reel (26,1 s, desafio das partidas sem nick), Avatar IV, expressiveness medium; 1º reel com a legenda em algarismos — Buffer `6abf324963de9e09a28c47ca`; versão descartada antes do push por uma frase ambígua (`782b793ab909335ec7363943333d8c40`) | `9a7c8ade598bae02502959ce1524557d` |
 | 02/10 | `2026-10-02-story-acordou-cedo` | quarto (luzinhas) | motor **Avatar V** (story de 20,1 s; sem expressiveness, que ele não aceita, e sem motionPrompt), voz Friendly — Buffer `6abf3251c07bdc2fc269c5f5` | `351860d24d1764404e879d860a271407` |
 | 03/10 | `2026-10-03-story-boost-arco-iris` | setup | **Avatar V** de novo, como único vídeo do dia, para medir o custo isolado: 18 créditos por 21,8 s (story "a Estela explica" o boost arco-íris), voz Friendly — **não publicado**: o agendamento (`6ac081d116dec17c265229e2`) foi apagado e trocado pela versão lúdica | `64d8f0e4c724efd7dc67c7b3d80796e1` |
-| 03/10 | `2026-10-03-story-boost-arco-iris-ludico` | setup → headset na mesa → cutaway → cozinha → setup → sala | **story com 6 cortes e trilha baixa** (pedido do Guilherme): HeyGen Video Agent, Avatar IV, voz Friendly a 1,2x, 19,5 s; cutaway de 2 s do heygen-video-1 (`2afb8e6e9a454160b2156598bdd8536c`) — Buffer `6ac11a4afec59133947b3b92` | `1b029d53b9d345a884c8b2737f7f8a23` |
+| 03/10 | `2026-10-03-story-boost-arco-iris-ludico` | setup → headset na mesa → cutaway → cozinha → setup → sala | **story com 6 cortes e trilha baixa** (pedido do Guilherme): HeyGen Video Agent, Avatar IV, voz Friendly a 1,2x, 19,5 s; cutaway de 2 s do heygen-video-1 (`2afb8e6e9a454160b2156598bdd8536c`) — **não publicado**: agendado (`6ac11a4afec59133947b3b92`) e trocado pela versão no espaço | `1b029d53b9d345a884c8b2737f7f8a23` |
+| 03/10 | `2026-10-03-story-boost-arco-iris-espaco` | espaço (arco-íris) → 4 clipes → sentada no arco-íris → espaço | **story no espaço com 7 cortes e trilha baixa** (2º pedido do Guilherme): Video Agent, 3 falas em Avatar IV e 4 clipes do heygen-video-1, "arcoíris" sem pausa, 20,8 s; cena final refeita sem aceno (a 1ª, `311ca4b6f7be4bd68f1c9945187c4d1b`, teve defeito) — Buffer `6ac12384fec59133947c83e5` | `64266252add848d8adee10d3ef593521` |
