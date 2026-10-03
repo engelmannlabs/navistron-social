@@ -89,13 +89,18 @@ PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira nã
   `search_code` + `get_file_contents`); os artigos antigos do blog são referência, não fonte.
 - **HeyGen** (conector `HeyGen`, plano **Creator** desde 29/09/2026: 600 créditos por mês, renovação todo dia 29): a
   **Estela**, apresentadora IA do perfil. Looks, voz, glossário, regras da personagem e o passo a passo do vídeo em
-  `personagens/ESTELA.md`. Custo medido: ~1 crédito a cada 3 s de vídeo em 1080p (≈ 8 por story de ~24 s, ≈ 10 por reel
-  de ~30 s) e 1 por look novo. Conferir o saldo com `get_current_user` antes de gerar; **abaixo de 100 créditos, não
-  gerar vídeo da Estela** (reel vira reel de dados; o story do dia é pulado e relatado).
-- **Pedidos do Guilherme para a Estela (29/09)**: sem selo de IA na arte e **sem dizer que é IA na fala ou na legenda**
-  (o rótulo de IA do Instagram, `isAiGenerated`, é o aviso — obrigatório), nada sobre o rosto, só a legenda pequena nos
-  reels, stories em vídeo puro, e **cenas sempre dentro da casa dela** (só os looks "em casa" da ficha entram no rodízio,
-  em reels e stories).
+  `personagens/ESTELA.md`. Custo estimado: no **formato lúdico** (cenário criado para o post, vários cortes pelo Video
+  Agent) ~30 créditos por story de ~20 s e ~45 por reel de ~30 s, somando looks (1 cada), clipes de ação (2 a 9 cada) e
+  o agente (~0,7 por segundo); no **modo econômico** (1 look do cenário do post + take único no Avatar IV) ~8 por story e
+  ~11 por reel. Conferir o saldo com `get_current_user` antes de cada vídeo e decidir o formato pela **regra de
+  orçamento da ficha** ("Custos e limites"); **abaixo de 30 créditos, não gerar vídeo da Estela** (reel vira reel de
+  dados; o story do dia é pulado e relatado).
+- **Pedidos do Guilherme para a Estela** (29/09 e 03/10): sem selo de IA na arte e **sem dizer que é IA na fala ou na
+  legenda** (o rótulo de IA do Instagram, `isAiGenerated`, é o aviso — obrigatório), nada sobre o rosto, só a legenda
+  pequena nos reels, stories em vídeo puro (sem legenda e nada por cima) e, desde 03/10, **um cenário lúdico criado para
+  cada post**, tirado do que ela fala naquele post: vários cortes, cenas de ação e trilha chiptune baixa, em reels e
+  stories. Nada de cenário pronto ("não crie previamente os cenários lúdicos… cada cenário deve ter a ver com o post do
+  momento que será postado"); o "sempre dentro da casa dela" de 29/09 caiu.
 
 ## Parte 1 — Instagram
 
@@ -110,13 +115,15 @@ PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira nã
 - **Carrossel**: `post.html` (slide 1, 1080×1440) + `slide-2.html`, `slide-3.html`… (3–6 slides). O Actions gera
   `post.png`, `slide-2.png`…
 - **Imagem única**: `post.html` 1080×1440 com `templates/base.css`.
-- **Reel da Estela** (vídeo com avatar): `post.html` com `<meta name="post-type" content="video">`, `video-src` (URL do
-  vídeo na HeyGen), `video-subtitles` (URL do .srt) e `video-captions` = `srt`. O HTML é só a camada e sai sempre do
-  molde `templates/estela-video.html` (camada v3): **só a legenda pequena embaixo** (base em y = 1490), sem selo, nada
-  sobre o rosto. Copiar o molde e trocar as URLs. O Actions baixa o vídeo, enquadra em 1080×1920, queima a legenda frase
-  a frase e gera `reel.mp4` + `reel-cover.png`.
-- **Story da Estela** (todo dia, à parte do feed — passo 5c): vídeo puro de 15–25 s, molde `templates/estela-story.html`
-  (sem legenda, sem selo, nada por cima), cena dentro de casa, publicado como story com rótulo de IA.
+- **Reel da Estela** (vídeo com avatar, em vários cortes num cenário lúdico criado para o post, feito no Video Agent da
+  HeyGen — ficha, "Como gerar um vídeo dela"): `post.html` com `<meta name="post-type" content="video">`, `video-src`
+  (URL do vídeo sem legenda), `video-subtitles` (URL do .srt) e `video-captions` = `srt`. O HTML é só a camada e sai
+  sempre do molde `templates/estela-video.html` (camada v3): **só a legenda pequena embaixo** (base em y = 1490), sem
+  selo, nada sobre o rosto. Copiar o molde e trocar as URLs. O Actions baixa o vídeo, enquadra em 1080×1920, queima a
+  legenda frase a frase e gera `reel.mp4` + `reel-cover.png`.
+- **Story da Estela** (todo dia, à parte do feed — passo 5c): 15–25 s em vários cortes num cenário lúdico criado para
+  o post, com trilha chiptune baixa; vídeo puro no molde `templates/estela-story.html` (sem legenda, sem selo, nada por
+  cima), publicado como story com rótulo de IA.
 Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pelas métricas por formato do log.
 
 ### Passo a passo
@@ -147,33 +154,45 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
    `python3 scripts/qa.py posts/<slug>` (gera `preview-*.png` ou `preview-reel.png`), ABRIR os PNG com a ferramenta
    Read e avaliar como designer (gancho legível, nada cortado, números certos, zonas seguras). Ajustar até ficar limpo.
 5b. **Se o formato do dia for a Estela**, no lugar do passo 5:
-   a. `get_current_user` → créditos. Abaixo de 100, fazer reel de dados e registrar o motivo.
+   a. `get_current_user` → créditos. Abaixo de 30, fazer reel de dados e registrar o motivo.
    b. Roteiro de 60–100 palavras pelas regras de `personagens/ESTELA.md`: gancho na 1ª frase, números da telemetria com
       data, pedido de ação no fim, bordão "Te vejo no ranking!" quando couber.
-   c. Escolher o look pelo rodízio **só entre os looks "em casa"** da ficha (nunca o mesmo do vídeo anterior dela, reel
-      ou story) e **uma** variável de produção do plano de testes (gestos, motor, voz ou duração — seção 3b do
-      PLAYBOOK). Registrar os dois no `caption.md`.
-   d. `create_video_from_avatar`: `avatarId` do look, `script`, `voiceId`, `aspectRatio: "9:16"`, `fit: "cover"`,
-      `resolution: "1080p"`, `caption: {file_format: "srt"}` (sem `style`: a legenda é nossa), `expressiveness`,
-      `motionPrompt`, `brandGlossaryId`, `title`. Depois `get_video` a cada ~45 s até `completed` (limite 10 min).
-      Falhou ou travou: fazer reel de dados e registrar.
-   e. Pasta `posts/AAAA-MM-DD-slug/` com o `post.html` copiado de `templates/estela-video.html` (`video-src` = `video_url`,
-      `video-subtitles` = `subtitle_url`) e o `caption.md` (frontmatter com look, variável testada, `heygen_video_id`,
-      créditos antes/depois).
-   f. Depois do render (passo 7), QA: baixar `reel.mp4` com curl do raw.githubusercontent.com, montar a folha de contato
-      e conferir: **nada sobre o rosto** (legenda abaixo do queixo), cena em casa, sincronia, legenda (sem corte, sem
-      piscar) e artefatos (mãos, dentes, olhos).
+   c. **Cenário do post** (ficha: regra 6 e "Como gerar um vídeo dela"): tirar do roteiro 2–4 imagens lúdicas que mostram
+      o que ela diz — os looks das falas (1–2) e os clipes de ação (2–4) —, diferente do cenário do vídeo anterior dela.
+      Nada de cenário pronto. Somar o custo estimado desse plano e decidir **formato lúdico × modo econômico** pela regra
+      de orçamento da ficha. Escolher também **uma** variável de produção do plano de testes (seção 3b do PLAYBOOK: no
+      formato lúdico, voz ou duração; no econômico, também gestos ou motor). Registrar cenário, variável e a conta no
+      `caption.md`.
+   d. Criar os looks (`create_prompt_avatar`) e, no formato lúdico, os clipes (heygen-video-1); conferir tudo num
+      laboratório (`posts/_lab-AAAA-MM-DD-<slug>-*`) antes de seguir. Look ou clipe com defeito: refazer uma vez; se
+      repetir, seguir sem ele (ou no modo econômico) e registrar.
+   e. Formato lúdico: `create_video_agent` como na ficha, com as **legendas ligadas** (o agente devolve o `video_url`
+      limpo e o `subtitle_url`; testado em 03/10); conferir o storyboard contra as regras e aprovar (a decisão é da
+      rotina); `get_video` a cada ~45 s até `completed` (limite 15 min); conferir o roteiro palavra por palavra com
+      `get_video_scenes`. Modo econômico: `create_video_from_avatar` com o look do cenário (`avatar_iv`, `caption:
+      {file_format: "srt"}` sem `style`, `brandGlossaryId`). Falhou ou travou: fazer reel de dados e registrar.
+   f. Pasta `posts/AAAA-MM-DD-slug/` com o `post.html` copiado de `templates/estela-video.html` (`video-src` = `video_url`,
+      nunca o `captioned_video_url`; `video-subtitles` = `subtitle_url`) e o `caption.md` (frontmatter com cenário, looks,
+      clipes, `heygen_video_id`, créditos antes/depois). Se não vier `subtitle_url`, publicar sem legenda e relatar —
+      nunca com a legenda grande da HeyGen.
+   g. Depois do render (passo 7), QA: baixar `reel.mp4` com curl do raw.githubusercontent.com, montar a folha de contato
+      (e a última cena quadro a quadro) e conferir: **nada sobre o rosto** (legenda abaixo do queixo), o cenário do post,
+      nada de texto ou logo, sincronia, legenda (sem corte, sem piscar), trilha baixa presente e artefatos (mãos, dentes,
+      olhos, manchas e retângulos — o aceno de 03/10 gerou um).
 5c. **Story da Estela — todo dia, além do post do feed** (pedido do Guilherme em 29/09):
-   a. `get_current_user` → créditos. Abaixo de 100, pular o story e relatar.
-   b. Roteiro de 40–60 palavras (15–25 s), tom de story gravado em casa, **direto ao conteúdo — sem dizer que é IA**
+   a. `get_current_user` → créditos. Abaixo de 30, pular o story e relatar.
+   b. Roteiro de 40–60 palavras (15–25 s), tom de story, **direto ao conteúdo — sem dizer que é IA**
       (pedido do Guilherme; o aviso é o rótulo do Instagram): gancho na 1ª frase, um fato conferido da telemetria com
       data (ou uma mecânica conferida no código), pedido de ação ("joga e põe o nick no game over", "link na bio"). Não
       repetir o assunto do reel do dia palavra por palavra — o story pode ser o bastidor, a provocação ou o lembrete do dia.
-   c. Look "em casa" diferente do último vídeo dela; registrar no `caption.md`.
-   d. `create_video_from_avatar` com os mesmos parâmetros do 5b.d (o `caption` em srt serve só de transcrição).
+   c. Cenário do story como no 5b.c (criado para ele, diferente do cenário do último vídeo dela) e formato pela regra de
+      orçamento; registrar cenário, looks, clipes e a conta no `caption.md`.
+   d. Looks e clipes como no 5b.d; formato lúdico pelo Video Agent como no 5b.e, mas com as **legendas desligadas** (story
+      é vídeo puro); no modo econômico, `create_video_from_avatar` com o look do cenário.
    e. Pasta `posts/AAAA-MM-DD-story-slug/` com o `post.html` copiado de `templates/estela-story.html` (trocar
-      `video-src` e `video-subtitles`) e o `caption.md` (frontmatter: data, formato story, look, `heygen_video_id`,
-      créditos, horário, `buffer_post_id`, fonte dos dados; depois o roteiro). Push, render (passo 7) e QA como no 5b.f.
+      `video-src`; sem `subtitle_url`, apagar a linha `video-subtitles`) e o `caption.md` (frontmatter: data, formato
+      story, cenário, looks, clipes, `heygen_video_id`, créditos, horário, `buffer_post_id`, fonte dos dados; depois o
+      roteiro). Push, render (passo 7) e QA como no 5b.g (sem legenda: nada pode aparecer por cima do vídeo).
    f. Buffer: `create_post` com `assets: [{ video: { url: ".../reel.mp4", metadata: { thumbnailOffset: 1000, title } } }]`,
       `metadata: { instagram: { type: "story", shouldShareToFeed: false, isAiGenerated: true } }`, sem `text`,
       `mode: "customScheduled"` às **16:00 de hoje** (se já passou, publicar ainda hoje até ~22:00). Conferir `scheduled`
