@@ -17,8 +17,12 @@ apenas este arquivo, e não o playbook inteiro.
   Guilherme, saiu uma versão lúdica com 6 cortes pela casa da Estela e trilha chiptune baixa, feita no Video Agent da
   HeyGen (14 créditos por 19,5 s) com um cutaway do heygen-video-1; o Seedance 2.0 exige o plano Pro. Ele viu e pediu mais:
   "arco-íris" falado emendado (a voz fazia ~200 ms de pausa no meio — virou regra no glossário) e ela no espaço, com o
-  arco-íris. A versão final tem 7 cortes, dois looks novos fora de casa (só para pedidos dele) e quatro clipes de 2k; o
-  story do dia custou 104 créditos no total, ~15× um story padrão.
+  arco-íris. A versão final tem 7 cortes, dois looks novos no espaço e quatro clipes de 2k; o story do dia custou 104
+  créditos no total, ~15× um story padrão. **Depois, o formato virou padrão** (pedidos dele): todo reel e story da Estela
+  em vários cortes, num cenário lúdico criado para aquele post — sem catálogo pronto e sem a obrigação de ser em casa. O
+  orçamento não acompanha: ~30 créditos por story e ~45 por reel, contra ~8 e ~11 no take único; no Creator, a regra de
+  orçamento da ficha deixa o lúdico em ~1 vídeo a cada 6. Um teste de 3 créditos mostrou que o Video Agent serve aos
+  reels: com as legendas ligadas, ele devolve o vídeo limpo e o .srt separado.
 - 2026-10-02 · **"Quinto lugar do ranking" depende de qual ranking — e a frase quase foi ao ar.** O Navistron tem três
   listas que parecem a mesma: o `/ranking` (partidas salvas com nick, uma linha por partida), o top 10 de pilotos em `/stats`
   (a melhor partida de cada nick) e a lista de partidas por pontos (inclui as anônimas). A melhor partida anônima, 18.196
