@@ -30,35 +30,48 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
 4. No Instagram, todo post e todo story dela sai marcado como conteúdo de IA (`isAiGenerated: true` no Buffer).
 5. Reels: roteiro de 20–40 s (60–100 palavras). Stories: 15–25 s (40–60 palavras). Gancho na primeira frase, pedido de
    ação no fim.
-6. **Cenas sempre dentro da casa dela**, em ambientes intimistas (sala, cozinha, quarto, escrivaninha) — em reels e
-   stories (pedido do Guilherme em 29/09). Só os looks marcados "em casa" na tabela abaixo entram no rodízio.
+6. **Cenário lúdico criado para cada post** (pedidos do Guilherme em 03/10): todo reel e todo story dela sai em vários
+   cortes num cenário que ilustra o que ela fala **naquele post** — no story do boost arco-íris, ela no espaço com o
+   arco-íris, pegando uma estrela, subindo num rastro de arco-íris como foguete e vendo os meteoros virarem fogos. Nada
+   de cenário pronto ou catálogo por tema: os looks e os clipes nascem do roteiro do dia ("não crie previamente os
+   cenários lúdicos… cada cenário deve ter a ver com o post do momento que será postado"). Não precisa ser dentro da
+   casa dela — a regra de 29/09 ("cenas sempre em casa") caiu —, e nenhum vídeo repete o cenário do anterior. O jeito
+   de fazer e o modo econômico (quando o orçamento não deixa o formato completo) estão em "Como gerar um vídeo dela".
 
 ## Visual
 
 - Photo avatar **"Estela"** na HeyGen, criado pelo Guilherme no app a partir do prompt abaixo. Grupo:
   `c328911551104420832ec0a8a325ffb3`. Looks (o id do look é o `avatarId` do vídeo; folhas de referência em
-  `posts/_estela-looks/post.png` e `posts/_estela-looks-casa/post.png`):
+  `posts/_estela-looks/post.png`, `posts/_estela-looks-casa/post.png` e nos laboratórios `posts/_lab-*-looks/`). Desde
+  03/10 os looks nascem para cada post (regra 6): a tabela **não é um rodízio** — é o registro do que existe, e um look
+  antigo só volta se um post pedir exatamente aquela cena:
 
   | Look | `avatarId` | Cena | Uso |
   |---|---|---|---|
-  | sala (sofá) | `eb3a917ed2ffd85e7013c5703d583ed7` | sofá da sala à tarde, luz de janela, suéter cinza, jeito de selfie | **em casa** · rodízio |
-  | cozinha (café) | `1d5bda485d3c52745d0b5a5021e8b6fe` | cozinha de manhã, camisa xadrez, café, jeito de selfie | **em casa** · rodízio |
-  | escrivaninha na janela | `96fc8f5e11a2a991e0e1f13a53fd8655` | mesa junto à janela de dia, moletom creme, jeito de selfie | **em casa** · rodízio |
-  | quarto (luzinhas) | `07392bce3332e22ece64f19480181c3a` | beira da cama à noite, luzinhas, moletom preto, controle ao lado | **em casa** · rodízio |
-  | setup (original) | `c328911551104420832ec0a8a325ffb3` | quarto gamer à noite, luz violeta, fone no pescoço, moletom preto | **em casa** · rodízio |
-  | headset na mesa | `bdb47ee84f7879e5d38c26372719706e` | escrivaninha do quarto, fone na cabeça, luz ciano do monitor | **em casa** · rodízio |
+  | sala (sofá) | `eb3a917ed2ffd85e7013c5703d583ed7` | sofá da sala à tarde, luz de janela, suéter cinza, jeito de selfie | casa (rodízio de 29/09 a 03/10) |
+  | cozinha (café) | `1d5bda485d3c52745d0b5a5021e8b6fe` | cozinha de manhã, camisa xadrez, café, jeito de selfie | casa (rodízio de 29/09 a 03/10) |
+  | escrivaninha na janela | `96fc8f5e11a2a991e0e1f13a53fd8655` | mesa junto à janela de dia, moletom creme, jeito de selfie | casa (rodízio de 29/09 a 03/10) |
+  | quarto (luzinhas) | `07392bce3332e22ece64f19480181c3a` | beira da cama à noite, luzinhas, moletom preto, controle ao lado | casa (rodízio de 29/09 a 03/10) |
+  | setup (original) | `c328911551104420832ec0a8a325ffb3` | quarto gamer à noite, luz violeta, fone no pescoço, moletom preto | casa · **referência de rosto dos looks novos** |
+  | headset na mesa | `bdb47ee84f7879e5d38c26372719706e` | escrivaninha do quarto, fone na cabeça, luz ciano do monitor | casa (rodízio de 29/09 a 03/10) |
   | quarto (fim de tarde) | `a274a823397af2ed11e0edf74a0928f2` | beira da cama, pôsteres | **vetado**: pôster com personagem de terceiros no fundo |
-  | piloto | `f10f6dcdac3302247fada99ac7f830f0` | cockpit de nave, asteroides na janela, jaqueta de voo | fora do rodízio (não é em casa) |
-  | arcade | `40b4fbad585ae61ed1f941bee8bed4de` | fliperama neon, camisa xadrez ciano, fone no pescoço | fora do rodízio (não é em casa) |
-  | rua à noite | `0df421d96740889777fbd7680e12554c` | rua com neon desfocado, jaqueta jeans, tom de vlog | fora do rodízio (não é em casa) |
-  | espaço (arco-íris) | `ebdacbd58a6974eec8ff195540d04e2d` | flutuando no espaço, arco-íris atrás, moletom preto, fone no pescoço | fora do rodízio: só com pedido do Guilherme (story lúdico de 03/10) |
-  | sentada no arco-íris | `2c3c2a3b41203413eea45d8e62306547` | sentada num arco-íris no espaço, braços cruzados | fora do rodízio: só com pedido do Guilherme (story lúdico de 03/10) |
+  | piloto | `f10f6dcdac3302247fada99ac7f830f0` | cockpit de nave, asteroides na janela, jaqueta de voo | sem uso até aqui |
+  | arcade | `40b4fbad585ae61ed1f941bee8bed4de` | fliperama neon, camisa xadrez ciano, fone no pescoço | sem uso até aqui |
+  | rua à noite | `0df421d96740889777fbd7680e12554c` | rua com neon desfocado, jaqueta jeans, tom de vlog | sem uso até aqui |
+  | espaço (arco-íris) | `ebdacbd58a6974eec8ff195540d04e2d` | flutuando no espaço, arco-íris atrás, moletom preto, fone no pescoço | cenário do story de 03/10 (boost arco-íris) |
+  | sentada no arco-íris | `2c3c2a3b41203413eea45d8e62306547` | sentada num arco-íris no espaço, braços cruzados | cenário do story de 03/10 (boost arco-íris) |
+  | pódio no espaço | `19c1e6099a56041969f14360db4b974a` | atrás de um pódio dourado no espaço, confete colorido, nebulosa | criado em 03/10 para um catálogo por tema, antes do pedido de cenário por post; usado só no teste da legenda |
+  | asteroide | `2c751ba3efb9371a8a9b304ecdb23d95` | de pé num asteroide, meteoros e um planeta com anéis no céu | idem (catálogo descartado); sem uso |
+  | portal | `31c93580a89ca49b9513706daf1eb7ae` | portal de luz em espiral (ciano, violeta, dourado) atrás, estrelas | idem (catálogo descartado); sem uso |
+  | na Lua | `b7135392ff1957287fe7a9529b1f38e7` | na superfície da Lua, a Terra atrás | idem (catálogo descartado); sem uso |
 
-  Novos looks: `create_prompt_avatar` com `avatarGroupId` e `avatarId` = look original como referência de rosto,
-  `aspectRatio: "9:16"`, prompt começando por "The same woman as in the reference image (Estela)…", cena **dentro da
-  casa dela** e sempre com "no posters, no characters, no logos, no readable text" no fundo (o quarto de 29/09 saiu
-  com um pôster de personagem de terceiros e foi vetado). Conferir o look numa folha renderizada pelo Actions antes de
-  usar. Custo medido: 1 crédito por look.
+  Looks novos (um ou dois por post, regra 6): `create_prompt_avatar` com `avatarGroupId` e `avatarId` = setup
+  (`c328911551104420832ec0a8a325ffb3`) como referência de rosto, `aspectRatio: "9:16"`, prompt começando por "The same
+  woman as in the reference image (Estela)…" e descrevendo a cena do post (onde ela está e o que faz), com a mesma roupa
+  em todos os looks do vídeo (o moletom preto com o fone no pescoço funcionou no espaço) e sempre "no posters, no
+  characters, no logos, no readable text" (o quarto de 29/09 saiu com um pôster de personagem de terceiros e foi
+  vetado). Conferir os looks numa folha renderizada pelo Actions (`posts/_lab-AAAA-MM-DD-<slug>-looks/`) antes de usar.
+  Custo medido: 1 crédito por look.
 - Prompt de criação (reusar para gerar novos looks consistentes):
 
   > Photorealistic vertical portrait photo of Estela, a 25-year-old Brazilian woman who is a passionate gamer.
@@ -72,7 +85,8 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
 - Na arte (pedidos do Guilherme em 29/09): **nada sobre o rosto, sem selo de IA, e nada além da legenda nos reels.**
   - **Reels** — molde `templates/estela-video.html` (camada v3): só a legenda própria, queimada frase a frase a partir
     do .srt: BigShoulders 56 px, caixa baixa, números em ciano, pílula escura translúcida, **ancorada pela base em
-    y = 1490** (uma linha em ~1420–1490, duas em ~1350–1490). Nos looks atuais o rosto vai de ~370 a ~1170 (queixo).
+    y = 1490** (uma linha em ~1420–1490, duas em ~1350–1490). Nos looks de casa o rosto ia de ~370 a ~1170 (queixo); nos
+    looks de cada post, conferir na folha do laboratório e no QA (o rosto fica sempre acima da faixa da legenda).
   - **Stories** — molde `templates/estela-story.html`: **vídeo puro**, sem legenda, sem selo, nada por cima. A fala
     começa direto no assunto do dia.
   - Qualquer outro elemento sobre o vídeo só se for **temporário e pequeno**.
@@ -95,46 +109,74 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
 
 ## Como gerar um vídeo dela
 
-1. `create_video_from_avatar` com: `avatarId` do look, `script`, `voiceId`, `aspectRatio: "9:16"`, `fit: "cover"`,
-   `resolution: "1080p"`, `caption: {file_format: "srt"}` (**sem** `style`: a legenda queimada é a nossa),
-   `expressiveness` (`medium` é o padrão), `motionPrompt` e `brandGlossaryId`.
-2. `get_video` até `status: completed` → `video_url` e `subtitle_url` (URLs assinadas, expiram em ~7 dias).
-3. Pasta `posts/AAAA-MM-DD-slug/` (story: `posts/AAAA-MM-DD-story-slug/`): copiar o molde como `post.html` —
+Desde 03/10 (pedidos do Guilherme), o padrão de reels e stories é o **formato lúdico**: vários cortes num cenário criado
+para o post (regra 6), com cenas de ação e trilha chiptune baixa, feito no Video Agent da HeyGen. Quando a regra de
+orçamento ("Custos e limites") não deixa, entra o **modo econômico**: take único no Avatar IV, num look novo do cenário do
+post — o cenário continua sendo do post; saem os cortes, os clipes e a trilha.
+
+1. **Roteiro** pelas regras acima (gancho na 1ª frase, número conferido com data, pedido de ação no fim).
+2. **Cenário do post**: ler o roteiro e tirar dele 2–4 imagens lúdicas que mostram o que ela diz, no mesmo universo
+   visual. Exemplo (story de 03/10): "brilha em arcoíris" → ela no espaço com o arco-íris atrás; "quando você pega" → ela
+   pega uma estrela dourada; "sobe a sua nave de nível" → sobe num rastro de arco-íris como foguete; "todos os meteoros
+   explodem" → os meteoros em volta viram fogos. Nada de texto, logo, tela com conteúdo, personagem de terceiros ou arma,
+   e nada que contradiga o jogo (a mecânica ilustrada é a conferida no código).
+3. **Looks e clipes do cenário**: 1–2 looks novos para as falas (receita em "Looks novos", acima; 1 crédito cada) e, no
+   formato lúdico, 2–4 clipes de ação de 5 s em 9:16 no heygen-video-1 — `reference_to_video` com a foto do look como
+   referência quando ela vai para outro lugar ou se move muito (2k, ~9 créditos), `image_to_video` a partir da foto do
+   look quando a ação acontece no próprio quadro (5 créditos em 2k, 2 em 768p). Prompt dos clipes sem texto e sem tela.
+   Tudo conferido num laboratório antes de seguir (`posts/_lab-AAAA-MM-DD-<slug>-*`: a folha dos looks e um `post.html`
+   tipo `video` por clipe): o rosto dela, mãos, nada de texto ou logo, fogo e explosão só onde fazem sentido (o clipe de
+   768p de 03/10 pôs fogo dentro do quarto e ficou de fora). No modo econômico: um look e nenhum clipe.
+4. **Formato lúdico — Video Agent**: `create_video_agent` em `mode: "chat"`, `orientation: "portrait"`, `avatarId` do
+   look principal, `voiceId` e `brandGlossaryId` da ficha, os clipes em `files` (URLs do `get_model_video`) e, no prompt:
+   o roteiro exato ("palavra por palavra"), a ordem das cenas (fala no look X; clipe Y com a voz dela por cima; …), cortes
+   e aproximações, e as regras duras — sem texto na tela, sem banco de imagens, sem tela mostrando conteúdo, clipes sem
+   som, trilha chiptune baixa (~15–20%), sem cartela de título, sem aceno de tchau. **Legendas: ligadas no reel e
+   desligadas no story.** Com elas ligadas, o agente devolve o `video_url` limpo, o `captioned_video_url` (a legenda grande
+   da HeyGen, que não usamos) e o `subtitle_url` (.srt), que funciona na nossa legenda — teste de 03/10
+   (`80b2e9bba48b418680e6412be0ea8f19`, laboratórios `posts/_lab-2026-10-03-va-legenda-*`). No reel, pedir o rosto dela
+   sempre na metade de cima do quadro, sem close que desça até a faixa da legenda (y ≈ 1350–1490). Conferir o storyboard e
+   aprovar com `send_video_agent_message` (a decisão é da rotina); o agente calcula a duração com folga (estimou 28 s para
+   uma fala de ~22 s): se a estimativa passar do limite do formato, pedir a voz a 1,2x. `get_video` até `completed`;
+   conferir o roteiro cena a cena e `caption.enabled` com `get_video_scenes`. Em 03/10, um aceno de tchau gerou um
+   retângulo bege ao lado do ombro e a cena foi refeita (13 créditos).
+5. **Modo econômico**: `create_video_from_avatar` com o look do cenário, `script`, `voiceId`, `aspectRatio: "9:16"`,
+   `fit: "cover"`, `resolution: "1080p"`, `caption: {file_format: "srt"}` (**sem** `style`: a legenda queimada é a nossa),
+   `expressiveness` (`medium` é o padrão), `motionPrompt` (sem aceno) e `brandGlossaryId`; `get_video` até `completed`.
+6. Do `get_video`: `video_url` (sempre o limpo) e `subtitle_url` (URLs assinadas, expiram em ~7 dias). Pasta
+   `posts/AAAA-MM-DD-slug/` (story: `posts/AAAA-MM-DD-story-slug/`): copiar o molde como `post.html` —
    `templates/estela-video.html` para reel, `templates/estela-story.html` para story — e trocar `video-src`
-   (= `video_url`) e `video-subtitles` (= `subtitle_url`). Mais o `caption.md`. O push dispara o Actions, que baixa o
-   vídeo, enquadra em 1080×1920, queima a legenda (só no reel) e commita `reel.mp4`, `reel-cover.png` e `legenda.srt`.
-3b. **Legenda com números em algarismos (reels)**: o roteiro vai com os números por extenso (a voz lê melhor) e o .srt da
+   (= `video_url`) e `video-subtitles` (= `subtitle_url`; o story do Video Agent sai sem legenda e sem `subtitle_url`:
+   apagar a linha). Mais o `caption.md` (cenário, looks, clipes, sessão do agente, créditos antes e depois). O push
+   dispara o Actions, que baixa o vídeo, enquadra em 1080×1920, queima a legenda (só no reel) e commita `reel.mp4`,
+   `reel-cover.png` e `legenda.srt`.
+6b. **Legenda com números em algarismos (reels)**: o roteiro vai com os números por extenso (a voz lê melhor) e o .srt da
    HeyGen sai igual, quebrado em frases de 3–4 palavras. Depois da 1ª renderização, baixar o `legenda.srt` da pasta,
    juntar as frases curtas sem cortar palavra, trocar os números por algarismos (o render pinta de ciano), salvar como
    `legenda-digitos.srt` na mesma pasta e apontar `video-subtitles` para esse arquivo — o push dispara a 2ª renderização
    (~2 min). Conferir com python que o texto falado de cada grupo bate com as frases originais. Feito pela 1ª vez em 02/10.
-4. QA pela folha de contato do `reel.mp4` baixado do raw.githubusercontent.com (os arquivos da HeyGen não abrem daqui):
-   **nada sobre o rosto**, cena em casa, sincronia, artefatos (mãos, dentes, olhos) e áudio presente.
-5. Buffer, sempre com `metadata.instagram.isAiGenerated: true`:
+7. QA pela folha de contato do `reel.mp4` baixado do raw.githubusercontent.com (os arquivos da HeyGen não abrem daqui):
+   **nada sobre o rosto**, o cenário do post em todas as cenas, nada de texto ou logo, sincronia, artefatos (mãos, dentes,
+   olhos, manchas e retângulos — a última cena quadro a quadro), áudio presente e, no formato lúdico, a trilha baixa
+   (~15–20 dB abaixo da voz).
+8. Buffer, sempre com `metadata.instagram.isAiGenerated: true`:
    - reel: como qualquer reel (`type: "reel"`, `shouldShareToFeed: true`), capa no instante mais bonito da folha de
      contato (`thumbnailOffset`, padrão 1000);
    - story: `metadata.instagram = { type: "story", shouldShareToFeed: false, isAiGenerated: true }`, sem texto,
      `assets` com o `reel.mp4`. Horário padrão **16:00**. O 1º story (29/09) saiu às 15:36 e foi publicado na hora.
-6. **Story com vários cortes e trilha (teste de 03/10, ainda não é o padrão):** `create_video_agent` em `mode: "chat"`,
-   `orientation: "portrait"`, `avatarId` do look principal, `voiceId` e `brandGlossaryId` da ficha, e no prompt: o
-   roteiro exato ("palavra por palavra"), a ordem das cenas com o id de cada look em casa, cortes e aproximações, e as
-   regras duras (sem legenda nem texto, sem banco de imagens, sem tela mostrando conteúdo, trilha chiptune baixa).
-   Revisar o storyboard antes de aprovar o render; o agente calcula a duração com folga (estimou 28 s para uma fala que
-   dá ~22 s) e pede para acelerar a voz — 1,2x deu 19,5 s. Conferir o roteiro e `caption.enabled: false`
-   com `get_video_scenes`. O vídeo entra no repositório como qualquer story (`post.html` tipo `video`).
-   Para mais movimento (pedido de 03/10): cutaways de 5 s do heygen-video-1 (`reference_to_video` com a foto do look como
-   referência, 9:16, 2k, ~9 créditos cada), conferidos num laboratório (`posts/_lab-...`) antes de entrar no Video Agent
-   como arquivos. **Evitar aceno de tchau no `motionPrompt`**: em 03/10 ele gerou um retângulo bege ao lado do ombro —
-   olhar a última cena quadro a quadro.
 
 ## Custos e limites
 
-- **Plano Creator desde 29/09/2026**: 600 créditos por mês (renovam todo dia 29), 1080p, sem marca d'água.
+- **Plano Creator desde 29/09/2026**: 600 créditos por mês, 1080p, sem marca d'água. Renovam todo dia 29 — o `resets_at`
+  da HeyGen marca 00:57 UTC, 21:57 BRT do dia 28. Na página de preços da HeyGen (lida em 03/10): Creator US$ 29/mês com
+  600 créditos, Pro US$ 49/mês com 1.000 (o Seedance 2.0 pede o Pro), Business US$ 149/mês + US$ 20 por assento com 1.500.
 - Custo medido em 29/09: **1 crédito por look** e **~1 crédito a cada 3 s de vídeo** em 1080p (vídeo de 28,4 s = 9;
   de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16; em 01/10, 17,5 s = 6; em 02/10, 26,0 s + 26,1 s no Avatar IV e 20,1 s no
-  Avatar V = 33; em 03/10, 21,8 s no Avatar V = 18). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 → 501 → 480 → 415 (estreia +
-  4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma versão descartada; story de 01/10; reel de 02/10 + uma
-  versão descartada + story no Avatar V; story de 03/10 no Avatar V; 1ª versão lúdica de 03/10; versão no espaço).
+  Avatar V = 33; em 03/10, 21,8 s no Avatar V = 18). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 → 501 → 480 →
+  415 → 411 → 408 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma versão descartada;
+  story de 01/10; reel de 02/10 + uma versão descartada + story no Avatar V; story de 03/10 no Avatar V; 1ª versão
+  lúdica de 03/10; versão no espaço; 4 looks de um catálogo por tema, descartado no mesmo dia; teste da legenda do
+  Video Agent).
 - **O Avatar V custa ~2,5× o Avatar IV** — medido em 03/10 com um vídeo só no dia: 21,8 s = **18 créditos** (~1 a cada
   1,2 s), contra ~1 a cada 3 s no Avatar IV; confirma a estimativa de 02/10 (~15 pelo story de 20 s). Nos dois stories
   (02 e 03/10) ele passou no QA, sem artefato e com movimento natural, mas **não cabe como padrão diário**: um story de
@@ -144,20 +186,35 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   **plano Pro** — respondeu 403, sem gasto. Pela tabela de créditos da central de ajuda da HeyGen (lida em 03/10), ele
   custa 60 créditos por clipe em 720p e 150 em 1080p. O **heygen-video-1** (`image_to_video` a partir da foto do look)
   funciona no Creator: 2 créditos por clipe de 5 s em 768p e 5 em 2k (1536x2030). O **Video Agent** no modo padrão custou
-  14 créditos por 19,5 s (~43 por minuto, perto dos 40 da tabela), com 5 cenas de Avatar IV, um cutaway e a trilha. Na
-  versão no espaço: 2 looks novos e 4 clipes de 2k em 9:16 custaram 38 (~9 por clipe de 5 s), o Video Agent 14 e a cena
-  final refeita mais 13 — 65 no total. No dia, o story custou 104 créditos (519 → 415), contra ~7 de um story padrão.
-- Orçamento com a cadência nova no Avatar IV (1 story por dia de ~20 s + 2–3 reels por semana de ~30 s): ~80 créditos
-  por semana, ~340 por mês — cabe nos 600 com folga para refações. Em 03/10, com 501 créditos até a renovação (29/10), a
-  previsão é de ~270 (25 stories e os 9 reels da Estela do calendário de S41 a S43).
-- Guarda de segurança da rotina: **abaixo de 100 créditos, não gerar vídeo** — trocar por reel de dados até renovar.
+  14 créditos por 19,5 s (~43 por minuto, perto dos 40 da tabela), com 5 cenas de Avatar IV, um cutaway e a trilha; o
+  teste de legenda (uma cena de 4,8 s) custou 3. Na versão no espaço: 2 looks novos e 4 clipes de 2k em 9:16 custaram 38
+  (~9 por clipe de 5 s), o Video Agent 14 e a cena final refeita mais 13 — 65 no total. No dia, o story custou 104
+  créditos (519 → 415), contra ~7 de um story padrão.
+- **Custo por vídeo** (medido até 03/10): look 1; clipe de 5 s no heygen-video-1 ~9 (`reference_to_video` 2k), 5
+  (`image_to_video` 2k) ou 2 (768p); Video Agent ~0,7 por segundo (14 por 19,5 s, 14 por 20,8 s, 3 por 4,8 s); Avatar IV
+  ~1 a cada 3 s. **Formato lúdico com cenário do post: ~30 por story de ~20 s** (2 looks, 2–3 clipes e o Video Agent)
+  **e ~45 por reel de ~30 s. Modo econômico (1 look + take único no Avatar IV): ~8 por story e ~11 por reel.**
+- **Regra de orçamento** (a rotina decide sozinha, antes de cada vídeo da Estela):
+  `reserva = 30 + 8 × (stories que faltam até a renovação) + 11 × (reels da Estela que faltam no calendário até a
+  renovação)`, sem contar o vídeo que está sendo decidido (num dia com reel e story, o story do dia entra na conta do
+  reel). **Formato lúdico se `créditos − custo estimado do lúdico ≥ reserva`; senão, modo econômico.** O custo estimado
+  é a soma do plano do vídeo: looks + clipes + 0,7 × segundos do Video Agent. Registrar a conta no `caption.md`. Com 408
+  créditos em 03/10 (25 stories e 9 reels até 28/10), a regra dá o lúdico ao story de 04/10 e ao reel e ao story de
+  05/10, e o modo econômico depois disso.
+- Por mês (30 stories e ~13 reels da Estela): tudo no formato lúdico pediria ~1.500 créditos; tudo no econômico, ~380. No
+  Creator (600), a regra deixa o lúdico em ~1 vídeo a cada 6; no Pro (1.000), em ~metade; no Business (1.500), em quase
+  todos.
+- Guarda de segurança: **abaixo de 30 créditos, não gerar vídeo da Estela** — o reel vira reel de dados e o story é
+  pulado e relatado. Era 100 até 03/10; a reserva acima passou a guardar os créditos dos vídeos que faltam.
 - Histórico: o teste de 28/09 foi no plano gratuito (720p, marca d'água, criação de avatar pela API bloqueada com 403).
 
 ## Formatos e testes
 
-Calendário, cadências e variáveis de produção em teste (look, gestos, motor, voz, duração): seção 3b do `PLAYBOOK.md`.
+Calendário, cadências e variáveis de produção em teste (gestos, motor, voz, duração; o cenário virou regra em 03/10):
+seção 3b do `PLAYBOOK.md`.
 Temas que combinam com ela: ranking da semana narrado · reação a evento (recorde, nick novo, marco) · desafio lançado
-por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vindas a estreantes · bastidor dela.
+por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vindas a estreantes · bastidor dela. O tema não
+define o cenário: cada post ganha o seu, tirado do que ela fala (regra 6).
 
 ## Histórico de vídeos
 
@@ -173,3 +230,4 @@ por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vind
 | 03/10 | `2026-10-03-story-boost-arco-iris` | setup | **Avatar V** de novo, como único vídeo do dia, para medir o custo isolado: 18 créditos por 21,8 s (story "a Estela explica" o boost arco-íris), voz Friendly — **não publicado**: o agendamento (`6ac081d116dec17c265229e2`) foi apagado e trocado pela versão lúdica | `64d8f0e4c724efd7dc67c7b3d80796e1` |
 | 03/10 | `2026-10-03-story-boost-arco-iris-ludico` | setup → headset na mesa → cutaway → cozinha → setup → sala | **story com 6 cortes e trilha baixa** (pedido do Guilherme): HeyGen Video Agent, Avatar IV, voz Friendly a 1,2x, 19,5 s; cutaway de 2 s do heygen-video-1 (`2afb8e6e9a454160b2156598bdd8536c`) — **não publicado**: agendado (`6ac11a4afec59133947b3b92`) e trocado pela versão no espaço | `1b029d53b9d345a884c8b2737f7f8a23` |
 | 03/10 | `2026-10-03-story-boost-arco-iris-espaco` | espaço (arco-íris) → 4 clipes → sentada no arco-íris → espaço | **story no espaço com 7 cortes e trilha baixa** (2º pedido do Guilherme): Video Agent, 3 falas em Avatar IV e 4 clipes do heygen-video-1, "arcoíris" sem pausa, 20,8 s; cena final refeita sem aceno (a 1ª, `311ca4b6f7be4bd68f1c9945187c4d1b`, teve defeito) — Buffer `6ac12384fec59133947c83e5` | `64266252add848d8adee10d3ef593521` |
+| 03/10 | `_lab-2026-10-03-va-legenda-puro` e `_lab-2026-10-03-va-legenda-reel` (laboratório) | pódio no espaço | **legenda do Video Agent**: com as legendas ligadas no agente, o `video_url` sai limpo e o `subtitle_url` serve na nossa legenda pequena (4,8 s, 3 créditos) | `80b2e9bba48b418680e6412be0ea8f19` |
