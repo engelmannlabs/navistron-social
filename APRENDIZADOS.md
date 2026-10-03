@@ -15,7 +15,10 @@ apenas este arquivo, e não o playbook inteiro.
   e **nenhum nick novo nos cinco dias completos de pedido** (28/09 a 02/10, 44 pilotos); o total chegou a 18h16 de jogo em
   545 partidas, a 1h44 das 20 horas — o tema do reel do dia. **Mais tarde, o story virou teste de formato**: a pedido do
   Guilherme, saiu uma versão lúdica com 6 cortes pela casa da Estela e trilha chiptune baixa, feita no Video Agent da
-  HeyGen (14 créditos por 19,5 s) com um cutaway do heygen-video-1; o Seedance 2.0 exige o plano Pro.
+  HeyGen (14 créditos por 19,5 s) com um cutaway do heygen-video-1; o Seedance 2.0 exige o plano Pro. Ele viu e pediu mais:
+  "arco-íris" falado emendado (a voz fazia ~200 ms de pausa no meio — virou regra no glossário) e ela no espaço, com o
+  arco-íris. A versão final tem 7 cortes, dois looks novos fora de casa (só para pedidos dele) e quatro clipes de 2k; o
+  story do dia custou 104 créditos no total, ~15× um story padrão.
 - 2026-10-02 · **"Quinto lugar do ranking" depende de qual ranking — e a frase quase foi ao ar.** O Navistron tem três
   listas que parecem a mesma: o `/ranking` (partidas salvas com nick, uma linha por partida), o top 10 de pilotos em `/stats`
   (a melhor partida de cada nick) e a lista de partidas por pontos (inclui as anônimas). A melhor partida anônima, 18.196
