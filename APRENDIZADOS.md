@@ -4,6 +4,16 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-03 · **O Avatar V custa ~2,5× o Avatar IV, e o 1º par da pergunta S40 saiu a favor da Estela.** Medido com um
+  vídeo só no dia, o story de 21,8 s no Avatar V custou **18 créditos** (519 → 501), ~1 a cada 1,2 s, contra ~1 a cada 3 s
+  no Avatar IV. Nos dois stories em que foi usado ele passou no QA, mas um story diário nele custaria ~17 créditos, e só os
+  stories somariam ~500 por mês: **o padrão segue Avatar IV** e o Avatar V fica para um vídeo pontual. Na pergunta da
+  semana, o reel de dados de 30/09 fechou em **6 de alcance / 7 views** com ~43 h, contra **29 / 42** da estreia da Estela
+  na mesma idade e no mesmo slot — ~5×, mas um par só, numa série que vai de 2 a 135 (mediana 14 com 13 posts); o 2º par
+  (Estela 02/10 × dados 03/10) fecha em 05 e 06/10. Fora da série, o reel que o Guilherme publicou à mão em 30/09 chegou a
+  **80 de alcance / 96 views** (~36 h), o maior da conta desde 22/09. No jogo, 4 partidas anônimas em 02/10 (19:02–20:47)
+  e **nenhum nick novo nos cinco dias completos de pedido** (28/09 a 02/10, 44 pilotos); o total chegou a 18h16 de jogo em
+  545 partidas, a 1h44 das 20 horas — o tema do reel do dia.
 - 2026-10-02 · **"Quinto lugar do ranking" depende de qual ranking — e a frase quase foi ao ar.** O Navistron tem três
   listas que parecem a mesma: o `/ranking` (partidas salvas com nick, uma linha por partida), o top 10 de pilotos em `/stats`
   (a melhor partida de cada nick) e a lista de partidas por pontos (inclui as anônimas). A melhor partida anônima, 18.196
@@ -32,16 +42,6 @@ apenas este arquivo, e não o playbook inteiro.
   série (2 e 3) — pouco para virar regra, mas o ranking narrado pela Estela em 05/10 é o teste natural. Produção: a
   duração de um vídeo dela depende do texto, não só da contagem de palavras (58 palavras com enumeração → 27,6 s; 50
   diretas → 19,1 s) — conferir `duration` antes do push.
-- 2026-09-29 · **Primeiros retornos do Guilherme sobre a Estela: menos coisa na tela, mais casa.** A estreia agradou,
-  mas a legenda queimada (82 px, caixa alta, logo abaixo do queixo) e o selo fixo no topo pareceram grandes e em cima do
-  rosto. Na mesma tarde vieram as regras que valem daqui pra frente: **sem selo de IA na arte** (o rótulo de IA do
-  Instagram basta), **nos reels só a legenda pequena** (56 px, caixa baixa, base em y = 1490, molde
-  `templates/estela-video.html`), **stories em vídeo puro, 1 por dia**, **cenas sempre dentro da casa dela** — sala,
-  cozinha, quarto, escrivaninha — e, por último, **ela não diz mais que é IA** na fala nem na legenda: só o conteúdo
-  (o rótulo do Instagram é o aviso). Saíram quatro looks em casa (1 crédito cada; o quarto com pôster de personagem de
-  terceiros no fundo foi vetado e refeito sem pôsteres) e o 1º story, gravado na sala, foi ao ar às 15:36. Custo real
-  medido: ~1 crédito a cada 3 s de vídeo. Do lado do jogo: 4 dias sem partida (a última foi em 25/09, 11h42), e a
-  segunda-feira com o pedido novo ("joga e registra o nick") terminou com zero nick novo.
 
-Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 28/09) e
+Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 29/09) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).

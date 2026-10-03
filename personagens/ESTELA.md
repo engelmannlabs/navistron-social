@@ -86,7 +86,7 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   com dois-pontos e uma enumeração cheia de vírgulas deram 27,6 s na Excited (a Friendly leu 62 palavras em 23,9 s em
   29/09), e 50 palavras em frases diretas deram 19,1 s na mesma Excited. Regra prática para story: frases diretas, até
   ~50 palavras, e conferir `duration` no `get_video` — acima de 25 s, refazer mais curto antes do push. No reel de 02/10,
-  62 palavras em frases diretas deram 26,1 s na Excited.
+  62 palavras em frases diretas deram 26,1 s na Excited; no story de 03/10, 57 palavras deram 21,8 s na Friendly.
 - Glossário de pronúncia **"Navistron"** — `b3629854ac234ec6b69f92b79dfa76f5`: `navistron.io` é falado "navistron ponto io"
   (a legenda continua mostrando `navistron.io`).
 
@@ -118,13 +118,17 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
 - **Plano Creator desde 29/09/2026**: 600 créditos por mês (renovam todo dia 29), 1080p, sem marca d'água.
 - Custo medido em 29/09: **1 crédito por look** e **~1 crédito a cada 3 s de vídeo** em 1080p (vídeo de 28,4 s = 9;
   de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16; em 01/10, 17,5 s = 6; em 02/10, 26,0 s + 26,1 s no Avatar IV e 20,1 s no
-  Avatar V = 33). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look;
-  story de 30/09 + uma versão descartada; story de 01/10; reel de 02/10 + uma versão descartada + story no Avatar V).
-- **O Avatar V parece custar mais que o dobro**: se os dois reels de 26 s no Avatar IV custaram 9 cada, como todos os
-  anteriores, o story de 20 s no Avatar V custou ~15 (~1 crédito a cada 1,3 s). Estimativa — confirmar conferindo o saldo
-  antes e depois de um vídeo só, antes de adotar o Avatar V como padrão.
-- Orçamento com a cadência nova (1 story por dia de ~20 s + 2–3 reels por semana de ~30 s): ~80 créditos por semana,
-  ~340 por mês — cabe nos 600 com folga para refações.
+  Avatar V = 33; em 03/10, 21,8 s no Avatar V = 18). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 → 501 (estreia +
+  4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma versão descartada; story de 01/10; reel de 02/10 + uma
+  versão descartada + story no Avatar V; story de 03/10 no Avatar V).
+- **O Avatar V custa ~2,5× o Avatar IV** — medido em 03/10 com um vídeo só no dia: 21,8 s = **18 créditos** (~1 a cada
+  1,2 s), contra ~1 a cada 3 s no Avatar IV; confirma a estimativa de 02/10 (~15 pelo story de 20 s). Nos dois stories
+  (02 e 03/10) ele passou no QA, sem artefato e com movimento natural, mas **não cabe como padrão diário**: um story de
+  ~20 s sai por ~17 créditos (contra ~7), e só os stories somariam ~500 por mês, quase o plano inteiro. **Padrão:
+  Avatar IV.** O Avatar V fica para um vídeo pontual, registrado como a variável testada.
+- Orçamento com a cadência nova no Avatar IV (1 story por dia de ~20 s + 2–3 reels por semana de ~30 s): ~80 créditos
+  por semana, ~340 por mês — cabe nos 600 com folga para refações. Em 03/10, com 501 créditos até a renovação (29/10), a
+  previsão é de ~270 (25 stories e os 9 reels da Estela do calendário de S41 a S43).
 - Guarda de segurança da rotina: **abaixo de 100 créditos, não gerar vídeo** — trocar por reel de dados até renovar.
 - Histórico: o teste de 28/09 foi no plano gratuito (720p, marca d'água, criação de avatar pela API bloqueada com 403).
 
@@ -145,3 +149,4 @@ por ela · "a Estela explica" (uma mecânica, conferida no código) · boas-vind
 | 01/10 | `2026-10-01-story-rachaduras` | cozinha (café) | **expressiveness high** com gestos (story de 17,5 s, "a Estela explica" as rachaduras), voz Friendly — Buffer `6abe9d5e0fdd0066b7ac64ca` | `12fa47b232ddde6c8fb3535f1384e7d0` |
 | 02/10 | `2026-10-02-partida-sem-nick` | headset na mesa | voz **Excited** num reel (26,1 s, desafio das partidas sem nick), Avatar IV, expressiveness medium; 1º reel com a legenda em algarismos — Buffer `6abf324963de9e09a28c47ca`; versão descartada antes do push por uma frase ambígua (`782b793ab909335ec7363943333d8c40`) | `9a7c8ade598bae02502959ce1524557d` |
 | 02/10 | `2026-10-02-story-acordou-cedo` | quarto (luzinhas) | motor **Avatar V** (story de 20,1 s; sem expressiveness, que ele não aceita, e sem motionPrompt), voz Friendly — Buffer `6abf3251c07bdc2fc269c5f5` | `351860d24d1764404e879d860a271407` |
+| 03/10 | `2026-10-03-story-boost-arco-iris` | setup | **Avatar V** de novo, como único vídeo do dia, para medir o custo isolado: 18 créditos por 21,8 s (story "a Estela explica" o boost arco-íris), voz Friendly — Buffer `6ac081d116dec17c265229e2` | `64d8f0e4c724efd7dc67c7b3d80796e1` |

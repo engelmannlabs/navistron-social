@@ -1,4 +1,4 @@
-# Arquivo — aprendizados de 14 a 17/09/2026 (mais 23 a 28/09)
+# Arquivo — aprendizados de 14 a 17/09/2026 (mais 23 a 29/09)
 
 Movido da seção 7 do `PLAYBOOK.md` em 21/09/2026 para manter o playbook curto e barato de reescrever a cada rodada.
 Anteriores em [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
@@ -8,6 +8,16 @@ perderam quando o `APRENDIZADOS.md` foi criado, em 22/09, já só com os 4 mais 
 está nas linhas por post de [`log/experiments-2026-09-18-a-21.md`](log/experiments-2026-09-18-a-21.md) e nos incidentes
 de [`log/incidentes-2026-09-15-a-19.md`](log/incidentes-2026-09-15-a-19.md).
 
+- 2026-09-29 · **Primeiros retornos do Guilherme sobre a Estela: menos coisa na tela, mais casa.** A estreia agradou,
+  mas a legenda queimada (82 px, caixa alta, logo abaixo do queixo) e o selo fixo no topo pareceram grandes e em cima do
+  rosto. Na mesma tarde vieram as regras que valem daqui pra frente: **sem selo de IA na arte** (o rótulo de IA do
+  Instagram basta), **nos reels só a legenda pequena** (56 px, caixa baixa, base em y = 1490, molde
+  `templates/estela-video.html`), **stories em vídeo puro, 1 por dia**, **cenas sempre dentro da casa dela** — sala,
+  cozinha, quarto, escrivaninha — e, por último, **ela não diz mais que é IA** na fala nem na legenda: só o conteúdo
+  (o rótulo do Instagram é o aviso). Saíram quatro looks em casa (1 crédito cada; o quarto com pôster de personagem de
+  terceiros no fundo foi vetado e refeito sem pôsteres) e o 1º story, gravado na sala, foi ao ar às 15:36. Custo real
+  medido: ~1 crédito a cada 3 s de vídeo. Do lado do jogo: 4 dias sem partida (a última foi em 25/09, 11h42), e a
+  segunda-feira com o pedido novo ("joga e registra o nick") terminou com zero nick novo.
 - 2026-09-28 · **Pilar não prevê alcance — e o pedido de comentário morreu.** Os dois posts de mecânica pura da
   série fecharam em **111 (22/09)** e **14 (26/09)**: mesmo pilar, mesmo formato, mesmo slot das 13:00, 8× de
   diferença. Com a correção de ontem (o "1" de 25/09 era parcial e virou 56), a série do slot fica 2, 4, 10, 14,
