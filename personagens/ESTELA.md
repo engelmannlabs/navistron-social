@@ -30,13 +30,14 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
 4. No Instagram, todo post e todo story dela sai marcado como conteúdo de IA (`isAiGenerated: true` no Buffer).
 5. Reels: roteiro de 20–40 s (60–100 palavras). Stories: 15–25 s (40–60 palavras). Gancho na primeira frase, pedido de
    ação no fim.
-6. **Cenário lúdico criado para cada post** (pedidos do Guilherme em 03/10): todo reel e todo story dela sai em vários
-   cortes num cenário que ilustra o que ela fala **naquele post** — no story do boost arco-íris, ela no espaço com o
-   arco-íris, pegando uma estrela, subindo num rastro de arco-íris como foguete e vendo os meteoros virarem fogos. Nada
-   de cenário pronto ou catálogo por tema: os looks e os clipes nascem do roteiro do dia ("não crie previamente os
-   cenários lúdicos… cada cenário deve ter a ver com o post do momento que será postado"). Não precisa ser dentro da
-   casa dela — a regra de 29/09 ("cenas sempre em casa") caiu —, e nenhum vídeo repete o cenário do anterior. O jeito
-   de fazer e o modo econômico (quando o orçamento não deixa o formato completo) estão em "Como gerar um vídeo dela".
+6. **Cenário lúdico criado para cada post** (pedidos do Guilherme em 03/10): todo reel e todo story dela se passa num
+   cenário que ilustra o que ela fala **naquele post** — no story do boost arco-íris, ela no espaço com o arco-íris,
+   pegando uma estrela, subindo num rastro de arco-íris como foguete e vendo os meteoros virarem fogos. Nada de cenário
+   pronto ou catálogo por tema: os looks e os clipes nascem do roteiro do dia ("não crie previamente os cenários
+   lúdicos… cada cenário deve ter a ver com o post do momento que será postado"). Não precisa ser dentro da casa dela —
+   a regra de 29/09 ("cenas sempre em casa") caiu —, e nenhum vídeo repete o cenário do anterior. **Formato completo
+   (vários cortes, cenas de ação e trilha) só nos reels; stories em take único num look do cenário do post** (decisão do
+   Guilherme em 03/10, pelo custo). O jeito de fazer e o modo econômico estão em "Como gerar um vídeo dela".
 
 ## Visual
 
@@ -109,47 +110,51 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
 
 ## Como gerar um vídeo dela
 
-Desde 03/10 (pedidos do Guilherme), o padrão de reels e stories é o **formato lúdico**: vários cortes num cenário criado
-para o post (regra 6), com cenas de ação e trilha chiptune baixa, feito no Video Agent da HeyGen. Quando a regra de
-orçamento ("Custos e limites") não deixa, entra o **modo econômico**: take único no Avatar IV, num look novo do cenário do
-post — o cenário continua sendo do post; saem os cortes, os clipes e a trilha.
+Desde 03/10 (pedidos e decisão do Guilherme), todo vídeo dela tem um cenário criado para o post (regra 6) e sai num de
+dois formatos:
+- **Formato completo — só nos reels**: vários cortes no cenário do post, com cenas de ação e trilha chiptune baixa, feito
+  no Video Agent da HeyGen. Quando a regra de orçamento ("Custos e limites") não deixa, o reel sai no modo econômico.
+- **Modo econômico — todo story e o reel sem orçamento**: take único no Avatar IV, num look novo do cenário do post. O
+  cenário continua sendo do post; saem os cortes, os clipes e a trilha.
 
 1. **Roteiro** pelas regras acima (gancho na 1ª frase, número conferido com data, pedido de ação no fim).
-2. **Cenário do post**: ler o roteiro e tirar dele 2–4 imagens lúdicas que mostram o que ela diz, no mesmo universo
-   visual. Exemplo (story de 03/10): "brilha em arcoíris" → ela no espaço com o arco-íris atrás; "quando você pega" → ela
-   pega uma estrela dourada; "sobe a sua nave de nível" → sobe num rastro de arco-íris como foguete; "todos os meteoros
-   explodem" → os meteoros em volta viram fogos. Nada de texto, logo, tela com conteúdo, personagem de terceiros ou arma,
-   e nada que contradiga o jogo (a mecânica ilustrada é a conferida no código).
+2. **Cenário do post**: ler o roteiro e tirar dele as imagens lúdicas que mostram o que ela diz, no mesmo universo
+   visual — 2–4 no formato completo, uma só (o look da fala) no modo econômico. Exemplo (story de 03/10): "brilha em
+   arcoíris" → ela no espaço com o arco-íris atrás; "quando você pega" → ela pega uma estrela dourada; "sobe a sua nave
+   de nível" → sobe num rastro de arco-íris como foguete; "todos os meteoros explodem" → os meteoros em volta viram fogos.
+   Nada de texto, logo, tela com conteúdo, personagem de terceiros ou arma, e nada que contradiga o jogo (a mecânica
+   ilustrada é a conferida no código).
 3. **Looks e clipes do cenário**: 1–2 looks novos para as falas (receita em "Looks novos", acima; 1 crédito cada) e, no
-   formato lúdico, 2–4 clipes de ação de 5 s em 9:16 no heygen-video-1 — `reference_to_video` com a foto do look como
+   formato completo, 2–4 clipes de ação de 5 s em 9:16 no heygen-video-1 — `reference_to_video` com a foto do look como
    referência quando ela vai para outro lugar ou se move muito (2k, ~9 créditos), `image_to_video` a partir da foto do
    look quando a ação acontece no próprio quadro (5 créditos em 2k, 2 em 768p). Prompt dos clipes sem texto e sem tela.
    Tudo conferido num laboratório antes de seguir (`posts/_lab-AAAA-MM-DD-<slug>-*`: a folha dos looks e um `post.html`
    tipo `video` por clipe): o rosto dela, mãos, nada de texto ou logo, fogo e explosão só onde fazem sentido (o clipe de
-   768p de 03/10 pôs fogo dentro do quarto e ficou de fora). No modo econômico: um look e nenhum clipe.
-4. **Formato lúdico — Video Agent**: `create_video_agent` em `mode: "chat"`, `orientation: "portrait"`, `avatarId` do
-   look principal, `voiceId` e `brandGlossaryId` da ficha, os clipes em `files` (URLs do `get_model_video`) e, no prompt:
-   o roteiro exato ("palavra por palavra"), a ordem das cenas (fala no look X; clipe Y com a voz dela por cima; …), cortes
-   e aproximações, e as regras duras — sem texto na tela, sem banco de imagens, sem tela mostrando conteúdo, clipes sem
-   som, trilha chiptune baixa (~15–20%), sem cartela de título, sem aceno de tchau. **Legendas: ligadas no reel e
-   desligadas no story.** Com elas ligadas, o agente devolve o `video_url` limpo, o `captioned_video_url` (a legenda grande
-   da HeyGen, que não usamos) e o `subtitle_url` (.srt), que funciona na nossa legenda — teste de 03/10
-   (`80b2e9bba48b418680e6412be0ea8f19`, laboratórios `posts/_lab-2026-10-03-va-legenda-*`). No reel, pedir o rosto dela
-   sempre na metade de cima do quadro, sem close que desça até a faixa da legenda (y ≈ 1350–1490). Conferir o storyboard e
-   aprovar com `send_video_agent_message` (a decisão é da rotina); o agente calcula a duração com folga (estimou 28 s para
-   uma fala de ~22 s): se a estimativa passar do limite do formato, pedir a voz a 1,2x. `get_video` até `completed`;
-   conferir o roteiro cena a cena e `caption.enabled` com `get_video_scenes`. Em 03/10, um aceno de tchau gerou um
-   retângulo bege ao lado do ombro e a cena foi refeita (13 créditos).
-5. **Modo econômico**: `create_video_from_avatar` com o look do cenário, `script`, `voiceId`, `aspectRatio: "9:16"`,
-   `fit: "cover"`, `resolution: "1080p"`, `caption: {file_format: "srt"}` (**sem** `style`: a legenda queimada é a nossa),
-   `expressiveness` (`medium` é o padrão), `motionPrompt` (sem aceno) e `brandGlossaryId`; `get_video` até `completed`.
+   768p de 03/10 pôs fogo dentro do quarto e ficou de fora). Para caber no orçamento, preferir o `image_to_video` (5) ao
+   `reference_to_video` (9) sempre que a cena permitir. No modo econômico: um look e nenhum clipe.
+4. **Formato completo (reel) — Video Agent**: `create_video_agent` em `mode: "chat"`, `orientation: "portrait"`,
+   `avatarId` do look principal, `voiceId` e `brandGlossaryId` da ficha, os clipes em `files` (URLs do `get_model_video`)
+   e, no prompt: o roteiro exato ("palavra por palavra"), a ordem das cenas (fala no look X; clipe Y com a voz dela por
+   cima; …), cortes e aproximações, e as regras duras — sem texto na tela, sem banco de imagens, sem tela mostrando
+   conteúdo, clipes sem som, trilha chiptune baixa (~15–20%), sem cartela de título, sem aceno de tchau. **Legendas
+   ligadas**: o agente devolve o `video_url` limpo, o `captioned_video_url` (a legenda grande da HeyGen, que não usamos) e
+   o `subtitle_url` (.srt), que funciona na nossa legenda — teste de 03/10 (`80b2e9bba48b418680e6412be0ea8f19`,
+   laboratórios `posts/_lab-2026-10-03-va-legenda-*`). Pedir o rosto dela sempre na metade de cima do quadro, sem close
+   que desça até a faixa da legenda (y ≈ 1350–1490). Conferir o storyboard e aprovar com `send_video_agent_message` (a
+   decisão é da rotina); o agente calcula a duração com folga (estimou 28 s para uma fala de ~22 s): se a estimativa
+   passar do limite do formato, pedir a voz a 1,2x. `get_video` até `completed`; conferir o roteiro cena a cena e
+   `caption.enabled` com `get_video_scenes`. Em 03/10, um aceno de tchau gerou um retângulo bege ao lado do ombro e a
+   cena foi refeita (13 créditos).
+5. **Modo econômico (todo story; reel sem orçamento)**: `create_video_from_avatar` com o look do cenário, `script`,
+   `voiceId`, `aspectRatio: "9:16"`, `fit: "cover"`, `resolution: "1080p"`, `caption: {file_format: "srt"}` (**sem**
+   `style`: a legenda queimada é a nossa; no story, o .srt serve só de transcrição), `expressiveness` (`medium` é o
+   padrão), `motionPrompt` (sem aceno) e `brandGlossaryId`; `get_video` até `completed`.
 6. Do `get_video`: `video_url` (sempre o limpo) e `subtitle_url` (URLs assinadas, expiram em ~7 dias). Pasta
    `posts/AAAA-MM-DD-slug/` (story: `posts/AAAA-MM-DD-story-slug/`): copiar o molde como `post.html` —
    `templates/estela-video.html` para reel, `templates/estela-story.html` para story — e trocar `video-src`
-   (= `video_url`) e `video-subtitles` (= `subtitle_url`; o story do Video Agent sai sem legenda e sem `subtitle_url`:
-   apagar a linha). Mais o `caption.md` (cenário, looks, clipes, sessão do agente, créditos antes e depois). O push
-   dispara o Actions, que baixa o vídeo, enquadra em 1080×1920, queima a legenda (só no reel) e commita `reel.mp4`,
-   `reel-cover.png` e `legenda.srt`.
+   (= `video_url`) e `video-subtitles` (= `subtitle_url`; se não houver `subtitle_url`, apagar a linha). Mais o
+   `caption.md` (cenário, looks, clipes, sessão do agente, créditos antes e depois). O push dispara o Actions, que baixa
+   o vídeo, enquadra em 1080×1920, queima a legenda (só no reel) e commita `reel.mp4`, `reel-cover.png` e `legenda.srt`.
 6b. **Legenda com números em algarismos (reels)**: o roteiro vai com os números por extenso (a voz lê melhor) e o .srt da
    HeyGen sai igual, quebrado em frases de 3–4 palavras. Depois da 1ª renderização, baixar o `legenda.srt` da pasta,
    juntar as frases curtas sem cortar palavra, trocar os números por algarismos (o render pinta de ciano), salvar como
@@ -157,7 +162,7 @@ post — o cenário continua sendo do post; saem os cortes, os clipes e a trilha
    (~2 min). Conferir com python que o texto falado de cada grupo bate com as frases originais. Feito pela 1ª vez em 02/10.
 7. QA pela folha de contato do `reel.mp4` baixado do raw.githubusercontent.com (os arquivos da HeyGen não abrem daqui):
    **nada sobre o rosto**, o cenário do post em todas as cenas, nada de texto ou logo, sincronia, artefatos (mãos, dentes,
-   olhos, manchas e retângulos — a última cena quadro a quadro), áudio presente e, no formato lúdico, a trilha baixa
+   olhos, manchas e retângulos — a última cena quadro a quadro), áudio presente e, no formato completo, a trilha baixa
    (~15–20 dB abaixo da voz).
 8. Buffer, sempre com `metadata.instagram.isAiGenerated: true`:
    - reel: como qualquer reel (`type: "reel"`, `shouldShareToFeed: true`), capa no instante mais bonito da folha de
@@ -192,18 +197,18 @@ post — o cenário continua sendo do post; saem os cortes, os clipes e a trilha
   créditos (519 → 415), contra ~7 de um story padrão.
 - **Custo por vídeo** (medido até 03/10): look 1; clipe de 5 s no heygen-video-1 ~9 (`reference_to_video` 2k), 5
   (`image_to_video` 2k) ou 2 (768p); Video Agent ~0,7 por segundo (14 por 19,5 s, 14 por 20,8 s, 3 por 4,8 s); Avatar IV
-  ~1 a cada 3 s. **Formato lúdico com cenário do post: ~30 por story de ~20 s** (2 looks, 2–3 clipes e o Video Agent)
-  **e ~45 por reel de ~30 s. Modo econômico (1 look + take único no Avatar IV): ~8 por story e ~11 por reel.**
-- **Regra de orçamento** (a rotina decide sozinha, antes de cada vídeo da Estela):
-  `reserva = 30 + 8 × (stories que faltam até a renovação) + 11 × (reels da Estela que faltam no calendário até a
-  renovação)`, sem contar o vídeo que está sendo decidido (num dia com reel e story, o story do dia entra na conta do
-  reel). **Formato lúdico se `créditos − custo estimado do lúdico ≥ reserva`; senão, modo econômico.** O custo estimado
-  é a soma do plano do vídeo: looks + clipes + 0,7 × segundos do Video Agent. Registrar a conta no `caption.md`. Com 408
-  créditos em 03/10 (25 stories e 9 reels até 28/10), a regra dá o lúdico ao story de 04/10 e ao reel e ao story de
-  05/10, e o modo econômico depois disso.
-- Por mês (30 stories e ~13 reels da Estela): tudo no formato lúdico pediria ~1.500 créditos; tudo no econômico, ~380. No
-  Creator (600), a regra deixa o lúdico em ~1 vídeo a cada 6; no Pro (1.000), em ~metade; no Business (1.500), em quase
-  todos.
+  ~1 a cada 3 s. **Formato completo (só reels): ~35 por reel de ~28 s** (2 looks, 2–3 clipes e o Video Agent; ~45 se os
+  clipes forem todos `reference_to_video`). **Modo econômico (1 look + take único no Avatar IV): ~8 por story e ~11 por
+  reel.** Antes da decisão de 03/10, um story no formato completo foi estimado em ~30.
+- **Regra de orçamento** (decisão do Guilherme em 03/10: formato completo só nos reels). Story: sempre no modo
+  econômico. Reel: antes de cada um, `reserva = 30 + 8 × (stories que faltam até a renovação, contando o de hoje) + 11 ×
+  (reels da Estela que faltam no calendário até a renovação, sem contar este)`; **formato completo se `créditos − custo
+  estimado do completo ≥ reserva`; senão, modo econômico.** O custo estimado é a soma do plano do reel: looks + clipes +
+  0,7 × segundos do Video Agent. Registrar a conta no `caption.md`. Com 408 créditos em 03/10 (25 stories e 9 reels até
+  28/10), pela estimativa a regra dá o formato completo aos reels de 05, 07 e 10/10 e o modo econômico aos outros seis.
+- Por mês (30 stories e ~13 reels da Estela), com os stories no econômico (~240): no Creator (600), a regra deixa o
+  formato completo em ~7 dos 13 reels; no Pro (1.000), em todos, com sobra. Antes da decisão, tudo no formato completo
+  pediria ~1.500 créditos por mês.
 - Guarda de segurança: **abaixo de 30 créditos, não gerar vídeo da Estela** — o reel vira reel de dados e o story é
   pulado e relatado. Era 100 até 03/10; a reserva acima passou a guardar os créditos dos vídeos que faltam.
 - Histórico: o teste de 28/09 foi no plano gratuito (720p, marca d'água, criação de avatar pela API bloqueada com 403).
