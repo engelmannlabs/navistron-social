@@ -9,7 +9,7 @@ variavel_testada: expressiveness low (1ª vez; medium é a base e high foi testa
 heygen_video_id: 759eefe52b54918faa94eb45be09626d
 creditos_heygen: 408 → 401 (7: look 1 + vídeo de 17,8 s no Avatar IV 6)
 horario_publicacao: 2026-10-04 16:00 BRT
-buffer_post_id: (a preencher depois do agendamento)
+buffer_post_id: 6ac1d4798dc991c73c6995d1
 instagram: metadata.instagram = { type: "story", shouldShareToFeed: false, isAiGenerated: true }
 fonte_dados: navistron.io/stats lido em 04/10/2026 ~01:05 BRT (com ?v=; totais iguais nas visões geral e de partidas) — 545 partidas, nenhuma desde 02/10 (sexta) às 20:47; a última foi anônima, 6.493 pontos, Tier II, 2:10; nenhuma partida em 03/10 (sábado): a leitura de 03/10 às 01:05 já tinha as mesmas 545
 ---
