@@ -10,7 +10,7 @@ orcamento: 286 créditos antes do vídeo — 115 a menos que os 401 deixados pel
 heygen_video_id: b1894fc0152ffaa1dcf196db7c573b2a
 creditos_heygen: 286 → 266 no dia (3 looks — o do reel e dois do story, um refeito — mais o reel e o story); o reel sozinho, ~12 (look 1 + vídeo de 32,9 s)
 horario_publicacao: 2026-10-05 13:00 BRT (segunda)
-buffer_post_id: (a preencher depois do agendamento)
+buffer_post_id: 6ac3285afe1389e4134fc4af
 instagram: metadata.instagram = { type: "reel", shouldShareToFeed: true, isAiGenerated: true }
 teste_do_dia: S41 — 1º dos três vídeos da Estela da semana no feed (seg 05, qua 07, sáb 10); pergunta da semana: três vídeos dela por semana somam ou cansam?; 8º dia do pedido "joga e põe o nick no game over"; a legenda cita o artigo do blog do dia (ranking da semana 40)
 fonte_dados: navistron.io/stats lido em 05/10/2026 ~01:10 BRT (com ?v=; totais iguais nas visões geral, de 7 dias e de partidas) — semana 40 (28/09 a 04/10, a janela de 7 dias do /stats): 18 partidas, 5 com nick (todas do GUI, em 29/09) e 13 anônimas, 1 piloto no ranking da semana, 30min44; recorde 29.901 (GUI, 29/09 às 16:18); melhor anônima 6.493 (02/10 às 20:47); 44 pilotos antes e depois (nenhum nick novo). Semana 39: 4 pilotos estrearam (DENISE, ROBER, YAGO e XXXX, pelo artigo ranking-semana-39-2026)

@@ -9,7 +9,7 @@ variavel_testada: motionPrompt "inclinada pra câmera" (1ª vez; plano de testes
 heygen_video_id: 0c3a3f7cf96e000544d1da98cadbcaba
 creditos_heygen: o dia foi de 286 a 266 (3 looks — um do reel e dois deste story, um refeito —, o reel de 32,9 s e este story de 19,9 s); este story, ~8 (2 looks + ~6 do vídeo)
 horario_publicacao: 2026-10-05 16:00 BRT
-buffer_post_id: (a preencher depois do agendamento)
+buffer_post_id: 6ac327815de5ee424c25bbc1
 instagram: metadata.instagram = { type: "story", shouldShareToFeed: false, isAiGenerated: true }
 fonte_dados: código do jogo (src/app/play/page.js do repo navistron, sem mudança desde 833dddae), conferido em 05/10/2026 — na tela de game over, o rótulo "ENTER YOUR NAME" e o campo com maxLength 20; submitName() salva o nome com trim e em maiúsculas (até 20 caracteres) e abre o ranking com a linha da partida destacada; com o campo em branco, a partida vai para AnonymousDB (anônima) e não entra no ranking
 ---
