@@ -1,0 +1,51 @@
+1
+00:00:00,260 --> 00:00:01,070
+Pôr o seu nick no
+
+2
+00:00:01,110 --> 00:00:02,480
+Navistron é rapidinho.
+
+3
+00:00:02,690 --> 00:00:03,920
+Quando a partida acaba,
+
+4
+00:00:04,050 --> 00:00:05,530
+a tela pede o seu nome:
+
+5
+00:00:05,760 --> 00:00:06,610
+digita até vinte
+
+6
+00:00:06,700 --> 00:00:08,020
+caracteres e salva.
+
+7
+00:00:08,280 --> 00:00:09,730
+Se deixar em branco, a
+
+8
+00:00:09,770 --> 00:00:11,180
+partida fica anônima e
+
+9
+00:00:11,220 --> 00:00:12,520
+não entra no ranking.
+
+10
+00:00:12,790 --> 00:00:15,380
+Hoje, faz o teste: joga,
+
+11
+00:00:15,570 --> 00:00:17,150
+põe o nick e vê o seu
+
+12
+00:00:17,190 --> 00:00:18,300
+nome aparecer lá.
+
+13
+00:00:18,510 --> 00:00:19,810
+Te vejo no ranking!
