@@ -1,91 +1,43 @@
 1
-00:00:00,260 --> 00:00:01,410
-O pódio da semana do
+00:00:00,260 --> 00:00:03,900
+O pódio da semana do Navistron tem 2 lugares vazios.
 
 2
-00:00:01,450 --> 00:00:02,650
-Navistron tem dois
+00:00:04,140 --> 00:00:07,940
+Só 1 piloto pôs o nick: o GUI, que na terça fez
 
 3
-00:00:02,770 --> 00:00:03,900
-lugares vazios.
+00:00:08,060 --> 00:00:12,110
+29.901 pontos, o novo recorde do jogo.
 
 4
-00:00:04,140 --> 00:00:05,570
-Só um piloto pôs o nick:
+00:00:12,410 --> 00:00:14,090
+Foram 18 partidas,
 
 5
-00:00:05,720 --> 00:00:07,940
-o Gui, que na terça fez
+00:00:14,290 --> 00:00:19,110
+e 13 sem nick — a melhor delas fez 6.493 pontos e
 
 6
-00:00:08,060 --> 00:00:08,870
-vinte e nove mil
-
-7
-00:00:08,920 --> 00:00:10,180
-novecentos e um pontos,
-
-8
-00:00:10,280 --> 00:00:12,110
-o novo recorde do jogo.
-
-9
-00:00:12,410 --> 00:00:14,090
-Foram dezoito partidas,
-
-10
-00:00:14,290 --> 00:00:15,520
-e treze sem nick — a
-
-11
-00:00:15,570 --> 00:00:16,800
-melhor delas fez seis
-
-12
-00:00:16,930 --> 00:00:17,830
-mil quatrocentos e
-
-13
-00:00:17,870 --> 00:00:19,110
-noventa e três pontos e
-
-14
 00:00:19,150 --> 00:00:20,110
 ficou sem dono.
 
-15
-00:00:20,430 --> 00:00:21,580
-Na semana anterior,
+7
+00:00:20,430 --> 00:00:23,200
+Na semana anterior, 4 pilotos estrearam
 
-16
-00:00:21,750 --> 00:00:23,200
-quatro pilotos estrearam
+8
+00:00:23,250 --> 00:00:25,210
+no ranking; nessa, nenhum.
 
-17
-00:00:23,250 --> 00:00:24,550
-no ranking; nessa,
+9
+00:00:25,380 --> 00:00:28,360
+O 2º e o 3º lugar estão esperando.
 
-18
-00:00:24,740 --> 00:00:25,210
-nenhum.
+10
+00:00:28,650 --> 00:00:31,340
+Joga hoje e põe o seu nick no game over.
 
-19
-00:00:25,380 --> 00:00:26,620
-O segundo e o terceiro
-
-20
-00:00:26,700 --> 00:00:28,360
-lugar estão esperando.
-
-21
-00:00:28,650 --> 00:00:30,230
-Joga hoje e põe o seu
-
-22
-00:00:30,270 --> 00:00:31,340
-nick no game over.
-
-23
+11
 00:00:31,600 --> 00:00:32,880
 Te vejo no ranking!
