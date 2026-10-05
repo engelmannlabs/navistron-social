@@ -4,6 +4,18 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-05 · **Leitura da semana S40: nos dois pares do mesmo slot, a Estela alcançou 3 a 5× o reel de dados.** A estreia
+  (29/09) fechou em 29 contra 6 do reel de dados de 30/09 (~43–44 h); a Estela de 02/10 fechou em **70** (~41 h), o maior
+  alcance de um post automático desde 22/09, e o reel de dados de 03/10 tinha 21 com ~17 h, quando ela tinha 68 (o final
+  dele sai em 06/10). Dois pares numa série que vai de 2 a 135 (mediana agora 21) não fecham regra, mas a direção é a
+  mesma do reel que o Guilherme publicou à mão em 30/09 (82): rosto e voz distribuem mais que arte de dados. A S41 testa se
+  três vídeos dela por semana somam ou cansam, começando pelo ranking de segunda narrado por ela. No story, o formato
+  completo de 03/10 (7 cortes e trilha) fechou em 13 views e 10 de alcance, dentro da faixa dos de take único (15, 11, 9 e
+  11 views): num caso só, nada que justifique o custo nos stories. No jogo, a semana 40 teve 18 partidas, o recorde do
+  GUI e **nenhum nick novo em 8 dias de pedido** "põe o nick" (44 pilotos). **Orçamento**: o saldo da HeyGen abriu em 286,
+  115 abaixo do deixado em 04/10 — o gasto coincide com uma sessão do Video Agent aberta no app em 04/10, fora da rotina —;
+  com a reserva da ficha em 310, o reel de hoje saiu no modo econômico e, no ritmo atual, os vídeos dela param pela guarda
+  de 30 por volta de 24–25/10, antes da renovação (28/10).
 - 2026-10-03 · **O Avatar V custa ~2,5× o Avatar IV, e o 1º par da pergunta S40 saiu a favor da Estela.** Medido com um
   vídeo só no dia, o story de 21,8 s no Avatar V custou **18 créditos** (519 → 501), ~1 a cada 1,2 s, contra ~1 a cada 3 s
   no Avatar IV. Nos dois stories em que foi usado ele passou no QA, mas um story diário nele custaria ~17 créditos, e só os
@@ -43,16 +55,6 @@ apenas este arquivo, e não o playbook inteiro.
   novidade da estreia) e 10 (30/09; o 7 lido em 01/10 era a leitura de ~20 h) de alcance. Operação: o conector do Buffer caiu na rodada da 01:00 (pedia OAuth de novo);
   a regra nova da ROTINA — arte pronta sem agendar e nenhum vídeo da Estela até ele voltar — evitou gasto à toa, e com a
   reautorização o carrossel foi agendado para as 15:00 e o story para as 16:00.
-- 2026-09-30 · **A seca acabou com recorde, mas o pedido novo ainda não trouxe nick novo.** Depois de 100 h 25 min sem
-  nenhuma partida (25/09 11h42 → 29/09 16h07, mais que as 94 h de 18 → 22/09), o **GUI** — piloto que já estava no
-  ranking — jogou cinco partidas em 29/09 e fez **29.901**, o novo recorde geral: o 25.971 do VASCO durava **85 dias**
-  (06/07). A primeira partida saiu 31 min depois do 1º story da Estela, que perguntava "quem quebra esse silêncio hoje?"
-  — coincidência de horário anotada, sem como provar causa. Na métrica do teste, os dois primeiros dias do pedido
-  "joga e põe o nick no game over" (28 e 29/09) deram **zero nick novo** (44 pilotos antes e depois). No alcance, o
-  ranking de 28/09 fechou em **3**: no slot das 13:00, os dois rankings de segunda (21 e 28/09) são os dois piores da
-  série (2 e 3) — pouco para virar regra, mas o ranking narrado pela Estela em 05/10 é o teste natural. Produção: a
-  duração de um vídeo dela depende do texto, não só da contagem de palavras (58 palavras com enumeração → 27,6 s; 50
-  diretas → 19,1 s) — conferir `duration` antes do push.
 
-Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 29/09) e
+Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
