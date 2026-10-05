@@ -65,6 +65,10 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   | asteroide | `2c751ba3efb9371a8a9b304ecdb23d95` | de pé num asteroide, meteoros e um planeta com anéis no céu | idem (catálogo descartado); sem uso |
   | portal | `31c93580a89ca49b9513706daf1eb7ae` | portal de luz em espiral (ciano, violeta, dourado) atrás, estrelas | idem (catálogo descartado); sem uso |
   | na Lua | `b7135392ff1957287fe7a9529b1f38e7` | na superfície da Lua, a Terra atrás | idem (catálogo descartado); sem uso |
+  | meteoros esperando | `d1fd810257a3772eef5ce60b4c1bd965` | sentada numa rocha no espaço, meteoros parados em volta | cenário do story de 04/10 (o jogo parado no sábado) |
+  | pódio com dois lugares vagos | `f83799060228fb010ec78f4909fad427` | no espaço, pódio dourado atrás: troféu de estrela no degrau mais alto, os outros dois vazios sob holofotes | cenário do reel de 05/10 (ranking da semana 40) |
+  | o nome no ranking (v1) | `ee9b0791ee1057037de35a7c31910ac9` | no espaço, plaquinha de nome em branco | **vetado**: contorno brilhante em volta do corpo, terminando num recorte arredondado; refeito |
+  | o nome no ranking v2 | `a3ced55a4cb1f0bd865d9f8bd70488a7` | no espaço, da cintura para cima, plaquinha de nome dourada em branco flutuando ao lado da cabeça | cenário do story de 05/10 (como pôr o nick) |
 
   Looks novos (um ou dois por post, regra 6): `create_prompt_avatar` com `avatarGroupId` e `avatarId` = setup
   (`c328911551104420832ec0a8a325ffb3`) como referência de rosto, `aspectRatio: "9:16"`, prompt começando por "The same
@@ -148,7 +152,9 @@ dois formatos:
 5. **Modo econômico (todo story; reel sem orçamento)**: `create_video_from_avatar` com o look do cenário, `script`,
    `voiceId`, `aspectRatio: "9:16"`, `fit: "cover"`, `resolution: "1080p"`, `caption: {file_format: "srt"}` (**sem**
    `style`: a legenda queimada é a nossa; no story, o .srt serve só de transcrição), `expressiveness` (`medium` é o
-   padrão), `motionPrompt` (sem aceno) e `brandGlossaryId`; `get_video` até `completed`.
+   padrão), `motionPrompt` (sem aceno) e `brandGlossaryId`; `get_video` até `completed`. O `motionPrompt` não segura as
+   mãos sozinho: no reel de 05/10, com expressiveness medium e "no hand gestures" no prompt, ela gesticulou entre ~13,6
+   e 17 s (mãos naturais, sem artefato); com expressiveness low (story de 04/10), nenhuma mão apareceu.
 6. Do `get_video`: `video_url` (sempre o limpo) e `subtitle_url` (URLs assinadas, expiram em ~7 dias). Pasta
    `posts/AAAA-MM-DD-slug/` (story: `posts/AAAA-MM-DD-story-slug/`): copiar o molde como `post.html` —
    `templates/estela-video.html` para reel, `templates/estela-story.html` para story — e trocar `video-src`
@@ -178,10 +184,11 @@ dois formatos:
 - Custo medido em 29/09: **1 crédito por look** e **~1 crédito a cada 3 s de vídeo** em 1080p (vídeo de 28,4 s = 9;
   de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16; em 01/10, 17,5 s = 6; em 02/10, 26,0 s + 26,1 s no Avatar IV e 20,1 s no
   Avatar V = 33; em 03/10, 21,8 s no Avatar V = 18). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 → 501 → 480 →
-  415 → 411 → 408 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma versão descartada;
-  story de 01/10; reel de 02/10 + uma versão descartada + story no Avatar V; story de 03/10 no Avatar V; 1ª versão
-  lúdica de 03/10; versão no espaço; 4 looks de um catálogo por tema, descartado no mesmo dia; teste da legenda do
-  Video Agent).
+  415 → 411 → 408 → 401 → 286 → 266 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma
+  versão descartada; story de 01/10; reel de 02/10 + uma versão descartada + story no Avatar V; story de 03/10 no Avatar V;
+  1ª versão lúdica de 03/10; versão no espaço; 4 looks de um catálogo por tema, descartado no mesmo dia; teste da legenda
+  do Video Agent; story de 04/10; **115 gastos fora da rotina em 04/10** — coincide com uma sessão do Video Agent aberta
+  no app às 15:25, "Criar vídeo de aula"; 3 looks, o reel de 32,9 s e o story de 19,9 s de 05/10).
 - **O Avatar V custa ~2,5× o Avatar IV** — medido em 03/10 com um vídeo só no dia: 21,8 s = **18 créditos** (~1 a cada
   1,2 s), contra ~1 a cada 3 s no Avatar IV; confirma a estimativa de 02/10 (~15 pelo story de 20 s). Nos dois stories
   (02 e 03/10) ele passou no QA, sem artefato e com movimento natural, mas **não cabe como padrão diário**: um story de
@@ -205,7 +212,10 @@ dois formatos:
   (reels da Estela que faltam no calendário até a renovação, sem contar este)`; **formato completo se `créditos − custo
   estimado do completo ≥ reserva`; senão, modo econômico.** O custo estimado é a soma do plano do reel: looks + clipes +
   0,7 × segundos do Video Agent. Registrar a conta no `caption.md`. Com 408 créditos em 03/10 (25 stories e 9 reels até
-  28/10), pela estimativa a regra dá o formato completo aos reels de 05, 07 e 10/10 e o modo econômico aos outros seis.
+  28/10), pela estimativa a regra dava o formato completo aos reels de 05, 07 e 10/10 e o modo econômico aos outros seis.
+  **Em 05/10 o saldo era 286** (115 gastos fora da rotina em 04/10): reserva 310, e o reel do dia saiu no modo econômico.
+  Pela estimativa, nenhum reel sai no formato completo até a renovação, e o saldo não cobre todos os vídeos até 28/10:
+  com ~8 por story e ~11 por reel, a guarda de 30 para os vídeos dela por volta de 24–25/10.
 - Por mês (30 stories e ~13 reels da Estela), com os stories no econômico (~240): no Creator (600), a regra deixa o
   formato completo em ~7 dos 13 reels; no Pro (1.000), em todos, com sobra. Antes da decisão, tudo no formato completo
   pediria ~1.500 créditos por mês.
@@ -236,3 +246,6 @@ define o cenário: cada post ganha o seu, tirado do que ela fala (regra 6).
 | 03/10 | `2026-10-03-story-boost-arco-iris-ludico` | setup → headset na mesa → cutaway → cozinha → setup → sala | **story com 6 cortes e trilha baixa** (pedido do Guilherme): HeyGen Video Agent, Avatar IV, voz Friendly a 1,2x, 19,5 s; cutaway de 2 s do heygen-video-1 (`2afb8e6e9a454160b2156598bdd8536c`) — **não publicado**: agendado (`6ac11a4afec59133947b3b92`) e trocado pela versão no espaço | `1b029d53b9d345a884c8b2737f7f8a23` |
 | 03/10 | `2026-10-03-story-boost-arco-iris-espaco` | espaço (arco-íris) → 4 clipes → sentada no arco-íris → espaço | **story no espaço com 7 cortes e trilha baixa** (2º pedido do Guilherme): Video Agent, 3 falas em Avatar IV e 4 clipes do heygen-video-1, "arcoíris" sem pausa, 20,8 s; cena final refeita sem aceno (a 1ª, `311ca4b6f7be4bd68f1c9945187c4d1b`, teve defeito) — Buffer `6ac12384fec59133947c83e5` | `64266252add848d8adee10d3ef593521` |
 | 03/10 | `_lab-2026-10-03-va-legenda-puro` e `_lab-2026-10-03-va-legenda-reel` (laboratório) | pódio no espaço | **legenda do Video Agent**: com as legendas ligadas no agente, o `video_url` sai limpo e o `subtitle_url` serve na nossa legenda pequena (4,8 s, 3 créditos) | `80b2e9bba48b418680e6412be0ea8f19` |
+| 04/10 | `2026-10-04-story-meteoros-esperando` | meteoros esperando | **1º story no formato novo** (take único no cenário do post), **expressiveness low** (17,8 s, o jogo parado no sábado), voz Friendly — Buffer `6ac1d4798dc991c73c6995d1` | `759eefe52b54918faa94eb45be09626d` |
+| 05/10 | `2026-10-05-podio-vago` | pódio com dois lugares vagos | **reel no modo econômico** pela regra de orçamento (286 créditos); variável **duração ~35 s** (32,9 s, ranking da semana 40 narrado), voz Friendly, expressiveness medium; legenda em algarismos na 3ª renderização — Buffer `6ac3285afe1389e4134fc4af` | `b1894fc0152ffaa1dcf196db7c573b2a` |
+| 05/10 | `2026-10-05-story-nome-no-ranking` | o nome no ranking v2 | story em take único, **motionPrompt inclinada pra câmera** (19,9 s, como pôr o nick no game over), voz Friendly — Buffer `6ac327815de5ee424c25bbc1` | `0c3a3f7cf96e000544d1da98cadbcaba` |
