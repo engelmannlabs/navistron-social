@@ -1,4 +1,4 @@
-# Arquivo — aprendizados de 14 a 17/09/2026 (mais 23 a 29/09)
+# Arquivo — aprendizados de 14 a 17/09/2026 (mais 23 a 30/09)
 
 Movido da seção 7 do `PLAYBOOK.md` em 21/09/2026 para manter o playbook curto e barato de reescrever a cada rodada.
 Anteriores em [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
@@ -8,6 +8,16 @@ perderam quando o `APRENDIZADOS.md` foi criado, em 22/09, já só com os 4 mais 
 está nas linhas por post de [`log/experiments-2026-09-18-a-21.md`](log/experiments-2026-09-18-a-21.md) e nos incidentes
 de [`log/incidentes-2026-09-15-a-19.md`](log/incidentes-2026-09-15-a-19.md).
 
+- 2026-09-30 · **A seca acabou com recorde, mas o pedido novo ainda não trouxe nick novo.** Depois de 100 h 25 min sem
+  nenhuma partida (25/09 11h42 → 29/09 16h07, mais que as 94 h de 18 → 22/09), o **GUI** — piloto que já estava no
+  ranking — jogou cinco partidas em 29/09 e fez **29.901**, o novo recorde geral: o 25.971 do VASCO durava **85 dias**
+  (06/07). A primeira partida saiu 31 min depois do 1º story da Estela, que perguntava "quem quebra esse silêncio hoje?"
+  — coincidência de horário anotada, sem como provar causa. Na métrica do teste, os dois primeiros dias do pedido
+  "joga e põe o nick no game over" (28 e 29/09) deram **zero nick novo** (44 pilotos antes e depois). No alcance, o
+  ranking de 28/09 fechou em **3**: no slot das 13:00, os dois rankings de segunda (21 e 28/09) são os dois piores da
+  série (2 e 3) — pouco para virar regra, mas o ranking narrado pela Estela em 05/10 é o teste natural. Produção: a
+  duração de um vídeo dela depende do texto, não só da contagem de palavras (58 palavras com enumeração → 27,6 s; 50
+  diretas → 19,1 s) — conferir `duration` antes do push.
 - 2026-09-29 · **Primeiros retornos do Guilherme sobre a Estela: menos coisa na tela, mais casa.** A estreia agradou,
   mas a legenda queimada (82 px, caixa alta, logo abaixo do queixo) e o selo fixo no topo pareceram grandes e em cima do
   rosto. Na mesma tarde vieram as regras que valem daqui pra frente: **sem selo de IA na arte** (o rótulo de IA do
