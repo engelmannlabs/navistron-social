@@ -9,7 +9,7 @@ variavel_testada: motionPrompt animado, com gestos de mão visíveis (1ª vez; p
 heygen_video_id: d8954a1260446eab5c1c5cdfc29947ab
 creditos_heygen: 266 → 251 no dia (look 1 + duas versões do vídeo de 20,8 s, 7 cada) — os únicos vídeos novos do dia (o reel é o de 05/10, republicado)
 horario_publicacao: 2026-10-06 16:00 BRT
-buffer_post_id: PENDENTE
+buffer_post_id: 6ac47bf198d02b181e21244a
 instagram: metadata.instagram = { type: "story", shouldShareToFeed: false, isAiGenerated: true }
 fonte_dados: navistron.io/stats?visao=partidas&ordem=data lido em 06/10/2026 ~01:05 BRT (com ?v=; total de 554 igual na visão geral) — 05/10 (segunda) teve 8 partidas, todas anônimas, das 13:23 às 14:35; a melhor, 8.585 pontos às 13:28, terminou no Tier IV com 4min10. Tier IV = laranja (#ff8c00 em TIER_DEFS de src/app/play/page.js, cuja última mudança é de 07/09/2026, commit 94234551; conferido em 06/10) e o tier nunca desce na partida (tierUp só soma), então o tier final é o maior alcançado; sem nick, a partida vai para AnonymousDB e não entra no ranking
 ---
