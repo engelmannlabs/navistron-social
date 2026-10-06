@@ -69,6 +69,7 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   | pódio com dois lugares vagos | `f83799060228fb010ec78f4909fad427` | no espaço, pódio dourado atrás: troféu de estrela no degrau mais alto, os outros dois vazios sob holofotes | cenário do reel de 05/10 (ranking da semana 40) |
   | o nome no ranking (v1) | `ee9b0791ee1057037de35a7c31910ac9` | no espaço, plaquinha de nome em branco | **vetado**: contorno brilhante em volta do corpo, terminando num recorte arredondado; refeito |
   | o nome no ranking v2 | `a3ced55a4cb1f0bd865d9f8bd70488a7` | no espaço, da cintura para cima, plaquinha de nome dourada em branco flutuando ao lado da cabeça | cenário do story de 05/10 (como pôr o nick) |
+  | a nave laranja sem piloto | `7c6fa1e03e4bed9b724cae275abc72c4` | hangar de naves à noite, navinha de casco azul-claro com contorno e motor laranja e a cabine aberta e vazia | cenário do story de 06/10 (a partida anônima de 8.585 no Tier IV) |
 
   Looks novos (um ou dois por post, regra 6): `create_prompt_avatar` com `avatarGroupId` e `avatarId` = setup
   (`c328911551104420832ec0a8a325ffb3`) como referência de rosto, `aspectRatio: "9:16"`, prompt começando por "The same
@@ -76,7 +77,8 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   em todos os looks do vídeo (o moletom preto com o fone no pescoço funcionou no espaço) e sempre "no posters, no
   characters, no logos, no readable text" (o quarto de 29/09 saiu com um pôster de personagem de terceiros e foi
   vetado). Conferir os looks numa folha renderizada pelo Actions (`posts/_lab-AAAA-MM-DD-<slug>-looks/`) antes de usar.
-  Custo medido: 1 crédito por look.
+  Custo medido: 1 crédito por look. Prompt enxuto: em 06/10, dois pedidos de 1.187 e 1.078 caracteres devolveram
+  erro 500 sem criar o look nem gastar crédito, e o mesmo pedido em 709 caracteres funcionou na hora.
 - Prompt de criação (reusar para gerar novos looks consistentes):
 
   > Photorealistic vertical portrait photo of Estela, a 25-year-old Brazilian woman who is a passionate gamer.
@@ -154,7 +156,10 @@ dois formatos:
    `style`: a legenda queimada é a nossa; no story, o .srt serve só de transcrição), `expressiveness` (`medium` é o
    padrão), `motionPrompt` (sem aceno) e `brandGlossaryId`; `get_video` até `completed`. O `motionPrompt` não segura as
    mãos sozinho: no reel de 05/10, com expressiveness medium e "no hand gestures" no prompt, ela gesticulou entre ~13,6
-   e 17 s (mãos naturais, sem artefato); com expressiveness low (story de 04/10), nenhuma mão apareceu.
+   e 17 s (mãos naturais, sem artefato); com expressiveness low (story de 04/10), nenhuma mão apareceu. No story de
+   06/10, o motionPrompt animado (mãos visíveis, a variável testada) deixou as mãos no quadro boa parte do vídeo: a 1ª
+   versão abriu com um gesto rápido de dedos em garra/V e foi refeita; a 2ª, pedindo mãos paradas nos 2 primeiros
+   segundos e gestos lentos de palma aberta, abriu limpa, com só um instante de mãos se cruzando — o padrão segue calmo.
 6. Do `get_video`: `video_url` (sempre o limpo) e `subtitle_url` (URLs assinadas, expiram em ~7 dias). Pasta
    `posts/AAAA-MM-DD-slug/` (story: `posts/AAAA-MM-DD-story-slug/`): copiar o molde como `post.html` —
    `templates/estela-video.html` para reel, `templates/estela-story.html` para story — e trocar `video-src`
@@ -184,11 +189,12 @@ dois formatos:
 - Custo medido em 29/09: **1 crédito por look** e **~1 crédito a cada 3 s de vídeo** em 1080p (vídeo de 28,4 s = 9;
   de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16; em 01/10, 17,5 s = 6; em 02/10, 26,0 s + 26,1 s no Avatar IV e 20,1 s no
   Avatar V = 33; em 03/10, 21,8 s no Avatar V = 18). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 → 501 → 480 →
-  415 → 411 → 408 → 401 → 286 → 266 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma
+  415 → 411 → 408 → 401 → 286 → 266 → 251 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma
   versão descartada; story de 01/10; reel de 02/10 + uma versão descartada + story no Avatar V; story de 03/10 no Avatar V;
   1ª versão lúdica de 03/10; versão no espaço; 4 looks de um catálogo por tema, descartado no mesmo dia; teste da legenda
   do Video Agent; story de 04/10; **115 gastos fora da rotina em 04/10** — coincide com uma sessão do Video Agent aberta
-  no app às 15:25, "Criar vídeo de aula"; 3 looks, o reel de 32,9 s e o story de 19,9 s de 05/10).
+  no app às 15:25, "Criar vídeo de aula"; 3 looks, o reel de 32,9 s e o story de 19,9 s de 05/10; o look e as duas
+  versões do story de 06/10 — o reel do dia foi o de 05/10, republicado).
 - **O Avatar V custa ~2,5× o Avatar IV** — medido em 03/10 com um vídeo só no dia: 21,8 s = **18 créditos** (~1 a cada
   1,2 s), contra ~1 a cada 3 s no Avatar IV; confirma a estimativa de 02/10 (~15 pelo story de 20 s). Nos dois stories
   (02 e 03/10) ele passou no QA, sem artefato e com movimento natural, mas **não cabe como padrão diário**: um story de
@@ -247,5 +253,6 @@ define o cenário: cada post ganha o seu, tirado do que ela fala (regra 6).
 | 03/10 | `2026-10-03-story-boost-arco-iris-espaco` | espaço (arco-íris) → 4 clipes → sentada no arco-íris → espaço | **story no espaço com 7 cortes e trilha baixa** (2º pedido do Guilherme): Video Agent, 3 falas em Avatar IV e 4 clipes do heygen-video-1, "arcoíris" sem pausa, 20,8 s; cena final refeita sem aceno (a 1ª, `311ca4b6f7be4bd68f1c9945187c4d1b`, teve defeito) — Buffer `6ac12384fec59133947c83e5` | `64266252add848d8adee10d3ef593521` |
 | 03/10 | `_lab-2026-10-03-va-legenda-puro` e `_lab-2026-10-03-va-legenda-reel` (laboratório) | pódio no espaço | **legenda do Video Agent**: com as legendas ligadas no agente, o `video_url` sai limpo e o `subtitle_url` serve na nossa legenda pequena (4,8 s, 3 créditos) | `80b2e9bba48b418680e6412be0ea8f19` |
 | 04/10 | `2026-10-04-story-meteoros-esperando` | meteoros esperando | **1º story no formato novo** (take único no cenário do post), **expressiveness low** (17,8 s, o jogo parado no sábado), voz Friendly — Buffer `6ac1d4798dc991c73c6995d1` | `759eefe52b54918faa94eb45be09626d` |
-| 05/10 | `2026-10-05-podio-vago` | pódio com dois lugares vagos | **reel no modo econômico** pela regra de orçamento (286 créditos); variável **duração ~35 s** (32,9 s, ranking da semana 40 narrado), voz Friendly, expressiveness medium; legenda em algarismos na 3ª renderização — Buffer `6ac3285afe1389e4134fc4af` | `b1894fc0152ffaa1dcf196db7c573b2a` |
+| 05/10 | `2026-10-05-podio-vago` | pódio com dois lugares vagos | **reel no modo econômico** pela regra de orçamento (286 créditos); variável **duração ~35 s** (32,9 s, ranking da semana 40 narrado), voz Friendly, expressiveness medium; legenda em algarismos na 3ª renderização — Buffer `6ac3285afe1389e4134fc4af`, que deu **erro no Buffer e não foi ao ar**; republicado em 06/10 às 13:00 como post novo (`6ac4747f032d0529987a7f23`) | `b1894fc0152ffaa1dcf196db7c573b2a` |
 | 05/10 | `2026-10-05-story-nome-no-ranking` | o nome no ranking v2 | story em take único, **motionPrompt inclinada pra câmera** (19,9 s, como pôr o nick no game over), voz Friendly — Buffer `6ac327815de5ee424c25bbc1` | `0c3a3f7cf96e000544d1da98cadbcaba` |
+| 06/10 | `2026-10-06-story-nave-sem-piloto` | a nave laranja sem piloto | story em take único, **motionPrompt animado com mãos visíveis** (20,8 s, a partida anônima de 8.585 no Tier IV), voz Friendly, expressiveness medium; a 1ª versão (`214ca1aa54b429a7ac6d6504c42667ec`) abriu com um gesto de mãos com dedos estranhos e foi refeita — Buffer `6ac47bf198d02b181e21244a` | `d8954a1260446eab5c1c5cdfc29947ab` |
