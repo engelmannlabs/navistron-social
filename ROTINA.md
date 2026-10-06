@@ -134,9 +134,13 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
 2. **Medir o que já foi publicado**: `list_posts` (canal navistron, `includeMetrics: true`, últimos 10). Para todo
    post com ≥ 48 h sem métricas no log, preencher alcance, views (reels), likes, comentários, saves e eng% em
    `log/experiments.md` e escrever 1 linha de leitura. Comparar formatos e horários; se um padrão ficou claro,
-   registrar em `APRENDIZADOS.md`. Verificar posts em `error` no Buffer e relatar. **Se já existir
-   publicação de hoje no feed** (sent hoje ou scheduled com dueAt hoje), só criar outra se houver evento relevante —
-   senão registrar métricas, fazer o story do dia (passo 5c), relatar e ir para a Parte 2.
+   registrar em `APRENDIZADOS.md`. Verificar posts em `error` no Buffer e relatar. **O status `error` não prova que
+   o post falhou**: o reel da Estela de 05/10/2026 saiu no Instagram com o post marcado `error` no Buffer (sem
+   `sentAt` nem métricas), e a republicação agendada na rodada seguinte quase virou duplicata (apagada a 20 min do
+   horário, depois do aviso do Guilherme). Não republicar post em `error`: relatar e pedir ao Guilherme para conferir
+   no Instagram; só republicar se ele confirmar que não saiu. **Se já existir publicação de hoje no feed** (sent hoje
+   ou scheduled com dueAt hoje), só criar outra se houver evento relevante — senão registrar métricas, fazer o story
+   do dia (passo 5c), relatar e ir para a Parte 2.
 3. **Ler a telemetria de hoje** nas URLs acima. Procurar eventos: recorde batido, tier inédito (V+), novo top 3 da
    semana, marcos redondos (500 partidas, 50 pilotos, 20 h), piloto novo com score alto. Antes de afirmar "só X
    pilotos…", conferir as partidas anônimas em `?visao=partidas&ordem=score`. Para o tier de uma partida, usar o
