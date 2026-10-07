@@ -1,0 +1,35 @@
+1
+00:00:00,260 --> 00:00:02,130
+Tem piloto novo no Navistron!
+
+2
+00:00:02,300 --> 00:00:05,500
+Ontem, às 21h13, KAL-EL fez
+
+3
+00:00:05,590 --> 00:00:09,770
+13.154 pontos e pôs o nick:
+
+4
+00:00:09,810 --> 00:00:12,180
+o 1º nick novo em 11 dias.
+
+5
+00:00:12,500 --> 00:00:15,450
+O ranking da semana estava vazio, e KAL-EL
+
+6
+00:00:15,530 --> 00:00:17,360
+entrou direto em 1º lugar.
+
+7
+00:00:17,640 --> 00:00:18,560
+Boas-vindas!
+
+8
+00:00:18,750 --> 00:00:22,020
+Agora joga você e põe o seu nick no game over.
+
+9
+00:00:22,250 --> 00:00:23,550
+Te vejo no ranking!
