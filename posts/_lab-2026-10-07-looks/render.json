@@ -1,12 +1,12 @@
 {
   "files": {
     "post.html": {
-      "hash": "913ce3d44d1dee33bb75fc05903fe4ff159bc06d9c920fe0754bfdc6ad8c6696",
+      "hash": "231ecba124b1becdb9eb702bfcaf4bbbeac955165f3dd6c210bc252e7e29bdb0",
       "out": "post.png",
-      "width": 2160,
+      "width": 3240,
       "height": 1934,
       "fonts": []
     }
   },
-  "renderedAt": "2026-10-07T04:14:32.006Z"
+  "renderedAt": "2026-10-07T04:18:45.357Z"
 }
