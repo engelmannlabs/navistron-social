@@ -9,7 +9,8 @@ variavel_testada: voz Sofia Brazil - Excited (a dos desafios; nos stories, só e
 heygen_video_id: d6a9ddc29c35a7662217cbfc2c72f9d6
 creditos_heygen: 240 → 232 com o vídeo (8 créditos por 24,1 s); os dois looks do story (1 cada) entram no 251 → 240 anotado no reel do dia. Dia: 251 → 232
 horario_publicacao: 2026-10-07 16:00 BRT
-buffer_post_id: (preencher após agendar)
+buffer_post_id: 6ac5ccd553551104161f8f60 (agendado às 01:38 de 07/10 para as 16:00; status scheduled, 24,1 s, isAiGenerated true)
+qa: reel.mp4 baixado pelo SHA do commit do render e conferido na folha de contato — vídeo puro, sem texto nem nada por cima, o sarrafo aceso acima da cabeça em todo o vídeo, áudio presente (média −22,7 dB), 24,1 s; com a voz Excited ela gesticulou mais que o pedido no motionPrompt (mãos à altura do peito em ~4,5–7 s e ~14,5–16 s), com dedos e palmas naturais, sem artefato. O 1º push (01:28) não gerou o vídeo em 7 min — o render do reel do dia foi commitado 4 s depois, em cima dele —; um 2º push (01:36) gerou em ~1 min
 instagram: metadata.instagram = { type: "story", shouldShareToFeed: false, isAiGenerated: true }
 fonte_dados: navistron.io/stats lido em 07/10/2026 ~01:05 BRT (com ?v=) — top 10 de pilotos (a melhor partida de cada nick): o 10º é o VASCAO, com 13.311 pontos (28/06); KAL-EL, piloto novo de 06/10 às 21:13, fez 13.154 e é o 11º (#11 no /player/KAL-EL): 13.311 − 13.154 = 157
 ---

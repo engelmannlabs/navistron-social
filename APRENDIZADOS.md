@@ -4,6 +4,19 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-07 · **O 1º nick novo em 11 dias chegou numa terça às 21:13 — e o "Estela > dados" da S40 não fechou.** KAL-EL
+  estreou em 06/10 com **13.154 pontos** (Tier III, 2min56): o 45º piloto, o 11º da lista de pilotos (a 157 do top 10) e o
+  1º nick novo desde o XXXX (25/09), no 9º dia do pedido "põe o nick". Chegou quatro horas depois de o ranking da semana
+  esvaziar (a última partida do GUI saiu da janela de 7 dias às 16:52), virou o 1º sozinho — e a partida saiu à noite, fora da
+  faixa das 14h às 17h em que o jogo costuma acontecer. Nada liga a estreia a um post, mas nick novo é uma das duas métricas da
+  leitura de 26/10 — e virou o reel da Estela do dia, com as boas-vindas pelo nick. No alcance, o reel de mecânica de
+  04/10 ("A chuva acelera", dados) fechou em **122** com ~39 h, o 2º maior da série das 13:00 (mediana 25 com 16 posts),
+  acima das duas Estelas da S40 (29 e 70): a leitura de 05/10 ("rosto e voz distribuem mais") fica como hipótese fraca, e
+  a variância segue maior que qualquer efeito de formato. O ranking narrado pela Estela em 05/10, que o Buffer marcou como
+  erro, reapareceu como post "via network", com **14 de alcance e 23 views com ~15 h** (tempo médio 8,7 s de 32,9 s),
+  contra 68 da Estela de 02/10 na mesma idade — o 1º dos três vídeos dela na S41 começou fraco. Operação: um post em
+  `error` que saiu de verdade aparece depois no Buffer como post via network, com `sentAt` e métricas — a prova de
+  publicação sem depender do Instagram (nota no passo 2 da ROTINA).
 - 2026-10-05 · **Leitura da semana S40: nos dois pares do mesmo slot, a Estela alcançou 3 a 5× o reel de dados.** A estreia
   (29/09) fechou em 29 contra 6 do reel de dados de 30/09 (~43–44 h); a Estela de 02/10 fechou em **70** (~41 h), o maior
   alcance de um post automático desde 22/09, e o reel de dados de 03/10 tinha 21 com ~17 h, quando ela tinha 68 (o final
@@ -46,15 +59,7 @@ apenas este arquivo, e não o playbook inteiro.
   partidas da história não têm nick, e 453 das 541 no total. Produção: a legenda dos reels passou a sair em algarismos
   (2ª renderização com `legenda-digitos.srt`) e o Avatar V estreou num story, sem artefato no QA mas com custo estimado em
   mais que o dobro do Avatar IV. Do lado do jogo, nenhuma partida desde 01/10 às 08h11.
-- 2026-10-01 · **A Estela estreou no dobro da mediana — e o post que mais alcançou na semana foi feito à mão pelo Guilherme.**
-  A estreia (29/09, reel de 28,5 s com avatar) fechou em **29 de alcance e 42 views** com ~44 h, 1 like e 1 compartilhamento:
-  o dobro da mediana dos 11 posts anteriores do slot das 13:00 (14) e o melhor post automático desde 25/09. No mesmo
-  período, um reel que o próprio Guilherme publicou pelo app às 19:48 de 30/09 fez **59 de alcance** em ~13 h, contra 4 do
-  reel de dados daquele dia com ~20 h. São amostras de um, mas as duas apontam na direção da proposta de 17/09 (sinal
-  humano na conta): hipótese para a leitura de segunda (05/10), não regra. Os stories da Estela ficaram em 12 (29/09, com a
-  novidade da estreia) e 10 (30/09; o 7 lido em 01/10 era a leitura de ~20 h) de alcance. Operação: o conector do Buffer caiu na rodada da 01:00 (pedia OAuth de novo);
-  a regra nova da ROTINA — arte pronta sem agendar e nenhum vídeo da Estela até ele voltar — evitou gasto à toa, e com a
-  reautorização o carrossel foi agendado para as 15:00 e o story para as 16:00.
 
-Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
+Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
+[`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
