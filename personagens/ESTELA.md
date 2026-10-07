@@ -70,6 +70,9 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   | o nome no ranking (v1) | `ee9b0791ee1057037de35a7c31910ac9` | no espaço, plaquinha de nome em branco | **vetado**: contorno brilhante em volta do corpo, terminando num recorte arredondado; refeito |
   | o nome no ranking v2 | `a3ced55a4cb1f0bd865d9f8bd70488a7` | no espaço, da cintura para cima, plaquinha de nome dourada em branco flutuando ao lado da cabeça | cenário do story de 05/10 (como pôr o nick) |
   | a nave laranja sem piloto | `7c6fa1e03e4bed9b724cae275abc72c4` | hangar de naves à noite, navinha de casco azul-claro com contorno e motor laranja e a cabine aberta e vazia | cenário do story de 06/10 (a partida anônima de 8.585 no Tier IV) |
+  | o primeiro lugar aceso | `922e7dff5a88faad7a5cca0329021a05` | no espaço, placar vertical de espaços de vidro vazios atrás, só o de cima aceso em amarelo | cenário do reel de 07/10 (o piloto novo KAL-EL entrou em 1º no ranking da semana vazio) |
+  | o sarrafo do top 10 (v1) | `a4309e130c7994d1d858db486c9b4bdd` | campo de atletismo à noite, sarrafo de salto em altura aceso em ciano | **vetado**: saiu com dois fones (um na cabeça, outro no pescoço); refeito |
+  | o sarrafo do top 10 v2 | `16b53a8408e8f6c2ef502cf6194071d8` | campo de atletismo à noite, neblina e refletores, sarrafo aceso em ciano bem acima da cabeça | cenário do story de 07/10 (o sarrafo do top 10 de pilotos, 13.311) |
 
   Looks novos (um ou dois por post, regra 6): `create_prompt_avatar` com `avatarGroupId` e `avatarId` = setup
   (`c328911551104420832ec0a8a325ffb3`) como referência de rosto, `aspectRatio: "9:16"`, prompt começando por "The same
@@ -78,7 +81,9 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   characters, no logos, no readable text" (o quarto de 29/09 saiu com um pôster de personagem de terceiros e foi
   vetado). Conferir os looks numa folha renderizada pelo Actions (`posts/_lab-AAAA-MM-DD-<slug>-looks/`) antes de usar.
   Custo medido: 1 crédito por look. Prompt enxuto: em 06/10, dois pedidos de 1.187 e 1.078 caracteres devolveram
-  erro 500 sem criar o look nem gastar crédito, e o mesmo pedido em 709 caracteres funcionou na hora.
+  erro 500 sem criar o look nem gastar crédito, e o mesmo pedido em 709 caracteres funcionou na hora. Fone: em 07/10, um
+  look saiu com dois fones (um na cabeça e outro no pescoço); pedir "one single pair of over-ear headphones resting around
+  her neck, nothing on her head" resolveu na 2ª tentativa.
 - Prompt de criação (reusar para gerar novos looks consistentes):
 
   > Photorealistic vertical portrait photo of Estela, a 25-year-old Brazilian woman who is a passionate gamer.
@@ -109,7 +114,9 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   com dois-pontos e uma enumeração cheia de vírgulas deram 27,6 s na Excited (a Friendly leu 62 palavras em 23,9 s em
   29/09), e 50 palavras em frases diretas deram 19,1 s na mesma Excited. Regra prática para story: frases diretas, até
   ~50 palavras, e conferir `duration` no `get_video` — acima de 25 s, refazer mais curto antes do push. No reel de 02/10,
-  62 palavras em frases diretas deram 26,1 s na Excited; no story de 03/10, 57 palavras deram 21,8 s na Friendly.
+  62 palavras em frases diretas deram 26,1 s na Excited; no story de 03/10, 57 palavras deram 21,8 s na Friendly. Em 07/10,
+  62 palavras deram 23,6 s na Friendly (reel) e 56 palavras com três números por extenso deram 24,1 s na Excited (story),
+  no limite dos 25 s.
 - Glossário de pronúncia **"Navistron"** — `b3629854ac234ec6b69f92b79dfa76f5`: `navistron.io` é falado "navistron ponto io"
   (a legenda continua mostrando `navistron.io`) e, desde 03/10, `arco-íris` é falado "arcoíris" — sem o glossário, a voz
   fazia ~200 ms de pausa entre "arco" e "íris" (o Guilherme notou no story de 03/10).
@@ -160,6 +167,9 @@ dois formatos:
    06/10, o motionPrompt animado (mãos visíveis, a variável testada) deixou as mãos no quadro boa parte do vídeo: a 1ª
    versão abriu com um gesto rápido de dedos em garra/V e foi refeita; a 2ª, pedindo mãos paradas nos 2 primeiros
    segundos e gestos lentos de palma aberta, abriu limpa, com só um instante de mãos se cruzando — o padrão segue calmo.
+   Em 07/10, com expressiveness medium e o motionPrompt calmo ("hands stay out of frame"), ela gesticulou nos dois vídeos:
+   no reel (Friendly), três gestos rápidos na faixa de baixo do quadro; no story (Excited), mais gestos, com as mãos à
+   altura do peito em ~4,5–7 s e ~14,5–16 s — todos naturais, sem artefato. A Excited parece puxar mais gestos.
 6. Do `get_video`: `video_url` (sempre o limpo) e `subtitle_url` (URLs assinadas, expiram em ~7 dias). Pasta
    `posts/AAAA-MM-DD-slug/` (story: `posts/AAAA-MM-DD-story-slug/`): copiar o molde como `post.html` —
    `templates/estela-video.html` para reel, `templates/estela-story.html` para story — e trocar `video-src`
@@ -189,12 +199,12 @@ dois formatos:
 - Custo medido em 29/09: **1 crédito por look** e **~1 crédito a cada 3 s de vídeo** em 1080p (vídeo de 28,4 s = 9;
   de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16; em 01/10, 17,5 s = 6; em 02/10, 26,0 s + 26,1 s no Avatar IV e 20,1 s no
   Avatar V = 33; em 03/10, 21,8 s no Avatar V = 18). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 → 501 → 480 →
-  415 → 411 → 408 → 401 → 286 → 266 → 251 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma
+  415 → 411 → 408 → 401 → 286 → 266 → 251 → 232 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma
   versão descartada; story de 01/10; reel de 02/10 + uma versão descartada + story no Avatar V; story de 03/10 no Avatar V;
   1ª versão lúdica de 03/10; versão no espaço; 4 looks de um catálogo por tema, descartado no mesmo dia; teste da legenda
   do Video Agent; story de 04/10; **115 gastos fora da rotina em 04/10** — coincide com uma sessão do Video Agent aberta
   no app às 15:25, "Criar vídeo de aula"; 3 looks, o reel de 32,9 s e o story de 19,9 s de 05/10; o look e as duas
-  versões do story de 06/10 — o reel do dia foi de dados).
+  versões do story de 06/10 — o reel do dia foi de dados; 3 looks, um refeito, o reel de 23,6 s e o story de 24,1 s de 07/10).
 - **O Avatar V custa ~2,5× o Avatar IV** — medido em 03/10 com um vídeo só no dia: 21,8 s = **18 créditos** (~1 a cada
   1,2 s), contra ~1 a cada 3 s no Avatar IV; confirma a estimativa de 02/10 (~15 pelo story de 20 s). Nos dois stories
   (02 e 03/10) ele passou no QA, sem artefato e com movimento natural, mas **não cabe como padrão diário**: um story de
@@ -221,7 +231,8 @@ dois formatos:
   28/10), pela estimativa a regra dava o formato completo aos reels de 05, 07 e 10/10 e o modo econômico aos outros seis.
   **Em 05/10 o saldo era 286** (115 gastos fora da rotina em 04/10): reserva 310, e o reel do dia saiu no modo econômico.
   Pela estimativa, nenhum reel sai no formato completo até a renovação, e o saldo não cobre todos os vídeos até 28/10:
-  com ~8 por story e ~11 por reel, a guarda de 30 para os vídeos dela por volta de 24–25/10.
+  com ~8 por story e ~11 por reel, a guarda de 30 para os vídeos dela por volta de 24–25/10. Em 07/10: 251 contra uma
+  reserva de 283 (22 stories e 7 reels até 28/10) — modo econômico de novo; o dia fechou em 232.
 - Por mês (30 stories e ~13 reels da Estela), com os stories no econômico (~240): no Creator (600), a regra deixa o
   formato completo em ~7 dos 13 reels; no Pro (1.000), em todos, com sobra. Antes da decisão, tudo no formato completo
   pediria ~1.500 créditos por mês.
@@ -253,6 +264,8 @@ define o cenário: cada post ganha o seu, tirado do que ela fala (regra 6).
 | 03/10 | `2026-10-03-story-boost-arco-iris-espaco` | espaço (arco-íris) → 4 clipes → sentada no arco-íris → espaço | **story no espaço com 7 cortes e trilha baixa** (2º pedido do Guilherme): Video Agent, 3 falas em Avatar IV e 4 clipes do heygen-video-1, "arcoíris" sem pausa, 20,8 s; cena final refeita sem aceno (a 1ª, `311ca4b6f7be4bd68f1c9945187c4d1b`, teve defeito) — Buffer `6ac12384fec59133947c83e5` | `64266252add848d8adee10d3ef593521` |
 | 03/10 | `_lab-2026-10-03-va-legenda-puro` e `_lab-2026-10-03-va-legenda-reel` (laboratório) | pódio no espaço | **legenda do Video Agent**: com as legendas ligadas no agente, o `video_url` sai limpo e o `subtitle_url` serve na nossa legenda pequena (4,8 s, 3 créditos) | `80b2e9bba48b418680e6412be0ea8f19` |
 | 04/10 | `2026-10-04-story-meteoros-esperando` | meteoros esperando | **1º story no formato novo** (take único no cenário do post), **expressiveness low** (17,8 s, o jogo parado no sábado), voz Friendly — Buffer `6ac1d4798dc991c73c6995d1` | `759eefe52b54918faa94eb45be09626d` |
-| 05/10 | `2026-10-05-podio-vago` | pódio com dois lugares vagos | **reel no modo econômico** pela regra de orçamento (286 créditos); variável **duração ~35 s** (32,9 s, ranking da semana 40 narrado), voz Friendly, expressiveness medium; legenda em algarismos na 3ª renderização — Buffer `6ac3285afe1389e4134fc4af`: **saiu no Instagram, mas ficou com status `error` no Buffer**, sem `sentAt` nem métricas (a republicação agendada em 06/10 foi apagada antes de sair) | `b1894fc0152ffaa1dcf196db7c573b2a` |
+| 05/10 | `2026-10-05-podio-vago` | pódio com dois lugares vagos | **reel no modo econômico** pela regra de orçamento (286 créditos); variável **duração ~35 s** (32,9 s, ranking da semana 40 narrado), voz Friendly, expressiveness medium; legenda em algarismos na 3ª renderização — Buffer `6ac3285afe1389e4134fc4af`: **saiu no Instagram, mas ficou com status `error` no Buffer**, sem `sentAt` nem métricas (a republicação agendada em 06/10 foi apagada antes de sair); depois o Buffer passou a listar a publicação real como post via network (`6ac49a80970ea04598503a0f`), com as métricas | `b1894fc0152ffaa1dcf196db7c573b2a` |
 | 05/10 | `2026-10-05-story-nome-no-ranking` | o nome no ranking v2 | story em take único, **motionPrompt inclinada pra câmera** (19,9 s, como pôr o nick no game over), voz Friendly — Buffer `6ac327815de5ee424c25bbc1` | `0c3a3f7cf96e000544d1da98cadbcaba` |
 | 06/10 | `2026-10-06-story-nave-sem-piloto` | a nave laranja sem piloto | story em take único, **motionPrompt animado com mãos visíveis** (20,8 s, a partida anônima de 8.585 no Tier IV), voz Friendly, expressiveness medium; a 1ª versão (`214ca1aa54b429a7ac6d6504c42667ec`) abriu com um gesto de mãos com dedos estranhos e foi refeita — Buffer `6ac47bf198d02b181e21244a` | `d8954a1260446eab5c1c5cdfc29947ab` |
+| 07/10 | `2026-10-07-piloto-novo` | o primeiro lugar aceso | reel no modo econômico pela regra de orçamento (251 contra reserva de 283); variável **duração ~20 s** (23,6 s, boas-vindas ao piloto novo KAL-EL), voz Friendly, expressiveness medium; legenda em algarismos na 2ª renderização — Buffer `6ac5cb6953551104161f63cc` | `3e710651f8aaafd91e8584ac409176f1` |
+| 07/10 | `2026-10-07-story-sarrafo-top-10` | o sarrafo do top 10 v2 | story em take único, **voz Excited** (24,1 s, o sarrafo do top 10 de pilotos), expressiveness medium; a 1ª versão do look saiu com dois fones e foi refeita — Buffer `6ac5ccd553551104161f8f60` | `d6a9ddc29c35a7662217cbfc2c72f9d6` |
