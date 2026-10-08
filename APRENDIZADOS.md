@@ -16,7 +16,10 @@ apenas este arquivo, e não o playbook inteiro.
   Estela (05/10) fechou em **14** e o reel de dados de 06/10 em **13** (~36–38 h), os dois abaixo da mediana do slot (18
   com 18 posts), e a Estela de 07/10 tinha 3 com ~12 h; os stories caíram de 9–15 views para 7 e 5. Custo: o story com a
   voz a **1,1x** (51 palavras em 15,3 s) custou 6 créditos com o look, contra 8–9 dos de ~24 s — nesse ritmo, os 226 de
-  hoje cobrem os 20 stories e os 7 reels econômicos até a renovação (~190), acima da guarda de 30.
+  hoje cobrem os 20 stories e os 7 reels econômicos até a renovação (~190), acima da guarda de 30. À tarde, o story das
+  16:00 ficou em `error` no Buffer — o mesmo "unknown error" do reel de 05/10, que tinha saído — e, desta vez, **não saiu**:
+  o Guilherme avisou às 17:34 e ele foi republicado às 17:36. O status `error` sozinho não diz se o post foi ao ar; quem
+  diz é o Instagram (ou um post via network no Buffer), e a rodada da 01:00 só vê o erro no dia seguinte.
 - 2026-10-07 · **O 1º nick novo em 11 dias chegou numa terça às 21:13 — e o "Estela > dados" da S40 não fechou.** KAL-EL
   estreou em 06/10 com **13.154 pontos** (Tier III, 2min56): o 45º piloto, o 11º da lista de pilotos (a 157 do top 10) e o
   1º nick novo desde o XXXX (25/09), no 9º dia do pedido "põe o nick". Chegou quatro horas depois de o ranking da semana
