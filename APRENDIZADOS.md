@@ -4,6 +4,19 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-08 · **Uma partida respondeu duas perguntas dos reels — e um story foi ao ar com um número velho.** Em 07/10
+  às 14:55, VASCO DA GAMA fez **30.577** pontos com 20 boosts em 5min14: a 1ª partida no Tier V em 568, o recorde novo
+  e a maior partida em boosts e em duração — a resposta para "quem chega aos 30 mil?" (reel de 30/09) e "quem chega
+  primeiro no Tier V?" (reel de 06/10, ~26 h antes). Nada liga a partida aos posts (o piloto não é novo: jogou em
+  27/06), mas a pergunta com número deu pauta de continuação, e o gancho do dia saiu do código: no Tier V, os tiros
+  ficam rosa. No mesmo dia, o ROBER voltou depois de 13 dias e entrou no top 10 de pilotos às 13:37 — **duas horas e
+  meia antes de o story das 16:00 ir ao ar dizendo que o sarrafo do top 10 era 13.311** (já era 14.007). O roteiro é
+  escrito à 01:00 e o story sai 15 horas depois: número que muda durante o dia vai com a hora da leitura ou como fato
+  fechado (regra nova no passo 5c.b da ROTINA). No alcance, a S41 está fraca nos dois formatos: o ranking narrado pela
+  Estela (05/10) fechou em **14** e o reel de dados de 06/10 em **13** (~36–38 h), os dois abaixo da mediana do slot (18
+  com 18 posts), e a Estela de 07/10 tinha 3 com ~12 h; os stories caíram de 9–15 views para 7 e 5. Custo: o story com a
+  voz a **1,1x** (51 palavras em 15,3 s) custou 6 créditos com o look, contra 8–9 dos de ~24 s — nesse ritmo, os 226 de
+  hoje cobrem os 20 stories e os 7 reels econômicos até a renovação (~190), acima da guarda de 30.
 - 2026-10-07 · **O 1º nick novo em 11 dias chegou numa terça às 21:13 — e o "Estela > dados" da S40 não fechou.** KAL-EL
   estreou em 06/10 com **13.154 pontos** (Tier III, 2min56): o 45º piloto, o 11º da lista de pilotos (a 157 do top 10) e o
   1º nick novo desde o XXXX (25/09), no 9º dia do pedido "põe o nick". Chegou quatro horas depois de o ranking da semana
@@ -50,15 +63,6 @@ apenas este arquivo, e não o playbook inteiro.
   No Creator, a regra de orçamento da ficha deixa o formato completo em ~7 dos ~13 reels do mês (3 dos 9 até 28/10). Um
   teste de 3 créditos mostrou que o Video Agent serve aos reels: com as legendas ligadas, ele devolve o vídeo limpo e o
   .srt separado.
-- 2026-10-02 · **"Quinto lugar do ranking" depende de qual ranking — e a frase quase foi ao ar.** O Navistron tem três
-  listas que parecem a mesma: o `/ranking` (partidas salvas com nick, uma linha por partida), o top 10 de pilotos em `/stats`
-  (a melhor partida de cada nick) e a lista de partidas por pontos (inclui as anônimas). A melhor partida anônima, 18.196
-  (11/09), ficaria em 5º no top 10 de pilotos, em 11º no `/ranking` e é a 11ª da lista geral. O 1º roteiro do reel dizia
-  "mais do que o quinto lugar do ranking" e o vídeo foi refeito antes do push (custo: ~9 créditos). **Regra nova
-  (PLAYBOOK, seção 4): posição sempre com a lista nomeada.** O dado em si virou o reel e o artigo do dia: 30 das 50 melhores
-  partidas da história não têm nick, e 453 das 541 no total. Produção: a legenda dos reels passou a sair em algarismos
-  (2ª renderização com `legenda-digitos.srt`) e o Avatar V estreou num story, sem artefato no QA mas com custo estimado em
-  mais que o dobro do Avatar IV. Do lado do jogo, nenhuma partida desde 01/10 às 08h11.
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
