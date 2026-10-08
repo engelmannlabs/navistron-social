@@ -193,6 +193,9 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
       (pedido do Guilherme; o aviso é o rótulo do Instagram): gancho na 1ª frase, um fato conferido da telemetria com
       data (ou uma mecânica conferida no código), pedido de ação ("joga e põe o nick no game over", "link na bio"). Não
       repetir o assunto do reel do dia palavra por palavra — o story pode ser o bastidor, a provocação ou o lembrete do dia.
+      O roteiro é escrito à 01:00 e o story vai ao ar às 16:00: número que pode mudar durante o dia (o sarrafo do top 10,
+      uma posição, "o ranking está vazio") vai como fato fechado e datado ("ontem, às 13:37…") ou com a hora da leitura —
+      o story de 07/10 saiu às 16:01 dizendo que o sarrafo era 13.311, e às 13:37 ele já era 14.007.
    c. **Cenário do story**: um look novo que ilustra o que ela fala no story (como no 5b.c, com uma imagem só), diferente
       do cenário do último vídeo dela, conferido num laboratório antes de usar. O story é sempre take único (decisão do
       Guilherme em 03/10: formato completo só nos reels). Uma variável de produção do plano de testes (voz, duração,

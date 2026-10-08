@@ -73,6 +73,7 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   | o primeiro lugar aceso | `922e7dff5a88faad7a5cca0329021a05` | no espaço, placar vertical de espaços de vidro vazios atrás, só o de cima aceso em amarelo | cenário do reel de 07/10 (o piloto novo KAL-EL entrou em 1º no ranking da semana vazio) |
   | o sarrafo do top 10 (v1) | `a4309e130c7994d1d858db486c9b4bdd` | campo de atletismo à noite, sarrafo de salto em altura aceso em ciano | **vetado**: saiu com dois fones (um na cabeça, outro no pescoço); refeito |
   | o sarrafo do top 10 v2 | `16b53a8408e8f6c2ef502cf6194071d8` | campo de atletismo à noite, neblina e refletores, sarrafo aceso em ciano bem acima da cabeça | cenário do story de 07/10 (o sarrafo do top 10 de pilotos, 13.311) |
+  | a volta do piloto | `2bec62305d260a6849b42dd0e1329c35` | deck aberto de uma estação espacial à noite, navinha de casco azul-claro com contorno e chama verdes voltando num rastro em U, luz de recorte verde no cabelo | cenário do story de 08/10 (o ROBER voltou e entrou no top 10 de pilotos) |
 
   Looks novos (um ou dois por post, regra 6): `create_prompt_avatar` com `avatarGroupId` e `avatarId` = setup
   (`c328911551104420832ec0a8a325ffb3`) como referência de rosto, `aspectRatio: "9:16"`, prompt começando por "The same
@@ -116,7 +117,8 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   ~50 palavras, e conferir `duration` no `get_video` — acima de 25 s, refazer mais curto antes do push. No reel de 02/10,
   62 palavras em frases diretas deram 26,1 s na Excited; no story de 03/10, 57 palavras deram 21,8 s na Friendly. Em 07/10,
   62 palavras deram 23,6 s na Friendly (reel) e 56 palavras com três números por extenso deram 24,1 s na Excited (story),
-  no limite dos 25 s.
+  no limite dos 25 s. Em 08/10, a Friendly a **1,1x** (`voiceSettings: {speed: 1.1}`) leu 51 palavras em 15,3 s (a 1,0x
+  seriam ~19 s): o jeito de encurtar um story sem cortar o roteiro, com ~2 créditos a menos.
 - Glossário de pronúncia **"Navistron"** — `b3629854ac234ec6b69f92b79dfa76f5`: `navistron.io` é falado "navistron ponto io"
   (a legenda continua mostrando `navistron.io`) e, desde 03/10, `arco-íris` é falado "arcoíris" — sem o glossário, a voz
   fazia ~200 ms de pausa entre "arco" e "íris" (o Guilherme notou no story de 03/10).
@@ -169,7 +171,8 @@ dois formatos:
    segundos e gestos lentos de palma aberta, abriu limpa, com só um instante de mãos se cruzando — o padrão segue calmo.
    Em 07/10, com expressiveness medium e o motionPrompt calmo ("hands stay out of frame"), ela gesticulou nos dois vídeos:
    no reel (Friendly), três gestos rápidos na faixa de baixo do quadro; no story (Excited), mais gestos, com as mãos à
-   altura do peito em ~4,5–7 s e ~14,5–16 s — todos naturais, sem artefato. A Excited parece puxar mais gestos.
+   altura do peito em ~4,5–7 s e ~14,5–16 s — todos naturais, sem artefato. A Excited parece puxar mais gestos. Em 08/10
+   (Friendly a 1,1x, medium, calmo), de novo mãos à altura do peito em ~8–12 s, com as palmas abertas, naturais.
 6. Do `get_video`: `video_url` (sempre o limpo) e `subtitle_url` (URLs assinadas, expiram em ~7 dias). Pasta
    `posts/AAAA-MM-DD-slug/` (story: `posts/AAAA-MM-DD-story-slug/`): copiar o molde como `post.html` —
    `templates/estela-video.html` para reel, `templates/estela-story.html` para story — e trocar `video-src`
@@ -199,12 +202,13 @@ dois formatos:
 - Custo medido em 29/09: **1 crédito por look** e **~1 crédito a cada 3 s de vídeo** em 1080p (vídeo de 28,4 s = 9;
   de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16; em 01/10, 17,5 s = 6; em 02/10, 26,0 s + 26,1 s no Avatar IV e 20,1 s no
   Avatar V = 33; em 03/10, 21,8 s no Avatar V = 18). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 → 501 → 480 →
-  415 → 411 → 408 → 401 → 286 → 266 → 251 → 232 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma
+  415 → 411 → 408 → 401 → 286 → 266 → 251 → 232 → 226 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma
   versão descartada; story de 01/10; reel de 02/10 + uma versão descartada + story no Avatar V; story de 03/10 no Avatar V;
   1ª versão lúdica de 03/10; versão no espaço; 4 looks de um catálogo por tema, descartado no mesmo dia; teste da legenda
   do Video Agent; story de 04/10; **115 gastos fora da rotina em 04/10** — coincide com uma sessão do Video Agent aberta
   no app às 15:25, "Criar vídeo de aula"; 3 looks, o reel de 32,9 s e o story de 19,9 s de 05/10; o look e as duas
-  versões do story de 06/10 — o reel do dia foi de dados; 3 looks, um refeito, o reel de 23,6 s e o story de 24,1 s de 07/10).
+  versões do story de 06/10 — o reel do dia foi de dados; 3 looks, um refeito, o reel de 23,6 s e o story de 24,1 s de 07/10; o look e o
+  story de 15,3 s de 08/10 — o reel do dia foi de dados).
 - **O Avatar V custa ~2,5× o Avatar IV** — medido em 03/10 com um vídeo só no dia: 21,8 s = **18 créditos** (~1 a cada
   1,2 s), contra ~1 a cada 3 s no Avatar IV; confirma a estimativa de 02/10 (~15 pelo story de 20 s). Nos dois stories
   (02 e 03/10) ele passou no QA, sem artefato e com movimento natural, mas **não cabe como padrão diário**: um story de
@@ -232,7 +236,9 @@ dois formatos:
   **Em 05/10 o saldo era 286** (115 gastos fora da rotina em 04/10): reserva 310, e o reel do dia saiu no modo econômico.
   Pela estimativa, nenhum reel sai no formato completo até a renovação, e o saldo não cobre todos os vídeos até 28/10:
   com ~8 por story e ~11 por reel, a guarda de 30 para os vídeos dela por volta de 24–25/10. Em 07/10: 251 contra uma
-  reserva de 283 (22 stories e 7 reels até 28/10) — modo econômico de novo; o dia fechou em 232.
+  reserva de 283 (22 stories e 7 reels até 28/10) — modo econômico de novo; o dia fechou em 232. Em 08/10 (reel de
+  dados), o dia fechou em 226, com o story a 1,1x custando 6 (look 1 + vídeo de 15,3 s, 5): com stories assim (~6) e os
+  7 reels econômicos (~10), os 20 stories e 7 reels até 28/10 pedem ~190 créditos, dentro dos 196 acima da guarda de 30.
 - Por mês (30 stories e ~13 reels da Estela), com os stories no econômico (~240): no Creator (600), a regra deixa o
   formato completo em ~7 dos 13 reels; no Pro (1.000), em todos, com sobra. Antes da decisão, tudo no formato completo
   pediria ~1.500 créditos por mês.
@@ -269,3 +275,4 @@ define o cenário: cada post ganha o seu, tirado do que ela fala (regra 6).
 | 06/10 | `2026-10-06-story-nave-sem-piloto` | a nave laranja sem piloto | story em take único, **motionPrompt animado com mãos visíveis** (20,8 s, a partida anônima de 8.585 no Tier IV), voz Friendly, expressiveness medium; a 1ª versão (`214ca1aa54b429a7ac6d6504c42667ec`) abriu com um gesto de mãos com dedos estranhos e foi refeita — Buffer `6ac47bf198d02b181e21244a` | `d8954a1260446eab5c1c5cdfc29947ab` |
 | 07/10 | `2026-10-07-piloto-novo` | o primeiro lugar aceso | reel no modo econômico pela regra de orçamento (251 contra reserva de 283); variável **duração ~20 s** (23,6 s, boas-vindas ao piloto novo KAL-EL), voz Friendly, expressiveness medium; legenda em algarismos na 2ª renderização — Buffer `6ac5cb6953551104161f63cc` | `3e710651f8aaafd91e8584ac409176f1` |
 | 07/10 | `2026-10-07-story-sarrafo-top-10` | o sarrafo do top 10 v2 | story em take único, **voz Excited** (24,1 s, o sarrafo do top 10 de pilotos), expressiveness medium; a 1ª versão do look saiu com dois fones e foi refeita — Buffer `6ac5ccd553551104161f8f60` | `d6a9ddc29c35a7662217cbfc2c72f9d6` |
+| 08/10 | `2026-10-08-story-rober-voltou` | a volta do piloto | story em take único, **voz Friendly a 1,1x** (15,3 s, o ROBER voltou e entrou no top 10 de pilotos), expressiveness medium, motionPrompt calmo — Buffer `6ac71c9c365feab0d73e0e50` | `179a247d4f67ef2dad0e77337bb5fe49` |
