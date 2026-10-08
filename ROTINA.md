@@ -138,7 +138,8 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
    o post falhou**: o reel da Estela de 05/10/2026 saiu no Instagram com o post marcado `error` no Buffer (sem
    `sentAt` nem métricas), e a republicação agendada na rodada seguinte quase virou duplicata (apagada a 20 min do
    horário, depois do aviso do Guilherme). Não republicar post em `error`: relatar e pedir ao Guilherme para conferir
-   no Instagram; só republicar se ele confirmar que não saiu. Antes de pedir, procurar no `list_posts` um post
+   no Instagram; só republicar se ele confirmar que não saiu (o mesmo erro também pode ser falha de verdade: o story de
+   08/10 ficou em `error` e não saiu — o Guilherme avisou às 17:34 e ele foi republicado às 17:36 com `shareNow`). Antes de pedir, procurar no `list_posts` um post
    `via: network` com o mesmo texto e horário próximo: o Buffer importa a publicação real horas depois (o reel de 05/10
    reapareceu assim, com `sentAt` e métricas, em 6ac49a80970ea04598503a0f) — se ele existir, o post saiu: registrar,
    ler as métricas nele e não republicar. **Se já existir publicação de hoje no feed** (sent hoje
