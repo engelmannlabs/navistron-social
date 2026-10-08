@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="14.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="2.0">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>
+  #num.lock { color: var(--t5); text-shadow: 0 0 60px rgba(244,114,182,0.55); }
+  .rows { width: 900px; margin: 50px auto 0; }
+  .row { display: flex; align-items: center; height: 150px; border-bottom: 2px solid rgba(143,163,199,0.16); opacity: 0; }
+  .row:last-child { border-bottom: 0; }
+  .row .lab { width: 210px; text-align: left; font-family: var(--font-ui); font-weight: 500; font-size: 32px;
+              letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; }
+  .row .val { flex: 1; text-align: right; padding-right: 40px; font-family: var(--font-mono); font-weight: 800; font-size: 104px;
+              line-height: 1; color: var(--t5); text-shadow: 0 0 34px rgba(244,114,182,0.5); font-variant-numeric: tabular-nums; }
+  .row .old { width: 190px; text-align: left; font-family: var(--font-ui); font-weight: 500; font-size: 27px; line-height: 1.25;
+              letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; opacity: 0; }
+  .row .old b { font-family: var(--font-mono); font-weight: 700; font-size: 48px; letter-spacing: 0; color: var(--ink); }
+</style>
+<!-- TELEMETRIA (navistron.io/stats lido em 08/10/2026 ~01:10 BRT, com ?v=; a página diz que datas e horários estão no fuso de
+     Brasília): 568 partidas (92 registradas, 476 anônimas), 45 pilotos, 19h04 de jogo.
+     ?visao=partidas&tier=4 (TIER V): 1 partida em 568 — VASCO DA GAMA, 30.577 pontos, 20 boosts, 5:14, 07/10/26 às 14:55.
+     ?visao=partidas&ordem=score: 1º VASCO DA GAMA 30.577 · 2º GUI 29.901 (29/09, 16:18), o recorde anterior · 4º anônimo
+     23.594 (07/10 às 14:37, Tier IV, 17 boosts, 4:47).
+     ?visao=partidas&ordem=boosts: 1º VASCO DA GAMA 20 · antes, o máximo era 17 (anônimas de 09/07 às 15:10 e de 07/10 às 14:37).
+     ?visao=partidas&ordem=tempo: 1º VASCO DA GAMA 5:14 · antes, a mais longa era 4:57 (anônima, 09/09 às 10:32).
+     /player/VASCO DA GAMA: #1, 2 partidas (17.215 em 27/06, Tier III, e 30.577 em 07/10).
+     Perguntas que essa partida respondeu: "QUEM CHEGA AOS 30 MIL?" (reel de 30/09) e "QUEM CHEGA PRIMEIRO NO TIER V?" (reel de
+     06/10, publicado às 13:00 — a partida veio no dia seguinte, às 14:55).
+     MECÂNICA (src/app/play/page.js, última mudança em 07/09/2026, 94234551): tierUp() a cada 5 boosts (totalBoosts % 5), então
+     o Tier V vem no 20º boost; na virada, a tela pisca na cor do tier (#tier-flash, opacidade .35, 0,5 s), a tela treme e
+     todos os meteoros na tela explodem. Os tiros usam c1/c2 do tier: no Tier IV laranja (255,200,100 / 255,120,0), no
+     Tier V rosa (255,160,200 / 255,40,120; cor #ff4488) — "os tiros ficaram rosa". O contorno, o motor e a chama da nave
+     também pegam a cor do tier (o casco segue azul). -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Telemetria · @navistron</div>
+
+  <div id="title" class="layer" style="top: 440px">
+    <div class="h1" style="font-size: 200px"><span class="w" id="w1">OS TIROS</span><br><span class="w" id="w2">FICARAM</span><br><span class="w pink" id="w3">ROSA.</span></div>
+  </div>
+
+  <div id="rec" class="layer" style="top: 600px">
+    <div class="kicker" id="reclabel">A 1ª PARTIDA NO TIER V</div>
+    <div class="counter" id="num" style="margin-top: 40px">0</div>
+    <div class="sub" id="who" style="margin-top: 36px; opacity: 0">pontos · <b>VASCO DA GAMA</b><br>07/10 · 14:55</div>
+    <div id="second" style="margin-top: 70px; opacity: 0"><span class="marker">recorde novo · antes: <b>29.901</b></span></div>
+  </div>
+
+  <div id="seq" class="layer" style="top: 560px">
+    <div class="kicker">a maior partida da história</div>
+    <div class="rows">
+      <div class="row" id="r1"><span class="lab">pontos</span><span class="val">30.577</span><span class="old" id="o1">antes<br><b>29.901</b></span></div>
+      <div class="row" id="r2"><span class="lab">boosts</span><span class="val">20</span><span class="old" id="o2">antes<br><b>17</b></span></div>
+      <div class="row" id="r3"><span class="lab">tempo</span><span class="val">5:14</span><span class="old" id="o3">antes<br><b>4:57</b></span></div>
+    </div>
+    <div class="sub" id="seqsub" style="margin-top: 50px; opacity: 0"><b>1</b> em <b>568</b> partidas<br>chegou ao <b>tier V</b></div>
+  </div>
+
+  <div id="ask" class="layer" style="top: 540px">
+    <div class="h1" style="font-size: 170px">QUEM PASSA<br>DE <span class="pink">30.577?</span></div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">grátis, sem login</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 14.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+  const fmt = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  // ---------- PRNG determinístico ----------
+  let s = 1008;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- a virada para o Tier V: tiros laranja (Tier IV) até TUP; no TUP, flash rosa, tremida e os meteoros
+  //            da tela explodem (como no tierUp() do jogo); depois, tiros, chama e contorno rosa ----------
+  const TUP = 0.72;
+  const ORANGE = '251,146,60', PINK = '244,114,182';
+  const tierRGB = t => (t < TUP ? ORANGE : PINK);
+  const N = 50, CYC = 2100, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 240 + rnd() * 200, r: 20 + rnd() * 44, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * CYC, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  const distAt = t => t * 1.6;
+  function mpos(m, t) {
+    const dist = distAt(t) * m.v + m.phase;
+    const cycle = Math.floor(dist / CYC);
+    const y = (dist % CYC) - 120;
+    const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+    return { x, y, cycle };
+  }
+  // fagulhas da explosão de cada meteoro que estava na tela no TUP
+  const sparks = [];
+  for (let i = 0; i < N; i++) {
+    const p = mpos(meteors[i], TUP);
+    if (p.y < -40 || p.y > H + 40) continue;
+    for (let k = 0; k < 9; k++) {
+      const a = (k / 9) * Math.PI * 2 + rnd() * 0.5;
+      sparks.push({ x: p.x, y: p.y, vx: Math.cos(a) * (240 + rnd() * 300), vy: Math.sin(a) * (240 + rnd() * 300),
+                    r: 2.5 + rnd() * 3.5, white: rnd() < 0.35 });
+    }
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function drawMeteor(m, x, y, rot) {
+    fx.save(); fx.translate(x, y); fx.rotate(rot);
+    fx.beginPath();
+    const n = m.shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = m.r * m.shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+    fx.fillStyle = m.big ? 'rgba(20,26,46,0.92)' : 'rgba(14,19,36,0.9)';
+    fx.fill();
+    fx.lineWidth = m.big ? 3 : 2;
+    fx.strokeStyle = m.big ? 'rgba(190,208,240,0.75)' : 'rgba(150,170,205,0.6)';
+    fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    const c = tierRGB(t);
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y); fx.scale(1.25, 1.25);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, `rgba(${c},0.95)`); g.addColorStop(1, `rgba(${c},0)`);
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = `rgba(${c},0.75)`; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = `rgb(${c})`; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 150 * Math.sin(t * 0.9 + 1.2) + 60 * Math.sin(t * 2.3);
+  const shipY = 1400;
+  const HIT = 5.2;
+
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    fx.save();
+    // tremida da virada (0,55 s, como o shakeTimer do jogo)
+    if (t >= TUP && t < TUP + 0.55) {
+      const k = 1 - (t - TUP) / 0.55;
+      fx.translate(12 * k * Math.sin(t * 90), 12 * k * Math.cos(t * 77));
+    }
+    for (let i = 0; i < N; i++) {
+      const m = meteors[i];
+      const p = mpos(m, t);
+      if (t >= TUP && p.cycle === mpos(m, TUP).cycle) continue;   // explodiu na virada; volta só na próxima volta
+      drawMeteor(m, p.x, p.y, m.rot + t * m.w);
+    }
+    // fagulhas
+    if (t >= TUP && t < TUP + 0.7) {
+      const dt = t - TUP, a = 1 - dt / 0.7;
+      for (const sp of sparks) {
+        fx.fillStyle = sp.white ? `rgba(255,255,255,${a})` : `rgba(${PINK},${a})`;
+        fx.beginPath(); fx.arc(sp.x + sp.vx * dt, sp.y + sp.vy * dt, sp.r * (0.6 + 0.4 * a), 0, Math.PI * 2); fx.fill();
+      }
+    }
+    // tiros: no ritmo do tier (fireRate 0.11 s no Tier IV, 0.09 s no Tier V), na cor do tier do instante do disparo
+    for (let k = 0; ; k++) {
+      const tb = k < 7 ? k * 0.11 : TUP + (k - 7) * 0.09; if (tb > t) break;
+      const yb = shipY - 60 - (t - tb) * 1500; if (yb < -40) continue;
+      const xb = shipX(tb), c = tierRGB(tb);
+      fx.fillStyle = `rgba(${c},0.97)`; fx.shadowColor = `rgba(${c},0.95)`; fx.shadowBlur = 22;
+      fx.beginPath(); fx.ellipse(xb, yb + 18, 6.5, 22, 0, 0, Math.PI * 2); fx.fill();
+      fx.fillStyle = 'rgba(255,255,255,0.85)'; fx.shadowBlur = 0;
+      fx.beginPath(); fx.ellipse(xb, yb + 18, 2.4, 13, 0, 0, Math.PI * 2); fx.fill();
+    }
+    fx.shadowBlur = 0;
+    drawShip(shipX(t), shipY, t);
+    fx.restore();
+    const vg = fx.createRadialGradient(540, 900, 200, 540, 900, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.6)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+    // flash rosa da virada (opacidade .35 caindo em 0,5 s, como o #tier-flash do jogo)
+    if (t >= TUP && t < TUP + 0.5) {
+      fx.fillStyle = `rgba(${PINK},${0.35 * (1 - (t - TUP) / 0.5)})`;
+      fx.fillRect(0, 0, W, H);
+    }
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+  const SCORE = 30577;                              // VASCO DA GAMA, 07/10/2026 14:55, /stats em 08/10
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+    // 1) gancho em 3 tempos (0–1.1), "ROSA." junto com o flash; some em 2.3–2.7
+    const outT = 1 - seg(t, 2.3, 0.4);
+    layer($('title'), outT, -30 * (1 - outT));
+    const ws = [['w1', -0.15, 0.28], ['w2', 0.32, 0.32], ['w3', TUP, 0.38]];
+    for (const [id, a, d] of ws) {
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = v; $(id).style.display = 'inline-block'; $(id).style.transform = `translateY(${40 * (1 - v)}px)`;
+    }
+
+    // 2) o contador: entra 2.6, sobe de 0 até 30.577 (trava em 5.2), sai 6.9–7.2
+    const inR = ease.out3(seg(t, 2.6, 0.45)), outR = 1 - seg(t, 6.9, 0.3);
+    layer($('rec'), inR * outR, 30 * (1 - inR));
+    const cp = 1 - Math.pow(1 - seg(t, 2.7, HIT - 2.7), 2.2);
+    const locked = t >= HIT;
+    $('num').textContent = fmt(locked ? SCORE : SCORE * cp);
+    $('num').className = 'counter' + (locked ? ' lock' : '');
+    const pulse = locked ? 1 + 0.07 * Math.exp(-(t - HIT) * 4) : 1;
+    $('num').style.transform = `scale(${pulse})`;
+    const whoIn = ease.out3(seg(t, HIT + 0.05, 0.4));
+    $('who').style.opacity = whoIn; $('who').style.transform = `translateY(${20 * (1 - whoIn)}px)`;
+    const secIn = ease.out3(seg(t, HIT + 0.75, 0.45));
+    $('second').style.opacity = secIn; $('second').style.transform = `translateY(${24 * (1 - secIn)}px)`;
+
+    // 3) a maior partida: 7.2–10.9 (uma linha a cada 0,4 s; o "antes" entra 0,3 s depois)
+    const inD = ease.out3(seg(t, 7.2, 0.4)), outD = 1 - seg(t, 10.6, 0.3);
+    layer($('seq'), inD * outD, 30 * (1 - inD));
+    ['r1', 'r2', 'r3'].forEach((r, i) => {
+      const a = 7.4 + i * 0.4;
+      const ri = ease.out3(seg(t, a, 0.35));
+      $(r).style.opacity = ri; $(r).style.transform = `translateX(${-30 * (1 - ri)}px)`;
+      const oi = ease.out3(seg(t, a + 0.3, 0.35));
+      $('o' + (i + 1)).style.opacity = oi;
+    });
+    const subIn = ease.out3(seg(t, 9.2, 0.4));
+    $('seqsub').style.opacity = subIn; $('seqsub').style.transform = `translateY(${20 * (1 - subIn)}px)`;
+
+    // 4) pergunta 10.95–12.2
+    const inA = ease.out3(seg(t, 10.95, 0.4)), outA = 1 - seg(t, 12.0, 0.3);
+    layer($('ask'), inA * outA, 0, 0.92 + 0.08 * inA);
+
+    // 5) CTA 12.3–14.0
+    const inC = ease.out3(seg(t, 12.3, 0.5));
+    layer($('cta'), inC, 30 * (1 - inC));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
