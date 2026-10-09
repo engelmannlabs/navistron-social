@@ -4,6 +4,18 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-09 · **Os stories da Estela caíram de 15 para 2 views em nove dias — e a Estela de quarta fechou em 4.** O story de
+  07/10 (o sarrafo do top 10) fechou em **2 views e 0 de alcance** com ~24 h, o 9º numa linha quase só descendente (15, 11, 9,
+  11, 13, 10, 7, 5, 2), e o republicado de 08/10 tinha 1 view com ~5 h; as respostas seguem em zero. A queda atravessa temas,
+  cenários, vozes e durações (cada story testou uma variável diferente), então nenhum deles parece ser a causa; as hipóteses
+  são o cansaço do story diário entre os poucos seguidores ou o Instagram mostrando menos os stories de uma conta sem
+  respostas — a conferir na leitura de 26/10, que pode decidir se o story diário ainda vale os ~6–8 créditos por dia. No
+  feed, a Estela de 07/10 (boas-vindas ao KAL-EL) fechou em **4 de alcance / 7 views** (~35 h), o menor vídeo dela: na S41,
+  os vídeos dela fecharam em 14 e 4 e o reel de dados de 06/10 em 13 (o de 08/10 tinha 13 com ~11 h); a mediana do slot caiu
+  para 14, com 19 posts. No jogo, a quinta (08/10) teve 18 partidas e nenhuma com nick — a melhor, 14.000 no Tier IV, ficou 7
+  pontos abaixo do 10º do top 10 de pilotos e virou o carrossel do dia —, e a semana, 45 partidas e 4 com nick. Produção: com
+  expressiveness low ela gesticulou do mesmo jeito (a 1ª versão do story abriu com um gesto de mãos e foi refeita), e o saldo
+  de 211 créditos só cobre os vídeos até 28/10 com stories de ~15 s e sem refazer.
 - 2026-10-08 · **Uma partida respondeu duas perguntas dos reels — e um story foi ao ar com um número velho.** Em 07/10
   às 14:55, VASCO DA GAMA fez **30.577** pontos com 20 boosts em 5min14: a 1ª partida no Tier V em 568, o recorde novo
   e a maior partida em boosts e em duração — a resposta para "quem chega aos 30 mil?" (reel de 30/09) e "quem chega
@@ -45,27 +57,6 @@ apenas este arquivo, e não o playbook inteiro.
   115 abaixo do deixado em 04/10 — o gasto coincide com uma sessão do Video Agent aberta no app em 04/10, fora da rotina —;
   com a reserva da ficha em 310, o reel de hoje saiu no modo econômico e, no ritmo atual, os vídeos dela param pela guarda
   de 30 por volta de 24–25/10, antes da renovação (28/10).
-- 2026-10-03 · **O Avatar V custa ~2,5× o Avatar IV, e o 1º par da pergunta S40 saiu a favor da Estela.** Medido com um
-  vídeo só no dia, o story de 21,8 s no Avatar V custou **18 créditos** (519 → 501), ~1 a cada 1,2 s, contra ~1 a cada 3 s
-  no Avatar IV. Nos dois stories em que foi usado ele passou no QA, mas um story diário nele custaria ~17 créditos, e só os
-  stories somariam ~500 por mês: **o padrão segue Avatar IV** e o Avatar V fica para um vídeo pontual. Na pergunta da
-  semana, o reel de dados de 30/09 fechou em **6 de alcance / 7 views** com ~43 h, contra **29 / 42** da estreia da Estela
-  na mesma idade e no mesmo slot — ~5×, mas um par só, numa série que vai de 2 a 135 (mediana 14 com 13 posts); o 2º par
-  (Estela 02/10 × dados 03/10) fecha em 05 e 06/10. Fora da série, o reel que o Guilherme publicou à mão em 30/09 chegou a
-  **80 de alcance / 96 views** (~36 h), o maior da conta desde 22/09. No jogo, 4 partidas anônimas em 02/10 (19:02–20:47)
-  e **nenhum nick novo nos cinco dias completos de pedido** (28/09 a 02/10, 44 pilotos); o total chegou a 18h16 de jogo em
-  545 partidas, a 1h44 das 20 horas — o tema do reel do dia. **Mais tarde, o story virou teste de formato**: a pedido do
-  Guilherme, saiu uma versão lúdica com 6 cortes pela casa da Estela e trilha chiptune baixa, feita no Video Agent da
-  HeyGen (14 créditos por 19,5 s) com um cutaway do heygen-video-1; o Seedance 2.0 exige o plano Pro. Ele viu e pediu mais:
-  "arco-íris" falado emendado (a voz fazia ~200 ms de pausa no meio — virou regra no glossário) e ela no espaço, com o
-  arco-íris. A versão final tem 7 cortes, dois looks novos no espaço e quatro clipes de 2k; o story do dia custou 104
-  créditos no total, ~15× um story padrão. **Depois, o formato virou padrão** (pedidos dele): todo reel e story da Estela
-  em vários cortes, num cenário lúdico criado para aquele post — sem catálogo pronto e sem a obrigação de ser em casa. O
-  orçamento não acompanhava (~30 créditos por story e ~45 por reel, contra ~8 e ~11 no take único; tudo assim pediria
-  ~1.500 por mês) e ele decidiu: **formato completo só nos reels**, stories em take único num look do cenário do post.
-  No Creator, a regra de orçamento da ficha deixa o formato completo em ~7 dos ~13 reels do mês (3 dos 9 até 28/10). Um
-  teste de 3 créditos mostrou que o Video Agent serve aos reels: com as legendas ligadas, ele devolve o vídeo limpo e o
-  .srt separado.
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e

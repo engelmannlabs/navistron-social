@@ -4,6 +4,27 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-03 · **O Avatar V custa ~2,5× o Avatar IV, e o 1º par da pergunta S40 saiu a favor da Estela.** Medido com um
+  vídeo só no dia, o story de 21,8 s no Avatar V custou **18 créditos** (519 → 501), ~1 a cada 1,2 s, contra ~1 a cada 3 s
+  no Avatar IV. Nos dois stories em que foi usado ele passou no QA, mas um story diário nele custaria ~17 créditos, e só os
+  stories somariam ~500 por mês: **o padrão segue Avatar IV** e o Avatar V fica para um vídeo pontual. Na pergunta da
+  semana, o reel de dados de 30/09 fechou em **6 de alcance / 7 views** com ~43 h, contra **29 / 42** da estreia da Estela
+  na mesma idade e no mesmo slot — ~5×, mas um par só, numa série que vai de 2 a 135 (mediana 14 com 13 posts); o 2º par
+  (Estela 02/10 × dados 03/10) fecha em 05 e 06/10. Fora da série, o reel que o Guilherme publicou à mão em 30/09 chegou a
+  **80 de alcance / 96 views** (~36 h), o maior da conta desde 22/09. No jogo, 4 partidas anônimas em 02/10 (19:02–20:47)
+  e **nenhum nick novo nos cinco dias completos de pedido** (28/09 a 02/10, 44 pilotos); o total chegou a 18h16 de jogo em
+  545 partidas, a 1h44 das 20 horas — o tema do reel do dia. **Mais tarde, o story virou teste de formato**: a pedido do
+  Guilherme, saiu uma versão lúdica com 6 cortes pela casa da Estela e trilha chiptune baixa, feita no Video Agent da
+  HeyGen (14 créditos por 19,5 s) com um cutaway do heygen-video-1; o Seedance 2.0 exige o plano Pro. Ele viu e pediu mais:
+  "arco-íris" falado emendado (a voz fazia ~200 ms de pausa no meio — virou regra no glossário) e ela no espaço, com o
+  arco-íris. A versão final tem 7 cortes, dois looks novos no espaço e quatro clipes de 2k; o story do dia custou 104
+  créditos no total, ~15× um story padrão. **Depois, o formato virou padrão** (pedidos dele): todo reel e story da Estela
+  em vários cortes, num cenário lúdico criado para aquele post — sem catálogo pronto e sem a obrigação de ser em casa. O
+  orçamento não acompanhava (~30 créditos por story e ~45 por reel, contra ~8 e ~11 no take único; tudo assim pediria
+  ~1.500 por mês) e ele decidiu: **formato completo só nos reels**, stories em take único num look do cenário do post.
+  No Creator, a regra de orçamento da ficha deixa o formato completo em ~7 dos ~13 reels do mês (3 dos 9 até 28/10). Um
+  teste de 3 créditos mostrou que o Video Agent serve aos reels: com as legendas ligadas, ele devolve o vídeo limpo e o
+  .srt separado.
 - 2026-10-02 · **"Quinto lugar do ranking" depende de qual ranking — e a frase quase foi ao ar.** O Navistron tem três
   listas que parecem a mesma: o `/ranking` (partidas salvas com nick, uma linha por partida), o top 10 de pilotos em `/stats`
   (a melhor partida de cada nick) e a lista de partidas por pontos (inclui as anônimas). A melhor partida anônima, 18.196
