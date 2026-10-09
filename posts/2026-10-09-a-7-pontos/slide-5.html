@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .lead { position: absolute; left: 100px; right: 100px; top: 640px; text-align: center; font-family: var(--font-ui);
+          font-size: 32px; line-height: 1.45; color: var(--muted); }
+  .lead b { color: var(--ink); font-weight: 600; }
+  .big { position: absolute; left: 0; right: 0; top: 850px; display: flex; justify-content: center; gap: 120px; text-align: center; }
+  .big .n { font-family: var(--font-display); font-weight: 700; font-size: 150px; line-height: 0.9; color: var(--ink); }
+  .big .n.zero { color: var(--t4); text-shadow: 0 0 30px rgba(251,146,60,0.45); }
+  .big .p { margin-top: 14px; font-size: 19px; letter-spacing: 0.22em; color: var(--muted); text-transform: uppercase; }
+  .sub { position: absolute; left: 0; right: 0; top: 1104px; text-align: center; font-family: var(--font-ui);
+         font-size: 27px; letter-spacing: 0.06em; color: var(--muted); }
+  .handle { font-size: 20px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; }
+</style>
+<!-- Slide 5 de 5: CTA. As 18 partidas de 08/10 em navistron.io/stats?visao=partidas&ordem=data (lido em 09/10/2026 ~01:15
+     BRT) são todas ANÔNIMAS. Partida sem nick não entra no /ranking nem na lista de pilotos (src/lib/stats.js: a lista de
+     pilotos só agrupa partidas registradas). Com nick, a de 14.000 seria a 11ª da lista de pilotos (o 11º hoje, VASCAO,
+     tem 13.311). -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261013"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Telemetria · 08.10.2026</div>
+    <div>5 / 5</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">e tem mais</div>
+    <div class="title" style="font-size: 170px; line-height: 0.98">SEM NICK,<br><span class="accent c4">FICA DE FORA.</span></div>
+  </div>
+
+  <div class="lead">Partida sem nick não entra no ranking. Com nick, a de 14.000 entraria na lista de pilotos <b>em 11º</b>.</div>
+
+  <div class="big">
+    <div><div class="n">18</div><div class="p">partidas na quinta</div></div>
+    <div><div class="n zero">0</div><div class="p">com nick</div></div>
+  </div>
+
+  <div class="sub">artigo completo no blog · link na bio</div>
+
+  <div class="foot">
+    <div class="cta">Jogar grátis · navistron.io</div>
+    <div class="handle">põe o nick no game over · @navistron</div>
+  </div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

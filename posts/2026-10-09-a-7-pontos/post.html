@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .lead { position: absolute; left: 100px; right: 100px; top: 668px; text-align: center; font-family: var(--font-ui);
+          font-size: 32px; line-height: 1.45; color: var(--muted); }
+  .lead b { color: var(--ink); font-weight: 600; }
+  .rank { top: 846px; }
+  .row .pos { font-size: 56px; }
+  .row.ten { background: rgba(250,204,21,0.08); border-color: rgba(250,204,21,0.5); box-shadow: 0 0 34px rgba(250,204,21,0.14); }
+  .row.ten .pos, .row.ten .score { color: var(--t3); }
+  .row.anon { background: repeating-linear-gradient(-45deg, rgba(251,146,60,0.07) 0 8px, transparent 8px 18px);
+              border: 2px dashed rgba(251,146,60,0.6); }
+  .row.anon .pos { color: var(--t4); }
+  .row.anon .name { color: var(--t4); }
+  .row.anon .score { color: var(--t4); text-shadow: 0 0 24px rgba(251,146,60,0.4); }
+  .gap { text-align: center; font-size: 17px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; margin: -4px 0; }
+  .gap b { color: var(--ink); font-size: 22px; }
+  .swipe { font-family: var(--font-ui); font-weight: 500; font-size: 23px; letter-spacing: 0.2em; text-transform: uppercase;
+           color: var(--ink); border: 2px solid rgba(143,163,199,0.4); padding: 18px 38px; border-radius: 8px; }
+</style>
+<!-- Carrossel de 09/10/2026 (slide 1 de 5) — desafio / telemetria: a melhor partida de 08/10 ficou a 7 pontos do 10º
+     lugar do top 10 de pilotos.
+     Fonte: navistron.io/stats lido em 09/10/2026 ~01:15 BRT (com ?v=): partida ANÔNIMA de 14.000 pontos em 08/10 às 14:41
+     (Tier IV, 17 boosts, 4:24), a maior das 18 partidas de 08/10 (todas sem nick); top 10 de pilotos: o 10º é JOGO MALUCO,
+     14.007 (27/06). 14.007 − 14.000 = 7. -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261009"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Telemetria · 08.10.2026</div>
+    <div>@navistron</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">quinta, 14:41 <span>/</span> 14.000 pontos</div>
+    <div class="title" style="font-size: 230px">A 7<br><span class="accent c4">PONTOS.</span></div>
+  </div>
+
+  <div class="lead">A melhor partida de ontem ficou <b>a 7 pontos do 10º lugar</b> do top 10 de pilotos.</div>
+
+  <div class="rank">
+    <div class="row ten">
+      <div class="pos">10</div>
+      <div><div class="name">JOGO MALUCO</div><div class="meta">10º do top 10 de pilotos · 27/06</div></div>
+      <div class="score">14.007</div>
+    </div>
+    <div class="gap">↕ <b>7</b> pontos</div>
+    <div class="row anon">
+      <div class="pos">?</div>
+      <div><div class="name">SEM NICK</div><div class="meta">tier IV · 17 boosts · 08/10</div></div>
+      <div class="score">14.000</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="stats"><div>navistron.io/stats · 09.10 · 01:00</div></div>
+    <div class="swipe">arrasta →</div>
+  </div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

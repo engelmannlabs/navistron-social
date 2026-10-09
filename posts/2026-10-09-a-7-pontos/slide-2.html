@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .panel { top: 640px; }
+  .panel .line b.t4 { color: var(--t4); text-shadow: 0 0 24px rgba(251,146,60,0.45); }
+  .panel .line small { font-family: var(--font-mono); font-size: 17px; letter-spacing: 0.12em; color: var(--muted); margin-left: 14px; text-transform: uppercase; }
+  .note { position: absolute; left: 100px; right: 100px; top: 1188px; text-align: center; font-family: var(--font-ui);
+          font-size: 27px; line-height: 1.45; color: var(--muted); }
+  .note b { color: var(--ink); font-weight: 600; }
+</style>
+<!-- Slide 2 de 5. navistron.io/stats?visao=partidas&ordem=data, lido em 09/10/2026 ~01:15 BRT: 18 partidas em 08/10
+     (13:41–15:03 e 22:27–22:33), todas ANÔNIMAS; a maior, 14.000 às 14:41 (Tier IV, 17 boosts, 4:24). Na lista de partidas
+     por pontos (?visao=partidas&ordem=score&pagina=2) ela é a 68ª de 586. O Tier V vem no 20º boost (tierUp a cada 5,
+     conferido em src/app/play/page.js). -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261010"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Telemetria · 08.10.2026</div>
+    <div>2 / 5</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">a melhor de 18 partidas <span>/</span> quinta</div>
+    <div class="title" style="font-size: 200px"><span class="accent c4">14.000</span><br>PONTOS.</div>
+  </div>
+
+  <div class="panel">
+    <div class="line"><span class="k">Quando</span><b>08/10 · 14:41</b></div>
+    <div class="line"><span class="k">Tier final</span><b class="t4">IV</b></div>
+    <div class="line"><span class="k">Boosts</span><b>17<small>o tier V vem no 20º</small></b></div>
+    <div class="line"><span class="k">Tempo</span><b>4min24</b></div>
+    <div class="line"><span class="k">Nick</span><b class="t4">nenhum</b></div>
+  </div>
+
+  <div class="note">É a <b>68ª melhor partida</b> da história do jogo, entre 586.</div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

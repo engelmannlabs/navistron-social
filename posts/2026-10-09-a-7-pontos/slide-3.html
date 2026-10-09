@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .rank { top: 620px; gap: 16px; }
+  .row { padding: 18px 30px; }
+  .row .pos { font-size: 54px; }
+  .row .name { font-size: 32px; }
+  .row .score { font-size: 60px; }
+  .row.ten { background: rgba(250,204,21,0.08); border-color: rgba(250,204,21,0.5); box-shadow: 0 0 34px rgba(250,204,21,0.14); }
+  .row.ten .pos, .row.ten .score { color: var(--t3); }
+  .line-cut { display: flex; align-items: center; gap: 18px; font-size: 16px; letter-spacing: 0.3em; color: var(--t3); text-transform: uppercase; margin: 2px 0; }
+  .line-cut::before, .line-cut::after { content: ""; flex: 1; height: 2px; background: repeating-linear-gradient(90deg, rgba(250,204,21,0.7) 0 10px, transparent 10px 18px); }
+  .row.anon { background: repeating-linear-gradient(-45deg, rgba(251,146,60,0.07) 0 8px, transparent 8px 18px);
+              border: 2px dashed rgba(251,146,60,0.6); }
+  .row.anon .pos, .row.anon .name { color: var(--t4); }
+  .row.anon .score { color: var(--t4); text-shadow: 0 0 24px rgba(251,146,60,0.4); }
+  .note { position: absolute; left: 100px; right: 100px; top: 1196px; text-align: center; font-family: var(--font-ui);
+          font-size: 27px; line-height: 1.45; color: var(--muted); }
+  .note b { color: var(--ink); font-weight: 600; }
+</style>
+<!-- Slide 3 de 5. Top 10 de pilotos em navistron.io/stats (melhor partida de cada nick), lido em 09/10/2026 ~01:15 BRT:
+     8º JOGO 15.151 (29/05) · 9º ROBER 15.128 (07/10) · 10º JOGO MALUCO 14.007 (27/06) · 11º VASCAO 13.311 (28/06).
+     A partida anônima de 14.000 (08/10) ficaria em 11º se tivesse nick (14.000 < 14.007; ranking por bestScore em
+     src/lib/stats.js). -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261011" data-core="30,40,1050,1400"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Top 10 de pilotos · 09.10.2026</div>
+    <div>3 / 5</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">a linha do top 10</div>
+    <div class="title" style="font-size: 170px">O 10º TEM<br><span class="accent c3">14.007.</span></div>
+  </div>
+
+  <div class="rank">
+    <div class="row">
+      <div class="pos">8</div>
+      <div><div class="name">JOGO</div><div class="meta">29/05</div></div>
+      <div class="score">15.151</div>
+    </div>
+    <div class="row">
+      <div class="pos">9</div>
+      <div><div class="name">ROBER</div><div class="meta">07/10</div></div>
+      <div class="score">15.128</div>
+    </div>
+    <div class="row ten">
+      <div class="pos">10</div>
+      <div><div class="name">JOGO MALUCO</div><div class="meta">27/06</div></div>
+      <div class="score">14.007</div>
+    </div>
+    <div class="line-cut">fim do top 10</div>
+    <div class="row anon">
+      <div class="pos">?</div>
+      <div><div class="name">SEM NICK</div><div class="meta">08/10 · 7 pontos abaixo</div></div>
+      <div class="score">14.000</div>
+    </div>
+  </div>
+
+  <div class="note">7 pontos a mais, e ela <b>encostava no 10º</b>.</div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

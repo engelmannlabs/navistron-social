@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .lead { position: absolute; left: 100px; right: 100px; top: 600px; text-align: center; font-family: var(--font-ui);
+          font-size: 32px; line-height: 1.45; color: var(--muted); }
+  .lead b { color: var(--ink); font-weight: 600; }
+  #m { position: absolute; left: 0; top: 680px; }
+  .vals { position: absolute; left: 72px; right: 72px; top: 1010px; display: grid; grid-template-columns: 1fr 1fr 1fr; text-align: center; }
+  .vals .n { font-family: var(--font-display); font-weight: 700; font-size: 84px; line-height: 1; color: var(--ink); }
+  .vals .n.hot { color: #FF6B4A; text-shadow: 0 0 26px rgba(255,80,40,0.45); }
+  .vals .p { margin-top: 12px; font-size: 19px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; }
+  .legend { position: absolute; left: 0; right: 0; top: 1176px; text-align: center; font-size: 18px; letter-spacing: 0.2em;
+            color: var(--dim); text-transform: uppercase; }
+  .note { position: absolute; left: 100px; right: 100px; top: 1236px; text-align: center; font-family: var(--font-ui);
+          font-size: 27px; line-height: 1.45; color: var(--muted); }
+  .note b { color: var(--ink); font-weight: 600; }
+</style>
+<!-- Slide 4 de 5. Conferido em src/app/play/page.js (09/10/2026): score += 1 a cada segundo inteiro vivo
+     (if(newTime>oldTime) score+=(newTime-oldTime)); meteoro destruído: pequeno round(10 × dif × 0,5), grande
+     round(30 × dif × 0,5); dif = TIER_DIFF[tier] × (1 + score × 0,0007), Tier IV = 4,8. Conta em python, aos 14.000
+     pontos no Tier IV: dif = 51,84 → pequeno 259, grande 778. Calor do meteoro = min((dif − 1)/9, 1) = 1 (vermelho). -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261012"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Do código do jogo · 09.10.2026</div>
+    <div>4 / 5</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">quanto valem 7 pontos</div>
+    <div class="title" style="font-size: 170px">7 PONTOS =<br><span class="accent c1">7 SEGUNDOS.</span></div>
+  </div>
+
+  <div class="lead">No Navistron, <b>cada segundo vivo vale 1 ponto</b>. E cada meteoro vale mais quanto maior o placar e o tier.</div>
+
+  <canvas id="m" width="1080" height="360"></canvas>
+
+  <div class="vals">
+    <div><div class="n">1</div><div class="p">segundo vivo</div></div>
+    <div><div class="n hot">259</div><div class="p">meteoro pequeno</div></div>
+    <div><div class="n hot">778</div><div class="p">meteoro grande</div></div>
+  </div>
+  <div class="legend">pontos · aos 14 mil, no tier IV</div>
+
+  <div class="note">Naquela altura, 7 pontos eram <b>menos que qualquer meteoro</b>.</div>
+
+  <script src="../../templates/base.js"></script>
+  <script src="meteoro.js"></script>
+  <script>
+    const ctx = document.getElementById('m').getContext('2d');
+    // relógio simples para "1 segundo"
+    ctx.save(); ctx.translate(232, 180);
+    ctx.strokeStyle = 'rgba(238,243,255,0.85)'; ctx.lineWidth = 6;
+    ctx.beginPath(); ctx.arc(0, 0, 64, 0, Math.PI * 2); ctx.stroke();
+    ctx.lineCap = 'round';
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, -44); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(30, 14); ctx.stroke();
+    ctx.fillStyle = 'rgba(238,243,255,0.9)'; ctx.beginPath(); ctx.arc(0, 0, 7, 0, Math.PI * 2); ctx.fill();
+    ctx.restore();
+    drawNavMeteor(ctx, 540, 180, 52, 0, 23, 1.0, 1.5);
+    drawNavMeteor(ctx, 848, 180, 92, 0, 61, 1.0, 1.5);
+  </script>
+</body>
+</html>
