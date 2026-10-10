@@ -1,0 +1,39 @@
+1
+00:00:00,230 --> 00:00:01,280
+Fechou a conta!
+
+2
+00:00:01,470 --> 00:00:03,340
+Na semana passada, a pergunta aqui era quem
+
+3
+00:00:03,370 --> 00:00:05,720
+fechava as 20 horas de jogo do Navistron.
+
+4
+00:00:05,970 --> 00:00:08,710
+Fechou ontem, às 16h28,
+
+5
+00:00:08,880 --> 00:00:11,070
+somando todas as partidas desde abril.
+
+6
+00:00:11,320 --> 00:00:15,010
+E a partida que fechou fez 842 pontos e
+
+7
+00:00:15,050 --> 00:00:16,090
+ficou sem nick.
+
+8
+00:00:16,370 --> 00:00:19,740
+As próximas 20 horas começaram: joga hoje e
+
+9
+00:00:19,780 --> 00:00:21,330
+põe o seu nick no game over.
+
+10
+00:00:21,560 --> 00:00:22,800
+Te vejo no ranking!
