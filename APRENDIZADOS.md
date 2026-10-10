@@ -4,12 +4,29 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-10 · **Objeto claro ao lado do corpo dela vira mão translúcida no vídeo — e a queda dos stories não continuou.**
+  O reel do dia (as 20 horas de jogo fecharam em 09/10, às 16:28, numa partida anônima de 842 pontos) custou três versões:
+  no 1º look, a ampulheta do cenário ficava ao lado do tronco, e no vídeo **a mão que passava na frente dela ficava
+  translúcida**, com as estrelas aparecendo através da mão; o motor Avatar III, testado como saída barata (3 créditos por
+  22,9 s), devolveu o mesmo movimento do corpo e o mesmo defeito — só a boca mudou. Saiu limpo num look novo, com a
+  ampulheta pequena no alto, na altura dos olhos: os gestos ficaram sobre o moletom escuro, onde sempre saíram naturais.
+  Regra para os looks (em `personagens/ESTELA.md`): objeto claro do cenário acima da linha dos ombros, nunca ao lado do
+  tronco. E nem o expressiveness low segura as mãos (no reel ela abriu apontando para si mesma; no story, as mãos entraram
+  a 1,4 s e ficaram quase o vídeo todo) — o que muda o resultado é onde as mãos passam. Custo: o reel saiu por 20 créditos
+  (contra ~8 de um econômico) e o saldo fechou em **184**: os 18 stories e 6 reels até 28/10 só cabem acima da guarda de 30
+  com stories de até ~40 palavras e sem refazer. Nos números, o story republicado de 08/10 fechou em **10 views / 8 de
+  alcance** (~24 h) e o de 09/10 tinha 7 views com ~7 h: depois de 7, 5 e 2, a queda registrada em 09/10 não continuou — a
+  hipótese do cansaço fica mais fraca, e a leitura de 26/10 decide. No feed, o reel de dados do 1º Tier V (08/10) fechou em
+  **28 de alcance / 34 views** (~34 h), o maior da S41, e a mediana do slot voltou a 18 (20 posts). No jogo, 08 e 09/10
+  somaram 25 partidas e nenhuma com nick, no 13º dia do pedido "põe o nick".
 - 2026-10-09 · **Os stories da Estela caíram de 15 para 2 views em nove dias — e a Estela de quarta fechou em 4.** O story de
   07/10 (o sarrafo do top 10) fechou em **2 views e 0 de alcance** com ~24 h, o 9º numa linha quase só descendente (15, 11, 9,
   11, 13, 10, 7, 5, 2), e o republicado de 08/10 tinha 1 view com ~5 h; as respostas seguem em zero. A queda atravessa temas,
   cenários, vozes e durações (cada story testou uma variável diferente), então nenhum deles parece ser a causa; as hipóteses
   são o cansaço do story diário entre os poucos seguidores ou o Instagram mostrando menos os stories de uma conta sem
-  respostas — a conferir na leitura de 26/10, que pode decidir se o story diário ainda vale os ~6–8 créditos por dia. No
+  respostas — a conferir na leitura de 26/10, que pode decidir se o story diário ainda vale os ~6–8 créditos por dia.
+  (Atualizado em 10/10: o story republicado de 08/10 fechou em 10 views / 8 de alcance e o de 09/10 tinha 7 views com
+  ~7 h — a queda não continuou; ver a entrada de 10/10.) No
   feed, a Estela de 07/10 (boas-vindas ao KAL-EL) fechou em **4 de alcance / 7 views** (~35 h), o menor vídeo dela: na S41,
   os vídeos dela fecharam em 14 e 4 e o reel de dados de 06/10 em 13 (o de 08/10 tinha 13 com ~11 h); a mediana do slot caiu
   para 14, com 19 posts. No jogo, a quinta (08/10) teve 18 partidas e nenhuma com nick — a melhor, 14.000 no Tier IV, ficou 7
@@ -45,18 +62,6 @@ apenas este arquivo, e não o playbook inteiro.
   contra 68 da Estela de 02/10 na mesma idade — o 1º dos três vídeos dela na S41 começou fraco. Operação: um post em
   `error` que saiu de verdade aparece depois no Buffer como post via network, com `sentAt` e métricas — a prova de
   publicação sem depender do Instagram (nota no passo 2 da ROTINA).
-- 2026-10-05 · **Leitura da semana S40: nos dois pares do mesmo slot, a Estela alcançou 3 a 5× o reel de dados.** A estreia
-  (29/09) fechou em 29 contra 6 do reel de dados de 30/09 (~43–44 h); a Estela de 02/10 fechou em **70** (~41 h), o maior
-  alcance de um post automático desde 22/09, e o reel de dados de 03/10 tinha 21 com ~17 h, quando ela tinha 68 (o final
-  dele sai em 06/10). Dois pares numa série que vai de 2 a 135 (mediana agora 21) não fecham regra, mas a direção é a
-  mesma do reel que o Guilherme publicou à mão em 30/09 (82): rosto e voz distribuem mais que arte de dados. A S41 testa se
-  três vídeos dela por semana somam ou cansam, começando pelo ranking de segunda narrado por ela. No story, o formato
-  completo de 03/10 (7 cortes e trilha) fechou em 13 views e 10 de alcance, dentro da faixa dos de take único (15, 11, 9 e
-  11 views): num caso só, nada que justifique o custo nos stories. No jogo, a semana 40 teve 18 partidas, o recorde do
-  GUI e **nenhum nick novo em 8 dias de pedido** "põe o nick" (44 pilotos). **Orçamento**: o saldo da HeyGen abriu em 286,
-  115 abaixo do deixado em 04/10 — o gasto coincide com uma sessão do Video Agent aberta no app em 04/10, fora da rotina —;
-  com a reserva da ficha em 310, o reel de hoje saiu no modo econômico e, no ritmo atual, os vídeos dela param pela guarda
-  de 30 por volta de 24–25/10, antes da renovação (28/10).
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e

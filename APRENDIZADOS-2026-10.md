@@ -4,6 +4,18 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-05 · **Leitura da semana S40: nos dois pares do mesmo slot, a Estela alcançou 3 a 5× o reel de dados.** A estreia
+  (29/09) fechou em 29 contra 6 do reel de dados de 30/09 (~43–44 h); a Estela de 02/10 fechou em **70** (~41 h), o maior
+  alcance de um post automático desde 22/09, e o reel de dados de 03/10 tinha 21 com ~17 h, quando ela tinha 68 (o final
+  dele sai em 06/10). Dois pares numa série que vai de 2 a 135 (mediana agora 21) não fecham regra, mas a direção é a
+  mesma do reel que o Guilherme publicou à mão em 30/09 (82): rosto e voz distribuem mais que arte de dados. A S41 testa se
+  três vídeos dela por semana somam ou cansam, começando pelo ranking de segunda narrado por ela. No story, o formato
+  completo de 03/10 (7 cortes e trilha) fechou em 13 views e 10 de alcance, dentro da faixa dos de take único (15, 11, 9 e
+  11 views): num caso só, nada que justifique o custo nos stories. No jogo, a semana 40 teve 18 partidas, o recorde do
+  GUI e **nenhum nick novo em 8 dias de pedido** "põe o nick" (44 pilotos). **Orçamento**: o saldo da HeyGen abriu em 286,
+  115 abaixo do deixado em 04/10 — o gasto coincide com uma sessão do Video Agent aberta no app em 04/10, fora da rotina —;
+  com a reserva da ficha em 310, o reel de hoje saiu no modo econômico e, no ritmo atual, os vídeos dela param pela guarda
+  de 30 por volta de 24–25/10, antes da renovação (28/10).
 - 2026-10-03 · **O Avatar V custa ~2,5× o Avatar IV, e o 1º par da pergunta S40 saiu a favor da Estela.** Medido com um
   vídeo só no dia, o story de 21,8 s no Avatar V custou **18 créditos** (519 → 501), ~1 a cada 1,2 s, contra ~1 a cada 3 s
   no Avatar IV. Nos dois stories em que foi usado ele passou no QA, mas um story diário nele custaria ~17 créditos, e só os
