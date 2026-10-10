@@ -75,6 +75,10 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   | o sarrafo do top 10 v2 | `16b53a8408e8f6c2ef502cf6194071d8` | campo de atletismo à noite, neblina e refletores, sarrafo aceso em ciano bem acima da cabeça | cenário do story de 07/10 (o sarrafo do top 10 de pilotos, 13.311) |
   | a volta do piloto | `2bec62305d260a6849b42dd0e1329c35` | deck aberto de uma estação espacial à noite, navinha de casco azul-claro com contorno e chama verdes voltando num rastro em U, luz de recorte verde no cabelo | cenário do story de 08/10 (o ROBER voltou e entrou no top 10 de pilotos) |
   | o raspão no meteoro | `d56d0c5c47328d1b063141ee9b881715` | flutuando no espaço, meteoro enorme cinza-escuro com rachaduras laranja passando rente, atrás da cabeça e do ombro, com fragmentos e rastro; luz de recorte ciano forte no cabelo | cenário do story de 09/10 (a colisão do jogo: a batida só conta em 72% do tamanho do meteoro) |
+  | a ampulheta de estrelas | `49a74a9b66f9c4050d79ca833b941956` | no espaço estrelado, ampulheta grande de vidro ao lado do tronco, com a parte de baixo cheia de estrelinhas ciano | **descartado no vídeo**: a mão que passava na frente da ampulheta ficava translúcida (reel de 10/10) |
+  | a ampulheta no alto | `917781afaf941d56cc250d36103d7cd9` | nebulosa colorida, ampulheta de estrelas à direita | pedida "na altura da cabeça", saiu à altura do ombro, sobre o moletom; **não usado** |
+  | a ampulheta acima do ombro | `fa3f289b3e00875dc50431712b8e4fca` | no espaço escuro, ampulheta pequena de estrelas ciano no alto, à esquerda, na altura dos olhos, longe do tronco | cenário do reel de 10/10 (as 20 horas de jogo fecharam) |
+  | o primeiro boost | `3edd567c4554bb06d40febe3d0dae8c9` | no espaço azul-escuro, a bolinha dourada com estrela do jogo chegando ao lado do ombro num rastro de partículas | cenário do story de 10/10 (o primeiro boost aos 8 s) |
 
   Looks novos (um ou dois por post, regra 6): `create_prompt_avatar` com `avatarGroupId` e `avatarId` = setup
   (`c328911551104420832ec0a8a325ffb3`) como referência de rosto, `aspectRatio: "9:16"`, prompt começando por "The same
@@ -85,7 +89,12 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   Custo medido: 1 crédito por look. Prompt enxuto: em 06/10, dois pedidos de 1.187 e 1.078 caracteres devolveram
   erro 500 sem criar o look nem gastar crédito, e o mesmo pedido em 709 caracteres funcionou na hora. Fone: em 07/10, um
   look saiu com dois fones (um na cabeça e outro no pescoço); pedir "one single pair of over-ear headphones resting around
-  her neck, nothing on her head" resolveu na 2ª tentativa.
+  her neck, nothing on her head" resolveu na 2ª tentativa. **Objeto claro do cenário longe das mãos** (10/10): com uma
+  ampulheta brilhante ao lado do tronco, a mão que passava na frente dela no vídeo ficava translúcida, com as estrelas
+  aparecendo através da mão. Pedir o objeto no alto ("in the upper area of the frame, at the height of her eyes, well
+  above her shoulder"), longe da faixa do peito onde as mãos gesticulam, e "nothing glowing below her chin"; "at the
+  height of her head" sozinho ainda deixou o objeto no ombro. Os cenários que deram certo (o boost ao lado do ombro, o
+  meteoro atrás da cabeça, o sarrafo acima dela) têm o objeto acima da linha das mãos.
 - Prompt de criação (reusar para gerar novos looks consistentes):
 
   > Photorealistic vertical portrait photo of Estela, a 25-year-old Brazilian woman who is a passionate gamer.
@@ -179,6 +188,12 @@ dois formatos:
    borda de baixo (0,07–0,33 s: polegar para cima e mão em C, borrados) e subiu as mãos à altura do peito várias vezes; a 2ª
    versão, pedindo as mãos paradas e fora do quadro nos 2 primeiros segundos, abriu só com as mãos saindo pela borda (~0,15 s)
    — de novo o pedido de "mãos paradas no começo" resolveu a abertura (como em 06/10), mas nem o low segura os gestos do meio.
+   Em 10/10, o mesmo pedido já na 1ª tentativa: no story (low), as mãos só entraram a ~1,4 s, mas ficaram no quadro quase o
+   vídeo todo; no reel (low, a 1ª vez num reel), ela abriu apontando para si mesma (0–0,7 s). Gestos sobre o moletom escuro
+   saem naturais; o defeito aparece quando a mão cruza um objeto claro do cenário (fica translúcida — ver os looks). O motor
+   **Avatar III** (`engine: {type: "avatar_iii"}`, sem expressiveness nem motionPrompt) custou 3 créditos por 22,9 s, mas,
+   no mesmo look e com o mesmo áudio, devolveu o mesmo movimento do corpo do Avatar IV (as mesmas mãos nos mesmos
+   instantes; só a boca mudou): não serve para fugir dos gestos.
    Para achar as mãos sem depender da folha de 12 quadros (que pegou só dois dos instantes), varrer a faixa de baixo do
    quadro (y > 1400) a 10 fps com ffmpeg e contar pixels de tom de pele em python: cada pico é um instante a conferir.
 6. Do `get_video`: `video_url` (sempre o limpo) e `subtitle_url` (URLs assinadas, expiram em ~7 dias). Pasta
@@ -210,14 +225,15 @@ dois formatos:
 - Custo medido em 29/09: **1 crédito por look** e **~1 crédito a cada 3 s de vídeo** em 1080p (vídeo de 28,4 s = 9;
   de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16; em 01/10, 17,5 s = 6; em 02/10, 26,0 s + 26,1 s no Avatar IV e 20,1 s no
   Avatar V = 33; em 03/10, 21,8 s no Avatar V = 18). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 → 501 → 480 →
-  415 → 411 → 408 → 401 → 286 → 266 → 251 → 232 → 226 → 211 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma
+  415 → 411 → 408 → 401 → 286 → 266 → 251 → 232 → 226 → 211 → 184 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma
   versão descartada; story de 01/10; reel de 02/10 + uma versão descartada + story no Avatar V; story de 03/10 no Avatar V;
   1ª versão lúdica de 03/10; versão no espaço; 4 looks de um catálogo por tema, descartado no mesmo dia; teste da legenda
   do Video Agent; story de 04/10; **115 gastos fora da rotina em 04/10** — coincide com uma sessão do Video Agent aberta
   no app às 15:25, "Criar vídeo de aula"; 3 looks, o reel de 32,9 s e o story de 19,9 s de 05/10; o look e as duas
   versões do story de 06/10 — o reel do dia foi de dados; 3 looks, um refeito, o reel de 23,6 s e o story de 24,1 s de 07/10; o look e o
   story de 15,3 s de 08/10 — o reel do dia foi de dados; o look e as duas versões do story de 21,6 s de 09/10 — o feed do
-  dia foi um carrossel).
+  dia foi um carrossel; 4 looks, três versões do reel de 22,9 s — 7, 3 no Avatar III e 7 — e o story de 16,8 s, 6, de
+  10/10).
 - **O Avatar V custa ~2,5× o Avatar IV** — medido em 03/10 com um vídeo só no dia: 21,8 s = **18 créditos** (~1 a cada
   1,2 s), contra ~1 a cada 3 s no Avatar IV; confirma a estimativa de 02/10 (~15 pelo story de 20 s). Nos dois stories
   (02 e 03/10) ele passou no QA, sem artefato e com movimento natural, mas **não cabe como padrão diário**: um story de
@@ -251,7 +267,10 @@ dois formatos:
   Em 09/10 (carrossel no feed), o dia fechou em 211: o story custou 15 (look 1 + duas versões de 21,6 s, 7 cada — a 1ª
   abriu com um gesto de mãos). Os 19 stories e 7 reels econômicos até 28/10 pedem ~184 com stories de ~15 s (6) e reels de
   ~10, contra 181 acima da guarda: só cabem com stories curtos (~40–45 palavras a 1,1x) e sem refazer — um refazer custa um
-  story.
+  story. Em 10/10: 211 contra uma reserva de 248 (19 stories e 6 reels depois deste) — modo econômico; o dia fechou em
+  **184**, com o reel custando 20 (3 looks e três versões, por causa da mão translúcida) e o story 7. Os 18 stories e 6
+  reels até 28/10 pedem ~138 com stories de ~13 s (5: look 1 + vídeo ~4) e reels de ~23 s (8), contra 154 acima da guarda:
+  cabe só com stories de **até ~40 palavras** a 1,1x e sem refazer — cada vídeo refeito tira um ou dois stories.
 - Por mês (30 stories e ~13 reels da Estela), com os stories no econômico (~240): no Creator (600), a regra deixa o
   formato completo em ~7 dos 13 reels; no Pro (1.000), em todos, com sobra. Antes da decisão, tudo no formato completo
   pediria ~1.500 créditos por mês.
@@ -290,3 +309,5 @@ define o cenário: cada post ganha o seu, tirado do que ela fala (regra 6).
 | 07/10 | `2026-10-07-story-sarrafo-top-10` | o sarrafo do top 10 v2 | story em take único, **voz Excited** (24,1 s, o sarrafo do top 10 de pilotos), expressiveness medium; a 1ª versão do look saiu com dois fones e foi refeita — Buffer `6ac5ccd553551104161f8f60` | `d6a9ddc29c35a7662217cbfc2c72f9d6` |
 | 08/10 | `2026-10-08-story-rober-voltou` | a volta do piloto | story em take único, **voz Friendly a 1,1x** (15,3 s, o ROBER voltou e entrou no top 10 de pilotos), expressiveness medium, motionPrompt calmo — Buffer `6ac7fea553e023600018c04a` (republicado às 17:36: o agendamento das 16:00, `6ac71c9c365feab0d73e0e50`, ficou em `error` e não saiu) | `179a247d4f67ef2dad0e77337bb5fe49` |
 | 09/10 | `2026-10-09-story-raspao` | o raspão no meteoro | story em take único, **expressiveness low** (2ª vez; 21,6 s, "a Estela explica" a colisão com 72% do tamanho do meteoro), voz Friendly a 1,1x, motionPrompt calmo; a 1ª versão (`4850fb538ccf1f559100922109cfbf93`) abriu com um gesto rápido das duas mãos e foi refeita pedindo as mãos paradas nos 2 primeiros segundos — Buffer `6ac86fc37d9f9f33012595f9` | `b68b18ce8dd5f6e8239e33f744a8a70a` |
+| 10/10 | `2026-10-10-fechou-a-conta` | a ampulheta acima do ombro | reel no modo econômico pela regra de orçamento (211 contra reserva de 248); variável **expressiveness low num reel** (1ª vez; 23,0 s, as 20 horas de jogo fecharam), voz Friendly a 1,1x, motionPrompt pedindo as mãos paradas nos 2 primeiros segundos; versões descartadas: `00bb5a10b0e5c9769395649f32597acf` (Avatar IV medium, no look "a ampulheta de estrelas": mão translúcida ao cruzar a ampulheta) e `07a507c21889841619a9408d5c8a3f30` (o mesmo look no Avatar III: mesmo movimento, mesmo defeito) — Buffer `6ac9c360b07d37ac975f25c5` | `83f0bcac6f353a42b6ed6e4f10ebf2bf` |
+| 10/10 | `2026-10-10-story-primeiro-boost` | o primeiro boost | story em take único, **mãos paradas nos 2 primeiros segundos já na 1ª tentativa** (16,8 s, o primeiro boost aos 8 s), expressiveness low (3ª vez), voz Friendly a 1,1x — abriu limpo, gesticulou no meio — Buffer `6ac9c063ed92ed8fa5b88893` | `d722e7be42bf0cc875f1bfacf81a349c` |
