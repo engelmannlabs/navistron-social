@@ -3,69 +3,37 @@
 Fechou a conta!
 
 2
-00:00:01,470 --> 00:00:02,440
-Na semana passada, a
+00:00:01,470 --> 00:00:03,340
+Na semana passada, a pergunta aqui era quem
 
 3
-00:00:02,480 --> 00:00:03,340
-pergunta aqui era quem
+00:00:03,370 --> 00:00:05,720
+fechava as 20 horas de jogo do Navistron.
 
 4
-00:00:03,370 --> 00:00:04,460
-fechava as vinte horas
+00:00:05,970 --> 00:00:08,710
+Fechou ontem, às 16h28,
 
 5
-00:00:04,500 --> 00:00:05,720
-de jogo do Navistron.
+00:00:08,880 --> 00:00:11,070
+somando todas as partidas desde abril.
 
 6
-00:00:05,970 --> 00:00:07,520
-Fechou ontem, às quatro
+00:00:11,320 --> 00:00:15,010
+E a partida que fechou fez 842 pontos e
 
 7
-00:00:07,600 --> 00:00:08,710
-e vinte e oito da tarde,
-
-8
-00:00:08,880 --> 00:00:09,770
-somando todas as
-
-9
-00:00:09,810 --> 00:00:11,070
-partidas desde abril.
-
-10
-00:00:11,320 --> 00:00:12,410
-E a partida que fechou
-
-11
-00:00:12,490 --> 00:00:13,570
-fez oitocentos e
-
-12
-00:00:13,610 --> 00:00:15,010
-quarenta e dois pontos e
-
-13
 00:00:15,050 --> 00:00:16,090
 ficou sem nick.
 
-14
-00:00:16,370 --> 00:00:17,610
-As próximas vinte horas
+8
+00:00:16,370 --> 00:00:19,740
+As próximas 20 horas começaram: joga hoje e
 
-15
-00:00:17,680 --> 00:00:19,740
-começaram: joga hoje e
+9
+00:00:19,780 --> 00:00:21,330
+põe o seu nick no game over.
 
-16
-00:00:19,780 --> 00:00:20,790
-põe o seu nick no game
-
-17
-00:00:20,940 --> 00:00:21,330
-over.
-
-18
+10
 00:00:21,560 --> 00:00:22,800
 Te vejo no ranking!
