@@ -4,6 +4,18 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-11 · **Os dois carrosséis da rotina são os dois piores posts automáticos — e o custo da HeyGen sobe em degraus
+  de ~3,3 s.** O carrossel de 09/10 ("A 7 pontos") fechou em **1 de alcance / 3 views** (~33 h), o menor da série do slot das
+  13:00 (21 posts; a mediana caiu para 14), e o de 01/10, às 15:00, tinha fechado em 3. Dois casos não fecham regra, mas a
+  direção é a do PLAYBOOK (imagem parada quase não é distribuída para quem não segue) — e o calendário da S42 tem outro
+  carrossel no sábado 17. Nos stories, o de 09/10 fechou em 10 views / 7 de alcance, as mesmas 10 views do de 08/10. Na
+  produção, o story de 40 palavras (13,7 s) custou 5 de vídeo, não 4: pelos saldos, o Avatar IV cobra ~1 crédito a cada
+  3,3 s, arredondado para cima. Com 178 créditos, os 17 stories e 6 reels até 28/10 só cabem com folga com stories de até
+  ~13 s (~37 palavras a 1,1x); a conta está em `personagens/ESTELA.md`. No jogo, o sábado (10/10) não teve partida e a semana
+  de 04 a 10/10 fechou com 48 partidas e 4 com nick (3 pilotos), no 14º dia do pedido "põe o nick". O reel do dia saiu do
+  código — as provocações: "Tá achando fácil?" aos 10 s e mais uma a cada 10 s, sorteadas entre 102 — e rendeu dois achados
+  para o Guilherme: 6 frases devem aparecer cortadas em celulares de ~390 px (o CSS não quebra linha e corta com
+  reticências) e um artigo antigo do blog fala em "101 frases provocativas".
 - 2026-10-10 · **Objeto claro ao lado do corpo dela vira mão translúcida no vídeo — e a queda dos stories não continuou.**
   O reel do dia (as 20 horas de jogo fecharam em 09/10, às 16:28, numa partida anônima de 842 pontos) custou três versões:
   no 1º look, a ampulheta do cenário ficava ao lado do tronco, e no vídeo **a mão que passava na frente dela ficava
@@ -49,19 +61,6 @@ apenas este arquivo, e não o playbook inteiro.
   16:00 ficou em `error` no Buffer — o mesmo "unknown error" do reel de 05/10, que tinha saído — e, desta vez, **não saiu**:
   o Guilherme avisou às 17:34 e ele foi republicado às 17:36. O status `error` sozinho não diz se o post foi ao ar; quem
   diz é o Instagram (ou um post via network no Buffer), e a rodada da 01:00 só vê o erro no dia seguinte.
-- 2026-10-07 · **O 1º nick novo em 11 dias chegou numa terça às 21:13 — e o "Estela > dados" da S40 não fechou.** KAL-EL
-  estreou em 06/10 com **13.154 pontos** (Tier III, 2min56): o 45º piloto, o 11º da lista de pilotos (a 157 do top 10) e o
-  1º nick novo desde o XXXX (25/09), no 9º dia do pedido "põe o nick". Chegou quatro horas depois de o ranking da semana
-  esvaziar (a última partida do GUI saiu da janela de 7 dias às 16:52), virou o 1º sozinho — e a partida saiu à noite, fora da
-  faixa das 14h às 17h em que o jogo costuma acontecer. Nada liga a estreia a um post, mas nick novo é uma das duas métricas da
-  leitura de 26/10 — e virou o reel da Estela do dia, com as boas-vindas pelo nick. No alcance, o reel de mecânica de
-  04/10 ("A chuva acelera", dados) fechou em **122** com ~39 h, o 2º maior da série das 13:00 (mediana 25 com 16 posts),
-  acima das duas Estelas da S40 (29 e 70): a leitura de 05/10 ("rosto e voz distribuem mais") fica como hipótese fraca, e
-  a variância segue maior que qualquer efeito de formato. O ranking narrado pela Estela em 05/10, que o Buffer marcou como
-  erro, reapareceu como post "via network", com **14 de alcance e 23 views com ~15 h** (tempo médio 8,7 s de 32,9 s),
-  contra 68 da Estela de 02/10 na mesma idade — o 1º dos três vídeos dela na S41 começou fraco. Operação: um post em
-  `error` que saiu de verdade aparece depois no Buffer como post via network, com `sentAt` e métricas — a prova de
-  publicação sem depender do Instagram (nota no passo 2 da ROTINA).
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e

@@ -9,7 +9,8 @@ variavel_testada: roteiro curto (40 palavras, ~13,7 s a 1,1x) pela conta de cré
 heygen_video_id: 70ac631583cb1fd64514c9c44156ed4c
 creditos_heygen: 184 → 183 (look) → 178 (vídeo de 13,7 s: 5); o story custou 6
 horario_publicacao: 2026-10-11 16:00 BRT (domingo)
-buffer_post_id: (a preencher)
+buffer_post_id: 6acb1088c4de2d2b124c5fa3 (agendado à 01:28 de 11/10 para as 16:00; scheduled, 13,7 s, isAiGenerated true)
+qa: reel.mp4 baixado pelo SHA do commit do render (a9d41046) e conferido; o reel.mp4 da main tem o mesmo tamanho (6.526.291 bytes). Vídeo puro, sem texto nem nada por cima, a constelação acima da cabeça o vídeo todo, transcrição (legenda.srt) igual ao roteiro palavra por palavra (40 palavras), áudio presente (média −24,0 dB), 13,7 s, fim limpo. Mãos (varredura de pixels de pele na faixa de baixo do quadro a 10 fps e folha recortada nos picos): juntas na borda de baixo já em ~0,3–0,5 s e de novo em ~1,4, ~2,2, ~3,1, ~4,7, ~6,5, ~7,8, ~8,7, ~9,8, ~10,7–11,2 e ~12,4–12,6 s — dedos entrelaçados, mãos em concha, palmas abertas —, naturais, sempre sobre o moletom escuro e longe das estrelas; uma pulseira prateada aparece no pulso esquerdo em ~12,4 s
 instagram: metadata.instagram = { type: "story", shouldShareToFeed: false, isAiGenerated: true }
 fonte_dados: navistron.io/stats lido em 11/10/2026 ~01:2x BRT (com ?v=; a página diz que datas e horários estão no fuso de Brasília) — ?periodo=7d: 48 partidas, 4 registradas, 44 anônimas, 3 pilotos (VASCO DA GAMA 30.577, 1 partida, 07/10; ROBER 15.128, 2 partidas, 07/10; KAL-EL 13.154, 1 partida, 06/10), a 1ª do recorte em 04/10 às 20:05 e a última em 09/10 às 16:50; ?visao=partidas&ordem=data&periodo=30d: as 48 primeiras linhas vão de 09/10 16:50 a 04/10 20:05 e a 49ª é de 02/10 às 20:47 — então de domingo (04/10) a sábado (10/10) foram exatamente 48, e 10/10 não teve partida. Todos os números são fatos fechados (a semana já terminou), nada que mude entre a 01:00 e as 16:00
 ---

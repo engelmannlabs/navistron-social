@@ -4,6 +4,19 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-07 · **O 1º nick novo em 11 dias chegou numa terça às 21:13 — e o "Estela > dados" da S40 não fechou.** KAL-EL
+  estreou em 06/10 com **13.154 pontos** (Tier III, 2min56): o 45º piloto, o 11º da lista de pilotos (a 157 do top 10) e o
+  1º nick novo desde o XXXX (25/09), no 9º dia do pedido "põe o nick". Chegou quatro horas depois de o ranking da semana
+  esvaziar (a última partida do GUI saiu da janela de 7 dias às 16:52), virou o 1º sozinho — e a partida saiu à noite, fora da
+  faixa das 14h às 17h em que o jogo costuma acontecer. Nada liga a estreia a um post, mas nick novo é uma das duas métricas da
+  leitura de 26/10 — e virou o reel da Estela do dia, com as boas-vindas pelo nick. No alcance, o reel de mecânica de
+  04/10 ("A chuva acelera", dados) fechou em **122** com ~39 h, o 2º maior da série das 13:00 (mediana 25 com 16 posts),
+  acima das duas Estelas da S40 (29 e 70): a leitura de 05/10 ("rosto e voz distribuem mais") fica como hipótese fraca, e
+  a variância segue maior que qualquer efeito de formato. O ranking narrado pela Estela em 05/10, que o Buffer marcou como
+  erro, reapareceu como post "via network", com **14 de alcance e 23 views com ~15 h** (tempo médio 8,7 s de 32,9 s),
+  contra 68 da Estela de 02/10 na mesma idade — o 1º dos três vídeos dela na S41 começou fraco. Operação: um post em
+  `error` que saiu de verdade aparece depois no Buffer como post via network, com `sentAt` e métricas — a prova de
+  publicação sem depender do Instagram (nota no passo 2 da ROTINA).
 - 2026-10-05 · **Leitura da semana S40: nos dois pares do mesmo slot, a Estela alcançou 3 a 5× o reel de dados.** A estreia
   (29/09) fechou em 29 contra 6 do reel de dados de 30/09 (~43–44 h); a Estela de 02/10 fechou em **70** (~41 h), o maior
   alcance de um post automático desde 22/09, e o reel de dados de 03/10 tinha 21 com ~17 h, quando ela tinha 68 (o final
