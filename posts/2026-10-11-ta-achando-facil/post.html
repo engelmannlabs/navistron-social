@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="14.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="2.0">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>
+  /* a provocação no estilo do jogo (#taunt-text em src/app/game.css): mono em negrito, caixa alta, espaçada, branca
+     com brilho ciano (0 0 20px rgba(125,244,255,.5), 0 0 40px rgba(0,100,255,.3)) — aqui ampliada para 1080 px */
+  .taunt { font-family: var(--font-mono); font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em;
+           color: rgba(255,255,255,0.95); line-height: 1.1;
+           text-shadow: 0 0 36px rgba(125,244,255,0.62), 0 0 84px rgba(0,100,255,0.42); }
+  #hook .taunt { font-size: 112px; }
+  #say { font-size: 80px; min-height: 190px; }
+  .clock { font-family: var(--font-mono); font-weight: 800; font-size: 150px; line-height: 1; color: #7DF4FF;
+           font-variant-numeric: tabular-nums; text-shadow: 0 0 46px rgba(125,244,255,0.45); }
+  #num.lock { color: #7DF4FF; text-shadow: 0 0 60px rgba(125,244,255,0.6); }
+  #tl { position: relative; width: 860px; height: 70px; margin: 44px auto 0; opacity: 0; }
+  #tl .base { position: absolute; left: 0; right: 0; top: 30px; height: 4px; border-radius: 2px; background: rgba(143,163,199,0.28); }
+  #tl .fill { position: absolute; left: 0; top: 30px; height: 4px; border-radius: 2px; background: #7DF4FF; box-shadow: 0 0 14px rgba(125,244,255,0.7); width: 0; }
+  #tl .tick { position: absolute; top: 14px; width: 6px; height: 36px; margin-left: -3px; border-radius: 3px; background: #EEF3FF;
+              box-shadow: 0 0 12px rgba(125,244,255,0.9); opacity: 0; }
+  #tl .end { position: absolute; top: 56px; font-family: var(--font-mono); font-weight: 700; font-size: 26px; color: var(--muted); }
+</style>
+<!-- MECÂNICA (src/app/play/page.js, SHA 36d68b9a, última mudança em 07/09/2026, 94234551; estilo em src/app/game.css,
+     SHA 1d656730; conferidos em 11/10/2026): TAUNT_FIRST = 'Tá achando fácil?' e TAUNTS, uma lista de 102 frases (sem
+     repetidas). startGame() zera tauntTimer = 10 e tauntIndex = 0; no update(), que só passa do "if(!gameRunning) return"
+     com a partida rodando (depois da contagem regressiva, nave viva), tauntTimer -= dt; quando chega a 0, volta a 10 e mostra
+     a frase: a 1ª (tauntIndex 0) é sempre TAUNT_FIRST, as outras são sorteadas com Math.random() entre as 102 (podem
+     repetir). A frase fica 3,5 s (setTimeout 3500) no #taunt-text: no meio da tela, mono em negrito, caixa alta,
+     letter-spacing 3px, branca a 70% com brilho ciano, entrando e saindo em 1,2 s.
+     Então a partida ouve uma provocação a cada 10 s vivo: floor(tempo / 10). O tempo salvo é Math.floor(timeAlive), que
+     anda com o mesmo dt do tauntTimer.
+     TELEMETRIA (navistron.io/stats lido em 11/10/2026 ~01:06 BRT, com ?v=; datas e horários no fuso de Brasília):
+     593 partidas, tempo médio 2m 2s (122 s → 12 provocações: aos 10, 20, ..., 120 s). ?visao=partidas&ordem=tempo:
+     1º VASCO DA GAMA, 5:14 (314 s → 31 provocações: aos 10, 20, ..., 310 s), 30.577 pontos, Tier V, 20 boosts,
+     07/10/26 às 14:55; 2º anônima, 4:57 (09/09).
+     As frases da montagem são 4 das 102, na grafia do código (o jogo mostra em caixa alta): 'Meu avô jogava melhor',
+     'Tier I eternamente', 'Até o WiFi joga melhor', 'Licença de piloto: cassada'. A ordem é ilustrativa (no jogo, sorteio).
+     Fundo: nave no Tier I (cor #7df4ff; tiros c1 180,255,255 / c2 0,200,255, um a cada 0,18 s, 520 px/s no canvas de
+     540 px = 1040 px/s aqui), que é como a partida está aos 10 s. -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Mecânica do jogo · @navistron</div>
+
+  <div id="hook" class="layer" style="top: 560px">
+    <div class="taunt" id="hk">TÁ ACHANDO<br>FÁCIL?</div>
+    <div class="sub" id="hsub" style="margin-top: 70px; opacity: 0">é o que o jogo te diz<br>aos <b>10 s</b> de partida</div>
+  </div>
+
+  <div id="mont" class="layer" style="top: 470px">
+    <div class="kicker">depois, uma a cada 10 s vivo</div>
+    <div class="sub" style="margin-top: 54px; font-size: 26px">tempo vivo</div>
+    <div class="clock" id="clk" style="margin-top: 14px">0:20</div>
+    <div class="taunt" id="say" style="margin-top: 70px"></div>
+    <div class="sub" id="msub" style="margin-top: 60px; opacity: 0">sorteadas entre <b>102</b> frases</div>
+  </div>
+
+  <div id="rec" class="layer" style="top: 540px">
+    <div class="kicker">a partida mais longa da história</div>
+    <div class="counter" id="num" style="margin-top: 40px">0</div>
+    <div class="sub" id="who" style="margin-top: 30px; opacity: 0">provocações em <b>5:14</b><br><b>VASCO DA GAMA</b> · 07/10</div>
+    <div id="tl"><div class="base"></div><div class="fill" id="tlf"></div><span class="end" style="left: 0">0:00</span><span class="end" style="right: 0">5:14</span></div>
+    <div id="second" style="margin-top: 56px; opacity: 0"><span class="marker">partida média · <b>2:02</b> → <b>12</b></span></div>
+  </div>
+
+  <div id="ask" class="layer" style="top: 560px">
+    <div class="h1" style="font-size: 170px">QUANTAS<br>VOCÊ<br><span class="cyan">AGUENTA?</span></div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">grátis, sem login</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 14.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+
+  // ---------- PRNG determinístico ----------
+  let s = 1110;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- a partida no fundo: meteoros caindo, nave no Tier I atirando ----------
+  const CYAN = '125,244,255', C1 = '180,255,255', C2 = '0,200,255';
+  const N = 26, CYC = 2100, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 200 + rnd() * 170, r: 20 + rnd() * 44, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * CYC, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  function mpos(m, t) {
+    const dist = t * 1.5 * m.v + m.phase;
+    const cycle = Math.floor(dist / CYC);
+    const y = (dist % CYC) - 120;
+    const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+    return { x, y };
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function drawMeteor(m, x, y, rot) {
+    fx.save(); fx.translate(x, y); fx.rotate(rot);
+    fx.beginPath();
+    const n = m.shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = m.r * m.shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+    fx.fillStyle = m.big ? 'rgba(20,26,46,0.92)' : 'rgba(14,19,36,0.9)';
+    fx.fill();
+    fx.lineWidth = m.big ? 3 : 2;
+    fx.strokeStyle = m.big ? 'rgba(190,208,240,0.75)' : 'rgba(150,170,205,0.6)';
+    fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y); fx.scale(1.25, 1.25);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, `rgba(${CYAN},0.95)`); g.addColorStop(1, `rgba(${CYAN},0)`);
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = `rgba(${CYAN},0.75)`; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = `rgb(${CYAN})`; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 170 * Math.sin(t * 0.8 + 0.6) + 50 * Math.sin(t * 2.1);
+  const shipY = 1400;
+  const RATE = 0.18, BV = 1040, BLIFE = 1.6, STEP = 1 / 60;
+  // o tiro some no 1º meteoro que tocar (conta feita só com t, para cada quadro sair igual)
+  function bulletState(tb, t) {
+    const x0 = shipX(tb), y0 = shipY - 60;
+    for (let tau = tb; tau <= t + 1e-9; tau += STEP) {
+      const y = y0 - (tau - tb) * BV;
+      for (const m of meteors) {
+        const p = mpos(m, tau);
+        const dx = p.x - x0, dy = p.y - y;
+        if (dx * dx + dy * dy < Math.pow(m.r * 0.72 + 8, 2)) return { hit: true, x: x0, y, at: tau };
+      }
+    }
+    return { hit: false, x: x0, y: y0 - (t - tb) * BV };
+  }
+  function drawBullet(x, y) {
+    const g = fx.createRadialGradient(x, y, 0, x, y, 28);
+    g.addColorStop(0, `rgba(${C1},1)`); g.addColorStop(.3, `rgba(${C2},.8)`); g.addColorStop(1, 'rgba(0,50,200,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.arc(x, y, 28, 0, Math.PI * 2); fx.fill();
+    fx.fillStyle = '#fff'; fx.beginPath(); fx.arc(x, y, 8, 0, Math.PI * 2); fx.fill();
+  }
+
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    for (const m of meteors) {
+      const p = mpos(m, t);
+      if (p.y < -120 || p.y > H + 120) continue;
+      drawMeteor(m, p.x, p.y, m.rot + t * m.w);
+    }
+    const k0 = Math.max(0, Math.floor((t - BLIFE) / RATE));
+    for (let k = k0; k * RATE <= t; k++) {
+      const tb = k * RATE, st = bulletState(tb, t);
+      if (!st.hit) { if (st.y > -40) drawBullet(st.x, st.y); continue; }
+      const age = t - st.at;                       // faísca ciano no ponto do impacto, 0,25 s
+      if (age < 0.25) {
+        const a = 1 - age / 0.25;
+        for (let j = 0; j < 6; j++) {
+          const ang = j * 1.047 + k;
+          fx.fillStyle = `rgba(${C1},${a})`;
+          fx.beginPath(); fx.arc(st.x + Math.cos(ang) * 120 * age, st.y + Math.sin(ang) * 120 * age, 4 * a + 1, 0, Math.PI * 2); fx.fill();
+        }
+      }
+    }
+    drawShip(shipX(t), shipY, t);
+    const vg = fx.createRadialGradient(540, 860, 200, 540, 860, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.66)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+
+  // a montagem: o relógio do tempo vivo e 4 das 102 frases (grafia do código; o jogo mostra em caixa alta)
+  const SLOTS = [
+    { a: 2.85, clock: '0:20', text: 'MEU AVÔ<br>JOGAVA MELHOR' },
+    { a: 3.90, clock: '0:30', text: 'TIER I<br>ETERNAMENTE' },
+    { a: 4.95, clock: '0:40', text: 'ATÉ O WIFI<br>JOGA MELHOR' },
+    { a: 6.00, clock: '0:50', text: 'LICENÇA DE<br>PILOTO: CASSADA' },
+  ];
+  const SLOT = 1.05;
+  const LONG = 314, TAUNTS_LONG = 31;               // VASCO DA GAMA, 5:14, 07/10/2026 14:55 (/stats em 11/10)
+  const HIT = 8.65;
+
+  // marcas da linha do tempo: uma a cada 10 s de 0:00 a 5:14
+  const tl = $('tl'), ticks = [];
+  for (let k = 1; k <= TAUNTS_LONG; k++) {
+    const d = document.createElement('div'); d.className = 'tick'; d.style.left = (860 * (10 * k) / LONG) + 'px';
+    tl.appendChild(d); ticks.push(d);
+  }
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+
+    // 1) gancho: a 1ª provocação, legível desde o quadro 0; o "aos 10 s" entra em 0,7 s; sai em 2.45–2.75
+    const outH = 1 - seg(t, 2.45, 0.3);
+    layer($('hook'), outH, -30 * (1 - outH));
+    const pop = 1 + 0.035 * Math.exp(-t * 3) * Math.cos(t * 9);
+    $('hk').style.transform = `scale(${pop})`;
+    const hs = ease.out3(seg(t, 0.7, 0.45));
+    $('hsub').style.opacity = hs; $('hsub').style.transform = `translateY(${20 * (1 - hs)}px)`;
+
+    // 2) a montagem: 2.7–7.05
+    const inM = ease.out3(seg(t, 2.7, 0.3)), outM = 1 - seg(t, 6.9, 0.25);
+    layer($('mont'), inM * outM, 30 * (1 - inM));
+    let cur = SLOTS[0];
+    for (const sl of SLOTS) if (t >= sl.a) cur = sl;
+    const local = t - cur.a;
+    const fin = ease.out3(seg(local, 0, 0.14)), fout = cur === SLOTS[SLOTS.length - 1] ? 1 : 1 - seg(local, SLOT - 0.12, 0.12);
+    $('clk').textContent = cur.clock;
+    $('clk').style.transform = `scale(${1 + 0.06 * Math.exp(-Math.max(0, local) * 10)})`;
+    $('say').innerHTML = cur.text;
+    $('say').style.opacity = t < cur.a ? 0 : fin * fout;
+    $('say').style.transform = `scale(${0.92 + 0.08 * fin})`;
+    const ms = ease.out3(seg(t, 3.3, 0.4));
+    $('msub').style.opacity = ms; $('msub').style.transform = `translateY(${20 * (1 - ms)}px)`;
+
+    // 3) a partida mais longa: entra 7.05; contador 0 → 31 junto com as marcas da linha do tempo (trava em HIT); sai 10.6–10.9
+    const inR = ease.out3(seg(t, 7.05, 0.4)), outR = 1 - seg(t, 10.6, 0.3);
+    layer($('rec'), inR * outR, 30 * (1 - inR));
+    const cp = seg(t, 7.2, HIT - 7.2);
+    const sec = LONG * cp;                          // segundos de partida percorridos pela linha do tempo
+    const n = t >= HIT ? TAUNTS_LONG : Math.min(TAUNTS_LONG, Math.floor(sec / 10));
+    $('num').textContent = n;
+    $('num').className = 'counter' + (t >= HIT ? ' lock' : '');
+    $('num').style.transform = `scale(${t >= HIT ? 1 + 0.07 * Math.exp(-(t - HIT) * 4) : 1})`;
+    $('tl').style.opacity = ease.out3(seg(t, 7.15, 0.3));
+    $('tlf').style.width = (860 * cp) + 'px';
+    ticks.forEach((d, i) => { d.style.opacity = (i + 1) <= n ? 1 : 0; });
+    const whoIn = ease.out3(seg(t, HIT + 0.05, 0.4));
+    $('who').style.opacity = whoIn; $('who').style.transform = `translateY(${20 * (1 - whoIn)}px)`;
+    const secIn = ease.out3(seg(t, HIT + 0.7, 0.45));
+    $('second').style.opacity = secIn; $('second').style.transform = `translateY(${24 * (1 - secIn)}px)`;
+
+    // 4) pergunta 10.95–12.2
+    const inA = ease.out3(seg(t, 10.95, 0.4)), outA = 1 - seg(t, 12.0, 0.3);
+    layer($('ask'), inA * outA, 0, 0.92 + 0.08 * inA);
+
+    // 5) CTA 12.3–14.0
+    const inC = ease.out3(seg(t, 12.3, 0.5));
+    layer($('cta'), inC, 30 * (1 - inC));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
