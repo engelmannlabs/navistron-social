@@ -1,0 +1,27 @@
+1
+00:00:00,270 --> 00:00:03,120
+O Navistron tem horário de pico, e eu descobri qual é.
+
+2
+00:00:03,410 --> 00:00:05,160
+Na semana passada, foram 47
+
+3
+00:00:05,280 --> 00:00:08,980
+partidas, e 41 delas entre 13h e 17h.
+
+4
+00:00:09,270 --> 00:00:11,420
+Só das 14h às 15h, 21.
+
+5
+00:00:11,700 --> 00:00:14,420
+Depois do almoço, vem jogar também e põe o seu
+
+6
+00:00:14,460 --> 00:00:15,700
+nick no game over.
+
+7
+00:00:15,850 --> 00:00:16,990
+Te vejo no ranking!
