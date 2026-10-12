@@ -4,6 +4,22 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-08 · **Uma partida respondeu duas perguntas dos reels — e um story foi ao ar com um número velho.** Em 07/10
+  às 14:55, VASCO DA GAMA fez **30.577** pontos com 20 boosts em 5min14: a 1ª partida no Tier V em 568, o recorde novo
+  e a maior partida em boosts e em duração — a resposta para "quem chega aos 30 mil?" (reel de 30/09) e "quem chega
+  primeiro no Tier V?" (reel de 06/10, ~26 h antes). Nada liga a partida aos posts (o piloto não é novo: jogou em
+  27/06), mas a pergunta com número deu pauta de continuação, e o gancho do dia saiu do código: no Tier V, os tiros
+  ficam rosa. No mesmo dia, o ROBER voltou depois de 13 dias e entrou no top 10 de pilotos às 13:37 — **duas horas e
+  meia antes de o story das 16:00 ir ao ar dizendo que o sarrafo do top 10 era 13.311** (já era 14.007). O roteiro é
+  escrito à 01:00 e o story sai 15 horas depois: número que muda durante o dia vai com a hora da leitura ou como fato
+  fechado (regra nova no passo 5c.b da ROTINA). No alcance, a S41 está fraca nos dois formatos: o ranking narrado pela
+  Estela (05/10) fechou em **14** e o reel de dados de 06/10 em **13** (~36–38 h), os dois abaixo da mediana do slot (18
+  com 18 posts), e a Estela de 07/10 tinha 3 com ~12 h; os stories caíram de 9–15 views para 7 e 5. Custo: o story com a
+  voz a **1,1x** (51 palavras em 15,3 s) custou 6 créditos com o look, contra 8–9 dos de ~24 s — nesse ritmo, os 226 de
+  hoje cobrem os 20 stories e os 7 reels econômicos até a renovação (~190), acima da guarda de 30. À tarde, o story das
+  16:00 ficou em `error` no Buffer — o mesmo "unknown error" do reel de 05/10, que tinha saído — e, desta vez, **não saiu**:
+  o Guilherme avisou às 17:34 e ele foi republicado às 17:36. O status `error` sozinho não diz se o post foi ao ar; quem
+  diz é o Instagram (ou um post via network no Buffer), e a rodada da 01:00 só vê o erro no dia seguinte.
 - 2026-10-07 · **O 1º nick novo em 11 dias chegou numa terça às 21:13 — e o "Estela > dados" da S40 não fechou.** KAL-EL
   estreou em 06/10 com **13.154 pontos** (Tier III, 2min56): o 45º piloto, o 11º da lista de pilotos (a 157 do top 10) e o
   1º nick novo desde o XXXX (25/09), no 9º dia do pedido "põe o nick". Chegou quatro horas depois de o ranking da semana
