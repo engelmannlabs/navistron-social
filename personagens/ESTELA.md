@@ -80,6 +80,8 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   | a ampulheta acima do ombro | `fa3f289b3e00875dc50431712b8e4fca` | no espaço escuro, ampulheta pequena de estrelas ciano no alto, à esquerda, na altura dos olhos, longe do tronco | cenário do reel de 10/10 (as 20 horas de jogo fecharam) |
   | o primeiro boost | `3edd567c4554bb06d40febe3d0dae8c9` | no espaço azul-escuro, a bolinha dourada com estrela do jogo chegando ao lado do ombro num rastro de partículas | cenário do story de 10/10 (o primeiro boost aos 8 s) |
   | a constelação da semana | `6f9276de26f609bb69a549562a031276` | no espaço azul-escuro, constelação de estrelinhas apagadas bem acima da cabeça e só quatro acesas (ciano, rosa, dourada e uma rosa menor) | cenário do story de 11/10 (48 partidas de 04 a 10/10, 4 com nick); foram pedidas três estrelas e saíram quatro |
+  | o cronômetro dos três minutos | `44a6461e63b24d2579f0080c13bef4e9` | no espaço azul-escuro, cronômetro dourado de luz (coroa, botão, mostrador sem números) bem acima da cabeça | cenário do story de 12/10 (o desafio dos três minutos) |
+  | o relógio de estrelas | `659fbfdf5486e273fdee206e0a28367f` | no espaço azul-escuro, relógio de constelações em ciano bem acima da cabeça, com o ponteiro nas 2 e um brilho de estrelas nesse ponto | cenário do reel de 12/10 (o horário de pico da semana 41) |
 
   Looks novos (um ou dois por post, regra 6): `create_prompt_avatar` com `avatarGroupId` e `avatarId` = setup
   (`c328911551104420832ec0a8a325ffb3`) como referência de rosto, `aspectRatio: "9:16"`, prompt começando por "The same
@@ -130,7 +132,7 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   62 palavras deram 23,6 s na Friendly (reel) e 56 palavras com três números por extenso deram 24,1 s na Excited (story),
   no limite dos 25 s. Em 08/10, a Friendly a **1,1x** (`voiceSettings: {speed: 1.1}`) leu 51 palavras em 15,3 s (a 1,0x
   seriam ~19 s): o jeito de encurtar um story sem cortar o roteiro, com ~2 créditos a menos. Em 09/10, a mesma Friendly a
-  1,1x leu 59 palavras em 21,6 s (~0,37 s por palavra): para ficar perto de 15 s a 1,1x, o story precisa de ~40–45 palavras. Em 11/10, 40 palavras deram 13,7 s (~0,34 s por palavra).
+  1,1x leu 59 palavras em 21,6 s (~0,37 s por palavra): para ficar perto de 15 s a 1,1x, o story precisa de ~40–45 palavras. Em 11/10, 40 palavras deram 13,7 s (~0,34 s por palavra). Em 12/10, a **Excited a 1,1x** (a 1ª vez acelerada) leu 34 palavras em 15,2 s (~0,45 s por palavra), e a Friendly a 1,1x, 56 palavras em 17,1 s (~0,31 s por palavra): a Excited é mais lenta, e um story de ~13 s nela pede ~29 palavras.
 - Glossário de pronúncia **"Navistron"** — `b3629854ac234ec6b69f92b79dfa76f5`: `navistron.io` é falado "navistron ponto io"
   (a legenda continua mostrando `navistron.io`) e, desde 03/10, `arco-íris` é falado "arcoíris" — sem o glossário, a voz
   fazia ~200 ms de pausa entre "arco" e "íris" (o Guilherme notou no story de 03/10).
@@ -193,7 +195,8 @@ dois formatos:
    vídeo todo; no reel (low, a 1ª vez num reel), ela abriu apontando para si mesma (0–0,7 s). Gestos sobre o moletom escuro
    saem naturais; o defeito aparece quando a mão cruza um objeto claro do cenário (fica translúcida — ver os looks). Em 11/10
    (low, o mesmo pedido), as mãos se juntaram na borda de baixo já em ~0,3–0,5 s: o pedido das mãos paradas no começo ajuda, mas não
-   garante. O motor
+   garante. Em 12/10, o mesmo nos dois vídeos (story low na Excited, reel medium na Friendly): mãos na borda de baixo em
+   ~0,3–0,6 s e gestos ao longo do vídeo, naturais, sobre o moletom, longe dos objetos do cenário, que estavam no alto. O motor
    **Avatar III** (`engine: {type: "avatar_iii"}`, sem expressiveness nem motionPrompt) custou 3 créditos por 22,9 s, mas,
    no mesmo look e com o mesmo áudio, devolveu o mesmo movimento do corpo do Avatar IV (as mesmas mãos nos mesmos
    instantes; só a boca mudou): não serve para fugir dos gestos.
@@ -228,7 +231,7 @@ dois formatos:
 - Custo medido em 29/09: **1 crédito por look** e **~1 crédito a cada 3 s de vídeo** em 1080p (vídeo de 28,4 s = 9;
   de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16; em 01/10, 17,5 s = 6; em 02/10, 26,0 s + 26,1 s no Avatar IV e 20,1 s no
   Avatar V = 33; em 03/10, 21,8 s no Avatar V = 18). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 → 501 → 480 →
-  415 → 411 → 408 → 401 → 286 → 266 → 251 → 232 → 226 → 211 → 184 → 178 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma
+  415 → 411 → 408 → 401 → 286 → 266 → 251 → 232 → 226 → 211 → 184 → 178 → 165 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma
   versão descartada; story de 01/10; reel de 02/10 + uma versão descartada + story no Avatar V; story de 03/10 no Avatar V;
   1ª versão lúdica de 03/10; versão no espaço; 4 looks de um catálogo por tema, descartado no mesmo dia; teste da legenda
   do Video Agent; story de 04/10; **115 gastos fora da rotina em 04/10** — coincide com uma sessão do Video Agent aberta
@@ -236,7 +239,8 @@ dois formatos:
   versões do story de 06/10 — o reel do dia foi de dados; 3 looks, um refeito, o reel de 23,6 s e o story de 24,1 s de 07/10; o look e o
   story de 15,3 s de 08/10 — o reel do dia foi de dados; o look e as duas versões do story de 21,6 s de 09/10 — o feed do
   dia foi um carrossel; 4 looks, três versões do reel de 22,9 s — 7, 3 no Avatar III e 7 — e o story de 16,8 s, 6, de
-  10/10; o look e o story de 13,7 s, 5, de 11/10 — o reel do dia foi de dados).
+  10/10; o look e o story de 13,7 s, 5, de 11/10 — o reel do dia foi de dados; 2 looks, o story de 15,2 s e o reel de 17,1 s
+  de 12/10, 11 juntos).
 - **O Avatar V custa ~2,5× o Avatar IV** — medido em 03/10 com um vídeo só no dia: 21,8 s = **18 créditos** (~1 a cada
   1,2 s), contra ~1 a cada 3 s no Avatar IV; confirma a estimativa de 02/10 (~15 pelo story de 20 s). Nos dois stories
   (02 e 03/10) ele passou no QA, sem artefato e com movimento natural, mas **não cabe como padrão diário**: um story de
@@ -279,7 +283,10 @@ dois formatos:
   7; 21,6 s = 7; 22,9 s = 7; 23,6 s e 24,1 s = 8 cada; 28,4 s = 9; 32,9 s = 10) — conta tirada dos saldos, não da tabela
   da HeyGen. O dia fechou em **178**. Os 17 stories (12 a 28/10) e 6 reels pedem ~150 com stories como o de hoje (6) e
   reels de ~23 s (8), contra 148 acima da guarda; com stories de **até ~13 s** (~37 palavras a 1,1x: vídeo de 4, story
-  de 5), ~133 — é o tamanho que cabe com folga.
+  de 5), ~133 — é o tamanho que cabe com folga. Em 12/10: 178 contra uma reserva de 221 (17 stories, de 12 a 28/10, e 5 reels
+  da Estela depois deste) — modo econômico, com o reel mais curto dela (17,1 s, 56 palavras: 6 de vídeo) e o story na Excited (15,2 s,
+  34 palavras: 5); o dia fechou em **165**. Os 16 stories (13 a 28/10) e os 5 reels pedem ~115–131 com stories de 5–6 e
+  reels de ~7, contra 135 acima da guarda: cabe sem refazer, e um refazer custa um story.
 - Por mês (30 stories e ~13 reels da Estela), com os stories no econômico (~240): no Creator (600), a regra deixa o
   formato completo em ~7 dos 13 reels; no Pro (1.000), em todos, com sobra. Antes da decisão, tudo no formato completo
   pediria ~1.500 créditos por mês.
@@ -321,3 +328,5 @@ define o cenário: cada post ganha o seu, tirado do que ela fala (regra 6).
 | 10/10 | `2026-10-10-fechou-a-conta` | a ampulheta acima do ombro | reel no modo econômico pela regra de orçamento (211 contra reserva de 248); variável **expressiveness low num reel** (1ª vez; 23,0 s, as 20 horas de jogo fecharam), voz Friendly a 1,1x, motionPrompt pedindo as mãos paradas nos 2 primeiros segundos; versões descartadas: `00bb5a10b0e5c9769395649f32597acf` (Avatar IV medium, no look "a ampulheta de estrelas": mão translúcida ao cruzar a ampulheta) e `07a507c21889841619a9408d5c8a3f30` (o mesmo look no Avatar III: mesmo movimento, mesmo defeito) — Buffer `6ac9c360b07d37ac975f25c5` | `83f0bcac6f353a42b6ed6e4f10ebf2bf` |
 | 10/10 | `2026-10-10-story-primeiro-boost` | o primeiro boost | story em take único, **mãos paradas nos 2 primeiros segundos já na 1ª tentativa** (16,8 s, o primeiro boost aos 8 s), expressiveness low (3ª vez), voz Friendly a 1,1x — abriu limpo, gesticulou no meio — Buffer `6ac9c063ed92ed8fa5b88893` | `d722e7be42bf0cc875f1bfacf81a349c` |
 | 11/10 | `2026-10-11-story-semana-em-nicks` | a constelação da semana | story em take único, **roteiro curto pela conta de créditos** (40 palavras, 13,7 s — o mais curto desde o take único; 48 partidas de 04 a 10/10, só 4 com nick), expressiveness low (4ª vez), voz Friendly a 1,1x, mãos paradas pedidas nos 2 primeiros segundos — as mãos se juntam na borda de baixo em ~0,3 s e voltam várias vezes, naturais — Buffer `6acb1088c4de2d2b124c5fa3` | `70ac631583cb1fd64514c9c44156ed4c` |
+| 12/10 | `2026-10-12-story-tres-minutos` | o cronômetro dos três minutos | story em take único, **voz Excited a 1,1x** (a 1ª vez acelerada; 15,2 s, 34 palavras, o desafio dos três minutos), expressiveness low — Buffer `6acc62b5ea568e911a50886a` | `1eb2c3f6db3e5f161979198adca428ce` |
+| 12/10 | `2026-10-12-horario-de-pico` | o relógio de estrelas | reel no modo econômico pela regra de orçamento (178 contra reserva de 221), o 1º às 19:00 como 2º post do dia (S42); variável **duração curta** (17,1 s, 56 palavras — o reel dela mais curto), voz Friendly a 1,1x, expressiveness medium; legenda em algarismos na 2ª renderização — Buffer `6acc642b63ff33d8c9a82b0f` | `69815d4bc2b311552f5850dd91c166db` |
