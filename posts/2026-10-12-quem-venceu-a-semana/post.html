@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="14.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="1.6">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>
+  .rows { width: 900px; margin: 46px auto 0; }
+  .rrow { display: flex; align-items: center; height: 168px; border-bottom: 2px solid rgba(143,163,199,0.16); opacity: 0; }
+  .rrow:last-child { border-bottom: 0; }
+  .rrow .pos { width: 150px; text-align: left; font-family: var(--font-display); font-weight: 700; font-size: 118px; line-height: 1; }
+  .rrow .who { flex: 1; text-align: left; }
+  .rrow .nm { font-family: var(--font-ui); font-weight: 700; font-size: 42px; letter-spacing: 0.04em; color: var(--ink); text-transform: uppercase; white-space: nowrap; }
+  .rrow .mt { margin-top: 8px; font-family: var(--font-ui); font-weight: 500; font-size: 25px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; white-space: nowrap; }
+  .rrow .val { width: 300px; text-align: right; font-family: var(--font-mono); font-weight: 800; font-size: 78px; line-height: 1;
+               color: var(--ink); font-variant-numeric: tabular-nums; }
+  .g1 { color: #FACC15; text-shadow: 0 0 40px rgba(250,204,21,0.55); }
+  .g2 { color: #D9DEE8; text-shadow: 0 0 30px rgba(217,222,232,0.35); }
+  .g3 { color: #E0995E; text-shadow: 0 0 30px rgba(224,153,94,0.4); }
+  #v1.lock { color: #FACC15; text-shadow: 0 0 46px rgba(250,204,21,0.6); }
+  #wk .counter { font-size: 230px; }
+</style>
+<!-- RANKING DA SEMANA 41 (05 a 11/10/2026), pela lista "Ranking completo por piloto (Últimos 7 dias)" de navistron.io/stats
+     (?periodo=7d, lido em 12/10/2026 ~01:05 BRT, com ?v=; datas e horários no fuso de Brasília): 🥇 VASCO DA GAMA 30.577
+     (Tier V, 1 partida, 07/10), 🥈 ROBER 15.128 (2 partidas, 07/10), 🥉 KAL-EL 13.154 (Tier III, 1 partida, 06/10 — a estreia
+     dele). Resumo do recorte: 47 partidas, 4 registradas, 43 anônimas, 3 pilotos, 1h 48m, tempo médio 2m 19s, score médio
+     4.241; 1ª partida 05/10 às 13:23, última 09/10 às 16:50 (sábado 10 e domingo 11 sem partidas: o total geral segue em 593,
+     com a última em 09/10 16:50). A lista das 47 partidas (?visao=partidas&ordem=data&periodo=7d) fecha a conta: soma das
+     durações 6.535 s (1h48m55s, média 2m19s) e dos scores 199.330 (÷ 47 = 4.241). A 2ª maior pontuação da semana foi
+     anônima: 23.594 (07/10 às 14:37, Tier IV, 17 boosts, 4:47) — com nick, seria o 2º lugar da semana. 30.577 / 15.128 =
+     2,02 (o 1º fez mais que o dobro do 2º). 30.577 é também o recorde geral do jogo (Maior score em /stats).
+     Fundo: a nave no Tier V (rosa: tiros c1 255,160,200 / c2 255,40,120, um a cada 0,09 s), o tier em que o 1º da semana
+     terminou. -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Ranking da semana · @navistron</div>
+
+  <div id="hook" class="layer" style="top: 520px">
+    <div class="h1" style="font-size: 190px"><span class="w" id="w1">QUEM<br>VENCEU</span><br><span class="w accent" id="w2">A SEMANA?</span></div>
+    <div class="sub" id="hsub" style="margin-top: 60px; opacity: 0">ranking da semana · <b>05 a 11/10</b><br>só partidas com nick</div>
+  </div>
+
+  <div id="rk" class="layer" style="top: 500px">
+    <div class="kicker">ranking da semana · 05 a 11/10</div>
+    <div class="rows">
+      <div class="rrow" id="r1"><span class="pos g1">1º</span><span class="who"><div class="nm">VASCO DA GAMA</div><div class="mt">tier V · recorde do jogo</div></span><span class="val" id="v1">0</span></div>
+      <div class="rrow" id="r2"><span class="pos g2">2º</span><span class="who"><div class="nm">ROBER</div><div class="mt">07/10</div></span><span class="val" id="v2">0</span></div>
+      <div class="rrow" id="r3"><span class="pos g3">3º</span><span class="who"><div class="nm">KAL-EL</div><div class="mt">06/10 · estreia</div></span><span class="val" id="v3">0</span></div>
+    </div>
+    <div id="dbl" style="margin-top: 54px; opacity: 0"><span class="marker">o 1º fez <b>mais que o dobro</b> do 2º</span></div>
+  </div>
+
+  <div id="wk" class="layer" style="top: 560px">
+    <div class="kicker">partidas na semana</div>
+    <div class="counter" id="np" style="margin-top: 34px">0</div>
+    <div class="sub" id="nsub" style="margin-top: 26px; opacity: 0">só <b>4</b> com nick</div>
+    <div id="anon" style="margin-top: 64px; opacity: 0"><span class="marker">a 2ª maior pontuação · <b>23.594</b><br>ficou sem nick</span></div>
+  </div>
+
+  <div id="ask" class="layer" style="top: 560px">
+    <div class="h1" style="font-size: 160px">QUEM ENTRA<br>NA SEMANA<br><span class="accent">42?</span></div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">grátis, sem login</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 14.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+  const fmt = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  // ---------- PRNG determinístico ----------
+  let s = 1210;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- a partida no fundo: meteoros caindo, nave no Tier V (rosa) atirando ----------
+  const PINK = '255,68,136', C1 = '255,160,200', C2 = '255,40,120';
+  const N = 26, CYC = 2100, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 200 + rnd() * 170, r: 20 + rnd() * 44, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * CYC, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  function mpos(m, t) {
+    const dist = t * 1.5 * m.v + m.phase;
+    const cycle = Math.floor(dist / CYC);
+    const y = (dist % CYC) - 120;
+    const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+    return { x, y };
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function drawMeteor(m, x, y, rot) {
+    fx.save(); fx.translate(x, y); fx.rotate(rot);
+    fx.beginPath();
+    const n = m.shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = m.r * m.shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+    fx.fillStyle = m.big ? 'rgba(20,26,46,0.92)' : 'rgba(14,19,36,0.9)';
+    fx.fill();
+    fx.lineWidth = m.big ? 3 : 2;
+    fx.strokeStyle = m.big ? 'rgba(190,208,240,0.75)' : 'rgba(150,170,205,0.6)';
+    fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y); fx.scale(1.25, 1.25);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, `rgba(${PINK},0.95)`); g.addColorStop(1, `rgba(${PINK},0)`);
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = `rgba(${PINK},0.75)`; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = `rgb(${PINK})`; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 170 * Math.sin(t * 0.8 + 0.6) + 50 * Math.sin(t * 2.1);
+  const shipY = 1400;
+  const RATE = 0.09, BV = 1040, BLIFE = 1.6, STEP = 1 / 60;
+  // o tiro some no 1º meteoro que tocar (conta feita só com t, para cada quadro sair igual)
+  function bulletState(tb, t) {
+    const x0 = shipX(tb), y0 = shipY - 60;
+    for (let tau = tb; tau <= t + 1e-9; tau += STEP) {
+      const y = y0 - (tau - tb) * BV;
+      for (const m of meteors) {
+        const p = mpos(m, tau);
+        const dx = p.x - x0, dy = p.y - y;
+        if (dx * dx + dy * dy < Math.pow(m.r * 0.72 + 8, 2)) return { hit: true, x: x0, y, at: tau };
+      }
+    }
+    return { hit: false, x: x0, y: y0 - (t - tb) * BV };
+  }
+  function drawBullet(x, y) {
+    const g = fx.createRadialGradient(x, y, 0, x, y, 32);
+    g.addColorStop(0, `rgba(${C1},1)`); g.addColorStop(.3, `rgba(${C2},.8)`); g.addColorStop(1, 'rgba(120,0,60,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.arc(x, y, 32, 0, Math.PI * 2); fx.fill();
+    fx.fillStyle = '#fff'; fx.beginPath(); fx.arc(x, y, 9, 0, Math.PI * 2); fx.fill();
+  }
+
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    for (const m of meteors) {
+      const p = mpos(m, t);
+      if (p.y < -120 || p.y > H + 120) continue;
+      drawMeteor(m, p.x, p.y, m.rot + t * m.w);
+    }
+    const k0 = Math.max(0, Math.floor((t - BLIFE) / RATE));
+    for (let k = k0; k * RATE <= t; k++) {
+      const tb = k * RATE, st = bulletState(tb, t);
+      if (!st.hit) { if (st.y > -40) drawBullet(st.x, st.y); continue; }
+      const age = t - st.at;                       // faísca rosa no ponto do impacto, 0,25 s
+      if (age < 0.25) {
+        const a = 1 - age / 0.25;
+        for (let j = 0; j < 6; j++) {
+          const ang = j * 1.047 + k;
+          fx.fillStyle = `rgba(${C1},${a})`;
+          fx.beginPath(); fx.arc(st.x + Math.cos(ang) * 120 * age, st.y + Math.sin(ang) * 120 * age, 4 * a + 1, 0, Math.PI * 2); fx.fill();
+        }
+      }
+    }
+    drawShip(shipX(t), shipY, t);
+    const vg = fx.createRadialGradient(540, 860, 200, 540, 860, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.7)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+  // ranking da semana 41 (05 a 11/10/2026), /stats?periodo=7d lido em 12/10
+  const ROWS = [
+    { row: 'r3', val: 'v3', score: 13154, a: 2.85 },   // KAL-EL, 06/10
+    { row: 'r2', val: 'v2', score: 15128, a: 4.0 },   // ROBER, 07/10
+    { row: 'r1', val: 'v1', score: 30577, a: 5.15 },   // VASCO DA GAMA, 07/10
+  ];
+  const HIT = 6.5;                                    // trava do 1º lugar
+  const PARTIDAS = 47;
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+
+    // 1) gancho: legível desde o quadro 0; o "ranking da semana" entra em 0,5 s; sai em 2.4–2.7
+    const outH = 1 - seg(t, 2.4, 0.3);
+    layer($('hook'), outH, -30 * (1 - outH));
+    const ws = [['w1', 0.0, 0.35], ['w2', 0.1, 0.4]];
+    for (const [id, a, d] of ws) {               // sempre opaco (gancho legível no quadro 0); só assenta 14 px
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = 1; $(id).style.display = 'inline-block';
+      $(id).style.transform = `translateY(${14 * (1 - v)}px)`;
+    }
+    const hs = ease.out3(seg(t, 0.5, 0.4));
+    $('hsub').style.opacity = hs; $('hsub').style.transform = `translateY(${20 * (1 - hs)}px)`;
+
+    // 2) o ranking de baixo para cima: 3º (2.85), 2º (4.0), 1º (5.15, trava em HIT); sai 8.6–8.9
+    const inR = ease.out3(seg(t, 2.6, 0.35)), outR = 1 - seg(t, 8.6, 0.3);
+    layer($('rk'), inR * outR, 30 * (1 - inR));
+    for (const r of ROWS) {
+      const ri = ease.out3(seg(t, r.a, 0.35));
+      $(r.row).style.opacity = ri; $(r.row).style.transform = `translateX(${-36 * (1 - ri)}px)`;
+      const end = r.row === 'r1' ? HIT : r.a + 1.0;
+      const cp = 1 - Math.pow(1 - seg(t, r.a + 0.1, end - r.a - 0.1), 2.2);
+      $(r.val).textContent = fmt(r.score * cp);
+    }
+    const locked = t >= HIT;
+    $('v1').className = 'val' + (locked ? ' lock' : '');
+    $('v1').style.transform = `scale(${locked ? 1 + 0.08 * Math.exp(-(t - HIT) * 4) : 1})`;
+    const di = ease.out3(seg(t, HIT + 0.45, 0.4));
+    $('dbl').style.opacity = di; $('dbl').style.transform = `translateY(${20 * (1 - di)}px)`;
+
+    // 3) a semana: 47 partidas, só 4 com nick; a 2ª maior pontuação ficou sem nick — 8.95–11.3
+    const inW = ease.out3(seg(t, 8.95, 0.35)), outW = 1 - seg(t, 11.0, 0.3);
+    layer($('wk'), inW * outW, 30 * (1 - inW));
+    const np = 1 - Math.pow(1 - seg(t, 9.0, 0.6), 2.2);
+    $('np').textContent = Math.round(PARTIDAS * np);
+    const ns = ease.out3(seg(t, 9.45, 0.35));
+    $('nsub').style.opacity = ns; $('nsub').style.transform = `translateY(${16 * (1 - ns)}px)`;
+    const an = ease.out3(seg(t, 9.75, 0.35));
+    $('anon').style.opacity = an; $('anon').style.transform = `translateY(${20 * (1 - an)}px)`;
+
+    // 4) pergunta 11.25–12.4
+    const inA = ease.out3(seg(t, 11.25, 0.35)), outA = 1 - seg(t, 12.1, 0.3);
+    layer($('ask'), inA * outA, 0, 0.92 + 0.08 * inA);
+
+    // 5) CTA 12.4–14.0
+    const inC = ease.out3(seg(t, 12.4, 0.5));
+    layer($('cta'), inC, 30 * (1 - inC));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
