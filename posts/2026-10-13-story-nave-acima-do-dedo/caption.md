@@ -9,8 +9,8 @@ variavel_testada: dica de controle no celular (o 1º story sobre o toque), sem n
 heygen_video_id: 3fb78109a02a1664365012798244359f
 creditos_heygen: 165 → 163 (os dois looks, a 1ª versão descartada) → 158 (o vídeo de 13,6 s: 5, pela conta de ~1 crédito a cada 3,3 s, arredondado para cima). O story custou 7 (2 looks + vídeo 5)
 horario_publicacao: 2026-10-13 16:00 BRT (terça)
-buffer_post_id: (preencher)
-qa: (preencher)
+buffer_post_id: 6acdb59d9f22b96ae7f4d94d (agendado à 01:37 de 13/10 para as 16:00; scheduled, 13,6 s, isAiGenerated true)
+qa: reel.mp4 baixado pelo SHA do commit do render (df1bd33e) e conferido; o reel.mp4 da main tem o mesmo tamanho (8.606.122 bytes). Vídeo puro, sem texto nem nada por cima, a navinha e o toque ciano acima da cabeça o vídeo todo, transcrição (legenda.srt) igual ao roteiro palavra por palavra (37 palavras), áudio presente (média −24,5 dB), 13,6 s, fim limpo (ela sorrindo, sem mãos). Mãos (varredura de pixels de pele na faixa de baixo do quadro a 10 fps e quadros recortados nos picos): o pedido das mãos paradas não segurou a abertura — em 0–0,35 s ela junta as palmas, como em prece, sobe até a altura do peito e desce, com borrão de movimento, sem dedo estranho — e as mãos voltam em ~3,4–3,8 e ~5,6–5,9 s (uma mão aberta na borda de baixo), ~7,6–9,7 s (as duas palmas abertas à altura do peito, com um anel) e ~10,5–11,7 s (mãos juntas, dedos entrelaçados), naturais, sempre sobre o moletom escuro e longe da navinha
 instagram: metadata.instagram = { type: "story", shouldShareToFeed: false, isAiGenerated: true }
 fonte_dados: código do jogo — src/app/play/page.js (SHA 36d68b9a, conferido em 13/10/2026): TOUCH_OFFSET_Y = -140; no touchstart e no touchmove, o alvo da nave vai para o ponto do dedo com y − 140, num campo de 540×720 (o resizeCanvas mantém 3:4 e só muda a escala); no mousemove, o alvo é o próprio cursor, sem deslocamento, e o jogo desenha uma mira nele (só em aparelho sem toque); a nave persegue o alvo com SHIP_LERP = 12. Nenhum número de telemetria no roteiro (nada que mude entre a 01:00 e as 16:00)
 ---
