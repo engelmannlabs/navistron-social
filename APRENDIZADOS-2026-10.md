@@ -4,6 +4,20 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-09 · **Os stories da Estela caíram de 15 para 2 views em nove dias — e a Estela de quarta fechou em 4.** O story de
+  07/10 (o sarrafo do top 10) fechou em **2 views e 0 de alcance** com ~24 h, o 9º numa linha quase só descendente (15, 11, 9,
+  11, 13, 10, 7, 5, 2), e o republicado de 08/10 tinha 1 view com ~5 h; as respostas seguem em zero. A queda atravessa temas,
+  cenários, vozes e durações (cada story testou uma variável diferente), então nenhum deles parece ser a causa; as hipóteses
+  são o cansaço do story diário entre os poucos seguidores ou o Instagram mostrando menos os stories de uma conta sem
+  respostas — a conferir na leitura de 26/10, que pode decidir se o story diário ainda vale os ~6–8 créditos por dia.
+  (Atualizado em 10/10: o story republicado de 08/10 fechou em 10 views / 8 de alcance e o de 09/10 tinha 7 views com
+  ~7 h — a queda não continuou; ver a entrada de 10/10.) No
+  feed, a Estela de 07/10 (boas-vindas ao KAL-EL) fechou em **4 de alcance / 7 views** (~35 h), o menor vídeo dela: na S41,
+  os vídeos dela fecharam em 14 e 4 e o reel de dados de 06/10 em 13 (o de 08/10 tinha 13 com ~11 h); a mediana do slot caiu
+  para 14, com 19 posts. No jogo, a quinta (08/10) teve 18 partidas e nenhuma com nick — a melhor, 14.000 no Tier IV, ficou 7
+  pontos abaixo do 10º do top 10 de pilotos e virou o carrossel do dia —, e a semana, 45 partidas e 4 com nick. Produção: com
+  expressiveness low ela gesticulou do mesmo jeito (a 1ª versão do story abriu com um gesto de mãos e foi refeita), e o saldo
+  de 211 créditos só cobre os vídeos até 28/10 com stories de ~15 s e sem refazer.
 - 2026-10-08 · **Uma partida respondeu duas perguntas dos reels — e um story foi ao ar com um número velho.** Em 07/10
   às 14:55, VASCO DA GAMA fez **30.577** pontos com 20 boosts em 5min14: a 1ª partida no Tier V em 568, o recorde novo
   e a maior partida em boosts e em duração — a resposta para "quem chega aos 30 mil?" (reel de 30/09) e "quem chega
