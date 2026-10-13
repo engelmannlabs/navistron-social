@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="14.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="1.6">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>
+  .rows { width: 860px; margin: 40px auto 0; }
+  .mrow { display: flex; align-items: center; height: 112px; border-bottom: 2px solid rgba(143,163,199,0.16); opacity: 0; }
+  .mrow:last-child { border-bottom: 0; }
+  .mrow .ord { width: 250px; text-align: left; font-family: var(--font-display); font-weight: 700; font-size: 88px; line-height: 1; color: var(--ink); }
+  .mrow .dt { flex: 1; text-align: left; font-family: var(--font-mono); font-weight: 700; font-size: 56px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .mrow .tag { width: 250px; text-align: right; font-family: var(--font-ui); font-weight: 700; font-size: 28px; letter-spacing: 0.16em; color: #FF6B6B; text-transform: uppercase; white-space: nowrap; }
+  .slots { display: flex; justify-content: center; gap: 18px; margin-top: 46px; }
+  .slot { width: 104px; height: 104px; border-radius: 18px; border: 4px dashed rgba(143,163,199,0.55); opacity: 0;
+          display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 800; font-size: 30px; color: var(--muted); }
+  .slot.gold { border: 5px solid #FACC15; color: #FACC15; box-shadow: 0 0 34px rgba(250,204,21,0.55); }
+</style>
+<!-- MARCO: A PARTIDA 600. navistron.io/stats lido em 13/10/2026 ~01:05 BRT (com ?v=; datas e horários no fuso de Brasília):
+     593 partidas (92 com nick, 501 anônimas), 45 pilotos, 20h 5m; a 1ª partida do recorte em 29/04/26 às 14:57 e a última em
+     09/10/26 às 16:50 — sábado 10, domingo 11 e segunda 12 sem partidas, então 593 é o total fechado até 12/10. Faltam 7
+     para a 600ª. As partidas redondas, pela lista ?visao=partidas&ordem=data (50 por página; a linha #k é a partida
+     594 − k): 1ª = #593, 29/04 14:57, anônima, 11.918 (página 12); 100ª = #494, 28/06 17:30, anônima, 2.675 (página 10);
+     200ª = #394, 09/07 10:46, anônima, 295 (página 8); 300ª = #294, 16/07 13:09, anônima, 20 (página 6; a #295, no mesmo
+     minuto, também é anônima); 400ª = #194, 03/09 09:03, anônima, 1.109 (página 4); 500ª = #94, 18/09 16:22, anônima, 846
+     (página 2). As seis ficaram sem nick.
+     Fundo: a nave no Tier III (amarela: tiros c1 255,255,150 / c2 255,200,0, um a cada 0,13 s — TIER_DEFS de
+     src/app/play/page.js), o tier em que terminaram a 1ª e a 593ª partidas. -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Partida 600 · @navistron</div>
+
+  <div id="hook" class="layer" style="top: 540px">
+    <div class="h1" style="font-size: 168px"><span class="w" id="w1">QUEM JOGA A</span><br><span class="w accent" id="w2">PARTIDA 600?</span></div>
+    <div class="sub" id="hsub" style="margin-top: 64px; opacity: 0"><b>593</b> partidas até 12/10<br>faltam <b>7</b></div>
+  </div>
+
+  <div id="ms" class="layer" style="top: 470px">
+    <div class="kicker">as partidas redondas</div>
+    <div class="rows">
+      <div class="mrow" id="m1"><span class="ord">1ª</span><span class="dt">29/04</span><span class="tag">sem nick</span></div>
+      <div class="mrow" id="m2"><span class="ord">100ª</span><span class="dt">28/06</span><span class="tag">sem nick</span></div>
+      <div class="mrow" id="m3"><span class="ord">200ª</span><span class="dt">09/07</span><span class="tag">sem nick</span></div>
+      <div class="mrow" id="m4"><span class="ord">300ª</span><span class="dt">16/07</span><span class="tag">sem nick</span></div>
+      <div class="mrow" id="m5"><span class="ord">400ª</span><span class="dt">03/09</span><span class="tag">sem nick</span></div>
+      <div class="mrow" id="m6"><span class="ord">500ª</span><span class="dt">18/09</span><span class="tag">sem nick</span></div>
+    </div>
+    <div id="all" style="margin-top: 44px; opacity: 0"><span class="marker"><b>6 de 6</b> sem nick</span></div>
+  </div>
+
+  <div id="cd" class="layer" style="top: 560px">
+    <div class="kicker">partidas até 12/10</div>
+    <div class="counter" id="np" style="margin-top: 30px">500</div>
+    <div class="slots">
+      <div class="slot" id="s1"></div><div class="slot" id="s2"></div><div class="slot" id="s3"></div><div class="slot" id="s4"></div>
+      <div class="slot" id="s5"></div><div class="slot" id="s6"></div><div class="slot gold" id="s7">600</div>
+    </div>
+    <div id="left" style="margin-top: 50px; opacity: 0"><span class="marker">faltam <b>7</b></span></div>
+  </div>
+
+  <div id="ask" class="layer" style="top: 560px">
+    <div class="h1" style="font-size: 160px">A PARTIDA 600<br>PODE TER<br><span class="accent">O SEU NICK</span></div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">grátis, sem login</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 14.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+  const fmt = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  // ---------- PRNG determinístico ----------
+  let s = 1310;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- a partida no fundo: meteoros caindo, nave no Tier III (amarela) atirando ----------
+  const PINK = '255,221,0', C1 = '255,255,150', C2 = '255,200,0';
+  const N = 26, CYC = 2100, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 200 + rnd() * 170, r: 20 + rnd() * 44, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * CYC, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  function mpos(m, t) {
+    const dist = t * 1.5 * m.v + m.phase;
+    const cycle = Math.floor(dist / CYC);
+    const y = (dist % CYC) - 120;
+    const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+    return { x, y };
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function drawMeteor(m, x, y, rot) {
+    fx.save(); fx.translate(x, y); fx.rotate(rot);
+    fx.beginPath();
+    const n = m.shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = m.r * m.shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+    fx.fillStyle = m.big ? 'rgba(20,26,46,0.92)' : 'rgba(14,19,36,0.9)';
+    fx.fill();
+    fx.lineWidth = m.big ? 3 : 2;
+    fx.strokeStyle = m.big ? 'rgba(190,208,240,0.75)' : 'rgba(150,170,205,0.6)';
+    fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y); fx.scale(1.25, 1.25);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, `rgba(${PINK},0.95)`); g.addColorStop(1, `rgba(${PINK},0)`);
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = `rgba(${PINK},0.75)`; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = `rgb(${PINK})`; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 170 * Math.sin(t * 0.8 + 0.6) + 50 * Math.sin(t * 2.1);
+  const shipY = 1400;
+  const RATE = 0.13, BV = 1040, BLIFE = 1.6, STEP = 1 / 60;
+  // o tiro some no 1º meteoro que tocar (conta feita só com t, para cada quadro sair igual)
+  function bulletState(tb, t) {
+    const x0 = shipX(tb), y0 = shipY - 60;
+    for (let tau = tb; tau <= t + 1e-9; tau += STEP) {
+      const y = y0 - (tau - tb) * BV;
+      for (const m of meteors) {
+        const p = mpos(m, tau);
+        const dx = p.x - x0, dy = p.y - y;
+        if (dx * dx + dy * dy < Math.pow(m.r * 0.72 + 8, 2)) return { hit: true, x: x0, y, at: tau };
+      }
+    }
+    return { hit: false, x: x0, y: y0 - (t - tb) * BV };
+  }
+  function drawBullet(x, y) {
+    const g = fx.createRadialGradient(x, y, 0, x, y, 32);
+    g.addColorStop(0, `rgba(${C1},1)`); g.addColorStop(.3, `rgba(${C2},.8)`); g.addColorStop(1, 'rgba(120,90,0,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.arc(x, y, 32, 0, Math.PI * 2); fx.fill();
+    fx.fillStyle = '#fff'; fx.beginPath(); fx.arc(x, y, 9, 0, Math.PI * 2); fx.fill();
+  }
+
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    for (const m of meteors) {
+      const p = mpos(m, t);
+      if (p.y < -120 || p.y > H + 120) continue;
+      drawMeteor(m, p.x, p.y, m.rot + t * m.w);
+    }
+    const k0 = Math.max(0, Math.floor((t - BLIFE) / RATE));
+    for (let k = k0; k * RATE <= t; k++) {
+      const tb = k * RATE, st = bulletState(tb, t);
+      if (!st.hit) { if (st.y > -40) drawBullet(st.x, st.y); continue; }
+      const age = t - st.at;                       // faísca amarela no ponto do impacto, 0,25 s
+      if (age < 0.25) {
+        const a = 1 - age / 0.25;
+        for (let j = 0; j < 6; j++) {
+          const ang = j * 1.047 + k;
+          fx.fillStyle = `rgba(${C1},${a})`;
+          fx.beginPath(); fx.arc(st.x + Math.cos(ang) * 120 * age, st.y + Math.sin(ang) * 120 * age, 4 * a + 1, 0, Math.PI * 2); fx.fill();
+        }
+      }
+    }
+    drawShip(shipX(t), shipY, t);
+    const vg = fx.createRadialGradient(540, 860, 200, 540, 860, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.7)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+  // as partidas redondas (1ª a 500ª), /stats?visao=partidas&ordem=data lido em 13/10: todas anônimas
+  const MS = [['m1', 2.85], ['m2', 3.3], ['m3', 3.75], ['m4', 4.2], ['m5', 4.65], ['m6', 5.1]];
+  const TOTAL = 593;                                   // até 12/10 (última partida em 09/10 16:50)
+  const HIT = 9.6;                                     // a vaga dourada da 600ª
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+
+    // 1) gancho: legível desde o quadro 0; o "593 até 12/10 · faltam 7" entra em 0,5 s; sai em 2.4–2.7
+    const outH = 1 - seg(t, 2.4, 0.3);
+    layer($('hook'), outH, -30 * (1 - outH));
+    const ws = [['w1', 0.0, 0.35], ['w2', 0.1, 0.4]];
+    for (const [id, a, d] of ws) {               // sempre opaco (gancho legível no quadro 0); só assenta 14 px
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = 1; $(id).style.display = 'inline-block';
+      $(id).style.transform = `translateY(${14 * (1 - v)}px)`;
+    }
+    const hs = ease.out3(seg(t, 0.5, 0.4));
+    $('hsub').style.opacity = hs; $('hsub').style.transform = `translateY(${20 * (1 - hs)}px)`;
+
+    // 2) as partidas redondas, uma a cada 0,45 s; "6 de 6 sem nick" em 5,8; sai 7.4–7.7
+    const inM = ease.out3(seg(t, 2.6, 0.35)), outM = 1 - seg(t, 7.4, 0.3);
+    layer($('ms'), inM * outM, 30 * (1 - inM));
+    for (const [id, a] of MS) {
+      const ri = ease.out3(seg(t, a, 0.35));
+      $(id).style.opacity = ri; $(id).style.transform = `translateX(${-36 * (1 - ri)}px)`;
+    }
+    const al = ease.out3(seg(t, 5.8, 0.4));
+    $('all').style.opacity = al; $('all').style.transform = `scale(${0.9 + 0.1 * al})`;
+
+    // 3) a contagem: 500 → 593 e as 7 vagas que faltam, a última dourada (600) em HIT; sai 10.7–11.0
+    const inC = ease.out3(seg(t, 7.75, 0.35)), outC = 1 - seg(t, 10.7, 0.3);
+    layer($('cd'), inC * outC, 30 * (1 - inC));
+    const cp = 1 - Math.pow(1 - seg(t, 7.85, 0.9), 2.2);
+    $('np').textContent = fmt(500 + (TOTAL - 500) * cp);
+    for (let i = 1; i <= 7; i++) {
+      const a = 8.9 + (i - 1) * 0.11 + (i === 7 ? 0.04 : 0);
+      const si = ease.out3(seg(t, a, 0.3));
+      const el = $('s' + i);
+      el.style.opacity = si;
+      const pop = i === 7 && t >= HIT ? 1 + 0.12 * Math.exp(-(t - HIT) * 4) : 1;
+      el.style.transform = `translateY(${18 * (1 - si)}px) scale(${pop})`;
+    }
+    const lf = ease.out3(seg(t, HIT + 0.2, 0.35));
+    $('left').style.opacity = lf; $('left').style.transform = `translateY(${16 * (1 - lf)}px)`;
+
+    // 4) pergunta 11.1–12.3
+    const inA = ease.out3(seg(t, 11.1, 0.35)), outA = 1 - seg(t, 12.05, 0.3);
+    layer($('ask'), inA * outA, 0, 0.92 + 0.08 * inA);
+
+    // 5) CTA 12.4–14.0
+    const inCt = ease.out3(seg(t, 12.4, 0.5));
+    layer($('cta'), inCt, 30 * (1 - inCt));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
