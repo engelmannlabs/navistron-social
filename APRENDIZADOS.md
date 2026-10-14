@@ -17,8 +17,8 @@ apenas este arquivo, e não o playbook inteiro.
   que soma os mísseis e mostra a recuperação um boost depois (76,7 → 50,8 → 81,5); a contradição apareceu na conferência da
   legenda contra o artigo, e o reel foi refeito antes de agendar. **Braços parados o vídeo todo funcionou**: no story de
   14/10, o motionPrompt sem gesto nenhum deu zero mão no quadro, onde o pedido só para os 2 primeiros segundos não segurava
-  nem a abertura (11, 12 e 13/10); no reel do mesmo dia, a Excited (a 1ª vez num reel) abriu limpa e gesticulou com as duas
-  mãos de ~13,4 a ~17,9 s.
+  nem a abertura (11, 12 e 13/10); no reel do mesmo dia, a Excited a 1,1x (a 1ª vez acelerada num reel) abriu limpa e gesticulou
+  com as duas mãos de ~13,4 a ~17,9 s.
 - 2026-10-13 · **Leitura final da S41: os três vídeos da Estela não somaram — e o 2º post do dia estreou com o maior
   parcial em semanas.** O reel de dados de 11/10 (as provocações do jogo) fechou em **65 de alcance / 98 views** (~31 h), o
   maior da S41 e o 5º maior da série do slot das 13:00 (23 posts, mediana 14); os três vídeos dela fecharam em 14, 4 e 14, e
