@@ -27,7 +27,7 @@
      abaixo dos 66,7). O 5º boost de cada tier é o do arco-íris (spawnBoost: isTierUp quando falta 1 para a virada).
      Fundo: a nave no Tier II com 5 tiros (9 boosts, o estado em que 17 das 25 maiores partidas acabaram — lista
      ?visao=partidas&ordem=score de navistron.io/stats), a virada em 4,9 s (flash, tremor, meteoros explodem), o Tier III
-     com 1 tiro e, em 8,7 s, com 3. A escala é 2× a do jogo (campo de 540 → 1080 px). -->
+     com 1 tiro e, em 7,9 s, com 3. A escala é 2× a do jogo (campo de 540 → 1080 px). -->
 </head>
 <body>
   <canvas id="bg" width="1080" height="1920"></canvas>
@@ -92,7 +92,7 @@
   }
 
   // ---------- a partida no fundo: Tier II com 5 tiros, a virada em HIT1, Tier III com 1 tiro e, em HIT2, com 3 ----------
-  const HIT1 = 4.9, HIT2 = 8.7;
+  const HIT1 = 4.9, HIT2 = 7.9;
   const T2 = { col: '128,255,144', c1: '180,255,180', c2: '0,220,80', rate: 0.15, r: 10 };
   const T3 = { col: '255,221,0', c1: '255,255,150', c2: '255,200,0', rate: 0.13, r: 12 };
   // regimes de tiro: [início, fim, tier, leque, graus entre tiros] — spawnBullets do jogo: 5° no leque 5, 9° no leque 3
@@ -261,13 +261,13 @@
     const ma = ease.out3(seg(t, 5.6, 0.4));
     $('ma').style.opacity = ma; $('ma').style.transform = `translateY(${16 * (1 - ma)}px)`;
 
-    // 3) dois boosts depois: 30,8 → 92,3 a partir de HIT2; "passa os 66,7" em 9,6; sai 10.7–11.0
+    // 3) dois boosts depois: 30,8 → 92,3 a partir de HIT2 (logo na entrada da cena); "passa os 66,7" em 8,9; sai 10.7–11.0
     const inB = ease.out3(seg(t, 7.75, 0.35)), outB = 1 - seg(t, 10.7, 0.3);
     layer($('sb'), inB * outB, 30 * (1 - inB));
     const dB = ease.out3(seg(t, HIT2 + 0.05, 0.7));
     $('nb').textContent = fmt1(30.8 + (92.3 - 30.8) * dB);
     $('nb').className = 'counter' + (dB >= 1 ? ' lock' : '');
-    const mb = ease.out3(seg(t, 9.6, 0.4));
+    const mb = ease.out3(seg(t, 8.9, 0.4));
     $('mb').style.opacity = mb; $('mb').style.transform = `translateY(${16 * (1 - mb)}px)`;
 
     // 4) dica 11.1–12.35
