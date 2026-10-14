@@ -1,7 +1,7 @@
 {
   "files": {
     "post.html": {
-      "hash": "e52b0bcc78a96112cd13785569a3350d04ec4107ed133163dfcf692eb38b6dbd",
+      "hash": "e77f346a35aa829bb433ce432eba76012c82bc58999de55ad534a1622d723598",
       "out": "reel.mp4",
       "width": 1080,
       "height": 1920,
@@ -13,9 +13,9 @@
       "duration": 14,
       "fps": 30,
       "frames": 420,
-      "bytes": 3703781,
+      "bytes": 3682443,
       "cover": "reel-cover.png"
     }
   },
-  "renderedAt": "2026-10-14T04:25:45.337Z"
+  "renderedAt": "2026-10-14T04:37:40.288Z"
 }
