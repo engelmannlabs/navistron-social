@@ -21,13 +21,16 @@
      Tier III: cor #ffdd00, tiros c1 255,255,150 / c2 255,200,0, dano 4, a cada 0,13 s. collectBoost(): cada boost faz
      spreadLevel++ e, a cada 5 (totalBoosts % 5 === 0), tierUp(), que zera o leque (spreadLevel = 1), troca a cadência
      pela do novo tier, explode todos os meteoros da tela (sem pontos), pisca a tela na cor do tier (0,5 s) e treme (0,55 s).
-     spawnBullets(): um tiro por posição do leque, a 520 px/s, com 5° entre os tiros no leque 5 e 9° no leque 3.
-     Dano máximo dos tiros por segundo (se todos acertarem): Tier II com 5 tiros = 5 × 2 / 0,15 = 66,7; Tier III com 1
-     tiro = 4 / 0,13 = 30,8 (54% a menos); com 3 tiros, dois boosts depois = 3 × 4 / 0,13 = 92,3 (com 2, 61,5 — ainda
-     abaixo dos 66,7). O 5º boost de cada tier é o do arco-íris (spawnBoost: isTierUp quando falta 1 para a virada).
+     spawnBullets(): um tiro por posição do leque, a 520 px/s, com 5° entre os tiros no leque 5 e 12° no leque 2.
+     getMissileDef(): mísseis teleguiados da própria nave, min(5, floor(dif) − 1) por salva, a cada
+     max(0,35; 2,0 − 0,25 × (n − 1)) s — com 5, a cada 1,0 s —, cada um com o dano do tier (5 no Tier II a partir de 3.334
+     pontos). Dano máximo da nave por segundo (tiros + 5 mísseis, se tudo acertar): Tier II com 5 tiros = 5 × 2 / 0,15 +
+     5 × 2 / 1,0 = 76,7; Tier III com 1 tiro = 4 / 0,13 + 5 × 4 / 1,0 = 50,8 (34% a menos); um boost depois, com 2 tiros =
+     2 × 4 / 0,13 + 20 = 81,5, acima dos 76,7 — a mesma conta do artigo dos 30 mil pontos (13/10). O 5º boost de cada tier
+     é o do arco-íris (spawnBoost: isTierUp quando falta 1 para a virada).
      Fundo: a nave no Tier II com 5 tiros (9 boosts, o estado em que 17 das 25 maiores partidas acabaram — lista
      ?visao=partidas&ordem=score de navistron.io/stats), a virada em 4,9 s (flash, tremor, meteoros explodem), o Tier III
-     com 1 tiro e, em 7,9 s, com 3. A escala é 2× a do jogo (campo de 540 → 1080 px). -->
+     com 1 tiro e, em 7,9 s, com 2 (os mísseis não aparecem no fundo). A escala é 2× a do jogo (campo de 540 → 1080 px). -->
 </head>
 <body>
   <canvas id="bg" width="1080" height="1920"></canvas>
@@ -38,21 +41,21 @@
 
   <div id="hook" class="layer" style="top: 540px">
     <div class="h1" style="font-size: 168px"><span class="w" id="w1">SUBIR DE TIER</span><br><span class="w accent" id="w2">ENFRAQUECE</span></div>
-    <div class="sub" id="hsub" style="margin-top: 64px; opacity: 0">por <b>2</b> boosts<br>é a regra do jogo</div>
+    <div class="sub" id="hsub" style="margin-top: 64px; opacity: 0">até o <b>próximo</b> boost<br>é a regra do jogo</div>
   </div>
 
   <div id="sa" class="layer" style="top: 560px">
-    <div class="kicker">dano máximo por segundo</div>
-    <div class="counter" id="na" style="margin-top: 30px">66,7</div>
-    <div class="tierlab"><span class="t2" id="la1">tier II · 5 tiros</span><span class="t3" id="la2" style="opacity: 0">tier III · 1 tiro</span></div>
+    <div class="kicker">dano máximo da nave por segundo</div>
+    <div class="counter" id="na" style="margin-top: 30px">76,7</div>
+    <div class="tierlab"><span class="t2" id="la1">tier II · 5 tiros + 5 mísseis</span><span class="t3" id="la2" style="opacity: 0">tier III · 1 tiro + 5 mísseis</span></div>
     <div id="ma" style="margin-top: 50px; opacity: 0"><span class="marker">o leque volta a <b>1</b> tiro</span></div>
   </div>
 
   <div id="sb" class="layer" style="top: 560px">
-    <div class="kicker">2 boosts depois</div>
-    <div class="counter" id="nb" style="margin-top: 30px">30,8</div>
-    <div class="tierlab"><span class="t3">tier III · 3 tiros</span></div>
-    <div id="mb" style="margin-top: 50px; opacity: 0"><span class="marker">passa os <b>66,7</b></span></div>
+    <div class="kicker">1 boost depois</div>
+    <div class="counter" id="nb" style="margin-top: 30px">50,8</div>
+    <div class="tierlab"><span class="t3">tier III · 2 tiros + 5 mísseis</span></div>
+    <div id="mb" style="margin-top: 50px; opacity: 0"><span class="marker">passa os <b>76,7</b></span></div>
   </div>
 
   <div id="ask" class="layer" style="top: 560px">
@@ -91,12 +94,12 @@
     bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
   }
 
-  // ---------- a partida no fundo: Tier II com 5 tiros, a virada em HIT1, Tier III com 1 tiro e, em HIT2, com 3 ----------
+  // ---------- a partida no fundo: Tier II com 5 tiros, a virada em HIT1, Tier III com 1 tiro e, em HIT2, com 2 ----------
   const HIT1 = 4.9, HIT2 = 7.9;
   const T2 = { col: '128,255,144', c1: '180,255,180', c2: '0,220,80', rate: 0.15, r: 10 };
   const T3 = { col: '255,221,0', c1: '255,255,150', c2: '255,200,0', rate: 0.13, r: 12 };
-  // regimes de tiro: [início, fim, tier, leque, graus entre tiros] — spawnBullets do jogo: 5° no leque 5, 9° no leque 3
-  const REG = [[0, HIT1, T2, 5, 5], [HIT1, HIT2, T3, 1, 0], [HIT2, 99, T3, 3, 9]];
+  // regimes de tiro: [início, fim, tier, leque, graus entre tiros] — spawnBullets do jogo: 5° no leque 5, 12° no leque 2
+  const REG = [[0, HIT1, T2, 5, 5], [HIT1, HIT2, T3, 1, 0], [HIT2, 99, T3, 2, 12]];
   const N = 26, CYC = 2100, meteors = [];
   for (let i = 0; i < N; i++) {
     const n = 8 + Math.floor(rnd() * 5), shape = [];
@@ -239,7 +242,7 @@
     drawFX(t);
     $('flash').style.opacity = t >= HIT1 && t < HIT1 + 0.5 ? 0.35 * (1 - (t - HIT1) / 0.5) : 0;
 
-    // 1) gancho: legível desde o quadro 0; o "por 2 boosts" entra em 0,5 s; sai em 2.4–2.7
+    // 1) gancho: legível desde o quadro 0; o "até o próximo boost" entra em 0,5 s; sai em 2.4–2.7
     const outH = 1 - seg(t, 2.4, 0.3);
     layer($('hook'), outH, -30 * (1 - outH));
     for (const [id, a, d] of [['w1', 0.0, 0.35], ['w2', 0.1, 0.4]]) {
@@ -250,22 +253,22 @@
     const hs = ease.out3(seg(t, 0.5, 0.4));
     $('hsub').style.opacity = hs; $('hsub').style.transform = `translateY(${20 * (1 - hs)}px)`;
 
-    // 2) Tier II com 5 tiros: 66,7 → na virada (HIT1) cai para 30,8; "o leque volta a 1 tiro" em 5,6; sai 7.4–7.7
+    // 2) Tier II com 5 tiros + 5 mísseis: 76,7 → na virada (HIT1) cai para 50,8; "o leque volta a 1 tiro" em 5,6; sai 7.4–7.7
     const inA = ease.out3(seg(t, 2.6, 0.35)), outA = 1 - seg(t, 7.4, 0.3);
     layer($('sa'), inA * outA, 30 * (1 - inA));
     const dA = ease.out3(seg(t, HIT1 + 0.05, 0.6));
-    $('na').textContent = fmt1(66.7 + (30.8 - 66.7) * dA);
+    $('na').textContent = fmt1(76.7 + (50.8 - 76.7) * dA);
     $('na').className = 'counter' + (t >= HIT1 ? ' down' : '');
     $('la1').style.opacity = 1 - seg(t, HIT1, 0.12);
     $('la2').style.opacity = seg(t, HIT1 + 0.12, 0.15);
     const ma = ease.out3(seg(t, 5.6, 0.4));
     $('ma').style.opacity = ma; $('ma').style.transform = `translateY(${16 * (1 - ma)}px)`;
 
-    // 3) dois boosts depois: 30,8 → 92,3 a partir de HIT2 (logo na entrada da cena); "passa os 66,7" em 8,9; sai 10.7–11.0
+    // 3) um boost depois: 50,8 → 81,5 a partir de HIT2 (logo na entrada da cena); "passa os 76,7" em 8,9; sai 10.7–11.0
     const inB = ease.out3(seg(t, 7.75, 0.35)), outB = 1 - seg(t, 10.7, 0.3);
     layer($('sb'), inB * outB, 30 * (1 - inB));
     const dB = ease.out3(seg(t, HIT2 + 0.05, 0.7));
-    $('nb').textContent = fmt1(30.8 + (92.3 - 30.8) * dB);
+    $('nb').textContent = fmt1(50.8 + (81.5 - 50.8) * dB);
     $('nb').className = 'counter' + (dB >= 1 ? ' lock' : '');
     const mb = ease.out3(seg(t, 8.9, 0.4));
     $('mb').style.opacity = mb; $('mb').style.transform = `translateY(${16 * (1 - mb)}px)`;
