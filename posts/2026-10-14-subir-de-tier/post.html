@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="14.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="1.6">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>
+  .tierlab { font-family: var(--font-ui); font-weight: 700; font-size: 36px; letter-spacing: 0.16em; text-transform: uppercase; margin-top: 22px; height: 44px; position: relative; }
+  .tierlab span { position: absolute; left: 0; right: 0; }
+  .t2 { color: #80ff90; text-shadow: 0 0 24px rgba(128,255,144,0.45); }
+  .t3 { color: #ffdd00; text-shadow: 0 0 24px rgba(255,221,0,0.45); }
+  .counter.down { color: #FF6B6B; text-shadow: 0 0 50px rgba(255,107,107,0.45); }
+  #flash { position: absolute; inset: 0; background: #ffdd00; opacity: 0; pointer-events: none; }
+</style>
+<!-- MECÂNICA: A VIRADA DE TIER. Conferido em src/app/play/page.js (SHA 36d68b9a) em 14/10/2026:
+     TIER_DEFS — Tier II: cor #80ff90, tiros c1 180,255,180 / c2 0,220,80, dano 2, um disparo a cada 0,15 s;
+     Tier III: cor #ffdd00, tiros c1 255,255,150 / c2 255,200,0, dano 4, a cada 0,13 s. collectBoost(): cada boost faz
+     spreadLevel++ e, a cada 5 (totalBoosts % 5 === 0), tierUp(), que zera o leque (spreadLevel = 1), troca a cadência
+     pela do novo tier, explode todos os meteoros da tela (sem pontos), pisca a tela na cor do tier (0,5 s) e treme (0,55 s).
+     spawnBullets(): um tiro por posição do leque, a 520 px/s, com 5° entre os tiros no leque 5 e 9° no leque 3.
+     Dano máximo dos tiros por segundo (se todos acertarem): Tier II com 5 tiros = 5 × 2 / 0,15 = 66,7; Tier III com 1
+     tiro = 4 / 0,13 = 30,8 (54% a menos); com 3 tiros, dois boosts depois = 3 × 4 / 0,13 = 92,3 (com 2, 61,5 — ainda
+     abaixo dos 66,7). O 5º boost de cada tier é o do arco-íris (spawnBoost: isTierUp quando falta 1 para a virada).
+     Fundo: a nave no Tier II com 5 tiros (9 boosts, o estado em que 17 das 25 maiores partidas acabaram — lista
+     ?visao=partidas&ordem=score de navistron.io/stats), a virada em 4,9 s (flash, tremor, meteoros explodem), o Tier III
+     com 1 tiro e, em 8,7 s, com 3. A escala é 2× a do jogo (campo de 540 → 1080 px). -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+  <div id="flash"></div>
+
+  <div class="brand"><span class="dot"></span>Mecânica · @navistron</div>
+
+  <div id="hook" class="layer" style="top: 540px">
+    <div class="h1" style="font-size: 168px"><span class="w" id="w1">SUBIR DE TIER</span><br><span class="w accent" id="w2">ENFRAQUECE</span></div>
+    <div class="sub" id="hsub" style="margin-top: 64px; opacity: 0">por <b>2</b> boosts<br>é a regra do jogo</div>
+  </div>
+
+  <div id="sa" class="layer" style="top: 560px">
+    <div class="kicker">dano máximo por segundo</div>
+    <div class="counter" id="na" style="margin-top: 30px">66,7</div>
+    <div class="tierlab"><span class="t2" id="la1">tier II · 5 tiros</span><span class="t3" id="la2" style="opacity: 0">tier III · 1 tiro</span></div>
+    <div id="ma" style="margin-top: 50px; opacity: 0"><span class="marker">o leque volta a <b>1</b> tiro</span></div>
+  </div>
+
+  <div id="sb" class="layer" style="top: 560px">
+    <div class="kicker">2 boosts depois</div>
+    <div class="counter" id="nb" style="margin-top: 30px">30,8</div>
+    <div class="tierlab"><span class="t3">tier III · 3 tiros</span></div>
+    <div id="mb" style="margin-top: 50px; opacity: 0"><span class="marker">passa os <b>66,7</b></span></div>
+  </div>
+
+  <div id="ask" class="layer" style="top: 560px">
+    <div class="h1" style="font-size: 140px">PEGA O<br>ARCO-ÍRIS<br><span class="accent">NA HORA CERTA</span></div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">grátis, sem login</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 14.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3) };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+  const fmt1 = n => n.toFixed(1).replace('.', ',');
+
+  // ---------- PRNG determinístico ----------
+  let s = 1410;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- a partida no fundo: Tier II com 5 tiros, a virada em HIT1, Tier III com 1 tiro e, em HIT2, com 3 ----------
+  const HIT1 = 4.9, HIT2 = 8.7;
+  const T2 = { col: '128,255,144', c1: '180,255,180', c2: '0,220,80', rate: 0.15, r: 10 };
+  const T3 = { col: '255,221,0', c1: '255,255,150', c2: '255,200,0', rate: 0.13, r: 12 };
+  // regimes de tiro: [início, fim, tier, leque, graus entre tiros] — spawnBullets do jogo: 5° no leque 5, 9° no leque 3
+  const REG = [[0, HIT1, T2, 5, 5], [HIT1, HIT2, T3, 1, 0], [HIT2, 99, T3, 3, 9]];
+  const N = 26, CYC = 2100, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 200 + rnd() * 170, r: 20 + rnd() * 44, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * CYC, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  function mpos(m, t) {
+    const dist = t * 1.5 * m.v + m.phase;
+    const cycle = Math.floor(dist / CYC);
+    const y = (dist % CYC) - 120;
+    const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+    return { x, y, cycle };
+  }
+  // na virada, todo meteoro da tela explode: a passada que estava em curso em HIT1 some até o meteoro voltar pelo alto
+  function alive(m, t) {
+    if (t < HIT1) return true;
+    return mpos(m, t).cycle > mpos(m, HIT1).cycle;
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function drawMeteor(m, x, y, rot) {
+    fx.save(); fx.translate(x, y); fx.rotate(rot);
+    fx.beginPath();
+    const n = m.shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = m.r * m.shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+    fx.fillStyle = m.big ? 'rgba(20,26,46,0.92)' : 'rgba(14,19,36,0.9)';
+    fx.fill();
+    fx.lineWidth = m.big ? 3 : 2;
+    fx.strokeStyle = m.big ? 'rgba(190,208,240,0.75)' : 'rgba(150,170,205,0.6)';
+    fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t, T) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y); fx.scale(1.25, 1.25);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, `rgba(${T.col},0.95)`); g.addColorStop(1, `rgba(${T.col},0)`);
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = `rgba(${T.col},0.75)`; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = `rgb(${T.col})`; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 150 * Math.sin(t * 0.8 + 0.6) + 40 * Math.sin(t * 2.1);
+  const shipY = 1400;
+  const BV = 1040, BLIFE = 1.6, STEP = 1 / 60;
+  // o tiro some no 1º meteoro vivo que tocar (conta feita só com t, para cada quadro sair igual)
+  function bulletState(tb, ang, t) {
+    const x0 = shipX(tb), y0 = shipY - 60, sx = Math.sin(ang) * BV, sy = -Math.cos(ang) * BV;
+    for (let tau = tb; tau <= t + 1e-9; tau += STEP) {
+      const x = x0 + (tau - tb) * sx, y = y0 + (tau - tb) * sy;
+      for (const m of meteors) {
+        if (!alive(m, tau)) continue;
+        const p = mpos(m, tau);
+        const dx = p.x - x, dy = p.y - y;
+        if (dx * dx + dy * dy < Math.pow(m.r * 0.82 + 8, 2)) return { hit: true, x, y, at: tau };
+      }
+    }
+    return { hit: false, x: x0 + (t - tb) * sx, y: y0 + (t - tb) * sy };
+  }
+  function drawBullet(x, y, T) {
+    const R = T.r * 3.2;
+    const g = fx.createRadialGradient(x, y, 0, x, y, R);
+    g.addColorStop(0, `rgba(${T.c1},1)`); g.addColorStop(.3, `rgba(${T.c2},.8)`); g.addColorStop(1, 'rgba(0,50,200,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.arc(x, y, R, 0, Math.PI * 2); fx.fill();
+    fx.fillStyle = '#fff'; fx.beginPath(); fx.arc(x, y, T.r * 0.8, 0, Math.PI * 2); fx.fill();
+  }
+
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    // tremor da virada (0,55 s), determinístico
+    const sh = t >= HIT1 && t < HIT1 + 0.55 ? 1 - (t - HIT1) / 0.55 : 0;
+    fx.save();
+    if (sh > 0) fx.translate(Math.sin(t * 97) * 18 * sh, Math.cos(t * 83) * 18 * sh);
+    for (const m of meteors) {
+      if (!alive(m, t)) continue;
+      const p = mpos(m, t);
+      if (p.y < -120 || p.y > H + 120) continue;
+      drawMeteor(m, p.x, p.y, m.rot + t * m.w);
+    }
+    // explosões na virada: cada meteoro que estava na tela em HIT1
+    const age = t - HIT1;
+    if (age >= 0 && age < 0.7) {
+      for (const m of meteors) {
+        const p = mpos(m, HIT1);
+        if (p.y < -60 || p.y > H + 60) continue;
+        const a = 1 - age / 0.7;
+        fx.strokeStyle = `rgba(255,221,0,${0.8 * a})`; fx.lineWidth = 4;
+        fx.beginPath(); fx.arc(p.x, p.y, m.r * (0.6 + age * 2.2), 0, Math.PI * 2); fx.stroke();
+        for (let j = 0; j < 8; j++) {
+          const ang = j * 0.785 + m.rot;
+          fx.fillStyle = `rgba(255,236,150,${a})`;
+          fx.beginPath(); fx.arc(p.x + Math.cos(ang) * m.r * (0.4 + age * 3), p.y + Math.sin(ang) * m.r * (0.4 + age * 3), 5 * a + 1.5, 0, Math.PI * 2); fx.fill();
+        }
+      }
+    }
+    // tiros de cada regime
+    for (const [a0, a1, T, lvl, deg] of REG) {
+      const kStart = Math.ceil((Math.max(a0, t - BLIFE) - a0) / T.rate - 1e-9);
+      for (let k = Math.max(0, kStart); ; k++) {
+        const tb = a0 + k * T.rate;
+        if (tb > t || tb >= a1) break;
+        const total = (lvl - 1) * deg, start = -total / 2;
+        for (let i = 0; i < lvl; i++) {
+          const ang = ((lvl === 1 ? 0 : start + i * deg) * Math.PI) / 180;
+          const st = bulletState(tb, ang, t);
+          if (!st.hit) { if (st.y > -40 && st.x > -40 && st.x < W + 40) drawBullet(st.x, st.y, T); continue; }
+          const ag = t - st.at;                       // faísca no ponto do impacto, 0,25 s
+          if (ag < 0.25) {
+            const a = 1 - ag / 0.25;
+            for (let j = 0; j < 6; j++) {
+              const an = j * 1.047 + k + i;
+              fx.fillStyle = `rgba(${T.c1},${a})`;
+              fx.beginPath(); fx.arc(st.x + Math.cos(an) * 120 * ag, st.y + Math.sin(an) * 120 * ag, 4 * a + 1, 0, Math.PI * 2); fx.fill();
+            }
+          }
+        }
+      }
+    }
+    drawShip(shipX(t), shipY, t, t < HIT1 ? T2 : T3);
+    fx.restore();
+    const vg = fx.createRadialGradient(540, 860, 200, 540, 860, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.7)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+    $('flash').style.opacity = t >= HIT1 && t < HIT1 + 0.5 ? 0.35 * (1 - (t - HIT1) / 0.5) : 0;
+
+    // 1) gancho: legível desde o quadro 0; o "por 2 boosts" entra em 0,5 s; sai em 2.4–2.7
+    const outH = 1 - seg(t, 2.4, 0.3);
+    layer($('hook'), outH, -30 * (1 - outH));
+    for (const [id, a, d] of [['w1', 0.0, 0.35], ['w2', 0.1, 0.4]]) {
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = 1; $(id).style.display = 'inline-block';
+      $(id).style.transform = `translateY(${14 * (1 - v)}px)`;
+    }
+    const hs = ease.out3(seg(t, 0.5, 0.4));
+    $('hsub').style.opacity = hs; $('hsub').style.transform = `translateY(${20 * (1 - hs)}px)`;
+
+    // 2) Tier II com 5 tiros: 66,7 → na virada (HIT1) cai para 30,8; "o leque volta a 1 tiro" em 5,6; sai 7.4–7.7
+    const inA = ease.out3(seg(t, 2.6, 0.35)), outA = 1 - seg(t, 7.4, 0.3);
+    layer($('sa'), inA * outA, 30 * (1 - inA));
+    const dA = ease.out3(seg(t, HIT1 + 0.05, 0.6));
+    $('na').textContent = fmt1(66.7 + (30.8 - 66.7) * dA);
+    $('na').className = 'counter' + (t >= HIT1 ? ' down' : '');
+    $('la1').style.opacity = 1 - seg(t, HIT1, 0.12);
+    $('la2').style.opacity = seg(t, HIT1 + 0.12, 0.15);
+    const ma = ease.out3(seg(t, 5.6, 0.4));
+    $('ma').style.opacity = ma; $('ma').style.transform = `translateY(${16 * (1 - ma)}px)`;
+
+    // 3) dois boosts depois: 30,8 → 92,3 a partir de HIT2; "passa os 66,7" em 9,6; sai 10.7–11.0
+    const inB = ease.out3(seg(t, 7.75, 0.35)), outB = 1 - seg(t, 10.7, 0.3);
+    layer($('sb'), inB * outB, 30 * (1 - inB));
+    const dB = ease.out3(seg(t, HIT2 + 0.05, 0.7));
+    $('nb').textContent = fmt1(30.8 + (92.3 - 30.8) * dB);
+    $('nb').className = 'counter' + (dB >= 1 ? ' lock' : '');
+    const mb = ease.out3(seg(t, 9.6, 0.4));
+    $('mb').style.opacity = mb; $('mb').style.transform = `translateY(${16 * (1 - mb)}px)`;
+
+    // 4) dica 11.1–12.35
+    const inK = ease.out3(seg(t, 11.1, 0.35)), outK = 1 - seg(t, 12.05, 0.3);
+    layer($('ask'), inK * outK, 0, 0.92 + 0.08 * inK);
+
+    // 5) CTA 12.4–14.0
+    const inCt = ease.out3(seg(t, 12.4, 0.5));
+    layer($('cta'), inCt, 30 * (1 - inCt));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
