@@ -9,8 +9,8 @@ variavel_testada: gestos — motionPrompt pedindo os braços parados ao lado do 
 heygen_video_id: 38c65620fc57b0ed2febf6766783bbd4
 creditos_heygen: 158 → 156 (os looks do story e do reel) → 145 (o vídeo do story, 12,7 s, e o do reel, 18,2 s: 11 juntos). O story custou ~6 (look 1 + vídeo ~5)
 horario_publicacao: 2026-10-14 16:00 BRT (quarta)
-buffer_post_id: (preencher)
-qa: (preencher)
+buffer_post_id: 6acf07f80d20fd15277d5339 (agendado à 01:41 de 14/10 para as 16:00; scheduled, 12,8 s, isAiGenerated true)
+qa: reel.mp4 baixado pelo SHA do commit do render (7acfbe93) e conferido; a main tem o mesmo tamanho (6.625.598 bytes). Vídeo puro, sem texto nem nada por cima, o bolo acima da cabeça o vídeo todo, transcrição (legenda.srt) igual ao roteiro palavra por palavra (35 palavras), áudio presente (média −24,6 dB), 12,8 s, fim limpo (ela sorrindo). Mãos: a varredura de pixels de pele na faixa de baixo do quadro (y ≥ 1400, 10 fps) deu zero do começo ao fim — nenhuma mão no quadro, o resultado da variável testada
 instagram: metadata.instagram = { type: "story", shouldShareToFeed: false, isAiGenerated: true }
 fonte_dados: navistron.io/stats?visao=partidas&ordem=data lido em 14/10/2026 ~01:15 BRT (com ?v=; hora do fim de cada partida, fuso de Brasília): 617 partidas no total; contando da mais nova (a 617ª, 13/10 16:39), a 600ª é a 18ª linha — ANÔNIMO, 201 pontos, 0:26 de partida, Tier I, registrada em 13/10 às 11:05 (a 598ª e a 599ª também terminaram às 11:05; a 601ª, às 11:10). O reel de 13/10 às 13:00 ("Quem joga a partida 600?") trazia os números até 12/10 (593, faltavam 7). Fato fechado e datado: nada no roteiro muda entre a 01:00 e as 16:00
 ---

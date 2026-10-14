@@ -4,6 +4,21 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-14 · **O 2º post do dia somou na estreia da S42 — e a contagem regressiva foi atropelada pela manhã.** Na segunda
+  12/10, o ranking das 13:00 fechou em **105 de alcance / 131 views** (~30 h), o maior ranking de segunda (os anteriores: 2,
+  3 e 14) e o 4º maior da série do slot (24 posts; a mediana subiu para 18), e a Estela das 19:00 fechou em **32 / 36** (~24
+  h), acima dos três vídeos dela da S41 (14, 4 e 14): o dia somou 137, e o 2º post não tirou alcance do 1º — um dia de
+  amostra; a leitura da S42 fecha em 18/10. **Contagem regressiva não sobrevive a uma manhã de jogo**: o reel de 13/10
+  perguntava "Quem joga a partida 600?" com os números até 12/10 (faltavam 7), mas o jogo voltou depois de três dias parado
+  e a 600ª saiu às 11:05, antes do post das 13:00. A legenda estava datada e não ficou errada, mas o post nasceu velho.
+  Regra: contagem que pode fechar em poucas partidas não vai para as 13:00 sem a hora da leitura em destaque; ou vira o fato
+  fechado no dia seguinte, como o story de 14/10. **A conta do post tem de bater com a fonte que a legenda cita**: o reel de
+  14/10 somava só o dano dos tiros (66,7 → 30,8 → 92,3, "por 2 boosts") e a legenda mandava para o artigo dos 30 mil pontos,
+  que soma os mísseis e mostra a recuperação um boost depois (76,7 → 50,8 → 81,5); a contradição apareceu na conferência da
+  legenda contra o artigo, e o reel foi refeito antes de agendar. **Braços parados o vídeo todo funcionou**: no story de
+  14/10, o motionPrompt sem gesto nenhum deu zero mão no quadro, onde o pedido só para os 2 primeiros segundos não segurava
+  nem a abertura (11, 12 e 13/10); no reel do mesmo dia, a Excited (a 1ª vez num reel) abriu limpa e gesticulou com as duas
+  mãos de ~13,4 a ~17,9 s.
 - 2026-10-13 · **Leitura final da S41: os três vídeos da Estela não somaram — e o 2º post do dia estreou com o maior
   parcial em semanas.** O reel de dados de 11/10 (as provocações do jogo) fechou em **65 de alcance / 98 views** (~31 h), o
   maior da S41 e o 5º maior da série do slot das 13:00 (23 posts, mediana 14); os três vídeos dela fecharam em 14, 4 e 14, e
@@ -45,21 +60,6 @@ apenas este arquivo, e não o playbook inteiro.
   código — as provocações: "Tá achando fácil?" aos 10 s e mais uma a cada 10 s, sorteadas entre 102 — e rendeu dois achados
   para o Guilherme: 6 frases devem aparecer cortadas em celulares de ~390 px (o CSS não quebra linha e corta com
   reticências) e um artigo antigo do blog fala em "101 frases provocativas".
-- 2026-10-10 · **Objeto claro ao lado do corpo dela vira mão translúcida no vídeo — e a queda dos stories não continuou.**
-  O reel do dia (as 20 horas de jogo fecharam em 09/10, às 16:28, numa partida anônima de 842 pontos) custou três versões:
-  no 1º look, a ampulheta do cenário ficava ao lado do tronco, e no vídeo **a mão que passava na frente dela ficava
-  translúcida**, com as estrelas aparecendo através da mão; o motor Avatar III, testado como saída barata (3 créditos por
-  22,9 s), devolveu o mesmo movimento do corpo e o mesmo defeito — só a boca mudou. Saiu limpo num look novo, com a
-  ampulheta pequena no alto, na altura dos olhos: os gestos ficaram sobre o moletom escuro, onde sempre saíram naturais.
-  Regra para os looks (em `personagens/ESTELA.md`): objeto claro do cenário acima da linha dos ombros, nunca ao lado do
-  tronco. E nem o expressiveness low segura as mãos (no reel ela abriu apontando para si mesma; no story, as mãos entraram
-  a 1,4 s e ficaram quase o vídeo todo) — o que muda o resultado é onde as mãos passam. Custo: o reel saiu por 20 créditos
-  (contra ~8 de um econômico) e o saldo fechou em **184**: os 18 stories e 6 reels até 28/10 só cabem acima da guarda de 30
-  com stories de até ~40 palavras e sem refazer. Nos números, o story republicado de 08/10 fechou em **10 views / 8 de
-  alcance** (~24 h) e o de 09/10 tinha 7 views com ~7 h: depois de 7, 5 e 2, a queda registrada em 09/10 não continuou — a
-  hipótese do cansaço fica mais fraca, e a leitura de 26/10 decide. No feed, o reel de dados do 1º Tier V (08/10) fechou em
-  **28 de alcance / 34 views** (~34 h), o maior da S41, e a mediana do slot voltou a 18 (20 posts). No jogo, 08 e 09/10
-  somaram 25 partidas e nenhuma com nick, no 13º dia do pedido "põe o nick".
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e

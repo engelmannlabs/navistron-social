@@ -4,6 +4,21 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-10 · **Objeto claro ao lado do corpo dela vira mão translúcida no vídeo — e a queda dos stories não continuou.**
+  O reel do dia (as 20 horas de jogo fecharam em 09/10, às 16:28, numa partida anônima de 842 pontos) custou três versões:
+  no 1º look, a ampulheta do cenário ficava ao lado do tronco, e no vídeo **a mão que passava na frente dela ficava
+  translúcida**, com as estrelas aparecendo através da mão; o motor Avatar III, testado como saída barata (3 créditos por
+  22,9 s), devolveu o mesmo movimento do corpo e o mesmo defeito — só a boca mudou. Saiu limpo num look novo, com a
+  ampulheta pequena no alto, na altura dos olhos: os gestos ficaram sobre o moletom escuro, onde sempre saíram naturais.
+  Regra para os looks (em `personagens/ESTELA.md`): objeto claro do cenário acima da linha dos ombros, nunca ao lado do
+  tronco. E nem o expressiveness low segura as mãos (no reel ela abriu apontando para si mesma; no story, as mãos entraram
+  a 1,4 s e ficaram quase o vídeo todo) — o que muda o resultado é onde as mãos passam. Custo: o reel saiu por 20 créditos
+  (contra ~8 de um econômico) e o saldo fechou em **184**: os 18 stories e 6 reels até 28/10 só cabem acima da guarda de 30
+  com stories de até ~40 palavras e sem refazer. Nos números, o story republicado de 08/10 fechou em **10 views / 8 de
+  alcance** (~24 h) e o de 09/10 tinha 7 views com ~7 h: depois de 7, 5 e 2, a queda registrada em 09/10 não continuou — a
+  hipótese do cansaço fica mais fraca, e a leitura de 26/10 decide. No feed, o reel de dados do 1º Tier V (08/10) fechou em
+  **28 de alcance / 34 views** (~34 h), o maior da S41, e a mediana do slot voltou a 18 (20 posts). No jogo, 08 e 09/10
+  somaram 25 partidas e nenhuma com nick, no 13º dia do pedido "põe o nick".
 - 2026-10-09 · **Os stories da Estela caíram de 15 para 2 views em nove dias — e a Estela de quarta fechou em 4.** O story de
   07/10 (o sarrafo do top 10) fechou em **2 views e 0 de alcance** com ~24 h, o 9º numa linha quase só descendente (15, 11, 9,
   11, 13, 10, 7, 5, 2), e o republicado de 08/10 tinha 1 view com ~5 h; as respostas seguem em zero. A queda atravessa temas,
