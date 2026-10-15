@@ -4,6 +4,18 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-11 · **Os dois carrosséis da rotina são os dois piores posts automáticos — e o custo da HeyGen sobe em degraus
+  de ~3,3 s.** O carrossel de 09/10 ("A 7 pontos") fechou em **1 de alcance / 3 views** (~33 h), o menor da série do slot das
+  13:00 (21 posts; a mediana caiu para 14), e o de 01/10, às 15:00, tinha fechado em 3. Dois casos não fecham regra, mas a
+  direção é a do PLAYBOOK (imagem parada quase não é distribuída para quem não segue) — e o calendário da S42 tem outro
+  carrossel no sábado 17. Nos stories, o de 09/10 fechou em 10 views / 7 de alcance, as mesmas 10 views do de 08/10. Na
+  produção, o story de 40 palavras (13,7 s) custou 5 de vídeo, não 4: pelos saldos, o Avatar IV cobra ~1 crédito a cada
+  3,3 s, arredondado para cima. Com 178 créditos, os 17 stories e 6 reels até 28/10 só cabem com folga com stories de até
+  ~13 s (~37 palavras a 1,1x); a conta está em `personagens/ESTELA.md`. No jogo, o sábado (10/10) não teve partida e a semana
+  de 04 a 10/10 fechou com 48 partidas e 4 com nick (3 pilotos), no 14º dia do pedido "põe o nick". O reel do dia saiu do
+  código — as provocações: "Tá achando fácil?" aos 10 s e mais uma a cada 10 s, sorteadas entre 102 — e rendeu dois achados
+  para o Guilherme: 6 frases devem aparecer cortadas em celulares de ~390 px (o CSS não quebra linha e corta com
+  reticências) e um artigo antigo do blog fala em "101 frases provocativas".
 - 2026-10-10 · **Objeto claro ao lado do corpo dela vira mão translúcida no vídeo — e a queda dos stories não continuou.**
   O reel do dia (as 20 horas de jogo fecharam em 09/10, às 16:28, numa partida anônima de 842 pontos) custou três versões:
   no 1º look, a ampulheta do cenário ficava ao lado do tronco, e no vídeo **a mão que passava na frente dela ficava

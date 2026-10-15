@@ -4,6 +4,19 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-15 · **O dia de um post só fez 47; o de dois, 137 — e os stories da Estela tiveram os dois maiores alcances
+  desde 05/10.** Na terça 13/10, o único post do feed (o reel da partida 600, 13:00) fechou em **47 de alcance / 59
+  views** (~29 h), o 8º maior do slot (25 posts; a mediana subiu para 22); na segunda, o ranking das 13:00 tinha feito 105
+  e a Estela das 19:00, 32. A diferença está mais no reel das 13:00 do que no 2º post — um dia de cada não fecha regra; a
+  leitura da S42 sai em 18/10. Nos stories, o de 13/10 (a nave acima do dedo) fechou em **15 de alcance** (~24 h) e o de
+  14/10 (a festa das seiscentas) já tinha **21** com ~8 h, contra 0 a 8 nos stories de 05 a 12/10. **Braços parados não
+  virou padrão**: no story de 15/10, o mesmo motionPrompt que deu zero mão em 14/10 deixou uma mão subir até o fone na
+  abertura (0–0,5 s, com borrão, aceita) e as duas mãos voltarem em cinco gestos curtos, naturais — 1 vídeo sem mão em 2.
+  **Dois pushes de post.html com 34 s de diferença**: o reel renderizou e a folha do look não (sem post.png depois de 10
+  min); um 2º push da folha resolveu — conferir a pasta depois de cada push e, se faltar o arquivo, empurrar de novo. No
+  jogo, a quarta 14/10 teve só 2 partidas, as duas com nick, de um piloto novo: RASEC, o 46º. No blog, o artigo do RNG
+  achou dois detalhes do tremor de tela para o Guilherme: ele conta quadros, não segundos (em telas de 120 Hz dura
+  metade), e o tremor de 1,5 s da explosão da nave é trocado aos 0,3 s pelo da 2ª explosão.
 - 2026-10-14 · **O 2º post do dia somou na estreia da S42 — e a contagem regressiva foi atropelada pela manhã.** Na segunda
   12/10, o ranking das 13:00 fechou em **105 de alcance / 131 views** (~30 h), o maior ranking de segunda (os anteriores: 2,
   3 e 14) e o 4º maior da série do slot (24 posts; a mediana subiu para 18), e a Estela das 19:00 fechou em **32 / 36** (~24
@@ -48,18 +61,6 @@ apenas este arquivo, e não o playbook inteiro.
   pedia "joga hoje nesse horário" e foi trocado antes de gerar o vídeo, porque às 19:00 o pico (13h–17h) já passou: o horário
   de publicação também entra na hora de escrever o pedido. No blog, o artigo da semana 41 achou uma contradição entre artigos
   antigos sobre fins de semana sem partida (28/09 e 05/10 contra o da semana 37), anotada em `log/blog.md` para conferir.
-- 2026-10-11 · **Os dois carrosséis da rotina são os dois piores posts automáticos — e o custo da HeyGen sobe em degraus
-  de ~3,3 s.** O carrossel de 09/10 ("A 7 pontos") fechou em **1 de alcance / 3 views** (~33 h), o menor da série do slot das
-  13:00 (21 posts; a mediana caiu para 14), e o de 01/10, às 15:00, tinha fechado em 3. Dois casos não fecham regra, mas a
-  direção é a do PLAYBOOK (imagem parada quase não é distribuída para quem não segue) — e o calendário da S42 tem outro
-  carrossel no sábado 17. Nos stories, o de 09/10 fechou em 10 views / 7 de alcance, as mesmas 10 views do de 08/10. Na
-  produção, o story de 40 palavras (13,7 s) custou 5 de vídeo, não 4: pelos saldos, o Avatar IV cobra ~1 crédito a cada
-  3,3 s, arredondado para cima. Com 178 créditos, os 17 stories e 6 reels até 28/10 só cabem com folga com stories de até
-  ~13 s (~37 palavras a 1,1x); a conta está em `personagens/ESTELA.md`. No jogo, o sábado (10/10) não teve partida e a semana
-  de 04 a 10/10 fechou com 48 partidas e 4 com nick (3 pilotos), no 14º dia do pedido "põe o nick". O reel do dia saiu do
-  código — as provocações: "Tá achando fácil?" aos 10 s e mais uma a cada 10 s, sorteadas entre 102 — e rendeu dois achados
-  para o Guilherme: 6 frases devem aparecer cortadas em celulares de ~390 px (o CSS não quebra linha e corta com
-  reticências) e um artigo antigo do blog fala em "101 frases provocativas".
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
