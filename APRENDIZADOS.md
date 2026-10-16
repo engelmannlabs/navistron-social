@@ -4,6 +4,20 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-16 · **A quarta de dois posts fez 21; a segunda, 137 — a diferença está no reel das 13:00, não no 2º post. E o
+  /ranking mostra as datas em UTC.** Na quarta 14/10, o reel de mecânica das 13:00 ("Subir de tier enfraquece") fechou em **9
+  de alcance / 16 views** (~28 h, a métrica parada desde a leitura de ~5 h), o menor dos cinco reels de mecânica do slot (111,
+  14, 122, 65 e 9; a mediana da série caiu para 18), e a Estela das 19:00, em **12 / 16** (~22 h), com **1 like e 1
+  comentário**. Os dois dias de dois posts fizeram 137 e 21: o 2º post deu 32 e 12, e o que mudou foi o 1º (105 contra 9) — a
+  leitura da S42 sai em 18/10. Nos stories, o de 14/10 fechou em **32 de alcance / 37 views**, o maior desde 05/10 (os de 12 e
+  13/10: 7 e 15), e o de 15/10 tinha 17 com ~8 h. **Datas do /ranking são UTC**: a 1ª versão do reel das 13:00 dizia que o
+  KAL-EL estreou em 07/10, a data do /ranking, mas a partida foi às 21:13 de 06/10 — toda partida depois das 21:00 aparece lá
+  com a data do dia seguinte; a lista de partidas do /stats tem a hora de Brasília e é a fonte de data (corrigido antes de
+  agendar). **Braços parados seguraram de novo no story**: só a borda de uma mão na beira de baixo, em ~14,8 e ~15,6 s — 2
+  vídeos quase sem mão em 3; no reel, com o pedido antigo (mãos paradas só no começo), uns 15 gestos naturais. No jogo, a
+  quinta 15/10 não teve nenhuma partida. No blog, o artigo dos pilotos achou que só 6 dos 46 salvaram partidas em mais de um
+  dia — e as 12 melhores partidas com nick são desses seis. HeyGen: 139 → 123; os 12 stories e 3 reels até 28/10 só cabem
+  acima da guarda com stories de até ~13 s (~37 palavras) e sem refazer (conta na ficha).
 - 2026-10-15 · **O dia de um post só fez 47; o de dois, 137 — e os stories da Estela tiveram os dois maiores alcances
   desde 05/10.** Na terça 13/10, o único post do feed (o reel da partida 600, 13:00) fechou em **47 de alcance / 59
   views** (~29 h), o 8º maior do slot (25 posts; a mediana subiu para 22); na segunda, o ranking das 13:00 tinha feito 105
@@ -47,20 +61,6 @@ apenas este arquivo, e não o playbook inteiro.
   campo de 720 — saiu com 13,6 s, e o saldo fechou em **158**: os 15 stories e 5 reels até 28/10 cabem sem refazer vídeo. No
   blog, o guia dos 30 mil pontos achou um padrão nas 25 maiores partidas: 17 pararam no Tier II com 9 boosts (nenhuma no
   Tier II passou de 19.785) e 20 acabaram com o leque cheio, a um boost da virada de tier.
-- 2026-10-12 · **Leitura provisória da S41: três vídeos da Estela por semana não somaram — e a semana 41 foi a maior em
-  partidas desde a 37.** Os três vídeos dela no feed fecharam em **14, 4 e 14** de alcance (05, 07 e 10/10; o de 10/10 fechou
-  em 14 / 21 views com ~32 h), sem passar da mediana do slot das 13:00 (14, com 22 posts), enquanto os reels de dados da semana
-  fecharam em 13 e 28 e o de 11/10 (as provocações) já tinha **39** com ~8 h; o carrossel fechou em 1. A leitura final sai em
-  13/10 (atualizado em 13/10: o de 11/10 fechou em **65**; ver a entrada de 13/10), mas a direção é a oposta da S40, quando ela fez 3 a 5× o reel de dados no mesmo slot: rosto e voz não garantem
-  distribuição. A S42 testa agora o 2º post do dia, com ela às 19:00. Nos stories, o de 10/10 fechou em 6 views / 0 de
-  alcance (~24 h). No jogo, a semana 41 fechou com **47 partidas** (a maior desde a 37), o recorde de 30.577 no 1º Tier V, a
-  maior anônima da história (23.594) e só 4 partidas com nick, com 41 das 47 entre 13h e 17h (21 só na faixa das 14h); desde
-  09/10 às 16:50, nenhuma partida. Produção: a voz **Excited a 1,1x** leu 34 palavras em 15,2 s (~0,45 s por palavra, contra
-  ~0,31–0,34 da Friendly a 1,1x) — nos desafios, ela custa mais por palavra —, e o reel saiu com 17,1 s, o mais curto dela, pela
-  conta de créditos (178 → 165 no dia; os 16 stories e 5 reels até 28/10 cabem sem refazer). O roteiro do reel das 19:00
-  pedia "joga hoje nesse horário" e foi trocado antes de gerar o vídeo, porque às 19:00 o pico (13h–17h) já passou: o horário
-  de publicação também entra na hora de escrever o pedido. No blog, o artigo da semana 41 achou uma contradição entre artigos
-  antigos sobre fins de semana sem partida (28/09 e 05/10 contra o da semana 37), anotada em `log/blog.md` para conferir.
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e

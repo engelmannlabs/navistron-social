@@ -4,6 +4,20 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-12 · **Leitura provisória da S41: três vídeos da Estela por semana não somaram — e a semana 41 foi a maior em
+  partidas desde a 37.** Os três vídeos dela no feed fecharam em **14, 4 e 14** de alcance (05, 07 e 10/10; o de 10/10 fechou
+  em 14 / 21 views com ~32 h), sem passar da mediana do slot das 13:00 (14, com 22 posts), enquanto os reels de dados da semana
+  fecharam em 13 e 28 e o de 11/10 (as provocações) já tinha **39** com ~8 h; o carrossel fechou em 1. A leitura final sai em
+  13/10 (atualizado em 13/10: o de 11/10 fechou em **65**; ver a entrada de 13/10), mas a direção é a oposta da S40, quando ela fez 3 a 5× o reel de dados no mesmo slot: rosto e voz não garantem
+  distribuição. A S42 testa agora o 2º post do dia, com ela às 19:00. Nos stories, o de 10/10 fechou em 6 views / 0 de
+  alcance (~24 h). No jogo, a semana 41 fechou com **47 partidas** (a maior desde a 37), o recorde de 30.577 no 1º Tier V, a
+  maior anônima da história (23.594) e só 4 partidas com nick, com 41 das 47 entre 13h e 17h (21 só na faixa das 14h); desde
+  09/10 às 16:50, nenhuma partida. Produção: a voz **Excited a 1,1x** leu 34 palavras em 15,2 s (~0,45 s por palavra, contra
+  ~0,31–0,34 da Friendly a 1,1x) — nos desafios, ela custa mais por palavra —, e o reel saiu com 17,1 s, o mais curto dela, pela
+  conta de créditos (178 → 165 no dia; os 16 stories e 5 reels até 28/10 cabem sem refazer). O roteiro do reel das 19:00
+  pedia "joga hoje nesse horário" e foi trocado antes de gerar o vídeo, porque às 19:00 o pico (13h–17h) já passou: o horário
+  de publicação também entra na hora de escrever o pedido. No blog, o artigo da semana 41 achou uma contradição entre artigos
+  antigos sobre fins de semana sem partida (28/09 e 05/10 contra o da semana 37), anotada em `log/blog.md` para conferir.
 - 2026-10-11 · **Os dois carrosséis da rotina são os dois piores posts automáticos — e o custo da HeyGen sobe em degraus
   de ~3,3 s.** O carrossel de 09/10 ("A 7 pontos") fechou em **1 de alcance / 3 views** (~33 h), o menor da série do slot das
   13:00 (21 posts; a mediana caiu para 14), e o de 01/10, às 15:00, tinha fechado em 3. Dois casos não fecham regra, mas a
