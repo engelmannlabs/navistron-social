@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="video">
+<meta name="post-size" content="1080x1920">
+<meta name="video-src" content="https://files2.heygen.ai/aws_pacific/avatar_tmp/c9379eb0ffee407c956c12517ad5feba/405130a409ac7576c4c45df2ebc326ad.mp4?Expires=1792730396&Signature=mROsNP5d0xgfZcRc2HPwsu8mOSRkZj9~VvRVkbrMowSXhcJ3LM9xWOKuYnYmTI2EIqMnlwqKaqcCTMgAIOkY2eUBWWS2A~V3UpV-iFePk6hdfBG3zprjaAX0Vjslrn1ELXZhMMiVZ61p-2EKMDqdXC-4C1Aagm04bpqXuEbTJJaNkHXUhe-UUrttxadJkcWRtL7gIO2SH0K~SynBNOKNRdTl4ympw0xXP~pdtQV5UWQA39I5FMt-GRWGL62bU-9vPwtpl~qHEH-NMMMksoJ3ENTqtQwByzXJlmkkZw7yi~5wBlMgfYgEDsCHPnxN9kCYH9xgrb4uFP8RedFDGMnsEw__&Key-Pair-Id=K38HBHX5LX3X2H">
+<meta name="video-subtitles" content="https://files2.heygen.ai/aws_pacific/avatar_tmp/c9379eb0ffee407c956c12517ad5feba/subtitles_405130a409ac7576c4c45df2ebc326ad.srt?Expires=1792730399&Signature=JMXgVjOBq95lJTsdHeF9xfMcu7ofDbd7f8lQ~TuSqEK-2X9ItFmNEjQihu3HawlJ8qVZMlPYQmnFqzJhrEoUS97s78nVDoClNO3dAhPka4t7dzOif1ZFno~beTfZkX1gI2MyipkSz~4hMzND5WX-StjFXSitiy~qwPu122Td3ly-mfDGVlf2joirOtbFeVurB3NrFtIGvpa1ANK3qHBT151sNeI0e1ewNKHa7EwYP8A-0oble~XMMO0RvdyVD4qYA-KPerTOvBsX~CZj3VLz68lUp9vHzL5goVu5vDySl96EnWVSgbfFFiaSRMh6hYyqu-qIE0ipRIFro1oqlFID2w__&Key-Pair-Id=K38HBHX5LX3X2H">
+<meta name="video-captions" content="srt">
+<meta name="reel-cover" content="1.0">
+<link rel="stylesheet" href="../../templates/reel.css">
+<!-- Reel de 16/10/2026 (sexta, calendário S42: o 2º post do dia, às 19:00): bastidor da Estela — a partida esquisita.
+     Na lista de partidas por pontos de navistron.io/stats (?visao=partidas, lida em 16/10/2026 ~01:15 BRT), a 46ª linha é
+     anônima, de 10/09/2026 às 15:40: 15.232 pontos em 4:24, Tier I, 4 boosts, spread 5 — a maior partida do Tier I (as 45
+     acima dela são todas de Tier II para cima) e uma das 7 mais longas (4:24, empatada com duas; ?visao=partidas&ordem=tempo). Das 20
+     partidas entre 15.128 e 16.629 pontos (31ª a 50ª da lista por pontos), 15 acabaram antes de 3 minutos. Código do jogo
+     (src/app/play/page.js, 36d68b9a): getDiff() = TIER_DIFF[tier] × (1 + score × 0,0007), com TIER_DIFF = 1 no Tier I e 1,8
+     no II — no Tier I a dificuldade sobe mais devagar; o tier só sobe (tierUp), então 4 boosts = a partida inteira no Tier I.
+     Vídeo HeyGen 405130a409ac7576c4c45df2ebc326ad (Avatar IV, 1080p, 23,5 s), modo econômico pela regra de orçamento (139
+     créditos no início da rodada contra uma reserva de 167) — take único no look "a lupa na partida esquisita"
+     2d9fd31b3d630bb0573416b2ecefb940 (laboratório em posts/_lab-2026-10-16-looks): uma lupa de luz no quarto de cima do
+     quadro, com uma navinha ciano e quatro orbes dourados dentro da lente; nada brilhando abaixo do queixo. Voz Sofia
+     Brazil - Friendly a 1,1x, expressiveness low, motionPrompt calmo com as mãos paradas e fora do quadro nos 2 primeiros
+     segundos; glossário Navistron. -->
+<!-- Camada dos REELS da Estela — versão 3 (29/09/2026).
+     Pedidos do Guilherme depois da estreia: legenda menor, nada cobrindo o rosto, sobreposições só temporárias e
+     minimalistas (v2) e, por fim, SEM selo de IA na arte — o rótulo de IA do Instagram (isAiGenerated) basta (v3).
+     O que sobra por cima do vídeo é só a legenda:
+     - legenda pequena (56 px, caixa baixa), ancorada pela base em y = 1490: uma linha ocupa ~1420–1490 e duas linhas
+       ~1350–1490, sempre abaixo do queixo (~1170 nos looks atuais) e acima da interface do Instagram;
+     - mais nada na tela. Qualquer elemento extra só se for temporário e pequeno.
+     Stories usam outro molde (templates/estela-story.html): vídeo puro, sem legenda.
+     Uso: copiar este arquivo para posts/AAAA-MM-DD-slug/post.html e trocar video-src e video-subtitles (e o reel-cover,
+     se a capa pedir outro instante). O link do CSS já está relativo à pasta do post. -->
+<style>
+  html, body { background: transparent !important; }
+  #cap { position: absolute; left: 140px; right: 140px; bottom: 430px; text-align: center; opacity: 0; }
+  #cap.on { opacity: 1; }
+  #cap span { display: inline; padding: 2px 14px; line-height: 1.32; border-radius: 10px; background: rgba(5,7,15,0.55);
+              -webkit-box-decoration-break: clone; box-decoration-break: clone;
+              font-family: var(--font-display); font-weight: 700; font-size: 56px; letter-spacing: 0.01em; color: #FFFFFF; }
+  #cap b { color: var(--t1); font-weight: 700; }
+</style>
+</head>
+<body>
+  <div id="cap"></div>
+</body>
+</html>
