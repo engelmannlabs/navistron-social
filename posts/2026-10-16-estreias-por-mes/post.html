@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="14.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="1.6">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>
+  #tot { font-size: 200px; }
+  .chart { display: flex; justify-content: center; align-items: flex-end; gap: 40px; width: 900px; height: 470px; margin: 30px auto 0; }
+  .col { width: 106px; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .col .v { font-family: var(--font-mono); font-weight: 800; font-size: 54px; line-height: 1; color: var(--ink); margin-bottom: 14px;
+            font-variant-numeric: tabular-nums; opacity: 0; }
+  .col .bar { width: 100%; height: 0; border-radius: 10px 10px 4px 4px; background: linear-gradient(180deg, rgba(34,211,238,0.95), rgba(34,211,238,0.35));
+              box-shadow: 0 0 28px rgba(34,211,238,0.35); }
+  .col .m { margin-top: 16px; font-family: var(--font-ui); font-weight: 600; font-size: 30px; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; opacity: 0; }
+  .col.best .bar { background: linear-gradient(180deg, rgba(250,204,21,1), rgba(250,204,21,0.4)); box-shadow: 0 0 36px rgba(250,204,21,0.5); }
+  .col.best .v { color: #FACC15; text-shadow: 0 0 30px rgba(250,204,21,0.5); }
+  .col.now .bar { background: linear-gradient(180deg, rgba(248,113,113,1), rgba(248,113,113,0.45)); box-shadow: 0 0 36px rgba(248,113,113,0.5); }
+  .col.now .v { color: #FCA5A5; }
+  .col.now .m { color: #FCA5A5; }
+  .marker.red { border-color: rgba(248,113,113,0.6); background: rgba(248,113,113,0.12); color: #FCA5A5; }
+  .marker.red b { color: #FFFFFF; }
+  .rows { width: 900px; margin: 46px auto 0; }
+  .rrow { display: flex; align-items: center; height: 168px; border-bottom: 2px solid rgba(143,163,199,0.16); opacity: 0; }
+  .rrow:last-child { border-bottom: 0; }
+  .rrow .pos { width: 190px; text-align: left; font-family: var(--font-display); font-weight: 700; font-size: 112px; line-height: 1; color: var(--t1); text-shadow: 0 0 30px rgba(34,211,238,0.35); }
+  .rrow .who { flex: 1; text-align: left; }
+  .rrow .nm { font-family: var(--font-ui); font-weight: 700; font-size: 44px; letter-spacing: 0.04em; color: var(--ink); text-transform: uppercase; white-space: nowrap; }
+  .rrow .mt { margin-top: 8px; font-family: var(--font-ui); font-weight: 500; font-size: 25px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; white-space: nowrap; }
+  .rrow .val { width: 250px; text-align: right; font-family: var(--font-mono); font-weight: 800; font-size: 70px; line-height: 1; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .rrow.you { border: 3px dashed rgba(250,204,21,0.75); border-radius: 18px; padding: 0 26px; margin-top: 18px; height: 176px; }
+  .rrow.you .pos, .rrow.you .nm { color: #FACC15; text-shadow: 0 0 34px rgba(250,204,21,0.5); }
+  .rrow.you .val { color: #FACC15; }
+</style>
+<!-- MARCO: A CAMINHO DOS 50 PILOTOS — estreias por mês. Fonte: navistron.io/ranking ("Top 100 — Ranking Global de Todos os
+     Tempos": as 96 partidas salvas com nick, uma linha por partida, data sem ano) e navistron.io/stats (todos os tempos), lidos
+     em 16/10/2026 ~01:05 BRT com ?v=. Totais: 619 partidas (96 com nick, 523 anônimas), 46 pilotos únicos; a última partida é
+     de 14/10 às 12:21 (nenhuma em 15/10). Estreia = a data da 1ª partida com nick de cada piloto (a menor data do nick no
+     /ranking; conta em python, 46 nicks = os 46 pilotos únicos do /stats): maio 9 (o 1º em 02/05), junho 6, julho 4, agosto 11
+     (7 só em 26/08), setembro 14 (5 em 02/09) e outubro 2 até 15/10 — KAL-EL (07/10, melhor partida 13.154, Tier III), o 45º, e
+     RASEC (14/10, 3.954, Tier II), o 46º. Faltam 4 para 50.
+     Fundo: a nave no Tier I (ciano #7df4ff, tiros c1 180,255,255 / c2 0,200,255, um a cada 0,18 s), o tier em que todo piloto
+     começa. -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Marco · @navistron</div>
+
+  <div id="hook" class="layer" style="top: 470px">
+    <div class="h1" style="font-size: 178px"><span class="w" id="w1">OUTUBRO SÓ</span><br><span class="w" id="w1b">TEVE</span> <span class="w accent" id="w2" style="font-size: 250px">2</span><br><span class="w" id="w3">ESTREIAS</span></div>
+    <div class="sub" id="hsub" style="margin-top: 56px; opacity: 0">setembro teve <b>14</b> · <b>até 15/10</b><br>estreia = 1ª partida com nick</div>
+  </div>
+
+  <div id="br" class="layer" style="top: 410px">
+    <div class="kicker">estreias por mês</div>
+    <div class="counter" id="tot" style="margin-top: 12px">0</div>
+    <div class="sub" id="bsub" style="margin-top: 6px">pilotos com nick, desde maio</div>
+    <div class="chart">
+      <div class="col" id="k0"><div class="v" id="kv0">0</div><div class="bar" id="kb0"></div><div class="m" id="km0">mai</div></div>
+      <div class="col" id="k1"><div class="v" id="kv1">0</div><div class="bar" id="kb1"></div><div class="m" id="km1">jun</div></div>
+      <div class="col" id="k2"><div class="v" id="kv2">0</div><div class="bar" id="kb2"></div><div class="m" id="km2">jul</div></div>
+      <div class="col" id="k3"><div class="v" id="kv3">0</div><div class="bar" id="kb3"></div><div class="m" id="km3">ago</div></div>
+      <div class="col best" id="k4"><div class="v" id="kv4">0</div><div class="bar" id="kb4"></div><div class="m" id="km4">set</div></div>
+      <div class="col now" id="k5"><div class="v" id="kv5">0</div><div class="bar" id="kb5"></div><div class="m" id="km5">out</div></div>
+    </div>
+    <div id="sohj" style="margin-top: 26px; opacity: 0"><span class="marker red">outubro: só <b>2</b> até 15/10</span></div>
+  </div>
+
+  <div id="rk" class="layer" style="top: 500px">
+    <div class="kicker">os pilotos mais novos</div>
+    <div class="rows">
+      <div class="rrow" id="r1"><span class="pos">45º</span><span class="who"><div class="nm">KAL-EL</div><div class="mt">estreou em 07/10 · tier III</div></span><span class="val" id="v1">0</span></div>
+      <div class="rrow" id="r2"><span class="pos">46º</span><span class="who"><div class="nm">RASEC</div><div class="mt">estreou em 14/10 · tier II</div></span><span class="val" id="v2">0</span></div>
+      <div class="rrow you" id="r3"><span class="pos">47º</span><span class="who"><div class="nm">VOCÊ?</div><div class="mt">falta o seu nick</div></span><span class="val">?</span></div>
+    </div>
+    <div id="falt" style="margin-top: 54px; opacity: 0"><span class="marker">faltam <b>4</b> para 50 pilotos</span></div>
+  </div>
+
+  <div id="ask" class="layer" style="top: 520px">
+    <div class="h1" style="font-size: 168px">O <span class="accent" style="font-size: 236px">47º</span><br>PODE SER<br>VOCÊ</div>
+    <div class="sub" id="asub" style="margin-top: 50px">joga e põe o nick<br><b>no game over</b></div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">grátis, sem login</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 14.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+  const fmt = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  // ---------- PRNG determinístico ----------
+  let s = 1610;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- a partida no fundo: meteoros caindo, nave no Tier I (ciano) atirando ----------
+  const TC = '125,244,255', C1 = '180,255,255', C2 = '0,200,255';
+  const N = 24, CYC = 2100, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 150 + rnd() * 150, r: 20 + rnd() * 44, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * CYC, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  function mpos(m, t) {
+    const dist = t * 1.5 * m.v + m.phase;
+    const cycle = Math.floor(dist / CYC);
+    const y = (dist % CYC) - 120;
+    const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+    return { x, y };
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function drawMeteor(m, x, y, rot) {
+    fx.save(); fx.translate(x, y); fx.rotate(rot);
+    fx.beginPath();
+    const n = m.shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = m.r * m.shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+    fx.fillStyle = m.big ? 'rgba(20,26,46,0.92)' : 'rgba(14,19,36,0.9)';
+    fx.fill();
+    fx.lineWidth = m.big ? 3 : 2;
+    fx.strokeStyle = m.big ? 'rgba(190,208,240,0.75)' : 'rgba(150,170,205,0.6)';
+    fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y); fx.scale(1.25, 1.25);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, `rgba(${TC},0.95)`); g.addColorStop(1, `rgba(${TC},0)`);
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = `rgba(${TC},0.75)`; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = `rgb(${TC})`; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 170 * Math.sin(t * 0.8 + 0.6) + 50 * Math.sin(t * 2.1);
+  const shipY = 1400;
+  const RATE = 0.18, BV = 1040, BLIFE = 1.6, STEP = 1 / 60;
+  // o tiro some no 1º meteoro que tocar (conta feita só com t, para cada quadro sair igual)
+  function bulletState(tb, t) {
+    const x0 = shipX(tb), y0 = shipY - 60;
+    for (let tau = tb; tau <= t + 1e-9; tau += STEP) {
+      const y = y0 - (tau - tb) * BV;
+      for (const m of meteors) {
+        const p = mpos(m, tau);
+        const dx = p.x - x0, dy = p.y - y;
+        if (dx * dx + dy * dy < Math.pow(m.r * 0.72 + 8, 2)) return { hit: true, x: x0, y, at: tau };
+      }
+    }
+    return { hit: false, x: x0, y: y0 - (t - tb) * BV };
+  }
+  function drawBullet(x, y) {
+    const g = fx.createRadialGradient(x, y, 0, x, y, 28);
+    g.addColorStop(0, `rgba(${C1},1)`); g.addColorStop(.3, `rgba(${C2},.8)`); g.addColorStop(1, 'rgba(0,60,90,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.arc(x, y, 28, 0, Math.PI * 2); fx.fill();
+    fx.fillStyle = '#fff'; fx.beginPath(); fx.arc(x, y, 7, 0, Math.PI * 2); fx.fill();
+  }
+
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    for (const m of meteors) {
+      const p = mpos(m, t);
+      if (p.y < -120 || p.y > H + 120) continue;
+      drawMeteor(m, p.x, p.y, m.rot + t * m.w);
+    }
+    const k0 = Math.max(0, Math.floor((t - BLIFE) / RATE));
+    for (let k = k0; k * RATE <= t; k++) {
+      const tb = k * RATE, st = bulletState(tb, t);
+      if (!st.hit) { if (st.y > -40) drawBullet(st.x, st.y); continue; }
+      const age = t - st.at;                       // faísca ciano no ponto do impacto, 0,25 s
+      if (age < 0.25) {
+        const a = 1 - age / 0.25;
+        for (let j = 0; j < 6; j++) {
+          const ang = j * 1.047 + k;
+          fx.fillStyle = `rgba(${C1},${a})`;
+          fx.beginPath(); fx.arc(st.x + Math.cos(ang) * 120 * age, st.y + Math.sin(ang) * 120 * age, 4 * a + 1, 0, Math.PI * 2); fx.fill();
+        }
+      }
+    }
+    drawShip(shipX(t), shipY, t);
+    const vg = fx.createRadialGradient(540, 860, 200, 540, 860, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.74)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+  // estreias por mês (1ª partida com nick de cada piloto), pelo /ranking lido em 16/10 ~01:05 BRT
+  const MONTHS = [
+    { n: 9,  a: 3.00 },   // maio (o 1º em 02/05)
+    { n: 6,  a: 3.45 },   // junho
+    { n: 4,  a: 3.90 },   // julho
+    { n: 11, a: 4.35 },   // agosto (7 em 26/08)
+    { n: 14, a: 4.80 },   // setembro: o melhor mês
+    { n: 2,  a: 5.50 },   // outubro, até 15/10 (KAL-EL e RASEC)
+  ];
+  const GROW = 0.45, PXPER = 28;                     // 14 estreias = 392 px
+  const HIT = 5.50 + GROW;                           // 5,95 s: a barra de outubro assenta e o total trava em 46 (hit da trilha)
+  const ROWS = [
+    { row: 'r1', val: 'v1', score: 13154, a: 8.10 },  // KAL-EL, 07/10, Tier III — o 45º
+    { row: 'r2', val: 'v2', score: 3954, a: 8.50 },   // RASEC, 14/10, Tier II — o 46º
+  ];
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+
+    // 1) gancho: legível desde o quadro 0; "setembro teve 14 · até 15/10" entra em 0,5 s; sai em 2.4–2.7
+    const outH = 1 - seg(t, 2.4, 0.3);
+    layer($('hook'), outH, -30 * (1 - outH));
+    const ws = [['w1', 0.0, 0.35], ['w1b', 0.03, 0.35], ['w2', 0.1, 0.4], ['w3', 0.05, 0.35]];
+    for (const [id, a, d] of ws) {               // sempre opaco (gancho legível no quadro 0); só assenta 14 px
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = 1; $(id).style.display = 'inline-block';
+      $(id).style.transform = `translateY(${14 * (1 - v)}px)`;
+    }
+    const hs = ease.out3(seg(t, 0.5, 0.4));
+    $('hsub').style.opacity = hs; $('hsub').style.transform = `translateY(${20 * (1 - hs)}px)`;
+
+    // 2) estreias por mês: as barras sobem uma a uma, o total soma até 46 (trava no hit); "outubro: só 2"; 2.6–7.9
+    const inB = ease.out3(seg(t, 2.6, 0.35)), outB = 1 - seg(t, 7.6, 0.3);
+    layer($('br'), inB * outB, 30 * (1 - inB));
+    let tot = 0;
+    MONTHS.forEach((mo, i) => {
+      const g = ease.out3(seg(t, mo.a, GROW));
+      const shown = t >= mo.a + GROW ? mo.n : Math.floor(mo.n * g);
+      tot += shown;
+      $('kb' + i).style.height = (mo.n * PXPER * g) + 'px';
+      $('kv' + i).textContent = shown;
+      const lab = ease.out3(seg(t, mo.a - 0.05, 0.3));
+      $('kv' + i).style.opacity = lab; $('km' + i).style.opacity = lab;
+    });
+    $('tot').textContent = tot;
+    const lockT = t >= HIT;
+    $('tot').className = 'counter' + (lockT ? ' lock' : '');
+    $('tot').style.transform = `scale(${lockT ? 1 + 0.1 * Math.exp(-(t - HIT) * 4) : 1})`;
+    const sj = ease.out3(seg(t, HIT + 0.4, 0.35));
+    $('sohj').style.opacity = sj; $('sohj').style.transform = `translateY(${20 * (1 - sj)}px)`;
+
+    // 3) os pilotos mais novos: 45º KAL-EL, 46º RASEC, 47º "você?" (pulsa); "faltam 4 para 50"; 7.9–10.6
+    const inR = ease.out3(seg(t, 7.9, 0.35)), outR = 1 - seg(t, 10.3, 0.3);
+    layer($('rk'), inR * outR, 30 * (1 - inR));
+    for (const r of ROWS) {
+      const ri = ease.out3(seg(t, r.a, 0.35));
+      $(r.row).style.opacity = ri; $(r.row).style.transform = `translateX(${-36 * (1 - ri)}px)`;
+      const cp = 1 - Math.pow(1 - seg(t, r.a + 0.1, 0.7), 2.2);
+      $(r.val).textContent = fmt(r.score * cp);
+    }
+    const r3 = ease.out3(seg(t, 9.0, 0.35));
+    const pulse = t >= 9.35 ? 1 + 0.025 * Math.sin((t - 9.35) * 7.5) : 1;
+    $('r3').style.opacity = r3; $('r3').style.transform = `translateX(${-36 * (1 - r3)}px) scale(${pulse})`;
+    const fa = ease.out3(seg(t, 9.5, 0.35));
+    $('falt').style.opacity = fa; $('falt').style.transform = `translateY(${20 * (1 - fa)}px)`;
+
+    // 4) o pedido 10.55–12.35
+    const inA = ease.out3(seg(t, 10.55, 0.35)), outA = 1 - seg(t, 12.1, 0.3);
+    layer($('ask'), inA * outA, 0, 0.92 + 0.08 * inA);
+
+    // 5) CTA 12.4–14.0
+    const inC = ease.out3(seg(t, 12.4, 0.5));
+    layer($('cta'), inC, 30 * (1 - inC));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
