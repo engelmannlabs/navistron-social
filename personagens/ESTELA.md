@@ -87,6 +87,8 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   | o bolo das seiscentas | `af6a54e47c10f52189e4bbf870df2a0d` | no espaço estrelado, bolo de aniversário cósmico (cobertura de galáxia) com velas acesas no quarto de cima do quadro, longe do cabelo (pedidas 6 velas, saíram 8) | cenário do story de 14/10 (a partida 600 saiu sem nick) |
   | a chuva de estrelas cadentes | `df8174ea396a4e8ac2b0ba7354e61794` | no espaço estrelado, rajada de estrelas cadentes laranja e douradas cruzando o céu no quarto de cima do quadro, longe do cabelo | cenário do reel de 14/10 (o jogo voltou: 24 partidas numa terça) |
   | boas-vindas pelo portal | `0a74fcfc75e016a43c628070103a7709` | no espaço estrelado, anel de luz ciano de frente para a câmera, como um portal, com uma navinha azul-clara saindo dele num rastro dourado, no quarto de cima do quadro, longe do cabelo | cenário do story de 15/10 (RASEC estreou com duas partidas com nick e virou o 46º piloto) |
+  | o rastro mais longo | `10757a91e2b1a94b722d1a0000d39000` | no espaço estrelado, navinha branca e ciano deixando um rastro dourado muito longo, em laço, no quarto de cima do quadro, bem acima da cabeça (no vídeo, o motor anima o rastro, que passa de dourado a ciano em alguns quadros) | cenário do story de 16/10 (a partida mais longa da história durou 5min14) |
+  | a lupa na partida esquisita | `2d9fd31b3d630bb0573416b2ecefb940` | no espaço estrelado, lupa de luz no quarto de cima do quadro, com uma navinha ciano e quatro orbes dourados intocados dentro da lente | cenário do reel de 16/10 (15.232 pontos sem sair do Tier I, só 4 boosts) |
 
   Looks novos (um ou dois por post, regra 6): `create_prompt_avatar` com `avatarGroupId` e `avatarId` = setup
   (`c328911551104420832ec0a8a325ffb3`) como referência de rosto, `aspectRatio: "9:16"`, prompt começando por "The same
@@ -141,7 +143,7 @@ Personagem criada em 28/09/2026 como apresentadora dos vídeos com avatar do @na
   62 palavras deram 23,6 s na Friendly (reel) e 56 palavras com três números por extenso deram 24,1 s na Excited (story),
   no limite dos 25 s. Em 08/10, a Friendly a **1,1x** (`voiceSettings: {speed: 1.1}`) leu 51 palavras em 15,3 s (a 1,0x
   seriam ~19 s): o jeito de encurtar um story sem cortar o roteiro, com ~2 créditos a menos. Em 09/10, a mesma Friendly a
-  1,1x leu 59 palavras em 21,6 s (~0,37 s por palavra): para ficar perto de 15 s a 1,1x, o story precisa de ~40–45 palavras. Em 11/10, 40 palavras deram 13,7 s (~0,34 s por palavra). Em 12/10, a **Excited a 1,1x** (a 1ª vez acelerada) leu 34 palavras em 15,2 s (~0,45 s por palavra), e a Friendly a 1,1x, 56 palavras em 17,1 s (~0,31 s por palavra): a Excited é mais lenta, e um story de ~13 s nela pede ~29 palavras. Em 13/10, a Friendly a 1,1x leu 37 palavras em 13,6 s (~0,37 s por palavra), num roteiro de frases curtas com pergunta e dois-pontos: as pausas da pontuação também contam. Em 14/10, a Friendly a 1,1x leu 35 palavras em 12,7 s (~0,36 s por palavra), e a **Excited a 1,1x num reel** (a 1ª vez acelerada num reel; no de 02/10, a 1,0x, foram 62 palavras em 26,1 s), 52 palavras em 18,2 s (~0,35 s por palavra) — bem mais rápida que no story de 12/10 (~0,45): a diferença de 12/10 não se repetiu. Em 15/10, a Friendly a 1,1x leu 43 palavras em 14,9 s (~0,35 s por palavra).
+  1,1x leu 59 palavras em 21,6 s (~0,37 s por palavra): para ficar perto de 15 s a 1,1x, o story precisa de ~40–45 palavras. Em 11/10, 40 palavras deram 13,7 s (~0,34 s por palavra). Em 12/10, a **Excited a 1,1x** (a 1ª vez acelerada) leu 34 palavras em 15,2 s (~0,45 s por palavra), e a Friendly a 1,1x, 56 palavras em 17,1 s (~0,31 s por palavra): a Excited é mais lenta, e um story de ~13 s nela pede ~29 palavras. Em 13/10, a Friendly a 1,1x leu 37 palavras em 13,6 s (~0,37 s por palavra), num roteiro de frases curtas com pergunta e dois-pontos: as pausas da pontuação também contam. Em 14/10, a Friendly a 1,1x leu 35 palavras em 12,7 s (~0,36 s por palavra), e a **Excited a 1,1x num reel** (a 1ª vez acelerada num reel; no de 02/10, a 1,0x, foram 62 palavras em 26,1 s), 52 palavras em 18,2 s (~0,35 s por palavra) — bem mais rápida que no story de 12/10 (~0,45): a diferença de 12/10 não se repetiu. Em 15/10, a Friendly a 1,1x leu 43 palavras em 14,9 s (~0,35 s por palavra). Em 16/10, a mesma Friendly a 1,1x leu 48 palavras em 17,1 s (story) e 66 em 23,5 s (reel): ~0,36 s por palavra nos dois.
 - Glossário de pronúncia **"Navistron"** — `b3629854ac234ec6b69f92b79dfa76f5`: `navistron.io` é falado "navistron ponto io"
   (a legenda continua mostrando `navistron.io`) e, desde 03/10, `arco-íris` é falado "arcoíris" — sem o glossário, a voz
   fazia ~200 ms de pausa entre "arco" e "íris" (o Guilherme notou no story de 03/10).
@@ -217,7 +219,7 @@ dois formatos:
    para confirmar. Em 15/10, a repetição (story, low, Friendly) **não segurou**: uma mão subiu até o fone na abertura
    (0–0,5 s, com borrão, sem dedo estranho — aceita) e as duas mãos voltaram em cinco gestos curtos à altura da barriga
    entre ~9,0 e ~13,1 s, naturais, longe do portal do cenário. Um vídeo sem mão em dois: o pedido ajuda, mas não garante —
-   fica como opção, não como padrão. O motor
+   fica como opção, não como padrão. Em 16/10, a 3ª tentativa (story, low, Friendly) **segurou de novo**: só a borda de uma mão na beira de baixo do quadro em ~14,8 e ~15,5–15,6 s, com borrão — dois vídeos quase sem mão em três. No reel do mesmo dia, com o pedido antigo (mãos paradas só nos 2 primeiros segundos), as mãos subiram à altura do peito já em 0,1–0,4 s e voltaram em uns 15 gestos curtos, naturais. Para os stories, o pedido dos braços parados o vídeo todo passa a ser o padrão; nos reels, os gestos seguem livres (as mãos aparecem abaixo da legenda e saíram naturais). O motor
    **Avatar III** (`engine: {type: "avatar_iii"}`, sem expressiveness nem motionPrompt) custou 3 créditos por 22,9 s, mas,
    no mesmo look e com o mesmo áudio, devolveu o mesmo movimento do corpo do Avatar IV (as mesmas mãos nos mesmos
    instantes; só a boca mudou): não serve para fugir dos gestos.
@@ -252,7 +254,7 @@ dois formatos:
 - Custo medido em 29/09: **1 crédito por look** e **~1 crédito a cada 3 s de vídeo** em 1080p (vídeo de 28,4 s = 9;
   de 23,9 s = 8; em 30/09, 27,6 s + 19,1 s = 16; em 01/10, 17,5 s = 6; em 02/10, 26,0 s + 26,1 s no Avatar IV e 20,1 s no
   Avatar V = 33; em 03/10, 21,8 s no Avatar V = 18). Saldo: 600 → 587 → 575 → 574 → 558 → 552 → 519 → 501 → 480 →
-  415 → 411 → 408 → 401 → 286 → 266 → 251 → 232 → 226 → 211 → 184 → 178 → 165 → 158 → 145 → 139 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma
+  415 → 411 → 408 → 401 → 286 → 266 → 251 → 232 → 226 → 211 → 184 → 178 → 165 → 158 → 145 → 139 → 123 (estreia + 4 looks; 4 looks em casa + 1º story; 1 look; story de 30/09 + uma
   versão descartada; story de 01/10; reel de 02/10 + uma versão descartada + story no Avatar V; story de 03/10 no Avatar V;
   1ª versão lúdica de 03/10; versão no espaço; 4 looks de um catálogo por tema, descartado no mesmo dia; teste da legenda
   do Video Agent; story de 04/10; **115 gastos fora da rotina em 04/10** — coincide com uma sessão do Video Agent aberta
@@ -262,7 +264,7 @@ dois formatos:
   dia foi um carrossel; 4 looks, três versões do reel de 22,9 s — 7, 3 no Avatar III e 7 — e o story de 16,8 s, 6, de
   10/10; o look e o story de 13,7 s, 5, de 11/10 — o reel do dia foi de dados; 2 looks, o story de 15,2 s e o reel de 17,1 s
   de 12/10, 11 juntos; 2 looks, um refeito, e o story de 13,6 s, 5, de 13/10 — o reel do dia foi de dados; 2 looks, o story
-  de 12,7 s e o reel de 18,2 s de 14/10, 11 juntos; o look e o story de 14,9 s, 5, de 15/10 — o reel do dia foi de dados).
+  de 12,7 s e o reel de 18,2 s de 14/10, 11 juntos; o look e o story de 14,9 s, 5, de 15/10 — o reel do dia foi de dados; 2 looks, o story de 17,1 s e o reel de 23,5 s de 16/10, 16 juntos).
 - **O Avatar V custa ~2,5× o Avatar IV** — medido em 03/10 com um vídeo só no dia: 21,8 s = **18 créditos** (~1 a cada
   1,2 s), contra ~1 a cada 3 s no Avatar IV; confirma a estimativa de 02/10 (~15 pelo story de 20 s). Nos dois stories
   (02 e 03/10) ele passou no QA, sem artefato e com movimento natural, mas **não cabe como padrão diário**: um story de
@@ -317,7 +319,11 @@ dois formatos:
   pedem ~98–112 com stories de 5–6 e reels de ~7, contra 115 acima da guarda: cabe sem refazer vídeo, com folga de poucos looks.
   Em 15/10 (reel de dados), o look e o story de 14,9 s (5) fecharam o dia em **139**. Os 13 stories (16 a 28/10) e os 4 reels
   (sex 16 na S42, 3 na S43) pedem ~93–106 com stories de 5–6 e reels de ~7, contra 109 acima da guarda: cabe sem refazer
-  vídeo, com folga de poucos looks.
+  vídeo, com folga de poucos looks. Em 16/10: 139 contra uma reserva de 167 (13 stories, de 16 a 28/10, e 3 reels da Estela
+  depois deste) — modo econômico; os 2 looks e os vídeos do story (17,1 s) e do reel (23,5 s), 16 juntos, fecharam o dia em
+  **123**. Os 12 stories (17 a 28/10) e os 3 reels da S43 pedem ~84–99 (stories de 5–6, reels de 8–9), contra 93 acima da
+  guarda: só cabe com stories de até ~13 s (~37 palavras a 1,1x: vídeo de 4, story de 5), reels de até ~23 s (vídeo de 7) e
+  sem refazer — o story de 16/10, com 48 palavras (17,1 s), custou 6, e o reel de 23,5 s, 8.
 - Por mês (30 stories e ~13 reels da Estela), com os stories no econômico (~240): no Creator (600), a regra deixa o
   formato completo em ~7 dos 13 reels; no Pro (1.000), em todos, com sobra. Antes da decisão, tudo no formato completo
   pediria ~1.500 créditos por mês.
@@ -365,3 +371,5 @@ define o cenário: cada post ganha o seu, tirado do que ela fala (regra 6).
 | 14/10 | `2026-10-14-story-festa-das-seiscentas` | o bolo das seiscentas | story em take único, **gestos: braços parados ao lado do corpo o vídeo todo** (12,7 s, 35 palavras: a partida 600 saiu às 11:05 de 13/10, sem nick), voz Friendly a 1,1x, expressiveness low (7ª vez) — nenhuma mão no quadro — Buffer `6acf07f80d20fd15277d5339` | `38c65620fc57b0ed2febf6766783bbd4` |
 | 14/10 | `2026-10-14-o-jogo-voltou` | a chuva de estrelas cadentes | reel no modo econômico pela regra de orçamento (158 contra reserva de 194), o 2º às 19:00 (S42); variável **voz Excited a 1,1x num reel** (a 1ª vez acelerada num reel — a Excited fez o reel de 02/10 a 1,0x; 18,2 s, 52 palavras: o jogo voltou com 24 partidas numa terça), expressiveness low; mãos à altura do peito de ~13,4 a ~17,9 s, naturais; legenda em algarismos na 2ª renderização — Buffer `6acf0898b610c3011f9f2063` | `492c66d09a8e46b8560a329fe9fb3b93` |
 | 15/10 | `2026-10-15-story-boas-vindas-rasec` | boas-vindas pelo portal | story em take único, **gestos: braços parados o vídeo todo, 2ª vez** (14,9 s, 43 palavras: RASEC estreou em 14/10 e virou o 46º piloto), voz Friendly a 1,1x, expressiveness low (8ª vez) — não se repetiu: mão na abertura e cinco gestos curtos, naturais — Buffer `6ad057a9e09e6bdb27e2c61e` | `5c6de03c9496d39addbd4aff4de7839c` |
+| 16/10 | `2026-10-16-story-a-partida-mais-longa` | o rastro mais longo | story em take único, **gestos: braços parados o vídeo todo, 3ª vez** (17,1 s, 48 palavras: a partida mais longa da história durou 5min14, a do recorde), voz Friendly a 1,1x, expressiveness low (9ª vez) — quase sem mão: só a borda de uma mão na beira de baixo em ~14,8 e ~15,6 s — Buffer `6ad1ac8ce991a49db3ca7901` | `428f42b04b023da1106c5ef8a7691e76` |
+| 16/10 | `2026-10-16-a-partida-esquisita` | a lupa na partida esquisita | reel no modo econômico pela regra de orçamento (139 contra reserva de 167), o 3º às 19:00 (S42); variável **duração ~24 s** (23,5 s, 66 palavras: 15.232 pontos sem sair do Tier I, em 10/09), voz Friendly a 1,1x, expressiveness low, mãos paradas pedidas só nos 2 primeiros segundos — uns 15 gestos naturais; legenda em algarismos na 2ª renderização — Buffer `6ad1ad3d4ed7d375a446423b` | `405130a409ac7576c4c45df2ebc326ad` |
