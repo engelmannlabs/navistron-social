@@ -1,79 +1,31 @@
 1
-00:00:00,270 --> 00:00:01,160
-Achei uma partida
+00:00:00,270 --> 00:00:03,080
+Achei uma partida esquisita na telemetria do Navistron.
 
 2
-00:00:01,200 --> 00:00:02,250
-esquisita na telemetria
+00:00:03,300 --> 00:00:06,900
+10/09, sem nick: 15.232
 
 3
-00:00:02,330 --> 00:00:03,080
-do Navistron.
+00:00:06,980 --> 00:00:09,060
+pontos, sem sair do Tier I.
 
 4
-00:00:03,300 --> 00:00:04,690
-Dez de setembro, sem
+00:00:09,270 --> 00:00:12,290
+Só 4 boosts em 4min24.
 
 5
-00:00:04,730 --> 00:00:05,900
-nick: quinze mil
+00:00:12,560 --> 00:00:15,930
+Com esses pontos, a maioria acaba antes dos 3 minutos.
 
 6
-00:00:05,970 --> 00:00:06,900
-duzentos e trinta e dois
+00:00:16,160 --> 00:00:19,020
+No Tier I, a dificuldade sobe mais devagar.
 
 7
-00:00:06,980 --> 00:00:08,610
-pontos, sem sair do Tier
-
-8
-00:00:08,730 --> 00:00:09,060
-um.
-
-9
-00:00:09,270 --> 00:00:10,590
-Só quatro boosts em
-
-10
-00:00:10,630 --> 00:00:11,710
-quatro minutos e vinte e
-
-11
-00:00:11,750 --> 00:00:12,290
-quatro.
-
-12
-00:00:12,560 --> 00:00:13,920
-Com esses pontos, a
-
-13
-00:00:13,950 --> 00:00:15,040
-maioria acaba antes dos
-
-14
-00:00:15,080 --> 00:00:15,930
-três minutos.
-
-15
-00:00:16,160 --> 00:00:17,170
-No Tier um, a
-
-16
-00:00:17,210 --> 00:00:18,220
-dificuldade sobe mais
-
-17
-00:00:18,300 --> 00:00:19,020
-devagar.
-
-18
 00:00:19,380 --> 00:00:20,640
 Coincidência ou tática?
 
-19
-00:00:20,820 --> 00:00:22,370
-Testa hoje e põe o nick
-
-20
-00:00:22,490 --> 00:00:23,380
-no game over!
+8
+00:00:20,820 --> 00:00:23,380
+Testa hoje e põe o nick no game over!
