@@ -41,8 +41,9 @@
      em 16/10/2026 ~01:05 BRT com ?v=. Totais: 619 partidas (96 com nick, 523 anônimas), 46 pilotos únicos; a última partida é
      de 14/10 às 12:21 (nenhuma em 15/10). Estreia = a data da 1ª partida com nick de cada piloto (a menor data do nick no
      /ranking; conta em python, 46 nicks = os 46 pilotos únicos do /stats): maio 9 (o 1º em 02/05), junho 6, julho 4, agosto 11
-     (7 só em 26/08), setembro 14 (5 em 02/09) e outubro 2 até 15/10 — KAL-EL (07/10, melhor partida 13.154, Tier III), o 45º, e
-     RASEC (14/10, 3.954, Tier II), o 46º. Faltam 4 para 50.
+     (7 só em 26/08), setembro 14 (5 em 02/09) e outubro 2 até 15/10 — KAL-EL (06/10 às 21:13, melhor partida 13.154, Tier III), o
+     45º, e RASEC (14/10, 3.954, Tier II), o 46º. Faltam 4 para 50. As datas do /ranking estão em UTC (a do KAL-EL aparece como 07/10);
+     as datas daqui são as de Brasília, conferidas na lista de partidas (?visao=partidas&ordem=data, páginas 2 a 13).
      Fundo: a nave no Tier I (ciano #7df4ff, tiros c1 180,255,255 / c2 0,200,255, um a cada 0,18 s), o tier em que todo piloto
      começa. -->
 </head>
@@ -75,7 +76,7 @@
   <div id="rk" class="layer" style="top: 500px">
     <div class="kicker">os pilotos mais novos</div>
     <div class="rows">
-      <div class="rrow" id="r1"><span class="pos">45º</span><span class="who"><div class="nm">KAL-EL</div><div class="mt">estreou em 07/10 · tier III</div></span><span class="val" id="v1">0</span></div>
+      <div class="rrow" id="r1"><span class="pos">45º</span><span class="who"><div class="nm">KAL-EL</div><div class="mt">estreou em 06/10 · tier III</div></span><span class="val" id="v1">0</span></div>
       <div class="rrow" id="r2"><span class="pos">46º</span><span class="who"><div class="nm">RASEC</div><div class="mt">estreou em 14/10 · tier II</div></span><span class="val" id="v2">0</span></div>
       <div class="rrow you" id="r3"><span class="pos">47º</span><span class="who"><div class="nm">VOCÊ?</div><div class="mt">falta o seu nick</div></span><span class="val">?</span></div>
     </div>
@@ -231,7 +232,7 @@
   const GROW = 0.45, PXPER = 28;                     // 14 estreias = 392 px
   const HIT = 5.50 + GROW;                           // 5,95 s: a barra de outubro assenta e o total trava em 46 (hit da trilha)
   const ROWS = [
-    { row: 'r1', val: 'v1', score: 13154, a: 8.10 },  // KAL-EL, 07/10, Tier III — o 45º
+    { row: 'r1', val: 'v1', score: 13154, a: 8.10 },  // KAL-EL, 06/10 às 21:13, Tier III — o 45º
     { row: 'r2', val: 'v2', score: 3954, a: 8.50 },   // RASEC, 14/10, Tier II — o 46º
   ];
 
