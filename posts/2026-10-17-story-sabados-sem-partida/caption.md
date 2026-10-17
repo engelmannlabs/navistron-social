@@ -9,8 +9,8 @@ variavel_testada: voz — Sofia Brazil - Excited a 1,1x num desafio (a 2ª vez d
 heygen_video_id: 6fb13020dfd56078bff694f155da6d69
 creditos_heygen: 123 → 122 (o look) → 117 (o vídeo de 15,9 s, 5). O story custou 6
 horario_publicacao: 2026-10-17 16:00 BRT (sábado)
-buffer_post_id: pendente
-qa: pendente
+buffer_post_id: 6ad2f98a1c7e49ea4c3880ac (agendado à 01:28 de 17/10 para as 16:00; scheduled, 15,9 s, isAiGenerated true)
+qa: reel.mp4 baixado pelo SHA do commit do render (91b356c8) e conferido; a main serve o mesmo arquivo (8.074.676 bytes). Vídeo puro (render.json: captions 0), sem texto nem nada por cima, os cinco planetas no alto o vídeo todo, transcrição (legenda.srt) igual ao roteiro palavra por palavra (35 palavras), 15,93 s, H.264 1080×1920 a 30 fps, AAC, áudio presente (média −22,7 dB, pico −3,6 dB); braços parados: nenhuma mão no quadro (zero pixel de pele na faixa de baixo, a 10 fps, em 159 quadros); capa (1,0 s) e último segundo limpos
 instagram: metadata.instagram = { type: "story", shouldShareToFeed: false, isAiGenerated: true }
 fonte_dados: navistron.io/stats?visao=partidas&ordem=data, páginas 1 a 3 (de 16/10 até 11/09), lidas em 17/10/2026 ~01:10–01:20 BRT (com ?v=; horários de Brasília). A última partida num sábado foi em 12/09, às 14:27 (anônima, 6.459 pontos, Tier II); nos sábados 19/09, 26/09, 03/10 e 10/10, nenhuma partida (a lista pula de 18/09 para 22/09, de 25/09 para 29/09, de 02/10 para 04/10 e de 09/10 para 13/10). Fato fechado, contado até 16/10: segue verdadeiro mesmo que alguém jogue neste sábado antes das 16:00 (regra de 07/10 para story)
 ---
