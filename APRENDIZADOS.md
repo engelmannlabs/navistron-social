@@ -4,6 +4,20 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-17 · **O desafio de quinta foi cumprido na sexta — e quem voltou melhorou de novo: 7 em 7.** O reel das 13:00
+  de 15/10 ("O 1º lugar da semana tem 7.590") fechou em **12 de alcance / 18 views** (~27 h), abaixo da mediana do slot (14,
+  com 27 posts): os reels das 13:00 da S42 fizeram 105, 47, 9 e 12 de segunda a quinta, e a leitura da semana sai em 18/10.
+  Mas o pedido da legenda, passar dos 7.590 com nick, aconteceu no dia seguinte: em 16/10, às 10:54, o RASEC, estreante de
+  14/10, fez **8.061** e passou o ROBER na semana 42 (sem como saber se pelo post). Com ele, são **7 os pilotos que salvaram
+  partidas em mais de um dia, e nos 7 a melhor partida veio na volta** — o padrão do artigo de 16/10 se repetiu no primeiro
+  caso novo e virou o carrossel do sábado. Na mesma sexta, 8 das 9 partidas ficaram sem nick, três delas acima do RASEC; no
+  total, 531 das 628 partidas do jogo (84,6%) terminaram sem nick, o número do artigo do dia no blog (o game over). Nos
+  stories, o de 15/10 fechou em **31 de alcance / 36 views**, o 2º maior desde 05/10 (32 em 14/10), e o de 16/10 tinha 17
+  com ~8 h, com 1 reação. **Os sábados estão zerados desde 12/09** (19/09, 26/09, 03/10 e 10/10 sem nenhuma partida): o
+  story de hoje desafia a quebrar a escrita, e a rodada de 18/10 confere. Produção: a Excited a 1,1x leu de novo mais devagar
+  (35 palavras em 15,9 s, ~0,46 s por palavra, contra ~0,36 da Friendly), 1 crédito a mais por story, e os braços parados
+  deram **zero mão** (três vídeos sem mão, ou quase, em quatro). HeyGen: 123 → 117; os 11 stories e 3 reels até 28/10 cabem
+  acima da guarda com stories de 5 (Friendly, até ~13 s) e sem refazer.
 - 2026-10-16 · **A quarta de dois posts fez 21; a segunda, 137 — a diferença está no reel das 13:00, não no 2º post. E o
   /ranking mostra as datas em UTC.** Na quarta 14/10, o reel de mecânica das 13:00 ("Subir de tier enfraquece") fechou em **9
   de alcance / 16 views** (~28 h, a métrica parada desde a leitura de ~5 h), o menor dos cinco reels de mecânica do slot (111,
@@ -46,21 +60,6 @@ apenas este arquivo, e não o playbook inteiro.
   14/10, o motionPrompt sem gesto nenhum deu zero mão no quadro, onde o pedido só para os 2 primeiros segundos não segurava
   nem a abertura (11, 12 e 13/10); no reel do mesmo dia, a Excited a 1,1x (a 1ª vez acelerada num reel) abriu limpa e gesticulou
   com as duas mãos de ~13,4 a ~17,9 s.
-- 2026-10-13 · **Leitura final da S41: os três vídeos da Estela não somaram — e o 2º post do dia estreou com o maior
-  parcial em semanas.** O reel de dados de 11/10 (as provocações do jogo) fechou em **65 de alcance / 98 views** (~31 h), o
-  maior da S41 e o 5º maior da série do slot das 13:00 (23 posts, mediana 14); os três vídeos dela fecharam em 14, 4 e 14, e
-  os reels de dados, em 13, 28 e 65. Como na S40 (04/10: 122), o maior alcance da semana foi de um reel de dados com uma
-  mecânica tirada do código. Na S42, o ranking de segunda (12/10, 13:00) tinha **88 de alcance com ~7 h** — os três rankings
-  de segunda anteriores fecharam em 2, 3 e 14 — e a Estela das 19:00, 2 com ~1 h: a pergunta da semana (o 2º post soma ou
-  divide?) depende dos números de 14/10, e a terça, com um post só, é a comparação. Nos stories, o de 11/10 fechou em 10
-  views / 8 de alcance (~24 h). No jogo, nenhuma partida desde 09/10 às 16:50 (sábado a segunda zerados): 593 no total, **a
-  7 da 600ª** — e as seis partidas redondas, da 1ª à 500ª, foram todas anônimas, o gancho do reel do dia. Produção: o 1º
-  look do story saiu com anéis de luz deitados como uma auréola encostada no cabelo e o contorno brilhante em volta do corpo
-  (o defeito de 05/10); pedir o objeto no quarto de cima do quadro, sem tocar o cabelo, e luz natural sem contorno resolveu na
-  2ª tentativa, por 1 crédito. O story — a 1ª dica de controle no celular: no toque, a nave voa 140 pixels acima do dedo, num
-  campo de 720 — saiu com 13,6 s, e o saldo fechou em **158**: os 15 stories e 5 reels até 28/10 cabem sem refazer vídeo. No
-  blog, o guia dos 30 mil pontos achou um padrão nas 25 maiores partidas: 17 pararam no Tier II com 9 boosts (nenhuma no
-  Tier II passou de 19.785) e 20 acabaram com o leque cheio, a um boost da virada de tier.
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
