@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .rank { top: 600px; gap: 14px; }
+  .row { padding: 18px 30px; }
+  .row .pos { font-size: 56px; }
+  .row.anon { background: repeating-linear-gradient(-45deg, rgba(251,146,60,0.07) 0 8px, transparent 8px 18px);
+              border: 2px dashed rgba(251,146,60,0.6); }
+  .row.anon .pos, .row.anon .name { color: var(--t4); }
+  .row.anon .score { color: var(--t4); text-shadow: 0 0 24px rgba(251,146,60,0.4); }
+  .row.win { background: rgba(74,222,128,0.08); border-color: rgba(74,222,128,0.5); box-shadow: 0 0 34px rgba(74,222,128,0.14); }
+  .row.win .pos, .row.win .score { color: var(--t2); }
+  .note { position: absolute; left: 100px; right: 100px; top: 1190px; text-align: center; font-family: var(--font-ui);
+          font-size: 28px; line-height: 1.45; color: var(--muted); }
+  .note b { color: var(--ink); font-weight: 600; }
+</style>
+<!-- Slide 3 de 5. As 9 partidas de 16/10 em navistron.io/stats?visao=partidas&ordem=data (lido em 17/10/2026 ~01:10 BRT),
+     só uma com nick (RASEC 8.061 às 10:54). Acima dela, três anônimas: 11.166 às 21:38 (Tier II, 9 boosts), 8.189 às 11:36
+     (Tier II, 9 boosts) e 8.175 às 21:35 (Tier III, 10 boosts). Partida sem nick não entra no /ranking nem na lista de
+     pilotos (src/lib/stats.js agrupa só partidas registradas). Com nick, a de 11.166 passaria os 8.061 do RASEC e
+     lideraria a semana 42 (só partidas com nick). -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261019"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Telemetria · 16.10.2026</div>
+    <div>3 / 5</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">as 4 maiores de sexta <span>/</span> 1 com nick</div>
+    <div class="title" style="font-size: 170px; line-height: 0.92">3 PASSARAM.<br><span class="accent c4">SEM NICK.</span></div>
+  </div>
+
+  <div class="rank">
+    <div class="row anon">
+      <div class="pos">1</div>
+      <div><div class="name">SEM NICK</div><div class="meta">21:38 · tier II · 9 boosts</div></div>
+      <div class="score">11.166</div>
+    </div>
+    <div class="row anon">
+      <div class="pos">2</div>
+      <div><div class="name">SEM NICK</div><div class="meta">11:36 · tier II · 9 boosts</div></div>
+      <div class="score">8.189</div>
+    </div>
+    <div class="row anon">
+      <div class="pos">3</div>
+      <div><div class="name">SEM NICK</div><div class="meta">21:35 · tier III · 10 boosts</div></div>
+      <div class="score">8.175</div>
+    </div>
+    <div class="row win">
+      <div class="pos">4</div>
+      <div><div class="name">RASEC</div><div class="meta">10:54 · tier II · 9 boosts</div></div>
+      <div class="score">8.061</div>
+    </div>
+  </div>
+
+  <div class="note">Sem nick, a partida não entra no ranking. <b>Com nick, a de 11.166 lideraria a semana.</b></div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

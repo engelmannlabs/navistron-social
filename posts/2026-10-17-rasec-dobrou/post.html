@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .title .accent.c2 { color: var(--t2); text-shadow: 0 0 34px rgba(74,222,128,0.45); }
+  .lead { position: absolute; left: 100px; right: 100px; top: 668px; text-align: center; font-family: var(--font-ui);
+          font-size: 32px; line-height: 1.45; color: var(--muted); }
+  .lead b { color: var(--ink); font-weight: 600; }
+  .rank { top: 846px; }
+  .row .pos { font-size: 40px; letter-spacing: 0.02em; }
+  .row.old .score { color: var(--muted); }
+  .row.win { background: rgba(74,222,128,0.08); border-color: rgba(74,222,128,0.5); box-shadow: 0 0 34px rgba(74,222,128,0.14); }
+  .row.win .pos, .row.win .score { color: var(--t2); }
+  .row.win .score { text-shadow: 0 0 24px rgba(74,222,128,0.35); }
+  .gap { text-align: center; font-size: 17px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; margin: -4px 0; }
+  .gap b { color: var(--t2); font-size: 22px; }
+  .swipe { font-family: var(--font-ui); font-weight: 500; font-size: 23px; letter-spacing: 0.2em; text-transform: uppercase;
+           color: var(--ink); border: 2px solid rgba(143,163,199,0.4); padding: 18px 38px; border-radius: 8px; }
+</style>
+<!-- Carrossel de 17/10/2026 (slide 1 de 5) — hall da fama: RASEC, o 46º piloto, voltou dois dias depois da estreia e
+     mais que dobrou a própria melhor partida.
+     Fonte: navistron.io/stats?visao=partidas&ordem=data lido em 17/10/2026 ~01:10 BRT (com ?v=; horários de Brasília):
+     RASEC em 14/10 às 12:17 (2.228) e 12:21 (3.954), Tier II; em 16/10 às 10:54, 8.061 (Tier II, 9 boosts, spread 5, 2:22).
+     8.061 − 3.954 = 4.107; 8.061 / 3.954 = 2,04. -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261017"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Telemetria · 16.10.2026</div>
+    <div>@navistron</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">sexta, 10:54 <span>/</span> 8.061 pontos</div>
+    <div class="title" style="font-size: 230px">RASEC<br><span class="accent c2">DOBROU.</span></div>
+  </div>
+
+  <div class="lead">Na estreia, em 14/10, a melhor partida dele fez 3.954. Na volta, dois dias depois, <b>8.061: mais que o dobro</b>.</div>
+
+  <div class="rank">
+    <div class="row old">
+      <div class="pos">14.10</div>
+      <div><div class="name">A ESTREIA</div><div class="meta">2 partidas · tier II · 12:21</div></div>
+      <div class="score">3.954</div>
+    </div>
+    <div class="gap">↓ <b>+4.107</b> pontos</div>
+    <div class="row win">
+      <div class="pos">16.10</div>
+      <div><div class="name">A VOLTA</div><div class="meta">tier II · 9 boosts · 10:54</div></div>
+      <div class="score">8.061</div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="stats"><div>navistron.io/stats · 17.10 · 01:10</div></div>
+    <div class="swipe">arrasta →</div>
+  </div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

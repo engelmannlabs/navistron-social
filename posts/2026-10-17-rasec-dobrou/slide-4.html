@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .title .accent.c2 { color: var(--t2); text-shadow: 0 0 34px rgba(74,222,128,0.45); }
+  .tbl { position: absolute; left: 72px; right: 72px; top: 562px; border-radius: 16px; padding: 14px 34px;
+         background: rgba(143,163,199,0.06); border: 1px solid rgba(143,163,199,0.16); }
+  .tr { display: grid; grid-template-columns: 1fr 150px 40px 170px; align-items: baseline; padding: 13px 0;
+        border-bottom: 1px solid rgba(143,163,199,0.14); }
+  .tr:last-child { border-bottom: 0; }
+  .tr.h { padding: 8px 0 12px; font-size: 15px; letter-spacing: 0.2em; color: var(--muted); text-transform: uppercase; }
+  .tr.h div:nth-child(2), .tr.h div:nth-child(4) { text-align: right; }
+  .nk { font-family: var(--font-ui); font-weight: 500; font-size: 27px; letter-spacing: 0.05em; color: var(--ink); white-space: nowrap; }
+  .a, .b { font-family: var(--font-display); font-weight: 700; text-align: right; line-height: 1; }
+  .a { font-size: 40px; color: var(--muted); }
+  .b { font-size: 48px; color: var(--ink); }
+  .ar { text-align: center; color: var(--muted); font-size: 30px; }
+  .tr.new .nk, .tr.new .b { color: var(--t2); }
+  .tr.new .b { text-shadow: 0 0 22px rgba(74,222,128,0.35); }
+  .note { position: absolute; left: 100px; right: 100px; top: 1196px; text-align: center; font-family: var(--font-ui);
+          font-size: 27px; line-height: 1.45; color: var(--muted); }
+  .note b { color: var(--ink); font-weight: 600; }
+</style>
+<!-- Slide 4 de 5. Dos 46 pilotos do /ranking (97 partidas com nick, lido em 17/10/2026 ~01:10 BRT), só 7 salvaram
+     partidas em mais de um dia: os 6 do artigo "Pilotos do Navistron" (16/10; datas de Brasília conferidas na lista de
+     partidas) e o RASEC, que voltou em 16/10. Nos 7, a melhor partida saiu num dia de volta, nunca no dia da estreia.
+     Melhor partida do dia da estreia → melhor partida de todas: VASCO DA GAMA 17.215 (27/06) → 30.577 (07/10); GUI 16.840
+     (06/09) → 29.901 (29/09); VASCO 9.815 (29/05) → 25.971 (06/07); AMM2026 14.924 (02/09) → 19.785 (23/09); BAHIA2026
+     14.022 (02/09) → 19.222 (11/09); ROBER 11.195 (24/09) → 15.128 (07/10); RASEC 3.954 (14/10) → 8.061 (16/10). -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261020"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>/ranking · 46 pilotos</div>
+    <div>4 / 5</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">só 7 voltaram <span>/</span> em outro dia</div>
+    <div class="title" style="font-size: 150px; line-height: 0.92">QUEM VOLTOU,<br><span class="accent c2">MELHOROU.</span></div>
+  </div>
+
+  <div class="tbl">
+    <div class="tr h"><div>piloto</div><div>estreia</div><div></div><div>melhor</div></div>
+    <div class="tr"><div class="nk">VASCO DA GAMA</div><div class="a">17.215</div><div class="ar">→</div><div class="b">30.577</div></div>
+    <div class="tr"><div class="nk">GUI</div><div class="a">16.840</div><div class="ar">→</div><div class="b">29.901</div></div>
+    <div class="tr"><div class="nk">VASCO</div><div class="a">9.815</div><div class="ar">→</div><div class="b">25.971</div></div>
+    <div class="tr"><div class="nk">AMM2026</div><div class="a">14.924</div><div class="ar">→</div><div class="b">19.785</div></div>
+    <div class="tr"><div class="nk">BAHIA2026</div><div class="a">14.022</div><div class="ar">→</div><div class="b">19.222</div></div>
+    <div class="tr"><div class="nk">ROBER</div><div class="a">11.195</div><div class="ar">→</div><div class="b">15.128</div></div>
+    <div class="tr new"><div class="nk">RASEC</div><div class="a">3.954</div><div class="ar">→</div><div class="b">8.061</div></div>
+  </div>
+
+  <div class="note">Dos 46 pilotos, só 7 salvaram partidas em mais de um dia. <b>Nos 7, a melhor partida veio na volta.</b></div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

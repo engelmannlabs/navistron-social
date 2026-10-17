@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .title .accent.c2 { color: var(--t2); text-shadow: 0 0 34px rgba(74,222,128,0.45); }
+  .rank { top: 790px; }
+  .row.win { background: rgba(74,222,128,0.08); border-color: rgba(74,222,128,0.5); box-shadow: 0 0 34px rgba(74,222,128,0.14); }
+  .row.win .pos, .row.win .score { color: var(--t2); }
+  .row.vago { background: transparent; border: 2px dashed rgba(143,163,199,0.32); }
+  .row.vago .name, .row.vago .pos { color: var(--dim); }
+  .row.vago .score { color: var(--dim); font-size: 52px; }
+  .note { position: absolute; left: 100px; right: 100px; top: 1204px; text-align: center; font-family: var(--font-ui);
+          font-size: 28px; line-height: 1.45; color: var(--muted); }
+  .note b { color: var(--ink); font-weight: 600; }
+  .src { position: absolute; left: 0; right: 0; bottom: 92px; text-align: center; font-size: 17px; letter-spacing: 0.18em;
+         color: var(--muted); text-transform: uppercase; }
+</style>
+<!-- Slide 2 de 5. Ranking da semana 42 (12 a 18/10), só partidas com nick, pela lista de partidas do /stats
+     (?visao=partidas&ordem=data, lida em 17/10/2026 ~01:10 BRT): 35 partidas de 13 a 16/10 (12/10 sem nenhuma), 5 com nick:
+     ROBER 7.590 e 5.321 (13/10), RASEC 2.228 e 3.954 (14/10) e 8.061 (16/10). Melhor de cada piloto: RASEC 8.061, ROBER
+     7.590. O "ranking por piloto, últimos 7 dias" do /stats?periodo=7d mostra o mesmo: 1 RASEC 8.061 (3 partidas),
+     2 ROBER 7.590 (2 partidas). O 3º lugar segue vago: só 2 pilotos com nick na semana. -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261022"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Semana 42 · 12 a 18.10</div>
+    <div>2 / 5</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">só partidas com nick <span>/</span> até 16/10</div>
+    <div class="title" style="font-size: 170px; line-height: 0.9">A SEMANA 42<br><span class="accent c2">MUDOU DE<br>LÍDER.</span></div>
+  </div>
+
+  <div class="rank">
+    <div class="row win">
+      <div class="pos">1</div>
+      <div><div class="name">RASEC</div><div class="meta">16/10 · tier II · 9 boosts</div></div>
+      <div class="score">8.061</div>
+    </div>
+    <div class="row">
+      <div class="pos">2</div>
+      <div><div class="name">ROBER</div><div class="meta">13/10 · tier II · líder até 16/10</div></div>
+      <div class="score">7.590</div>
+    </div>
+    <div class="row vago">
+      <div class="pos">3</div>
+      <div><div class="name">NINGUÉM AINDA</div><div class="meta">vago</div></div>
+      <div class="score">—</div>
+    </div>
+  </div>
+
+  <div class="note">Só 2 pilotos puseram o nick na semana. <b>Ela fecha no domingo, 18/10.</b></div>
+
+  <div class="src">lista de partidas · navistron.io/stats · 17.10 · 01:10</div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>
