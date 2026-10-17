@@ -4,6 +4,21 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-13 · **Leitura final da S41: os três vídeos da Estela não somaram — e o 2º post do dia estreou com o maior
+  parcial em semanas.** O reel de dados de 11/10 (as provocações do jogo) fechou em **65 de alcance / 98 views** (~31 h), o
+  maior da S41 e o 5º maior da série do slot das 13:00 (23 posts, mediana 14); os três vídeos dela fecharam em 14, 4 e 14, e
+  os reels de dados, em 13, 28 e 65. Como na S40 (04/10: 122), o maior alcance da semana foi de um reel de dados com uma
+  mecânica tirada do código. Na S42, o ranking de segunda (12/10, 13:00) tinha **88 de alcance com ~7 h** — os três rankings
+  de segunda anteriores fecharam em 2, 3 e 14 — e a Estela das 19:00, 2 com ~1 h: a pergunta da semana (o 2º post soma ou
+  divide?) depende dos números de 14/10, e a terça, com um post só, é a comparação. Nos stories, o de 11/10 fechou em 10
+  views / 8 de alcance (~24 h). No jogo, nenhuma partida desde 09/10 às 16:50 (sábado a segunda zerados): 593 no total, **a
+  7 da 600ª** — e as seis partidas redondas, da 1ª à 500ª, foram todas anônimas, o gancho do reel do dia. Produção: o 1º
+  look do story saiu com anéis de luz deitados como uma auréola encostada no cabelo e o contorno brilhante em volta do corpo
+  (o defeito de 05/10); pedir o objeto no quarto de cima do quadro, sem tocar o cabelo, e luz natural sem contorno resolveu na
+  2ª tentativa, por 1 crédito. O story — a 1ª dica de controle no celular: no toque, a nave voa 140 pixels acima do dedo, num
+  campo de 720 — saiu com 13,6 s, e o saldo fechou em **158**: os 15 stories e 5 reels até 28/10 cabem sem refazer vídeo. No
+  blog, o guia dos 30 mil pontos achou um padrão nas 25 maiores partidas: 17 pararam no Tier II com 9 boosts (nenhuma no
+  Tier II passou de 19.785) e 20 acabaram com o leque cheio, a um boost da virada de tier.
 - 2026-10-12 · **Leitura provisória da S41: três vídeos da Estela por semana não somaram — e a semana 41 foi a maior em
   partidas desde a 37.** Os três vídeos dela no feed fecharam em **14, 4 e 14** de alcance (05, 07 e 10/10; o de 10/10 fechou
   em 14 / 21 views com ~32 h), sem passar da mediana do slot das 13:00 (14, com 22 posts), enquanto os reels de dados da semana
