@@ -4,6 +4,21 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-14 · **O 2º post do dia somou na estreia da S42 — e a contagem regressiva foi atropelada pela manhã.** Na segunda
+  12/10, o ranking das 13:00 fechou em **105 de alcance / 131 views** (~30 h), o maior ranking de segunda (os anteriores: 2,
+  3 e 14) e o 4º maior da série do slot (24 posts; a mediana subiu para 18), e a Estela das 19:00 fechou em **32 / 36** (~24
+  h), acima dos três vídeos dela da S41 (14, 4 e 14): o dia somou 137, e o 2º post não tirou alcance do 1º — um dia de
+  amostra; a leitura da S42 fecha em 18/10. **Contagem regressiva não sobrevive a uma manhã de jogo**: o reel de 13/10
+  perguntava "Quem joga a partida 600?" com os números até 12/10 (faltavam 7), mas o jogo voltou depois de três dias parado
+  e a 600ª saiu às 11:05, antes do post das 13:00. A legenda estava datada e não ficou errada, mas o post nasceu velho.
+  Regra: contagem que pode fechar em poucas partidas não vai para as 13:00 sem a hora da leitura em destaque; ou vira o fato
+  fechado no dia seguinte, como o story de 14/10. **A conta do post tem de bater com a fonte que a legenda cita**: o reel de
+  14/10 somava só o dano dos tiros (66,7 → 30,8 → 92,3, "por 2 boosts") e a legenda mandava para o artigo dos 30 mil pontos,
+  que soma os mísseis e mostra a recuperação um boost depois (76,7 → 50,8 → 81,5); a contradição apareceu na conferência da
+  legenda contra o artigo, e o reel foi refeito antes de agendar. **Braços parados o vídeo todo funcionou**: no story de
+  14/10, o motionPrompt sem gesto nenhum deu zero mão no quadro, onde o pedido só para os 2 primeiros segundos não segurava
+  nem a abertura (11, 12 e 13/10); no reel do mesmo dia, a Excited a 1,1x (a 1ª vez acelerada num reel) abriu limpa e gesticulou
+  com as duas mãos de ~13,4 a ~17,9 s.
 - 2026-10-13 · **Leitura final da S41: os três vídeos da Estela não somaram — e o 2º post do dia estreou com o maior
   parcial em semanas.** O reel de dados de 11/10 (as provocações do jogo) fechou em **65 de alcance / 98 views** (~31 h), o
   maior da S41 e o 5º maior da série do slot das 13:00 (23 posts, mediana 14); os três vídeos dela fecharam em 14, 4 e 14, e

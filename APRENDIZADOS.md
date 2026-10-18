@@ -4,6 +4,24 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-18 · **Leitura da S42: o 2º post do dia somou pouco e não dividiu — e a Estela rendeu mais às 19:00 do que
+  às 13:00.** Na sexta 16/10, o reel das 13:00 ("Outubro só teve 2 estreias") fechou em **6 de alcance / 13 views** (~26 h)
+  e a Estela das 19:00 ("a partida esquisita") em **27 / 34** (~20 h): a 1ª vez na S42 em que o 2º post passou o 1º. Na
+  semana, os dias de dois posts somaram 137, 21 e 33, e os de um, 47 e 12; as três Estelas das 19:00 fizeram 32, 12 e 27, e
+  o reel das 13:00 variou de 6 a 105 com ou sem 2º post (105, 9 e 6 nos dias de dois; 47 e 12 nos de um) — a variância do
+  slot das 13:00 engole qualquer efeito do 2º post, que somou ~24 por dia sem sinal de tirar alcance do 1º. De segunda a
+  sexta, o feed fez 250 em 8 posts, contra 60 em 5 na S41 (puxados pelos 105 e 47 de segunda e terça), e os stories, 110
+  contra 26. O que fica para a S43: a Estela às 19:00 teve mediana **27** (3 vídeos), contra **14** às 13:00 nas S40–S41
+  (29, 70, 14, 4 e 14) — amostra pequena, e é a pergunta da semana que vem. No jogo, as métricas que importam não andaram:
+  a S42 teve 38 partidas até sábado (a S41 inteira, 47) e 1 piloto novo (RASEC), como a S41 (KAL-EL). **O sábado voltou**:
+  3 partidas em 17/10, das 11:42 às 11:46, todas anônimas — o 1º sábado com partida desde 12/09 —, antes do carrossel e do
+  story que pediam por elas; a de 11:46 fez 14.012, 5 pontos acima do 10º do top 10 de pilotos, sem nick (o reel de hoje).
+  Produção: **defeito novo no Avatar IV** — a 1ª tentativa do story trouxe figuras de outras pessoas entrando pelas bordas
+  do quadro, atrás dela, por ~3 s; a varredura das bordas (pixels quentes nas faixas laterais) acusou o trecho inteiro, e a
+  2ª tentativa, com "She is alone in the frame" no motionPrompt, saiu limpa. A Friendly a 1,15x leu ~0,32 s por palavra
+  (a 1,1x, ~0,36): ~41 palavras cabem em 13,2 s. HeyGen: 117 → 108; com o refazer, os 10 stories e 3 reels até 28/10 só
+  cabem acima da guarda sem refazer mais nada. No blog, a pauta de colisão foi trocada pelo tunneling porque um artigo
+  original já cobria os raios: conferir os 23 artigos de `blogArticles.js`, além dos diários, antes de escolher a pauta.
 - 2026-10-17 · **O desafio de quinta foi cumprido na sexta — e quem voltou melhorou de novo: 7 em 7.** O reel das 13:00
   de 15/10 ("O 1º lugar da semana tem 7.590") fechou em **12 de alcance / 18 views** (~27 h), abaixo da mediana do slot (14,
   com 27 posts): os reels das 13:00 da S42 fizeram 105, 47, 9 e 12 de segunda a quinta, e a leitura da semana sai em 18/10.
@@ -45,21 +63,6 @@ apenas este arquivo, e não o playbook inteiro.
   jogo, a quarta 14/10 teve só 2 partidas, as duas com nick, de um piloto novo: RASEC, o 46º. No blog, o artigo do RNG
   achou dois detalhes do tremor de tela para o Guilherme: ele conta quadros, não segundos (em telas de 120 Hz dura
   metade), e o tremor de 1,5 s da explosão da nave é trocado aos 0,3 s pelo da 2ª explosão.
-- 2026-10-14 · **O 2º post do dia somou na estreia da S42 — e a contagem regressiva foi atropelada pela manhã.** Na segunda
-  12/10, o ranking das 13:00 fechou em **105 de alcance / 131 views** (~30 h), o maior ranking de segunda (os anteriores: 2,
-  3 e 14) e o 4º maior da série do slot (24 posts; a mediana subiu para 18), e a Estela das 19:00 fechou em **32 / 36** (~24
-  h), acima dos três vídeos dela da S41 (14, 4 e 14): o dia somou 137, e o 2º post não tirou alcance do 1º — um dia de
-  amostra; a leitura da S42 fecha em 18/10. **Contagem regressiva não sobrevive a uma manhã de jogo**: o reel de 13/10
-  perguntava "Quem joga a partida 600?" com os números até 12/10 (faltavam 7), mas o jogo voltou depois de três dias parado
-  e a 600ª saiu às 11:05, antes do post das 13:00. A legenda estava datada e não ficou errada, mas o post nasceu velho.
-  Regra: contagem que pode fechar em poucas partidas não vai para as 13:00 sem a hora da leitura em destaque; ou vira o fato
-  fechado no dia seguinte, como o story de 14/10. **A conta do post tem de bater com a fonte que a legenda cita**: o reel de
-  14/10 somava só o dano dos tiros (66,7 → 30,8 → 92,3, "por 2 boosts") e a legenda mandava para o artigo dos 30 mil pontos,
-  que soma os mísseis e mostra a recuperação um boost depois (76,7 → 50,8 → 81,5); a contradição apareceu na conferência da
-  legenda contra o artigo, e o reel foi refeito antes de agendar. **Braços parados o vídeo todo funcionou**: no story de
-  14/10, o motionPrompt sem gesto nenhum deu zero mão no quadro, onde o pedido só para os 2 primeiros segundos não segurava
-  nem a abertura (11, 12 e 13/10); no reel do mesmo dia, a Excited a 1,1x (a 1ª vez acelerada num reel) abriu limpa e gesticulou
-  com as duas mãos de ~13,4 a ~17,9 s.
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
