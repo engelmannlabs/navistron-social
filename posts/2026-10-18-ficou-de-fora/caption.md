@@ -1,0 +1,22 @@
+---
+data: 2026-10-18
+formato: reel 14,0 s (reel de dados do calendário S42, dom 18, 13:00 — o único post do feed do dia)
+pilar: desafio (com 14.008 e um nick, um piloto entra no top 10 de pilotos; a partida de 14.012 de sábado passou o 10º e ficou de fora sem nick) — diferente de 16/10 (marco às 13:00, bastidor da Estela às 19:00) e de 17/10 (hall da fama)
+gancho: "FEZ 14.012 E FICOU FORA DO TOP 10" (palavras-chave "ficou fora" e o número, fora dos ganchos dos últimos 10 dias — "A 7 pontos." (09/10) contou a de 14.000 que parou abaixo do 10º; esta passou dele; legível desde o quadro 0) → "sábado, 17/10 · 11:46 · sem nick · top 10 de pilotos · navistron.io/stats" a partir de 0,5 s (a capa, em 1,6 s, tem os dois) → "top 10 de pilotos · lista de 18/10": 9º ROBER 15.128 (9 partidas), 10º JOGO MALUCO 14.007 ("27/06 · o sarrafo") e a linha tracejada "? SEM NICK · sábado, 17/10 · 11:46" contando até 14.012, que passa do 14.007 no hit da trilha (4,6 s) e ganha a etiqueta "FORA" → "+5 sobre o 10º · sem nick, fora" → "e foi num sábado · 17/10": 3 partidas, 11:42 a 11:46 (516 no Tier I, 1.644 e 14.012 no Tier II) → "1º sábado com partida desde 12/09" → "nenhuma com nick" → "14.008 COM NICK JÁ ENTRA" / "no top 10 de pilotos · lista de 18/10 · joga e põe o nick no game over" → CTA
+horario_publicacao: 2026-10-18 13:00 BRT (domingo)
+buffer_post_id: pendente
+qa: pendente
+instagram: metadata.instagram = { type: "reel", shouldShareToFeed: true }
+teste_do_dia: S42 — domingo de um post só (13:00, reel de dados); pergunta da semana: o 2º post do dia soma alcance ou divide? (leitura em APRENDIZADOS, 18/10); o pedido "põe o seu nick no game over" abre a legenda (21º dia)
+fonte_dados: navistron.io/stats (todos os tempos, com o top 10 de pilotos = a melhor partida de cada nick), ?visao=partidas&ordem=data (página 1), ?visao=partidas&ordem=score (página 2) e ?periodo=7d, lidos em 18/10/2026 ~01:05–01:10 BRT com ?v= (horários de Brasília). Sábado 17/10: 3 partidas, todas anônimas — 11:42 (516, 0:57, Tier I), 11:43 (1.644, 1:37, Tier II) e 11:46 (14.012, 2:25, Tier II, 9 boosts, spread 5); nenhuma depois das 11:46. Top 10 de pilotos: 9º ROBER 15.128 (9 partidas), 10º JOGO MALUCO 14.007 (1 partida, 27/06 às 20:35). Na lista de partidas por pontos (todas, inclusive as anônimas), a de sábado é a 66ª de 631 e a do JOGO MALUCO, a 67ª; sem nick, a de 14.012 não entra no /ranking nem no top 10 de pilotos. Foi o 1º sábado com partida desde 12/09 (19/09, 26/09, 03/10 e 10/10 zerados, conferido em 17/10 nas páginas 1 a 3 da lista de partidas) — o story de 17/10 (16:00) pedia para quebrar essa escrita, e ela já tinha caído às 11:42. Totais em 18/10 ~01:05: 631 partidas (97 com nick, 534 anônimas), 46 pilotos, 21h35; semana 42 até 17/10 (?periodo=7d, de 13/10 10:40 a 17/10 11:46): 38 partidas, 5 com nick, 2 pilotos (RASEC 8.061, ROBER 7.590), maior partida 14.012. O top 10 pode mudar antes das 13:00: por isso o "lista de 18/10" no reel e o horário da leitura na legenda
+---
+
+Joga hoje e põe o seu nick no game over: com 14.008 pontos e um nick, você já entra no top 10 de pilotos do Navistron.
+
+Sábado (17/10), às 11:46, alguém fez 14.012 no Tier II — 5 pontos a mais que o 10º do top 10, o JOGO MALUCO (14.007, de 27/06). Mas a partida acabou sem nick e ficou de fora.
+
+Foi o primeiro sábado com partida desde 12/09: três partidas, das 11:42 às 11:46, nenhuma com nick.
+
+Números de navistron.io/stats, lidos em 18/10 à 01:05. Grátis, sem login, link na bio 🚀
+
+#navistron #jogodenave #arcade #indiegame #jogogratis #gamedev #jogosbrasileiros #reels
