@@ -1,20 +1,20 @@
 {
   "files": {
     "post.html": {
-      "hash": "1a9d319de0f58d6f8642c7383c898a6cfe63ab09f214c0fd1442cee15150fa94",
+      "hash": "f499424f015aab9d9c620fcfd0eafd72b21fb64973588ba80599fbfe026897f8",
       "out": "reel.mp4",
       "type": "video",
-      "source": "https://files2.heygen.ai/aws_pacific/avatar_tmp/c9379eb0ffee407c956c12517ad5feba/7a41c8e3ed911f05b41c226d03328e35.mp4",
+      "source": "https://files2.heygen.ai/aws_pacific/avatar_tmp/c9379eb0ffee407c956c12517ad5feba/6ac8967e475dd4737d6d57c920441ab9.mp4",
       "width": 1080,
       "height": 1920,
       "fonts": [],
       "duration": 11.33,
       "fps": 30,
-      "bytes": 6887592,
+      "bytes": 6932403,
       "cover": "reel-cover.png",
       "captions": 0,
       "overlayUntil": null
     }
   },
-  "renderedAt": "2026-10-18T04:23:50.179Z"
+  "renderedAt": "2026-10-18T04:30:46.399Z"
 }
