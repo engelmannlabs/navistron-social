@@ -1,0 +1,35 @@
+1
+00:00:00,260 --> 00:00:01,190
+Sabia que a sua nave
+
+2
+00:00:01,300 --> 00:00:01,970
+solta mísseis
+
+3
+00:00:02,040 --> 00:00:03,270
+teleguiados sozinha?
+
+4
+00:00:03,490 --> 00:00:04,410
+Cada um persegue um
+
+5
+00:00:04,450 --> 00:00:05,710
+meteoro, e quanto mais
+
+6
+00:00:05,830 --> 00:00:07,120
+pontos, mais mísseis:
+
+7
+00:00:07,230 --> 00:00:08,530
+até cinco por vez.
+
+8
+00:00:08,790 --> 00:00:10,170
+Joga hoje e põe o nick
+
+9
+00:00:10,280 --> 00:00:11,160
+no game over!
