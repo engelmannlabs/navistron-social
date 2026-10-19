@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="14.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="1.6">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>
+  .rows { width: 900px; margin: 40px auto 0; }
+  .rrow { display: flex; align-items: center; height: 128px; border-bottom: 2px solid rgba(143,163,199,0.16); opacity: 0; }
+  .rrow:last-child { border-bottom: 0; }
+  .rrow .pos { width: 150px; text-align: left; font-family: var(--font-display); font-weight: 700; font-size: 100px; line-height: 1; }
+  .rrow .who { flex: 1; text-align: left; }
+  .rrow .nm { font-family: var(--font-ui); font-weight: 700; font-size: 42px; letter-spacing: 0.04em; color: var(--ink); text-transform: uppercase; white-space: nowrap; }
+  .rrow .mt { margin-top: 8px; font-family: var(--font-ui); font-weight: 500; font-size: 25px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; white-space: nowrap; }
+  .rrow .val { width: 300px; text-align: right; font-family: var(--font-mono); font-weight: 800; font-size: 74px; line-height: 1;
+               color: var(--ink); font-variant-numeric: tabular-nums; }
+  .rrow.vago .pos { color: var(--dim); }
+  .rrow.vago .nm { color: var(--dim); letter-spacing: 0.2em; }
+  .rrow.vago .val { color: var(--dim); }
+  .g1 { color: #FACC15; text-shadow: 0 0 40px rgba(250,204,21,0.55); }
+  .g2 { color: #D9DEE8; text-shadow: 0 0 30px rgba(217,222,232,0.35); }
+  #v1.lock { color: #FACC15; text-shadow: 0 0 46px rgba(250,204,21,0.6); }
+  #wk .counter { font-size: 250px; }
+  .marker.gold { border-color: rgba(250,204,21,0.55); background: rgba(250,204,21,0.10); }
+  .marker.gold b { color: #FACC15; }
+</style>
+<!-- RANKING DA SEMANA 42 (12 a 18/10/2026), pela lista "Ranking completo por piloto (Últimos 7 dias)" de navistron.io/stats
+     (?periodo=7d, lido em 19/10/2026 ~01:09 BRT, com ?v=; datas e horários no fuso de Brasília): 1º RASEC 8.061 (Tier II, 16/10
+     às 10:54; 3 partidas na semana, a estreia dele foi em 14/10), 2º ROBER 7.590 (Tier II, 13/10 às 12:48; 2 partidas). Só dois
+     pilotos com nick nos sete dias: do 3º ao 5º, ninguém. Resumo do recorte: 38 partidas, 5 registradas, 33 anônimas, 2 pilotos,
+     1h 29m, tempo médio 2m 21s, score médio 4.936, maior score 14.012 (anônima, 17/10 às 11:46); 1ª partida 13/10 às 10:40,
+     última 17/10 às 11:46 (o domingo 18/10 não teve partida; o total geral segue em 631). A lista das 38 partidas
+     (?visao=partidas&ordem=data, página 1) fecha a conta: soma das durações 5.359 s (1h29min19, média 2min21) e dos scores
+     187.554 (÷ 38 = 4.935,6 → 4.936). "O menor placar campeão em 6 semanas de ranking": os 1º lugares da série semanal do blog
+     foram AMM2026 19.567 (semana 37), BAHIA2026 18.738 (38), AMM2026 19.785 (39), GUI 29.901 (40), VASCO DA GAMA 30.577 (41) e
+     RASEC 8.061 (42). "Com 1 ponto e um nick, você ficava em 3º": o 3º lugar da semana 42 ficou vago, então qualquer partida
+     com nick de um piloto novo entraria nele. Fundo: a nave no Tier IV (laranja #ff8c00, tiros c1 255,200,100 / c2 255,120,0,
+     um a cada 0,11 s), o tier mais alto da semana (8 partidas, todas anônimas). -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Ranking da semana · @navistron</div>
+
+  <div id="hook" class="layer" style="top: 470px">
+    <div class="h1" style="font-size: 190px"><span class="w accent" id="w1" style="font-size: 270px; margin-bottom: 22px">8.061</span><br><span class="w" id="w2">LEVOU A</span><br><span class="w" id="w3">SEMANA 42</span></div>
+    <div class="sub" id="hsub" style="margin-top: 60px; opacity: 0">ranking da semana · <b>12 a 18/10</b><br>só partidas com nick</div>
+  </div>
+
+  <div id="rk" class="layer" style="top: 440px">
+    <div class="kicker">ranking da semana 42 · 12 a 18/10</div>
+    <div class="rows">
+      <div class="rrow" id="r1"><span class="pos g1">1º</span><span class="who"><div class="nm">RASEC</div><div class="mt">16/10 · estreou em 14/10</div></span><span class="val" id="v1">0</span></div>
+      <div class="rrow" id="r2"><span class="pos g2">2º</span><span class="who"><div class="nm">ROBER</div><div class="mt">13/10</div></span><span class="val" id="v2">0</span></div>
+      <div class="rrow vago" id="r3"><span class="pos">3º</span><span class="who"><div class="nm">vago</div></span><span class="val">–</span></div>
+      <div class="rrow vago" id="r4"><span class="pos">4º</span><span class="who"><div class="nm">vago</div></span><span class="val">–</span></div>
+      <div class="rrow vago" id="r5"><span class="pos">5º</span><span class="who"><div class="nm">vago</div></span><span class="val">–</span></div>
+    </div>
+    <div id="low" style="margin-top: 40px; opacity: 0"><span class="marker gold">o menor placar campeão<br>em <b>6</b> semanas de ranking</span></div>
+  </div>
+
+  <div id="wk" class="layer" style="top: 560px">
+    <div class="kicker">partidas na semana</div>
+    <div class="counter" id="np" style="margin-top: 34px">0</div>
+    <div class="sub" id="nsub" style="margin-top: 26px; opacity: 0">só <b>5</b> com nick · <b>2</b> pilotos</div>
+    <div id="um" style="margin-top: 64px; opacity: 0"><span class="marker">com <b>1 ponto</b> e um nick,<br>você ficava em <b>3º</b></span></div>
+  </div>
+
+  <div id="ask" class="layer" style="top: 560px">
+    <div class="h1" style="font-size: 160px">QUEM LEVA<br>A SEMANA<br><span class="accent">43?</span></div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">grátis, sem login</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 14.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+  const fmt = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  // ---------- PRNG determinístico ----------
+  let s = 1910;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- a partida no fundo: meteoros caindo, nave no Tier IV (laranja) atirando ----------
+  const ORANGE = '255,140,0', C1 = '255,200,100', C2 = '255,120,0';
+  const N = 26, CYC = 2100, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 200 + rnd() * 170, r: 20 + rnd() * 44, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * CYC, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  function mpos(m, t) {
+    const dist = t * 1.5 * m.v + m.phase;
+    const cycle = Math.floor(dist / CYC);
+    const y = (dist % CYC) - 120;
+    const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+    return { x, y };
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function drawMeteor(m, x, y, rot) {
+    fx.save(); fx.translate(x, y); fx.rotate(rot);
+    fx.beginPath();
+    const n = m.shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = m.r * m.shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+    fx.fillStyle = m.big ? 'rgba(20,26,46,0.92)' : 'rgba(14,19,36,0.9)';
+    fx.fill();
+    fx.lineWidth = m.big ? 3 : 2;
+    fx.strokeStyle = m.big ? 'rgba(190,208,240,0.75)' : 'rgba(150,170,205,0.6)';
+    fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y); fx.scale(1.25, 1.25);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, `rgba(${ORANGE},0.95)`); g.addColorStop(1, `rgba(${ORANGE},0)`);
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = `rgba(${ORANGE},0.75)`; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = `rgb(${ORANGE})`; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 170 * Math.sin(t * 0.8 + 0.6) + 50 * Math.sin(t * 2.1);
+  const shipY = 1450;
+  const RATE = 0.11, BV = 1040, BLIFE = 1.6, STEP = 1 / 60;
+  // o tiro some no 1º meteoro que tocar (conta feita só com t, para cada quadro sair igual)
+  function bulletState(tb, t) {
+    const x0 = shipX(tb), y0 = shipY - 60;
+    for (let tau = tb; tau <= t + 1e-9; tau += STEP) {
+      const y = y0 - (tau - tb) * BV;
+      for (const m of meteors) {
+        const p = mpos(m, tau);
+        const dx = p.x - x0, dy = p.y - y;
+        if (dx * dx + dy * dy < Math.pow(m.r * 0.72 + 8, 2)) return { hit: true, x: x0, y, at: tau };
+      }
+    }
+    return { hit: false, x: x0, y: y0 - (t - tb) * BV };
+  }
+  function drawBullet(x, y) {
+    const g = fx.createRadialGradient(x, y, 0, x, y, 30);
+    g.addColorStop(0, `rgba(${C1},1)`); g.addColorStop(.3, `rgba(${C2},.8)`); g.addColorStop(1, 'rgba(120,50,0,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.arc(x, y, 30, 0, Math.PI * 2); fx.fill();
+    fx.fillStyle = '#fff'; fx.beginPath(); fx.arc(x, y, 8, 0, Math.PI * 2); fx.fill();
+  }
+
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    for (const m of meteors) {
+      const p = mpos(m, t);
+      if (p.y < -120 || p.y > H + 120) continue;
+      drawMeteor(m, p.x, p.y, m.rot + t * m.w);
+    }
+    const k0 = Math.max(0, Math.floor((t - BLIFE) / RATE));
+    for (let k = k0; k * RATE <= t; k++) {
+      const tb = k * RATE, st = bulletState(tb, t);
+      if (!st.hit) { if (st.y > -40) drawBullet(st.x, st.y); continue; }
+      const age = t - st.at;                       // faísca laranja no ponto do impacto, 0,25 s
+      if (age < 0.25) {
+        const a = 1 - age / 0.25;
+        for (let j = 0; j < 6; j++) {
+          const ang = j * 1.047 + k;
+          fx.fillStyle = `rgba(${C1},${a})`;
+          fx.beginPath(); fx.arc(st.x + Math.cos(ang) * 120 * age, st.y + Math.sin(ang) * 120 * age, 4 * a + 1, 0, Math.PI * 2); fx.fill();
+        }
+      }
+    }
+    drawShip(shipX(t), shipY, t);
+    const vg = fx.createRadialGradient(540, 860, 200, 540, 860, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.7)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+  // ranking da semana 42 (12 a 18/10/2026), /stats?periodo=7d lido em 19/10: de baixo para cima
+  const VAGOS = [['r5', 2.85], ['r4', 3.1], ['r3', 3.35]];
+  const ROWS = [
+    { row: 'r2', val: 'v2', score: 7590, a: 3.9 },    // ROBER, 13/10
+    { row: 'r1', val: 'v1', score: 8061, a: 5.0 },    // RASEC, 16/10
+  ];
+  const HIT = 6.5;                                    // trava do 1º lugar
+  const PARTIDAS = 38;
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+
+    // 1) gancho: legível desde o quadro 0; o "ranking da semana" entra em 0,5 s; sai em 2.4–2.7
+    const outH = 1 - seg(t, 2.4, 0.3);
+    layer($('hook'), outH, -30 * (1 - outH));
+    const ws = [['w1', 0.0, 0.35], ['w2', 0.05, 0.4], ['w3', 0.1, 0.4]];
+    for (const [id, a, d] of ws) {               // sempre opaco (gancho legível no quadro 0); só assenta 14 px
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = 1; $(id).style.display = 'inline-block';
+      $(id).style.transform = `translateY(${14 * (1 - v)}px)`;
+    }
+    const hs = ease.out3(seg(t, 0.5, 0.4));
+    $('hsub').style.opacity = hs; $('hsub').style.transform = `translateY(${20 * (1 - hs)}px)`;
+
+    // 2) o ranking de baixo para cima: 5º, 4º e 3º vagos (2.85–3.35), 2º (3.9), 1º (5.0, trava em HIT); sai 8.6–8.9
+    const inR = ease.out3(seg(t, 2.6, 0.35)), outR = 1 - seg(t, 8.6, 0.3);
+    layer($('rk'), inR * outR, 30 * (1 - inR));
+    for (const [id, a] of VAGOS) {
+      const vi = ease.out3(seg(t, a, 0.3));
+      $(id).style.opacity = vi; $(id).style.transform = `translateX(${-36 * (1 - vi)}px)`;
+    }
+    for (const r of ROWS) {
+      const ri = ease.out3(seg(t, r.a, 0.35));
+      $(r.row).style.opacity = ri; $(r.row).style.transform = `translateX(${-36 * (1 - ri)}px)`;
+      const end = r.row === 'r1' ? HIT : r.a + 1.0;
+      const cp = 1 - Math.pow(1 - seg(t, r.a + 0.1, end - r.a - 0.1), 2.2);
+      $(r.val).textContent = fmt(r.score * cp);
+    }
+    const locked = t >= HIT;
+    $('v1').className = 'val' + (locked ? ' lock' : '');
+    $('v1').style.transform = `scale(${locked ? 1 + 0.08 * Math.exp(-(t - HIT) * 4) : 1})`;
+    const lo = ease.out3(seg(t, HIT + 0.45, 0.4));
+    $('low').style.opacity = lo; $('low').style.transform = `translateY(${20 * (1 - lo)}px)`;
+
+    // 3) a semana: 38 partidas, só 5 com nick; com 1 ponto e um nick, o 3º era seu — 8.95–11.3
+    const inW = ease.out3(seg(t, 8.95, 0.35)), outW = 1 - seg(t, 11.0, 0.3);
+    layer($('wk'), inW * outW, 30 * (1 - inW));
+    const np = 1 - Math.pow(1 - seg(t, 9.0, 0.6), 2.2);
+    $('np').textContent = Math.round(PARTIDAS * np);
+    const ns = ease.out3(seg(t, 9.45, 0.35));
+    $('nsub').style.opacity = ns; $('nsub').style.transform = `translateY(${16 * (1 - ns)}px)`;
+    const um = ease.out3(seg(t, 9.75, 0.35));
+    $('um').style.opacity = um; $('um').style.transform = `translateY(${20 * (1 - um)}px)`;
+
+    // 4) pergunta 11.25–12.4
+    const inA = ease.out3(seg(t, 11.25, 0.35)), outA = 1 - seg(t, 12.1, 0.3);
+    layer($('ask'), inA * outA, 0, 0.92 + 0.08 * inA);
+
+    // 5) CTA 12.4–14.0
+    const inC = ease.out3(seg(t, 12.4, 0.5));
+    layer($('cta'), inC, 30 * (1 - inC));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
