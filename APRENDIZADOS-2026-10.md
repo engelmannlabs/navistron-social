@@ -4,6 +4,19 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-15 · **O dia de um post só fez 47; o de dois, 137 — e os stories da Estela tiveram os dois maiores alcances
+  desde 05/10.** Na terça 13/10, o único post do feed (o reel da partida 600, 13:00) fechou em **47 de alcance / 59
+  views** (~29 h), o 8º maior do slot (25 posts; a mediana subiu para 22); na segunda, o ranking das 13:00 tinha feito 105
+  e a Estela das 19:00, 32. A diferença está mais no reel das 13:00 do que no 2º post — um dia de cada não fecha regra; a
+  leitura da S42 sai em 18/10. Nos stories, o de 13/10 (a nave acima do dedo) fechou em **15 de alcance** (~24 h) e o de
+  14/10 (a festa das seiscentas) já tinha **21** com ~8 h, contra 0 a 8 nos stories de 05 a 12/10. **Braços parados não
+  virou padrão**: no story de 15/10, o mesmo motionPrompt que deu zero mão em 14/10 deixou uma mão subir até o fone na
+  abertura (0–0,5 s, com borrão, aceita) e as duas mãos voltarem em cinco gestos curtos, naturais — 1 vídeo sem mão em 2.
+  **Dois pushes de post.html com 34 s de diferença**: o reel renderizou e a folha do look não (sem post.png depois de 10
+  min); um 2º push da folha resolveu — conferir a pasta depois de cada push e, se faltar o arquivo, empurrar de novo. No
+  jogo, a quarta 14/10 teve só 2 partidas, as duas com nick, de um piloto novo: RASEC, o 46º. No blog, o artigo do RNG
+  achou dois detalhes do tremor de tela para o Guilherme: ele conta quadros, não segundos (em telas de 120 Hz dura
+  metade), e o tremor de 1,5 s da explosão da nave é trocado aos 0,3 s pelo da 2ª explosão.
 - 2026-10-14 · **O 2º post do dia somou na estreia da S42 — e a contagem regressiva foi atropelada pela manhã.** Na segunda
   12/10, o ranking das 13:00 fechou em **105 de alcance / 131 views** (~30 h), o maior ranking de segunda (os anteriores: 2,
   3 e 14) e o 4º maior da série do slot (24 posts; a mediana subiu para 18), e a Estela das 19:00 fechou em **32 / 36** (~24

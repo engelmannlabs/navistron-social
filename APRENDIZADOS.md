@@ -4,6 +4,21 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-19 · **A semana 42 fechou com o placar campeão mais baixo da série e jogou de manhã — e os dois carrosséis do
+  slot das 13:00 fecharam em 1.** O carrossel de sábado, 17/10 ("RASEC dobrou"), fechou em **1 de alcance / 1 view**
+  (~25 h), como o de 09/10; o de 01/10, às 15:00, fez 3 — carrossel é o formato que menos distribui (a S43 tem um, no
+  sábado 24, e a leitura de 26/10 decide se ele fica). O story de 17/10 fechou em **25 / 29** (~24 h), igual ao de
+  16/10: os stories de 12 a 17/10 fizeram 7, 15, 32, 31, 25 e 25, contra 0 a 8 na S41. A Estela das 19:00 de 16/10 subiu
+  para 28 (~43 h). No jogo, o domingo 18/10 não teve partida, e a S42 fechou com 38 partidas, 5 com nick e 2 pilotos: o
+  RASEC venceu com **8.061**, menos da metade do menor campeão anterior (18.738, semana 38), e pela 1ª vez em 6 semanas
+  a maior partida da semana (14.012) ficou sem nick. **O horário virou**: 20 das 38 partidas saíram antes das 13h,
+  contra 2 de 47 na S41 — o padrão de 14h a 17h do PLAYBOOK não valeu na S42; a S43 mostra se a manhã fica. Produção: a
+  1ª leitura da lista de partidas pelo WebFetch veio sem uma linha (21 pontos, 16:00 de 13/10) — só a conta fechada
+  contra o resumo de 7 dias mostrou a falta; quando a soma não bater, pedir a faixa exata de horário. A Friendly a 1,15x
+  leu 39 palavras em 14,2 s (~0,365 s por palavra, contra ~0,32 em 18/10): com números por extenso e dois-pontos, o
+  ganho da 1,15x some, e o story custou 6. HeyGen: 108 → 102; os 9 stories (20 a 28/10) e os 3 reels da S43 pedem ~69–72
+  contra 72 acima da guarda — só cabe com stories de até ~35 palavras e sem refazer. No blog, a pendência dos fins de
+  semana (aberta em 12/10) foi fechada com nota de correção datada nos artigos de 28/09 e 05/10.
 - 2026-10-18 · **Leitura da S42: o 2º post do dia somou pouco e não dividiu — e a Estela rendeu mais às 19:00 do que
   às 13:00.** Na sexta 16/10, o reel das 13:00 ("Outubro só teve 2 estreias") fechou em **6 de alcance / 13 views** (~26 h)
   e a Estela das 19:00 ("a partida esquisita") em **27 / 34** (~20 h): a 1ª vez na S42 em que o 2º post passou o 1º. Na
@@ -50,19 +65,6 @@ apenas este arquivo, e não o playbook inteiro.
   quinta 15/10 não teve nenhuma partida. No blog, o artigo dos pilotos achou que só 6 dos 46 salvaram partidas em mais de um
   dia — e as 12 melhores partidas com nick são desses seis. HeyGen: 139 → 123; os 12 stories e 3 reels até 28/10 só cabem
   acima da guarda com stories de até ~13 s (~37 palavras) e sem refazer (conta na ficha).
-- 2026-10-15 · **O dia de um post só fez 47; o de dois, 137 — e os stories da Estela tiveram os dois maiores alcances
-  desde 05/10.** Na terça 13/10, o único post do feed (o reel da partida 600, 13:00) fechou em **47 de alcance / 59
-  views** (~29 h), o 8º maior do slot (25 posts; a mediana subiu para 22); na segunda, o ranking das 13:00 tinha feito 105
-  e a Estela das 19:00, 32. A diferença está mais no reel das 13:00 do que no 2º post — um dia de cada não fecha regra; a
-  leitura da S42 sai em 18/10. Nos stories, o de 13/10 (a nave acima do dedo) fechou em **15 de alcance** (~24 h) e o de
-  14/10 (a festa das seiscentas) já tinha **21** com ~8 h, contra 0 a 8 nos stories de 05 a 12/10. **Braços parados não
-  virou padrão**: no story de 15/10, o mesmo motionPrompt que deu zero mão em 14/10 deixou uma mão subir até o fone na
-  abertura (0–0,5 s, com borrão, aceita) e as duas mãos voltarem em cinco gestos curtos, naturais — 1 vídeo sem mão em 2.
-  **Dois pushes de post.html com 34 s de diferença**: o reel renderizou e a folha do look não (sem post.png depois de 10
-  min); um 2º push da folha resolveu — conferir a pasta depois de cada push e, se faltar o arquivo, empurrar de novo. No
-  jogo, a quarta 14/10 teve só 2 partidas, as duas com nick, de um piloto novo: RASEC, o 46º. No blog, o artigo do RNG
-  achou dois detalhes do tremor de tela para o Guilherme: ele conta quadros, não segundos (em telas de 120 Hz dura
-  metade), e o tremor de 1,5 s da explosão da nave é trocado aos 0,3 s pelo da 2ª explosão.
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
