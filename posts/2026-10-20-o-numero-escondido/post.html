@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="video">
+<meta name="post-size" content="1080x1920">
+<meta name="video-src" content="https://files2.heygen.ai/aws_pacific/avatar_tmp/c9379eb0ffee407c956c12517ad5feba/b8c5437f521d9be6374c9a4e5e490153.mp4?Expires=1793075236&Signature=AbaaAdu7O02iwarAkR1J0jIagNxeJh1x1jzRCo12aht8pNxWxSCzbQqoUtJOLND8LHJiN7sAMFdKfCeG~uvdhtk6mRgEdZb6LicVdY6d64NeWyWidM5ocz2xrw11DQFX~9e6rJOoZCJkTzcaP-R1JauBLlVn-z2tMjs8U82P6ne8tEz2dgL9mLfA1d36k0m2u6OzVrW3EiN4PgGazDtTD1E4C8idvR-JwGZm36jW9p3EJkpW3YuS4dfsf6fW1Oqe6t7c0UTpqqC7MmCgeijZfxpQ2O9H5vrXxhX4Cpy0BT9BIp~8wWCIt5ki4Tz5UWV6AVO~63HXSP6mvYxeA3EgmQ__&Key-Pair-Id=K38HBHX5LX3X2H">
+<meta name="video-subtitles" content="https://files2.heygen.ai/aws_pacific/avatar_tmp/c9379eb0ffee407c956c12517ad5feba/subtitles_b8c5437f521d9be6374c9a4e5e490153.srt?Expires=1793075242&Signature=FBOIg-5O1Bfn~S9ISzq6LAx10ZtSh1uEzb7gufg9ZTXZunSTXYEnDp1e2964VI4ZAIy~qWm2dCXSRykgITPc2LoAWuLOtFbbPHV8suWrsGrGFv7bCYIBogqAMQkTvsVgE1dvXhBaKKpYE5p~IWDocqtcNUDh0BJIh6uDxA-d38efLPqcmdLR-1Ej2SB3b6gEr8GtPtuNOSclweUs6IpEB5PL2ea2JLrUm2LfQBo5PzI81lTXI3B5A5Ic~ERlcY9rpjj7SyiFt8ML5ZWH4w1rv2giQer1EZNNHRqttBaYbLvOf7fmaqBSBlCQ6-PNl~veSNzfVSzTfFHurIn8FOx4lQ__&Key-Pair-Id=K38HBHX5LX3X2H">
+<meta name="video-captions" content="srt">
+<meta name="reel-cover" content="1.0">
+<link rel="stylesheet" href="../../templates/reel.css">
+<!-- Reel de 20/10/2026 (terça, calendário S43: a Estela às 19:00, o único post do feed do dia): "a Estela explica" — o
+     número escondido. No canto de baixo, à direita, da tela do jogo fica, em letra pequena (11 px, branco a 28%), o
+     DIFFICULTY ×N (src/app/play/page.js, 36d68b9a: ctx.fillText com getDiff().toFixed(1) em W − 8, H − 6).
+     getDiff() = TIER_DIFF[tier] × (1 + score × 0,0007), TIER_DIFF = [1; 1,8; 3,0; 4,8; 7,0; 10,0; 14,0]: começa em ×1.0,
+     sobe a cada ponto e dá um salto a cada tier; aos 10.000 pontos no Tier II, 1,8 × 8 = ×14.4. Com ela sobem a velocidade
+     dos meteoros (× min(1 + (dif − 1) × 0,2; 3,8): ×3,68 em 14,4), a vida (round(dif) no pequeno: 14, ou 7 tiros do Tier II,
+     de dano 2; round(3 × dif) no grande: 43) e os pontos (round(5 × dif) no pequeno: 72; round(15 × dif) no grande: 216; no
+     começo, 5 e 15). Contas rodadas em python. Vídeo HeyGen b8c5437f521d9be6374c9a4e5e490153 (Avatar IV, 1080p, 20,5 s),
+     modo econômico pela regra de orçamento (102 créditos no início da rodada contra uma reserva de 124) — take único no
+     look "o número escondido" v2 ee9caf40c42130e613489746b592716c (laboratório em posts/_lab-2026-10-20-looks; o v1 foi
+     vetado): um mostrador semicircular de luz ciano no alto do quadro, com o ponteiro na faixa laranja e vermelha e
+     meteorozinhos passando, longe do cabelo; nada brilhando abaixo do queixo. Voz Sofia Brazil - Friendly a 1,15x (a 1ª vez
+     num reel), expressiveness low, motionPrompt calmo com as mãos paradas nos 2 primeiros segundos e "She is alone in the
+     frame; the starry background stays empty."; glossário Navistron. 1ª renderização com o .srt da HeyGen, para guardar a
+     transcrição como legenda.srt; a 2ª usa legenda-digitos.srt (frases juntadas, números em algarismos). -->
+<!-- Camada dos REELS da Estela — versão 3 (29/09/2026).
+     Pedidos do Guilherme depois da estreia: legenda menor, nada cobrindo o rosto, sobreposições só temporárias e
+     minimalistas (v2) e, por fim, SEM selo de IA na arte — o rótulo de IA do Instagram (isAiGenerated) basta (v3).
+     O que sobra por cima do vídeo é só a legenda:
+     - legenda pequena (56 px, caixa baixa), ancorada pela base em y = 1490: uma linha ocupa ~1420–1490 e duas linhas
+       ~1350–1490, sempre abaixo do queixo (~1170 nos looks atuais) e acima da interface do Instagram;
+     - mais nada na tela. Qualquer elemento extra só se for temporário e pequeno.
+     Stories usam outro molde (templates/estela-story.html): vídeo puro, sem legenda.
+     Uso: copiar este arquivo para posts/AAAA-MM-DD-slug/post.html e trocar video-src e video-subtitles (e o reel-cover,
+     se a capa pedir outro instante). O link do CSS já está relativo à pasta do post. -->
+<style>
+  html, body { background: transparent !important; }
+  #cap { position: absolute; left: 140px; right: 140px; bottom: 430px; text-align: center; opacity: 0; }
+  #cap.on { opacity: 1; }
+  #cap span { display: inline; padding: 2px 14px; line-height: 1.32; border-radius: 10px; background: rgba(5,7,15,0.55);
+              -webkit-box-decoration-break: clone; box-decoration-break: clone;
+              font-family: var(--font-display); font-weight: 700; font-size: 56px; letter-spacing: 0.01em; color: #FFFFFF; }
+  #cap b { color: var(--t1); font-weight: 700; }
+</style>
+</head>
+<body>
+  <div id="cap"></div>
+</body>
+</html>
