@@ -1,0 +1,31 @@
+1
+00:00:00,260 --> 00:00:01,340
+A semana do Navistron
+
+2
+00:00:01,410 --> 00:00:03,120
+começou devagar: ontem,
+
+3
+00:00:03,230 --> 00:00:04,750
+uma partida só, de cento
+
+4
+00:00:04,820 --> 00:00:05,830
+e noventa e dois pontos,
+
+5
+00:00:05,940 --> 00:00:06,550
+sem nick.
+
+6
+00:00:06,790 --> 00:00:08,330
+Hoje é terça: joga,
+
+7
+00:00:08,460 --> 00:00:09,870
+passa disso e põe o seu
+
+8
+00:00:09,910 --> 00:00:10,890
+nick no game over!
