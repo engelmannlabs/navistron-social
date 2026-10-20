@@ -15,9 +15,13 @@ Começa em 1 e sobe a cada ponto que você faz.
 Aos 10 mil, no Tier II, já marca 14,4, e os
 
 5
-00:00:12,610 --> 00:00:16,600
-meteoros caem mais rápido, aguentam mais tiros e valem mais.
+00:00:12,610 --> 00:00:15,060
+meteoros caem mais rápido, aguentam mais
 
 6
+00:00:15,130 --> 00:00:16,600
+tiros e valem mais.
+
+7
 00:00:16,880 --> 00:00:20,330
 Joga hoje, repara nele e põe o nick no game over!
