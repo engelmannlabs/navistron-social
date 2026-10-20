@@ -4,6 +4,20 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-16 · **A quarta de dois posts fez 21; a segunda, 137 — a diferença está no reel das 13:00, não no 2º post. E o
+  /ranking mostra as datas em UTC.** Na quarta 14/10, o reel de mecânica das 13:00 ("Subir de tier enfraquece") fechou em **9
+  de alcance / 16 views** (~28 h, a métrica parada desde a leitura de ~5 h), o menor dos cinco reels de mecânica do slot (111,
+  14, 122, 65 e 9; a mediana da série caiu para 18), e a Estela das 19:00, em **12 / 16** (~22 h), com **1 like e 1
+  comentário**. Os dois dias de dois posts fizeram 137 e 21: o 2º post deu 32 e 12, e o que mudou foi o 1º (105 contra 9) — a
+  leitura da S42 sai em 18/10. Nos stories, o de 14/10 fechou em **32 de alcance / 37 views**, o maior desde 05/10 (os de 12 e
+  13/10: 7 e 15), e o de 15/10 tinha 17 com ~8 h. **Datas do /ranking são UTC**: a 1ª versão do reel das 13:00 dizia que o
+  KAL-EL estreou em 07/10, a data do /ranking, mas a partida foi às 21:13 de 06/10 — toda partida depois das 21:00 aparece lá
+  com a data do dia seguinte; a lista de partidas do /stats tem a hora de Brasília e é a fonte de data (corrigido antes de
+  agendar). **Braços parados seguraram de novo no story**: só a borda de uma mão na beira de baixo, em ~14,8 e ~15,6 s — 2
+  vídeos quase sem mão em 3; no reel, com o pedido antigo (mãos paradas só no começo), uns 15 gestos naturais. No jogo, a
+  quinta 15/10 não teve nenhuma partida. No blog, o artigo dos pilotos achou que só 6 dos 46 salvaram partidas em mais de um
+  dia — e as 12 melhores partidas com nick são desses seis. HeyGen: 139 → 123; os 12 stories e 3 reels até 28/10 só cabem
+  acima da guarda com stories de até ~13 s (~37 palavras) e sem refazer (conta na ficha).
 - 2026-10-15 · **O dia de um post só fez 47; o de dois, 137 — e os stories da Estela tiveram os dois maiores alcances
   desde 05/10.** Na terça 13/10, o único post do feed (o reel da partida 600, 13:00) fechou em **47 de alcance / 59
   views** (~29 h), o 8º maior do slot (25 posts; a mediana subiu para 22); na segunda, o ranking das 13:00 tinha feito 105

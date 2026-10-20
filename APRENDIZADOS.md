@@ -4,6 +4,21 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-20 · **O Avatar III passou no story pela metade do preço — e o mostrador do cenário virou animação no Avatar
+  IV.** Métricas: o reel de domingo, 18/10 ("Fez 14.012 e ficou fora do top 10"), fechou em **10 de alcance / 15 views**
+  (~24 h), e o slot das 13:00 da S42 fechou com 105, 47, 9, 12, 6, 1 e 10 (mediana 10, contra 14 na série toda); o story
+  de 18/10 (os mísseis) fechou em **28 / 32**, com 2 reações — os stories de 12 a 18/10 fizeram 7, 15, 32, 31, 25, 25 e
+  28. No jogo, a S43 começou devagar: a segunda 19/10 teve **uma partida só** (16:43, anônima, 192 pontos em 25 s),
+  depois de uma S42 que jogou de manhã. Na lista por pontos, **162 das 632 partidas passaram dos 10 mil** — 47 das 97
+  com nick (48%), contra 115 das 535 anônimas (21%): quem põe o nick joga melhor, ou quem joga melhor põe o nick.
+  Produção: o story foi no **Avatar III** (a variável: o motor), o 1º vídeo publicado nele — 2 créditos por 11,0 s (no
+  Avatar IV, 4), boca acompanhando a fala, rosto natural, nenhuma mão e bordas limpas. No reel, **o Avatar IV animou o
+  mostrador do cenário** como um painel: ele sumia, girava e virava uma bola laranja; refeito com o fundo "parado como
+  uma foto" no motionPrompt, o mostrador ainda mexeu, mas ficou sempre um mostrador. Objeto que sugere movimento
+  (ponteiro, mostrador) pede o fundo parado já na 1ª tentativa, e a contagem de pixels da cor do objeto pega o que a
+  folha de 12 quadros não pega. A Friendly a 1,15x leu 61 palavras em 20,5 s num reel (~0,335 s por palavra). HeyGen:
+  102 → 83; os 8 stories e os 2 reels até 28/10 só cabem acima da guarda com os stories no Avatar III (~40 contra 53; no
+  Avatar IV, ~56). No blog, o guia dos 10 mil completou a escada dos guias de pontos (10, 20 e 30 mil).
 - 2026-10-19 · **A semana 42 fechou com o placar campeão mais baixo da série e jogou de manhã — e os dois carrosséis do
   slot das 13:00 fecharam em 1.** O carrossel de sábado, 17/10 ("RASEC dobrou"), fechou em **1 de alcance / 1 view**
   (~25 h), como o de 09/10; o de 01/10, às 15:00, fez 3 — carrossel é o formato que menos distribui (a S43 tem um, no
@@ -51,20 +66,6 @@ apenas este arquivo, e não o playbook inteiro.
   (35 palavras em 15,9 s, ~0,46 s por palavra, contra ~0,36 da Friendly), 1 crédito a mais por story, e os braços parados
   deram **zero mão** (três vídeos sem mão, ou quase, em quatro). HeyGen: 123 → 117; os 11 stories e 3 reels até 28/10 cabem
   acima da guarda com stories de 5 (Friendly, até ~13 s) e sem refazer.
-- 2026-10-16 · **A quarta de dois posts fez 21; a segunda, 137 — a diferença está no reel das 13:00, não no 2º post. E o
-  /ranking mostra as datas em UTC.** Na quarta 14/10, o reel de mecânica das 13:00 ("Subir de tier enfraquece") fechou em **9
-  de alcance / 16 views** (~28 h, a métrica parada desde a leitura de ~5 h), o menor dos cinco reels de mecânica do slot (111,
-  14, 122, 65 e 9; a mediana da série caiu para 18), e a Estela das 19:00, em **12 / 16** (~22 h), com **1 like e 1
-  comentário**. Os dois dias de dois posts fizeram 137 e 21: o 2º post deu 32 e 12, e o que mudou foi o 1º (105 contra 9) — a
-  leitura da S42 sai em 18/10. Nos stories, o de 14/10 fechou em **32 de alcance / 37 views**, o maior desde 05/10 (os de 12 e
-  13/10: 7 e 15), e o de 15/10 tinha 17 com ~8 h. **Datas do /ranking são UTC**: a 1ª versão do reel das 13:00 dizia que o
-  KAL-EL estreou em 07/10, a data do /ranking, mas a partida foi às 21:13 de 06/10 — toda partida depois das 21:00 aparece lá
-  com a data do dia seguinte; a lista de partidas do /stats tem a hora de Brasília e é a fonte de data (corrigido antes de
-  agendar). **Braços parados seguraram de novo no story**: só a borda de uma mão na beira de baixo, em ~14,8 e ~15,6 s — 2
-  vídeos quase sem mão em 3; no reel, com o pedido antigo (mãos paradas só no começo), uns 15 gestos naturais. No jogo, a
-  quinta 15/10 não teve nenhuma partida. No blog, o artigo dos pilotos achou que só 6 dos 46 salvaram partidas em mais de um
-  dia — e as 12 melhores partidas com nick são desses seis. HeyGen: 139 → 123; os 12 stories e 3 reels até 28/10 só cabem
-  acima da guarda com stories de até ~13 s (~37 palavras) e sem refazer (conta na ficha).
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
