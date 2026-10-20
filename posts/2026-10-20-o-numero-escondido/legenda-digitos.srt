@@ -1,0 +1,23 @@
+1
+00:00:00,220 --> 00:00:01,220
+Tem um número escondido
+
+2
+00:00:01,260 --> 00:00:05,250
+na tela do Navistron: no canto de baixo, à direita, a dificuldade.
+
+3
+00:00:05,490 --> 00:00:08,010
+Começa em 1 e sobe a cada ponto que você faz.
+
+4
+00:00:08,270 --> 00:00:12,570
+Aos 10 mil, no Tier II, já marca 14,4, e os
+
+5
+00:00:12,610 --> 00:00:16,600
+meteoros caem mais rápido, aguentam mais tiros e valem mais.
+
+6
+00:00:16,880 --> 00:00:20,330
+Joga hoje, repara nele e põe o nick no game over!
