@@ -4,6 +4,21 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-21 · **As partidas com nick fazem o dobro de pontos das anônimas — e o Avatar III cobrou o mesmo por 16 s e por 11 s.**
+  O /stats tem filtros por tipo (?tipo=registrados e ?tipo=anonimos, o link "Partidas Anônimas" da página): as 97 partidas com nick
+  têm média de **9.799** pontos, e as 535 anônimas, **4.782** (a conta fecha com o geral, 5.552) — e 48% das com nick passaram dos
+  10 mil, contra 21% das anônimas. Não dá para separar causa (o nick não muda o jogo; quem joga melhor faz mais questão de salvar),
+  mas é o argumento mais concreto que o pedido "põe o nick" já teve, e virou o reel de hoje. No jogo, a terça 20/10 não teve
+  partida: desde sábado, uma só (192 pontos, na segunda), e as 11 partidas desde a última com nick (RASEC, 16/10) foram anônimas.
+  Métricas: o reel de segunda (ranking da semana 42) fechou em **14 / 15** (~23 h), exatamente a mediana do slot (14, agora com 31
+  posts); o story de 19/10 fechou em **18 / 25** — os stories de 13 a 19/10 fizeram 15, 32, 31, 25, 25, 28 e 18 —, e o de 20/10, o
+  1º no Avatar III, tinha 17 / 19 com ~6,7 h, no ritmo dos outros. Produção: o 2º story no **Avatar III** (a variável: a duração)
+  saiu com 50 palavras em 16,1 s e custou **2 créditos**, o mesmo do de 11,0 s — pelo que se mediu (11,0 s e 16,1 s = 2; 22,9 s = 3),
+  ele cobra ~1 crédito a cada ~8–10 s, menos da metade do Avatar IV, e o story pode voltar aos 40–60 palavras da regra sem pesar no
+  orçamento. Mas ele não aceita motionPrompt, e **o look decide os gestos**: no look de braços abertos, ela gesticulou o vídeo todo
+  (naturais, sem artefato); no de 20/10, nenhuma mão. Para um story sem mãos no Avatar III, pedir o look com os braços para baixo.
+  HeyGen: 83 → 80; os 7 stories (22 a 28/10) e os 2 reels da S43 pedem ~37 (stories de 3, reels de 8), contra 50 acima da guarda.
+  No blog, o eixo da quarta ganhou o controle: jogos para jogar com uma mão (Hoober, 2013: 49% seguram o celular com uma mão só).
 - 2026-10-20 · **O Avatar III passou no story pela metade do preço — e o mostrador do cenário virou animação no Avatar
   IV.** Métricas: o reel de domingo, 18/10 ("Fez 14.012 e ficou fora do top 10"), fechou em **10 de alcance / 15 views**
   (~24 h), e o slot das 13:00 da S42 fechou com 105, 47, 9, 12, 6, 1 e 10 (mediana 10, contra 14 na série toda); o story
@@ -52,20 +67,6 @@ apenas este arquivo, e não o playbook inteiro.
   (a 1,1x, ~0,36): ~41 palavras cabem em 13,2 s. HeyGen: 117 → 108; com o refazer, os 10 stories e 3 reels até 28/10 só
   cabem acima da guarda sem refazer mais nada. No blog, a pauta de colisão foi trocada pelo tunneling porque um artigo
   original já cobria os raios: conferir os 23 artigos de `blogArticles.js`, além dos diários, antes de escolher a pauta.
-- 2026-10-17 · **O desafio de quinta foi cumprido na sexta — e quem voltou melhorou de novo: 7 em 7.** O reel das 13:00
-  de 15/10 ("O 1º lugar da semana tem 7.590") fechou em **12 de alcance / 18 views** (~27 h), abaixo da mediana do slot (14,
-  com 27 posts): os reels das 13:00 da S42 fizeram 105, 47, 9 e 12 de segunda a quinta, e a leitura da semana sai em 18/10.
-  Mas o pedido da legenda, passar dos 7.590 com nick, aconteceu no dia seguinte: em 16/10, às 10:54, o RASEC, estreante de
-  14/10, fez **8.061** e passou o ROBER na semana 42 (sem como saber se pelo post). Com ele, são **7 os pilotos que salvaram
-  partidas em mais de um dia, e nos 7 a melhor partida veio na volta** — o padrão do artigo de 16/10 se repetiu no primeiro
-  caso novo e virou o carrossel do sábado. Na mesma sexta, 8 das 9 partidas ficaram sem nick, três delas acima do RASEC; no
-  total, 531 das 628 partidas do jogo (84,6%) terminaram sem nick, o número do artigo do dia no blog (o game over). Nos
-  stories, o de 15/10 fechou em **31 de alcance / 36 views**, o 2º maior desde 05/10 (32 em 14/10), e o de 16/10 tinha 17
-  com ~8 h, com 1 reação. **Os sábados estão zerados desde 12/09** (19/09, 26/09, 03/10 e 10/10 sem nenhuma partida): o
-  story de hoje desafia a quebrar a escrita, e a rodada de 18/10 confere. Produção: a Excited a 1,1x leu de novo mais devagar
-  (35 palavras em 15,9 s, ~0,46 s por palavra, contra ~0,36 da Friendly), 1 crédito a mais por story, e os braços parados
-  deram **zero mão** (três vídeos sem mão, ou quase, em quatro). HeyGen: 123 → 117; os 11 stories e 3 reels até 28/10 cabem
-  acima da guarda com stories de 5 (Friendly, até ~13 s) e sem refazer.
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
