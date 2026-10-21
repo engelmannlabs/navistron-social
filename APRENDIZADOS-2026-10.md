@@ -4,6 +4,20 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-17 · **O desafio de quinta foi cumprido na sexta — e quem voltou melhorou de novo: 7 em 7.** O reel das 13:00
+  de 15/10 ("O 1º lugar da semana tem 7.590") fechou em **12 de alcance / 18 views** (~27 h), abaixo da mediana do slot (14,
+  com 27 posts): os reels das 13:00 da S42 fizeram 105, 47, 9 e 12 de segunda a quinta, e a leitura da semana sai em 18/10.
+  Mas o pedido da legenda, passar dos 7.590 com nick, aconteceu no dia seguinte: em 16/10, às 10:54, o RASEC, estreante de
+  14/10, fez **8.061** e passou o ROBER na semana 42 (sem como saber se pelo post). Com ele, são **7 os pilotos que salvaram
+  partidas em mais de um dia, e nos 7 a melhor partida veio na volta** — o padrão do artigo de 16/10 se repetiu no primeiro
+  caso novo e virou o carrossel do sábado. Na mesma sexta, 8 das 9 partidas ficaram sem nick, três delas acima do RASEC; no
+  total, 531 das 628 partidas do jogo (84,6%) terminaram sem nick, o número do artigo do dia no blog (o game over). Nos
+  stories, o de 15/10 fechou em **31 de alcance / 36 views**, o 2º maior desde 05/10 (32 em 14/10), e o de 16/10 tinha 17
+  com ~8 h, com 1 reação. **Os sábados estão zerados desde 12/09** (19/09, 26/09, 03/10 e 10/10 sem nenhuma partida): o
+  story de hoje desafia a quebrar a escrita, e a rodada de 18/10 confere. Produção: a Excited a 1,1x leu de novo mais devagar
+  (35 palavras em 15,9 s, ~0,46 s por palavra, contra ~0,36 da Friendly), 1 crédito a mais por story, e os braços parados
+  deram **zero mão** (três vídeos sem mão, ou quase, em quatro). HeyGen: 123 → 117; os 11 stories e 3 reels até 28/10 cabem
+  acima da guarda com stories de 5 (Friendly, até ~13 s) e sem refazer.
 - 2026-10-16 · **A quarta de dois posts fez 21; a segunda, 137 — a diferença está no reel das 13:00, não no 2º post. E o
   /ranking mostra as datas em UTC.** Na quarta 14/10, o reel de mecânica das 13:00 ("Subir de tier enfraquece") fechou em **9
   de alcance / 16 views** (~28 h, a métrica parada desde a leitura de ~5 h), o menor dos cinco reels de mecânica do slot (111,
