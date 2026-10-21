@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="14.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="1.6">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>
+  .hk { font-family: var(--font-display); font-weight: 700; line-height: 0.86; letter-spacing: 0.01em; }
+  .hk .lb { font-size: 150px; color: var(--ink); text-shadow: 0 0 40px rgba(34,211,238,0.18); }
+  .hk .nb { font-family: var(--font-mono); font-weight: 800; font-size: 236px; line-height: 1; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+  .hk .nb.c { color: var(--t1); text-shadow: 0 0 50px rgba(34,211,238,0.5); }
+  .hk .nb.m { color: var(--muted); text-shadow: 0 0 30px rgba(143,163,199,0.25); }
+  .hk .w { display: inline-block; }
+  .cmp { width: 900px; margin: 46px auto 0; }
+  .crow { opacity: 0; padding: 26px 0 30px; border-bottom: 2px solid rgba(143,163,199,0.16); }
+  .crow:last-child { border-bottom: 0; }
+  .crow .top { display: flex; align-items: baseline; }
+  .crow .nm { flex: 1; text-align: left; font-family: var(--font-ui); font-weight: 700; font-size: 46px; letter-spacing: 0.06em; color: var(--ink); text-transform: uppercase; }
+  .crow .val { width: 340px; text-align: right; font-family: var(--font-mono); font-weight: 800; font-size: 150px; line-height: 1; font-variant-numeric: tabular-nums; }
+  .crow .of { margin-top: 6px; text-align: left; font-family: var(--font-ui); font-weight: 500; font-size: 28px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; }
+  .crow .of b { color: var(--ink); }
+  .bar { margin-top: 18px; height: 22px; border-radius: 11px; background: rgba(143,163,199,0.12); overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; border-radius: 11px; }
+  #c1 .val { color: var(--t1); text-shadow: 0 0 40px rgba(34,211,238,0.45); }
+  #c1 .bar i { background: var(--t1); box-shadow: 0 0 24px rgba(34,211,238,0.6); }
+  #c2 .val { color: var(--muted); }
+  #c2 .bar i { background: var(--muted); }
+  #c1 .val.lock { color: #FACC15; text-shadow: 0 0 46px rgba(250,204,21,0.6); }
+  #nk .counter { font-size: 250px; }
+</style>
+<!-- PARTIDAS COM E SEM NICK, por navistron.io/stats (lido em 21/10/2026 ~01:10 BRT, com ?v=; horários de Brasília):
+     ?tipo=registrados ("Exibindo todos os tempos · partidas registradas") → 97 partidas, 46 pilotos, 3h 52m, tempo médio 2m 24s,
+     score médio 9.799, maior score 30.577 (1ª 02/05/26 às 11:41, última 16/10/26 às 10:54);
+     ?tipo=anonimos ("… · partidas anônimas") → 535 partidas, 17h 43m, tempo médio 1m 59s, score médio 4.782, maior score 23.594
+     (1ª 29/04/26 às 14:57, última 19/10/26 às 16:43); geral → 632 partidas, 21h 35m, score médio 5.552.
+     A conta fecha: 97 × 9.799 + 535 × 4.782 = 3.508.873, ÷ 632 = 5.552,0; 3h 52m + 17h 43m = 21h 35m.
+     "Passaram dos 10 mil": as 200 maiores partidas (?visao=partidas&ordem=score, páginas 1 a 4, lidas em 20/10 ~01:05; nenhuma
+     partida nova desde 19/10 às 16:43, então a lista é a mesma em 21/10) — a 162ª tem 10.014 e a 163ª, 9.979: 162 de 632,
+     47 com nick (47/97 = 48,45% → 48%) e 115 anônimas (115/535 = 21,50% → 21%, pois é 21,495…).
+     "Faltam 3 para a 100ª": 97 partidas com nick até 21/10 à 01:10 (a última, a do RASEC, 8.061, em 16/10 às 10:54; as 11
+     partidas seguintes, de 16/10 às 10:57 a 19/10 às 16:43, foram anônimas).
+     Fundo: a nave no Tier III (amarelo #ffdd00, tiros c1 255,255,150 / c2 255,200,0, um a cada 0,13 s), o melhor tier de
+     7 dos 10 pilotos do top 10. -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Telemetria · @navistron</div>
+
+  <div id="hook" class="layer" style="top: 410px">
+    <div class="hk">
+      <span class="w lb" id="w1">COM NICK</span><br>
+      <span class="w nb c" id="w2">9.799</span><br>
+      <span class="w lb" id="w3" style="margin-top: 26px">SEM NICK</span><br>
+      <span class="w nb m" id="w4">4.782</span>
+    </div>
+    <div class="sub" id="hsub" style="margin-top: 44px; opacity: 0">média de pontos por partida<br><b>632</b> partidas · até <b>21/10</b></div>
+  </div>
+
+  <div id="dz" class="layer" style="top: 470px">
+    <div class="kicker">passaram dos 10 mil pontos</div>
+    <div class="cmp">
+      <div class="crow" id="c1">
+        <div class="top"><span class="nm">com nick</span><span class="val" id="p1">0%</span></div>
+        <div class="bar"><i id="b1"></i></div>
+        <div class="of"><b>47</b> de <b>97</b> partidas</div>
+      </div>
+      <div class="crow" id="c2">
+        <div class="top"><span class="nm">sem nick</span><span class="val" id="p2">0%</span></div>
+        <div class="bar"><i id="b2"></i></div>
+        <div class="of"><b>115</b> de <b>535</b> partidas</div>
+      </div>
+    </div>
+  </div>
+
+  <div id="nk" class="layer" style="top: 560px">
+    <div class="kicker">partidas com nick</div>
+    <div class="counter" id="np" style="margin-top: 34px">0</div>
+    <div class="sub" id="nsub" style="margin-top: 26px; opacity: 0">de <b>632</b> · até <b>21/10</b></div>
+    <div id="ft" style="margin-top: 64px; opacity: 0"><span class="marker gold">faltam <b>3</b> para a <b>100ª</b></span></div>
+  </div>
+
+  <div id="ask" class="layer" style="top: 560px">
+    <div class="h1" style="font-size: 160px">A <span class="accent">100ª</span><br>PODE SER<br>A SUA</div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">grátis, sem login</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<style>
+  .marker.gold { border-color: rgba(250,204,21,0.55); background: rgba(250,204,21,0.10); }
+  .marker.gold b { color: #FACC15; }
+</style>
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 14.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+
+  // ---------- PRNG determinístico ----------
+  let s = 2110;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- a partida no fundo: meteoros caindo, nave no Tier III (amarelo) atirando ----------
+  const YELLOW = '255,221,0', C1 = '255,255,150', C2 = '255,200,0';
+  const N = 26, CYC = 2100, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 200 + rnd() * 170, r: 20 + rnd() * 44, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * CYC, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  function mpos(m, t) {
+    const dist = t * 1.5 * m.v + m.phase;
+    const cycle = Math.floor(dist / CYC);
+    const y = (dist % CYC) - 120;
+    const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+    return { x, y };
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function drawMeteor(m, x, y, rot) {
+    fx.save(); fx.translate(x, y); fx.rotate(rot);
+    fx.beginPath();
+    const n = m.shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = m.r * m.shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+    fx.fillStyle = m.big ? 'rgba(20,26,46,0.92)' : 'rgba(14,19,36,0.9)';
+    fx.fill();
+    fx.lineWidth = m.big ? 3 : 2;
+    fx.strokeStyle = m.big ? 'rgba(190,208,240,0.75)' : 'rgba(150,170,205,0.6)';
+    fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y); fx.scale(1.25, 1.25);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, `rgba(${YELLOW},0.95)`); g.addColorStop(1, `rgba(${YELLOW},0)`);
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = `rgba(${YELLOW},0.75)`; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = `rgb(${YELLOW})`; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 170 * Math.sin(t * 0.8 + 0.6) + 50 * Math.sin(t * 2.1);
+  const shipY = 1450;
+  const RATE = 0.13, BV = 1040, BLIFE = 1.6, STEP = 1 / 60;
+  // o tiro some no 1º meteoro que tocar (conta feita só com t, para cada quadro sair igual)
+  function bulletState(tb, t) {
+    const x0 = shipX(tb), y0 = shipY - 60;
+    for (let tau = tb; tau <= t + 1e-9; tau += STEP) {
+      const y = y0 - (tau - tb) * BV;
+      for (const m of meteors) {
+        const p = mpos(m, tau);
+        const dx = p.x - x0, dy = p.y - y;
+        if (dx * dx + dy * dy < Math.pow(m.r * 0.72 + 8, 2)) return { hit: true, x: x0, y, at: tau };
+      }
+    }
+    return { hit: false, x: x0, y: y0 - (t - tb) * BV };
+  }
+  function drawBullet(x, y) {
+    const g = fx.createRadialGradient(x, y, 0, x, y, 30);
+    g.addColorStop(0, `rgba(${C1},1)`); g.addColorStop(.3, `rgba(${C2},.8)`); g.addColorStop(1, 'rgba(120,90,0,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.arc(x, y, 30, 0, Math.PI * 2); fx.fill();
+    fx.fillStyle = '#fff'; fx.beginPath(); fx.arc(x, y, 8, 0, Math.PI * 2); fx.fill();
+  }
+
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    for (const m of meteors) {
+      const p = mpos(m, t);
+      if (p.y < -120 || p.y > H + 120) continue;
+      drawMeteor(m, p.x, p.y, m.rot + t * m.w);
+    }
+    const k0 = Math.max(0, Math.floor((t - BLIFE) / RATE));
+    for (let k = k0; k * RATE <= t; k++) {
+      const tb = k * RATE, st = bulletState(tb, t);
+      if (!st.hit) { if (st.y > -40) drawBullet(st.x, st.y); continue; }
+      const age = t - st.at;                       // faísca amarela no ponto do impacto, 0,25 s
+      if (age < 0.25) {
+        const a = 1 - age / 0.25;
+        for (let j = 0; j < 6; j++) {
+          const ang = j * 1.047 + k;
+          fx.fillStyle = `rgba(${C1},${a})`;
+          fx.beginPath(); fx.arc(st.x + Math.cos(ang) * 120 * age, st.y + Math.sin(ang) * 120 * age, 4 * a + 1, 0, Math.PI * 2); fx.fill();
+        }
+      }
+    }
+    drawShip(shipX(t), shipY, t);
+    const vg = fx.createRadialGradient(540, 860, 200, 540, 860, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.7)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+  // /stats?tipo=registrados e ?tipo=anonimos, lidos em 21/10; acima de 10 mil pela lista por pontos (20/10)
+  const PCT = [
+    { row: 'c1', val: 'p1', bar: 'b1', pct: 48, a: 2.9, end: 5.5 },    // com nick: 47 de 97
+    { row: 'c2', val: 'p2', bar: 'b2', pct: 21, a: 3.5, end: 4.7 },    // sem nick: 115 de 535
+  ];
+  const HIT = 5.5;                                    // trava dos 48%
+  const COM_NICK = 97;
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+
+    // 1) gancho: legível desde o quadro 0 (as duas médias); o "média de pontos por partida" entra em 0,5 s; sai em 2.4–2.7
+    const outH = 1 - seg(t, 2.4, 0.3);
+    layer($('hook'), outH, -30 * (1 - outH));
+    const ws = [['w1', 0.0, 0.35], ['w2', 0.05, 0.4], ['w3', 0.1, 0.4], ['w4', 0.15, 0.4]];
+    for (const [id, a, d] of ws) {               // sempre opaco (gancho legível no quadro 0); só assenta 14 px
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = 1;
+      $(id).style.transform = `translateY(${14 * (1 - v)}px)`;
+    }
+    const hs = ease.out3(seg(t, 0.5, 0.4));
+    $('hsub').style.opacity = hs; $('hsub').style.transform = `translateY(${20 * (1 - hs)}px)`;
+
+    // 2) acima de 10 mil: com nick 48% (trava em HIT), sem nick 21%; sai 7.2–7.5
+    const inD = ease.out3(seg(t, 2.6, 0.35)), outD = 1 - seg(t, 7.2, 0.3);
+    layer($('dz'), inD * outD, 30 * (1 - inD));
+    for (const r of PCT) {
+      const ri = ease.out3(seg(t, r.a, 0.35));
+      $(r.row).style.opacity = ri; $(r.row).style.transform = `translateX(${-36 * (1 - ri)}px)`;
+      const cp = 1 - Math.pow(1 - seg(t, r.a + 0.1, r.end - r.a - 0.1), 2.2);
+      $(r.val).textContent = Math.round(r.pct * cp) + '%';
+      $(r.bar).style.width = (r.pct * cp) + '%';
+    }
+    const locked = t >= HIT;
+    $('p1').className = 'val' + (locked ? ' lock' : '');
+    $('p1').style.transform = `scale(${locked ? 1 + 0.08 * Math.exp(-(t - HIT) * 4) : 1})`;
+
+    // 3) 97 partidas com nick, de 632; faltam 3 para a 100ª — 7.5–10.9
+    const inN = ease.out3(seg(t, 7.5, 0.35)), outN = 1 - seg(t, 10.6, 0.3);
+    layer($('nk'), inN * outN, 30 * (1 - inN));
+    const np = 1 - Math.pow(1 - seg(t, 7.55, 0.8), 2.2);
+    $('np').textContent = Math.round(COM_NICK * np);
+    const ns = ease.out3(seg(t, 8.0, 0.35));
+    $('nsub').style.opacity = ns; $('nsub').style.transform = `translateY(${16 * (1 - ns)}px)`;
+    const ft = ease.out3(seg(t, 8.5, 0.35));
+    $('ft').style.opacity = ft; $('ft').style.transform = `translateY(${20 * (1 - ft)}px)`;
+
+    // 4) "a 100ª pode ser a sua" 10.95–12.2
+    const inA = ease.out3(seg(t, 10.95, 0.35)), outA = 1 - seg(t, 11.9, 0.3);
+    layer($('ask'), inA * outA, 0, 0.92 + 0.08 * inA);
+
+    // 5) CTA 12.25–14.0
+    const inC = ease.out3(seg(t, 12.25, 0.5));
+    layer($('cta'), inC, 30 * (1 - inC));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
