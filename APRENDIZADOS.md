@@ -4,6 +4,21 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-22 · **Um piloto novo fez a 100ª partida com nick antes de o post que contava as que faltavam ir ao ar — e o Avatar III
+  passou num reel.** A quarta 21/10 teve 34 partidas, todas de manhã (08:35 a 11:20): 7 com nick, todas do MARCAO, piloto novo (o 47º),
+  que entrou em 4º no top 10 de pilotos com 20.301 (a 7ª maior partida da história) e fez a 100ª partida com nick às 08:48 — mais de 4
+  horas antes de o reel de dados das 13:00 ir ao ar dizendo "faltam 3". O número estava datado ("até 21/10", "lidos à 01:10"), mas
+  envelheceu de manhã: **contagem regressiva num post agendado para 12 horas depois é aposta** — melhor o fato fechado ("até a 01:10,
+  eram 97") ou o pedido sem número. Métricas: o story de 20/10, o 1º no Avatar III, fechou em **27 / 31** (~24 h), no meio dos stories
+  no Avatar IV (os de 14 a 20/10 fizeram 32, 31, 25, 25, 28, 18 e 27); a Estela das 19:00 de 20/10 tinha **25 / 29** com ~16 h, já perto
+  das Estelas das 19:00 da S42 (32, 12 e 28); o story de 21/10 tinha só 0 / 2 com ~7,7 h (o de 20/10, 17 / 19 com ~6,7 h). Produção: o
+  reel e o story saíram no **Avatar III**; com os braços para baixo no look, o reel teve um gesto só (as mãos no peito e abertas para os
+  lados em ~14–15,6 s, naturais) e o story, nenhum — com o de 20/10, dois stories sem gesto com os braços para baixo, contra um vídeo
+  inteiro de gestos com os braços abertos. O motor anima o objeto do cenário: a navinha do reel voou pelo alto e mudou de tamanho, mas
+  sempre navinha; a revoada do story quase não mexeu. Preço: os vídeos de 23,8 s e 17,3 s custaram 6 juntos; com os de 11,0 s e 16,1 s (2
+  cada) e 22,9 s (3), o Avatar III parece cobrar ~1 crédito a cada ~8,1–8,6 s, arredondado para cima (3 e 3). HeyGen: 80 → 72; os 6
+  stories (23 a 28/10) e o reel de sexta pedem ~22–33, contra 42 acima da guarda. No blog, o cooldown entrou como conceito, no modelo do
+  RNG (15/10): o Tier VI e o VII, a 1ª ideia, já estavam no artigo do Tier V (08/10) — conferir os guias de cada tier antes da pauta.
 - 2026-10-21 · **As partidas com nick fazem o dobro de pontos das anônimas — e o Avatar III cobrou o mesmo por 16 s e por 11 s.**
   O /stats tem filtros por tipo (?tipo=registrados e ?tipo=anonimos, o link "Partidas Anônimas" da página): as 97 partidas com nick
   têm média de **9.799** pontos, e as 535 anônimas, **4.782** (a conta fecha com o geral, 5.552) — e 48% das com nick passaram dos
@@ -49,24 +64,6 @@ apenas este arquivo, e não o playbook inteiro.
   ganho da 1,15x some, e o story custou 6. HeyGen: 108 → 102; os 9 stories (20 a 28/10) e os 3 reels da S43 pedem ~69–72
   contra 72 acima da guarda — só cabe com stories de até ~35 palavras e sem refazer. No blog, a pendência dos fins de
   semana (aberta em 12/10) foi fechada com nota de correção datada nos artigos de 28/09 e 05/10.
-- 2026-10-18 · **Leitura da S42: o 2º post do dia somou pouco e não dividiu — e a Estela rendeu mais às 19:00 do que
-  às 13:00.** Na sexta 16/10, o reel das 13:00 ("Outubro só teve 2 estreias") fechou em **6 de alcance / 13 views** (~26 h)
-  e a Estela das 19:00 ("a partida esquisita") em **27 / 34** (~20 h): a 1ª vez na S42 em que o 2º post passou o 1º. Na
-  semana, os dias de dois posts somaram 137, 21 e 33, e os de um, 47 e 12; as três Estelas das 19:00 fizeram 32, 12 e 27, e
-  o reel das 13:00 variou de 6 a 105 com ou sem 2º post (105, 9 e 6 nos dias de dois; 47 e 12 nos de um) — a variância do
-  slot das 13:00 engole qualquer efeito do 2º post, que somou ~24 por dia sem sinal de tirar alcance do 1º. De segunda a
-  sexta, o feed fez 250 em 8 posts, contra 60 em 5 na S41 (puxados pelos 105 e 47 de segunda e terça), e os stories, 110
-  contra 26. O que fica para a S43: a Estela às 19:00 teve mediana **27** (3 vídeos), contra **14** às 13:00 nas S40–S41
-  (29, 70, 14, 4 e 14) — amostra pequena, e é a pergunta da semana que vem. No jogo, as métricas que importam não andaram:
-  a S42 teve 38 partidas até sábado (a S41 inteira, 47) e 1 piloto novo (RASEC), como a S41 (KAL-EL). **O sábado voltou**:
-  3 partidas em 17/10, das 11:42 às 11:46, todas anônimas — o 1º sábado com partida desde 12/09 —, antes do carrossel e do
-  story que pediam por elas; a de 11:46 fez 14.012, 5 pontos acima do 10º do top 10 de pilotos, sem nick (o reel de hoje).
-  Produção: **defeito novo no Avatar IV** — a 1ª tentativa do story trouxe figuras de outras pessoas entrando pelas bordas
-  do quadro, atrás dela, por ~3 s; a varredura das bordas (pixels quentes nas faixas laterais) acusou o trecho inteiro, e a
-  2ª tentativa, com "She is alone in the frame" no motionPrompt, saiu limpa. A Friendly a 1,15x leu ~0,32 s por palavra
-  (a 1,1x, ~0,36): ~41 palavras cabem em 13,2 s. HeyGen: 117 → 108; com o refazer, os 10 stories e 3 reels até 28/10 só
-  cabem acima da guarda sem refazer mais nada. No blog, a pauta de colisão foi trocada pelo tunneling porque um artigo
-  original já cobria os raios: conferir os 23 artigos de `blogArticles.js`, além dos diários, antes de escolher a pauta.
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
