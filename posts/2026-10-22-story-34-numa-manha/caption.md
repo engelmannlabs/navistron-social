@@ -9,8 +9,8 @@ variavel_testada: gestos no Avatar III — o look com os braços para baixo e as
 heygen_video_id: 3bede6e85afe2448205c512c577fdb35
 creditos_heygen: 80 → 78 (os dois looks do dia) → 72 (os dois vídeos juntos, 23,8 s e 17,3 s, 6; pelo arredondamento medido no Avatar III, 3 cada). O story custou ~4 (look 1 + vídeo ~3)
 horario_publicacao: 2026-10-22 16:00 BRT (quinta)
-buffer_post_id: (preencher no agendamento)
-qa: (preencher depois do render)
+buffer_post_id: 6ad9937d7dadc432f73c7df6 (agendado à 01:39 de 22/10 para as 16:00; scheduled, 17,4 s, isAiGenerated true)
+qa: reel.mp4 baixado pelo SHA do commit do render (7ad3aa46) e conferido; a main serve o mesmo arquivo (6.141.319 bytes). Vídeo puro (render.json: captions 0), sem texto nem nada por cima; transcrição (legenda.srt) igual ao roteiro palavra por palavra (54 palavras); áudio presente (média −24,8 dB, pico −6,3 dB); 17,4 s; capa (1,0 s) e último quadro limpos. Rosto sem nada na frente (pele estável na região do rosto: de 3.935 a 4.536). **Mãos: nenhuma subiu** — zero pixel de pele na faixa do peito (1250 a 1650), a 10 fps, do começo ao fim; as mãos ficam em repouso na borda de baixo, como no look. Bordas: só um pedaço da mão dela, na direita, em instantes — ninguém entrando no quadro. No alto, a revoada quase não mexe (diferença contra a mediana do vídeo de no máximo 1,0)
 instagram: metadata.instagram = { type: "story", shouldShareToFeed: false, isAiGenerated: true }
 fonte_dados: telemetria de navistron.io/stats?visao=partidas&ordem=data, lida em 22/10/2026 ~01:10 BRT: as 34 partidas de 21/10, da 1ª às 08:35 (MARCAO, 9.623) à última às 11:20 (anônima, 4.537); 19 acima de 10 mil — 13 anônimas e 6 do MARCAO; a soma fecha com os totais do /stats (632 → 666 partidas; 21h35m → 22h54m; 335.387 pontos, média geral 5.552 → 5.772). Fato fechado e datado ("ontem"), porque o story vai ao ar às 16:00
 ---
