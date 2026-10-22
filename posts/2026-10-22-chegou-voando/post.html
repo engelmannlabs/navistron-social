@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="video">
+<meta name="post-size" content="1080x1920">
+<meta name="video-src" content="https://files2.heygen.ai/aws_pacific/avatar_tmp/c9379eb0ffee407c956c12517ad5feba/f57480a53a66deb54d09a16b9d440693.mp4?Expires=1793247939&Signature=eh~-~ugZ0YYN6bmnSPVaed4QLg~UkJ8Tu7ph4gks4Xu5-keUv5BhucrHA2rNHHUpRj9ySkOExQ-o23vDIEyMBwLA9c~CQkNABUaupQn-m208k4yJpc3gKaCeW9qXqWqXGdVAV5x5aoozquiuCNqsgk5JQnWI82K6xw-YJEPPS5hStqX9eaM8EX8O6KrN9rkLrACxa03uk9vhu91UBM-3Y5PSG25Yqq9urXw6vwbi6g-~EbuhH8jkCOShPdxtrYKm2DS8VOhNfT5UL3SDa8sQ4cSJoxs8I7pQzdgARsuWwp3tpluTohGeQDMaKEvArEn5qKppszFFzPGuQmvAR0nXag__&Key-Pair-Id=K38HBHX5LX3X2H">
+<meta name="video-subtitles" content="https://files2.heygen.ai/aws_pacific/avatar_tmp/c9379eb0ffee407c956c12517ad5feba/subtitles_f57480a53a66deb54d09a16b9d440693.srt?Expires=1793247963&Signature=DmWuzoRBDDqgsg02hWH~M4XmjKEuZ-VnmereFT0AAiQcTgPAcQYTo4iUC44N0z2u-MgbFq40-MvRFrWDkMDUAoJzdfhgQBWSb4iuly4JCET3jYTXVk6v~MLUt5CgUGcty9c0GH0Gu37RD8sCo8LYW7oL8OXjdRskWhascsCLjYc1nk1qTuHnBsOR1xoFB8AnN9TvJh23--fkST0Ax8egltaoA6ig49Kl3yJ0o9pAkvo1-1qE5BoRnKEQy4JmU5OBhwqe2G76sc2gKK8bOmQ5fdXxsFh07US4hV-OTq7QSCq2VNM6ku7B7sq9H3OLpyUp9tTiBtTLyN3Em8dPNLRHgg__&Key-Pair-Id=K38HBHX5LX3X2H">
+<meta name="video-captions" content="srt">
+<meta name="reel-cover" content="1.0">
+<link rel="stylesheet" href="../../templates/reel.css">
+<!-- Reel de 22/10/2026 (quinta, calendário S43: a Estela às 13:00, o único post do feed do dia — a 1ª Estela das 13:00 da
+     S43): boas-vindas ao MARCAO, o 47º piloto. Telemetria de navistron.io/stats lida em 22/10/2026 ~01:05–01:20 BRT (geral,
+     ?periodo=7d, lista de partidas por data, por pontos e por tempo, e /ranking): em 21/10, 34 partidas entre 08:35 e 11:20,
+     7 com nick, todas do MARCAO, e 27 anônimas (a conta fecha com os totais: 666 partidas, 22h54m, média 5.772). O MARCAO
+     salvou a 1ª às 08:35 (9.623) e a melhor às 09:02 (20.301, Tier II, 9 boosts, 2min55): 4º do top 10 de pilotos do /stats,
+     6ª do /ranking e 7ª maior partida da história na lista por pontos, com as anônimas. A 3ª dele, 19.699 às 08:48, foi a
+     100ª partida com nick do jogo (eram 97 em 21/10 à 01:10). Vídeo HeyGen f57480a53a66deb54d09a16b9d440693 (motor Avatar III,
+     a variável testada — o 1º reel publicado nele —, 1080p, 23,8 s), modo econômico pela regra de orçamento (80 créditos no
+     início da rodada contra uma reserva de 97) — take único no look "o cometa amarelo" 0c8c4c67f29090a0459715b147449eeb
+     (laboratório em posts/_lab-2026-10-22-looks): uma navinha amarela, a cor do Tier III, o melhor tier dele, riscando o alto
+     do quadro como um cometa, num rastro dourado longo, longe do cabelo; braços para baixo; nada brilhando abaixo do queixo.
+     Voz Sofia Brazil - Friendly a 1,15x, sem expressiveness nem motionPrompt (o Avatar III não aceita); glossário Navistron.
+     O nick é falado "Marcão" e escrito MARCAO na legenda. -->
+<!-- Camada dos REELS da Estela — versão 3 (29/09/2026).
+     Pedidos do Guilherme depois da estreia: legenda menor, nada cobrindo o rosto, sobreposições só temporárias e
+     minimalistas (v2) e, por fim, SEM selo de IA na arte — o rótulo de IA do Instagram (isAiGenerated) basta (v3).
+     O que sobra por cima do vídeo é só a legenda:
+     - legenda pequena (56 px, caixa baixa), ancorada pela base em y = 1490: uma linha ocupa ~1420–1490 e duas linhas
+       ~1350–1490, sempre abaixo do queixo (~1170 nos looks atuais) e acima da interface do Instagram;
+     - mais nada na tela. Qualquer elemento extra só se for temporário e pequeno.
+     Stories usam outro molde (templates/estela-story.html): vídeo puro, sem legenda.
+     Uso: copiar este arquivo para posts/AAAA-MM-DD-slug/post.html e trocar video-src e video-subtitles (e o reel-cover,
+     se a capa pedir outro instante). O link do CSS já está relativo à pasta do post. -->
+<style>
+  html, body { background: transparent !important; }
+  #cap { position: absolute; left: 140px; right: 140px; bottom: 430px; text-align: center; opacity: 0; }
+  #cap.on { opacity: 1; }
+  #cap span { display: inline; padding: 2px 14px; line-height: 1.32; border-radius: 10px; background: rgba(5,7,15,0.55);
+              -webkit-box-decoration-break: clone; box-decoration-break: clone;
+              font-family: var(--font-display); font-weight: 700; font-size: 56px; letter-spacing: 0.01em; color: #FFFFFF; }
+  #cap b { color: var(--t1); font-weight: 700; }
+</style>
+</head>
+<body>
+  <div id="cap"></div>
+</body>
+</html>
