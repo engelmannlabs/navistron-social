@@ -4,6 +4,24 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-18 · **Leitura da S42: o 2º post do dia somou pouco e não dividiu — e a Estela rendeu mais às 19:00 do que
+  às 13:00.** Na sexta 16/10, o reel das 13:00 ("Outubro só teve 2 estreias") fechou em **6 de alcance / 13 views** (~26 h)
+  e a Estela das 19:00 ("a partida esquisita") em **27 / 34** (~20 h): a 1ª vez na S42 em que o 2º post passou o 1º. Na
+  semana, os dias de dois posts somaram 137, 21 e 33, e os de um, 47 e 12; as três Estelas das 19:00 fizeram 32, 12 e 27, e
+  o reel das 13:00 variou de 6 a 105 com ou sem 2º post (105, 9 e 6 nos dias de dois; 47 e 12 nos de um) — a variância do
+  slot das 13:00 engole qualquer efeito do 2º post, que somou ~24 por dia sem sinal de tirar alcance do 1º. De segunda a
+  sexta, o feed fez 250 em 8 posts, contra 60 em 5 na S41 (puxados pelos 105 e 47 de segunda e terça), e os stories, 110
+  contra 26. O que fica para a S43: a Estela às 19:00 teve mediana **27** (3 vídeos), contra **14** às 13:00 nas S40–S41
+  (29, 70, 14, 4 e 14) — amostra pequena, e é a pergunta da semana que vem. No jogo, as métricas que importam não andaram:
+  a S42 teve 38 partidas até sábado (a S41 inteira, 47) e 1 piloto novo (RASEC), como a S41 (KAL-EL). **O sábado voltou**:
+  3 partidas em 17/10, das 11:42 às 11:46, todas anônimas — o 1º sábado com partida desde 12/09 —, antes do carrossel e do
+  story que pediam por elas; a de 11:46 fez 14.012, 5 pontos acima do 10º do top 10 de pilotos, sem nick (o reel de hoje).
+  Produção: **defeito novo no Avatar IV** — a 1ª tentativa do story trouxe figuras de outras pessoas entrando pelas bordas
+  do quadro, atrás dela, por ~3 s; a varredura das bordas (pixels quentes nas faixas laterais) acusou o trecho inteiro, e a
+  2ª tentativa, com "She is alone in the frame" no motionPrompt, saiu limpa. A Friendly a 1,15x leu ~0,32 s por palavra
+  (a 1,1x, ~0,36): ~41 palavras cabem em 13,2 s. HeyGen: 117 → 108; com o refazer, os 10 stories e 3 reels até 28/10 só
+  cabem acima da guarda sem refazer mais nada. No blog, a pauta de colisão foi trocada pelo tunneling porque um artigo
+  original já cobria os raios: conferir os 23 artigos de `blogArticles.js`, além dos diários, antes de escolher a pauta.
 - 2026-10-17 · **O desafio de quinta foi cumprido na sexta — e quem voltou melhorou de novo: 7 em 7.** O reel das 13:00
   de 15/10 ("O 1º lugar da semana tem 7.590") fechou em **12 de alcance / 18 views** (~27 h), abaixo da mediana do slot (14,
   com 27 posts): os reels das 13:00 da S42 fizeram 105, 47, 9 e 12 de segunda a quinta, e a leitura da semana sai em 18/10.
