@@ -4,6 +4,25 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-23 · **O job de render do Actions passou a estourar o limite de 15 min — e o padrão "quem voltou, melhorou"
+  quebrou no 8º piloto.** Na madrugada de 23/10, o render levou 14 min na folha dos looks (contra ~1 min nos dias
+  anteriores) e o do story estourou o `timeout-minutes: 15` e foi cancelado; os 2º pushes, feitos para destravar, ficaram na
+  fila e foram cancelados por pushes seguintes (o grupo de concorrência `render` guarda um run pendente só) — e, por volta
+  das 04:58Z, os runs voltaram a levar ~2 min. **Antes de re-empurrar, olhar a página pública de Actions** (WebFetch em
+  github.com/engelmannlabs/navistron-social/actions: o run, o estado e o motivo — timeout, cancelado, na fila): re-empurrar
+  com um run pendente só troca um pelo outro, e qualquer run renderiza tudo o que estiver desatualizado. Os runs mostram o
+  aviso da migração do `ubuntu-latest` para o Ubuntu 26 (desde 19/10), a causa provável; fixar o runner ou aumentar o limite
+  é mudança no workflow, que a rotina não pode fazer. No jogo, a quinta 22/10 teve 10 partidas, e o MARCAO voltou (15.999,
+  abaixo dos 20.301 da estreia): dos 8 pilotos que salvaram partidas em mais de um dia, 7 fizeram a melhor na volta — o
+  story do dia. A média das partidas com nick passou dos 10 mil (10.210). Métricas: a Estela das 19:00 de 20/10 fechou em
+  **27 / 32** (~39 h), no meio das três da S42 (32, 12 e 28); o story de 21/10 fechou em **5 / 5**, o menor desde 10/10, e o
+  de 22/10 tinha 0 / 0 com ~8,5 h — depois de 25 a 32 de 14 a 20/10, dois stories seguidos fracos; a leitura de 26/10 diz se
+  é queda ou ruído. Produção: a Excited a 1,15x no Avatar III leu 80 palavras em 30,4 s (~0,38 s por palavra), com a
+  expressão mais animada e sem mão nenhuma (braços para baixo no look); a Friendly a 1,15x, 58 em 16,8 s (~0,29). No look de
+  braços levemente afastados, os braços balançaram de leve e as mãos ficaram na beira de baixo. Avatar III: 16,8 s + 30,4 s
+  = 6 créditos (2 e 4), ~1 a cada ~8,4 s. HeyGen: 72 → 64; os 5 stories de 24 a 28/10 pedem ~15–20, contra 34 acima da
+  guarda. No blog, a lista de partidas por tempo inteira (14 páginas, com a conta fechada contra o /stats) virou o artigo da
+  duração: mediana 2min24, e a partida mais curta possível dura 2 s, porque a nave nasce invencível por 2 s.
 - 2026-10-22 · **Um piloto novo fez a 100ª partida com nick antes de o post que contava as que faltavam ir ao ar — e o Avatar III
   passou num reel.** A quarta 21/10 teve 34 partidas, todas de manhã (08:35 a 11:20): 7 com nick, todas do MARCAO, piloto novo (o 47º),
   que entrou em 4º no top 10 de pilotos com 20.301 (a 7ª maior partida da história) e fez a 100ª partida com nick às 08:48 — mais de 4
@@ -49,21 +68,6 @@ apenas este arquivo, e não o playbook inteiro.
   folha de 12 quadros não pega. A Friendly a 1,15x leu 61 palavras em 20,5 s num reel (~0,335 s por palavra). HeyGen:
   102 → 83; os 8 stories e os 2 reels até 28/10 só cabem acima da guarda com os stories no Avatar III (~40 contra 53; no
   Avatar IV, ~56). No blog, o guia dos 10 mil completou a escada dos guias de pontos (10, 20 e 30 mil).
-- 2026-10-19 · **A semana 42 fechou com o placar campeão mais baixo da série e jogou de manhã — e os dois carrosséis do
-  slot das 13:00 fecharam em 1.** O carrossel de sábado, 17/10 ("RASEC dobrou"), fechou em **1 de alcance / 1 view**
-  (~25 h), como o de 09/10; o de 01/10, às 15:00, fez 3 — carrossel é o formato que menos distribui (a S43 tem um, no
-  sábado 24, e a leitura de 26/10 decide se ele fica). O story de 17/10 fechou em **25 / 29** (~24 h), igual ao de
-  16/10: os stories de 12 a 17/10 fizeram 7, 15, 32, 31, 25 e 25, contra 0 a 8 na S41. A Estela das 19:00 de 16/10 subiu
-  para 28 (~43 h). No jogo, o domingo 18/10 não teve partida, e a S42 fechou com 38 partidas, 5 com nick e 2 pilotos: o
-  RASEC venceu com **8.061**, menos da metade do menor campeão anterior (18.738, semana 38), e pela 1ª vez em 6 semanas
-  a maior partida da semana (14.012) ficou sem nick. **O horário virou**: 20 das 38 partidas saíram antes das 13h,
-  contra 2 de 47 na S41 — o padrão de 14h a 17h do PLAYBOOK não valeu na S42; a S43 mostra se a manhã fica. Produção: a
-  1ª leitura da lista de partidas pelo WebFetch veio sem uma linha (21 pontos, 16:00 de 13/10) — só a conta fechada
-  contra o resumo de 7 dias mostrou a falta; quando a soma não bater, pedir a faixa exata de horário. A Friendly a 1,15x
-  leu 39 palavras em 14,2 s (~0,365 s por palavra, contra ~0,32 em 18/10): com números por extenso e dois-pontos, o
-  ganho da 1,15x some, e o story custou 6. HeyGen: 108 → 102; os 9 stories (20 a 28/10) e os 3 reels da S43 pedem ~69–72
-  contra 72 acima da guarda — só cabe com stories de até ~35 palavras e sem refazer. No blog, a pendência dos fins de
-  semana (aberta em 12/10) foi fechada com nota de correção datada nos artigos de 28/09 e 05/10.
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e

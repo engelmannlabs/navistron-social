@@ -4,6 +4,21 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-19 · **A semana 42 fechou com o placar campeão mais baixo da série e jogou de manhã — e os dois carrosséis do
+  slot das 13:00 fecharam em 1.** O carrossel de sábado, 17/10 ("RASEC dobrou"), fechou em **1 de alcance / 1 view**
+  (~25 h), como o de 09/10; o de 01/10, às 15:00, fez 3 — carrossel é o formato que menos distribui (a S43 tem um, no
+  sábado 24, e a leitura de 26/10 decide se ele fica). O story de 17/10 fechou em **25 / 29** (~24 h), igual ao de
+  16/10: os stories de 12 a 17/10 fizeram 7, 15, 32, 31, 25 e 25, contra 0 a 8 na S41. A Estela das 19:00 de 16/10 subiu
+  para 28 (~43 h). No jogo, o domingo 18/10 não teve partida, e a S42 fechou com 38 partidas, 5 com nick e 2 pilotos: o
+  RASEC venceu com **8.061**, menos da metade do menor campeão anterior (18.738, semana 38), e pela 1ª vez em 6 semanas
+  a maior partida da semana (14.012) ficou sem nick. **O horário virou**: 20 das 38 partidas saíram antes das 13h,
+  contra 2 de 47 na S41 — o padrão de 14h a 17h do PLAYBOOK não valeu na S42; a S43 mostra se a manhã fica. Produção: a
+  1ª leitura da lista de partidas pelo WebFetch veio sem uma linha (21 pontos, 16:00 de 13/10) — só a conta fechada
+  contra o resumo de 7 dias mostrou a falta; quando a soma não bater, pedir a faixa exata de horário. A Friendly a 1,15x
+  leu 39 palavras em 14,2 s (~0,365 s por palavra, contra ~0,32 em 18/10): com números por extenso e dois-pontos, o
+  ganho da 1,15x some, e o story custou 6. HeyGen: 108 → 102; os 9 stories (20 a 28/10) e os 3 reels da S43 pedem ~69–72
+  contra 72 acima da guarda — só cabe com stories de até ~35 palavras e sem refazer. No blog, a pendência dos fins de
+  semana (aberta em 12/10) foi fechada com nota de correção datada nos artigos de 28/09 e 05/10.
 - 2026-10-18 · **Leitura da S42: o 2º post do dia somou pouco e não dividiu — e a Estela rendeu mais às 19:00 do que
   às 13:00.** Na sexta 16/10, o reel das 13:00 ("Outubro só teve 2 estreias") fechou em **6 de alcance / 13 views** (~26 h)
   e a Estela das 19:00 ("a partida esquisita") em **27 / 34** (~20 h): a 1ª vez na S42 em que o 2º post passou o 1º. Na
