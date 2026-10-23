@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="video">
+<meta name="post-size" content="1080x1920">
+<meta name="video-src" content="https://files2.heygen.ai/aws_pacific/avatar_tmp/c9379eb0ffee407c956c12517ad5feba/37a217b7664823ad2c7f1658796370ed.mp4?Expires=1793334818&Signature=N13gbbPMcOTqwadnoMidUmi-XR-KdDdYhZA5v72T6NI5SXan6rPar9Kba9DYRkqFSsKBJJ9yx7Qn6hNgDRsu98iFcvUJvEs692dPkdhjfMh36ILmqjZOQVlaSHZjcq4r5hgoZkj~xBxxB0O2oSeIrjo4htZ13GpSNers1IBTVr0G4VXFVskdFv8uvfgq~gpY7nyi-VDpCThY3sYNAeLTkuD7mu0azsHIALMaYALP-t058Q55~~QNI2qbgooY2gV8jaT79HHSD~FJIwUgSc~Y0kL4W4jvachhOBsvKiYnj-VtGm9u5nfA6BDNEoAzGz-~AFlyyqVjjUxQi82Fb2e9cQ__&Key-Pair-Id=K38HBHX5LX3X2H">
+<meta name="video-subtitles" content="https://files2.heygen.ai/aws_pacific/avatar_tmp/c9379eb0ffee407c956c12517ad5feba/subtitles_37a217b7664823ad2c7f1658796370ed.srt?Expires=1793334826&Signature=YccnHtMmVilpUMRBEOCHJYerjcGUztPGwgLWCWr53ocOXHmssy-hFqx2QnBhzoXABfmpPzXbIO0Smge2GMsLMPnPXeBL-ZRinOJmW~TUjHlfVEGQgAeATF1CnlXv-Bit4CZh-ct-jhV8iRcSUT0xocL3~2pq5cGPR3U7vnh-5mXYLOb1m~9eHuznh~HitF~wDX6Nn0x36VWg~N5CuhFcOaPouhquPnGgb5MihWiVu0TTFa4Uh6PNBSM2dY-Ypzq8XADF4jxCmcO02EoA10D~pg56qddqMP3UrcenkFBAnn5fXie~TUFxBM81sN-6PX1PmOOkgmovhawFrIvkuxSImw__&Key-Pair-Id=K38HBHX5LX3X2H">
+<meta name="video-captions" content="srt">
+<meta name="reel-cover" content="1.0">
+<link rel="stylesheet" href="../../templates/reel.css">
+<!-- Reel de 23/10/2026 (sexta, calendário S43: a Estela às 19:00, o único post do feed do dia — a 2ª Estela das 19:00 da
+     S43): desafio — o tiro roxo. No código do jogo (src/app/play/page.js, SHA 36d68b9a, conferido em 23/10/2026): a cada 5
+     boosts a nave sobe de tier (collectBoost/tierUp) e o brilho do tiro muda de cor (TIER_DEFS: ciano, verde, amarelo,
+     laranja, rosa, roxo e branco); o roxo é o Tier VI, no 25º boost. Telemetria de navistron.io/stats lida em 23/10/2026
+     ~01:08–01:30 BRT (geral e lista de partidas por tempo, páginas 1 a 14): em 676 partidas, nenhuma chegou ao Tier VI; o
+     recorde (VASCO DA GAMA, 30.577, 07/10 às 14:55) parou no Tier V, o rosa, com 20 boosts, em 5min14 — a partida mais longa
+     da história; a 2ª com mais boosts tem 17. Vídeo HeyGen 37a217b7664823ad2c7f1658796370ed (motor Avatar III, 1080p, 30,4 s),
+     modo econômico pela regra de orçamento (72 créditos no início da rodada contra uma reserva de 78) — take único no look
+     "o tiro roxo" dc4467077d86fe5b18a6582ba6c241c3 (laboratório em posts/_lab-2026-10-23-looks): um brilho roxo misterioso
+     saindo de trás de uma nebulosa escura no alto do quadro, como uma estrela roxa escondida, longe do cabelo; braços para
+     baixo; nada brilhando abaixo do queixo. Voz Sofia Brazil - Excited a 1,15x (a variável testada: a Excited no Avatar III,
+     num desafio), sem expressiveness nem motionPrompt (o Avatar III não aceita); glossário Navistron. Na 1ª renderização, a
+     legenda é o .srt da HeyGen; depois vira legenda-digitos.srt (números em algarismos). -->
+<!-- Camada dos REELS da Estela — versão 3 (29/09/2026).
+     Pedidos do Guilherme depois da estreia: legenda menor, nada cobrindo o rosto, sobreposições só temporárias e
+     minimalistas (v2) e, por fim, SEM selo de IA na arte — o rótulo de IA do Instagram (isAiGenerated) basta (v3).
+     O que sobra por cima do vídeo é só a legenda:
+     - legenda pequena (56 px, caixa baixa), ancorada pela base em y = 1490: uma linha ocupa ~1420–1490 e duas linhas
+       ~1350–1490, sempre abaixo do queixo (~1170 nos looks atuais) e acima da interface do Instagram;
+     - mais nada na tela. Qualquer elemento extra só se for temporário e pequeno.
+     Stories usam outro molde (templates/estela-story.html): vídeo puro, sem legenda.
+     Uso: copiar este arquivo para posts/AAAA-MM-DD-slug/post.html e trocar video-src e video-subtitles (e o reel-cover,
+     se a capa pedir outro instante). O link do CSS já está relativo à pasta do post. -->
+<style>
+  html, body { background: transparent !important; }
+  #cap { position: absolute; left: 140px; right: 140px; bottom: 430px; text-align: center; opacity: 0; }
+  #cap.on { opacity: 1; }
+  #cap span { display: inline; padding: 2px 14px; line-height: 1.32; border-radius: 10px; background: rgba(5,7,15,0.55);
+              -webkit-box-decoration-break: clone; box-decoration-break: clone;
+              font-family: var(--font-display); font-weight: 700; font-size: 56px; letter-spacing: 0.01em; color: #FFFFFF; }
+  #cap b { color: var(--t1); font-weight: 700; }
+</style>
+</head>
+<body>
+  <div id="cap"></div>
+</body>
+</html>
