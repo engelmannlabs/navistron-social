@@ -1,0 +1,39 @@
+1
+00:00:00,260 --> 00:00:02,560
+Ninguém chegou ao tiro roxo do Navistron.
+
+2
+00:00:02,750 --> 00:00:07,740
+A cada 5 boosts, a sua nave sobe de tier e o tiro muda de cor:
+
+3
+00:00:07,940 --> 00:00:10,050
+ciano, verde, amarelo, laranja, rosa.
+
+4
+00:00:10,200 --> 00:00:13,470
+O roxo é o Tier VI, com 25 boosts.
+
+5
+00:00:13,780 --> 00:00:18,560
+O recorde, 30.577 pontos, parou no
+
+6
+00:00:18,600 --> 00:00:22,750
+rosa: 20 boosts, em 5min14.
+
+7
+00:00:22,980 --> 00:00:24,020
+Faltaram 5.
+
+8
+00:00:24,240 --> 00:00:27,430
+Joga hoje e, se o seu tiro ficar roxo, põe o
+
+9
+00:00:27,470 --> 00:00:28,670
+nick no game over.
+
+10
+00:00:28,950 --> 00:00:30,270
+Te vejo no ranking!
