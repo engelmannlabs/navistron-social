@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .title { font-size: 190px; line-height: 0.88; }
+  /* o painel de GAME OVER do jogo (page.js): título, subtítulo e as 5 linhas de estatística */
+  .go { position: absolute; left: 50%; top: 610px; transform: translateX(-50%); width: 640px; padding: 34px 48px 30px;
+        border-radius: 18px; background: rgba(8,12,28,0.82); border: 1px solid rgba(143,163,199,0.28); text-align: center; }
+  .go h3 { font-family: var(--font-display); font-weight: 700; font-size: 92px; line-height: 0.9; letter-spacing: 0.04em;
+           color: var(--ink); text-shadow: 0 0 30px rgba(244,114,182,0.35); }
+  .go .st { font-size: 16px; letter-spacing: 0.3em; color: var(--t5); margin: 12px 0 18px; }
+  .go .ln { display: flex; justify-content: space-between; padding: 10px 6px; border-top: 1px solid rgba(143,163,199,0.14);
+            font-size: 22px; letter-spacing: 0.2em; color: var(--muted); }
+  .go .ln b { font-family: var(--font-ui); font-weight: 500; color: var(--ink); letter-spacing: 0.06em; }
+  .go .ln b.t2 { color: var(--t2); text-shadow: 0 0 10px rgba(74,222,128,0.6); }
+  .lead { position: absolute; left: 96px; right: 96px; top: 1112px; text-align: center; font-family: var(--font-ui);
+          font-size: 30px; line-height: 1.45; color: var(--muted); }
+  .lead b { color: var(--ink); font-weight: 600; }
+  .sub { position: absolute; left: 72px; right: 72px; bottom: 88px; text-align: center; font-size: 18px;
+         letter-spacing: 0.16em; color: var(--dim); text-transform: uppercase; }
+</style>
+<!-- Slide 3 de 6 — passo 1. Conferido no código do jogo (src/app/play/page.js, blob 36d68b9a): na colisão,
+     beginDeathSequence() roda a explosão da nave por 2,5 s (deathAnimTimer = 2.5); depois, endGame() preenche SCORE, TIME,
+     TIER, BOOSTS e SPREAD e, 700 ms depois, abre o painel (#gameover-overlay: "GAME OVER" / "YOUR SHIP WAS DESTROYED").
+     Exemplo: a partida de 16.163 de 23/10 às 10:53 (Tier II, 9 boosts, 2:45); SPREAD 5 = 9 boosts, com o leque de volta
+     a 1 no 5º (collectBoost: spreadLevel++; tierUp a cada 5 boosts, spreadLevel = 1). -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261026" data-core="30,40,1050,1400"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Passo 1 de 3</div>
+    <div>3 / 6</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">passo 1 <span>/</span> a nave explodiu</div>
+    <div class="title">ESPERA<br><span class="accent c1">O PAINEL.</span></div>
+  </div>
+
+  <div class="go">
+    <h3>GAME OVER</h3>
+    <div class="st">YOUR SHIP WAS DESTROYED</div>
+    <div class="ln">SCORE <b>16.163</b></div>
+    <div class="ln">TIME <b>2:45</b></div>
+    <div class="ln">TIER <b class="t2">TIER II</b></div>
+    <div class="ln">BOOSTS <b>9</b></div>
+    <div class="ln">SPREAD <b>5</b></div>
+  </div>
+
+  <div class="lead">A explosão dura <b>2,5 segundos</b>. Menos de 1 segundo depois, o painel abre sozinho, com o seu placar.</div>
+
+  <div class="sub">exemplo: a partida de 16.163 de sexta, 10:53</div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

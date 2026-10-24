@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .title { font-size: 190px; line-height: 0.88; }
+  .title .accent.c2 { color: var(--t2); text-shadow: 0 0 34px rgba(74,222,128,0.45); }
+  .go { position: absolute; left: 50%; top: 680px; transform: translateX(-50%); width: 700px; padding: 36px 44px 30px;
+        border-radius: 18px; background: rgba(8,12,28,0.82); border: 1px solid rgba(74,222,128,0.35);
+        box-shadow: 0 0 46px rgba(74,222,128,0.10); text-align: center; }
+  .go .lbl { font-size: 19px; letter-spacing: 0.32em; color: var(--muted); margin-bottom: 18px; }
+  .go .field { height: 96px; border-radius: 10px; border: 2px solid rgba(74,222,128,0.8); background: rgba(74,222,128,0.07);
+               display: flex; align-items: center; justify-content: center; gap: 8px;
+               font-family: var(--font-ui); font-weight: 500; font-size: 40px; letter-spacing: 0.12em; color: var(--ink); }
+  .go .caret { width: 3px; height: 46px; background: var(--t2); box-shadow: 0 0 10px var(--t2); }
+  .go .cnt { margin-top: 14px; text-align: right; font-size: 18px; letter-spacing: 0.2em; color: var(--muted); }
+  .go .cnt b { color: var(--t2); }
+  .lead { position: absolute; left: 96px; right: 96px; top: 1010px; text-align: center; font-family: var(--font-ui);
+          font-size: 30px; line-height: 1.45; color: var(--muted); }
+  .lead b { color: var(--ink); font-weight: 600; }
+</style>
+<!-- Slide 4 de 6 — passo 2. Conferido no código do jogo (src/app/play/page.js, blob 36d68b9a): o campo #name-input tem
+     maxLength 20 (rótulo ENTER YOUR NAME, placeholder PILOT NAME); saveScore() grava name.trim().toUpperCase().slice(0, 20)
+     — o nick vai sem os espaços das pontas e em maiúsculas. "SEU NICK" no campo é ilustração (8 caracteres). -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261027" data-core="30,40,1050,1400"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Passo 2 de 3</div>
+    <div>4 / 6</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">passo 2 <span>/</span> enter your name</div>
+    <div class="title">DIGITA<br><span class="accent c2">O SEU NICK.</span></div>
+  </div>
+
+  <div class="go">
+    <div class="lbl">ENTER YOUR NAME</div>
+    <div class="field"><span>SEU NICK</span><span class="caret"></span></div>
+    <div class="cnt"><b>8</b> / 20</div>
+  </div>
+
+  <div class="lead">Até <b>20 caracteres</b>. O nick é salvo em maiúsculas, sem os espaços das pontas — e é ele que aparece no /ranking.</div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .title { font-size: 190px; line-height: 0.88; }
+  .btns { position: absolute; left: 50%; top: 690px; transform: translateX(-50%); width: 760px; display: flex; flex-direction: column;
+          gap: 26px; align-items: stretch; text-align: center; }
+  .b1 { padding: 36px 0; border-radius: 12px; background: var(--t3); color: #05070F; font-family: var(--font-ui); font-weight: 500;
+        font-size: 38px; letter-spacing: 0.14em; box-shadow: 0 0 44px rgba(250,204,21,0.42); }
+  .b1 small { display: block; margin-top: 8px; font-family: var(--font-mono); font-size: 17px; letter-spacing: 0.24em; opacity: 0.75; }
+  .b2 { display: flex; align-items: center; justify-content: center; gap: 20px; padding: 20px 0; border-radius: 12px;
+        border: 2px dashed rgba(143,163,199,0.32); color: var(--dim); font-family: var(--font-ui); font-size: 24px; letter-spacing: 0.14em; }
+  .b2 s { color: var(--muted); }
+  .b2 em { font-style: normal; font-family: var(--font-mono); font-size: 16px; letter-spacing: 0.2em; color: var(--muted); }
+  .lead { position: absolute; left: 96px; right: 96px; top: 1064px; text-align: center; font-family: var(--font-ui);
+          font-size: 30px; line-height: 1.45; color: var(--muted); }
+  .lead b { color: var(--ink); font-weight: 600; }
+  .sub { position: absolute; left: 72px; right: 72px; bottom: 88px; text-align: center; font-size: 18px;
+         letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; }
+  .sub b { color: var(--t3); }
+</style>
+<!-- Slide 5 de 6 — passo 3. Conferido no código do jogo (src/app/play/page.js, blob 36d68b9a): o botão SAVE & RANKING e a
+     tecla Enter no campo chamam submitName(); com nome, saveScore() grava a partida em /api/scores e abre o ranking; com o
+     nome em branco, conta como Skip (comentário do código: "Saving with an empty name counts as Skip"); SKIP grava a sessão
+     anônima ("Unregistered"). navistron.io/ranking (24/10 ~01:15 BRT): "os 100 maiores scores já registrados"; o 100º tem
+     57 pontos (XXXX, 25/09); a página diz que partidas com Skip não entram no ranking público. -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261028" data-core="30,40,1050,1400"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Passo 3 de 3</div>
+    <div>5 / 6</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">passo 3 <span>/</span> ou aperta enter</div>
+    <div class="title">SAVE &amp;<br><span class="accent c3">RANKING.</span></div>
+  </div>
+
+  <div class="btns">
+    <div class="b1">SAVE &amp; RANKING<small>ou enter</small></div>
+    <div class="b2"><s>SKIP</s><em>= partida anônima</em></div>
+  </div>
+
+  <div class="lead">Pronto: a partida entra no /ranking. Com <b>SKIP</b> ou com o nome em branco, ela fica anônima e não aparece lá.</div>
+
+  <div class="sub">o 100º lugar do /ranking tem <b>57 pontos</b> · 24.10 · 01:15</div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

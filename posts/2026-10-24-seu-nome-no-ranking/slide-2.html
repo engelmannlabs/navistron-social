@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .title { font-size: 150px; line-height: 0.9; }
+  .rank { top: 590px; gap: 20px; }
+  .row { grid-template-columns: 128px 1fr auto; }
+  .row .pos { font-size: 46px; letter-spacing: 0.02em; }
+  .row .name { color: var(--muted); }
+  .row.top .name { color: var(--ink); }
+  .row.top .score { color: var(--t3); text-shadow: 0 0 24px rgba(250,204,21,0.35); }
+  .note { position: absolute; left: 96px; right: 96px; top: 1046px; text-align: center; font-family: var(--font-ui);
+          font-size: 30px; line-height: 1.45; color: var(--muted); }
+  .note b { color: var(--ink); font-weight: 600; }
+  .sub { position: absolute; left: 72px; right: 72px; bottom: 88px; text-align: center; font-size: 18px;
+         letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; }
+  .sub b { color: var(--ink); }
+</style>
+<!-- Slide 2 de 6. Fonte: navistron.io/stats?visao=partidas&ordem=data lido em 24/10/2026 ~01:10 BRT (com ?v=; horários
+     de Brasília): sexta 23/10 teve 3 partidas, todas anônimas — 10:35 (11.846, Tier II, 8 boosts, 2:37), 10:53 (16.163,
+     Tier II, 9 boosts, 2:45) e 10:58 (12.535, Tier II, 8 boosts, 2:35). Os totais fecham: 676 + 3 = 679 partidas; 571 + 3
+     = 574 anônimas; 83.496 + 477 = 83.973 s (23h19m); 3.905.763 + 40.544 = 3.946.307 pontos, ÷ 679 = 5.811,9 → 5.812.
+     navistron.io/ranking (24/10 ~01:15): 21º ASA 16.720, 22º GUI 16.141 — com um nick, a de 16.163 seria a 22ª. -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261025" data-core="30,40,1050,1400"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Telemetria · 23.10.2026</div>
+    <div>2 / 6</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">sexta <span>/</span> 10:35 a 10:58</div>
+    <div class="title">3 PARTIDAS,<br><span class="accent">NENHUM NOME.</span></div>
+  </div>
+
+  <div class="rank">
+    <div class="row">
+      <div class="pos">10:35</div>
+      <div><div class="name">ANÔNIMO</div><div class="meta">tier II · 8 boosts · 2:37</div></div>
+      <div class="score">11.846</div>
+    </div>
+    <div class="row top">
+      <div class="pos">10:53</div>
+      <div><div class="name">ANÔNIMO</div><div class="meta">tier II · 9 boosts · 2:45</div></div>
+      <div class="score">16.163</div>
+    </div>
+    <div class="row">
+      <div class="pos">10:58</div>
+      <div><div class="name">ANÔNIMO</div><div class="meta">tier II · 8 boosts · 2:35</div></div>
+      <div class="score">12.535</div>
+    </div>
+  </div>
+
+  <div class="note">As três passaram dos 10 mil. Com um nick, <b>a de 16.163 seria a 22ª do /ranking</b>.</div>
+
+  <div class="sub"><b>574</b> das <b>679</b> partidas do jogo terminaram sem nome · até 23.10</div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

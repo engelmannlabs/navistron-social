@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .head { top: 186px; }
+  .title { font-size: 176px; line-height: 0.86; }
+  /* o campo de nome do painel de GAME OVER do jogo (page.js: label ENTER YOUR NAME, placeholder PILOT NAME,
+     botões SAVE & RANKING e SKIP) */
+  .go { position: absolute; left: 50%; top: 742px; transform: translateX(-50%); width: 700px; padding: 36px 44px 40px;
+        border-radius: 18px; background: rgba(8,12,28,0.82); border: 1px solid rgba(34,211,238,0.35);
+        box-shadow: 0 0 46px rgba(34,211,238,0.12); text-align: center; }
+  .go .lbl { font-size: 19px; letter-spacing: 0.32em; color: var(--muted); margin-bottom: 18px; }
+  .go .field { height: 86px; border-radius: 10px; border: 2px solid rgba(34,211,238,0.75); background: rgba(34,211,238,0.06);
+               display: flex; align-items: center; justify-content: center; gap: 10px;
+               font-family: var(--font-ui); font-size: 30px; letter-spacing: 0.16em; color: var(--dim); }
+  .go .caret { width: 3px; height: 40px; background: var(--t1); box-shadow: 0 0 10px var(--t1); }
+  .go .btns { display: flex; gap: 18px; margin-top: 24px; }
+  .go .b1, .go .b2 { flex: 1; padding: 22px 0; border-radius: 10px; font-family: var(--font-ui); font-weight: 500;
+                     font-size: 22px; letter-spacing: 0.14em; }
+  .go .b1 { background: var(--t1); color: #05070F; box-shadow: 0 0 30px rgba(34,211,238,0.4); flex: 1.6; }
+  .go .b2 { border: 2px solid rgba(143,163,199,0.35); color: var(--muted); }
+  .lead { position: absolute; left: 96px; right: 96px; top: 1098px; text-align: center; font-family: var(--font-ui);
+          font-size: 30px; line-height: 1.45; color: var(--muted); }
+  .lead b { color: var(--ink); font-weight: 600; }
+  .lead .pct { font-family: var(--font-mono); font-weight: 700; letter-spacing: -0.08em; margin-right: 0.08em; }
+  .swipe { font-family: var(--font-ui); font-weight: 500; font-size: 23px; letter-spacing: 0.2em; text-transform: uppercase;
+           color: var(--ink); border: 2px solid rgba(143,163,199,0.4); padding: 18px 38px; border-radius: 8px; }
+  .foot { gap: 26px; }
+</style>
+<!-- Carrossel de 24/10/2026 (slide 1 de 6) — mecânica explicada: como salvar a partida com o nick no game over, em 3
+     passos. Fontes: navistron.io/ranking lido em 24/10/2026 ~01:15 BRT (com ?v=): a página mostra "os 100 maiores
+     scores já registrados"; o 100º é XXXX, 57 pontos (25/09). navistron.io/stats lido em 24/10/2026 ~01:05 BRT: 679
+     partidas, 105 com nick e 574 anônimas (574 / 679 = 84,5%). Painel do GAME OVER conferido no código do jogo
+     (src/app/play/page.js, blob 36d68b9a). -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261024" data-core="30,40,1050,1400"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Guia · game over</div>
+    <div>@navistron</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">3 passos <span>/</span> no game over</div>
+    <div class="title">SEU NOME<br>NO RANKING<br><span class="accent c1">EM 3 PASSOS</span></div>
+  </div>
+
+  <div class="go">
+    <div class="lbl">ENTER YOUR NAME</div>
+    <div class="field"><span>PILOT NAME</span><span class="caret"></span></div>
+    <div class="btns"><div class="b1">SAVE &amp; RANKING</div><div class="b2">SKIP</div></div>
+  </div>
+
+  <div class="lead">O 100º lugar do /ranking tem <b>57 pontos</b> — e <b><span class="pct">84,5%</span> das partidas</b> terminam sem nome.</div>
+
+  <div class="foot">
+    <div class="stats"><div>navistron.io/ranking · 24.10 · 01:15</div></div>
+    <div class="swipe">arrasta →</div>
+  </div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-size" content="1080x1440">
+<link rel="stylesheet" href="../../templates/base.css">
+<style>
+  .title { font-size: 146px; line-height: 0.92; }
+  .title .accent.c2 { color: var(--t2); text-shadow: 0 0 34px rgba(74,222,128,0.45); }
+  .lead { position: absolute; left: 96px; right: 96px; top: 640px; text-align: center; font-family: var(--font-ui);
+          font-size: 30px; line-height: 1.45; color: var(--muted); }
+  .lead b { color: var(--ink); font-weight: 600; }
+  .big { position: absolute; left: 0; right: 0; top: 850px; display: flex; justify-content: center; gap: 120px; text-align: center; }
+  .big .n { font-family: var(--font-display); font-weight: 700; font-size: 150px; line-height: 0.9; color: var(--ink); }
+  .big .n.g { color: var(--t2); text-shadow: 0 0 30px rgba(74,222,128,0.45); }
+  .big .p { margin-top: 14px; font-size: 19px; letter-spacing: 0.22em; color: var(--muted); text-transform: uppercase; line-height: 1.5; }
+  .handle { font-size: 20px; letter-spacing: 0.3em; color: var(--muted); text-transform: uppercase; }
+</style>
+<!-- Slide 6 de 6: CTA. Semana 43 = 19 a 25/10 (segunda a domingo). Até 23/10 (lista de partidas lida em 24/10 ~01:10 BRT):
+     as 8 partidas com nick da semana são do MARCAO (7 em 21/10 e 1 em 22/10; a melhor, 20.301, em 21/10 às 09:02) —
+     1 nick no ranking da semana, 2º e 3º lugares vagos. O ranking da semana sai na segunda, 26/10. -->
+</head>
+<body>
+  <canvas id="stars" width="1080" height="1440" data-seed="20261029" data-core="30,40,1050,1400"></canvas>
+  <div class="grid"></div>
+
+  <div class="topbar">
+    <div><span class="dot"></span>Semana 43 · fecha 25.10</div>
+    <div>6 / 6</div>
+  </div>
+
+  <div class="head">
+    <div class="kicker">joga hoje</div>
+    <div class="title">PÕE O NICK<br><span class="accent c2">NO GAME OVER.</span></div>
+  </div>
+
+  <div class="lead">Até ontem, a semana 43 tinha um nick só no ranking: <b>MARCAO, 20.301</b>. Ela fecha amanhã, domingo.</div>
+
+  <div class="big">
+    <div><div class="n">1</div><div class="p">nick<br>na semana</div></div>
+    <div><div class="n g">2</div><div class="p">lugares vagos<br>no pódio</div></div>
+  </div>
+
+  <div class="foot">
+    <div class="cta">Jogar grátis · navistron.io</div>
+    <div class="handle">sem login · link na bio · @navistron</div>
+  </div>
+
+  <script src="../../templates/base.js"></script>
+</body>
+</html>
