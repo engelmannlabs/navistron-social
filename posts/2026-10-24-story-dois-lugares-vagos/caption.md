@@ -9,7 +9,8 @@ variavel_testada: voz — a Excited a 1,15x num story no Avatar III (a 1ª vez; 
 heygen_video_id: ab7c97a9639f7ff0726763458c3f996b
 creditos_heygen: 64 → 60 (o look, 1, e o vídeo de 22,0 s, 3 — no Avatar III, ~1 crédito a cada ~8,4 s, arredondado para cima)
 horario_publicacao: 2026-10-24 16:00 BRT (sábado)
-buffer_post_id: pendente
+buffer_post_id: 6adc34b83d5b27036b68bfc3 (agendado à 01:31 de 24/10 para as 16:00; scheduled, 22,0 s, isAiGenerated true)
+qa: reel.mp4 baixado pelo SHA do commit do render (dfaa82c8) e conferido; a main serve o mesmo arquivo (10.131.745 bytes). Vídeo puro (render.json: captions 0), sem texto nem nada por cima; transcrição (legenda.srt) igual ao roteiro palavra por palavra (56 palavras); áudio presente (média −22,4 dB, pico −3,2 dB); 22,0 s, H.264 1080×1920 a 30 fps; capa (1,0 s) e último quadro limpos. Rosto natural, boca acompanhando a fala, expressão animada (Excited). Mãos: nenhuma no quadro (zero pixel de pele abaixo de y = 1250, a 10 fps). Bordas sem ninguém entrando; o pódio parado (diferença no alto contra a mediana do vídeo de no máximo 1,1)
 instagram: metadata.instagram = { type: "story", shouldShareToFeed: false, isAiGenerated: true }
 fonte_dados: navistron.io/stats (lista de partidas por data: as 8 partidas com nick da semana 43 são do MARCAO — 7 em 21/10, das 08:35 às 11:12, e 1 em 22/10 às 10:46 —, e as 3 de 23/10 foram anônimas; ?periodo=7d: 51 partidas, 8 registradas, 1 piloto, MARCAO 20.301 em 21/10 às 09:02), lidos em 24/10/2026 ~01:05–01:10 BRT. Fato fechado e datado ("até ontem"), porque o story vai ao ar às 16:00; a semana 43 vai de segunda, 19/10, a domingo, 25/10
 ---
