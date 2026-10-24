@@ -4,6 +4,21 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-24 · **Três stories seguidos abaixo de 10 de alcance — e a sexta teve 3 partidas acima dos 10 mil, todas sem
+  nick.** Métricas: o story de 22/10 fechou em **0 de alcance / 3 views** (~24 h) e o de 23/10 tinha 0 / 0 com ~6,5 h; com
+  o de 21/10 (5 / 5), são três stories seguidos abaixo de 10, depois de 25 a 32 nos de 14 a 20/10. O motor não explica
+  sozinho (o 1º story no Avatar III, de 20/10, fez 27), nem o rótulo de IA (está em todos desde 29/09); no feed, a Estela
+  das 13:00 de 22/10 tinha só **1 / 4** com ~20 h e o reel de 21/10 fechou em **6 / 9** (~44 h). Se a leitura de 26/10
+  confirmar a queda nos dois formatos, vale o Guilherme conferir o status da conta no app do Instagram — a rotina não
+  enxerga isso. No jogo, a sexta 23/10 teve 3 partidas, das 10:35 às 10:58, todas anônimas e acima dos 10 mil (a de
+  16.163 seria a 22ª do /ranking): 574 das 679 partidas (84,5%) terminaram sem nick, e o 100º lugar do /ranking tem 57
+  pontos — daí o carrossel do sábado, o 1º post do feed com o passo a passo para salvar o nick. Achado para o Guilherme: o
+  /ranking diz "100 pilotos registrados", mas conta as linhas do top 100 de partidas (são 105 partidas com nick de 47
+  pilotos). Produção: a **Excited a 1,15x num story no Avatar III** leu 56 palavras em 22,0 s (~0,39 s por palavra, contra
+  ~0,29–0,32 da Friendly) e custou 3 — ~1 crédito a mais que a Friendly no mesmo roteiro; com o look de braços para
+  baixo, nenhuma mão. O render do Actions voltou a ~1,5 min. HeyGen: 64 → 60; os 4 stories de 25 a 28/10 pedem ~12–16,
+  contra 30 acima da guarda. No blog, o power-up entrou como conceito (Pac-Man, Gradius, Super Mario Bros.), com os boosts
+  no fim das 679 partidas: o pico é 9 (137), o leque cheio no Tier II, a um boost da virada.
 - 2026-10-23 · **O job de render do Actions passou a estourar o limite de 15 min — e o padrão "quem voltou, melhorou"
   quebrou no 8º piloto.** Na madrugada de 23/10, o render levou 14 min na folha dos looks (contra ~1 min nos dias
   anteriores) e o do story estourou o `timeout-minutes: 15` e foi cancelado; os 2º pushes, feitos para destravar, ficaram na
@@ -53,21 +68,6 @@ apenas este arquivo, e não o playbook inteiro.
   (naturais, sem artefato); no de 20/10, nenhuma mão. Para um story sem mãos no Avatar III, pedir o look com os braços para baixo.
   HeyGen: 83 → 80; os 7 stories (22 a 28/10) e os 2 reels da S43 pedem ~37 (stories de 3, reels de 8), contra 50 acima da guarda.
   No blog, o eixo da quarta ganhou o controle: jogos para jogar com uma mão (Hoober, 2013: 49% seguram o celular com uma mão só).
-- 2026-10-20 · **O Avatar III passou no story pela metade do preço — e o mostrador do cenário virou animação no Avatar
-  IV.** Métricas: o reel de domingo, 18/10 ("Fez 14.012 e ficou fora do top 10"), fechou em **10 de alcance / 15 views**
-  (~24 h), e o slot das 13:00 da S42 fechou com 105, 47, 9, 12, 6, 1 e 10 (mediana 10, contra 14 na série toda); o story
-  de 18/10 (os mísseis) fechou em **28 / 32**, com 2 reações — os stories de 12 a 18/10 fizeram 7, 15, 32, 31, 25, 25 e
-  28. No jogo, a S43 começou devagar: a segunda 19/10 teve **uma partida só** (16:43, anônima, 192 pontos em 25 s),
-  depois de uma S42 que jogou de manhã. Na lista por pontos, **162 das 632 partidas passaram dos 10 mil** — 47 das 97
-  com nick (48%), contra 115 das 535 anônimas (21%): quem põe o nick joga melhor, ou quem joga melhor põe o nick.
-  Produção: o story foi no **Avatar III** (a variável: o motor), o 1º vídeo publicado nele — 2 créditos por 11,0 s (no
-  Avatar IV, 4), boca acompanhando a fala, rosto natural, nenhuma mão e bordas limpas. No reel, **o Avatar IV animou o
-  mostrador do cenário** como um painel: ele sumia, girava e virava uma bola laranja; refeito com o fundo "parado como
-  uma foto" no motionPrompt, o mostrador ainda mexeu, mas ficou sempre um mostrador. Objeto que sugere movimento
-  (ponteiro, mostrador) pede o fundo parado já na 1ª tentativa, e a contagem de pixels da cor do objeto pega o que a
-  folha de 12 quadros não pega. A Friendly a 1,15x leu 61 palavras em 20,5 s num reel (~0,335 s por palavra). HeyGen:
-  102 → 83; os 8 stories e os 2 reels até 28/10 só cabem acima da guarda com os stories no Avatar III (~40 contra 53; no
-  Avatar IV, ~56). No blog, o guia dos 10 mil completou a escada dos guias de pontos (10, 20 e 30 mil).
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
