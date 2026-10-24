@@ -1,0 +1,71 @@
+{
+  "files": {
+    "post.html": {
+      "hash": "b1a0d38fb5f94b6dc4177bc9a111179f056d14887ccdad1712b249211b75e1b2",
+      "out": "post.png",
+      "width": 1080,
+      "height": 1440,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ]
+    },
+    "slide-2.html": {
+      "hash": "0c16c1ccf5cbc1dd213b7abf20b72fb0eb1fd895c72066244d844f8fd1776e71",
+      "out": "slide-2.png",
+      "width": 1080,
+      "height": 1440,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ]
+    },
+    "slide-3.html": {
+      "hash": "a1d7afb7e4951ec0b2268a53432e77c6ab7b610ef5aa85bb121d0a2fa6cf9f9b",
+      "out": "slide-3.png",
+      "width": 1080,
+      "height": 1440,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ]
+    },
+    "slide-4.html": {
+      "hash": "a8601a6d06e5d35542f84fd797287d3cabc0d6d303416e264e63fbbb16a9a450",
+      "out": "slide-4.png",
+      "width": 1080,
+      "height": 1440,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ]
+    },
+    "slide-5.html": {
+      "hash": "a9e16d7b440a844a74e89915b678a5f69bd1f41d98bab3f4f5481d22a0ec1b62",
+      "out": "slide-5.png",
+      "width": 1080,
+      "height": 1440,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ]
+    },
+    "slide-6.html": {
+      "hash": "a1cec004c7b2da810a8a9fc591909003d45c2664743c2c165928181a49f696d3",
+      "out": "slide-6.png",
+      "width": 1080,
+      "height": 1440,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ]
+    }
+  },
+  "renderedAt": "2026-10-24T04:20:36.570Z"
+}
