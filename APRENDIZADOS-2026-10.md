@@ -4,6 +4,21 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-21 · **As partidas com nick fazem o dobro de pontos das anônimas — e o Avatar III cobrou o mesmo por 16 s e por 11 s.**
+  O /stats tem filtros por tipo (?tipo=registrados e ?tipo=anonimos, o link "Partidas Anônimas" da página): as 97 partidas com nick
+  têm média de **9.799** pontos, e as 535 anônimas, **4.782** (a conta fecha com o geral, 5.552) — e 48% das com nick passaram dos
+  10 mil, contra 21% das anônimas. Não dá para separar causa (o nick não muda o jogo; quem joga melhor faz mais questão de salvar),
+  mas é o argumento mais concreto que o pedido "põe o nick" já teve, e virou o reel de hoje. No jogo, a terça 20/10 não teve
+  partida: desde sábado, uma só (192 pontos, na segunda), e as 11 partidas desde a última com nick (RASEC, 16/10) foram anônimas.
+  Métricas: o reel de segunda (ranking da semana 42) fechou em **14 / 15** (~23 h), exatamente a mediana do slot (14, agora com 31
+  posts); o story de 19/10 fechou em **18 / 25** — os stories de 13 a 19/10 fizeram 15, 32, 31, 25, 25, 28 e 18 —, e o de 20/10, o
+  1º no Avatar III, tinha 17 / 19 com ~6,7 h, no ritmo dos outros. Produção: o 2º story no **Avatar III** (a variável: a duração)
+  saiu com 50 palavras em 16,1 s e custou **2 créditos**, o mesmo do de 11,0 s — pelo que se mediu (11,0 s e 16,1 s = 2; 22,9 s = 3),
+  ele cobra ~1 crédito a cada ~8–10 s, menos da metade do Avatar IV, e o story pode voltar aos 40–60 palavras da regra sem pesar no
+  orçamento. Mas ele não aceita motionPrompt, e **o look decide os gestos**: no look de braços abertos, ela gesticulou o vídeo todo
+  (naturais, sem artefato); no de 20/10, nenhuma mão. Para um story sem mãos no Avatar III, pedir o look com os braços para baixo.
+  HeyGen: 83 → 80; os 7 stories (22 a 28/10) e os 2 reels da S43 pedem ~37 (stories de 3, reels de 8), contra 50 acima da guarda.
+  No blog, o eixo da quarta ganhou o controle: jogos para jogar com uma mão (Hoober, 2013: 49% seguram o celular com uma mão só).
 - 2026-10-20 · **O Avatar III passou no story pela metade do preço — e o mostrador do cenário virou animação no Avatar
   IV.** Métricas: o reel de domingo, 18/10 ("Fez 14.012 e ficou fora do top 10"), fechou em **10 de alcance / 15 views**
   (~24 h), e o slot das 13:00 da S42 fechou com 105, 47, 9, 12, 6, 1 e 10 (mediana 10, contra 14 na série toda); o story

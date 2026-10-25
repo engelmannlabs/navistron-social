@@ -4,6 +4,18 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-25 · **O sábado zerou, e a semana 43 jogou de manhã: 45 das 48 partidas saíram antes do meio-dia — e "like a ghost" num
+  prompt de look virou um fantasminha de desenho.** No jogo, o sábado 24/10 não teve nenhuma partida; a semana 43 chega ao domingo com
+  48 partidas (8 com nick, todas do MARCAO), e 45 delas saíram entre 07:46 e 11:20 (só 3 à tarde: 19/10 às 16:43 e 22/10 às 13:46 e
+  16:42). A faixa de 14h a 17h do PLAYBOOK, que decidiu o story às 16:00, não vale há duas semanas (na S42, 20 das 38 antes das 13h):
+  fica para a leitura de 26/10. Métricas: a Estela das 13:00 de 22/10 fechou em **3 / 5** (~43 h), o menor vídeo dela no slot (29, 70,
+  14, 4 e 14 nas S40–S41); a das 19:00 de 23/10 tinha **10 / 13** com ~13 h; os stories de 21 a 24/10 fizeram 5, 0, 0 e 0 de alcance
+  (com 5, 3, 5 e 2 views) — o de hoje testa a duração curta (14,6 s), como os de 11 s que fizeram 28 e 27 em 18 e 20/10. Produção: no
+  look do story, "half transparent, like a ghost" saiu como um fantasminha ciano com olhos, parecido com personagem de terceiros
+  (vetado); "faint and see-through" com "no faces, no eyes, no creatures" resolveu na 2ª tentativa — **comparação no prompt vira o
+  objeto da comparação**. A Friendly a 1,15x leu 44 palavras em 14,6 s (~0,33 s por palavra), vídeo de 2 créditos. HeyGen: 60 → 56; os
+  3 stories de 26 a 28/10 pedem ~9–12, contra 26 acima da guarda. No blog, o tutorial do sitemap achou um ponto para o Guilherme: as
+  páginas fixas e as de pilotos levam a hora do build como lastmod, porque o sitemap.js usa new Date() e é gerado no build.
 - 2026-10-24 · **Três stories seguidos abaixo de 10 de alcance — e a sexta teve 3 partidas acima dos 10 mil, todas sem
   nick.** Métricas: o story de 22/10 fechou em **0 de alcance / 3 views** (~24 h) e o de 23/10 tinha 0 / 0 com ~6,5 h; com
   o de 21/10 (5 / 5), são três stories seguidos abaixo de 10, depois de 25 a 32 nos de 14 a 20/10. O motor não explica
@@ -53,21 +65,6 @@ apenas este arquivo, e não o playbook inteiro.
   cada) e 22,9 s (3), o Avatar III parece cobrar ~1 crédito a cada ~8,1–8,6 s, arredondado para cima (3 e 3). HeyGen: 80 → 72; os 6
   stories (23 a 28/10) e o reel de sexta pedem ~22–33, contra 42 acima da guarda. No blog, o cooldown entrou como conceito, no modelo do
   RNG (15/10): o Tier VI e o VII, a 1ª ideia, já estavam no artigo do Tier V (08/10) — conferir os guias de cada tier antes da pauta.
-- 2026-10-21 · **As partidas com nick fazem o dobro de pontos das anônimas — e o Avatar III cobrou o mesmo por 16 s e por 11 s.**
-  O /stats tem filtros por tipo (?tipo=registrados e ?tipo=anonimos, o link "Partidas Anônimas" da página): as 97 partidas com nick
-  têm média de **9.799** pontos, e as 535 anônimas, **4.782** (a conta fecha com o geral, 5.552) — e 48% das com nick passaram dos
-  10 mil, contra 21% das anônimas. Não dá para separar causa (o nick não muda o jogo; quem joga melhor faz mais questão de salvar),
-  mas é o argumento mais concreto que o pedido "põe o nick" já teve, e virou o reel de hoje. No jogo, a terça 20/10 não teve
-  partida: desde sábado, uma só (192 pontos, na segunda), e as 11 partidas desde a última com nick (RASEC, 16/10) foram anônimas.
-  Métricas: o reel de segunda (ranking da semana 42) fechou em **14 / 15** (~23 h), exatamente a mediana do slot (14, agora com 31
-  posts); o story de 19/10 fechou em **18 / 25** — os stories de 13 a 19/10 fizeram 15, 32, 31, 25, 25, 28 e 18 —, e o de 20/10, o
-  1º no Avatar III, tinha 17 / 19 com ~6,7 h, no ritmo dos outros. Produção: o 2º story no **Avatar III** (a variável: a duração)
-  saiu com 50 palavras em 16,1 s e custou **2 créditos**, o mesmo do de 11,0 s — pelo que se mediu (11,0 s e 16,1 s = 2; 22,9 s = 3),
-  ele cobra ~1 crédito a cada ~8–10 s, menos da metade do Avatar IV, e o story pode voltar aos 40–60 palavras da regra sem pesar no
-  orçamento. Mas ele não aceita motionPrompt, e **o look decide os gestos**: no look de braços abertos, ela gesticulou o vídeo todo
-  (naturais, sem artefato); no de 20/10, nenhuma mão. Para um story sem mãos no Avatar III, pedir o look com os braços para baixo.
-  HeyGen: 83 → 80; os 7 stories (22 a 28/10) e os 2 reels da S43 pedem ~37 (stories de 3, reels de 8), contra 50 acima da guarda.
-  No blog, o eixo da quarta ganhou o controle: jogos para jogar com uma mão (Hoober, 2013: 49% seguram o celular com uma mão só).
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
