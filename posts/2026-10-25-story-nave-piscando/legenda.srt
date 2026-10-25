@@ -1,0 +1,47 @@
+1
+00:00:00,190 --> 00:00:01,410
+Sua nave nasce piscando
+
+2
+00:00:01,450 --> 00:00:02,260
+no Navistron!
+
+3
+00:00:02,520 --> 00:00:03,230
+Nos dois primeiros
+
+4
+00:00:03,270 --> 00:00:04,300
+segundos, os meteoros
+
+5
+00:00:04,380 --> 00:00:05,490
+passam direto por ela.
+
+6
+00:00:05,710 --> 00:00:06,680
+Por isso, a partida mais
+
+7
+00:00:06,790 --> 00:00:08,160
+curta possível dura dois
+
+8
+00:00:08,270 --> 00:00:09,740
+segundos, e, até ontem,
+
+9
+00:00:09,870 --> 00:00:10,800
+dezesseis partidas
+
+10
+00:00:10,830 --> 00:00:11,870
+duraram só isso.
+
+11
+00:00:12,130 --> 00:00:13,390
+Joga hoje e põe o seu
+
+12
+00:00:13,430 --> 00:00:14,420
+nick no game over!
