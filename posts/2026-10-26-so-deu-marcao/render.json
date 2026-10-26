@@ -1,0 +1,21 @@
+{
+  "files": {
+    "post.html": {
+      "hash": "3622dd88f8ce93cac29e135fe472ff989fbf217eb96f8e152216e1078c13268b",
+      "out": "reel.mp4",
+      "width": 1080,
+      "height": 1920,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ],
+      "duration": 14,
+      "fps": 30,
+      "frames": 420,
+      "bytes": 3140477,
+      "cover": "reel-cover.png"
+    }
+  },
+  "renderedAt": "2026-10-26T04:18:01.542Z"
+}
