@@ -4,6 +4,24 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-26 · **Leitura das 4 semanas do plano de testes (29/09 a 25/10): nenhum formato mexeu nas estreias — e, desde 21/10, o
+  alcance caiu em todos os formatos ao mesmo tempo.** Feed, posts com ≥ 40 h (métrica de 25/10 07:26 BRT): os 14 reels de dados
+  fizeram mediana **13,5** de alcance (6 a 122; os três maiores do período — 122, 106 e 65 — são deles), os 10 reels da Estela,
+  **21** (3 a 71; às 13:00, 14,5 em 6 vídeos; às 19:00, 27,5 em 4), e os 3 carrosséis, **1** (3, 1 e 1; o de 24/10 tinha 2 com
+  ~18 h). O tempo médio assistido foi de 5,6 s nos reels dela (de 17 a 33 s) e 3,3 s nos de dados (14 s): a mesma fração do vídeo,
+  ~1/4. O 2º post do dia (S42) somou pouco e não dividiu; o Buffer só traz follows nos carrosséis (0 nos quatro). Stories: mediana
+  10 (S40), 6 (S41), 25 (S42) e 2,5 (S43). No jogo, as duas métricas que importam: partidas por semana 18, 47, 38 e 49 (59, 17 e 20
+  nas S37–S39), 72 a 91% anônimas, e nicks novos 0, 1, 1 e 1 (KAL-EL, RASEC e MARCAO, contra 7 nas três semanas anteriores) —
+  nenhuma semana de teste mudou o ritmo de estreias. **Desde 21/10, tudo caiu junto**: no feed, 6, 3, 11 (~36 h) e 2 (~18 h), todos
+  abaixo da mediana do slot (14); nos stories, 5 e depois quatro zeros seguidos (22 a 25/10; antes, zero era caso isolado: 01, 07 e
+  10/10) — com reel de dados, Estela e carrossel, 13:00 e 19:00, Friendly e Excited: não é formato. **Pedido ao Guilherme: conferir
+  o status da conta no app do Instagram** (a rotina não enxerga isso). Decisão para a S44 (26/10 a 01/11): calendário estável —
+  reels de dados às 13:00, a Estela às 19:00 (qua 28 e sex 30) como o único post do dia, sem carrossel, story às 16:00 — para ler
+  se o alcance volta. No jogo, a semana 43 fechou com 49 partidas (8 com nick, todas do MARCAO, 20.301), 24 acima dos 10 mil (19 no
+  Tier II com 8 ou 9 boosts) e 45 antes do meio-dia; o domingo 25/10 teve uma partida, às 20:07. Produção: o capacete vazio, pedido
+  com "its dark visor empty" e "no faces, no eyes, no creatures", saiu certo na 1ª tentativa; no vídeo (Avatar III, 14,2 s, 2
+  créditos), **com os braços fora do quadro no look, ela gesticulou** quatro vezes (mãos à altura do peito, naturais) — os looks de
+  braços para baixo de 20, 22 e 24/10 não tiveram gesto. HeyGen: 56 → 53. No blog, o ranking da semana 43 (PR #48).
 - 2026-10-25 · **O sábado zerou, e a semana 43 jogou de manhã: 45 das 48 partidas saíram antes do meio-dia — e "like a ghost" num
   prompt de look virou um fantasminha de desenho.** No jogo, o sábado 24/10 não teve nenhuma partida; a semana 43 chega ao domingo com
   48 partidas (8 com nick, todas do MARCAO), e 45 delas saíram entre 07:46 e 11:20 (só 3 à tarde: 19/10 às 16:43 e 22/10 às 13:46 e
@@ -50,21 +68,6 @@ apenas este arquivo, e não o playbook inteiro.
   = 6 créditos (2 e 4), ~1 a cada ~8,4 s. HeyGen: 72 → 64; os 5 stories de 24 a 28/10 pedem ~15–20, contra 34 acima da
   guarda. No blog, a lista de partidas por tempo inteira (14 páginas, com a conta fechada contra o /stats) virou o artigo da
   duração: mediana 2min24, e a partida mais curta possível dura 2 s, porque a nave nasce invencível por 2 s.
-- 2026-10-22 · **Um piloto novo fez a 100ª partida com nick antes de o post que contava as que faltavam ir ao ar — e o Avatar III
-  passou num reel.** A quarta 21/10 teve 34 partidas, todas de manhã (08:35 a 11:20): 7 com nick, todas do MARCAO, piloto novo (o 47º),
-  que entrou em 4º no top 10 de pilotos com 20.301 (a 7ª maior partida da história) e fez a 100ª partida com nick às 08:48 — mais de 4
-  horas antes de o reel de dados das 13:00 ir ao ar dizendo "faltam 3". O número estava datado ("até 21/10", "lidos à 01:10"), mas
-  envelheceu de manhã: **contagem regressiva num post agendado para 12 horas depois é aposta** — melhor o fato fechado ("até a 01:10,
-  eram 97") ou o pedido sem número. Métricas: o story de 20/10, o 1º no Avatar III, fechou em **27 / 31** (~24 h), no meio dos stories
-  no Avatar IV (os de 14 a 20/10 fizeram 32, 31, 25, 25, 28, 18 e 27); a Estela das 19:00 de 20/10 tinha **25 / 29** com ~16 h, já perto
-  das Estelas das 19:00 da S42 (32, 12 e 28); o story de 21/10 tinha só 0 / 2 com ~7,7 h (o de 20/10, 17 / 19 com ~6,7 h). Produção: o
-  reel e o story saíram no **Avatar III**; com os braços para baixo no look, o reel teve um gesto só (as mãos no peito e abertas para os
-  lados em ~14–15,6 s, naturais) e o story, nenhum — com o de 20/10, dois stories sem gesto com os braços para baixo, contra um vídeo
-  inteiro de gestos com os braços abertos. O motor anima o objeto do cenário: a navinha do reel voou pelo alto e mudou de tamanho, mas
-  sempre navinha; a revoada do story quase não mexeu. Preço: os vídeos de 23,8 s e 17,3 s custaram 6 juntos; com os de 11,0 s e 16,1 s (2
-  cada) e 22,9 s (3), o Avatar III parece cobrar ~1 crédito a cada ~8,1–8,6 s, arredondado para cima (3 e 3). HeyGen: 80 → 72; os 6
-  stories (23 a 28/10) e o reel de sexta pedem ~22–33, contra 42 acima da guarda. No blog, o cooldown entrou como conceito, no modelo do
-  RNG (15/10): o Tier VI e o VII, a 1ª ideia, já estavam no artigo do Tier V (08/10) — conferir os guias de cada tier antes da pauta.
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e

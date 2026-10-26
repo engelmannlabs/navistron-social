@@ -22,6 +22,8 @@ Mantenha este arquivo curto e factual; só mexa nele quando uma **regra** mudar.
   Semana 38 (14–20/09): as 17 partidas saíram em **3 tardes apenas**, todas entre 14h12 e 17h41, zero no fim de semana.
   Quem joga, joga em série (5–16 partidas seguidas, uma a cada ~3 min). **Fim de semana é zero há três semanas
   seguidas**: post de sábado/domingo serve para alcance, não para jogada.
+- **Semanas 42 e 43 (12 a 25/10): o jogo foi para a manhã** — 20 de 38 e 45 de 49 partidas antes das 13h (na 41, 41 de 47
+  entre 13h e 17h). A faixa da tarde acima deixou de valer como regra; o horário é relido a cada ranking de segunda.
 
 ## 2. Pilares de conteúdo (rotacionar; nunca dois iguais em dias seguidos)
 
@@ -48,14 +50,15 @@ inteiro de duas fórmulas do jogo.
 | **Reel da Estela** (9:16, 20–40 s, avatar HeyGen) | `post.html` tipo `video` + `caption.md` (ver `personagens/ESTELA.md`) | Ranking narrado, reação a evento, desafio lançado por ela, mecânica explicada, boas-vindas a estreantes | **Formato completo: vários cortes num cenário lúdico criado para o post** (pedidos do Guilherme, 03/10: o cenário sai do que ela fala naquele post — falas dela em looks novos do cenário + cenas de ação + trilha chiptune baixa, pelo Video Agent; nada de cenário pronto; sem orçamento, take único no cenário — regra da ficha); **só a legenda pequena embaixo, sem selo e nada sobre o rosto** (pedidos de 29/09), molde `templates/estela-video.html`; gancho na 1ª frase |
 | **Story da Estela** (9:16, 15–25 s, avatar HeyGen) | `post.html` do molde `templates/estela-story.html` + `caption.md`, em `posts/AAAA-MM-DD-story-slug/` | **Todo dia, às 16:00, fora da contagem do feed**: provocação do dia, lembrete, bastidor, fato fresco da telemetria | **Take único num look do cenário lúdico criado para o post** (pedidos de 03/10; o formato completo, com cortes e trilha, ficou só para os reels); **vídeo puro**: sem legenda, sem selo, nada por cima; fala direto do conteúdo, sem dizer que é IA; rótulo de IA do Instagram ligado |
 
-Mix semanal (desde 29/09/2026): **7 publicações por semana no feed como base — ~4 reels de dados, 2–3 reels da Estela e
-1 carrossel** —, com a distribuição exata definida pelo calendário de testes da seção 3b, **mais 1 story da Estela por dia**
-(às 16:00, fora da contagem do feed). Segunda-feira continua sendo ranking (reel de dados, carrossel ou a Estela narrando).
+Mix semanal (desde 26/10/2026, depois da leitura das 4 semanas da seção 3b): **7 publicações por semana no feed — 5 reels de
+dados às 13:00 e 2 reels da Estela às 19:00, cada um o único post do dia; carrossel fora do padrão** (os quatro do plano fizeram
+1 a 3 de alcance; volta só quando um passo a passo pedir) —, com os dias no calendário da seção 3b, **mais 1 story da Estela por
+dia** (às 16:00, fora da contagem do feed). Segunda-feira continua sendo ranking (reel de dados ou a Estela narrando).
 **Medida prática do gancho:** cada linha do título cabe em ~13 caracteres a 168px; 4 linhas a partir de `top: 420px`
 terminam por volta de y=1250, dentro da zona segura. Reaproveitar o `post.html` do dia anterior como esqueleto e
 trocar textos, números, seed do PRNG e `TOTAL` é o caminho mais rápido e mais seguro.
 
-### 3b. Calendário e plano de testes (29/09 a 25/10/2026)
+### 3b. Calendário e plano de testes (29/09 a 25/10/2026; leitura em 26/10)
 
 Pedido do Guilherme em 29/09: testar cadências, quantidade de posts por semana e temas, com a Estela como formato novo
 e mantendo reels de dados e carrosséis. Uma pergunta por semana; a leitura é feita na rodada de segunda.
@@ -66,6 +69,7 @@ e mantendo reels de dados e carrosséis. Uma pergunta por semana; a leitura é f
 | S41 · 05–11/10 | 1/dia | seg 05 (ranking narrado), qua 07, sáb 10 | sex 09 | ter 06, qui 08, dom 11 | Três vídeos dela por semana somam ou cansam? |
 | S42 · 12–18/10 | 10 (2/dia em seg, qua, sex) | seg 12, qua 14, sex 16 às **19:00**, como 2º post | sáb 17 | 13:00 todo dia, exceto sáb | O 2º post do dia soma alcance ou divide? |
 | S43 · 19–25/10 | 1/dia | 3×, alternando 13:00 e 19:00 | 1× | 3× | Qual horário serve melhor a Estela? |
+| S44 · 26/10–01/11 | 1/dia | qua 28 e sex 30 às **19:00**, como o único post do dia | — | seg, ter, qui, sáb e dom, às 13:00 | O alcance volta com o calendário estável? (desde 21/10, caiu em todos os formatos) |
 
 Dentro de cada vídeo da Estela, **uma** variável de produção por vez, registrada no `caption.md` e no log:
 - **Cenário** — não é variável de teste, é regra (pedidos do Guilherme em 03/10): **cada vídeo tem um cenário lúdico
@@ -84,10 +88,16 @@ nick novo, marco) · desafio lançado por ela · "a Estela explica" (uma mecâni
 estreantes pelo nick · bastidor dela (o que ela percebeu lendo a telemetria).
 
 Stories da Estela: 1 por dia em todas as semanas, às 16:00 — horário escolhido por cair dentro da faixa em que o jogo
-acontece (14h–18h em dias úteis); anotar views e respostas quando o Buffer trouxer a métrica.
+acontece (14h–18h em dias úteis); anotar views e respostas quando o Buffer trouxer a métrica. Desde a S42 o jogo foi para a
+manhã (seção 1); na S44 o story fica às 16:00 para a leitura da queda de alcance sair com tudo igual.
 Leitura ao fim das 4 semanas (26/10): alcance mediano por formato (só posts com ≥ 40 h), views, follows e as duas
 métricas que importam de verdade — **nicks novos e partidas por semana** na telemetria. Se um evento forte cair num dia
 de outro formato, o evento manda; o calendário se ajusta e o log registra a troca.
+
+**Leitura de 26/10** (detalhe em `APRENDIZADOS.md`): mediana de alcance com ≥ 40 h — reels de dados **13,5** (14 posts; os três
+maiores do período, 122, 106 e 65), Estela **21** (10; 27,5 às 19:00 e 14,5 às 13:00), carrosséis **1** (3); o 2º post do dia
+somou pouco e não dividiu; nicks novos 0, 1, 1 e 1 por semana e partidas 18, 47, 38 e 49, sem relação visível com o formato. Daí
+o mix da seção 3. Desde 21/10, o alcance caiu em todos os formatos ao mesmo tempo: a S44 fica estável para ler se ele volta.
 
 ## 4. Regras de publicação
 
