@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="14.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="1.6">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>
+  .orbs { display: flex; justify-content: center; gap: 22px; margin-top: 54px; }
+  .orb { position: relative; width: 62px; height: 62px; border-radius: 50%;
+         background: radial-gradient(circle at 36% 34%, #fffbe0 0%, #ffd700 40%, #ff8800 100%);
+         border: 2px solid #fff8aa; box-shadow: 0 0 26px rgba(255,200,40,0.65), 0 0 60px rgba(255,160,0,0.35); }
+  .orb::after { content: ""; position: absolute; left: 50%; top: 50%; width: 30px; height: 30px; transform: translate(-50%, -54%);
+                background: #fff; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); }
+  .rows { width: 900px; margin: 46px auto 0; }
+  .rrow { display: flex; align-items: center; height: 150px; border-bottom: 2px solid rgba(143,163,199,0.16); opacity: 0; }
+  .rrow:last-child { border-bottom: 0; }
+  .rrow .who { flex: 1; text-align: left; }
+  .rrow .nm { font-family: var(--font-ui); font-weight: 700; font-size: 44px; letter-spacing: 0.04em; color: var(--ink); text-transform: uppercase; white-space: nowrap; }
+  .rrow .mt { margin-top: 10px; font-family: var(--font-ui); font-weight: 500; font-size: 26px; letter-spacing: 0.14em; color: var(--muted); text-transform: uppercase; white-space: nowrap; }
+  .rrow .val { width: 380px; text-align: right; font-family: var(--font-mono); font-weight: 800; font-size: 96px; line-height: 1;
+               color: var(--ink); font-variant-numeric: tabular-nums; }
+  .rrow.low .nm { color: var(--muted); }
+  .rrow.low .val { color: var(--muted); }
+  #vB.lock { color: #FACC15; text-shadow: 0 0 46px rgba(250,204,21,0.6); }
+  .marker.gold { border-color: rgba(250,204,21,0.55); background: rgba(250,204,21,0.10); }
+  .marker.gold b { color: #FACC15; }
+  .marker.green { border-color: rgba(74,222,128,0.5); background: rgba(74,222,128,0.09); }
+  .marker.green b { color: #4ADE80; }
+  .stack { display: flex; flex-direction: column; align-items: center; gap: 26px; margin-top: 56px; }
+  .line { font-family: var(--font-ui); font-weight: 500; font-size: 34px; letter-spacing: 0.12em; color: var(--muted); text-transform: uppercase; opacity: 0; }
+  .line b { color: var(--ink); }
+  .line .gr { color: #4ADE80; }
+</style>
+<!-- MECÂNICA EXPLICADA: o boost não dá ponto. Fontes:
+     1) Telemetria — navistron.io/stats?visao=partidas&ordem=data (página 1), lida em 27/10/2026 ~01:08 BRT com ?v=
+        (horários de Brasília; o horário da lista é o da gravação da partida, no game over): 26/10/26, 11:19, ANÔNIMO, 556
+        pontos, 2:10, TIER II, 9 boosts, spread 5 (o leque cheio). As outras duas partidas de 26/10: 11:19, 10 pontos em 0:10,
+        e 16:56, 6 pontos em 0:06, as duas no Tier I e sem boost. /stats geral: 683 partidas, última em 26/10 às 16:56.
+        navistron.io/stats?visao=partidas&ordem=score (página 1), lida em 27/10 ~01:10 BRT: 7ª, MARCAO, 20.301, 2:55,
+        TIER II, 9 boosts, spread 5, 21/10/26 às 09:02. 20.301 ÷ 556 = 36,5 ("mais de 36 vezes").
+     2) Código do jogo — src/app/play/page.js do repo navistron (blob 36d68b9a, sem commit desde 07/09): collectBoost só faz
+        totalBoosts++ e spreadLevel++ e, a cada 5, tierUp() (o leque volta a 1 tiro) — nenhum ponto; o boost nasce pelo
+        relógio (boostTimer = 8 no começo e depois 12 + random × 8, de 12 a 20 s); o placar sobe 1 por segundo vivo
+        (score += newTime − oldTime) e com cada meteoro destruído, por tiro ou míssil: grande round(30 × dif × 0,5),
+        pequeno round(10 × dif × 0,5), dif = TIER_DIFF[tier] × (1 + score × 0,0007) — no começo do Tier I (dif 1,0), 15 e 5;
+        no começo do Tier II (dif 1,8), 27 e 9; os valores sobem com o placar.
+     Fundo: a nave no Tier II (verde #80ff90, tiros c1 180,255,180 / c2 0,220,80, uma salva a cada 0,15 s) com o leque de 5
+     tiros (spreadLevel 5: −10°, −5°, 0°, 5° e 10°, como em spawnBullets). -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Mecânica explicada · @navistron</div>
+
+  <div id="hook" class="layer" style="top: 420px">
+    <div class="h1" style="font-size: 200px"><span class="w" id="w1">9 BOOSTS</span><br><span class="w accent" id="w2" style="font-size: 250px; margin: 26px 0 12px">SÓ 556</span><br><span class="w" id="w3" style="font-size: 160px">PONTOS</span></div>
+    <div class="orbs" id="orbs"><div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+    <div class="sub" id="hsub" style="margin-top: 50px; opacity: 0">ontem · <b>26/10</b> · 11:19<br><b>2min10</b> · tier II · leque de 5 tiros</div>
+  </div>
+
+  <div id="bz" class="layer" style="top: 470px">
+    <div class="kicker">o que o boost faz</div>
+    <div class="h1" style="font-size: 170px; margin-top: 30px">BOOST NÃO<br>DÁ <span class="accent">PONTO.</span></div>
+    <div class="stack">
+      <div class="line" id="b1"><span class="marker green">cada boost: <b>+1 tiro</b> no leque</span></div>
+      <div class="line" id="b2"><span class="marker green">a cada <b>5</b>: a nave sobe de tier</span></div>
+      <div class="line" id="b3" style="margin-top: 6px">chega pelo relógio: aos <b>8 s</b>,<br>depois a cada <b>12 a 20 s</b></div>
+    </div>
+  </div>
+
+  <div id="cmp" class="layer" style="top: 500px">
+    <div class="kicker">os mesmos 9 boosts<br>tier II · leque de 5</div>
+    <div class="rows">
+      <div class="rrow low" id="rA"><span class="who"><div class="nm">ontem</div><div class="mt">26/10 · 2min10 · sem nick</div></span><span class="val" id="vA">556</span></div>
+      <div class="rrow" id="rB"><span class="who"><div class="nm">MARCAO</div><div class="mt">21/10 · 2min55</div></span><span class="val" id="vB">0</span></div>
+    </div>
+    <div id="vez" style="margin-top: 56px; opacity: 0"><span class="marker gold">mais de <b>36</b> vezes os pontos</span></div>
+  </div>
+
+  <div id="mt" class="layer" style="top: 520px">
+    <div class="kicker">de onde vem o ponto</div>
+    <div class="h1" style="font-size: 160px; margin-top: 30px">PONTO VEM<br>DE <span class="accent">METEORO.</span></div>
+    <div class="stack" style="margin-top: 60px">
+      <div class="line" id="m1">meteoro destruído: <b>5 a 15</b> no tier I<br><span class="gr">9 a 27</span> no tier II · e sobe com o placar</div>
+      <div class="line" id="m2"><span class="marker"><b>+1</b> por segundo vivo</span></div>
+    </div>
+  </div>
+
+  <div id="ask" class="layer" style="top: 540px">
+    <div class="h1" style="font-size: 160px">JOGA HOJE<br>E MIRA NOS<br><span class="accent">METEOROS.</span></div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">grátis, sem login</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 14.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+  const fmt = n => Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+  // ---------- PRNG determinístico ----------
+  let s = 2710;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- a partida no fundo: meteoros caindo, nave no Tier II (verde) com o leque de 5 tiros ----------
+  const GREEN = '128,255,144', C1 = '180,255,180', C2 = '0,220,80';
+  const N = 26, CYC = 2100, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 200 + rnd() * 170, r: 20 + rnd() * 44, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * CYC, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  function mpos(m, t) {
+    const dist = t * 1.5 * m.v + m.phase;
+    const cycle = Math.floor(dist / CYC);
+    const y = (dist % CYC) - 120;
+    const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+    return { x, y };
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function drawMeteor(m, x, y, rot) {
+    fx.save(); fx.translate(x, y); fx.rotate(rot);
+    fx.beginPath();
+    const n = m.shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = m.r * m.shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+    fx.fillStyle = m.big ? 'rgba(20,26,46,0.92)' : 'rgba(14,19,36,0.9)';
+    fx.fill();
+    fx.lineWidth = m.big ? 3 : 2;
+    fx.strokeStyle = m.big ? 'rgba(190,208,240,0.75)' : 'rgba(150,170,205,0.6)';
+    fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y); fx.scale(1.25, 1.25);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, `rgba(${GREEN},0.95)`); g.addColorStop(1, `rgba(${GREEN},0)`);
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = `rgba(${GREEN},0.75)`; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = `rgb(${GREEN})`; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 160 * Math.sin(t * 0.75 + 1.1) + 46 * Math.sin(t * 1.9);
+  const shipY = 1450;
+  const RATE = 0.15, BV = 1040, BLIFE = 1.6, STEP = 1 / 60;
+  const FAN = [-10, -5, 0, 5, 10].map(d => d * Math.PI / 180);   // spreadLevel 5 (degPerLevel[5] = 5)
+  // cada tiro some no 1º meteoro que tocar (conta feita só com t, para cada quadro sair igual)
+  function bulletState(tb, t, a) {
+    const x0 = shipX(tb), y0 = shipY - 60, vx = Math.sin(a) * BV, vy = -Math.cos(a) * BV;
+    for (let tau = tb; tau <= t + 1e-9; tau += STEP) {
+      const x = x0 + (tau - tb) * vx, y = y0 + (tau - tb) * vy;
+      for (const m of meteors) {
+        const p = mpos(m, tau);
+        const dx = p.x - x, dy = p.y - y;
+        if (dx * dx + dy * dy < Math.pow(m.r * 0.72 + 8, 2)) return { hit: true, x, y, at: tau };
+      }
+    }
+    return { hit: false, x: x0 + (t - tb) * vx, y: y0 + (t - tb) * vy };
+  }
+  function drawBullet(x, y) {
+    const g = fx.createRadialGradient(x, y, 0, x, y, 26);
+    g.addColorStop(0, `rgba(${C1},1)`); g.addColorStop(.3, `rgba(${C2},.8)`); g.addColorStop(1, 'rgba(0,90,30,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.arc(x, y, 26, 0, Math.PI * 2); fx.fill();
+    fx.fillStyle = '#fff'; fx.beginPath(); fx.arc(x, y, 7, 0, Math.PI * 2); fx.fill();
+  }
+
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    for (const m of meteors) {
+      const p = mpos(m, t);
+      if (p.y < -120 || p.y > H + 120) continue;
+      drawMeteor(m, p.x, p.y, m.rot + t * m.w);
+    }
+    const k0 = Math.max(0, Math.floor((t - BLIFE) / RATE));
+    for (let k = k0; k * RATE <= t; k++) {
+      const tb = k * RATE;
+      for (let j = 0; j < FAN.length; j++) {
+        const st = bulletState(tb, t, FAN[j]);
+        if (!st.hit) { if (st.y > -40 && st.x > -40 && st.x < W + 40) drawBullet(st.x, st.y); continue; }
+        const age = t - st.at;                       // faísca verde no ponto do impacto, 0,25 s
+        if (age < 0.25) {
+          const al = 1 - age / 0.25;
+          for (let q = 0; q < 6; q++) {
+            const ang = q * 1.047 + k + j;
+            fx.fillStyle = `rgba(${C1},${al})`;
+            fx.beginPath(); fx.arc(st.x + Math.cos(ang) * 120 * age, st.y + Math.sin(ang) * 120 * age, 4 * al + 1, 0, Math.PI * 2); fx.fill();
+          }
+        }
+      }
+    }
+    drawShip(shipX(t), shipY, t);
+    const vg = fx.createRadialGradient(540, 860, 200, 540, 860, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.72)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+  const pop = (id, t, a, d = 0.35, dy = 18) => { const v = ease.out3(seg(t, a, d)); $(id).style.opacity = v; $(id).style.transform = `translateY(${dy * (1 - v)}px)`; };
+  const MARCAO = 20301;                 // 21/10, 09:02 — 9 boosts, Tier II, leque de 5
+  const HIT = 7.6;                      // trava dos 20.301 (o hit da trilha)
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+
+    // 1) gancho: legível desde o quadro 0 (título e os 9 boosts); a linha de ontem entra em 0,5 s; sai em 2.4–2.7
+    const outH = 1 - seg(t, 2.4, 0.3);
+    layer($('hook'), outH, -30 * (1 - outH));
+    const ws = [['w1', 0.0, 0.35], ['w2', 0.05, 0.4], ['w3', 0.1, 0.4]];
+    for (const [id, a, d] of ws) {               // sempre opaco (gancho legível no quadro 0); só assenta 14 px
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = 1; $(id).style.display = 'inline-block';
+      $(id).style.transform = `translateY(${14 * (1 - v)}px)`;
+    }
+    const orbs = $('orbs').children;
+    for (let i = 0; i < orbs.length; i++) {      // os 9 boosts pulsam em onda, sempre visíveis
+      const pu = 1 + 0.07 * Math.sin(t * 5 - i * 0.6);
+      orbs[i].style.transform = `scale(${pu})`;
+    }
+    const hs = ease.out3(seg(t, 0.5, 0.4));
+    $('hsub').style.opacity = hs; $('hsub').style.transform = `translateY(${20 * (1 - hs)}px)`;
+
+    // 2) boost não dá ponto: o que ele faz — 2.6–5.6
+    const inB = ease.out3(seg(t, 2.6, 0.35)), outB = 1 - seg(t, 5.4, 0.3);
+    layer($('bz'), inB * outB, 30 * (1 - inB));
+    pop('b1', t, 3.3); pop('b2', t, 3.8); pop('b3', t, 4.4);
+
+    // 3) os mesmos 9 boosts: ontem 556 × MARCAO 20.301 (trava em HIT) — 5.8–9.0
+    const inC = ease.out3(seg(t, 5.8, 0.35)), outC = 1 - seg(t, 8.8, 0.3);
+    layer($('cmp'), inC * outC, 30 * (1 - inC));
+    const ra = ease.out3(seg(t, 6.0, 0.3));
+    $('rA').style.opacity = ra; $('rA').style.transform = `translateX(${-36 * (1 - ra)}px)`;
+    const rb = ease.out3(seg(t, 6.35, 0.3));
+    $('rB').style.opacity = rb; $('rB').style.transform = `translateX(${-36 * (1 - rb)}px)`;
+    const cp = 1 - Math.pow(1 - seg(t, 6.45, HIT - 6.45), 2.2);
+    $('vB').textContent = fmt(MARCAO * cp);
+    const locked = t >= HIT;
+    $('vB').className = 'val' + (locked ? ' lock' : '');
+    $('vB').style.transform = `scale(${locked ? 1 + 0.08 * Math.exp(-(t - HIT) * 4) : 1})`;
+    pop('vez', t, HIT + 0.3, 0.4, 20);
+
+    // 4) ponto vem de meteoro — 9.15–11.35
+    const inM = ease.out3(seg(t, 9.15, 0.35)), outM = 1 - seg(t, 11.1, 0.3);
+    layer($('mt'), inM * outM, 30 * (1 - inM));
+    pop('m1', t, 9.7); pop('m2', t, 10.2);
+
+    // 5) joga hoje e mira nos meteoros 11.45–12.45
+    const inA = ease.out3(seg(t, 11.45, 0.3)), outA = 1 - seg(t, 12.15, 0.3);
+    layer($('ask'), inA * outA, 0, 0.92 + 0.08 * inA);
+
+    // 6) CTA 12.45–14.0
+    const inT = ease.out3(seg(t, 12.45, 0.5));
+    layer($('cta'), inT, 30 * (1 - inT));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
