@@ -4,6 +4,20 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-27 · **O reel do relógio das 24 horas chegou a 144 de alcance em ~17 h, o maior de um post da rotina — e o jogo não
+  acompanhou: a segunda teve 3 partidas, e uma delas pegou 9 boosts e fez 556 pontos.** O reel de dados de 25/10 ("faltam 40 min
+  para 24h de jogo", marco) tinha **144 de alcance / 168 views** com ~17,4 h (métrica de 26/10 06:26 BRT), acima do maior valor da
+  série do slot (135, em 16/09), depois de uma semana em que o feed fez 6, 3, 11 e 2 (21 a 24/10): a conta voltou a ser distribuída
+  num reel, então a queda não era um bloqueio do perfil inteiro (a conferência pedida ao Guilherme em 26/10 perde a urgência). Os
+  stories seguem baixos: o de 25/10 fechou em **6 / 8** (~24 h), depois de três zeros (22 a 24/10), e o de 26/10 tinha 0 / 0 com
+  ~8,5 h; o carrossel de 24/10 fechou em **2** (~41 h), e os quatro do plano ficaram em 3, 1, 1 e 2. O alcance não virou jogo: a
+  segunda 26/10 teve 3 partidas, todas anônimas, somando 146 s, e o relógio ficou a 36min37s das 24 h. Uma delas, às 11:19, pegou 9
+  boosts, com o leque cheio, e fez **556 pontos** em 2min10 — no código, o boost não soma ponto (só o leque e o tier), e o MARCAO fez
+  20.301 com os mesmos 9: o reel do dia. Pelos filtros de tier do /stats, as partidas que terminaram no Tier II fizeram 57,6 pontos
+  por segundo, e as do Tier IV, 33,5 (37 das 44 acabaram logo depois do 15º boost) — o artigo do dia no blog. Produção: **o Actions
+  voltou a travar com os arquivos da HeyGen** — a folha do look falhou com exit 1 (run #146) e o story estourou os 15 min (run
+  #148), e os dois saíram no 2º push, em ~1,5 min; o reel de dados, sem arquivo externo, saiu de primeira. O look "a coroa do
+  recorde" saiu certo na 1ª tentativa, e o story (Avatar III, 50 palavras em 16,2 s) não teve mão. HeyGen: 53 → 50.
 - 2026-10-26 · **Leitura das 4 semanas do plano de testes (29/09 a 25/10): nenhum formato mexeu nas estreias — e, desde 21/10, o
   alcance caiu em todos os formatos ao mesmo tempo.** Feed, posts com ≥ 40 h (métrica de 25/10 07:26 BRT): os 14 reels de dados
   fizeram mediana **13,5** de alcance (6 a 122; os três maiores do período — 122, 106 e 65 — são deles), os 10 reels da Estela,
@@ -49,25 +63,6 @@ apenas este arquivo, e não o playbook inteiro.
   baixo, nenhuma mão. O render do Actions voltou a ~1,5 min. HeyGen: 64 → 60; os 4 stories de 25 a 28/10 pedem ~12–16,
   contra 30 acima da guarda. No blog, o power-up entrou como conceito (Pac-Man, Gradius, Super Mario Bros.), com os boosts
   no fim das 679 partidas: o pico é 9 (137), o leque cheio no Tier II, a um boost da virada.
-- 2026-10-23 · **O job de render do Actions passou a estourar o limite de 15 min — e o padrão "quem voltou, melhorou"
-  quebrou no 8º piloto.** Na madrugada de 23/10, o render levou 14 min na folha dos looks (contra ~1 min nos dias
-  anteriores) e o do story estourou o `timeout-minutes: 15` e foi cancelado; os 2º pushes, feitos para destravar, ficaram na
-  fila e foram cancelados por pushes seguintes (o grupo de concorrência `render` guarda um run pendente só) — e, por volta
-  das 04:58Z, os runs voltaram a levar ~2 min. **Antes de re-empurrar, olhar a página pública de Actions** (WebFetch em
-  github.com/engelmannlabs/navistron-social/actions: o run, o estado e o motivo — timeout, cancelado, na fila): re-empurrar
-  com um run pendente só troca um pelo outro, e qualquer run renderiza tudo o que estiver desatualizado. Os runs mostram o
-  aviso da migração do `ubuntu-latest` para o Ubuntu 26 (desde 19/10), a causa provável; fixar o runner ou aumentar o limite
-  é mudança no workflow, que a rotina não pode fazer. No jogo, a quinta 22/10 teve 10 partidas, e o MARCAO voltou (15.999,
-  abaixo dos 20.301 da estreia): dos 8 pilotos que salvaram partidas em mais de um dia, 7 fizeram a melhor na volta — o
-  story do dia. A média das partidas com nick passou dos 10 mil (10.210). Métricas: a Estela das 19:00 de 20/10 fechou em
-  **27 / 32** (~39 h), no meio das três da S42 (32, 12 e 28); o story de 21/10 fechou em **5 / 5**, o menor desde 10/10, e o
-  de 22/10 tinha 0 / 0 com ~8,5 h — depois de 25 a 32 de 14 a 20/10, dois stories seguidos fracos; a leitura de 26/10 diz se
-  é queda ou ruído. Produção: a Excited a 1,15x no Avatar III leu 80 palavras em 30,4 s (~0,38 s por palavra), com a
-  expressão mais animada e sem mão nenhuma (braços para baixo no look); a Friendly a 1,15x, 58 em 16,8 s (~0,29). No look de
-  braços levemente afastados, os braços balançaram de leve e as mãos ficaram na beira de baixo. Avatar III: 16,8 s + 30,4 s
-  = 6 créditos (2 e 4), ~1 a cada ~8,4 s. HeyGen: 72 → 64; os 5 stories de 24 a 28/10 pedem ~15–20, contra 34 acima da
-  guarda. No blog, a lista de partidas por tempo inteira (14 páginas, com a conta fechada contra o /stats) virou o artigo da
-  duração: mediana 2min24, e a partida mais curta possível dura 2 s, porque a nave nasce invencível por 2 s.
 
 Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e

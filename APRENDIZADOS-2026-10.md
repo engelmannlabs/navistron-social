@@ -4,6 +4,25 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores em [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
 
+- 2026-10-23 · **O job de render do Actions passou a estourar o limite de 15 min — e o padrão "quem voltou, melhorou"
+  quebrou no 8º piloto.** Na madrugada de 23/10, o render levou 14 min na folha dos looks (contra ~1 min nos dias
+  anteriores) e o do story estourou o `timeout-minutes: 15` e foi cancelado; os 2º pushes, feitos para destravar, ficaram na
+  fila e foram cancelados por pushes seguintes (o grupo de concorrência `render` guarda um run pendente só) — e, por volta
+  das 04:58Z, os runs voltaram a levar ~2 min. **Antes de re-empurrar, olhar a página pública de Actions** (WebFetch em
+  github.com/engelmannlabs/navistron-social/actions: o run, o estado e o motivo — timeout, cancelado, na fila): re-empurrar
+  com um run pendente só troca um pelo outro, e qualquer run renderiza tudo o que estiver desatualizado. Os runs mostram o
+  aviso da migração do `ubuntu-latest` para o Ubuntu 26 (desde 19/10), a causa provável; fixar o runner ou aumentar o limite
+  é mudança no workflow, que a rotina não pode fazer. No jogo, a quinta 22/10 teve 10 partidas, e o MARCAO voltou (15.999,
+  abaixo dos 20.301 da estreia): dos 8 pilotos que salvaram partidas em mais de um dia, 7 fizeram a melhor na volta — o
+  story do dia. A média das partidas com nick passou dos 10 mil (10.210). Métricas: a Estela das 19:00 de 20/10 fechou em
+  **27 / 32** (~39 h), no meio das três da S42 (32, 12 e 28); o story de 21/10 fechou em **5 / 5**, o menor desde 10/10, e o
+  de 22/10 tinha 0 / 0 com ~8,5 h — depois de 25 a 32 de 14 a 20/10, dois stories seguidos fracos; a leitura de 26/10 diz se
+  é queda ou ruído. Produção: a Excited a 1,15x no Avatar III leu 80 palavras em 30,4 s (~0,38 s por palavra), com a
+  expressão mais animada e sem mão nenhuma (braços para baixo no look); a Friendly a 1,15x, 58 em 16,8 s (~0,29). No look de
+  braços levemente afastados, os braços balançaram de leve e as mãos ficaram na beira de baixo. Avatar III: 16,8 s + 30,4 s
+  = 6 créditos (2 e 4), ~1 a cada ~8,4 s. HeyGen: 72 → 64; os 5 stories de 24 a 28/10 pedem ~15–20, contra 34 acima da
+  guarda. No blog, a lista de partidas por tempo inteira (14 páginas, com a conta fechada contra o /stats) virou o artigo da
+  duração: mediana 2min24, e a partida mais curta possível dura 2 s, porque a nave nasce invencível por 2 s.
 - 2026-10-22 · **Um piloto novo fez a 100ª partida com nick antes de o post que contava as que faltavam ir ao ar — e o Avatar III
   passou num reel.** A quarta 21/10 teve 34 partidas, todas de manhã (08:35 a 11:20): 7 com nick, todas do MARCAO, piloto novo (o 47º),
   que entrou em 4º no top 10 de pilotos com 20.301 (a 7ª maior partida da história) e fez a 100ª partida com nick às 08:48 — mais de 4
