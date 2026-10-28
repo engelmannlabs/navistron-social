@@ -4,6 +4,25 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-28 · **O pico de 144 do reel de 25/10 chegou todo no 1º dia e não se repetiu — e "a small green spaceship" num prompt de
+  look virou a nave de uma série de terceiros.** Métricas: o reel de 25/10 fechou em **144 / 168** (~40 h, métrica de 27/10 05:26
+  BRT), os mesmos números da leitura de ~17 h; o seguinte, o ranking de 26/10, tinha **6 / 7** com ~16 h, no nível dos reels de 21
+  a 24/10 (6, 3, 11 e 2). Os stories seguem no chão: o de 26/10 fechou em **0 / 4** (~24 h), o 4º com 0 de alcance nos últimos
+  cinco (só o de 25/10 fez 6), e o de 27/10 tinha 0 / 2 com ~6,6 h. Um reel forte isolado não responde à pergunta da S44 (o
+  alcance volta com o calendário estável?); a semana fecha em 01/11. No jogo, a terça 27/10 teve 2 partidas: às 14:27, uma anônima
+  chegou ao Tier III com 12 boosts e fez só 2.428 pontos em 3:08 (o boost não dá ponto, o reel de 27/10), e às 15:38 ROBER fez
+  6.573, a 1ª partida com nick depois de 10 seguidas sem nick, no 4º dia com partida desde 24/09 (entre os pilotos com 4 partidas
+  ou mais, só o VASCO jogou em mais dias, 5) — o reel do dia, no pilar hall da fama, com o nick sem artigo e sem pronome na fala.
+  O tempo total chegou a 23h28min53s, a 31min07s das 24 h. Produção: no look do reel, "a small green spaceship" saiu como uma nave
+  de desenho com faixa vermelha, cúpula, janelas redondas e emblema na cauda, parecida com a de uma série de terceiros (vetada); a
+  v2, descrita pela forma ("a tiny sleek green arrow-shaped spaceship, simple smooth geometric shape with no windows, no stripes
+  and no emblems"), saiu limpa — **objeto genérico pode sair com cara de marca: descrever a forma, não a categoria**, como o
+  fantasminha de 25/10. Com "centered in the frame", ela ficou no centro e mais perto, e as mãos entraram no vídeo, juntas à
+  frente do corpo, naturais. No código, o jogo não tem pausa, mas congela sozinho quando a aba sai de foco (os navegadores pausam
+  o requestAnimationFrame em segundo plano, e o passo do jogo é limitado a 0,05 s): o story do dia. Avatar III: 17,0 s + 26,7 s =
+  6 créditos (2 e 4), ~1 a cada ~8,5 s, arredondado para cima. HeyGen: 50 → 41, e os 600 do plano renovam às 21:57 de 28/10. O
+  Actions renderizou tudo de primeira (de 1min0 a 1min59). No blog, jogos sem som (PR #50): o jogo não toca áudio nenhum,
+  conferido no repositório.
 - 2026-10-27 · **O reel do relógio das 24 horas chegou a 144 de alcance em ~17 h, o maior de um post da rotina — e o jogo não
   acompanhou: a segunda teve 3 partidas, e uma delas pegou 9 boosts e fez 556 pontos.** O reel de dados de 25/10 ("faltam 40 min
   para 24h de jogo", marco) tinha **144 de alcance / 168 views** com ~17,4 h (métrica de 26/10 06:26 BRT), acima do maior valor da
@@ -48,22 +67,8 @@ apenas este arquivo, e não o playbook inteiro.
   objeto da comparação**. A Friendly a 1,15x leu 44 palavras em 14,6 s (~0,33 s por palavra), vídeo de 2 créditos. HeyGen: 60 → 56; os
   3 stories de 26 a 28/10 pedem ~9–12, contra 26 acima da guarda. No blog, o tutorial do sitemap achou um ponto para o Guilherme: as
   páginas fixas e as de pilotos levam a hora do build como lastmod, porque o sitemap.js usa new Date() e é gerado no build.
-- 2026-10-24 · **Três stories seguidos abaixo de 10 de alcance — e a sexta teve 3 partidas acima dos 10 mil, todas sem
-  nick.** Métricas: o story de 22/10 fechou em **0 de alcance / 3 views** (~24 h) e o de 23/10 tinha 0 / 0 com ~6,5 h; com
-  o de 21/10 (5 / 5), são três stories seguidos abaixo de 10, depois de 25 a 32 nos de 14 a 20/10. O motor não explica
-  sozinho (o 1º story no Avatar III, de 20/10, fez 27), nem o rótulo de IA (está em todos desde 29/09); no feed, a Estela
-  das 13:00 de 22/10 tinha só **1 / 4** com ~20 h e o reel de 21/10 fechou em **6 / 9** (~44 h). Se a leitura de 26/10
-  confirmar a queda nos dois formatos, vale o Guilherme conferir o status da conta no app do Instagram — a rotina não
-  enxerga isso. No jogo, a sexta 23/10 teve 3 partidas, das 10:35 às 10:58, todas anônimas e acima dos 10 mil (a de
-  16.163 seria a 22ª do /ranking): 574 das 679 partidas (84,5%) terminaram sem nick, e o 100º lugar do /ranking tem 57
-  pontos — daí o carrossel do sábado, o 1º post do feed com o passo a passo para salvar o nick. Achado para o Guilherme: o
-  /ranking diz "100 pilotos registrados", mas conta as linhas do top 100 de partidas (são 105 partidas com nick de 47
-  pilotos). Produção: a **Excited a 1,15x num story no Avatar III** leu 56 palavras em 22,0 s (~0,39 s por palavra, contra
-  ~0,29–0,32 da Friendly) e custou 3 — ~1 crédito a mais que a Friendly no mesmo roteiro; com o look de braços para
-  baixo, nenhuma mão. O render do Actions voltou a ~1,5 min. HeyGen: 64 → 60; os 4 stories de 25 a 28/10 pedem ~12–16,
-  contra 30 acima da guarda. No blog, o power-up entrou como conceito (Pac-Man, Gradius, Super Mario Bros.), com os boosts
-  no fim das 679 partidas: o pico é 9 (137), o leque cheio no Tier II, a um boost da virada.
 
-Anteriores em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (outubro, a partir de 01/10),
+Anteriores em [`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md) (24 a 31/10),
+[`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (01 a 23/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
