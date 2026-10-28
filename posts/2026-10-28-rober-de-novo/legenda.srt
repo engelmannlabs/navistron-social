@@ -1,87 +1,35 @@
 1
-00:00:00,260 --> 00:00:01,710
-Ontem, Rober apareceu de
+00:00:00,260 --> 00:00:03,120
+Ontem, ROBER apareceu de novo no Navistron, pela
 
 2
-00:00:01,780 --> 00:00:03,120
-novo no Navistron, pela
+00:00:03,150 --> 00:00:04,730
+4ª vez desde setembro.
 
 3
-00:00:03,150 --> 00:00:04,040
-quarta vez desde
+00:00:04,900 --> 00:00:07,880
+Antes de ROBER, foram 10 partidas seguidas sem nick.
 
 4
-00:00:04,120 --> 00:00:04,730
-setembro.
+00:00:08,200 --> 00:00:13,280
+Às 15:38, ROBER fez 6.573 pontos: a
 
 5
-00:00:04,900 --> 00:00:05,940
-Antes de Rober, foram
+00:00:13,320 --> 00:00:15,150
+1ª partida com nick da semana.
 
 6
-00:00:06,010 --> 00:00:07,200
-dez partidas seguidas
+00:00:15,430 --> 00:00:20,370
+Até ontem, a melhor de ROBER era a de 07/10, 15.128, o
 
 7
-00:00:07,270 --> 00:00:07,880
-sem nick.
+00:00:20,410 --> 00:00:22,520
+10º lugar do top 10 de pilotos.
 
 8
-00:00:08,200 --> 00:00:09,350
-Às três e trinta e oito
+00:00:22,740 --> 00:00:25,270
+Joga hoje e põe o seu nick no game over.
 
 9
-00:00:09,420 --> 00:00:10,940
-da tarde, Rober fez seis
-
-10
-00:00:11,050 --> 00:00:12,130
-mil quinhentos e setenta
-
-11
-00:00:12,170 --> 00:00:13,280
-e três pontos: a
-
-12
-00:00:13,320 --> 00:00:14,240
-primeira partida com
-
-13
-00:00:14,280 --> 00:00:15,150
-nick da semana.
-
-14
-00:00:15,430 --> 00:00:16,730
-Até ontem, a melhor de
-
-15
-00:00:16,810 --> 00:00:17,810
-Rober era a de sete de
-
-16
-00:00:17,850 --> 00:00:19,140
-outubro, quinze mil
-
-17
-00:00:19,220 --> 00:00:20,370
-cento e vinte e oito, o
-
-18
-00:00:20,410 --> 00:00:21,740
-décimo lugar do top dez
-
-19
-00:00:21,820 --> 00:00:22,520
-de pilotos.
-
-20
-00:00:22,740 --> 00:00:24,190
-Joga hoje e põe o seu
-
-21
-00:00:24,230 --> 00:00:25,270
-nick no game over.
-
-22
 00:00:25,490 --> 00:00:26,600
 Te vejo no ranking!
