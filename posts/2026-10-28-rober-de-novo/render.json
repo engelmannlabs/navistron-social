@@ -1,0 +1,23 @@
+{
+  "files": {
+    "post.html": {
+      "hash": "ce09ace86f76335f1dfc004505f0d14162f0afdf7b19bc76387d7f879a6f9aa6",
+      "out": "reel.mp4",
+      "type": "video",
+      "source": "https://files2.heygen.ai/aws_pacific/avatar_tmp/c9379eb0ffee407c956c12517ad5feba/77f166eef47227c21af3b84c3a0854a3.mp4",
+      "width": 1080,
+      "height": 1920,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono"
+      ],
+      "duration": 26.73,
+      "fps": 30,
+      "bytes": 10341657,
+      "cover": "reel-cover.png",
+      "captions": 22,
+      "overlayUntil": null
+    }
+  },
+  "renderedAt": "2026-10-28T04:33:16.661Z"
+}
