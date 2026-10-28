@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="video">
+<meta name="post-size" content="1080x1920">
+<meta name="video-src" content="https://files2.heygen.ai/aws_pacific/avatar_tmp/c9379eb0ffee407c956c12517ad5feba/9ac84966600763f14d0fd759ea6c0e09.mp4?Expires=1793766188&Signature=KPmOuB0retbna0zIu5bCNOZPy5ogg9WBuic-Ut88vcv-WJYokZyNVzCyIVn4Nf84DkUUUkAlgKlwFaNOVrcQZEx-KLDRA5WsrawbD-J5Hkwl7qAFcGzprVJuYLG1LjU0boZQdgCR1JCjZTUE6z2lyRxL5h~t~yocuzbUma6pRl2Np2EvLlEB0JISdapa2fSYmHnNUge~iHaSFKnswl1ZY12TNsLfovM~2seq8VADhCowa43rfmgNeNl9Gs5m6PoUuiHKefp2Yw24hFmkJSZYsCJ6~V52mn--l3upFuDuzG6J93ygGReWu6elL7yNkD2mD7MzoRak41MjjN3g87JgoQ__&Key-Pair-Id=K38HBHX5LX3X2H">
+<meta name="video-subtitles" content="https://files2.heygen.ai/aws_pacific/avatar_tmp/c9379eb0ffee407c956c12517ad5feba/subtitles_9ac84966600763f14d0fd759ea6c0e09.srt?Expires=1793766220&Signature=YiFc35evCr0aQmzK7t~FN7AunpjsEDdk5WrWmWMpcZyLbIiC7hyG2DqnIgiqsiMUg-amsDqYyDQYLKPC4gbvoOyVXqBOqX06O0M8oMTUto44uAApj2GOr8iGhCn9oWk-h0UtkPIt9mIPzkuh1zE9MGFMKv9Gq0UBkkzZg9har4BYYDMYPFLCIY6AidKKDaQOdR9raXRLr2ftxh8PXfyFuyFOjb0W84K1ePWOeqfzYVH~2XieTRL5PCZ8bRz2P62yM-VSnNiNiXXyTsJrbrahplLfxCKMhT7sQ8LvhJhLNjIPMKjJ6cziG3gqCaiCFQNf8YhSao8KX0HHCdvLFquzTQ__&Key-Pair-Id=K38HBHX5LX3X2H">
+<meta name="reel-cover" content="1.0">
+<!-- Story de 28/10/2026 (quarta): a Estela explica — o Navistron não tem botão de pausa, mas, se você trocar de aba ou de
+     aplicativo no meio da partida, tudo congela (os meteoros param no ar e o tempo da partida também) e continua quando
+     você volta. Conferido no código (src/app/play/page.js, blob 36d68b9a): nenhum botão nem tecla de pausa e nenhum
+     visibilitychange; o jogo roda num laço de requestAnimationFrame com o passo limitado a 0,05 s (dt = Math.min((ts −
+     lastTime)/1000, .05)), e meteoros, boosts, tiros e o relógio da partida (timeAlive) andam por esse dt. MDN: os navegadores
+     param de chamar requestAnimationFrame em abas em segundo plano. A gravação (src/lib/scoreValidation.js) só recusa um
+     tempo de partida maior que o tempo real × 1,15: a pausa não invalida a partida.
+     Vídeo HeyGen 9ac84966600763f14d0fd759ea6c0e09 (motor Avatar III, 1080p, 17,0 s), take único no look "os meteoros
+     congelados" b5f5673216994b53c1ba6de05bf95ecc (laboratório em posts/_lab-2026-10-28-story-gelo-looks): duas pedrinhas
+     cinza cobertas de gelo azul-claro, paradas no alto do quadro, à esquerda, longe do cabelo. Voz Sofia Brazil - Friendly
+     a 1,15x; sem variável nova (a produção dos stories de 25 a 27/10, para seguir lendo a queda de alcance); sem
+     expressiveness nem motionPrompt (o Avatar III não aceita); glossário Navistron. -->
+<!-- Story da Estela (desde 29/09/2026, pedido do Guilherme): vídeo PURO — sem legenda queimada, sem selo, nada por cima.
+     O aviso de IA é só o rótulo de IA do Instagram (isAiGenerated no Buffer, obrigatório): ela não diz que é IA na fala,
+     vai direto ao assunto do dia. Cenário lúdico criado para o post, em take único num look desse cenário (desde 03/10:
+     o formato completo, com cortes e trilha, é só dos reels — regra 6 de personagens/ESTELA.md); a casa dela deixou de
+     ser obrigatória.
+     O .srt da HeyGen, quando existe, é baixado só como transcrição (legenda.srt) e NÃO é queimado: não existe a meta
+     video-captions. O Actions apenas enquadra em 1080×1920, normaliza para 30 fps / H.264 / AAC e gera reel.mp4 +
+     reel-cover.png.
+     Uso: copiar para posts/AAAA-MM-DD-story-slug/post.html e trocar video-src e video-subtitles (sem subtitle_url,
+     apagar essa linha). -->
+<style>
+  html, body { background: transparent !important; margin: 0; }
+</style>
+</head>
+<body></body>
+</html>
