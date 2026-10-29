@@ -4,6 +4,25 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-29 · **A HeyGen amanheceu no plano free no dia da renovação — sem créditos, o story do dia foi pulado — e o reel
+  de mecânica de 27/10 segurou o olho: 41 de alcance com ~15 h e 5,8 s de tempo médio em 14 s.** HeyGen: às 01:16, 01:21 e
+  01:31, `get_current_user` mostrou a assinatura no plano **free**, sem saldo e sem data de renovação, no dia em que o
+  Creator (600) deveria renovar (29/10, 00:57 UTC) — nenhum vídeo gerado, story pulado e relatado (a guarda de
+  `personagens/ESTELA.md`); **o Guilherme precisa conferir a assinatura**. Enquanto o plano seguir free, os stories ficam
+  pulados e o reel da Estela de sex 30 (19:00) vira reel de dados. O fim de "Custos e limites" em `ESTELA.md` ainda conta
+  com a renovação de 29/10: corrigir na próxima rodada que gravar o arquivo (88 KB; não foi reescrito hoje só por isso).
+  Métricas (feed de 28/10 04:26 BRT): o reel de 27/10 ("9 boosts, só 556 pontos", mecânica explicada) tinha **41 / 48** com
+  ~15,4 h e **5,82 s de tempo médio**, bem acima dos 3,3 s de média dos reels de dados nas 4 semanas do plano e dos 3,9 s do
+  reel de 25/10 (o de 144) — o 2º reel forte em três dias, depois de 21 a 24/10 no chão; o ranking de 26/10 fechou em
+  **8 / 9** (~39 h, 2,9 s), e a série do slot foi a 36 posts, mediana 13,5. Os stories seguem no zero: o de 27/10 fechou em
+  **0 / 6** (~19 h) e o de 28/10 tinha 0 / 1 com ~7,8 h — cinco dos últimos seis com 0 de alcance. No jogo, a quarta 28/10
+  teve 3 partidas: ROBER de novo, **8.389** às 14:47 (2:24, Tier II), no 2º dia seguido e no 5º dia com partida (empata
+  com o VASCO), e duas anônimas no fim da tarde; 688 partidas (faltam 12 para a 700ª) e 23h34min13s somadas (faltam
+  25min47s para as 24 h). As sete partidas redondas, da 1ª à 600ª, saíram todas sem nick — o reel do dia, com o pedido
+  "a 700ª pode ter o seu nick". No blog, cores HSL (PR #51), com um achado para o Guilherme: dois artigos de 2025 em
+  `blogArticles.js` (o do motor do jogo e o de performance) dizem que as estrelas do Tier VII andam 4,15× mais rápido, mas o
+  código dá 1 + 6 × 0,45 = 3,7× (o Tier I é o powerTier 0); e o do motor diz que o fundo escurece a cada tier, quando ele vai
+  do azul-escuro rgb(0, 1, 14) ao vermelho-escuro rgb(84, 1, 2) — a rotina não edita esse arquivo.
 - 2026-10-28 · **O pico de 144 do reel de 25/10 chegou todo no 1º dia e não se repetiu — e "a small green spaceship" num prompt de
   look virou a nave de uma série de terceiros.** Métricas: o reel de 25/10 fechou em **144 / 168** (~40 h, métrica de 27/10 05:26
   BRT), os mesmos números da leitura de ~17 h; o seguinte, o ranking de 26/10, tinha **6 / 7** com ~16 h, no nível dos reels de 21
@@ -55,18 +74,6 @@ apenas este arquivo, e não o playbook inteiro.
   com "its dark visor empty" e "no faces, no eyes, no creatures", saiu certo na 1ª tentativa; no vídeo (Avatar III, 14,2 s, 2
   créditos), **com os braços fora do quadro no look, ela gesticulou** quatro vezes (mãos à altura do peito, naturais) — os looks de
   braços para baixo de 20, 22 e 24/10 não tiveram gesto. HeyGen: 56 → 53. No blog, o ranking da semana 43 (PR #48).
-- 2026-10-25 · **O sábado zerou, e a semana 43 jogou de manhã: 45 das 48 partidas saíram antes do meio-dia — e "like a ghost" num
-  prompt de look virou um fantasminha de desenho.** No jogo, o sábado 24/10 não teve nenhuma partida; a semana 43 chega ao domingo com
-  48 partidas (8 com nick, todas do MARCAO), e 45 delas saíram entre 07:46 e 11:20 (só 3 à tarde: 19/10 às 16:43 e 22/10 às 13:46 e
-  16:42). A faixa de 14h a 17h do PLAYBOOK, que decidiu o story às 16:00, não vale há duas semanas (na S42, 20 das 38 antes das 13h):
-  fica para a leitura de 26/10. Métricas: a Estela das 13:00 de 22/10 fechou em **3 / 5** (~43 h), o menor vídeo dela no slot (29, 70,
-  14, 4 e 14 nas S40–S41); a das 19:00 de 23/10 tinha **10 / 13** com ~13 h; os stories de 21 a 24/10 fizeram 5, 0, 0 e 0 de alcance
-  (com 5, 3, 5 e 2 views) — o de hoje testa a duração curta (14,6 s), como os de 11 s que fizeram 28 e 27 em 18 e 20/10. Produção: no
-  look do story, "half transparent, like a ghost" saiu como um fantasminha ciano com olhos, parecido com personagem de terceiros
-  (vetado); "faint and see-through" com "no faces, no eyes, no creatures" resolveu na 2ª tentativa — **comparação no prompt vira o
-  objeto da comparação**. A Friendly a 1,15x leu 44 palavras em 14,6 s (~0,33 s por palavra), vídeo de 2 créditos. HeyGen: 60 → 56; os
-  3 stories de 26 a 28/10 pedem ~9–12, contra 26 acima da guarda. No blog, o tutorial do sitemap achou um ponto para o Guilherme: as
-  páginas fixas e as de pilotos levam a hora do build como lastmod, porque o sitemap.js usa new Date() e é gerado no build.
 
 Anteriores em [`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md) (24 a 31/10),
 [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (01 a 23/10),
