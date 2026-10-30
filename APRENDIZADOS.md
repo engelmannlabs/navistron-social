@@ -4,6 +4,23 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-30 · **A HeyGen seguiu no plano free — a Estela de sexta virou reel de dados e o story foi pulado de novo —, o reel
+  de mecânica de 27/10 fechou em 51, o maior da S44, e a atualização das métricas no Buffer adianta 1 h por dia.** HeyGen: à
+  01:02, `get_current_user` mostrou de novo o plano free, sem saldo e sem data de renovação; pela guarda de
+  `personagens/ESTELA.md`, a Estela das 19:00 de sex 30 virou o reel de dados "meteoro vermelho aguenta mais" às 13:00
+  (mecânica explicada: a cor do meteoro mostra a dificuldade; vermelho máximo a partir de 6.508 pontos no Tier II, 3.334 no
+  III e 1.548 no IV; a vida do grande vai de 3 a 30) e o story foi pulado pelo 2º dia — **o Guilherme precisa conferir a
+  assinatura**. Métricas (feed de 29/10 03:26 BRT): o reel de 27/10 ("9 boosts, só 556 pontos") fechou em **51 / 57** (~38 h,
+  tempo médio 5,1 s), o 9º da série do slot das 13:00 (37 posts, mediana 14), com mais 10 de alcance entre ~15 e ~38 h; a
+  Estela de 28/10 (ROBER de novo, 19:00) tinha **16 / 20** com ~8 h; o story de 28/10 fechou em **0 / 3** — seis dos últimos
+  sete stories com 0 de alcance. **A atualização diária das métricas do feed no Buffer adianta ~1 h por dia** (`metricsUpdatedAt`
+  em 26/10 06:26, 27/10 05:26, 28/10 04:26 e 29/10 03:26 BRT, ~23 h entre uma e outra): se seguir assim, a de 31/10 cai por
+  volta da 01:26, no meio da rodada, e a de 01/11 antes dela — calcular a idade de cada post pelo `metricsUpdatedAt`, não pela
+  hora da rodada. No jogo, a quinta 29/10 teve 6 partidas, todas anônimas, 5 delas entre 09:22 e 10:39, uma no Tier IV (5.983
+  em 4:03); 694 partidas (faltam 6 para a 700ª) e 23h51min00s somadas (faltam 9 min para as 24 h). No blog, o horário de pico
+  (PR #52), com as 694 partidas lidas uma a uma e a conta fechada contra o /stats: 41,1% entre 14h e 16h59, a quinta com
+  30,1% (puxada por 09/07, 16/07 e 03/09) e outubro com a manhã de volta à frente da tarde (77 a 68). Nesta rodada o WebFetch
+  não veio como ferramenta direta; o agente de leitura da web (web-fetch) leu o /stats e as 14 páginas sem erro.
 - 2026-10-29 · **A HeyGen amanheceu no plano free no dia da renovação — sem créditos, o story do dia foi pulado — e o reel
   de mecânica de 27/10 segurou o olho: 41 de alcance com ~15 h e 5,8 s de tempo médio em 14 s.** HeyGen: às 01:16, 01:21 e
   01:31, `get_current_user` mostrou a assinatura no plano **free**, sem saldo e sem data de renovação, no dia em que o
@@ -56,24 +73,6 @@ apenas este arquivo, e não o playbook inteiro.
   voltou a travar com os arquivos da HeyGen** — a folha do look falhou com exit 1 (run #146) e o story estourou os 15 min (run
   #148), e os dois saíram no 2º push, em ~1,5 min; o reel de dados, sem arquivo externo, saiu de primeira. O look "a coroa do
   recorde" saiu certo na 1ª tentativa, e o story (Avatar III, 50 palavras em 16,2 s) não teve mão. HeyGen: 53 → 50.
-- 2026-10-26 · **Leitura das 4 semanas do plano de testes (29/09 a 25/10): nenhum formato mexeu nas estreias — e, desde 21/10, o
-  alcance caiu em todos os formatos ao mesmo tempo.** Feed, posts com ≥ 40 h (métrica de 25/10 07:26 BRT): os 14 reels de dados
-  fizeram mediana **13,5** de alcance (6 a 122; os três maiores do período — 122, 106 e 65 — são deles), os 10 reels da Estela,
-  **21** (3 a 71; às 13:00, 14,5 em 6 vídeos; às 19:00, 27,5 em 4), e os 3 carrosséis, **1** (3, 1 e 1; o de 24/10 tinha 2 com
-  ~18 h). O tempo médio assistido foi de 5,6 s nos reels dela (de 17 a 33 s) e 3,3 s nos de dados (14 s): a mesma fração do vídeo,
-  ~1/4. O 2º post do dia (S42) somou pouco e não dividiu; o Buffer só traz follows nos carrosséis (0 nos quatro). Stories: mediana
-  10 (S40), 6 (S41), 25 (S42) e 2,5 (S43). No jogo, as duas métricas que importam: partidas por semana 18, 47, 38 e 49 (59, 17 e 20
-  nas S37–S39), 72 a 91% anônimas, e nicks novos 0, 1, 1 e 1 (KAL-EL, RASEC e MARCAO, contra 7 nas três semanas anteriores) —
-  nenhuma semana de teste mudou o ritmo de estreias. **Desde 21/10, tudo caiu junto**: no feed, 6, 3, 11 (~36 h) e 2 (~18 h), todos
-  abaixo da mediana do slot (14); nos stories, 5 e depois quatro zeros seguidos (22 a 25/10; antes, zero era caso isolado: 01, 07 e
-  10/10) — com reel de dados, Estela e carrossel, 13:00 e 19:00, Friendly e Excited: não é formato. **Pedido ao Guilherme: conferir
-  o status da conta no app do Instagram** (a rotina não enxerga isso). Decisão para a S44 (26/10 a 01/11): calendário estável —
-  reels de dados às 13:00, a Estela às 19:00 (qua 28 e sex 30) como o único post do dia, sem carrossel, story às 16:00 — para ler
-  se o alcance volta. No jogo, a semana 43 fechou com 49 partidas (8 com nick, todas do MARCAO, 20.301), 24 acima dos 10 mil (19 no
-  Tier II com 8 ou 9 boosts) e 45 antes do meio-dia; o domingo 25/10 teve uma partida, às 20:07. Produção: o capacete vazio, pedido
-  com "its dark visor empty" e "no faces, no eyes, no creatures", saiu certo na 1ª tentativa; no vídeo (Avatar III, 14,2 s, 2
-  créditos), **com os braços fora do quadro no look, ela gesticulou** quatro vezes (mãos à altura do peito, naturais) — os looks de
-  braços para baixo de 20, 22 e 24/10 não tiveram gesto. HeyGen: 56 → 53. No blog, o ranking da semana 43 (PR #48).
 
 Anteriores em [`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md) (24 a 31/10),
 [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (01 a 23/10),

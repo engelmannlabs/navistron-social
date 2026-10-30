@@ -4,6 +4,24 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores (01 a 23/10) em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md). Arquivo aberto em 28/10/2026 para que a rodada
 diária não reescreva o arquivo de outubro inteiro (~38 KB) a cada entrada arquivada.
 
+- 2026-10-26 · **Leitura das 4 semanas do plano de testes (29/09 a 25/10): nenhum formato mexeu nas estreias — e, desde 21/10, o
+  alcance caiu em todos os formatos ao mesmo tempo.** Feed, posts com ≥ 40 h (métrica de 25/10 07:26 BRT): os 14 reels de dados
+  fizeram mediana **13,5** de alcance (6 a 122; os três maiores do período — 122, 106 e 65 — são deles), os 10 reels da Estela,
+  **21** (3 a 71; às 13:00, 14,5 em 6 vídeos; às 19:00, 27,5 em 4), e os 3 carrosséis, **1** (3, 1 e 1; o de 24/10 tinha 2 com
+  ~18 h). O tempo médio assistido foi de 5,6 s nos reels dela (de 17 a 33 s) e 3,3 s nos de dados (14 s): a mesma fração do vídeo,
+  ~1/4. O 2º post do dia (S42) somou pouco e não dividiu; o Buffer só traz follows nos carrosséis (0 nos quatro). Stories: mediana
+  10 (S40), 6 (S41), 25 (S42) e 2,5 (S43). No jogo, as duas métricas que importam: partidas por semana 18, 47, 38 e 49 (59, 17 e 20
+  nas S37–S39), 72 a 91% anônimas, e nicks novos 0, 1, 1 e 1 (KAL-EL, RASEC e MARCAO, contra 7 nas três semanas anteriores) —
+  nenhuma semana de teste mudou o ritmo de estreias. **Desde 21/10, tudo caiu junto**: no feed, 6, 3, 11 (~36 h) e 2 (~18 h), todos
+  abaixo da mediana do slot (14); nos stories, 5 e depois quatro zeros seguidos (22 a 25/10; antes, zero era caso isolado: 01, 07 e
+  10/10) — com reel de dados, Estela e carrossel, 13:00 e 19:00, Friendly e Excited: não é formato. **Pedido ao Guilherme: conferir
+  o status da conta no app do Instagram** (a rotina não enxerga isso). Decisão para a S44 (26/10 a 01/11): calendário estável —
+  reels de dados às 13:00, a Estela às 19:00 (qua 28 e sex 30) como o único post do dia, sem carrossel, story às 16:00 — para ler
+  se o alcance volta. No jogo, a semana 43 fechou com 49 partidas (8 com nick, todas do MARCAO, 20.301), 24 acima dos 10 mil (19 no
+  Tier II com 8 ou 9 boosts) e 45 antes do meio-dia; o domingo 25/10 teve uma partida, às 20:07. Produção: o capacete vazio, pedido
+  com "its dark visor empty" e "no faces, no eyes, no creatures", saiu certo na 1ª tentativa; no vídeo (Avatar III, 14,2 s, 2
+  créditos), **com os braços fora do quadro no look, ela gesticulou** quatro vezes (mãos à altura do peito, naturais) — os looks de
+  braços para baixo de 20, 22 e 24/10 não tiveram gesto. HeyGen: 56 → 53. No blog, o ranking da semana 43 (PR #48).
 - 2026-10-25 · **O sábado zerou, e a semana 43 jogou de manhã: 45 das 48 partidas saíram antes do meio-dia — e "like a ghost" num
   prompt de look virou um fantasminha de desenho.** No jogo, o sábado 24/10 não teve nenhuma partida; a semana 43 chega ao domingo com
   48 partidas (8 com nick, todas do MARCAO), e 45 delas saíram entre 07:46 e 11:20 (só 3 à tarde: 19/10 às 16:43 e 22/10 às 13:46 e
