@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="14.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="1.6">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>
+  .h1 .red { color: #FF3B2F; text-shadow: 0 0 44px rgba(255,59,47,0.55); }
+  .kicker.hot { color: #FF6B4A; }
+  .vlabel { font-family: var(--font-ui); font-weight: 500; font-size: 32px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; }
+  .counter.hot { color: #FF3B2F; text-shadow: 0 0 60px rgba(255,59,47,0.55); }
+  .counter .de { font-family: var(--font-ui); font-weight: 600; font-size: 84px; letter-spacing: 0.08em; color: var(--ink); text-shadow: none; margin: 0 34px; vertical-align: 0.55em; }
+  .dline { margin-top: 18px; font-family: var(--font-ui); font-weight: 500; font-size: 34px; letter-spacing: 0.18em; color: var(--muted); text-transform: uppercase; }
+  .dline b { color: var(--ink); font-family: var(--font-mono); font-weight: 800; letter-spacing: 0; }
+  .rows { width: 820px; margin: 34px auto 0; }
+  .trow { display: flex; align-items: center; justify-content: space-between; height: 104px; border-bottom: 2px solid rgba(143,163,199,0.16); opacity: 0; }
+  .trow:last-child { border-bottom: 0; }
+  .trow .tn { font-family: var(--font-ui); font-weight: 700; font-size: 46px; letter-spacing: 0.12em; }
+  .trow .pt { font-family: var(--font-mono); font-weight: 800; font-size: 76px; color: var(--ink); font-variant-numeric: tabular-nums; }
+  .trow .pt small { font-size: 30px; font-weight: 700; color: var(--muted); margin-left: 12px; letter-spacing: 0.1em; }
+</style>
+<!-- MECÂNICA EXPLICADA: A COR DO METEORO. Tudo conferido em src/app/play/page.js (repo navistron, blob 36d68b9a):
+     getDiff() = TIER_DIFF[tier] × (1 + score × 0,0007), com TIER_DIFF = [1; 1,8; 3,0; 4,8; 7,0; 10,0; 14,0];
+     spawnMeteor(): heat = min((dif − 1) / 9, 1) e vida (hp) = max(1, round((grande ? 3 : 1) × dif)), os dois fixados quando
+     o meteoro nasce; drawMeteor(): superfície rgb(154 + 90·heat, 110 − 90·heat, 80 − 60·heat) — de rgb(154,110,80), marrom,
+     a rgb(244,20,20), vermelho —, brilho em volta com alfa 0,06 + 0,25·heat e contorno vermelho rgba(255,60,0,.9) quando
+     heat > 0,5. Vida do meteoro grande: 3 com dificuldade 1 (o começo da partida) e 30 com dificuldade 10, quando a cor
+     chega ao máximo. Vermelho máximo (heat = 1) a partir de, contas em node com a aritmética do jogo: Tier I 12.858 pontos,
+     Tier II 6.508, Tier III 3.334, Tier IV 1.548, Tier V 613; no Tier VI (dificuldade 10) e no VII (14), desde o 1º ponto.
+     Telemetria: navistron.io/stats e ?visao=partidas&ordem=data, lidos em 30/10/2026 ~01:05 BRT com ?v=: 694 partidas
+     (107 com nick, 587 anônimas), 47 pilotos, 23h 51m, a última em 29/10 às 17:15. A quinta 29/10 teve 6 partidas, todas
+     anônimas: 09:22 (6.061, Tier III), 09:24 (676, Tier II), 09:25 (51, Tier I), 09:33 (5.983, Tier IV), 10:39 (7.524,
+     Tier III) e 17:15 (5.506, Tier II). Chegaram à dificuldade 10 (vermelho máximo) as três de Tier III e IV — 15,7, 24,9 e
+     18,8 no fim; a de 17:15 parou em 8,7 (heat 0,86).
+     Fundo: a nave no Tier II (verde #80ff90: tiros c1 180,255,180 / c2 0,220,80, um a cada 0,15 s — TIER_DEFS), com os
+     meteoros esquentando do marrom ao vermelho pela mesma fórmula de cor do jogo. -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Mecânica explicada · @navistron</div>
+
+  <div id="hook" class="layer" style="top: 440px">
+    <div class="h1" style="font-size: 172px"><span class="w" id="w1">METEORO</span><br><span class="w red" id="w2">VERMELHO</span><br><span class="w" id="w3">AGUENTA MAIS</span></div>
+    <div class="sub" id="hsub" style="margin-top: 60px; opacity: 0">a cor mostra a <b>dificuldade</b><br>regra do código do jogo</div>
+  </div>
+
+  <div id="mt" class="layer" style="top: 400px">
+    <div class="kicker hot">a cor de cada meteoro</div>
+    <div style="height: 420px"></div>
+    <div class="vlabel">vida do meteoro grande</div>
+    <div class="counter" id="vida" style="margin-top: 10px; font-size: 220px">3</div>
+    <div class="dline" id="dl">dificuldade <b id="dif">1</b></div>
+    <div id="vx" style="margin-top: 30px; opacity: 0"><span class="marker"><b>10×</b> mais vida</span></div>
+  </div>
+
+  <div id="tb" class="layer" style="top: 420px">
+    <div class="kicker hot">vermelho máximo a partir de</div>
+    <div class="rows">
+      <div class="trow" id="r1"><span class="tn" style="color: var(--t1)">TIER I</span><span class="pt">12.858<small>pts</small></span></div>
+      <div class="trow" id="r2"><span class="tn" style="color: var(--t2)">TIER II</span><span class="pt">6.508<small>pts</small></span></div>
+      <div class="trow" id="r3"><span class="tn" style="color: var(--t3)">TIER III</span><span class="pt">3.334<small>pts</small></span></div>
+      <div class="trow" id="r4"><span class="tn" style="color: var(--t4)">TIER IV</span><span class="pt">1.548<small>pts</small></span></div>
+      <div class="trow" id="r5"><span class="tn" style="color: var(--t5)">TIER V</span><span class="pt">613<small>pts</small></span></div>
+    </div>
+    <div id="t6" style="margin-top: 36px; opacity: 0"><span class="marker">tier VI: já nascem <b>vermelhos</b></span></div>
+  </div>
+
+  <div id="ot" class="layer" style="top: 560px">
+    <div class="kicker">ontem · 29/10</div>
+    <div class="counter hot" id="tres" style="margin-top: 30px; font-size: 230px">3<span class="de">de</span>6</div>
+    <div class="sub" style="margin-top: 40px">partidas chegaram ao<br><b>vermelho máximo</b></div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">grátis, sem login</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 14.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+
+  // ---------- PRNG determinístico ----------
+  let s = 3010;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- a partida no fundo: meteoros esquentando, nave no Tier II (verde) atirando ----------
+  const GREEN = '128,255,144', C1 = '180,255,180', C2 = '0,220,80';
+  const HIT = 6.2;                                     // o meteoro chega ao vermelho máximo (o hit da trilha)
+  const N = 24, CYC = 2100, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 200 + rnd() * 170, r: 20 + rnd() * 44, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * CYC, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  function mpos(m, t) {
+    const dist = t * 1.5 * m.v + m.phase;
+    const cycle = Math.floor(dist / CYC);
+    const y = (dist % CYC) - 120;
+    const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+    return { x, y, born: (cycle * CYC - m.phase) / (1.5 * m.v) };   // quando este meteoro entrou no topo
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  // cores de drawMeteor() no jogo, em função do "calor" (heat, 0 a 1)
+  function meteorPath(shape, r) {
+    fx.beginPath();
+    const n = shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = r * shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+  }
+  function drawHotMeteor(shape, x, y, r, rot, heat, alpha, lw) {
+    fx.save(); fx.globalAlpha = alpha; fx.translate(x, y); fx.rotate(rot);
+    const aa = .06 + heat * .25;
+    const ag = fx.createRadialGradient(0, 0, r * .3, 0, 0, r * 1.9);
+    ag.addColorStop(0, `rgba(255,${Math.floor(140 - heat * 140)},40,0)`);
+    ag.addColorStop(.5, `rgba(255,${Math.floor(80 - heat * 80)},20,${aa})`);
+    ag.addColorStop(1, 'rgba(255,0,0,0)');
+    fx.beginPath(); fx.arc(0, 0, r * 1.9, 0, Math.PI * 2); fx.fillStyle = ag; fx.fill();
+    meteorPath(shape, r);
+    const r1 = Math.floor(154 + heat * 90), g1 = Math.floor(110 - heat * 90), b1 = Math.floor(80 - heat * 60);
+    const rg = fx.createRadialGradient(-r * .3, -r * .3, 0, 0, 0, r);
+    rg.addColorStop(0, `rgb(${r1},${g1},${b1})`);
+    rg.addColorStop(.6, `rgb(${Math.floor(r1 * .6)},${Math.floor(g1 * .5)},${Math.floor(b1 * .4)})`);
+    rg.addColorStop(1, '#150500');
+    fx.fillStyle = rg; fx.fill();
+    fx.strokeStyle = heat > .5 ? 'rgba(255,60,0,.9)' : `rgba(${r1},${Math.max(g1 - 20, 0)},20,.75)`;
+    fx.lineWidth = lw * (1.5 + heat * 1.5); fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y); fx.scale(1.25, 1.25);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, `rgba(${GREEN},0.95)`); g.addColorStop(1, `rgba(${GREEN},0)`);
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = `rgba(${GREEN},0.75)`; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = `rgb(${GREEN})`; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 165 * Math.sin(t * 0.78 + 2.2) + 48 * Math.sin(t * 2.0);
+  const shipY = 1410;
+  const RATE = 0.15, BV = 1040, BLIFE = 1.6, STEP = 1 / 60;
+  // o tiro some no 1º meteoro que tocar (conta feita só com t, para cada quadro sair igual)
+  function bulletState(tb, t) {
+    const x0 = shipX(tb), y0 = shipY - 60;
+    for (let tau = tb; tau <= t + 1e-9; tau += STEP) {
+      const y = y0 - (tau - tb) * BV;
+      for (const m of meteors) {
+        const p = mpos(m, tau);
+        const dx = p.x - x0, dy = p.y - y;
+        if (dx * dx + dy * dy < Math.pow(m.r * 0.72 + 8, 2)) return { hit: true, x: x0, y, at: tau };
+      }
+    }
+    return { hit: false, x: x0, y: y0 - (t - tb) * BV };
+  }
+  function drawBullet(x, y) {
+    const g = fx.createRadialGradient(x, y, 0, x, y, 28);
+    g.addColorStop(0, `rgba(${C1},1)`); g.addColorStop(.3, `rgba(${C2},.8)`); g.addColorStop(1, 'rgba(0,120,40,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.arc(x, y, 28, 0, Math.PI * 2); fx.fill();
+    fx.fillStyle = '#fff'; fx.beginPath(); fx.arc(x, y, 8, 0, Math.PI * 2); fx.fill();
+  }
+  // o meteoro grande da cena 2, no centro
+  const BIG = [];
+  for (let k = 0; k < 11; k++) BIG.push(0.74 + rnd() * 0.26);
+  // calor do meteoro grande: marrom até 3,0 s, vermelho máximo no HIT. No fundo, como no jogo, cada meteoro
+  // guarda o calor do instante em que nasceu (spawnMeteor fixa heat na criação): os novos chegam mais vermelhos.
+  const heatAt = t => ease.inout(seg(t, 3.0, HIT - 3.0));
+
+  function drawFX(t, bigAlpha) {
+    fx.clearRect(0, 0, W, H);
+    const hb = heatAt(t);
+    for (const m of meteors) {
+      const p = mpos(m, t);
+      if (p.y < -120 || p.y > H + 120) continue;
+      drawHotMeteor(m.shape, p.x, p.y, m.r, m.rot + t * m.w, heatAt(Math.max(0, p.born)), 0.9, m.big ? 1.6 : 1.2);
+    }
+    const k0 = Math.max(0, Math.floor((t - BLIFE) / RATE));
+    for (let k = k0; k * RATE <= t; k++) {
+      const tb = k * RATE, st = bulletState(tb, t);
+      if (!st.hit) { if (st.y > -40) drawBullet(st.x, st.y); continue; }
+      const age = t - st.at;                       // faísca no ponto do impacto, 0,25 s
+      if (age < 0.25) {
+        const a = 1 - age / 0.25;
+        for (let j = 0; j < 6; j++) {
+          const ang = j * 1.047 + k;
+          fx.fillStyle = `rgba(${C1},${a})`;
+          fx.beginPath(); fx.arc(st.x + Math.cos(ang) * 120 * age, st.y + Math.sin(ang) * 120 * age, 4 * a + 1, 0, Math.PI * 2); fx.fill();
+        }
+      }
+    }
+    drawShip(shipX(t), shipY, t);
+    const vg = fx.createRadialGradient(540, 860, 200, 540, 860, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.72)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+    if (bigAlpha > 0) {
+      const pop = t >= HIT ? 1 + 0.07 * Math.exp(-(t - HIT) * 5) : 1;
+      drawHotMeteor(BIG, 540, 660, 150 * pop, -0.3 + t * 0.22, hb, bigAlpha, 2.2);
+    }
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+  const ROWS = [['r1', 7.85], ['r2', 8.2], ['r3', 8.55], ['r4', 8.9], ['r5', 9.25]];
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+
+    // 2) o meteoro grande esquenta: dificuldade 1 → 10, vida do meteoro grande 3 → 30 (calculadas pela fórmula do jogo)
+    const inM = ease.out3(seg(t, 2.6, 0.35)), outM = 1 - seg(t, 7.3, 0.3);
+    drawFX(t, inM * outM);
+    layer($('mt'), inM * outM, 30 * (1 - inM));
+    const hb = heatAt(t);
+    const dif = 1 + 9 * hb;                            // heat = (dif − 1) / 9
+    const vida = Math.max(1, Math.round(3 * dif));     // hp do grande = round(3 × dif)
+    $('vida').textContent = vida;
+    $('dif').textContent = Math.round(dif);
+    $('vida').className = 'counter' + (t >= HIT ? ' hot' : '');
+    const vpop = t >= HIT ? 1 + 0.1 * Math.exp(-(t - HIT) * 4) : 1;
+    $('vida').style.transform = `scale(${vpop})`;
+    const vx = ease.out3(seg(t, HIT + 0.25, 0.35));
+    $('vx').style.opacity = vx; $('vx').style.transform = `scale(${0.9 + 0.1 * vx})`;
+
+    // 1) gancho: legível desde o quadro 0; a linha de baixo entra em 0,5 s; sai em 2.4–2.7
+    const outH = 1 - seg(t, 2.4, 0.3);
+    layer($('hook'), outH, -30 * (1 - outH));
+    const ws = [['w1', 0.0, 0.35], ['w2', 0.08, 0.4], ['w3', 0.16, 0.4]];
+    for (const [id, a, d] of ws) {               // sempre opaco (gancho legível no quadro 0); só assenta 14 px
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = 1; $(id).style.display = 'inline-block';
+      $(id).style.transform = `translateY(${14 * (1 - v)}px)`;
+    }
+    const hs = ease.out3(seg(t, 0.5, 0.4));
+    $('hsub').style.opacity = hs; $('hsub').style.transform = `translateY(${20 * (1 - hs)}px)`;
+
+    // 3) vermelho máximo a partir de: uma linha por tier a cada 0,35 s; "tier VI" em 9,7; sai 10.6–10.9
+    const inT = ease.out3(seg(t, 7.55, 0.35)), outT = 1 - seg(t, 10.6, 0.3);
+    layer($('tb'), inT * outT, 30 * (1 - inT));
+    for (const [id, a] of ROWS) {
+      const ri = ease.out3(seg(t, a, 0.35));
+      $(id).style.opacity = ri; $(id).style.transform = `translateX(${-36 * (1 - ri)}px)`;
+    }
+    const t6 = ease.out3(seg(t, 9.7, 0.4));
+    $('t6').style.opacity = t6; $('t6').style.transform = `scale(${0.9 + 0.1 * t6})`;
+
+    // 4) ontem: 3 das 6 partidas chegaram ao vermelho máximo 10.9–12.35
+    const inO = ease.out3(seg(t, 10.9, 0.35)), outO = 1 - seg(t, 12.05, 0.3);
+    layer($('ot'), inO * outO, 0, 0.92 + 0.08 * inO);
+
+    // 5) CTA 12.4–14.0
+    const inCt = ease.out3(seg(t, 12.4, 0.5));
+    layer($('cta'), inCt, 30 * (1 - inCt));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
