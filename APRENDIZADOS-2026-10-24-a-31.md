@@ -4,6 +4,20 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores (01 a 23/10) em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md). Arquivo aberto em 28/10/2026 para que a rodada
 diária não reescreva o arquivo de outubro inteiro (~38 KB) a cada entrada arquivada.
 
+- 2026-10-27 · **O reel do relógio das 24 horas chegou a 144 de alcance em ~17 h, o maior de um post da rotina — e o jogo não
+  acompanhou: a segunda teve 3 partidas, e uma delas pegou 9 boosts e fez 556 pontos.** O reel de dados de 25/10 ("faltam 40 min
+  para 24h de jogo", marco) tinha **144 de alcance / 168 views** com ~17,4 h (métrica de 26/10 06:26 BRT), acima do maior valor da
+  série do slot (135, em 16/09), depois de uma semana em que o feed fez 6, 3, 11 e 2 (21 a 24/10): a conta voltou a ser distribuída
+  num reel, então a queda não era um bloqueio do perfil inteiro (a conferência pedida ao Guilherme em 26/10 perde a urgência). Os
+  stories seguem baixos: o de 25/10 fechou em **6 / 8** (~24 h), depois de três zeros (22 a 24/10), e o de 26/10 tinha 0 / 0 com
+  ~8,5 h; o carrossel de 24/10 fechou em **2** (~41 h), e os quatro do plano ficaram em 3, 1, 1 e 2. O alcance não virou jogo: a
+  segunda 26/10 teve 3 partidas, todas anônimas, somando 146 s, e o relógio ficou a 36min37s das 24 h. Uma delas, às 11:19, pegou 9
+  boosts, com o leque cheio, e fez **556 pontos** em 2min10 — no código, o boost não soma ponto (só o leque e o tier), e o MARCAO fez
+  20.301 com os mesmos 9: o reel do dia. Pelos filtros de tier do /stats, as partidas que terminaram no Tier II fizeram 57,6 pontos
+  por segundo, e as do Tier IV, 33,5 (37 das 44 acabaram logo depois do 15º boost) — o artigo do dia no blog. Produção: **o Actions
+  voltou a travar com os arquivos da HeyGen** — a folha do look falhou com exit 1 (run #146) e o story estourou os 15 min (run
+  #148), e os dois saíram no 2º push, em ~1,5 min; o reel de dados, sem arquivo externo, saiu de primeira. O look "a coroa do
+  recorde" saiu certo na 1ª tentativa, e o story (Avatar III, 50 palavras em 16,2 s) não teve mão. HeyGen: 53 → 50.
 - 2026-10-26 · **Leitura das 4 semanas do plano de testes (29/09 a 25/10): nenhum formato mexeu nas estreias — e, desde 21/10, o
   alcance caiu em todos os formatos ao mesmo tempo.** Feed, posts com ≥ 40 h (métrica de 25/10 07:26 BRT): os 14 reels de dados
   fizeram mediana **13,5** de alcance (6 a 122; os três maiores do período — 122, 106 e 65 — são deles), os 10 reels da Estela,

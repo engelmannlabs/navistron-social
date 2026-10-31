@@ -4,6 +4,19 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-10-31 · **O alcance voltou na S44 — 8, 51, 43, 18 e 47 (este com ~12 h), quatro de cinco acima da mediana do slot —
+  e o jogo parou: a sexta 30/10 não teve partida, e a semana 44 ainda não teve nenhum 10 mil.** Métricas (feed de 31/10 01:27
+  BRT, a atualização no meio da rodada, como previsto em 30/10): a Estela de 28/10 (ROBER de novo, 19:00) fechou em **43 / 50**
+  (~54 h), a maior das seis Estelas das 19:00 (antes, 32, 12, 28, 27 e 11); o reel de 29/10 (a partida 700) fechou em **18 /
+  21** (~36 h); e o de 30/10 (meteoro vermelho) tinha **47 / 50** com ~12 h, mas com 1,6 s de tempo médio, o menor da semana.
+  Depois de 6, 3, 11 e 2 de alcance (21 a 24/10), a pergunta da S44 (o alcance volta com o calendário estável?) tem resposta
+  parcial positiva; a leitura fecha em 02/11. A HeyGen seguiu no plano free pelo 3º dia, e o story foi pulado de novo — **o
+  Guilherme precisa conferir a assinatura**. No jogo, a sexta 30/10 zerou (694 partidas, 23h51min00s somadas), e a última
+  partida acima dos 10 mil foi em 23/10 (12.535, sem nick): na semana 44, 0 de 14 partidas, contra 24 de 49 na semana 43 — o
+  reel do dia, no pilar desafio. **Cache do /stats: um ?v= já usado volta com a cópia antiga** — com v=0112, a página 1 da
+  lista por data veio de 26/10 (680 partidas) enquanto a página 2 mostrava 694; usar um valor que nunca foi usado (v=sab3110x)
+  e conferir o cabeçalho das páginas antes de contar. O ambiente perdeu a pasta de trabalho, e tudo foi refeito a partir do
+  GitHub, com o índice do blog e o validador conferidos pelo hash dos blobs. No blog, high score (PR #53).
 - 2026-10-30 · **A HeyGen seguiu no plano free — a Estela de sexta virou reel de dados e o story foi pulado de novo —, o reel
   de mecânica de 27/10 fechou em 51, o maior da S44, e a atualização das métricas no Buffer adianta 1 h por dia.** HeyGen: à
   01:02, `get_current_user` mostrou de novo o plano free, sem saldo e sem data de renovação; pela guarda de
@@ -59,20 +72,6 @@ apenas este arquivo, e não o playbook inteiro.
   6 créditos (2 e 4), ~1 a cada ~8,5 s, arredondado para cima. HeyGen: 50 → 41, e os 600 do plano renovam às 21:57 de 28/10. O
   Actions renderizou tudo de primeira (de 1min0 a 1min59). No blog, jogos sem som (PR #50): o jogo não toca áudio nenhum,
   conferido no repositório.
-- 2026-10-27 · **O reel do relógio das 24 horas chegou a 144 de alcance em ~17 h, o maior de um post da rotina — e o jogo não
-  acompanhou: a segunda teve 3 partidas, e uma delas pegou 9 boosts e fez 556 pontos.** O reel de dados de 25/10 ("faltam 40 min
-  para 24h de jogo", marco) tinha **144 de alcance / 168 views** com ~17,4 h (métrica de 26/10 06:26 BRT), acima do maior valor da
-  série do slot (135, em 16/09), depois de uma semana em que o feed fez 6, 3, 11 e 2 (21 a 24/10): a conta voltou a ser distribuída
-  num reel, então a queda não era um bloqueio do perfil inteiro (a conferência pedida ao Guilherme em 26/10 perde a urgência). Os
-  stories seguem baixos: o de 25/10 fechou em **6 / 8** (~24 h), depois de três zeros (22 a 24/10), e o de 26/10 tinha 0 / 0 com
-  ~8,5 h; o carrossel de 24/10 fechou em **2** (~41 h), e os quatro do plano ficaram em 3, 1, 1 e 2. O alcance não virou jogo: a
-  segunda 26/10 teve 3 partidas, todas anônimas, somando 146 s, e o relógio ficou a 36min37s das 24 h. Uma delas, às 11:19, pegou 9
-  boosts, com o leque cheio, e fez **556 pontos** em 2min10 — no código, o boost não soma ponto (só o leque e o tier), e o MARCAO fez
-  20.301 com os mesmos 9: o reel do dia. Pelos filtros de tier do /stats, as partidas que terminaram no Tier II fizeram 57,6 pontos
-  por segundo, e as do Tier IV, 33,5 (37 das 44 acabaram logo depois do 15º boost) — o artigo do dia no blog. Produção: **o Actions
-  voltou a travar com os arquivos da HeyGen** — a folha do look falhou com exit 1 (run #146) e o story estourou os 15 min (run
-  #148), e os dois saíram no 2º push, em ~1,5 min; o reel de dados, sem arquivo externo, saiu de primeira. O look "a coroa do
-  recorde" saiu certo na 1ª tentativa, e o story (Avatar III, 50 palavras em 16,2 s) não teve mão. HeyGen: 53 → 50.
 
 Anteriores em [`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md) (24 a 31/10),
 [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (01 a 23/10),
