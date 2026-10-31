@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="14.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="1.6">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>
+  .kicker.gold { color: var(--t3); }
+  .chart { position: relative; width: 840px; height: 560px; margin: 46px auto 0; border-bottom: 3px solid rgba(143,163,199,0.4); }
+  .bar { position: absolute; bottom: 0; width: 40px; border-radius: 8px 8px 0 0; background: rgba(143,163,199,0.62); transform-origin: 50% 100%; }
+  .bar.gold { background: var(--t3); box-shadow: 0 0 36px rgba(250,204,21,0.6); }
+  .ten { position: absolute; left: 0; right: 0; height: 0; border-top: 4px dashed rgba(250,204,21,0.85); transform-origin: 0 50%; }
+  .ten span { position: absolute; right: 0; bottom: 12px; font-family: var(--font-ui); font-weight: 700; font-size: 34px; letter-spacing: 0.16em; color: var(--t3); text-shadow: 0 0 24px rgba(250,204,21,0.5); }
+  .top { position: absolute; display: flex; align-items: baseline; gap: 16px; white-space: nowrap; opacity: 0; }
+  .top .v { font-family: var(--font-mono); font-weight: 800; font-size: 54px; line-height: 1; color: var(--t3); text-shadow: 0 0 30px rgba(250,204,21,0.55); }
+  .top .n { font-family: var(--font-ui); font-weight: 600; font-size: 26px; letter-spacing: 0.14em; color: var(--ink); }
+  .axis { width: 840px; margin: 18px auto 0; display: flex; justify-content: space-between; font-family: var(--font-ui); font-weight: 500; font-size: 28px; letter-spacing: 0.14em; color: var(--muted); }
+  .rows { width: 860px; margin: 40px auto 0; }
+  .trow { display: flex; align-items: center; justify-content: space-between; height: 190px; border-bottom: 2px solid rgba(143,163,199,0.18); opacity: 0; text-align: left; }
+  .trow:last-child { border-bottom: 0; }
+  .trow .tn { font-family: var(--font-ui); font-weight: 700; font-size: 48px; letter-spacing: 0.12em; color: var(--ink); }
+  .trow .tn small { display: block; margin-top: 10px; font-weight: 500; font-size: 30px; letter-spacing: 0.16em; color: var(--muted); }
+  .trow .pt { font-family: var(--font-mono); font-weight: 800; font-size: 150px; line-height: 1; color: var(--t2); text-shadow: 0 0 44px rgba(74,222,128,0.45); font-variant-numeric: tabular-nums; }
+  .trow .pt.hot { color: #FF3B2F; text-shadow: 0 0 50px rgba(255,59,47,0.6); }
+  .trow .pt small { font-size: 40px; font-weight: 700; color: var(--muted); text-shadow: none; margin-left: 16px; letter-spacing: 0.06em; }
+</style>
+<!-- DESAFIO: O PRÓXIMO 10 MIL. Telemetria: navistron.io/stats e ?visao=partidas&ordem=data (páginas 1 e 2), lidos em
+     31/10/2026 ~01:20 BRT com um ?v= novo (v=sab3110x; o v=0112, já usado em outra rodada, devolveu uma cópia de 26/10):
+     694 partidas (107 com nick, 587 anônimas), 47 pilotos, 23h 51m, média 5.755, a última em 29/10 às 17:15 — a sexta 30/10
+     não teve partida. A última partida acima dos 10 mil: 23/10 às 10:58, anônima, 12.535 (2:35, Tier II). Depois dela, 15
+     partidas, todas abaixo dos 10 mil (da mais antiga à mais nova): 25/10 20:07 699 · 26/10 11:19 556 · 11:19 10 · 16:56 6 ·
+     27/10 14:27 2.428 · 15:38 ROBER 6.573 · 28/10 14:47 ROBER 8.389 · 18:27 1.734 · 18:29 1.126 · 29/10 09:22 6.061 · 09:24 676 ·
+     09:25 51 · 09:33 5.983 · 10:39 7.524 · 17:15 5.506 (soma 47.322; a maior, 8.389: faltaram 1.611). Semana 43 (19 a 25/10):
+     49 partidas, 24 acima dos 10 mil (soma 438.127, a mesma do artigo de 26/10). Semana 44 (26/10 a 01/11), até 30/10: 14
+     partidas, nenhuma acima dos 10 mil (soma 46.623). Barras na escala de 12.000 pontos (560 px), linha dos 10 mil a 466,7 px.
+     Fundo: a nave no Tier II (verde #80ff90, um disparo a cada 0,15 s) com o leque cheio de 5 tiros (−10, −5, 0, 5 e 10 graus,
+     como spawnBullets com spread 5 em src/app/play/page.js): o Tier II, onde terminaram 19 das 24 partidas acima dos 10 mil
+     da semana 43 (com 8 ou 9 boosts, artigo de 26/10). -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Desafio · @navistron</div>
+
+  <div id="hook" class="layer" style="top: 440px">
+    <div class="h1" style="font-size: 176px"><span class="w" id="w1">QUEM FAZ</span><br><span class="w" id="w2">O PRÓXIMO</span><br><span class="w accent" id="w3">10 MIL?</span></div>
+    <div class="sub" id="hsub" style="margin-top: 60px; opacity: 0">o último foi em <b>23/10</b><br>depois, 15 partidas abaixo</div>
+  </div>
+
+  <div id="ch" class="layer" style="top: 400px">
+    <div class="kicker">as 15 partidas desde o último</div>
+    <div class="chart" id="chart">
+      <div class="ten" id="ten"><span>10 MIL</span></div>
+      <div class="top" id="tp"><span class="v">8.389</span><span class="n">ROBER · 28/10</span></div>
+    </div>
+    <div class="axis"><span>25/10</span><span>29/10</span></div>
+    <div id="fl" style="margin-top: 40px; opacity: 0"><span class="marker">faltaram <b>1.611</b> pontos</span></div>
+  </div>
+
+  <div id="sm" class="layer" style="top: 460px">
+    <div class="kicker gold">partidas acima dos 10 mil</div>
+    <div class="rows">
+      <div class="trow" id="ra"><span class="tn">SEMANA 43<small>19 a 25/10</small></span><span class="pt" id="na">24<small>de 49</small></span></div>
+      <div class="trow" id="rb"><span class="tn">SEMANA 44<small>até 30/10</small></span><span class="pt hot" id="nb">0<small>de 14</small></span></div>
+    </div>
+    <div id="sx" style="margin-top: 46px; opacity: 0"><span class="marker">e a sexta (30/10) <b>não teve partida</b></span></div>
+  </div>
+
+  <div id="dz" class="layer" style="top: 520px">
+    <div class="kicker gold">o próximo 10 mil pode ser seu</div>
+    <div class="h1" style="font-size: 200px; margin-top: 46px">JOGA<br><span class="accent">HOJE</span></div>
+    <div class="sub" style="margin-top: 56px">e põe o seu <b>nick</b><br>no game over</div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 700px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub">grátis, sem login</div>
+    <div class="cta-handle">@navistron</div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 14.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+
+  // ---------- PRNG determinístico ----------
+  let s = 3110;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- a partida no fundo: nave no Tier II (verde) com o leque cheio, meteoros esquentando ----------
+  const GREEN = '128,255,144', C1 = '180,255,180', C2 = '0,220,80';
+  const HIT = 6.2;                                     // a barra maior trava em dourado (o hit da trilha)
+  const N = 24, CYC = 2100, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 200 + rnd() * 170, r: 20 + rnd() * 44, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * CYC, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.35
+    });
+  }
+  function mpos(m, t) {
+    const dist = t * 1.5 * m.v + m.phase;
+    const cycle = Math.floor(dist / CYC);
+    const y = (dist % CYC) - 120;
+    const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+    return { x, y, born: (cycle * CYC - m.phase) / (1.5 * m.v) };   // quando este meteoro entrou no topo
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function meteorPath(shape, r) {
+    fx.beginPath();
+    const n = shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = r * shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+  }
+  // cores de drawMeteor() no jogo, em função do "calor" (heat, 0 a 1)
+  function drawHotMeteor(shape, x, y, r, rot, heat, alpha, lw) {
+    fx.save(); fx.globalAlpha = alpha; fx.translate(x, y); fx.rotate(rot);
+    const aa = .06 + heat * .25;
+    const ag = fx.createRadialGradient(0, 0, r * .3, 0, 0, r * 1.9);
+    ag.addColorStop(0, `rgba(255,${Math.floor(140 - heat * 140)},40,0)`);
+    ag.addColorStop(.5, `rgba(255,${Math.floor(80 - heat * 80)},20,${aa})`);
+    ag.addColorStop(1, 'rgba(255,0,0,0)');
+    fx.beginPath(); fx.arc(0, 0, r * 1.9, 0, Math.PI * 2); fx.fillStyle = ag; fx.fill();
+    meteorPath(shape, r);
+    const r1 = Math.floor(154 + heat * 90), g1 = Math.floor(110 - heat * 90), b1 = Math.floor(80 - heat * 60);
+    const rg = fx.createRadialGradient(-r * .3, -r * .3, 0, 0, 0, r);
+    rg.addColorStop(0, `rgb(${r1},${g1},${b1})`);
+    rg.addColorStop(.6, `rgb(${Math.floor(r1 * .6)},${Math.floor(g1 * .5)},${Math.floor(b1 * .4)})`);
+    rg.addColorStop(1, '#150500');
+    fx.fillStyle = rg; fx.fill();
+    fx.strokeStyle = heat > .5 ? 'rgba(255,60,0,.9)' : `rgba(${r1},${Math.max(g1 - 20, 0)},20,.75)`;
+    fx.lineWidth = lw * (1.5 + heat * 1.5); fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y); fx.scale(1.25, 1.25);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, `rgba(${GREEN},0.95)`); g.addColorStop(1, `rgba(${GREEN},0)`);
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = `rgba(${GREEN},0.75)`; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = `rgb(${GREEN})`; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const shipX = t => 540 + 165 * Math.sin(t * 0.78 + 2.2) + 48 * Math.sin(t * 2.0);
+  const shipY = 1410;
+  const RATE = 0.15, BV = 1040, BLIFE = 1.6, STEP = 1 / 60;
+  const FAN = [-10, -5, 0, 5, 10].map(d => d * Math.PI / 180);   // o leque de 5 tiros (spread 5)
+  // o tiro some no 1º meteoro que tocar (conta feita só com t, para cada quadro sair igual)
+  function bulletState(tb, a, t) {
+    const x0 = shipX(tb), y0 = shipY - 60, sx = Math.sin(a) * BV, sy = Math.cos(a) * BV;
+    for (let tau = tb; tau <= t + 1e-9; tau += STEP) {
+      const x = x0 + (tau - tb) * sx, y = y0 - (tau - tb) * sy;
+      for (const m of meteors) {
+        const p = mpos(m, tau);
+        const dx = p.x - x, dy = p.y - y;
+        if (dx * dx + dy * dy < Math.pow(m.r * 0.72 + 8, 2)) return { hit: true, x, y, at: tau };
+      }
+    }
+    return { hit: false, x: x0 + (t - tb) * sx, y: y0 - (t - tb) * sy };
+  }
+  function drawBullet(x, y) {
+    const g = fx.createRadialGradient(x, y, 0, x, y, 24);
+    g.addColorStop(0, `rgba(${C1},1)`); g.addColorStop(.3, `rgba(${C2},.8)`); g.addColorStop(1, 'rgba(0,120,40,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.arc(x, y, 24, 0, Math.PI * 2); fx.fill();
+    fx.fillStyle = '#fff'; fx.beginPath(); fx.arc(x, y, 7, 0, Math.PI * 2); fx.fill();
+  }
+  // calor dos meteoros do fundo: cada um guarda o calor do instante em que nasceu (spawnMeteor fixa heat na criação);
+  // de 0,09 (Tier II no início, dificuldade 1,8) ao vermelho máximo no hit
+  const heatAt = t => 0.09 + 0.91 * ease.inout(seg(t, 2.0, HIT - 2.0));
+
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    for (const m of meteors) {
+      const p = mpos(m, t);
+      if (p.y < -120 || p.y > H + 120) continue;
+      drawHotMeteor(m.shape, p.x, p.y, m.r, m.rot + t * m.w, heatAt(Math.max(0, p.born)), 0.9, m.big ? 1.6 : 1.2);
+    }
+    const k0 = Math.max(0, Math.floor((t - BLIFE) / RATE));
+    for (let k = k0; k * RATE <= t; k++) {
+      const tb = k * RATE;
+      for (let j = 0; j < FAN.length; j++) {
+        const st = bulletState(tb, FAN[j], t);
+        if (!st.hit) { if (st.y > -40 && st.x > -40 && st.x < W + 40) drawBullet(st.x, st.y); continue; }
+        const age = t - st.at;                       // faísca no ponto do impacto, 0,25 s
+        if (age < 0.25) {
+          const al = 1 - age / 0.25;
+          for (let q = 0; q < 6; q++) {
+            const ang = q * 1.047 + k + j;
+            fx.fillStyle = `rgba(${C1},${al})`;
+            fx.beginPath(); fx.arc(st.x + Math.cos(ang) * 120 * age, st.y + Math.sin(ang) * 120 * age, 4 * al + 1, 0, Math.PI * 2); fx.fill();
+          }
+        }
+      }
+    }
+    drawShip(shipX(t), shipY, t);
+    const vg = fx.createRadialGradient(540, 860, 200, 540, 860, 1100);
+    vg.addColorStop(0, 'rgba(5,7,15,0.78)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+  }
+
+  // ---------- as 15 partidas desde o último 10 mil (da mais antiga à mais nova) ----------
+  const SCORES = [699, 556, 10, 6, 2428, 6573, 8389, 1734, 1126, 6061, 676, 51, 5983, 7524, 5506];
+  const MAXI = 6, SCALE = 12000, CH = 560, PITCH = 56, BW = 40;
+  const chart = document.getElementById('chart');
+  const bars = SCORES.map((v, i) => {
+    const b = document.createElement('div');
+    b.className = 'bar';
+    b.style.left = (i * PITCH + (PITCH - BW) / 2) + 'px';
+    b.style.height = Math.max(6, v / SCALE * CH).toFixed(1) + 'px';
+    chart.insertBefore(b, chart.firstChild);
+    return b;
+  });
+  const tenY = CH * 10000 / SCALE;                       // 466,7 px acima da base
+  document.getElementById('ten').style.bottom = tenY.toFixed(1) + 'px';
+  const tp = document.getElementById('tp');
+  tp.style.left = (MAXI * PITCH + PITCH / 2) + 'px';             // centrado na barra (translateX −50%)
+  tp.style.bottom = (SCORES[MAXI] / SCALE * CH + 12).toFixed(1) + 'px'; // entre o topo da barra e a linha dos 10 mil
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+
+    // 1) gancho: legível desde o quadro 0; a linha de baixo entra em 0,5 s; sai em 2.4–2.7
+    const outH = 1 - seg(t, 2.4, 0.3);
+    layer($('hook'), outH, -30 * (1 - outH));
+    const ws = [['w1', 0.0, 0.35], ['w2', 0.08, 0.4], ['w3', 0.16, 0.4]];
+    for (const [id, a, d] of ws) {               // sempre opaco (gancho legível no quadro 0); só assenta 14 px
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = 1; $(id).style.display = 'inline-block';
+      $(id).style.transform = `translateY(${14 * (1 - v)}px)`;
+    }
+    const hs = ease.out3(seg(t, 0.5, 0.4));
+    $('hsub').style.opacity = hs; $('hsub').style.transform = `translateY(${20 * (1 - hs)}px)`;
+
+    // 2) as 15 barras sobem uma a uma; a linha dos 10 mil; a maior trava em dourado no hit; sai 7.3–7.6
+    const inC = ease.out3(seg(t, 2.6, 0.35)), outC = 1 - seg(t, 7.3, 0.3);
+    layer($('ch'), inC * outC, 30 * (1 - inC));
+    const ln = ease.out3(seg(t, 2.9, 0.6));
+    $('ten').style.transform = `scaleX(${ln})`;
+    $('ten').firstChild.style.opacity = seg(t, 3.3, 0.3);
+    bars.forEach((b, i) => {
+      const g = ease.out3(seg(t, 3.1 + i * 0.17, 0.4));
+      b.style.transform = `scaleY(${g})`;
+      b.style.opacity = g > 0 ? 1 : 0;
+    });
+    const big = bars[MAXI];
+    big.className = 'bar' + (t >= HIT ? ' gold' : '');
+    const pop = t >= HIT ? 1 + 0.06 * Math.exp(-(t - HIT) * 5) : 1;
+    if (t >= HIT) big.style.transform = `scaleY(${pop})`;
+    const tv = ease.out3(seg(t, HIT, 0.3));
+    tp.style.opacity = tv; tp.style.transform = `translate(-50%, ${16 * (1 - tv)}px)`;
+    const fl = ease.out3(seg(t, HIT + 0.3, 0.35));
+    $('fl').style.opacity = fl; $('fl').style.transform = `scale(${0.9 + 0.1 * fl})`;
+
+    // 3) semana 43 × semana 44: 24 de 49 contra 0 de 14; "a sexta não teve partida"; sai 10.6–10.9
+    const inS = ease.out3(seg(t, 7.55, 0.35)), outS = 1 - seg(t, 10.6, 0.3);
+    layer($('sm'), inS * outS, 30 * (1 - inS));
+    const ra = ease.out3(seg(t, 7.8, 0.35)), rb = ease.out3(seg(t, 8.85, 0.35));
+    $('ra').style.opacity = ra; $('ra').style.transform = `translateX(${-36 * (1 - ra)}px)`;
+    $('rb').style.opacity = rb; $('rb').style.transform = `translateX(${-36 * (1 - rb)}px)`;
+    const n24 = Math.round(24 * ease.out3(seg(t, 7.95, 0.7)));
+    $('na').firstChild.nodeValue = String(n24);
+    const sx = ease.out3(seg(t, 9.55, 0.4));
+    $('sx').style.opacity = sx; $('sx').style.transform = `scale(${0.9 + 0.1 * sx})`;
+
+    // 4) desafio: joga hoje e põe o nick 10.9–12.35
+    const inD = ease.out3(seg(t, 10.9, 0.35)), outD = 1 - seg(t, 12.05, 0.3);
+    layer($('dz'), inD * outD, 0, 0.92 + 0.08 * inD);
+
+    // 5) CTA 12.4–14.0
+    const inCt = ease.out3(seg(t, 12.4, 0.5));
+    layer($('cta'), inCt, 30 * (1 - inCt));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
