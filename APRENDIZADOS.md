@@ -4,6 +4,20 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-11-01 · **O reel de 30/10 fechou em 78, o maior da S44, e o de 31/10 tinha 65 com ~11 h — e, pouco mais de duas horas
+  depois do reel "quem faz o próximo 10 mil?", o jogo teve um nick novo e um 10 mil.** Métricas (feed de 01/11 00:27 BRT): o reel
+  do meteoro vermelho (30/10, mecânica explicada) foi de 47 com ~12 h para **78 / 86** com ~35 h (tempo médio 2,5 s), o 6º da
+  série do slot das 13:00 (39 posts, mediana 14); o do próximo 10 mil (31/10, desafio) tinha **65 / 73** com ~11 h (3,0 s); o de
+  29/10 parou em 18. Os posts da S44 fizeram 8, 51, 43 (a Estela das 19:00), 18, 78 e 65 (parcial): cinco de seis acima da mediana
+  do slot, depois de 6, 3, 11 e 2 (21 a 24/10) — a leitura da pergunta fecha em 02/11. No jogo, o sábado 31/10 teve 2 partidas: às
+  15:14, **PAÇOCA estreou com 9.510** (Tier II), o 48º piloto e o 1º nick novo desde 21/10, e assumiu o 1º lugar da semana 44; às
+  15:17, uma partida sem nick fez **10.237**, a 1ª acima dos 10 mil desde 23/10. As duas vieram pouco mais de duas horas depois de
+  o reel que pedia o próximo 10 mil sair (13:02) — uma coincidência a observar, não uma regra (é um caso só). 696 partidas e
+  23h55min59s somadas: faltam 4 partidas para a 700ª e 4min01s para as 24 h. A HeyGen seguiu no plano free pelo 4º dia, sem story
+  — **o Guilherme precisa conferir a assinatura**. A atualização do feed no Buffer seguiu adiantando ~1 h por dia (00:27 de
+  01/11): a de 02/11 deve cair por volta das 23:27 de 01/11, antes da rodada. No blog, o tutorial de limitar caracteres em
+  JavaScript (PR #54), com um achado: o slice(0, 20) do jogo e da API pode guardar meio emoji num nick que passe de 20 unidades (o
+  maxLength do campo segura isso na página).
 - 2026-10-31 · **O alcance voltou na S44 — 8, 51, 43, 18 e 47 (este com ~12 h), quatro de cinco acima da mediana do slot —
   e o jogo parou: a sexta 30/10 não teve partida, e a semana 44 ainda não teve nenhum 10 mil.** Métricas (feed de 31/10 01:27
   BRT, a atualização no meio da rodada, como previsto em 30/10): a Estela de 28/10 (ROBER de novo, 19:00) fechou em **43 / 50**
@@ -53,25 +67,6 @@ apenas este arquivo, e não o playbook inteiro.
   `blogArticles.js` (o do motor do jogo e o de performance) dizem que as estrelas do Tier VII andam 4,15× mais rápido, mas o
   código dá 1 + 6 × 0,45 = 3,7× (o Tier I é o powerTier 0); e o do motor diz que o fundo escurece a cada tier, quando ele vai
   do azul-escuro rgb(0, 1, 14) ao vermelho-escuro rgb(84, 1, 2) — a rotina não edita esse arquivo.
-- 2026-10-28 · **O pico de 144 do reel de 25/10 chegou todo no 1º dia e não se repetiu — e "a small green spaceship" num prompt de
-  look virou a nave de uma série de terceiros.** Métricas: o reel de 25/10 fechou em **144 / 168** (~40 h, métrica de 27/10 05:26
-  BRT), os mesmos números da leitura de ~17 h; o seguinte, o ranking de 26/10, tinha **6 / 7** com ~16 h, no nível dos reels de 21
-  a 24/10 (6, 3, 11 e 2). Os stories seguem no chão: o de 26/10 fechou em **0 / 4** (~24 h), o 4º com 0 de alcance nos últimos
-  cinco (só o de 25/10 fez 6), e o de 27/10 tinha 0 / 2 com ~6,6 h. Um reel forte isolado não responde à pergunta da S44 (o
-  alcance volta com o calendário estável?); a semana fecha em 01/11. No jogo, a terça 27/10 teve 2 partidas: às 14:27, uma anônima
-  chegou ao Tier III com 12 boosts e fez só 2.428 pontos em 3:08 (o boost não dá ponto, o reel de 27/10), e às 15:38 ROBER fez
-  6.573, a 1ª partida com nick depois de 10 seguidas sem nick, no 4º dia com partida desde 24/09 (entre os pilotos com 4 partidas
-  ou mais, só o VASCO jogou em mais dias, 5) — o reel do dia, no pilar hall da fama, com o nick sem artigo e sem pronome na fala.
-  O tempo total chegou a 23h28min53s, a 31min07s das 24 h. Produção: no look do reel, "a small green spaceship" saiu como uma nave
-  de desenho com faixa vermelha, cúpula, janelas redondas e emblema na cauda, parecida com a de uma série de terceiros (vetada); a
-  v2, descrita pela forma ("a tiny sleek green arrow-shaped spaceship, simple smooth geometric shape with no windows, no stripes
-  and no emblems"), saiu limpa — **objeto genérico pode sair com cara de marca: descrever a forma, não a categoria**, como o
-  fantasminha de 25/10. Com "centered in the frame", ela ficou no centro e mais perto, e as mãos entraram no vídeo, juntas à
-  frente do corpo, naturais. No código, o jogo não tem pausa, mas congela sozinho quando a aba sai de foco (os navegadores pausam
-  o requestAnimationFrame em segundo plano, e o passo do jogo é limitado a 0,05 s): o story do dia. Avatar III: 17,0 s + 26,7 s =
-  6 créditos (2 e 4), ~1 a cada ~8,5 s, arredondado para cima. HeyGen: 50 → 41, e os 600 do plano renovam às 21:57 de 28/10. O
-  Actions renderizou tudo de primeira (de 1min0 a 1min59). No blog, jogos sem som (PR #50): o jogo não toca áudio nenhum,
-  conferido no repositório.
 
 Anteriores em [`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md) (24 a 31/10),
 [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (01 a 23/10),
