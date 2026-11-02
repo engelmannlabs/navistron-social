@@ -24,6 +24,7 @@ Mantenha este arquivo curto e factual; só mexa nele quando uma **regra** mudar.
   seguidas**: post de sábado/domingo serve para alcance, não para jogada.
 - **Semanas 42 e 43 (12 a 25/10): o jogo foi para a manhã** — 20 de 38 e 45 de 49 partidas antes das 13h (na 41, 41 de 47
   entre 13h e 17h). A faixa da tarde acima deixou de valer como regra; o horário é relido a cada ranking de segunda.
+- **Semana 44 (26/10 a 01/11): sem turno dominante** — 8 de 17 partidas antes das 13h e 9 depois; as três maiores, entre 14:47 e 15:17.
 
 ## 2. Pilares de conteúdo (rotacionar; nunca dois iguais em dias seguidos)
 
@@ -54,6 +55,7 @@ Mix semanal (desde 26/10/2026, depois da leitura das 4 semanas da seção 3b): *
 dados às 13:00 e 2 reels da Estela às 19:00, cada um o único post do dia; carrossel fora do padrão** (os quatro do plano fizeram
 1 a 3 de alcance; volta só quando um passo a passo pedir) —, com os dias no calendário da seção 3b, **mais 1 story da Estela por
 dia** (às 16:00, fora da contagem do feed). Segunda-feira continua sendo ranking (reel de dados ou a Estela narrando).
+Na S45 (02–08/11), sem créditos na HeyGen, são 7 reels de dados às 13:00, com a duração em teste (seção 3b).
 **Medida prática do gancho:** cada linha do título cabe em ~13 caracteres a 168px; 4 linhas a partir de `top: 420px`
 terminam por volta de y=1250, dentro da zona segura. Reaproveitar o `post.html` do dia anterior como esqueleto e
 trocar textos, números, seed do PRNG e `TOTAL` é o caminho mais rápido e mais seguro.
@@ -70,6 +72,7 @@ e mantendo reels de dados e carrosséis. Uma pergunta por semana; a leitura é f
 | S42 · 12–18/10 | 10 (2/dia em seg, qua, sex) | seg 12, qua 14, sex 16 às **19:00**, como 2º post | sáb 17 | 13:00 todo dia, exceto sáb | O 2º post do dia soma alcance ou divide? |
 | S43 · 19–25/10 | 1/dia | 3×, alternando 13:00 e 19:00 | 1× | 3× | Qual horário serve melhor a Estela? |
 | S44 · 26/10–01/11 | 1/dia | qua 28 e sex 30 às **19:00**, como o único post do dia | — | seg, ter, qui, sáb e dom, às 13:00 | O alcance volta com o calendário estável? (desde 21/10, caiu em todos os formatos) |
+| S45 · 02–08/11 | 1/dia | — (HeyGen no plano free desde 29/10; o reel dela volta na S46, com créditos) | — | todos os dias às 13:00: **8 s** na ter, qui e sáb; **14 s** na seg, qua, sex e dom | O reel curto (8 s) segura mais gente até o fim e leva mais gente ao jogo? (na S44, o alcance voltou, mas o tempo médio ficou em 2–5 s de 14 s e as partidas caíram para 17) |
 
 Dentro de cada vídeo da Estela, **uma** variável de produção por vez, registrada no `caption.md` e no log:
 - **Cenário** — não é variável de teste, é regra (pedidos do Guilherme em 03/10): **cada vídeo tem um cenário lúdico
@@ -98,6 +101,11 @@ de outro formato, o evento manda; o calendário se ajusta e o log registra a tro
 maiores do período, 122, 106 e 65), Estela **21** (10; 27,5 às 19:00 e 14,5 às 13:00), carrosséis **1** (3); o 2º post do dia
 somou pouco e não dividiu; nicks novos 0, 1, 1 e 1 por semana e partidas 18, 47, 38 e 49, sem relação visível com o formato. Daí
 o mix da seção 3. Desde 21/10, o alcance caiu em todos os formatos ao mesmo tempo: a S44 fica estável para ler se ele volta.
+
+**Leitura de 02/11 (S44)**: o alcance voltou com o calendário estável — mediana 51 nos 7 posts da semana (8, 51, 43, 18, 78, 92 e 70,
+este com ~10 h), seis acima da mediana do slot (14,5) —, mas o jogo não acompanhou: 17 partidas (49 na S43) e 1 nick novo. O tempo
+médio dos reels de 14 s ficou em 2,1–5,1 s, então quase ninguém vê o CTA final; a S45 testa o reel de 8 s. A Estela saiu do feed em
+29/10 por falta de créditos (HeyGen no plano free) e volta pelo calendário quando houver saldo.
 
 ## 4. Regras de publicação
 

@@ -4,6 +4,24 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-11-02 · **Leitura da S44: o alcance voltou, o jogo não — 8, 51, 43, 18, 78, 92 e 70 (este com ~10 h), seis de sete acima da
+  mediana do slot, numa semana de 17 partidas, a menor da série junto com a 38.** Métricas (feed de 01/11 23:27 BRT, na hora
+  prevista): o reel de 31/10 (desafio, "quem faz o próximo 10 mil?") fechou em **92 / 105** (~34 h, 3,2 s de tempo médio), o maior
+  da S44 e o 6º da série do slot das 13:00 (40 posts, mediana 14,5); o de 01/11 (PAÇOCA estreou) tinha **70 / 78** com ~10 h; o de
+  30/10 parou em 78. A pergunta da S44 (o alcance volta com o calendário estável?) fecha com sim: depois de 6, 3, 11 e 2 (21 a
+  24/10), a semana teve mediana 51, com reels de dados em seis dos sete dias (a Estela saiu do calendário em 29/10, sem créditos).
+  Mas as duas métricas que importam não mexeram: a semana 44 teve **17 partidas** (49 na 43) e **1 nick novo** (PAÇOCA), o mesmo
+  ritmo de um por semana desde a S41 — o alcance de 50 a 90 por reel não virou partida. O tempo médio dos reels de 14 s ficou
+  entre 2,1 e 5,1 s: quase ninguém chega ao CTA, que entra aos 12 s. **Decisão para a S45 (02 a 08/11)**: uma variável, a duração
+  do reel de dados — 8 s (ter, qui e sáb) × 14 s (seg, qua, sex e dom), todos às 13:00 e como o único post do dia —, medindo tempo
+  médio ÷ duração, alcance com ≥ 40 h e as partidas e os nicks do dia do post e do seguinte. A Estela fica fora do feed na S45: a
+  HeyGen seguiu no plano free pelo 5º dia (**o Guilherme precisa conferir a assinatura**); os stories voltam assim que houver
+  créditos. No jogo, o ranking da semana 44 fechou com PAÇOCA (9.510) e ROBER (8.389) e o 3º lugar vago — o reel do dia; a maior
+  partida da semana, 10.237, ficou sem nick; o domingo teve uma partida, de 4 pontos. Faltam 3 partidas para a 700ª e 3min57s para
+  as 24 h. Telemetria: mesmo com ?v= novos, o resumo de ?periodo=7d e a lista por data geral vieram de cópias antigas (18 e 696
+  partidas); a conta fechou pela lista de 7 dias e pelo /stats geral — conferir sempre duas visões antes de contar. No blog, o
+  ranking da semana 44 (PR #55). Pendente (de 29/10): o fim de "Custos e limites" em `personagens/ESTELA.md` ainda conta com a
+  renovação de 29/10 — corrigir na próxima rodada que gravar o arquivo.
 - 2026-11-01 · **O reel de 30/10 fechou em 78, o maior da S44, e o de 31/10 tinha 65 com ~11 h — e, pouco mais de duas horas
   depois do reel "quem faz o próximo 10 mil?", o jogo teve um nick novo e um 10 mil.** Métricas (feed de 01/11 00:27 BRT): o reel
   do meteoro vermelho (30/10, mecânica explicada) foi de 47 com ~12 h para **78 / 86** com ~35 h (tempo médio 2,5 s), o 6º da
@@ -48,25 +66,6 @@ apenas este arquivo, e não o playbook inteiro.
   (PR #52), com as 694 partidas lidas uma a uma e a conta fechada contra o /stats: 41,1% entre 14h e 16h59, a quinta com
   30,1% (puxada por 09/07, 16/07 e 03/09) e outubro com a manhã de volta à frente da tarde (77 a 68). Nesta rodada o WebFetch
   não veio como ferramenta direta; o agente de leitura da web (web-fetch) leu o /stats e as 14 páginas sem erro.
-- 2026-10-29 · **A HeyGen amanheceu no plano free no dia da renovação — sem créditos, o story do dia foi pulado — e o reel
-  de mecânica de 27/10 segurou o olho: 41 de alcance com ~15 h e 5,8 s de tempo médio em 14 s.** HeyGen: às 01:16, 01:21 e
-  01:31, `get_current_user` mostrou a assinatura no plano **free**, sem saldo e sem data de renovação, no dia em que o
-  Creator (600) deveria renovar (29/10, 00:57 UTC) — nenhum vídeo gerado, story pulado e relatado (a guarda de
-  `personagens/ESTELA.md`); **o Guilherme precisa conferir a assinatura**. Enquanto o plano seguir free, os stories ficam
-  pulados e o reel da Estela de sex 30 (19:00) vira reel de dados. O fim de "Custos e limites" em `ESTELA.md` ainda conta
-  com a renovação de 29/10: corrigir na próxima rodada que gravar o arquivo (88 KB; não foi reescrito hoje só por isso).
-  Métricas (feed de 28/10 04:26 BRT): o reel de 27/10 ("9 boosts, só 556 pontos", mecânica explicada) tinha **41 / 48** com
-  ~15,4 h e **5,82 s de tempo médio**, bem acima dos 3,3 s de média dos reels de dados nas 4 semanas do plano e dos 3,9 s do
-  reel de 25/10 (o de 144) — o 2º reel forte em três dias, depois de 21 a 24/10 no chão; o ranking de 26/10 fechou em
-  **8 / 9** (~39 h, 2,9 s), e a série do slot foi a 36 posts, mediana 13,5. Os stories seguem no zero: o de 27/10 fechou em
-  **0 / 6** (~19 h) e o de 28/10 tinha 0 / 1 com ~7,8 h — cinco dos últimos seis com 0 de alcance. No jogo, a quarta 28/10
-  teve 3 partidas: ROBER de novo, **8.389** às 14:47 (2:24, Tier II), no 2º dia seguido e no 5º dia com partida (empata
-  com o VASCO), e duas anônimas no fim da tarde; 688 partidas (faltam 12 para a 700ª) e 23h34min13s somadas (faltam
-  25min47s para as 24 h). As sete partidas redondas, da 1ª à 600ª, saíram todas sem nick — o reel do dia, com o pedido
-  "a 700ª pode ter o seu nick". No blog, cores HSL (PR #51), com um achado para o Guilherme: dois artigos de 2025 em
-  `blogArticles.js` (o do motor do jogo e o de performance) dizem que as estrelas do Tier VII andam 4,15× mais rápido, mas o
-  código dá 1 + 6 × 0,45 = 3,7× (o Tier I é o powerTier 0); e o do motor diz que o fundo escurece a cada tier, quando ele vai
-  do azul-escuro rgb(0, 1, 14) ao vermelho-escuro rgb(84, 1, 2) — a rotina não edita esse arquivo.
 
 Anteriores em [`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md) (24 a 31/10),
 [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (01 a 23/10),
