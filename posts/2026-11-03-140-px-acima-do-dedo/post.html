@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="8.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="1.6">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>
+  .vlabel { margin-top: 12px; font-family: var(--font-ui); font-weight: 500; font-size: 34px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; line-height: 1.3; }
+  .vlabel b { color: var(--ink); }
+  .vlabel small { display: block; margin-top: 10px; font-size: 26px; letter-spacing: 0.14em; color: var(--dim); }
+  .counter .u { font-size: 104px; letter-spacing: 0; margin-left: 14px; color: var(--muted); text-shadow: none; }
+  .counter.lock .u { color: var(--t3); }
+  .tag { position: absolute; left: 0; top: 0; font-family: var(--font-ui); font-weight: 600; font-size: 24px; letter-spacing: 0.24em; color: var(--muted); text-transform: uppercase; white-space: nowrap; opacity: 0; will-change: transform, opacity; }
+  .tag.ship { color: rgb(125,244,255); text-shadow: 0 0 16px rgba(125,244,255,0.45); }
+  #mk .marker { background: rgba(10,14,28,0.94); }
+  .pill { display: inline-block; padding: 8px 20px; border-radius: 10px; background: rgba(5,7,15,0.88); }
+</style>
+<!-- MECÂNICA EXPLICADA: no celular, a nave voa 140 px acima do dedo. Conferido no código do jogo (src/app/play/page.js,
+     blob 36d68b9a, sem commit desde 07/09/2026): TOUCH_OFFSET_Y = -140 em touchstart e touchmove, aplicado depois de
+     clientToCanvas (ou seja, em pixels do campo de 540×720, qualquer que seja o tamanho da tela: 140/720 = 19,4% da
+     altura); no mouse, o alvo é o próprio cursor (e o jogo desenha uma mira nele em aparelhos sem toque). A nave segue o
+     alvo com suavização exponencial (SHIP_LERP = 12: 63% do caminho em ~0,083 s) e atira sozinha. No reel, o campo está
+     em escala 2 (1080 de largura): os 140 px do jogo são 280 px aqui — o dedo em y = 1440 e a nave em y = 1160.
+     Fundo: a nave no Tier I (ciano #7df4ff, um disparo a cada 0,18 s, como em TIER_DEFS), meteoros marrons (heat 0, a
+     dificuldade 1 do começo da partida). Telemetria citada só na legenda (navistron.io/stats, lida em 03/11/2026). -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Mecânica explicada · @navistron</div>
+
+  <div id="tgF" class="tag">dedo</div>
+  <div id="tgS" class="tag ship">nave</div>
+
+  <div id="hook" class="layer" style="top: 440px">
+    <div class="h1" style="font-size: 150px"><span class="w" id="w1">NO CELULAR,</span><br><span class="w" id="w2">A NAVE VOA</span><br><span class="w accent" id="w3">ACIMA DO DEDO</span></div>
+    <div class="sub" id="hsub" style="margin-top: 46px; opacity: 0"><span class="pill">regra do <b>código do jogo</b></span></div>
+  </div>
+
+  <div id="ds" class="layer" style="top: 420px">
+    <div class="kicker">no toque, o jogo mira acima</div>
+    <div class="counter" id="cnt" style="margin-top: 24px; font-size: 300px"><span id="cn">0</span><span class="u">px</span></div>
+    <div class="vlabel">acima do ponto <b>tocado</b><small>num campo de 540 × 720</small></div>
+    <div id="mk" style="margin-top: 44px; opacity: 0"><span class="marker">o dedo <b>não cobre</b> a nave</span></div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 420px">
+    <div class="h1" style="font-size: 180px">JOGA <span class="accent">HOJE</span></div>
+    <div class="cta-big" style="margin-top: 36px">NAVISTRON<br>.IO</div>
+    <div class="cta-sub"><span class="pill">grátis, sem login</span></div>
+    <div class="sub" style="margin-top: 8px"><span class="pill">põe o seu <b>nick</b> no game over</span></div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 8.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+
+  // ---------- PRNG determinístico ----------
+  let s = 113;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- a partida no fundo: nave no Tier I (ciano), o dedo 280 px abaixo dela ----------
+  const CYAN = '125,244,255', C1 = '180,255,255', C2 = '0,200,255';
+  const HIT = 4.4;                                     // o contador trava em 140 (o hit da trilha)
+  const FY = 1440, OFF = 280, SY = FY - OFF;           // 140 px do campo (540×720) = 280 px no reel (escala 2)
+  const fingerX = t => 540 + 150 * Math.sin(0.9 * t + 1.0) + 25 * Math.sin(2.3 * t + 0.4);
+  const shipX = t => fingerX(t - 1 / 12);              // SHIP_LERP = 12: a nave chega ao alvo com ~0,08 s de atraso
+  const N = 18, CYC = 2100, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 200 + rnd() * 170, r: 20 + rnd() * 44, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * CYC, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.3
+    });
+  }
+  function mpos(m, t) {
+    const dist = t * 1.5 * m.v + m.phase;
+    const cycle = Math.floor(dist / CYC);
+    const y = (dist % CYC) - 120;
+    const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+    return { x, y, cycle };
+  }
+  // um meteoro que cruzaria a nave não aparece naquela volta (no jogo, encostar nela é game over)
+  const hiddenCache = new Map();
+  function hidden(i, cycle) {
+    const key = i + ':' + cycle;
+    if (hiddenCache.has(key)) return hiddenCache.get(key);
+    const m = meteors[i];
+    let hid = false;
+    for (let q = -6; q <= 6 && !hid; q++) {
+      const y = SY + q * 25;
+      const dist = cycle * CYC + y + 120;
+      const tau = (dist - m.phase) / (1.5 * m.v);
+      const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+      const dx = x - shipX(tau), dy = y - SY;
+      if (dx * dx + dy * dy < Math.pow(m.r * 0.95 + 62, 2)) hid = true;
+    }
+    hiddenCache.set(key, hid);
+    return hid;
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function meteorPath(shape, r) {
+    fx.beginPath();
+    const n = shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = r * shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+  }
+  // cores de drawMeteor() no jogo com heat 0 (dificuldade 1, o começo da partida)
+  function drawMeteor(shape, x, y, r, rot, alpha, lw) {
+    const heat = 0;
+    fx.save(); fx.globalAlpha = alpha; fx.translate(x, y); fx.rotate(rot);
+    const ag = fx.createRadialGradient(0, 0, r * .3, 0, 0, r * 1.9);
+    ag.addColorStop(0, 'rgba(255,140,40,0)'); ag.addColorStop(.5, 'rgba(255,80,20,0.06)'); ag.addColorStop(1, 'rgba(255,0,0,0)');
+    fx.beginPath(); fx.arc(0, 0, r * 1.9, 0, Math.PI * 2); fx.fillStyle = ag; fx.fill();
+    meteorPath(shape, r);
+    const r1 = 154, g1 = 110, b1 = 80;
+    const rg = fx.createRadialGradient(-r * .3, -r * .3, 0, 0, 0, r);
+    rg.addColorStop(0, `rgb(${r1},${g1},${b1})`);
+    rg.addColorStop(.6, `rgb(${Math.floor(r1 * .6)},${Math.floor(g1 * .5)},${Math.floor(b1 * .4)})`);
+    rg.addColorStop(1, '#150500');
+    fx.fillStyle = rg; fx.fill();
+    fx.strokeStyle = `rgba(${r1},${g1 - 20},20,.75)`;
+    fx.lineWidth = lw * (1.5 + heat * 1.5); fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, t) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(t * 41));
+    fx.save(); fx.translate(x, y); fx.scale(1.25, 1.25);
+    const g = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    g.addColorStop(0, `rgba(${CYAN},0.95)`); g.addColorStop(1, `rgba(${CYAN},0)`);
+    fx.fillStyle = g; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = `rgba(${CYAN},0.75)`; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = `rgb(${CYAN})`; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  function rrect(x, y, w, h, r) {
+    fx.beginPath(); fx.moveTo(x + r, y); fx.lineTo(x + w - r, y); fx.arc(x + w - r, y + r, r, -Math.PI / 2, 0);
+    fx.lineTo(x + w, y + h - r); fx.arc(x + w - r, y + h - r, r, 0, Math.PI / 2); fx.lineTo(x + r, y + h);
+    fx.arc(x + r, y + h - r, r, Math.PI / 2, Math.PI); fx.lineTo(x, y + r); fx.arc(x + r, y + r, r, Math.PI, Math.PI * 1.5); fx.closePath();
+  }
+  // o dedo, estilizado e visto de cima (a unha para cima), com o toque marcado no ponto de contato
+  function drawFinger(x, t) {
+    const w = 150, top = FY - 78;
+    fx.save();
+    fx.beginPath();
+    fx.moveTo(x - w / 2, H + 40); fx.lineTo(x - w / 2, top + w / 2);
+    fx.arc(x, top + w / 2, w / 2, Math.PI, 0);
+    fx.lineTo(x + w / 2, H + 40); fx.closePath();
+    const g = fx.createLinearGradient(x - w / 2, 0, x + w / 2, 0);
+    g.addColorStop(0, 'rgba(24,30,50,0.94)'); g.addColorStop(0.5, 'rgba(58,68,98,0.94)'); g.addColorStop(1, 'rgba(24,30,50,0.94)');
+    fx.fillStyle = g; fx.fill();
+    fx.strokeStyle = 'rgba(238,243,255,0.55)'; fx.lineWidth = 3; fx.stroke();
+    rrect(x - 44, top + 16, 88, 104, 40);
+    fx.fillStyle = 'rgba(238,243,255,0.08)'; fx.fill();
+    fx.strokeStyle = 'rgba(238,243,255,0.32)'; fx.lineWidth = 2; fx.stroke();
+    // o ponto do toque: anel fixo + duas ondas
+    for (let k = 0; k < 2; k++) {
+      const p = ((t / 0.9) + k * 0.5) % 1;
+      fx.strokeStyle = `rgba(${CYAN},${0.55 * (1 - p) * (1 - p)})`; fx.lineWidth = 3;
+      fx.beginPath(); fx.arc(x, FY, 40 + 78 * p, 0, Math.PI * 2); fx.stroke();
+    }
+    fx.fillStyle = `rgba(${CYAN},0.14)`; fx.beginPath(); fx.arc(x, FY, 38, 0, Math.PI * 2); fx.fill();
+    fx.strokeStyle = `rgba(${CYAN},0.75)`; fx.lineWidth = 3; fx.stroke();
+    fx.restore();
+  }
+  // a cota de 140 px (à esquerda do dedo): sobe junto com o contador e fica dourada no hit
+  function drawDim(x, t) {
+    const a = seg(t, 2.65, 0.25) * (1 - seg(t, 5.4, 0.3));
+    if (a <= 0) return;
+    const c = ease.out4(seg(t, 2.8, HIT - 2.8));
+    const on = t >= HIT;
+    const col = on ? '250,204,21' : '143,163,199';
+    const xd = x - 128, yTop = FY - OFF * c;
+    fx.save(); fx.globalAlpha = a;
+    if (on) { fx.shadowColor = 'rgba(250,204,21,0.6)'; fx.shadowBlur = 18; }
+    fx.strokeStyle = `rgba(${col},0.9)`; fx.lineWidth = 4;
+    fx.setLineDash([16, 12]);
+    fx.beginPath(); fx.moveTo(xd, FY); fx.lineTo(xd, yTop); fx.stroke();
+    fx.setLineDash([4, 10]); fx.lineWidth = 2; fx.strokeStyle = `rgba(${col},0.6)`;
+    fx.beginPath(); fx.moveTo(x - 44, FY); fx.lineTo(xd - 16, FY); fx.stroke();
+    if (c > 0.98) { fx.beginPath(); fx.moveTo(x - 50, SY); fx.lineTo(xd - 16, SY); fx.stroke(); }
+    fx.setLineDash([]); fx.lineWidth = 4; fx.strokeStyle = `rgba(${col},0.95)`;
+    fx.beginPath(); fx.moveTo(xd - 20, FY); fx.lineTo(xd + 20, FY); fx.stroke();
+    fx.beginPath(); fx.moveTo(xd - 20, yTop); fx.lineTo(xd + 20, yTop); fx.stroke();
+    fx.restore();
+  }
+  const RATE = 0.18, BV = 1040, BLIFE = 1.6, STEP = 1 / 60;   // Tier I: um disparo a cada 0,18 s
+  // o tiro some no 1º meteoro que tocar (conta feita só com t, para cada quadro sair igual)
+  function bulletState(tb, t) {
+    const x0 = shipX(tb), y0 = SY - 60;
+    for (let tau = tb; tau <= t + 1e-9; tau += STEP) {
+      const y = y0 - (tau - tb) * BV;
+      for (let i = 0; i < N; i++) {
+        const m = meteors[i], p = mpos(m, tau);
+        if (hidden(i, p.cycle)) continue;
+        const dx = p.x - x0, dy = p.y - y;
+        if (dx * dx + dy * dy < Math.pow(m.r * 0.72 + 8, 2)) return { hit: true, x: x0, y, at: tau };
+      }
+    }
+    return { hit: false, x: x0, y: y0 - (t - tb) * BV };
+  }
+  function drawBullet(x, y) {
+    fx.save(); fx.globalAlpha = 0.25 + 0.75 * seg(y, 860, 240);   // mais fraco onde está o texto
+    const g = fx.createRadialGradient(x, y, 0, x, y, 24);
+    g.addColorStop(0, `rgba(${C1},1)`); g.addColorStop(.3, `rgba(${C2},.8)`); g.addColorStop(1, 'rgba(0,120,200,0)');
+    fx.fillStyle = g; fx.beginPath(); fx.arc(x, y, 24, 0, Math.PI * 2); fx.fill();
+    fx.fillStyle = '#fff'; fx.beginPath(); fx.arc(x, y, 7, 0, Math.PI * 2); fx.fill();
+    fx.restore();
+  }
+
+  function drawFX(t) {
+    fx.clearRect(0, 0, W, H);
+    for (let i = 0; i < N; i++) {
+      const m = meteors[i], p = mpos(m, t);
+      if (p.y < -120 || p.y > H + 120 || hidden(i, p.cycle)) continue;
+      drawMeteor(m.shape, p.x, p.y, m.r, m.rot + t * m.w, 0.9, m.big ? 1.6 : 1.2);
+    }
+    const vg = fx.createRadialGradient(540, 760, 160, 540, 760, 980);
+    vg.addColorStop(0, 'rgba(5,7,15,0.8)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+    const k0 = Math.max(0, Math.floor((t - BLIFE) / RATE));
+    for (let k = k0; k * RATE <= t; k++) {
+      const st = bulletState(k * RATE, t);
+      if (!st.hit) { if (st.y > -40) drawBullet(st.x, st.y); continue; }
+      const age = t - st.at;                         // faísca no ponto do impacto, 0,25 s
+      if (age < 0.25) {
+        const al = 1 - age / 0.25, ya = 0.25 + 0.75 * seg(st.y, 860, 240);
+        for (let q = 0; q < 6; q++) {
+          const ang = q * 1.047 + k;
+          fx.fillStyle = `rgba(${C1},${al * ya})`;
+          fx.beginPath(); fx.arc(st.x + Math.cos(ang) * 120 * age, st.y + Math.sin(ang) * 120 * age, 4 * al + 1, 0, Math.PI * 2); fx.fill();
+        }
+      }
+    }
+    const xf = fingerX(t);
+    drawDim(xf, t);
+    drawFinger(xf, t);
+    drawShip(shipX(t), SY, t);
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+
+    // as etiquetas do dedo e da nave (à direita deles): 0,5–5,7 s
+    const tg = ease.out3(seg(t, 0.5, 0.4)) * (1 - seg(t, 5.4, 0.3));
+    $('tgF').style.opacity = tg * 0.95; $('tgF').style.transform = `translate(${Math.round(fingerX(t) + 96)}px, ${FY - 15}px)`;
+    $('tgS').style.opacity = tg; $('tgS').style.transform = `translate(${Math.round(shipX(t) + 66)}px, ${SY - 15}px)`;
+
+    // 1) gancho: legível desde o quadro 0; a linha de baixo entra em 0,5 s; sai em 2.35–2.65
+    const outH = 1 - seg(t, 2.35, 0.3);
+    layer($('hook'), outH, -30 * (1 - outH));
+    const ws = [['w1', 0.0, 0.35], ['w2', 0.08, 0.4], ['w3', 0.16, 0.4]];
+    for (const [id, a, d] of ws) {               // sempre opaco (gancho legível no quadro 0); só assenta 14 px
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = 1; $(id).style.display = 'inline-block';
+      $(id).style.transform = `translateY(${14 * (1 - v)}px)`;
+    }
+    const hs = ease.out3(seg(t, 0.5, 0.4));
+    $('hsub').style.opacity = hs; $('hsub').style.transform = `translateY(${20 * (1 - hs)}px)`;
+
+    // 2) 140 px: o contador sobe junto com a cota e trava no hit; sai 5.4–5.7
+    const inS = ease.out3(seg(t, 2.55, 0.35)), outS = 1 - seg(t, 5.4, 0.3);
+    layer($('ds'), inS * outS, 30 * (1 - inS));
+    const c = ease.out4(seg(t, 2.8, HIT - 2.8));
+    $('cn').textContent = String(Math.round(140 * c));
+    $('cnt').className = 'counter' + (t >= HIT ? ' lock' : '');
+    const pop = t >= HIT ? 1 + 0.1 * Math.exp(-(t - HIT) * 4) : 1;
+    $('cnt').style.transform = `scale(${pop})`;
+    const mk = ease.out3(seg(t, HIT + 0.3, 0.35));
+    $('mk').style.opacity = mk; $('mk').style.transform = `scale(${0.9 + 0.1 * mk})`;
+
+    // 3) joga hoje + CTA 5.65–8.0
+    const inC = ease.out3(seg(t, 5.65, 0.45));
+    layer($('cta'), inC, 30 * (1 - inC));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
