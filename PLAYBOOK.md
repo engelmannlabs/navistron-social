@@ -145,8 +145,10 @@ médio dos reels de 14 s ficou em 2,1–5,1 s, então quase ninguém vê o CTA f
   antigos do blog são referência, não fonte: em 15/09 um artigo descreveu os mísseis teleguiados como inimigos e
   eles são da própria nave (corrigido em 17/09). **Número derivado de fórmula se calcula, não se estima** — rodar a
   conta em python (o arredondamento muda o resultado: a conta à mão errou 1 valor da tabela de 22/09).
-- **Cache do /stats:** as URLs podem devolver snapshots de horas diferentes. Antes de citar um número, acrescentar
-  um parâmetro qualquer (`&v=hhmm`) para forçar leitura nova e conferir que os totais batem entre as visões.
+- **Cache do /stats:** as URLs podem devolver snapshots de horas diferentes, e um `?v=` novo não basta: em 03/11, a 1ª
+  leitura trouxe as três visões da véspera, e a 2ª, minutos depois e com outros `?v=`, veio atualizada. Ler cada visão
+  duas vezes, com `&v=` diferentes, e só contar quando a linha "Última:" e o começo da janela de 7 dias mostrarem o dia
+  anterior e os totais baterem entre as visões.
 - **Se /stats estiver inacessível**, o único pilar permitido é "Mecânica explicada", com as regras fixas do jogo —
   zero números de telemetria.
 - Citar pilotos pelo nick como aparece no ranking (é público). Sem deboche com nick de ninguém.

@@ -4,6 +4,21 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-11-03 · **O 1º reel de 8 s da S45 vai ao ar com o CTA aos 5,65 s — e o /stats mostrou uma armadilha nova: a 1ª leitura do
+  dia veio inteira da véspera, mesmo com ?v= novos.** Métricas (feed de 02/11 22:27 BRT, ~1 h mais cedo que a anterior, como
+  previsto): o reel de 01/11 (PAÇOCA estreou) fechou em **74 / 83** (~33 h, 2,2 s de tempo médio), e a S44 fechou o slot das 13:00
+  com 8, 51, 18, 78, 92 e 74 (a série tem 41 posts, mediana 15); o de 02/11 (ranking da semana 44, o 1º de 14 s da S45) tinha **79
+  / 82** com ~9 h, com 2,45 s de tempo médio (17,5% dos 14 s); o de 31/10 foi a 93 com ~57 h. No jogo, o dia do ranking teve 1
+  partida (15:53, anônima, 178 pontos em 0:33) e nenhum nick novo: 698 partidas, faltam 2 para a 700ª e 3min24s para as 24 h.
+  **Telemetria**: a 1ª leitura (ter0311a a c) trouxe as três visões de 02/11 — 697 partidas, a última em 01/11 às 07:31 e a janela
+  de 7 dias começando em 26/10 11:19 —, e a 2ª, minutos depois, com outros ?v=, mostrou a partida de 02/11 em todas; na prática, a
+  1ª visita depois de horas pode devolver a cópia anterior. Regra no PLAYBOOK: ler cada visão duas vezes e só contar quando a
+  linha "Última:" e o começo da janela de 7 dias mostrarem o dia anterior. O reel de hoje (mecânica explicada: no celular, a nave
+  voa 140 px acima do dedo, regra que só tinha aparecido num story de 13/10) tem 8 s, o contador de 140 px no hit, aos 4,4 s, e o
+  CTA dos 5,65 s ao fim; a leitura da duração sai quando houver pares de 8 e 14 s com ≥ 40 h. A HeyGen seguiu no plano free pelo
+  6º dia (**o Guilherme precisa conferir a assinatura**). No blog, o que muda entre o PC e o celular (PR #56), com um achado do
+  código: com o dedo dentro do campo, a nave não desce além de 580 px (no mouse, 706) — 18% menos tempo para cada meteoro no fundo
+  da tela.
 - 2026-11-02 · **Leitura da S44: o alcance voltou, o jogo não — 8, 51, 43, 18, 78, 92 e 70 (este com ~10 h), seis de sete acima da
   mediana do slot, numa semana de 17 partidas, a menor da série junto com a 38.** Métricas (feed de 01/11 23:27 BRT, na hora
   prevista): o reel de 31/10 (desafio, "quem faz o próximo 10 mil?") fechou em **92 / 105** (~34 h, 3,2 s de tempo médio), o maior
@@ -49,23 +64,6 @@ apenas este arquivo, e não o playbook inteiro.
   lista por data veio de 26/10 (680 partidas) enquanto a página 2 mostrava 694; usar um valor que nunca foi usado (v=sab3110x)
   e conferir o cabeçalho das páginas antes de contar. O ambiente perdeu a pasta de trabalho, e tudo foi refeito a partir do
   GitHub, com o índice do blog e o validador conferidos pelo hash dos blobs. No blog, high score (PR #53).
-- 2026-10-30 · **A HeyGen seguiu no plano free — a Estela de sexta virou reel de dados e o story foi pulado de novo —, o reel
-  de mecânica de 27/10 fechou em 51, o maior da S44, e a atualização das métricas no Buffer adianta 1 h por dia.** HeyGen: à
-  01:02, `get_current_user` mostrou de novo o plano free, sem saldo e sem data de renovação; pela guarda de
-  `personagens/ESTELA.md`, a Estela das 19:00 de sex 30 virou o reel de dados "meteoro vermelho aguenta mais" às 13:00
-  (mecânica explicada: a cor do meteoro mostra a dificuldade; vermelho máximo a partir de 6.508 pontos no Tier II, 3.334 no
-  III e 1.548 no IV; a vida do grande vai de 3 a 30) e o story foi pulado pelo 2º dia — **o Guilherme precisa conferir a
-  assinatura**. Métricas (feed de 29/10 03:26 BRT): o reel de 27/10 ("9 boosts, só 556 pontos") fechou em **51 / 57** (~38 h,
-  tempo médio 5,1 s), o 9º da série do slot das 13:00 (37 posts, mediana 14), com mais 10 de alcance entre ~15 e ~38 h; a
-  Estela de 28/10 (ROBER de novo, 19:00) tinha **16 / 20** com ~8 h; o story de 28/10 fechou em **0 / 3** — seis dos últimos
-  sete stories com 0 de alcance. **A atualização diária das métricas do feed no Buffer adianta ~1 h por dia** (`metricsUpdatedAt`
-  em 26/10 06:26, 27/10 05:26, 28/10 04:26 e 29/10 03:26 BRT, ~23 h entre uma e outra): se seguir assim, a de 31/10 cai por
-  volta da 01:26, no meio da rodada, e a de 01/11 antes dela — calcular a idade de cada post pelo `metricsUpdatedAt`, não pela
-  hora da rodada. No jogo, a quinta 29/10 teve 6 partidas, todas anônimas, 5 delas entre 09:22 e 10:39, uma no Tier IV (5.983
-  em 4:03); 694 partidas (faltam 6 para a 700ª) e 23h51min00s somadas (faltam 9 min para as 24 h). No blog, o horário de pico
-  (PR #52), com as 694 partidas lidas uma a uma e a conta fechada contra o /stats: 41,1% entre 14h e 16h59, a quinta com
-  30,1% (puxada por 09/07, 16/07 e 03/09) e outubro com a manhã de volta à frente da tarde (77 a 68). Nesta rodada o WebFetch
-  não veio como ferramenta direta; o agente de leitura da web (web-fetch) leu o /stats e as 14 páginas sem erro.
 
 Anteriores em [`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md) (24 a 31/10),
 [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (01 a 23/10),
