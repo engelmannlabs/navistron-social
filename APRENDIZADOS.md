@@ -4,6 +4,17 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-11-04 · **1ª leitura da S45: o reel de 8 s segurou quase metade da duração (3,77 s de tempo médio, 47% dos 8 s), contra
+  17,6% do ranking de 14 s — mas é um par só, e o jogo não mexeu: 1 partida por dia.** Métricas (feed de 03/11 21:27 BRT, ~1 h
+  mais cedo que a anterior, como previsto): o ranking de 02/11 (14 s) fechou em **91 / 98** (~32 h, 2,47 s de tempo médio), o 7º
+  da série do slot das 13:00 (42 posts, mediana 15); o reel de 8 s de 03/11 (no celular, a nave voa acima do dedo) tinha **99 /
+  122** com ~8 h — mais que o ranking com ~9 h (79). Nos de 14 s da S44, o tempo médio ficou entre 2,1 e 5,1 s (15 a 36%). Faltam
+  o alcance com ≥ 40 h e as partidas do dia seguinte; a leitura da pergunta fecha em 09/11. No jogo, a segunda 02/11 e a terça
+  03/11 tiveram 1 partida cada: a de terça, às 12:46, foi de ROBER (7.685, Tier II), 17 minutos antes de o reel de 8 s sair — o 1º
+  nick da semana 45 e o reel de hoje (desafio: com 7.686, um nick passa a liderar). 699 partidas: a próxima é a 700ª, e faltam 68
+  s para as 24 h de jogo somadas. Telemetria: com a regra de 03/11, três leituras com ?v= diferentes, sem diferença entre elas. A
+  HeyGen seguiu no plano free pelo 7º dia (**o Guilherme precisa conferir a assinatura**). No blog, jogos que gastam pouca bateria
+  (PR #57), com um número do código: o quadro fixo de 540×720 pinta 388.800 pixels, 6,7 vezes menos que uma tela de 1080×2400.
 - 2026-11-03 · **O 1º reel de 8 s da S45 vai ao ar com o CTA aos 5,65 s — e o /stats mostrou uma armadilha nova: a 1ª leitura do
   dia veio inteira da véspera, mesmo com ?v= novos.** Métricas (feed de 02/11 22:27 BRT, ~1 h mais cedo que a anterior, como
   previsto): o reel de 01/11 (PAÇOCA estreou) fechou em **74 / 83** (~33 h, 2,2 s de tempo médio), e a S44 fechou o slot das 13:00
@@ -51,19 +62,6 @@ apenas este arquivo, e não o playbook inteiro.
   01/11): a de 02/11 deve cair por volta das 23:27 de 01/11, antes da rodada. No blog, o tutorial de limitar caracteres em
   JavaScript (PR #54), com um achado: o slice(0, 20) do jogo e da API pode guardar meio emoji num nick que passe de 20 unidades (o
   maxLength do campo segura isso na página).
-- 2026-10-31 · **O alcance voltou na S44 — 8, 51, 43, 18 e 47 (este com ~12 h), quatro de cinco acima da mediana do slot —
-  e o jogo parou: a sexta 30/10 não teve partida, e a semana 44 ainda não teve nenhum 10 mil.** Métricas (feed de 31/10 01:27
-  BRT, a atualização no meio da rodada, como previsto em 30/10): a Estela de 28/10 (ROBER de novo, 19:00) fechou em **43 / 50**
-  (~54 h), a maior das seis Estelas das 19:00 (antes, 32, 12, 28, 27 e 11); o reel de 29/10 (a partida 700) fechou em **18 /
-  21** (~36 h); e o de 30/10 (meteoro vermelho) tinha **47 / 50** com ~12 h, mas com 1,6 s de tempo médio, o menor da semana.
-  Depois de 6, 3, 11 e 2 de alcance (21 a 24/10), a pergunta da S44 (o alcance volta com o calendário estável?) tem resposta
-  parcial positiva; a leitura fecha em 02/11. A HeyGen seguiu no plano free pelo 3º dia, e o story foi pulado de novo — **o
-  Guilherme precisa conferir a assinatura**. No jogo, a sexta 30/10 zerou (694 partidas, 23h51min00s somadas), e a última
-  partida acima dos 10 mil foi em 23/10 (12.535, sem nick): na semana 44, 0 de 14 partidas, contra 24 de 49 na semana 43 — o
-  reel do dia, no pilar desafio. **Cache do /stats: um ?v= já usado volta com a cópia antiga** — com v=0112, a página 1 da
-  lista por data veio de 26/10 (680 partidas) enquanto a página 2 mostrava 694; usar um valor que nunca foi usado (v=sab3110x)
-  e conferir o cabeçalho das páginas antes de contar. O ambiente perdeu a pasta de trabalho, e tudo foi refeito a partir do
-  GitHub, com o índice do blog e o validador conferidos pelo hash dos blobs. No blog, high score (PR #53).
 
 Anteriores em [`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md) (24 a 31/10),
 [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (01 a 23/10),

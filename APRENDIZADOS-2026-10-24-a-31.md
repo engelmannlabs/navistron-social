@@ -4,6 +4,19 @@ Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 
 Anteriores (01 a 23/10) em [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md). Arquivo aberto em 28/10/2026 para que a rodada
 diária não reescreva o arquivo de outubro inteiro (~38 KB) a cada entrada arquivada.
 
+- 2026-10-31 · **O alcance voltou na S44 — 8, 51, 43, 18 e 47 (este com ~12 h), quatro de cinco acima da mediana do slot —
+  e o jogo parou: a sexta 30/10 não teve partida, e a semana 44 ainda não teve nenhum 10 mil.** Métricas (feed de 31/10 01:27
+  BRT, a atualização no meio da rodada, como previsto em 30/10): a Estela de 28/10 (ROBER de novo, 19:00) fechou em **43 / 50**
+  (~54 h), a maior das seis Estelas das 19:00 (antes, 32, 12, 28, 27 e 11); o reel de 29/10 (a partida 700) fechou em **18 /
+  21** (~36 h); e o de 30/10 (meteoro vermelho) tinha **47 / 50** com ~12 h, mas com 1,6 s de tempo médio, o menor da semana.
+  Depois de 6, 3, 11 e 2 de alcance (21 a 24/10), a pergunta da S44 (o alcance volta com o calendário estável?) tem resposta
+  parcial positiva; a leitura fecha em 02/11. A HeyGen seguiu no plano free pelo 3º dia, e o story foi pulado de novo — **o
+  Guilherme precisa conferir a assinatura**. No jogo, a sexta 30/10 zerou (694 partidas, 23h51min00s somadas), e a última
+  partida acima dos 10 mil foi em 23/10 (12.535, sem nick): na semana 44, 0 de 14 partidas, contra 24 de 49 na semana 43 — o
+  reel do dia, no pilar desafio. **Cache do /stats: um ?v= já usado volta com a cópia antiga** — com v=0112, a página 1 da
+  lista por data veio de 26/10 (680 partidas) enquanto a página 2 mostrava 694; usar um valor que nunca foi usado (v=sab3110x)
+  e conferir o cabeçalho das páginas antes de contar. O ambiente perdeu a pasta de trabalho, e tudo foi refeito a partir do
+  GitHub, com o índice do blog e o validador conferidos pelo hash dos blobs. No blog, high score (PR #53).
 - 2026-10-30 · **A HeyGen seguiu no plano free — a Estela de sexta virou reel de dados e o story foi pulado de novo —, o reel
   de mecânica de 27/10 fechou em 51, o maior da S44, e a atualização das métricas no Buffer adianta 1 h por dia.** HeyGen: à
   01:02, `get_current_user` mostrou de novo o plano free, sem saldo e sem data de renovação; pela guarda de
