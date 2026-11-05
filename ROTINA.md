@@ -165,7 +165,8 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
    ("artigo completo no blog, link na bio"). Todo número com data. Nunca inventar piloto, score, marco ou promessa.
    Nos reels da Estela, a legenda é dela, em primeira pessoa, assinando "— Estela" (sem dizer que é IA e sem `#ia`).
    **No teste "Enquanto a IA pensa" (PLAYBOOK 3c, desde 04/11), o formato, o pedido da 1ª linha, a pergunta do fim e as
-   hashtags seguem a 3c.**
+   hashtags seguem a 3c.** **Português da norma culta na arte e na legenda (pedido do Guilherme em 05/11): imperativo
+   "guie", "jogue", "venha", nunca "guia", "joga", "vem" — ver "Limites que não se negociam"; revisar antes de agendar.**
 5. **Montar a arte**: se a cópia de trabalho não existir, baixar via `get_file_contents` os arquivos
    `templates/base.css`, `templates/base.js`, `templates/reel.css`, `scripts/setup-fonts.sh`, `scripts/audio.mjs`,
    `scripts/qa.py` e o `post.html` de referência; recriar a estrutura de pastas localmente e rodar
@@ -202,7 +203,7 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
    a. `get_current_user` → créditos. Abaixo de 30, pular o story e relatar.
    b. Roteiro de 40–60 palavras (15–25 s), tom de story, **direto ao conteúdo — sem dizer que é IA**
       (pedido do Guilherme; o aviso é o rótulo do Instagram): gancho na 1ª frase, um fato conferido da telemetria com
-      data (ou uma mecânica conferida no código), pedido de ação ("joga e põe o nick no game over", "link na bio"). Não
+      data (ou uma mecânica conferida no código), pedido de ação ("jogue e ponha o nick no game over", "link na bio"). Não
       repetir o assunto do reel do dia palavra por palavra — o story pode ser o bastidor, a provocação ou o lembrete do dia.
       O roteiro é escrito à 01:00 e o story vai ao ar às 16:00: número que pode mudar durante o dia (o sarrafo do top 10,
       uma posição, "o ranking está vazio") vai como fato fechado e datado ("ontem, às 13:37…") ou com a hora da leitura —
@@ -298,6 +299,15 @@ Guilherme precisa resolver à mão.
   configuração do jogo.
 - Nada de dado inventado, nick zoado ou promessa em nome do Guilherme. Sem emoji na arte; emoji na legenda com
   moderação. No blog, tom editorial, sem emoji.
+- **Português da norma culta em tudo o que vai ao ar** (arte, legenda, story e blog), pedido do Guilherme em 05/11/2026:
+  "Não diga 'guia a nave', diga 'guie a nave'. Verifique esse tipo de correção de português sempre antes de postar."
+  Com "você", o imperativo é o do subjuntivo: guie, pegue, suba, venha, jogue, prove, troque, responda, conte, ponha,
+  espere, entre, desvie, faça, deixe, mande — nunca guia, pega, sobe, vem, joga, prova, troca, responde, conta, põe,
+  espera, entra, desvia, faz, deixa, manda. Nada de "te" junto com "você" ("espera por você", não "te espera"). Formas
+  coloquiais ("tá", "pra") só entre aspas, quando são a fala do próprio jogo ("Tá achando fácil?"). Antes de agendar ou
+  publicar, reler toda a arte e toda a legenda atrás desses casos. Os exemplos antigos no coloquial, do PLAYBOOK e dos
+  posts anteriores ("espera jogando", "joga enquanto a IA pensa", "Joga hoje e põe o seu nick", "JOGA HOJE"), valem na
+  forma corrigida (espere jogando, jogue enquanto a IA pensa, jogue hoje e ponha o seu nick, JOGUE HOJE).
 - Não alterar nem apagar posts antigos do Buffer nem artigos antigos do blog (exceção: corrigir um erro factual em
   artigo da própria rotina, com nota de correção datada no texto e registro em `log/blog.md`). Não criar
   repositórios. Não mexer em tarefas agendadas além do Passo 0.
