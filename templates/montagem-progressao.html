@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="10.5">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="1.3">
+<link rel="stylesheet" href="../../templates/reel.css">
+<!-- MOLDE "PROGRESSÃO" (montagem com gameplay real; guia em MONTAGEM.md). Copiar para posts/<slug>/post.html.
+     Um momento por corte, em câmera lenta 2x (speed 0.5; a gravação tem ~120 fps), com o placar refeito por cima: aqui, os
+     4 boosts da gravação de 05/11 (leque 1→2→3→4→5). O boost cai no 2º tempo de cada corte (from = segundo do boost −
+     0,47 s); o contador vira nesse instante. Zoom leve centrado na nave (x do toque no índice do MONTAGEM.md).
+     audio.json sugerido: {"bpm":128,"transpose":2,"hit":6.5625,"riserStart":5.1,"fadeOut":0.5} (o hit no 5º tiro). -->
+</head>
+<body>
+  <canvas id="v" width="1080" height="1920"></canvas>
+  <div class="m-scrim" id="sc"></div>
+
+  <div id="hl" class="layer" style="top: 335px; opacity: 1">
+    <div class="h1" style="font-size: 150px">CADA BOOST,<br><span class="cyan" id="p1" style="display: inline-block">+1 TIRO.</span></div>
+  </div>
+  <div class="m-kick" id="kick"><span id="ks"></span></div>
+
+  <div class="m-cnt" id="cnt"><span id="cn"></span></div>
+  <div class="m-hud" id="hud"><div class="in"><span class="lab">BOOST:</span><i id="d1"></i><i id="d2"></i><i id="d3"></i><i id="d4"></i><i id="d5"></i></div></div>
+
+  <div id="cta" class="layer" style="top: 400px">
+    <div class="h1" style="font-size: 180px">SUBA DE<br><span class="accent">TIER.</span></div>
+    <div class="cta-big" style="margin-top: 36px">NAVISTRON<br>.IO</div>
+    <div class="cta-sub"><span class="m-pill">grátis, sem login</span></div>
+    <div class="sub" style="margin-top: 8px"><span class="m-pill">jogue enquanto a <b>IA</b> pensa</span></div>
+  </div>
+
+<script>
+(function () {
+  const B = 60 / 128;
+  const PICK = [[1, 1.133], [2, 0.933], [3, 0.94], [4, 0.94]];   // corte k: [tiros antes, segundo local do boost]
+  const CTA = 18 * B;
+  window.MONTAGE = {
+    dur: 10.5, srcW: 1060, srcH: 1906,
+    footage: { main: '../../footage/Screen_Recording_20261105_123725_Chrome_1.mp4' },
+    touch: { minY: 470 },
+    view: [530, 1246, 1.05],
+    cuts: [
+      { at: 0,      dur: 4 * B, from: 0.0,   speed: 0.5, view: { from: [500, 1200, 1.08], to: [500, 1150, 1.22] } },
+      { at: 4 * B,  dur: 4 * B, from: 16.40, speed: 0.5, view: { from: [450, 1200, 1.1], to: [450, 1150, 1.24] }, punch: 0.06, flash: '125,244,255' },
+      { at: 8 * B,  dur: 4 * B, from: 31.53, speed: 0.5, view: { from: [750, 1200, 1.1], to: [750, 1150, 1.24] }, punch: 0.06, flash: '125,244,255' },
+      { at: 12 * B, dur: 4 * B, from: 46.23, speed: 0.5, view: { from: [330, 1210, 1.1], to: [330, 1170, 1.26] }, punch: 0.06, flash: '125,244,255' },
+      { at: 16 * B, dur: 2 * B, from: 49.75, punch: 0.08, flash: '250,204,21', shake: [[0.78, 14]] },
+      { at: CTA,    dur: 10.5 - CTA, from: 44.0, flash: '255,255,255', dim: 0.7 }
+    ],
+    overlay(t, k, lt) {
+      const { seg, out3 } = window.MU, $ = id => document.getElementById(id);
+      const hOut = 1 - seg(t, 1.66, 0.22);
+      $('hl').style.opacity = hOut; $('hl').style.transform = `translateY(${-40 * (1 - hOut)}px)`;
+      $('sc').style.opacity = hOut;
+      const live = k <= 4;
+      $('kick').style.opacity = live ? out3(seg(t, 4 * B - 0.05, 0.25)) : 0;
+      $('ks').innerHTML = k === 4 ? 'e o 5º boost <b>sobe de tier</b>' : 'cada boost, <b>+1 tiro</b>';
+      let n = 5, pop = 0;
+      if (k < PICK.length) { const [n0, tp] = PICK[k]; n = lt >= tp ? n0 + 1 : n0; if (lt >= tp) pop = Math.exp(-(lt - tp) * 7); }
+      if (k === 4) pop = Math.exp(-lt * 7) * 0.6;
+      $('cn').textContent = n + (n === 1 ? ' TIRO' : ' TIROS');
+      $('cnt').className = 'm-cnt' + (n === 5 ? ' gold' : '');
+      $('cnt').style.opacity = k >= 1 && live ? out3(seg(t, 4 * B - 0.05, 0.2)) : 0;
+      $('cnt').style.transform = `scale(${(1 + 0.22 * pop).toFixed(4)})`;
+      const p1 = k === 0 && lt >= PICK[0][1] ? Math.exp(-(lt - PICK[0][1]) * 6) : 0;
+      $('p1').style.transform = `scale(${(1 + 0.25 * p1).toFixed(4)})`;
+      for (let i = 1; i <= 5; i++) $('d' + i).className = (i <= n - 1 ? 'on' : '') + (i === 5 ? ' gold' : '');
+      $('hud').style.opacity = live ? 1 : 0;
+      const ci = out3(seg(t, CTA + 0.05, 0.4));
+      $('cta').style.opacity = ci; $('cta').style.transform = `translateY(${30 * (1 - ci)}px)`;
+    }
+  };
+})();
+</script>
+<script src="../../templates/montage.js"></script>
+<script>window.__seek(0);</script>
+</body>
+</html>
