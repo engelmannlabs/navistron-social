@@ -5,6 +5,13 @@ persistente do Guilherme (Cowork), com o texto da seção "Texto do disparo" aba
 saber está aqui e no `PLAYBOOK.md`. Para mudar o comportamento da rotina, edite este arquivo (ou o PLAYBOOK) —
 não é preciso mexer na tarefa agendada.
 
+**Em vigor desde 04/11/2026, 23:00 (pedido do Guilherme na conversa):** a **Estela e a HeyGen estão pausadas** — não
+gerar vídeo, não consultar créditos e não fazer story (os passos 5b e 5c e as regras da Estela abaixo ficam suspensos até
+ele pedir a volta) — e o feed está no **teste "Enquanto a IA pensa"** (seção 3c do PLAYBOOK): público = quem usa IA e
+espera a resposta ou o código (e também quem não programa); objetivo = mais jogadores; fase 1 = trocar os textos com o
+formato fixo (reel de dados de 8 s de previsibilidade, às 13:00), fase 2 = tipos de reel; tom apimentado, sem comprometer
+a página. Onde este arquivo conflitar com a 3c, vale a 3c.
+
 ## Como a rotina roda (mecanismo)
 
 - Cada rodada é um lembrete de uso único (`send_later`) vinculado à conversa do Guilherme — por isso ela roda
@@ -87,7 +94,8 @@ PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira nã
   caindo 0,25 s por míssil extra (1,0 s com 5), 320 px/s, vida 2 s, dano = dano do tier (1/2/4/7/12/20/35).
   **Antes de citar qualquer mecânica**, conferir no código do jogo (`src/app/play/page.js` do repo `navistron`, via
   `search_code` + `get_file_contents`); os artigos antigos do blog são referência, não fonte.
-- **HeyGen** (conector `HeyGen`, plano **Creator** desde 29/09/2026: 600 créditos por mês, renovação todo dia 29): a
+- **HeyGen** (**pausada desde 04/11/2026**, pedido do Guilherme; no plano free desde 29/10) (conector `HeyGen`, plano
+  **Creator** de 29/09 a 28/10/2026: 600 créditos por mês, renovação todo dia 29): a
   **Estela**, apresentadora IA do perfil. Looks, voz, glossário, regras da personagem e o passo a passo do vídeo em
   `personagens/ESTELA.md`. Custo estimado: no **formato completo** (só reels: cenário criado para o post, vários cortes
   pelo Video Agent) ~35 créditos por reel de ~28 s, somando looks (1 cada), clipes de ação (2 a 9 cada) e o agente (~0,7
@@ -122,7 +130,7 @@ PASSO 2: relatório final curto via SendUserMessage. Se algo falhar, prefira nã
   e `video-captions` = `srt`. O HTML é só a camada e sai sempre do molde `templates/estela-video.html` (camada v3): **só
   a legenda pequena embaixo** (base em y = 1490), sem selo, nada sobre o rosto. Copiar o molde e trocar as URLs. O
   Actions baixa o vídeo, enquadra em 1080×1920, queima a legenda frase a frase e gera `reel.mp4` + `reel-cover.png`.
-- **Story da Estela** (todo dia, à parte do feed — passo 5c): 15–25 s em take único num look do cenário lúdico criado
+- **Story da Estela** (**pausado desde 04/11/2026**; antes, todo dia, à parte do feed — passo 5c): 15–25 s em take único num look do cenário lúdico criado
   para o post (o formato completo é só dos reels); vídeo puro no molde `templates/estela-story.html` (sem legenda, sem
   selo, nada por cima), publicado como story com rótulo de IA.
 Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pelas métricas por formato do log.
@@ -156,6 +164,8 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
    e 5–8 hashtags (+ #reels em reels). Se o artigo do blog do dia tiver relação com o post, citá-lo na legenda
    ("artigo completo no blog, link na bio"). Todo número com data. Nunca inventar piloto, score, marco ou promessa.
    Nos reels da Estela, a legenda é dela, em primeira pessoa, assinando "— Estela" (sem dizer que é IA e sem `#ia`).
+   **No teste "Enquanto a IA pensa" (PLAYBOOK 3c, desde 04/11), o formato, o pedido da 1ª linha, a pergunta do fim e as
+   hashtags seguem a 3c.**
 5. **Montar a arte**: se a cópia de trabalho não existir, baixar via `get_file_contents` os arquivos
    `templates/base.css`, `templates/base.js`, `templates/reel.css`, `scripts/setup-fonts.sh`, `scripts/audio.mjs`,
    `scripts/qa.py` e o `post.html` de referência; recriar a estrutura de pastas localmente e rodar
@@ -188,7 +198,7 @@ Escolher o formato pelo **calendário da semana (seção 3b do PLAYBOOK)** e pel
       (e a última cena quadro a quadro) e conferir: **nada sobre o rosto** (legenda abaixo do queixo), o cenário do post,
       nada de texto ou logo, sincronia, legenda (sem corte, sem piscar), trilha baixa presente (formato completo) e
       artefatos (mãos, dentes, olhos, manchas e retângulos — o aceno de 03/10 gerou um).
-5c. **Story da Estela — todo dia, além do post do feed** (pedido do Guilherme em 29/09):
+5c. **Story da Estela — PAUSADO desde 04/11/2026 (pedido do Guilherme)**; antes, todo dia, além do post do feed (pedido de 29/09):
    a. `get_current_user` → créditos. Abaixo de 30, pular o story e relatar.
    b. Roteiro de 40–60 palavras (15–25 s), tom de story, **direto ao conteúdo — sem dizer que é IA**
       (pedido do Guilherme; o aviso é o rótulo do Instagram): gancho na 1ª frase, um fato conferido da telemetria com
@@ -283,7 +293,7 @@ Guilherme precisa resolver à mão.
 
 ## Limites que não se negociam
 
-- Instagram: no feed, máximo 2 publicações por dia, padrão 1; mais 1 story da Estela por dia, fora dessa conta. Nunca
+- Instagram: no feed, máximo 2 publicações por dia, padrão 1; mais 1 story da Estela por dia, fora dessa conta (pausado desde 04/11/2026). Nunca
   publicar sem o arquivo final confirmado no repositório. Blog: exatamente 1 artigo por dia; nunca editar `blogArticles.js`, páginas, componentes ou
   configuração do jogo.
 - Nada de dado inventado, nick zoado ou promessa em nome do Guilherme. Sem emoji na arte; emoji na legenda com
