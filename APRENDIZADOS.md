@@ -4,6 +4,19 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-11-05 · **O teste "Enquanto a IA pensa" começou (pedido do Guilherme em 04/11, às 23:00) com uma base fraca: a quarta 04/11
+  não teve partida, e o reel de 14 s de 04/11 fez 8 de alcance com ~7 h, o menor parcial da S45.** A decisão de 04/11: a Estela e
+  a HeyGen pausadas; um público novo (quem espera a IA, programando ou não) e o objetivo de jogadores, não de alcance; fase 1
+  trocando só os textos no reel de 8 s de previsibilidade (o do dedo, de 03/11, que ele elogiou pela sensação de padrão), fase 2
+  os tipos de reel; tom apimentado, sem comprometer a página (PLAYBOOK 3c). A S45 ficou interrompida com três reels: o de 8 s de
+  03/11 fechou em **99 / 125** (~31 h) com **4,11 s** de tempo médio (51,4% dos 8 s), o 6º da série do slot das 13:00 (43 posts,
+  mediana 15); os de 14 s fizeram 91 (02/11, 2,46 s, 17,6%) e 8 com ~7 h (04/11, 1,43 s, 10,2%). O curto segurou quase 3 vezes a
+  fração da duração, mas nenhum dos três mexeu no jogo: 1, 1 e 0 partidas nos dias dos posts — é isso que o teste tenta virar. O
+  1º post do teste ("a IA programa, você espera", para quem programa) saiu na hora, às 23:17 de 04/11; o 2º ("até um robô jogaria
+  melhor", para quem não programa, com a provocação do próprio jogo: "Tá achando fácil?" aos 10 s e, depois, uma frase a cada 10
+  s, sorteada entre 102 frases) sai às 13:00 de hoje. A medida que decide: partidas e pilotos novos no dia do post e no seguinte,
+  contra 1 a 2 partidas por dia. No blog, um artigo ligado ao teste, trocar de aba pausa o jogo (PR #58), com um cuidado novo: o
+  navegador pode descartar uma aba escondida para poupar recursos (Chrome, Page Lifecycle), e aí a partida pausada se perde.
 - 2026-11-04 · **1ª leitura da S45: o reel de 8 s segurou quase metade da duração (3,77 s de tempo médio, 47% dos 8 s), contra
   17,6% do ranking de 14 s — mas é um par só, e o jogo não mexeu: 1 partida por dia.** Métricas (feed de 03/11 21:27 BRT, ~1 h
   mais cedo que a anterior, como previsto): o ranking de 02/11 (14 s) fechou em **91 / 98** (~32 h, 2,47 s de tempo médio), o 7º
@@ -48,22 +61,9 @@ apenas este arquivo, e não o playbook inteiro.
   partidas); a conta fechou pela lista de 7 dias e pelo /stats geral — conferir sempre duas visões antes de contar. No blog, o
   ranking da semana 44 (PR #55). Pendente (de 29/10): o fim de "Custos e limites" em `personagens/ESTELA.md` ainda conta com a
   renovação de 29/10 — corrigir na próxima rodada que gravar o arquivo.
-- 2026-11-01 · **O reel de 30/10 fechou em 78, o maior da S44, e o de 31/10 tinha 65 com ~11 h — e, pouco mais de duas horas
-  depois do reel "quem faz o próximo 10 mil?", o jogo teve um nick novo e um 10 mil.** Métricas (feed de 01/11 00:27 BRT): o reel
-  do meteoro vermelho (30/10, mecânica explicada) foi de 47 com ~12 h para **78 / 86** com ~35 h (tempo médio 2,5 s), o 6º da
-  série do slot das 13:00 (39 posts, mediana 14); o do próximo 10 mil (31/10, desafio) tinha **65 / 73** com ~11 h (3,0 s); o de
-  29/10 parou em 18. Os posts da S44 fizeram 8, 51, 43 (a Estela das 19:00), 18, 78 e 65 (parcial): cinco de seis acima da mediana
-  do slot, depois de 6, 3, 11 e 2 (21 a 24/10) — a leitura da pergunta fecha em 02/11. No jogo, o sábado 31/10 teve 2 partidas: às
-  15:14, **PAÇOCA estreou com 9.510** (Tier II), o 48º piloto e o 1º nick novo desde 21/10, e assumiu o 1º lugar da semana 44; às
-  15:17, uma partida sem nick fez **10.237**, a 1ª acima dos 10 mil desde 23/10. As duas vieram pouco mais de duas horas depois de
-  o reel que pedia o próximo 10 mil sair (13:02) — uma coincidência a observar, não uma regra (é um caso só). 696 partidas e
-  23h55min59s somadas: faltam 4 partidas para a 700ª e 4min01s para as 24 h. A HeyGen seguiu no plano free pelo 4º dia, sem story
-  — **o Guilherme precisa conferir a assinatura**. A atualização do feed no Buffer seguiu adiantando ~1 h por dia (00:27 de
-  01/11): a de 02/11 deve cair por volta das 23:27 de 01/11, antes da rodada. No blog, o tutorial de limitar caracteres em
-  JavaScript (PR #54), com um achado: o slice(0, 20) do jogo e da API pode guardar meio emoji num nick que passe de 20 unidades (o
-  maxLength do campo segura isso na página).
 
-Anteriores em [`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md) (24 a 31/10),
+Anteriores em [`APRENDIZADOS-2026-11.md`](APRENDIZADOS-2026-11.md) (01/11),
+[`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md) (24 a 31/10),
 [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (01 a 23/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
 [`APRENDIZADOS-2026-09-08-a-13.md`](APRENDIZADOS-2026-09-08-a-13.md).
