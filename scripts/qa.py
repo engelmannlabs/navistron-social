@@ -5,6 +5,8 @@ Uso: python3 scripts/qa.py posts/AAAA-MM-DD-slug [saida.png]
   - imagem única / carrossel: renderiza cada *.html da pasta -> preview-<nome>.png (ou `saida.png` se houver só um)
   - reel (post.html com <meta name="post-type" content="reel">): monta um contact sheet 3x4 com 12 frames
     ao longo da duração (preview-reel.png), para avaliar gancho, legibilidade e zonas seguras.
+  - reel de montagem (templates/montage.js, gameplay real de footage/): a prévia é o próprio render local
+    (node scripts/render.mjs --only <slug>, que gera reel.mp4) e o contact sheet sai do vídeo, com o mesmo formato.
 Requisitos: playwright (python) com Chromium; fontes em assets/fonts (bash scripts/setup-fonts.sh).
 Sai com código 1 se alguma @font-face falhar ou se houver elemento visível fora do canvas.
 """
@@ -45,6 +47,33 @@ with sync_playwright() as p:
             if (r.left < -1 || r.top < -1 || r.right > W + 1 || r.bottom > H + 1) out.push((el.className || el.tagName) + ' ' + JSON.stringify([r.left|0, r.top|0, r.right|0, r.bottom|0]));
           }
           return out; }"""
+        if is_reel and pg.evaluate("() => !!window.__footage"):
+            # montagem com gameplay real: os quadros do vídeo saem do ffmpeg no render, então a prévia é o render local
+            import subprocess
+            from PIL import Image
+            pg.close()
+            root = Path(__file__).resolve().parent.parent
+            r = subprocess.run(["node", str(root / "scripts" / "render.mjs"), "--only", post_dir.name], cwd=str(root))
+            mp4 = post_dir / "reel.mp4"
+            if r.returncode != 0 or not mp4.exists():
+                problems.append("montagem: o render local falhou (ver a saída do render.mjs)")
+                continue
+            dur = float(meta(html, "reel-duration", "12"))
+            times = [round(min(dur - 0.05, dur * k / 11), 2) for k in range(12)]
+            tiles = []
+            png = post_dir / ".qa_frame.png"
+            for t in times:
+                subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(t), "-i", str(mp4), "-frames:v", "1", str(png)], check=True)
+                tiles.append(Image.open(png).convert("RGB").resize((w // 4, h // 4)))
+            png.unlink(missing_ok=True)
+            cols, rows = 3, 4
+            sheet = Image.new("RGB", (cols * (w // 4) + (cols + 1) * 12, rows * (h // 4) + (rows + 1) * 12), (30, 30, 40))
+            for i, im in enumerate(tiles):
+                sheet.paste(im, (12 + (i % cols) * (w // 4 + 12), 12 + (i // cols) * (h // 4 + 12)))
+            out = out_arg or post_dir / "preview-reel.png"
+            sheet.save(out)
+            print(json.dumps({"file": html_path.name, "reel": True, "montagem": True, "size": f"{w}x{h}", "duration": dur, "times": times, "out": str(out), "video": str(mp4)}, ensure_ascii=False))
+            continue
         if not is_reel:
             out = out_arg if (out_arg and len(htmls) == 1) else post_dir / f"preview-{html_path.stem}.png"
             overflow = pg.evaluate(overflow_js)

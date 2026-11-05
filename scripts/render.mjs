@@ -17,6 +17,11 @@
 //        camada fica o vídeo inteiro. A fonte externa é baixada
 //        uma única vez: com o reel.mp4 já gerado e o HTML igual, nunca re-baixa (nem com --all), porque
 //        URLs assinadas expiram.
+//   reel com templates/montage.js (gameplay real): o post declara em window.__footage os trechos do vídeo da pasta
+//        footage/ (arquivo relativo à pasta do post, início, fps, quadros); cada trecho é extraído em JPEG para
+//        .frames/<id>/00001.jpg… antes dos prints, e window.__seek(t) (assíncrono) monta o quadro com o texto por cima.
+//        Com touch, acha em cada quadro o círculo cinza do "mostrar toques" do Android (window.__dots) para a página
+//        cobrir. O hash desses posts inclui o montage.js e o tamanho do vídeo de origem.
 // Uso: node scripts/render.mjs [--all] [--only <slug>]
 //  - por padrão só renderiza o que não existe ou cujo HTML/base mudou (hashes em render.json)
 //  - falha (exit 1) se alguma @font-face não carregar — nunca publicar com fonte fallback.
@@ -52,6 +57,46 @@ function probeDuration(file) {
     if (m) return +((+m[1]) * 3600 + (+m[2]) * 60 + (+m[3])).toFixed(2);
   }
   return null;
+}
+
+// largura x altura de um vídeo, lidas do cabeçalho que o ffmpeg imprime; null se não conseguir
+function probeSize(file) {
+  try { execFileSync(FFMPEG, ['-hide_banner', '-i', file], { stdio: 'pipe' }); }
+  catch (e) {
+    const m = String(e.stderr || '').match(/Video:.*?,\s(\d{2,5})x(\d{2,5})[\s,\[]/);
+    if (m) return [+m[1], +m[2]];
+  }
+  return null;
+}
+
+// círculo do "mostrar toques" (cinza ~150, ~42 px de diâmetro na tela do celular) em cada quadro de um trecho em 1/4
+// do tamanho: o bloco de 12x12 px com mais pixels cinza (abaixo de minY, fora do placar) e o centróide em volta dele
+function findTouchDots(raw, w, h, n, minY) {
+  const fsz = w * h * 3, cs = 6, cw = Math.ceil(w / cs), ch = Math.ceil(h / cs), y0 = Math.ceil(minY / 4), res = [];
+  const grey = (r, g, b) => r > 115 && r < 205 && Math.abs(r - g) < 10 && b - g > -6 && b - g < 16;
+  for (let f = 0; f < n; f++) {
+    const base = f * fsz;
+    if (base + fsz > raw.length) { res.push(null); continue; }
+    const cnt = new Uint16Array(cw * ch);
+    for (let y = y0; y < h; y++) for (let x = 0; x < w; x++) {
+      const i = base + (y * w + x) * 3;
+      if (grey(raw[i], raw[i + 1], raw[i + 2])) cnt[((y / cs) | 0) * cw + ((x / cs) | 0)]++;
+    }
+    let best = 0, bx = 0, by = 0;
+    for (let cy = 0; cy < ch - 1; cy++) for (let cx = 0; cx < cw - 1; cx++) {
+      const s = cnt[cy * cw + cx] + cnt[cy * cw + cx + 1] + cnt[(cy + 1) * cw + cx] + cnt[(cy + 1) * cw + cx + 1];
+      if (s > best) { best = s; bx = cx; by = cy; }
+    }
+    if (best < 40) { res.push(null); continue; }
+    let sx = 0, sy = 0, sn = 0;
+    for (let y = Math.max(y0, (by - 1) * cs); y < Math.min(h, (by + 3) * cs); y++)
+      for (let x = Math.max(0, (bx - 1) * cs); x < Math.min(w, (bx + 3) * cs); x++) {
+        const i = base + (y * w + x) * 3;
+        if (grey(raw[i], raw[i + 1], raw[i + 2])) { sx += x; sy += y; sn++; }
+      }
+    res.push(sn ? [Math.round(sx / sn * 4 + 2), Math.round(sy / sn * 4 + 2)] : null);
+  }
+  return res;
 }
 
 // .srt -> [{start, end, text}] (s). Buracos curtos entre frases são fechados para a legenda não piscar.
@@ -108,8 +153,17 @@ for (const slug of slugs) {
     const isReel = type === 'reel';
     const isVideo = type === 'video';
     const audioOpts = existsSync(join(dir, 'audio.json')) ? readFileSync(join(dir, 'audio.json'), 'utf8') : '{}';
+    // montagem com gameplay real: o hash também cobre o motor (montage.js) e o tamanho de cada vídeo de footage/
+    let extra = '';
+    if (isReel && /templates\/montage\.js/.test(html)) {
+      extra = existsSync(join(root, 'templates/montage.js')) ? readFileSync(join(root, 'templates/montage.js'), 'utf8') : '';
+      for (const m of html.matchAll(/['"]([^'"]*footage\/[^'"]+\.(?:mp4|mov|webm))['"]/g)) {
+        const f = join(dir, m[1]);
+        extra += '\n' + m[1] + ':' + (existsSync(f) ? statSync(f).size : 'ausente');
+      }
+    }
     // vídeo externo: o hash depende só do HTML (mudança de template não pode forçar re-download de URL expirada)
-    const hash = isVideo ? sha(html) : sha(html + deps + (isReel ? audioOpts : ''));
+    const hash = isVideo ? sha(html) : sha(html + deps + (isReel ? audioOpts : '') + extra);
     const outName = (isReel || isVideo) ? 'reel.mp4' : basename(file, '.html') + '.png';
     const outPath = join(dir, outName);
     const upToDate = existsSync(outPath) && state.files[file] && state.files[file].hash === hash;
@@ -219,6 +273,35 @@ for (const slug of slugs) {
         const fdir = join(dir, '.frames'); rmSync(fdir, { recursive: true, force: true }); mkdirSync(fdir);
         const hasSeek = await page.evaluate(() => typeof window.__seek === 'function');
         if (!hasSeek) throw new Error('reel sem window.__seek(t)');
+        // montagem com gameplay real: extrai os quadros de cada trecho (e acha o toque) antes dos prints
+        const footage = await page.evaluate(() => window.__footage || null);
+        let footageInfo = null;
+        if (footage && footage.length) {
+          footageInfo = [];
+          for (const job of footage) {
+            const src = join(dir, job.src);
+            if (!existsSync(src)) throw new Error('vídeo de footage não encontrado: ' + job.src);
+            const out = join(fdir, job.id); mkdirSync(out, { recursive: true });
+            const cut = ['-ss', String(job.from), '-i', src, '-frames:v', String(job.frames)];
+            execFileSync(FFMPEG, ['-y', '-loglevel', 'error', ...cut, '-vf', `fps=${job.fps}`, '-q:v', '2', join(out, '%05d.jpg')], { stdio: 'inherit' });
+            const got = readdirSync(out).filter(f => f.endsWith('.jpg')).length;
+            if (got < job.frames) throw new Error(`footage ${job.id}: ${got} de ${job.frames} quadros (o trecho passa do fim do vídeo?)`);
+            let dots = null;
+            if (job.touch) {
+              const size = probeSize(src);
+              if (!size) throw new Error('tamanho do vídeo ilegível: ' + job.src);
+              const w4 = Math.round(size[0] / 4), h4 = Math.round(size[1] / 4);
+              const raw = execFileSync(FFMPEG, ['-loglevel', 'error', ...cut, '-vf', `fps=${job.fps},scale=${w4}:${h4}:flags=area`,
+                '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'], { maxBuffer: 1 << 30 });
+              dots = findTouchDots(raw, w4, h4, job.frames, job.touch.minY || 0);
+            }
+            await page.evaluate(([id, d]) => { (window.__dots = window.__dots || {})[id] = d; }, [job.id, dots]);
+            footageInfo.push({ id: job.id, src: job.src, from: job.from, fps: job.fps, frames: job.frames,
+              touch: dots ? dots.filter(Boolean).length : null });
+            console.log(`[${slug}] footage ${job.id}: ${job.src} a partir de ${job.from}s, ${job.frames} quadros a ${job.fps} fps` +
+              (dots ? `, toque em ${dots.filter(Boolean).length}` : ''));
+          }
+        }
         for (let i = 0; i < frames; i++) {
           await page.evaluate(t => window.__seek(t), i / fps);
           await page.screenshot({ path: join(fdir, `f${String(i).padStart(5, '0')}.jpg`), type: 'jpeg', quality: 92, fullPage: false }); // jpeg: ~6x mais rápido que png
@@ -234,6 +317,7 @@ for (const slug of slugs) {
         rmSync(fdir, { recursive: true, force: true });
         const size = statSync(outPath).size;
         state.files[file] = { hash, out: outName, width: w, height: h, fonts, duration: dur, fps, frames, bytes: size, cover: 'reel-cover.png' };
+        if (footageInfo) state.files[file].footage = footageInfo;
         console.log(`[${slug}/${file}] ok reel ${w}x${h} ${dur}s ${fps}fps -> ${outName} (${(size / 1e6).toFixed(1)} MB) fontes=${fonts.join(',')}`);
       }
       await page.close();
