@@ -48,14 +48,16 @@ inteiro de duas fórmulas do jogo.
 | **Reel** (9:16, 1080×1920, 8–15 s, 30 fps) | `post.html` com `<meta name="post-type" content="reel">` + `audio.json` opcional | **Padrão para alcance.** Desafio, recorde, contagem regressiva do ranking, mecânica animada, marco | Gancho legível no **frame 0** (a 1ª linha sozinha já tem de dizer do que se trata); 1 ideia por cena, 3–5 cenas; número grande animado (contador) sempre que houver número; CTA nos últimos 2 s; texto entre y=300 e y=1500; trilha chiptune própria (`scripts/audio.mjs`, `hit` no clímax); capa (`reel-cover`) no instante do gancho completo |
 | **Carrossel** (3:4, 3–6 slides) | `post.html` (slide 1) + `slide-2.html`… | Ranking semanal (1 piloto por slide), mecânica passo a passo, "5 fatos da telemetria" | Slide 1 = gancho + "arrasta →"; cada slide 1 ideia; último slide = CTA + @navistron; mesma paleta em todos |
 | **Imagem única** (3:4) | `post.html` | Marco, shout-out rápido, bastidor | Título ≤ 12 palavras, número grande, cores dos tiers |
-| **Reel da Estela** (9:16, 20–40 s, avatar HeyGen) | `post.html` tipo `video` + `caption.md` (ver `personagens/ESTELA.md`) | Ranking narrado, reação a evento, desafio lançado por ela, mecânica explicada, boas-vindas a estreantes | **Formato completo: vários cortes num cenário lúdico criado para o post** (pedidos do Guilherme, 03/10: o cenário sai do que ela fala naquele post — falas dela em looks novos do cenário + cenas de ação + trilha chiptune baixa, pelo Video Agent; nada de cenário pronto; sem orçamento, take único no cenário — regra da ficha); **só a legenda pequena embaixo, sem selo e nada sobre o rosto** (pedidos de 29/09), molde `templates/estela-video.html`; gancho na 1ª frase |
-| **Story da Estela** (9:16, 15–25 s, avatar HeyGen) | `post.html` do molde `templates/estela-story.html` + `caption.md`, em `posts/AAAA-MM-DD-story-slug/` | **Todo dia, às 16:00, fora da contagem do feed**: provocação do dia, lembrete, bastidor, fato fresco da telemetria | **Take único num look do cenário lúdico criado para o post** (pedidos de 03/10; o formato completo, com cortes e trilha, ficou só para os reels); **vídeo puro**: sem legenda, sem selo, nada por cima; fala direto do conteúdo, sem dizer que é IA; rótulo de IA do Instagram ligado |
+| **Reel da Estela** (9:16, 20–40 s, avatar HeyGen) | `post.html` tipo `video` + `caption.md` (ver `personagens/ESTELA.md`) | **Pausado desde 04/11/2026** (pedido do Guilherme). Ranking narrado, reação a evento, desafio lançado por ela, mecânica explicada, boas-vindas a estreantes | **Formato completo: vários cortes num cenário lúdico criado para o post** (pedidos do Guilherme, 03/10: o cenário sai do que ela fala naquele post — falas dela em looks novos do cenário + cenas de ação + trilha chiptune baixa, pelo Video Agent; nada de cenário pronto; sem orçamento, take único no cenário — regra da ficha); **só a legenda pequena embaixo, sem selo e nada sobre o rosto** (pedidos de 29/09), molde `templates/estela-video.html`; gancho na 1ª frase |
+| **Story da Estela** (9:16, 15–25 s, avatar HeyGen) | `post.html` do molde `templates/estela-story.html` + `caption.md`, em `posts/AAAA-MM-DD-story-slug/` | **Pausado desde 04/11/2026** (pedido do Guilherme); antes, **todo dia, às 16:00, fora da contagem do feed**: provocação do dia, lembrete, bastidor, fato fresco da telemetria | **Take único num look do cenário lúdico criado para o post** (pedidos de 03/10; o formato completo, com cortes e trilha, ficou só para os reels); **vídeo puro**: sem legenda, sem selo, nada por cima; fala direto do conteúdo, sem dizer que é IA; rótulo de IA do Instagram ligado |
 
 Mix semanal (desde 26/10/2026, depois da leitura das 4 semanas da seção 3b): **7 publicações por semana no feed — 5 reels de
 dados às 13:00 e 2 reels da Estela às 19:00, cada um o único post do dia; carrossel fora do padrão** (os quatro do plano fizeram
 1 a 3 de alcance; volta só quando um passo a passo pedir) —, com os dias no calendário da seção 3b, **mais 1 story da Estela por
 dia** (às 16:00, fora da contagem do feed). Segunda-feira continua sendo ranking (reel de dados ou a Estela narrando).
 Na S45 (02–08/11), sem créditos na HeyGen, são 7 reels de dados às 13:00, com a duração em teste (seção 3b).
+**Desde 04/11, às 23:00, o feed segue o teste da seção 3c** (reel de dados de 8 s de previsibilidade às 13:00, um por dia;
+a Estela e os stories estão pausados).
 **Medida prática do gancho:** cada linha do título cabe em ~13 caracteres a 168px; 4 linhas a partir de `top: 420px`
 terminam por volta de y=1250, dentro da zona segura. Reaproveitar o `post.html` do dia anterior como esqueleto e
 trocar textos, números, seed do PRNG e `TOTAL` é o caminho mais rápido e mais seguro.
@@ -72,7 +74,7 @@ e mantendo reels de dados e carrosséis. Uma pergunta por semana; a leitura é f
 | S42 · 12–18/10 | 10 (2/dia em seg, qua, sex) | seg 12, qua 14, sex 16 às **19:00**, como 2º post | sáb 17 | 13:00 todo dia, exceto sáb | O 2º post do dia soma alcance ou divide? |
 | S43 · 19–25/10 | 1/dia | 3×, alternando 13:00 e 19:00 | 1× | 3× | Qual horário serve melhor a Estela? |
 | S44 · 26/10–01/11 | 1/dia | qua 28 e sex 30 às **19:00**, como o único post do dia | — | seg, ter, qui, sáb e dom, às 13:00 | O alcance volta com o calendário estável? (desde 21/10, caiu em todos os formatos) |
-| S45 · 02–08/11 | 1/dia | — (HeyGen no plano free desde 29/10; o reel dela volta na S46, com créditos) | — | todos os dias às 13:00: **8 s** na ter, qui e sáb; **14 s** na seg, qua, sex e dom | O reel curto (8 s) segura mais gente até o fim e leva mais gente ao jogo? (na S44, o alcance voltou, mas o tempo médio ficou em 2–5 s de 14 s e as partidas caíram para 17) |
+| S45 · 02–08/11 | 1/dia | — (HeyGen no plano free desde 29/10; o reel dela volta na S46, com créditos) | — | todos os dias às 13:00: **8 s** na ter, qui e sáb; **14 s** na seg, qua, sex e dom | O reel curto (8 s) segura mais gente até o fim e leva mais gente ao jogo? (na S44, o alcance voltou, mas o tempo médio ficou em 2–5 s de 14 s e as partidas caíram para 17) — **interrompida em 04/11** pelo teste da seção 3c |
 
 Dentro de cada vídeo da Estela, **uma** variável de produção por vez, registrada no `caption.md` e no log:
 - **Cenário** — não é variável de teste, é regra (pedidos do Guilherme em 03/10): **cada vídeo tem um cenário lúdico
@@ -107,10 +109,58 @@ este com ~10 h), seis acima da mediana do slot (14,5) —, mas o jogo não acomp
 médio dos reels de 14 s ficou em 2,1–5,1 s, então quase ninguém vê o CTA final; a S45 testa o reel de 8 s. A Estela saiu do feed em
 29/10 por falta de créditos (HeyGen no plano free) e volta pelo calendário quando houver saldo.
 
+**Leitura parcial da S45 (04/11, interrompida)**: o reel de 8 s de 03/11 tinha 99 de alcance com ~8 h e 3,77 s de tempo médio
+(47% da duração), contra 91 com ~32 h e 2,47 s (17,6%) do ranking de 14 s de 02/11 e 8 com ~7 h e 1,43 s (10%) do desafio de
+14 s de 04/11 (métricas de 03/11 21:27 e 04/11 20:27 BRT). O curto segurou mais, e o teste da seção 3c fica com os 8 s.
+
+### 3c. Teste "Enquanto a IA pensa" (desde 04/11/2026, pedido do Guilherme)
+
+Pedido do Guilherme na conversa, em 04/11 às 23:00, valendo a partir dali (a S45 da seção 3b foi interrompida):
+
+- **Público**: quem usa IA e fica esperando a resposta ou o código terminar — sobretudo quem programa com IA, mas também
+  quem não programa (quem espera a IA escrever um texto, um resumo, uma imagem). Posts diferentes para cada parte.
+- **Objetivo**: mais jogadores — partidas e pilotos novos na telemetria, não alcance.
+- **Fase 1 — os textos** (desde 04/11): o formato fica fixo e o que muda é o texto (gancho da arte e legenda). Formato fixo:
+  **reel de dados de 8 s de previsibilidade**, às 13:00, um por dia — uma regra do jogo que se repete e dá para prever,
+  mostrada com um número ou relógio que trava em dourado no hit (4,4 s), como no reel do dedo de 03/11, que o Guilherme
+  elogiou justamente por passar a sensação de previsibilidade e padrão. Esqueleto: o `post.html` de 04/11
+  (`posts/2026-11-04-a-ia-programa-voce-espera`) — gancho legível no quadro 0 até ~2,4 s, a regra de 2,55 a 5,65 s e o CTA
+  até o fim; selo de cima "Enquanto a IA pensa · @navistron".
+- **Fase 2 — os tipos de reel**: depois da leitura da fase 1 (na rodada de 12/11, com os ~7 posts de 04 a 10/11), testar
+  tipos diferentes de reel com o texto que ganhou.
+- **Tom apimentado, sem comprometer a página**: uma provocação que incomoda e puxa comentário — cutucar o hábito ("a IA
+  programa, você espera", "você ainda programa ou só revisa?", "encarar a IA não faz ela terminar antes") —, nunca uma
+  ofensa: nada contra pessoa, grupo, nick ou empresa pelo nome; nada político, religioso ou sexual; nada de número
+  inventado nem promessa. A provocação é contra o hábito, não contra quem lê. O dado continua conferido (código do jogo ou
+  telemetria com data).
+- **Legenda**: 1ª linha = a provocação + o pedido ("espera jogando", "joga enquanto a IA pensa"); depois a regra do jogo e
+  um número com data; no fim, uma pergunta que divide opiniões, para puxar comentário; fecha com "Grátis, sem login, link na
+  bio 🚀". Hashtags para quem programa: `#navistron #programacao #programador #dev #ia #inteligenciaartificial #jogogratis
+  #reels`; para quem não programa: `#navistron #ia #inteligenciaartificial #produtividade #jogogratis #jogosonline #reels`.
+  O pedido do nick sai da 1ª linha (pode ficar no CTA da arte).
+- **Regras previsíveis já conferidas no código** (`src/app/play/page.js`, blob 36d68b9a): a partida congela fora da aba
+  (requestAnimationFrame com dt ≤ 0,05 s; o relógio é `timeAlive += dt`) — usada em 04/11; a nave voa 140 px acima do dedo
+  (`TOUCH_OFFSET_Y`) — 03/11; o 1º boost sempre aos 8 s (`boostTimer = 8`), depois a cada 12–20 s; a 1ª provocação sempre
+  aos 10 s, "Tá achando fácil?" (`TAUNT_FIRST`), e depois uma a cada 10 s, 3,5 s na tela (a lista `TAUNTS` tem frases como
+  "Até um robô jogaria melhor"); 5 boosts = +1 tier; o tiro do Tier I sai a cada 0,18 s; 1 ponto por segundo vivo. Uma
+  regra por reel; antes de usar outra, conferir no código.
+- **Ângulos da fase 1** (um por dia, sem repetir palavra de gancho em 10 dias, alternando quem programa e quem não
+  programa): 04/11, quem programa ("a IA programa, você espera" + a partida congela fora da aba); depois, por exemplo, quem
+  não programa ("pediu um texto pra IA?"), o hábito ("encarar a IA não faz ela terminar antes"), a provocação do próprio
+  jogo ("até um robô jogaria melhor", a cada 10 s), o tempo ("2 minutos: a partida média", com data) e o ritual ("prompt
+  enviado: 3, 2, 1, GO").
+- **Segunda-feira**: o ranking da semana segue no blog; no feed, o post é do teste (o ranking pode virar o número do dia
+  dentro do formato).
+- **Medidas por post**: alcance com ≥ 40 h, tempo médio ÷ 8 s, comentários e compartilhamentos (a polêmica) e — o que
+  decide — partidas e pilotos novos no dia do post e no seguinte, contra a base da S44–S45 (17 partidas por semana, 1 nick
+  novo, 1 a 2 partidas por dia).
+- **A Estela e a HeyGen estão pausadas** desde 04/11 (pedido do Guilherme): nada de vídeo, consulta de créditos ou story
+  até ele pedir a volta. O blog segue igual (1 artigo por dia).
+
 ## 4. Regras de publicação
 
 - **1 publicação por dia no feed como base.** Uma segunda só se houver evento (recorde quebrado, Tier V alcançado, marco)
-  ou se o calendário de testes (seção 3b) pedir. Nunca mais de 2/dia no feed. **Mais 1 story da Estela por dia**, à parte.
+  ou se o calendário de testes (seção 3b) pedir. Nunca mais de 2/dia no feed. **Mais 1 story da Estela por dia**, à parte (pausado desde 04/11/2026).
 - **Reels e stories da Estela**: sempre com `metadata.instagram.isAiGenerated = true` no Buffer — é o aviso de IA; sem
   selo na arte (pedido do Guilherme, 29/09). Nos reels, por cima do vídeo só a legenda pequena; nos stories, nada.
   Cenário lúdico criado para cada post (pedidos de 03/10); formato completo — vários cortes, cenas de ação e trilha
@@ -130,7 +180,8 @@ médio dos reels de 14 s ficou em 2,1–5,1 s, então quase ninguém vê o CTA f
   `#navistron #jogodenave #arcade #indiegame #jogogratis #gamedev #jogosbrasileiros` (+ `#reels` em reels; os reels da
   Estela usam as mesmas, sem `#ia`). **O pedido vai na PRIMEIRA linha.** Sete variações de pedido de comentário
   (score, palpite, sim/não, aposta, marcação, opinião, emoji) deram zero; **desde 28/09 o pedido é a ação no jogo**
-  ("joga e põe o nick no game over"), medida por nick novo no ranking.
+  ("joga e põe o nick no game over"), medida por nick novo no ranking. **No teste da seção 3c (desde 04/11), o pedido da
+  1ª linha passa a ser jogar enquanto a IA pensa, com a provocação, a pergunta no fim e as hashtags de lá.**
 - **Todo número vem da telemetria e traz a data.** Se um dado não puder ser confirmado em /stats, não entra.
   Nunca inventar piloto, score ou marco. Não fazer promessa que o Guilherme não fez.
   Antes de afirmar "só X pilotos…", conferir também as partidas anônimas em `?visao=partidas&ordem=score`.
