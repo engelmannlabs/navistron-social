@@ -20,7 +20,11 @@ apenas este arquivo, e não o playbook inteiro.
   09:15, o Guilherme pediu um post "mais na linha de 'enquanto vc espera sua IA, vem jogar uma partidinha com a gente'" — "a ideia
   é as pessoas conhecerem o jogo" —, e o convite que mostra como se joga (guia a nave, pega os boosts, sobe de tier) saiu às 09:25
   (6aec75cf…), o 2º do dia. O convite passa a ser um ângulo da fase 1, ao lado da provocação; levar a nota para a seção 3c do
-  PLAYBOOK na próxima vez que o arquivo for gravado.
+  PLAYBOOK na próxima vez que o arquivo for gravado. Às ~09:40, ele pediu o português da norma culta ("guie a nave", não "guia a
+  nave") e a revisão de todo texto antes de postar (regra nova em "Limites que não se negociam", na ROTINA). O reel das 13:00 foi
+  corrigido antes de sair (PROVE QUE NÃO., jogue enquanto a IA pensa; na legenda, jogue, prove, troque, espera por você,
+  responda), com o render c0819c07 e o post do Buffer editado; o das 09:25 já tinha saído com guia, pega, sobe e vem. Na rodada de
+  06/11, atualizar na linha de 05/11 13:00 de `log/experiments.md` o CTA e o pedido corrigidos.
 - 2026-11-04 · **1ª leitura da S45: o reel de 8 s segurou quase metade da duração (3,77 s de tempo médio, 47% dos 8 s), contra
   17,6% do ranking de 14 s — mas é um par só, e o jogo não mexeu: 1 partida por dia.** Métricas (feed de 03/11 21:27 BRT, ~1 h
   mais cedo que a anterior, como previsto): o ranking de 02/11 (14 s) fechou em **91 / 98** (~32 h, 2,47 s de tempo médio), o 7º
