@@ -24,7 +24,12 @@ apenas este arquivo, e não o playbook inteiro.
   nave") e a revisão de todo texto antes de postar (regra nova em "Limites que não se negociam", na ROTINA). O reel das 13:00 foi
   corrigido antes de sair (PROVE QUE NÃO., jogue enquanto a IA pensa; na legenda, jogue, prove, troque, espera por você,
   responda), com o render c0819c07 e o post do Buffer editado; o das 09:25 já tinha saído com guia, pega, sobe e vem. Na rodada de
-  06/11, atualizar na linha de 05/11 13:00 de `log/experiments.md` o CTA e o pedido corrigidos.
+  06/11, atualizar na linha de 05/11 13:00 de `log/experiments.md` o CTA e o pedido corrigidos. Às ~13:30, ele mandou uma gravação
+  de tela da partida (51 s, Tier I, Chrome no celular) e pediu montagens com cortes nos reels e mais combinações de reels: saíram
+  três protótipos (as provocações, de 1 a 5 tiros, o POV com a imagem congelando), e a fase 2 da seção 3c foi adiantada — reels de
+  montagem com gameplay real (motor em `templates/montage.js`, quadros extraídos com o ffmpeg no render, guia, índice da gravação
+  e cardápio de combinações em `MONTAGEM.md`), valendo assim que o vídeo estiver em `footage/` (só ele consegue subir o arquivo; o
+  conector não grava binário). Nota do convite e exemplos do PLAYBOOK no português da norma culta: levados à seção 3c em 05/11.
 - 2026-11-04 · **1ª leitura da S45: o reel de 8 s segurou quase metade da duração (3,77 s de tempo médio, 47% dos 8 s), contra
   17,6% do ranking de 14 s — mas é um par só, e o jogo não mexeu: 1 partida por dia.** Métricas (feed de 03/11 21:27 BRT, ~1 h
   mais cedo que a anterior, como previsto): o ranking de 02/11 (14 s) fechou em **91 / 98** (~32 h, 2,47 s de tempo médio), o 7º

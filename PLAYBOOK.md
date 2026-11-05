@@ -83,7 +83,7 @@ Dentro de cada vídeo da Estela, **uma** variável de produção por vez, regist
   do roteiro do dia (regra 6 e "Como gerar um vídeo dela" em `personagens/ESTELA.md`). A regra de 29/09 ("sempre em
   casa") caiu. **Formato completo (vários cortes, cenas de ação e trilha) só nos reels**; stories em take único num look
   do cenário (decisão dele em 03/10, pelo custo).
-- **Gestos**: `expressiveness` low / medium / high; `motionPrompt` calmo × animado (mãos visíveis) × inclinada pra câmera.
+- **Gestos**: `expressiveness` low / medium / high; `motionPrompt` calmo × animado (mãos visíveis) × inclinada para a câmera.
 - **Motor**: `avatar_iv` (padrão) × `avatar_v`.
 - **Voz**: Sofia Brazil - Friendly (padrão) × Sofia Brazil - Excited nos desafios.
 - **Duração**: ~20 s × ~35 s.
@@ -126,14 +126,20 @@ Pedido do Guilherme na conversa, em 04/11 às 23:00, valendo a partir dali (a S4
   elogiou justamente por passar a sensação de previsibilidade e padrão. Esqueleto: o `post.html` de 04/11
   (`posts/2026-11-04-a-ia-programa-voce-espera`) — gancho legível no quadro 0 até ~2,4 s, a regra de 2,55 a 5,65 s e o CTA
   até o fim; selo de cima "Enquanto a IA pensa · @navistron".
-- **Fase 2 — os tipos de reel**: depois da leitura da fase 1 (na rodada de 12/11, com os ~7 posts de 04 a 10/11), testar
-  tipos diferentes de reel com o texto que ganhou.
+- **Fase 2 — os tipos de reel, com gameplay real** (adiantada a pedido do Guilherme em 05/11, com uma gravação de tela da
+  partida: "veja se consegue editar cortes e fazer montagens com os cortes para os reels tambem pra ser algo dinamico tb
+  junto nos reels e criar mais combinações de reels"): o reel das 13:00 passa a ser de **montagem** — cortes reais da
+  partida, no ritmo da trilha, com o texto do dia por cima — assim que a gravação estiver em `footage/` (enquanto não
+  estiver, segue a fase 1). Tudo em `MONTAGEM.md`: como funciona, os moldes (`templates/montagem-*.html`), o índice da
+  gravação (o segundo de cada provocação, boost e explosão) e o cardápio de combinações (provocações, progressão, POV,
+  dado + gameplay, momento, desafio). Um tipo por dia, sem repetir a combinação em 3 dias; de 8 a 11 s. A leitura compara
+  com os reels de dados de 04 e 05/11: tempo médio em % da duração, alcance com ≥ 40 h e partidas no dia e no seguinte.
 - **Tom apimentado, sem comprometer a página**: uma provocação que incomoda e puxa comentário — cutucar o hábito ("a IA
-  programa, você espera", "você ainda programa ou só revisa?", "encarar a IA não faz ela terminar antes") —, nunca uma
+  programa, você espera", "você ainda programa ou só revisa?", "encarar a IA não faz a resposta chegar antes") —, nunca uma
   ofensa: nada contra pessoa, grupo, nick ou empresa pelo nome; nada político, religioso ou sexual; nada de número
   inventado nem promessa. A provocação é contra o hábito, não contra quem lê. O dado continua conferido (código do jogo ou
   telemetria com data).
-- **Legenda**: 1ª linha = a provocação + o pedido ("espera jogando", "joga enquanto a IA pensa"); depois a regra do jogo e
+- **Legenda**: 1ª linha = a provocação + o pedido ("espere jogando", "jogue enquanto a IA pensa"); depois a regra do jogo e
   um número com data; no fim, uma pergunta que divide opiniões, para puxar comentário; fecha com "Grátis, sem login, link na
   bio 🚀". Hashtags para quem programa: `#navistron #programacao #programador #dev #ia #inteligenciaartificial #jogogratis
   #reels`; para quem não programa: `#navistron #ia #inteligenciaartificial #produtividade #jogogratis #jogosonline #reels`.
@@ -146,9 +152,10 @@ Pedido do Guilherme na conversa, em 04/11 às 23:00, valendo a partir dali (a S4
   regra por reel; antes de usar outra, conferir no código.
 - **Ângulos da fase 1** (um por dia, sem repetir palavra de gancho em 10 dias, alternando quem programa e quem não
   programa): 04/11, quem programa ("a IA programa, você espera" + a partida congela fora da aba); depois, por exemplo, quem
-  não programa ("pediu um texto pra IA?"), o hábito ("encarar a IA não faz ela terminar antes"), a provocação do próprio
-  jogo ("até um robô jogaria melhor", a cada 10 s), o tempo ("2 minutos: a partida média", com data) e o ritual ("prompt
-  enviado: 3, 2, 1, GO").
+  não programa ("pediu um texto para a IA?"), o hábito ("encarar a IA não faz a resposta chegar antes"), a provocação do
+  próprio jogo ("até um robô jogaria melhor", a cada 10 s), o tempo ("2 minutos: a partida média", com data), o ritual
+  ("prompt enviado: 3, 2, 1, GO") e o convite, sem provocação, mostrando como se joga ("venha jogar uma partidinha com a
+  gente" — post extra de 05/11, a pedido do Guilherme: "a ideia é as pessoas conhecerem o jogo").
 - **Segunda-feira**: o ranking da semana segue no blog; no feed, o post é do teste (o ranking pode virar o número do dia
   dentro do formato).
 - **Medidas por post**: alcance com ≥ 40 h, tempo médio ÷ 8 s, comentários e compartilhamentos (a polêmica) e — o que
@@ -180,7 +187,7 @@ Pedido do Guilherme na conversa, em 04/11 às 23:00, valendo a partir dali (a S4
   `#navistron #jogodenave #arcade #indiegame #jogogratis #gamedev #jogosbrasileiros` (+ `#reels` em reels; os reels da
   Estela usam as mesmas, sem `#ia`). **O pedido vai na PRIMEIRA linha.** Sete variações de pedido de comentário
   (score, palpite, sim/não, aposta, marcação, opinião, emoji) deram zero; **desde 28/09 o pedido é a ação no jogo**
-  ("joga e põe o nick no game over"), medida por nick novo no ranking. **No teste da seção 3c (desde 04/11), o pedido da
+  ("jogue e ponha o nick no game over"), medida por nick novo no ranking. **No teste da seção 3c (desde 04/11), o pedido da
   1ª linha passa a ser jogar enquanto a IA pensa, com a provocação, a pergunta no fim e as hashtags de lá.**
 - **Todo número vem da telemetria e traz a data.** Se um dado não puder ser confirmado em /stats, não entra.
   Nunca inventar piloto, score ou marco. Não fazer promessa que o Guilherme não fez.
