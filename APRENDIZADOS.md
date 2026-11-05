@@ -16,7 +16,11 @@ apenas este arquivo, e não o playbook inteiro.
   melhor", para quem não programa, com a provocação do próprio jogo: "Tá achando fácil?" aos 10 s e, depois, uma frase a cada 10
   s, sorteada entre 102 frases) sai às 13:00 de hoje. A medida que decide: partidas e pilotos novos no dia do post e no seguinte,
   contra 1 a 2 partidas por dia. No blog, um artigo ligado ao teste, trocar de aba pausa o jogo (PR #58), com um cuidado novo: o
-  navegador pode descartar uma aba escondida para poupar recursos (Chrome, Page Lifecycle), e aí a partida pausada se perde.
+  navegador pode descartar uma aba escondida para poupar recursos (Chrome, Page Lifecycle), e aí a partida pausada se perde. Às
+  09:15, o Guilherme pediu um post "mais na linha de 'enquanto vc espera sua IA, vem jogar uma partidinha com a gente'" — "a ideia
+  é as pessoas conhecerem o jogo" —, e o convite que mostra como se joga (guia a nave, pega os boosts, sobe de tier) saiu às 09:25
+  (6aec75cf…), o 2º do dia. O convite passa a ser um ângulo da fase 1, ao lado da provocação; levar a nota para a seção 3c do
+  PLAYBOOK na próxima vez que o arquivo for gravado.
 - 2026-11-04 · **1ª leitura da S45: o reel de 8 s segurou quase metade da duração (3,77 s de tempo médio, 47% dos 8 s), contra
   17,6% do ranking de 14 s — mas é um par só, e o jogo não mexeu: 1 partida por dia.** Métricas (feed de 03/11 21:27 BRT, ~1 h
   mais cedo que a anterior, como previsto): o ranking de 02/11 (14 s) fechou em **91 / 98** (~32 h, 2,47 s de tempo médio), o 7º
