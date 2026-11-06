@@ -4,6 +4,20 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-11-06 · **O 1º dia inteiro do teste "Enquanto a IA pensa" não mexeu no jogo: a quinta 05/11 teve 1 partida, de um piloto
+  que já estava no ranking — mas foi a 700ª, a 1ª partida redonda com nick, e fechou as 24 h de jogo somadas.** A partida: 12:37,
+  GUI, 11.429 em 2:32, Tier II, entre o convite das 09:25 e o reel das 13:00; GUI tem a 2ª melhor marca do jogo (29.901, em 29/09)
+  e passou a liderar a semana 45. Nenhum piloto novo: 48, como desde 31/10. Métricas (feed de 05/11 19:28 BRT, ~1 h mais cedo que
+  a anterior, como previsto): o reel agendado das 13:00 de 05/11 ("até um robô jogaria melhor") tinha **60 / 67** com ~6 h (3,36
+  s, 42% dos 8 s); os dois publicados na hora ficaram bem abaixo — o das 23:17 de 04/11 com **6 / 13** (~20 h; 8,49 s, 106%: quem
+  viu, viu de novo) e o convite das 09:25 de 05/11 com **10 / 13** (~10 h; 4,04 s, 50,5%). Nenhum dos três teve like, comentário,
+  save ou compartilhamento. Um sinal a observar, não uma regra (três posts, idades diferentes): os dois que saíram na hora, fora
+  do slot e como 2º post do dia, quase não foram distribuídos. O reel de 14 s de 04/11 fechou em **11 / 12** (~30 h; 1,33 s, 9,5%
+  dos 14 s), e a S45 fechou o slot com 91, 99 e 11 (a série tem 44 posts, mediana 15). O reel de hoje usa a média como número ("2
+  minutos encarando a IA?": a partida média, 2m 4s, cabe na espera), para quem programa. A gravação de gameplay ainda não está em
+  `footage/`, então a fase 2 (montagem) espera — **o Guilherme precisa subir o arquivo**. No blog, as 700 partidas (PR #60), com
+  uma correção pega na revisão: a partida que fechou as 20 h (09/10, 16:28) não era a 593ª — 593 era o total do fim daquele dia;
+  número de partida, só pela lista por data, nunca pelo total do dia.
 - 2026-11-05 · **O teste "Enquanto a IA pensa" começou (pedido do Guilherme em 04/11, às 23:00) com uma base fraca: a quarta 04/11
   não teve partida, e o reel de 14 s de 04/11 fez 8 de alcance com ~7 h, o menor parcial da S45.** A decisão de 04/11: a Estela e
   a HeyGen pausadas; um público novo (quem espera a IA, programando ou não) e o objetivo de jogadores, não de alcance; fase 1
@@ -24,7 +38,7 @@ apenas este arquivo, e não o playbook inteiro.
   nave") e a revisão de todo texto antes de postar (regra nova em "Limites que não se negociam", na ROTINA). O reel das 13:00 foi
   corrigido antes de sair (PROVE QUE NÃO., jogue enquanto a IA pensa; na legenda, jogue, prove, troque, espera por você,
   responda), com o render c0819c07 e o post do Buffer editado; o das 09:25 já tinha saído com guia, pega, sobe e vem. Na rodada de
-  06/11, atualizar na linha de 05/11 13:00 de `log/experiments.md` o CTA e o pedido corrigidos. Às ~13:30, ele mandou uma gravação
+  06/11, a linha de 05/11 13:00 de `log/experiments.md` recebeu o CTA e o pedido corrigidos. Às ~13:30, ele mandou uma gravação
   de tela da partida (51 s, Tier I, Chrome no celular) e pediu montagens com cortes nos reels e mais combinações de reels: saíram
   três protótipos (as provocações, de 1 a 5 tiros, o POV com a imagem congelando), e a fase 2 da seção 3c foi adiantada — reels de
   montagem com gameplay real (motor em `templates/montage.js`, quadros extraídos com o ffmpeg no render, guia, índice da gravação
@@ -56,26 +70,8 @@ apenas este arquivo, e não o playbook inteiro.
   6º dia (**o Guilherme precisa conferir a assinatura**). No blog, o que muda entre o PC e o celular (PR #56), com um achado do
   código: com o dedo dentro do campo, a nave não desce além de 580 px (no mouse, 706) — 18% menos tempo para cada meteoro no fundo
   da tela.
-- 2026-11-02 · **Leitura da S44: o alcance voltou, o jogo não — 8, 51, 43, 18, 78, 92 e 70 (este com ~10 h), seis de sete acima da
-  mediana do slot, numa semana de 17 partidas, a menor da série junto com a 38.** Métricas (feed de 01/11 23:27 BRT, na hora
-  prevista): o reel de 31/10 (desafio, "quem faz o próximo 10 mil?") fechou em **92 / 105** (~34 h, 3,2 s de tempo médio), o maior
-  da S44 e o 6º da série do slot das 13:00 (40 posts, mediana 14,5); o de 01/11 (PAÇOCA estreou) tinha **70 / 78** com ~10 h; o de
-  30/10 parou em 78. A pergunta da S44 (o alcance volta com o calendário estável?) fecha com sim: depois de 6, 3, 11 e 2 (21 a
-  24/10), a semana teve mediana 51, com reels de dados em seis dos sete dias (a Estela saiu do calendário em 29/10, sem créditos).
-  Mas as duas métricas que importam não mexeram: a semana 44 teve **17 partidas** (49 na 43) e **1 nick novo** (PAÇOCA), o mesmo
-  ritmo de um por semana desde a S41 — o alcance de 50 a 90 por reel não virou partida. O tempo médio dos reels de 14 s ficou
-  entre 2,1 e 5,1 s: quase ninguém chega ao CTA, que entra aos 12 s. **Decisão para a S45 (02 a 08/11)**: uma variável, a duração
-  do reel de dados — 8 s (ter, qui e sáb) × 14 s (seg, qua, sex e dom), todos às 13:00 e como o único post do dia —, medindo tempo
-  médio ÷ duração, alcance com ≥ 40 h e as partidas e os nicks do dia do post e do seguinte. A Estela fica fora do feed na S45: a
-  HeyGen seguiu no plano free pelo 5º dia (**o Guilherme precisa conferir a assinatura**); os stories voltam assim que houver
-  créditos. No jogo, o ranking da semana 44 fechou com PAÇOCA (9.510) e ROBER (8.389) e o 3º lugar vago — o reel do dia; a maior
-  partida da semana, 10.237, ficou sem nick; o domingo teve uma partida, de 4 pontos. Faltam 3 partidas para a 700ª e 3min57s para
-  as 24 h. Telemetria: mesmo com ?v= novos, o resumo de ?periodo=7d e a lista por data geral vieram de cópias antigas (18 e 696
-  partidas); a conta fechou pela lista de 7 dias e pelo /stats geral — conferir sempre duas visões antes de contar. No blog, o
-  ranking da semana 44 (PR #55). Pendente (de 29/10): o fim de "Custos e limites" em `personagens/ESTELA.md` ainda conta com a
-  renovação de 29/10 — corrigir na próxima rodada que gravar o arquivo.
 
-Anteriores em [`APRENDIZADOS-2026-11.md`](APRENDIZADOS-2026-11.md) (01/11),
+Anteriores em [`APRENDIZADOS-2026-11.md`](APRENDIZADOS-2026-11.md) (01 e 02/11),
 [`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md) (24 a 31/10),
 [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (01 a 23/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
