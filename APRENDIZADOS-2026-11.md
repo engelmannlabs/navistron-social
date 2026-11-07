@@ -3,6 +3,21 @@
 Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 4 mais recentes; a mais recente primeiro.
 Anteriores (24 a 31/10) em [`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md). Arquivo aberto em 05/11/2026.
 
+- 2026-11-03 · **O 1º reel de 8 s da S45 vai ao ar com o CTA aos 5,65 s — e o /stats mostrou uma armadilha nova: a 1ª leitura do
+  dia veio inteira da véspera, mesmo com ?v= novos.** Métricas (feed de 02/11 22:27 BRT, ~1 h mais cedo que a anterior, como
+  previsto): o reel de 01/11 (PAÇOCA estreou) fechou em **74 / 83** (~33 h, 2,2 s de tempo médio), e a S44 fechou o slot das 13:00
+  com 8, 51, 18, 78, 92 e 74 (a série tem 41 posts, mediana 15); o de 02/11 (ranking da semana 44, o 1º de 14 s da S45) tinha **79
+  / 82** com ~9 h, com 2,45 s de tempo médio (17,5% dos 14 s); o de 31/10 foi a 93 com ~57 h. No jogo, o dia do ranking teve 1
+  partida (15:53, anônima, 178 pontos em 0:33) e nenhum nick novo: 698 partidas, faltam 2 para a 700ª e 3min24s para as 24 h.
+  **Telemetria**: a 1ª leitura (ter0311a a c) trouxe as três visões de 02/11 — 697 partidas, a última em 01/11 às 07:31 e a janela
+  de 7 dias começando em 26/10 11:19 —, e a 2ª, minutos depois, com outros ?v=, mostrou a partida de 02/11 em todas; na prática, a
+  1ª visita depois de horas pode devolver a cópia anterior. Regra no PLAYBOOK: ler cada visão duas vezes e só contar quando a
+  linha "Última:" e o começo da janela de 7 dias mostrarem o dia anterior. O reel de hoje (mecânica explicada: no celular, a nave
+  voa 140 px acima do dedo, regra que só tinha aparecido num story de 13/10) tem 8 s, o contador de 140 px no hit, aos 4,4 s, e o
+  CTA dos 5,65 s ao fim; a leitura da duração sai quando houver pares de 8 e 14 s com ≥ 40 h. A HeyGen seguiu no plano free pelo
+  6º dia (**o Guilherme precisa conferir a assinatura**). No blog, o que muda entre o PC e o celular (PR #56), com um achado do
+  código: com o dedo dentro do campo, a nave não desce além de 580 px (no mouse, 706) — 18% menos tempo para cada meteoro no fundo
+  da tela.
 - 2026-11-02 · **Leitura da S44: o alcance voltou, o jogo não — 8, 51, 43, 18, 78, 92 e 70 (este com ~10 h), seis de sete acima da
   mediana do slot, numa semana de 17 partidas, a menor da série junto com a 38.** Métricas (feed de 01/11 23:27 BRT, na hora
   prevista): o reel de 31/10 (desafio, "quem faz o próximo 10 mil?") fechou em **92 / 105** (~34 h, 3,2 s de tempo médio), o maior

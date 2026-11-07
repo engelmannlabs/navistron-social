@@ -4,6 +4,20 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-11-07 · **Três dias de teste, uma partida: o alcance do slot das 13:00 voltou (82 no reel de 05/11, o 9º da série), mas não
+  virou jogo — a sexta 06/11 não teve partida.** Métricas (feed de 06/11 18:28 BRT, ~1 h mais cedo que a anterior, como previsto):
+  o reel "até um robô jogaria melhor" (05/11, 13:00) fechou em **82 / 90** (~29 h; 3,20 s, 40% dos 8 s); o de 06/11 ("2 minutos
+  encarando a IA?") tinha **42 / 51** com ~5 h (3,79 s, 47%); os dois publicados na hora fecharam em **6** (04/11, 23:17) e **11**
+  (05/11, 09:25). Nenhum dos quatro teve like, comentário, save ou compartilhamento: a pergunta do fim não puxou comentário. No
+  jogo: 04/11, 0 partidas; 05/11, 1 (GUI, piloto antigo, a 700ª); 06/11, 0 — abaixo da base de 1 a 2 por dia, e nenhum piloto novo
+  desde 31/10. O tempo médio dos reels de 8 s do teste fica entre 40 e 50% da duração (fora o das 23:17, com 6 de alcance): metade
+  do vídeo, e o CTA só no fim. A leitura da fase 1 sai em 12/11, como previsto, mas o sinal até aqui é que trocar só o texto não
+  leva ninguém ao jogo; a fase 2 (montagem com gameplay real) depende da gravação em `footage/` — **o Guilherme precisa subir o
+  arquivo**. Hoje, o 4º post do teste ("pediu um texto para a IA?", para quem não programa: o 1º boost aparece sempre aos 8 s de
+  jogo). Operação: o push_files decodifica uma 2ª vez as sequências de escape de barra invertida + u (o escape da estrela no
+  fillText virou o caractere ★); para o JavaScript é o mesmo texto, mas o blob muda — conferir o SHA sempre e não usar esses
+  escapes nos textos dos logs. No blog, o que é hitbox (PR #61), com um achado do código: a hitbox de 18 px da nave é menor que o
+  desenho no bico e nas asas, mas maior nas laterais da frente.
 - 2026-11-06 · **O 1º dia inteiro do teste "Enquanto a IA pensa" não mexeu no jogo: a quinta 05/11 teve 1 partida, de um piloto
   que já estava no ranking — mas foi a 700ª, a 1ª partida redonda com nick, e fechou as 24 h de jogo somadas.** A partida: 12:37,
   GUI, 11.429 em 2:32, Tier II, entre o convite das 09:25 e o reel das 13:00; GUI tem a 2ª melhor marca do jogo (29.901, em 29/09)
@@ -55,23 +69,8 @@ apenas este arquivo, e não o playbook inteiro.
   s para as 24 h de jogo somadas. Telemetria: com a regra de 03/11, três leituras com ?v= diferentes, sem diferença entre elas. A
   HeyGen seguiu no plano free pelo 7º dia (**o Guilherme precisa conferir a assinatura**). No blog, jogos que gastam pouca bateria
   (PR #57), com um número do código: o quadro fixo de 540×720 pinta 388.800 pixels, 6,7 vezes menos que uma tela de 1080×2400.
-- 2026-11-03 · **O 1º reel de 8 s da S45 vai ao ar com o CTA aos 5,65 s — e o /stats mostrou uma armadilha nova: a 1ª leitura do
-  dia veio inteira da véspera, mesmo com ?v= novos.** Métricas (feed de 02/11 22:27 BRT, ~1 h mais cedo que a anterior, como
-  previsto): o reel de 01/11 (PAÇOCA estreou) fechou em **74 / 83** (~33 h, 2,2 s de tempo médio), e a S44 fechou o slot das 13:00
-  com 8, 51, 18, 78, 92 e 74 (a série tem 41 posts, mediana 15); o de 02/11 (ranking da semana 44, o 1º de 14 s da S45) tinha **79
-  / 82** com ~9 h, com 2,45 s de tempo médio (17,5% dos 14 s); o de 31/10 foi a 93 com ~57 h. No jogo, o dia do ranking teve 1
-  partida (15:53, anônima, 178 pontos em 0:33) e nenhum nick novo: 698 partidas, faltam 2 para a 700ª e 3min24s para as 24 h.
-  **Telemetria**: a 1ª leitura (ter0311a a c) trouxe as três visões de 02/11 — 697 partidas, a última em 01/11 às 07:31 e a janela
-  de 7 dias começando em 26/10 11:19 —, e a 2ª, minutos depois, com outros ?v=, mostrou a partida de 02/11 em todas; na prática, a
-  1ª visita depois de horas pode devolver a cópia anterior. Regra no PLAYBOOK: ler cada visão duas vezes e só contar quando a
-  linha "Última:" e o começo da janela de 7 dias mostrarem o dia anterior. O reel de hoje (mecânica explicada: no celular, a nave
-  voa 140 px acima do dedo, regra que só tinha aparecido num story de 13/10) tem 8 s, o contador de 140 px no hit, aos 4,4 s, e o
-  CTA dos 5,65 s ao fim; a leitura da duração sai quando houver pares de 8 e 14 s com ≥ 40 h. A HeyGen seguiu no plano free pelo
-  6º dia (**o Guilherme precisa conferir a assinatura**). No blog, o que muda entre o PC e o celular (PR #56), com um achado do
-  código: com o dedo dentro do campo, a nave não desce além de 580 px (no mouse, 706) — 18% menos tempo para cada meteoro no fundo
-  da tela.
 
-Anteriores em [`APRENDIZADOS-2026-11.md`](APRENDIZADOS-2026-11.md) (01 e 02/11),
+Anteriores em [`APRENDIZADOS-2026-11.md`](APRENDIZADOS-2026-11.md) (01 a 03/11),
 [`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md) (24 a 31/10),
 [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (01 a 23/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e
