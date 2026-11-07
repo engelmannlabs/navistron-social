@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="10.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="0.5">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>#bub .box { min-width: 840px; }   /* cobre a frase do próprio jogo, que aparece embaixo do balão */</style>
+<!-- REEL DE MONTAGEM "PROVOCAÇÕES" (o 1º com gameplay real; fase 2 do teste "Enquanto a IA pensa", PLAYBOOK 3c), pedido do
+     Guilherme em 07/11/2026 às ~16:10, depois de subir a gravação em footage/: "Faça um post com ele pra agora pra eu ver".
+     Feito do molde templates/montagem-provocacoes.html (guia e índice da gravação em MONTAGEM.md). Os cortes saem da gravação
+     de 05/11 (Chrome no celular, Tier I): "Tá achando fácil?" (0:10), "Precisa de óculos?" (0:20), "Amador detectado" (0:30),
+     "Tier máximo? Nem em sonho" (0:40) e "Alguém chama o resgate" (0:50) — as frases do jogo, entre aspas, com o relógio da
+     partida. A regra, conferida no código (src/app/play/page.js 36d68b9a): a 1ª provocação aos 10 s (TAUNT_FIRST) e depois
+     uma a cada 10 s, sorteada entre as 102 frases de TAUNTS. audio.json: {"bpm":128,"transpose":0,"hit":7.5,"riserStart":6.1,"fadeOut":0.5}. -->
+</head>
+<body>
+  <canvas id="v" width="1080" height="1920"></canvas>
+  <div class="m-scrim" id="sc"></div>
+
+  <div id="hl" class="layer" style="top: 335px; opacity: 1">
+    <div class="h1" style="font-size: 128px">A IA DEMORA.<br><span class="pink">O JOGO PROVOCA.</span></div>
+  </div>
+  <div class="m-kick pink" id="kick"><span>frases do jogo · <b>uma a cada 10 s</b></span></div>
+
+  <div class="m-bub" id="bub"><div class="box"><div class="clk" id="clk"></div><div class="say" id="say"></div></div></div>
+
+  <div id="cta" class="layer" style="top: 400px">
+    <div class="h1" style="font-size: 180px">RESPONDA<br><span class="accent">JOGANDO.</span></div>
+    <div class="cta-big" style="margin-top: 36px">NAVISTRON<br>.IO</div>
+    <div class="cta-sub"><span class="m-pill">grátis, sem login</span></div>
+    <div class="sub" style="margin-top: 8px"><span class="m-pill">jogue enquanto a <b>IA</b> pensa</span></div>
+    <div class="sub" style="margin-top: 8px; font-size: 26px"><span class="m-pill"><b>102</b> provocações, sorteadas</span></div>
+  </div>
+
+<script>
+(function () {
+  const B = 60 / 128;
+  // relógio da partida e frase de cada corte (as frases do jogo; \n quebra a linha do balão)
+  const TAUNTS = [['0:10', 'TÁ ACHANDO FÁCIL?'], ['0:20', 'PRECISA DE ÓCULOS?'], ['0:30', 'AMADOR DETECTADO'],
+                  ['0:40', 'TIER MÁXIMO?\nNEM EM SONHO'], ['0:50', 'ALGUÉM CHAMA\nO RESGATE']];
+  const CTA = 16 * B;
+  window.MONTAGE = {
+    dur: 10.0, srcW: 1060, srcH: 1906,
+    footage: { main: '../../footage/Screen_Recording_20261105_123725_Chrome_1.mp4' },
+    touch: { minY: 470 },
+    view: [530, 1246, 1.05],
+    cuts: [
+      { at: 0,      dur: 4 * B, from: 0.0 },
+      { at: 4 * B,  dur: 3 * B, from: 9.10,  punch: 0.10, flash: '255,255,255' },
+      { at: 7 * B,  dur: 3 * B, from: 19.10, punch: 0.10, flash: '255,255,255' },
+      { at: 10 * B, dur: 3 * B, from: 29.10, punch: 0.10, flash: '255,255,255', shake: [[1.0, 16]] },
+      { at: 13 * B, dur: 3 * B, from: 39.13, punch: 0.10, flash: '255,255,255' },
+      { at: CTA,    dur: 10.0 - CTA, from: 48.60, flash: '255,255,255', dim: 0.7, shake: [[1.93, 8]] }
+    ],
+    overlay(t, k, lt) {
+      const { clamp, seg, out3, outBack } = window.MU, $ = id => document.getElementById(id);
+      const hOut = 1 - seg(t, 1.62, 0.25);
+      $('hl').style.opacity = hOut; $('hl').style.transform = `translateY(${-40 * (1 - hOut)}px)`;
+      $('sc').style.opacity = hOut;
+      $('kick').style.opacity = out3(seg(t, 4 * B - 0.05, 0.25)) * (1 - seg(t, CTA - 0.12, 0.12));
+      const bub = $('bub');
+      if (k < TAUNTS.length) {
+        $('clk').textContent = 'partida · ' + TAUNTS[k][0];
+        $('say').textContent = '“' + TAUNTS[k][1] + '”';
+        const p = k === 0 ? 1 : outBack(seg(lt, 0, 0.2));
+        bub.style.opacity = k === 0 ? 1 : seg(lt, 0, 0.08);
+        bub.style.transform = `scale(${(0.55 + 0.45 * p).toFixed(4)}) rotate(${k === 0 ? -1.5 : (k % 2 ? 1.8 : -1.8)}deg)`;
+      } else bub.style.opacity = 0;
+      const ci = out3(seg(t, CTA + 0.05, 0.4));
+      $('cta').style.opacity = ci; $('cta').style.transform = `translateY(${30 * (1 - ci)}px)`;
+    }
+  };
+})();
+</script>
+<script src="../../templates/montage.js"></script>
+<script>window.__seek(0);</script>
+</body>
+</html>
