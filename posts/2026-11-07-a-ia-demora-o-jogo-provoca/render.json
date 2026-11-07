@@ -1,0 +1,71 @@
+{
+  "files": {
+    "post.html": {
+      "hash": "c5f00e286f99b1bb3396697f5db71af851592e15d29e55f14c1b987a64065b7a",
+      "out": "reel.mp4",
+      "width": 1080,
+      "height": 1920,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ],
+      "duration": 10,
+      "fps": 30,
+      "frames": 300,
+      "bytes": 2638674,
+      "cover": "reel-cover.png",
+      "footage": [
+        {
+          "id": "c0",
+          "src": "../../footage/Screen_Recording_20261105_123725_Chrome_1.mp4",
+          "from": 0,
+          "fps": 30,
+          "frames": 57,
+          "touch": 57
+        },
+        {
+          "id": "c1",
+          "src": "../../footage/Screen_Recording_20261105_123725_Chrome_1.mp4",
+          "from": 9.1,
+          "fps": 30,
+          "frames": 43,
+          "touch": 43
+        },
+        {
+          "id": "c2",
+          "src": "../../footage/Screen_Recording_20261105_123725_Chrome_1.mp4",
+          "from": 19.1,
+          "fps": 30,
+          "frames": 43,
+          "touch": 43
+        },
+        {
+          "id": "c3",
+          "src": "../../footage/Screen_Recording_20261105_123725_Chrome_1.mp4",
+          "from": 29.1,
+          "fps": 30,
+          "frames": 43,
+          "touch": 43
+        },
+        {
+          "id": "c4",
+          "src": "../../footage/Screen_Recording_20261105_123725_Chrome_1.mp4",
+          "from": 39.13,
+          "fps": 30,
+          "frames": 43,
+          "touch": 43
+        },
+        {
+          "id": "c5",
+          "src": "../../footage/Screen_Recording_20261105_123725_Chrome_1.mp4",
+          "from": 48.6,
+          "fps": 30,
+          "frames": 76,
+          "touch": 76
+        }
+      ]
+    }
+  },
+  "renderedAt": "2026-11-07T19:17:47.501Z"
+}
