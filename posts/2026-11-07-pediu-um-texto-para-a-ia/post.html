@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="8.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="1.6">
+<link rel="stylesheet" href="../../templates/reel.css">
+<style>
+  .vlabel { margin-top: 12px; font-family: var(--font-ui); font-weight: 500; font-size: 34px; letter-spacing: 0.16em; color: var(--muted); text-transform: uppercase; line-height: 1.3; }
+  .vlabel b { color: var(--ink); }
+  .vlabel small { display: block; margin-top: 10px; font-size: 26px; letter-spacing: 0.14em; color: var(--dim); }
+  .taunt { margin-top: 22px; font-family: var(--font-display); font-weight: 700; font-size: 96px; line-height: 1; color: var(--t3); text-shadow: 0 0 40px rgba(250,204,21,0.55); opacity: 0; will-change: transform, opacity; }
+  #mk .marker { background: rgba(10,14,28,0.94); }
+  .pill { display: inline-block; padding: 8px 20px; border-radius: 10px; background: rgba(5,7,15,0.88); }
+  .bar { width: 560px; height: 10px; margin: 18px auto 0; border-radius: 5px; background: rgba(143,163,199,0.18); overflow: hidden; }
+  .bar i { display: block; height: 100%; width: 0; border-radius: 5px; background: var(--t1); box-shadow: 0 0 14px rgba(34,211,238,0.7); }
+</style>
+<!-- ENQUANTO A IA PENSA (teste da seção 3c do PLAYBOOK, fase 1: textos). Público: quem não programa (quem pede um texto
+     para a IA). Regra do código (src/app/play/page.js, blob 36d68b9a): startGame() zera boostTimer = 8; em update(dt), que só
+     roda com a partida andando (depois do 3, 2, 1, GO!), boostTimer -= dt e, ao chegar a 0, spawnBoost() solta o boost no alto
+     do campo, e o próximo vem em 12 + random × 8 s (12 a 20 s). O 1º é o boost comum (dourado, com ★): isTierUp só vale no 5º.
+     collectBoost(): spreadLevel++ (+1 tiro no leque; com 2 tiros, degPerLevel = 12, ou seja, ±6°). O relógio 0:00–0:08 do reel
+     é acelerado (ilustrativo). Fundo: a nave no Tier I (ciano #7df4ff, um disparo a cada 0,18 s) e meteoros marrons (heat 0);
+     no hit, o boost aparece, cai sobre a nave e, pego, o leque passa a 2 tiros. -->
+</head>
+<body>
+  <canvas id="bg" width="1080" height="1920"></canvas>
+  <canvas id="fx" width="1080" height="1920"></canvas>
+
+  <div class="brand"><span class="dot"></span>Enquanto a IA pensa · @navistron</div>
+
+  <div id="hook" class="layer" style="top: 400px">
+    <div class="h1" style="font-size: 170px"><span class="w" id="w1">PEDIU UM</span><br><span class="w" id="w2"><span class="accent">TEXTO</span> PARA</span><br><span class="w" id="w3">A IA?</span></div>
+    <div class="sub" id="hsub" style="margin-top: 46px; opacity: 0"><span class="pill">jogue enquanto <b>ela escreve</b></span></div>
+  </div>
+
+  <div id="ds" class="layer" style="top: 400px">
+    <div class="kicker">o 1º boost aparece aos</div>
+    <div class="counter" id="cnt" style="margin-top: 24px; font-size: 300px"><span id="cn">0:00</span></div>
+    <div class="bar"><i id="bar"></i></div>
+    <div class="vlabel"><b>8 segundos de jogo</b><small>em toda partida, depois do GO!</small></div>
+    <div class="taunt" id="tt">PEGOU? +1 TIRO.</div>
+    <div id="mk" style="margin-top: 30px; opacity: 0"><span class="marker"><b>depois</b>, 1 a cada 12 a 20 s</span><div class="sub" style="margin-top: 14px"><span class="pill">regra do <b>código do jogo</b></span></div></div>
+  </div>
+
+  <div id="cta" class="layer" style="top: 400px">
+    <div class="h1" style="font-size: 180px">PEGUE O<br><span class="accent">1º BOOST.</span></div>
+    <div class="cta-big" style="margin-top: 36px">NAVISTRON<br>.IO</div>
+    <div class="cta-sub"><span class="pill">grátis, sem login</span></div>
+    <div class="sub" style="margin-top: 8px"><span class="pill">jogue enquanto a <b>IA</b> escreve</span></div>
+  </div>
+
+<script>
+(function () {
+  const W = 1080, H = 1920;
+  const DUR = 8.0;
+  const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
+  const ease = { out3: p => 1 - Math.pow(1 - p, 3), out4: p => 1 - Math.pow(1 - p, 4), inout: p => p < .5 ? 2*p*p : 1 - Math.pow(-2*p + 2, 2) / 2 };
+  const seg = (t, a, d) => clamp((t - a) / d, 0, 1);
+
+  // ---------- PRNG determinístico ----------
+  let s = 207;
+  const rnd = () => { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
+
+  // ---------- fundo estático ----------
+  const bg = document.getElementById('bg').getContext('2d');
+  for (let i = 0; i < 1500; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 0.4 + rnd() * 1.0, a = 0.10 + rnd() * 0.35;
+    bg.fillStyle = `rgba(210,225,255,${a})`; bg.beginPath(); bg.arc(x, y, r, 0, Math.PI * 2); bg.fill();
+  }
+  for (let i = 0; i < 40; i++) {
+    const x = rnd() * W, y = rnd() * H, r = 1.4 + rnd() * 1.6;
+    const g = bg.createRadialGradient(x, y, 0, x, y, r * 5);
+    g.addColorStop(0, 'rgba(255,255,255,0.9)'); g.addColorStop(0.35, 'rgba(180,210,255,0.35)'); g.addColorStop(1, 'rgba(180,210,255,0)');
+    bg.fillStyle = g; bg.beginPath(); bg.arc(x, y, r * 5, 0, Math.PI * 2); bg.fill();
+  }
+
+  // ---------- o relógio da partida até o 1º boost ----------
+  const T0 = 2.8, HIT = 4.4, AVG = 8;                 // 0:00 → 0:08 de 2,8 a 4,4 s (acelerado); no hit, o boost aparece
+  const SPEED = AVG / (HIT - T0);                      // 5 s de jogo por segundo de vídeo
+  const TC = 5.3, OY0 = 1170;                          // o boost cai de y = 1170 e a nave o pega em 5,3 s
+  const gsec = t => clamp((t - T0) * SPEED, 0, AVG);
+  const fmt = v => `${Math.floor(v / 60)}:${String(Math.floor(v % 60)).padStart(2, '0')}`;
+
+  // ---------- a partida no fundo: nave no Tier I (ciano), seguindo o cursor ----------
+  const CYAN = '125,244,255', C1 = '180,255,255', C2 = '0,200,255';
+  const SY = 1330;
+  const shipX = g => 540 + 230 * Math.sin(0.8 * g + 0.6) + 40 * Math.sin(2.1 * g + 0.3);
+  const N = 18, CYC = 2100, meteors = [];
+  for (let i = 0; i < N; i++) {
+    const n = 8 + Math.floor(rnd() * 5), shape = [];
+    for (let k = 0; k < n; k++) shape.push(0.72 + rnd() * 0.28);
+    meteors.push({
+      x: rnd() * W, v: 200 + rnd() * 170, r: 20 + rnd() * 44, rot: rnd() * 6.28, w: (rnd() - .5) * 2.4,
+      phase: rnd() * CYC, drift: (rnd() - .5) * 60, shape, big: rnd() < 0.3
+    });
+  }
+  function mpos(m, g) {
+    const dist = g * 1.5 * m.v + m.phase;
+    const cycle = Math.floor(dist / CYC);
+    const y = (dist % CYC) - 120;
+    const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+    return { x, y, cycle };
+  }
+  // um meteoro que cruzaria a nave não aparece naquela volta (no jogo, encostar nela é game over)
+  const hiddenCache = new Map();
+  function hidden(i, cycle) {
+    const key = i + ':' + cycle;
+    if (hiddenCache.has(key)) return hiddenCache.get(key);
+    const m = meteors[i];
+    let hid = false;
+    for (let q = -6; q <= 6 && !hid; q++) {
+      const y = SY + q * 25;
+      const dist = cycle * CYC + y + 120;
+      const tau = (dist - m.phase) / (1.5 * m.v);
+      const x = ((m.x + cycle * 617 + m.drift * (y / 1000)) % W + W) % W;
+      const dx = x - shipX(tau), dy = y - SY;
+      if (dx * dx + dy * dy < Math.pow(m.r * 0.95 + 62, 2)) hid = true;
+    }
+    hiddenCache.set(key, hid);
+    return hid;
+  }
+  const fx = document.getElementById('fx').getContext('2d');
+  function meteorPath(shape, r) {
+    fx.beginPath();
+    const n = shape.length;
+    for (let k = 0; k < n; k++) {
+      const ang = (k / n) * Math.PI * 2, rr = r * shape[k];
+      const px = Math.cos(ang) * rr, py = Math.sin(ang) * rr;
+      k ? fx.lineTo(px, py) : fx.moveTo(px, py);
+    }
+    fx.closePath();
+  }
+  // cores de drawMeteor() no jogo com heat 0 (o começo da partida)
+  function drawMeteor(shape, x, y, r, rot, alpha, lw) {
+    const heat = 0;
+    fx.save(); fx.globalAlpha = alpha; fx.translate(x, y); fx.rotate(rot);
+    const ag = fx.createRadialGradient(0, 0, r * .3, 0, 0, r * 1.9);
+    ag.addColorStop(0, 'rgba(255,140,40,0)'); ag.addColorStop(.5, 'rgba(255,80,20,0.06)'); ag.addColorStop(1, 'rgba(255,0,0,0)');
+    fx.beginPath(); fx.arc(0, 0, r * 1.9, 0, Math.PI * 2); fx.fillStyle = ag; fx.fill();
+    meteorPath(shape, r);
+    const r1 = 154, g1 = 110, b1 = 80;
+    const rg = fx.createRadialGradient(-r * .3, -r * .3, 0, 0, 0, r);
+    rg.addColorStop(0, `rgb(${r1},${g1},${b1})`);
+    rg.addColorStop(.6, `rgb(${Math.floor(r1 * .6)},${Math.floor(g1 * .5)},${Math.floor(b1 * .4)})`);
+    rg.addColorStop(1, '#150500');
+    fx.fillStyle = rg; fx.fill();
+    fx.strokeStyle = `rgba(${r1},${g1 - 20},20,.75)`;
+    fx.lineWidth = lw * (1.5 + heat * 1.5); fx.stroke();
+    fx.restore();
+  }
+  function drawShip(x, y, g) {
+    const flick = 0.6 + 0.4 * Math.abs(Math.sin(g * 41));
+    fx.save(); fx.translate(x, y); fx.scale(1.25, 1.25);
+    const gr = fx.createLinearGradient(0, 30, 0, 30 + 90 * flick);
+    gr.addColorStop(0, `rgba(${CYAN},0.95)`); gr.addColorStop(1, `rgba(${CYAN},0)`);
+    fx.fillStyle = gr; fx.beginPath(); fx.moveTo(-12, 30); fx.lineTo(12, 30); fx.lineTo(0, 30 + 90 * flick); fx.closePath(); fx.fill();
+    fx.shadowColor = `rgba(${CYAN},0.75)`; fx.shadowBlur = 30;
+    fx.fillStyle = '#EEF3FF'; fx.beginPath(); fx.moveTo(0, -46); fx.lineTo(34, 30); fx.lineTo(0, 14); fx.lineTo(-34, 30); fx.closePath(); fx.fill();
+    fx.fillStyle = `rgb(${CYAN})`; fx.beginPath(); fx.moveTo(0, -20); fx.lineTo(10, 12); fx.lineTo(-10, 12); fx.closePath(); fx.fill();
+    fx.restore();
+  }
+  const RATE = 0.18, BV = 1040, BLIFE = 1.6, STEP = 1 / 60;   // Tier I: um disparo a cada 0,18 s
+  // o tiro some no 1º meteoro que tocar (conta feita só com t, para cada quadro sair igual)
+  function bulletState(tb, g, deg) {
+    const x0 = shipX(tb), y0 = SY - 60, rad = deg * Math.PI / 180, vx = Math.sin(rad) * BV, vy = Math.cos(rad) * BV;
+    for (let tau = tb; tau <= g + 1e-9; tau += STEP) {
+      const y = y0 - (tau - tb) * vy, xb = x0 + (tau - tb) * vx;
+      for (let i = 0; i < N; i++) {
+        const m = meteors[i], p = mpos(m, tau);
+        if (hidden(i, p.cycle)) continue;
+        const dx = p.x - xb, dy = p.y - y;
+        if (dx * dx + dy * dy < Math.pow(m.r * 0.72 + 8, 2)) return { hit: true, x: xb, y, at: tau };
+      }
+    }
+    return { hit: false, x: x0 + (g - tb) * vx, y: y0 - (g - tb) * vy };
+  }
+  function drawBullet(x, y) {
+    fx.save(); fx.globalAlpha = 0.25 + 0.75 * seg(y, 860, 240);   // mais fraco onde está o texto
+    const gr = fx.createRadialGradient(x, y, 0, x, y, 24);
+    gr.addColorStop(0, `rgba(${C1},1)`); gr.addColorStop(.3, `rgba(${C2},.8)`); gr.addColorStop(1, 'rgba(0,120,200,0)');
+    fx.fillStyle = gr; fx.beginPath(); fx.arc(x, y, 24, 0, Math.PI * 2); fx.fill();
+    fx.fillStyle = '#fff'; fx.beginPath(); fx.arc(x, y, 7, 0, Math.PI * 2); fx.fill();
+    fx.restore();
+  }
+
+  function drawFX(t) {
+    const g = t;
+    fx.clearRect(0, 0, W, H);
+    for (let i = 0; i < N; i++) {
+      const m = meteors[i], p = mpos(m, g);
+      if (p.y < -120 || p.y > H + 120 || hidden(i, p.cycle)) continue;
+      drawMeteor(m.shape, p.x, p.y, m.r, m.rot + g * m.w, 0.9, m.big ? 1.6 : 1.2);
+    }
+    const vg = fx.createRadialGradient(540, 720, 160, 540, 720, 980);
+    vg.addColorStop(0, 'rgba(5,7,15,0.8)'); vg.addColorStop(1, 'rgba(5,7,15,0)');
+    fx.fillStyle = vg; fx.fillRect(0, 0, W, H);
+    const k0 = Math.max(0, Math.floor((g - BLIFE) / RATE));
+    for (let k = k0; k * RATE <= g; k++) for (const deg of (k * RATE >= TC ? [-6, 6] : [0])) {
+      const st = bulletState(k * RATE, g, deg);
+      if (!st.hit) { if (st.y > -40) drawBullet(st.x, st.y); continue; }
+      const age = g - st.at;                         // faísca no ponto do impacto, 0,25 s
+      if (age < 0.25) {
+        const al = 1 - age / 0.25, ya = 0.25 + 0.75 * seg(st.y, 860, 240);
+        for (let q = 0; q < 6; q++) {
+          const ang = q * 1.047 + k;
+          fx.fillStyle = `rgba(${C1},${al * ya})`;
+          fx.beginPath(); fx.arc(st.x + Math.cos(ang) * 120 * age, st.y + Math.sin(ang) * 120 * age, 4 * al + 1, 0, Math.PI * 2); fx.fill();
+        }
+      }
+    }
+    drawShip(shipX(g), SY, g);
+    // o 1º boost: aparece no hit (um pulso dourado), cai sobre a nave e é pego em TC (faíscas douradas)
+    if (t >= HIT && t < TC) {
+      const p = ease.inout(seg(t, HIT, TC - HIT));
+      const bx = shipX(g), by = OY0 + (SY - 40 - OY0) * p;
+      drawBoost(bx, by, t);
+      const pa = seg(t, HIT, 0.6);
+      if (pa < 1) {
+        fx.save(); fx.globalAlpha = 0.7 * (1 - pa); fx.strokeStyle = 'rgba(250,204,21,1)'; fx.lineWidth = 6;
+        fx.beginPath(); fx.arc(bx, OY0, 40 + 300 * ease.out3(pa), 0, Math.PI * 2); fx.stroke(); fx.restore();
+      }
+    }
+    const pc = seg(t, TC, 0.45);
+    if (t >= TC && pc < 1) {
+      for (let q = 0; q < 14; q++) {
+        const ang = q * 0.4488 + 0.3, sp = 160 + 90 * ((q * 7) % 5) / 4;
+        fx.fillStyle = `rgba(255,215,0,${1 - pc})`;
+        fx.beginPath(); fx.arc(shipX(g) + Math.cos(ang) * sp * pc, SY - 40 + Math.sin(ang) * sp * pc, 6 * (1 - pc) + 1.5, 0, Math.PI * 2); fx.fill();
+      }
+    }
+  }
+  // cores de drawBoost() no jogo para o boost comum (o dourado com ★), em escala 2
+  function drawBoost(x, y, t) {
+    const r = 28, glow = 1 + Math.sin(t * 3 * Math.PI) * 0.4;
+    fx.save(); fx.translate(x, y);
+    const g = fx.createRadialGradient(0, 0, r * .5, 0, 0, r * 2.8 * glow);
+    g.addColorStop(0, 'rgba(255,220,50,.8)'); g.addColorStop(.4, 'rgba(255,160,0,.4)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+    fx.beginPath(); fx.arc(0, 0, r * 2.8 * glow, 0, Math.PI * 2); fx.fillStyle = g; fx.fill();
+    fx.beginPath(); fx.arc(0, 0, r, 0, Math.PI * 2);
+    const bg = fx.createRadialGradient(-8, -8, 2, 0, 0, r);
+    bg.addColorStop(0, '#fffbe0'); bg.addColorStop(.4, '#ffd700'); bg.addColorStop(1, '#ff8800');
+    fx.fillStyle = bg; fx.fill(); fx.strokeStyle = '#fff8aa'; fx.lineWidth = 3; fx.stroke();
+    fx.fillStyle = '#fff'; fx.font = 'bold 28px Arial'; fx.textAlign = 'center'; fx.textBaseline = 'middle';
+    fx.fillText('★', 0, 1);
+    fx.restore();
+  }
+
+  // ---------- camadas de texto ----------
+  const $ = id => document.getElementById(id);
+  const layer = (el, op, dy = 0, sc = 1) => { el.style.opacity = op; el.style.transform = `translateY(${dy}px) scale(${sc})`; };
+
+  window.__seek = function (t) {
+    t = clamp(t, 0, DUR);
+    drawFX(t);
+
+    // 1) gancho: legível desde o quadro 0; a linha de baixo entra em 0,5 s; sai em 2.35–2.65
+    const outH = 1 - seg(t, 2.35, 0.3);
+    layer($('hook'), outH, -30 * (1 - outH));
+    const ws = [['w1', 0.0, 0.35], ['w2', 0.08, 0.4], ['w3', 0.16, 0.4]];
+    for (const [id, a, d] of ws) {               // sempre opaco (gancho legível no quadro 0); só assenta 14 px
+      const v = ease.out3(seg(t, a, d));
+      $(id).style.opacity = 1; $(id).style.display = 'inline-block';
+      $(id).style.transform = `translateY(${14 * (1 - v)}px)`;
+    }
+    const hs = ease.out3(seg(t, 0.5, 0.4));
+    $('hsub').style.opacity = hs; $('hsub').style.transform = `translateY(${20 * (1 - hs)}px)`;
+
+    // 2) o relógio: 0:00 → 0:08 (acelerado) e trava em dourado no hit, quando o boost aparece; a barra fica cheia
+    const inS = ease.out3(seg(t, 2.55, 0.35)), outS = 1 - seg(t, 5.4, 0.3);
+    layer($('ds'), inS * outS, 30 * (1 - inS));
+    $('cn').textContent = fmt(gsec(t));
+    $('cnt').className = 'counter' + (t >= HIT ? ' lock' : '');
+    const pop = t >= HIT ? 1 + 0.1 * Math.exp(-(t - HIT) * 4) : 1;
+    $('cnt').style.transform = `scale(${pop})`;
+    const fill = seg(t, T0, HIT - T0);
+    $('bar').style.width = (100 * fill).toFixed(2) + '%';
+    const ta = ease.out3(seg(t, HIT, 0.22));
+    $('tt').style.opacity = ta; $('tt').style.transform = `scale(${0.7 + 0.3 * ta + 0.08 * Math.exp(-(Math.max(0, t - HIT)) * 5) * (t >= HIT ? 1 : 0)})`;
+    const mk = ease.out3(seg(t, HIT + 0.35, 0.35));
+    $('mk').style.opacity = mk; $('mk').style.transform = `scale(${0.9 + 0.1 * mk})`;
+
+    // 3) pegue o 1º boost + CTA 5.65–8.0
+    const inC = ease.out3(seg(t, 5.65, 0.45));
+    layer($('cta'), inC, 30 * (1 - inC));
+  };
+  window.__duration = DUR;
+  window.__seek(0);
+})();
+</script>
+</body>
+</html>
