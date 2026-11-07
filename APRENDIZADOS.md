@@ -12,12 +12,16 @@ apenas este arquivo, e não o playbook inteiro.
   jogo: 04/11, 0 partidas; 05/11, 1 (GUI, piloto antigo, a 700ª); 06/11, 0 — abaixo da base de 1 a 2 por dia, e nenhum piloto novo
   desde 31/10. O tempo médio dos reels de 8 s do teste fica entre 40 e 50% da duração (fora o das 23:17, com 6 de alcance): metade
   do vídeo, e o CTA só no fim. A leitura da fase 1 sai em 12/11, como previsto, mas o sinal até aqui é que trocar só o texto não
-  leva ninguém ao jogo; a fase 2 (montagem com gameplay real) depende da gravação em `footage/` — **o Guilherme precisa subir o
-  arquivo**. Hoje, o 4º post do teste ("pediu um texto para a IA?", para quem não programa: o 1º boost aparece sempre aos 8 s de
-  jogo). Operação: o push_files decodifica uma 2ª vez as sequências de escape de barra invertida + u (o escape da estrela no
-  fillText virou o caractere ★); para o JavaScript é o mesmo texto, mas o blob muda — conferir o SHA sempre e não usar esses
-  escapes nos textos dos logs. No blog, o que é hitbox (PR #61), com um achado do código: a hitbox de 18 px da nave é menor que o
-  desenho no bico e nas asas, mas maior nas laterais da frente.
+  leva ninguém ao jogo; a fase 2 (montagem com gameplay real) dependia da gravação, e o Guilherme a subiu em `footage/` às 16:09.
+  Hoje, o 4º post do teste ("pediu um texto para a IA?", para quem não programa: o 1º boost aparece sempre aos 8 s de jogo).
+  Operação: o push_files decodifica uma 2ª vez as sequências de escape de barra invertida + u (o escape da estrela no fillText
+  virou o caractere ★); para o JavaScript é o mesmo texto, mas o blob muda — conferir o SHA sempre e não usar esses escapes nos
+  textos dos logs. No blog, o que é hitbox (PR #61), com um achado do código: a hitbox de 18 px da nave é menor que o desenho no
+  bico e nas asas, mas maior nas laterais da frente. Às ~16:10, a pedido dele, saiu o 1º reel de montagem (as provocações reais da
+  gravação, 6aef79c6…, publicado às 16:20, o 2º post do dia), e as 138 pastas de `posts/` com mais de 2 dias saíram do `main` — o
+  histórico do git continua com elas, e o tamanho do repositório só cai reescrevendo o histórico. **A fase 2 começa**: a partir de
+  08/11, o reel das 13:00 é de montagem (MONTAGEM.md), um tipo por dia, sem repetir a combinação em 3 dias. O esqueleto da fase 1
+  citado na 3c (a pasta de 04/11) saiu na limpeza; o de 07/11 é igual.
 - 2026-11-06 · **O 1º dia inteiro do teste "Enquanto a IA pensa" não mexeu no jogo: a quinta 05/11 teve 1 partida, de um piloto
   que já estava no ranking — mas foi a 700ª, a 1ª partida redonda com nick, e fechou as 24 h de jogo somadas.** A partida: 12:37,
   GUI, 11.429 em 2:32, Tier II, entre o convite das 09:25 e o reel das 13:00; GUI tem a 2ª melhor marca do jogo (29.901, em 29/09)
