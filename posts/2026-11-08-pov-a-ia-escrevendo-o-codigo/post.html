@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="post-type" content="reel">
+<meta name="post-size" content="1080x1920">
+<meta name="reel-duration" content="10.0">
+<meta name="reel-fps" content="30">
+<meta name="reel-cover" content="0.6">
+<link rel="stylesheet" href="../../templates/reel.css">
+<!-- REEL DE MONTAGEM "POV" (fase 2 do teste "Enquanto a IA pensa", PLAYBOOK 3c; o 2º reel de montagem e o 1º no slot das
+     13:00), do molde templates/montagem-pov.html, para quem programa. Um trecho contínuo da gravação de 05/11 (footage/,
+     13,0 → 19,6 s: o boost aparece, um meteoro grande explode, a nave pega o boost e o jogo solta "Amador detectado" aos 30 s
+     de partida) com o selo "sua IA · pensando…" contando os segundos; no fim, a imagem congela, como o jogo quando a aba sai da
+     frente (requestAnimationFrame com dt de no máximo 0,05 s, em src/app/play/page.js 36d68b9a), e entram a regra e o CTA.
+     audio.json: {"bpm":128,"transpose":-2,"hit":6.6,"riserStart":5.0,"fadeOut":0.5} (o hit no congelamento). -->
+</head>
+<body>
+  <canvas id="v" width="1080" height="1920"></canvas>
+  <div class="m-scrim" id="sc"></div>
+
+  <div id="hl" class="layer" style="top: 335px; opacity: 1">
+    <div class="h1" style="font-size: 124px">POV: A IA ESTÁ<br>ESCREVENDO<br><span class="cyan">O SEU CÓDIGO.</span></div>
+  </div>
+  <div class="m-chip" id="chip"><span><i></i><b id="chs"></b><em id="cht"></em></span></div>
+
+  <div class="m-bub" id="bub"><div class="box"><div class="clk">partida · 0:30</div><div class="say">“AMADOR DETECTADO”</div></div></div>
+
+  <div id="fz" class="layer" style="top: 430px">
+    <div class="h1" style="font-size: 124px">TROQUE DE ABA:<br><span class="accent">O JOGO CONGELA.</span></div>
+    <div class="sub" style="margin-top: 26px"><span class="m-pill">e espera por <b>você</b></span></div>
+  </div>
+  <div id="cta" class="layer" style="top: 820px">
+    <div class="cta-big">NAVISTRON<br>.IO</div>
+    <div class="cta-sub"><span class="m-pill">grátis, sem login</span></div>
+    <div class="sub" style="margin-top: 8px"><span class="m-pill">jogue enquanto a <b>IA</b> pensa</span></div>
+  </div>
+
+<script>
+(function () {
+  const FZ = 6.6;                                     // segundo do congelamento
+  window.MONTAGE = {
+    dur: 10.0, srcW: 1060, srcH: 1906,
+    footage: { main: '../../footage/Screen_Recording_20261105_123725_Chrome_1.mp4' },
+    touch: { minY: 470 },
+    view: [530, 1246, 1.05],
+    cuts: [
+      { at: 0,  dur: FZ,        from: 13.0, shake: [[2.2, 10]] },
+      { at: FZ, dur: 10.0 - FZ, from: 19.6, freeze: 0, flash: '255,255,255', view: { from: [530, 1246, 1.05], to: [530, 1200, 1.15] } }
+    ],
+    overlay(t, k, lt) {
+      const { seg, out3, outBack } = window.MU, $ = id => document.getElementById(id);
+      const hOut = 1 - seg(t, 1.8, 0.25);
+      $('hl').style.opacity = hOut; $('hl').style.transform = `translateY(${-40 * (1 - hOut)}px)`;
+      $('sc').style.opacity = Math.max(hOut, out3(seg(t, FZ + 0.1, 0.3)));
+      const done = t >= FZ;
+      $('chip').style.opacity = out3(seg(t, 2.1, 0.3));
+      $('chip').className = 'm-chip' + (done ? ' ok' : '');
+      $('chs').textContent = done ? 'sua IA · resposta pronta' : 'sua IA · pensando…';
+      $('cht').textContent = done ? '' : '0:0' + Math.floor(t);
+      $('cht').style.display = done ? 'none' : 'inline';
+      $('bub').style.opacity = t < FZ ? seg(t, 5.9, 0.06) : 0;
+      $('bub').style.transform = `scale(${(0.55 + 0.45 * outBack(seg(t, 5.92, 0.2))).toFixed(4)}) rotate(-1.8deg)`;
+      const fz = out3(seg(t, FZ + 0.15, 0.35));
+      $('fz').style.opacity = fz; $('fz').style.transform = `translateY(${30 * (1 - fz)}px)`;
+      const cc = out3(seg(t, 8.1, 0.4));
+      $('cta').style.opacity = cc; $('cta').style.transform = `translateY(${30 * (1 - cc)}px)`;
+    }
+  };
+})();
+</script>
+<script src="../../templates/montage.js"></script>
+<script>window.__seek(0);</script>
+</body>
+</html>
