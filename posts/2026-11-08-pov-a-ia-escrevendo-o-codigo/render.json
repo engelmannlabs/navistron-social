@@ -1,0 +1,39 @@
+{
+  "files": {
+    "post.html": {
+      "hash": "c6e4ba689dba8c02c183013bf3ff907e59a66f172c4b9c6b1a3b4ee48aae94f0",
+      "out": "reel.mp4",
+      "width": 1080,
+      "height": 1920,
+      "fonts": [
+        "BigShoulders",
+        "GeistMono",
+        "Tektur"
+      ],
+      "duration": 10,
+      "fps": 30,
+      "frames": 300,
+      "bytes": 2105397,
+      "cover": "reel-cover.png",
+      "footage": [
+        {
+          "id": "c0",
+          "src": "../../footage/Screen_Recording_20261105_123725_Chrome_1.mp4",
+          "from": 13,
+          "fps": 30,
+          "frames": 199,
+          "touch": 199
+        },
+        {
+          "id": "c1",
+          "src": "../../footage/Screen_Recording_20261105_123725_Chrome_1.mp4",
+          "from": 19.6,
+          "fps": 30,
+          "frames": 1,
+          "touch": 1
+        }
+      ]
+    }
+  },
+  "renderedAt": "2026-11-08T04:58:50.756Z"
+}
