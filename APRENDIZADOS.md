@@ -4,6 +4,17 @@ O mais recente primeiro. **Manter apenas os 4 últimos aqui**; ao acrescentar um
 arquivo `APRENDIZADOS-<período>.md`. Separado do `PLAYBOOK.md` em 22/09/2026 para que a rodada diária reescreva
 apenas este arquivo, e não o playbook inteiro.
 
+- 2026-11-08 · **A fase 2 começou (montagem com gameplay real), e o jogo segue parado: a última partida foi a 700ª, em 05/11 às
+  12:37 — sexta 06/11 e sábado 07/11 sem nenhuma, mesmo com dois posts no sábado.** Métricas (feed de 07/11 17:28 BRT, ~1 h mais
+  cedo que a anterior, como previsto): o reel de 06/11 ("2 minutos encarando a IA?") fechou em **64 / 74** (~28 h; 3,55 s, 44% dos
+  8 s), e a série do slot das 13:00 passou a 46 posts, com mediana 16,5; o de 07/11 ("pediu um texto para a IA?") tinha **38 /
+  46** com ~4 h (2,55 s, 32%); o 1º reel de montagem (as provocações, publicado às 16:20 de 07/11) tinha **2 / 8** com ~1 h, mas
+  15 s de tempo médio num vídeo de 10 s (quem viu, viu de novo). Nenhum post do teste teve like, comentário, save ou
+  compartilhamento. Hoje, o 1º reel de montagem no slot das 13:00: o POV "a IA está escrevendo o seu código" (6 s contínuos da
+  partida e o congelamento da aba), para quem programa. Operação: o ambiente local foi recriado entre 07 e 08/11 — as cópias de
+  trabalho (scripts, moldes, a gravação) sumiram —, e a rodada trabalhou direto do repositório: o reel de montagem foi para o
+  render do Actions sem prévia local e foi conferido depois pela folha de quadros do mp4 (sem ajuste). No blog, o tutorial da
+  contagem regressiva (PR #62), com o 3, 2, 1, GO! do jogo: 2,9 s, em paralelo com o pedido da sessão ao servidor.
 - 2026-11-07 · **Três dias de teste, uma partida: o alcance do slot das 13:00 voltou (82 no reel de 05/11, o 9º da série), mas não
   virou jogo — a sexta 06/11 não teve partida.** Métricas (feed de 06/11 18:28 BRT, ~1 h mais cedo que a anterior, como previsto):
   o reel "até um robô jogaria melhor" (05/11, 13:00) fechou em **82 / 90** (~29 h; 3,20 s, 40% dos 8 s); o de 06/11 ("2 minutos
@@ -62,19 +73,8 @@ apenas este arquivo, e não o playbook inteiro.
   montagem com gameplay real (motor em `templates/montage.js`, quadros extraídos com o ffmpeg no render, guia, índice da gravação
   e cardápio de combinações em `MONTAGEM.md`), valendo assim que o vídeo estiver em `footage/` (só ele consegue subir o arquivo; o
   conector não grava binário). Nota do convite e exemplos do PLAYBOOK no português da norma culta: levados à seção 3c em 05/11.
-- 2026-11-04 · **1ª leitura da S45: o reel de 8 s segurou quase metade da duração (3,77 s de tempo médio, 47% dos 8 s), contra
-  17,6% do ranking de 14 s — mas é um par só, e o jogo não mexeu: 1 partida por dia.** Métricas (feed de 03/11 21:27 BRT, ~1 h
-  mais cedo que a anterior, como previsto): o ranking de 02/11 (14 s) fechou em **91 / 98** (~32 h, 2,47 s de tempo médio), o 7º
-  da série do slot das 13:00 (42 posts, mediana 15); o reel de 8 s de 03/11 (no celular, a nave voa acima do dedo) tinha **99 /
-  122** com ~8 h — mais que o ranking com ~9 h (79). Nos de 14 s da S44, o tempo médio ficou entre 2,1 e 5,1 s (15 a 36%). Faltam
-  o alcance com ≥ 40 h e as partidas do dia seguinte; a leitura da pergunta fecha em 09/11. No jogo, a segunda 02/11 e a terça
-  03/11 tiveram 1 partida cada: a de terça, às 12:46, foi de ROBER (7.685, Tier II), 17 minutos antes de o reel de 8 s sair — o 1º
-  nick da semana 45 e o reel de hoje (desafio: com 7.686, um nick passa a liderar). 699 partidas: a próxima é a 700ª, e faltam 68
-  s para as 24 h de jogo somadas. Telemetria: com a regra de 03/11, três leituras com ?v= diferentes, sem diferença entre elas. A
-  HeyGen seguiu no plano free pelo 7º dia (**o Guilherme precisa conferir a assinatura**). No blog, jogos que gastam pouca bateria
-  (PR #57), com um número do código: o quadro fixo de 540×720 pinta 388.800 pixels, 6,7 vezes menos que uma tela de 1080×2400.
 
-Anteriores em [`APRENDIZADOS-2026-11.md`](APRENDIZADOS-2026-11.md) (01 a 03/11),
+Anteriores em [`APRENDIZADOS-2026-11.md`](APRENDIZADOS-2026-11.md) (01 a 04/11),
 [`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md) (24 a 31/10),
 [`APRENDIZADOS-2026-10.md`](APRENDIZADOS-2026-10.md) (01 a 23/10),
 [`APRENDIZADOS-2026-09-14-a-17.md`](APRENDIZADOS-2026-09-14-a-17.md) (14 a 17/09, 23 a 30/09) e

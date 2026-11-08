@@ -3,6 +3,17 @@
 Entradas que saíram de [`APRENDIZADOS.md`](APRENDIZADOS.md), que guarda só as 4 mais recentes; a mais recente primeiro.
 Anteriores (24 a 31/10) em [`APRENDIZADOS-2026-10-24-a-31.md`](APRENDIZADOS-2026-10-24-a-31.md). Arquivo aberto em 05/11/2026.
 
+- 2026-11-04 · **1ª leitura da S45: o reel de 8 s segurou quase metade da duração (3,77 s de tempo médio, 47% dos 8 s), contra
+  17,6% do ranking de 14 s — mas é um par só, e o jogo não mexeu: 1 partida por dia.** Métricas (feed de 03/11 21:27 BRT, ~1 h
+  mais cedo que a anterior, como previsto): o ranking de 02/11 (14 s) fechou em **91 / 98** (~32 h, 2,47 s de tempo médio), o 7º
+  da série do slot das 13:00 (42 posts, mediana 15); o reel de 8 s de 03/11 (no celular, a nave voa acima do dedo) tinha **99 /
+  122** com ~8 h — mais que o ranking com ~9 h (79). Nos de 14 s da S44, o tempo médio ficou entre 2,1 e 5,1 s (15 a 36%). Faltam
+  o alcance com ≥ 40 h e as partidas do dia seguinte; a leitura da pergunta fecha em 09/11. No jogo, a segunda 02/11 e a terça
+  03/11 tiveram 1 partida cada: a de terça, às 12:46, foi de ROBER (7.685, Tier II), 17 minutos antes de o reel de 8 s sair — o 1º
+  nick da semana 45 e o reel de hoje (desafio: com 7.686, um nick passa a liderar). 699 partidas: a próxima é a 700ª, e faltam 68
+  s para as 24 h de jogo somadas. Telemetria: com a regra de 03/11, três leituras com ?v= diferentes, sem diferença entre elas. A
+  HeyGen seguiu no plano free pelo 7º dia (**o Guilherme precisa conferir a assinatura**). No blog, jogos que gastam pouca bateria
+  (PR #57), com um número do código: o quadro fixo de 540×720 pinta 388.800 pixels, 6,7 vezes menos que uma tela de 1080×2400.
 - 2026-11-03 · **O 1º reel de 8 s da S45 vai ao ar com o CTA aos 5,65 s — e o /stats mostrou uma armadilha nova: a 1ª leitura do
   dia veio inteira da véspera, mesmo com ?v= novos.** Métricas (feed de 02/11 22:27 BRT, ~1 h mais cedo que a anterior, como
   previsto): o reel de 01/11 (PAÇOCA estreou) fechou em **74 / 83** (~33 h, 2,2 s de tempo médio), e a S44 fechou o slot das 13:00
